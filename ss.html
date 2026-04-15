@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sunday School Department — COG Kerala</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,900;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --c1:#2D1018;--c2:#8B0032;--c3:#CC0066;--acc:#E6007A;
+  --magenta:#CC0066;--gold:#C9A84C;--gold2:#E8C46A;
+  --ivory:#FDF8F0;--ivory2:#F5EDE0;--ivory3:#EBD9C5;
+  --dark:#1A0A0E;--dark2:#2D1018;
+  --text:#2A0E18;--text2:#5C3040;--text3:#8B5A6A;
+  --f:'Outfit',sans-serif;--fd:'Cormorant Garamond',serif;--fp:'Playfair Display',serif;
+  --ease:cubic-bezier(.16,1,.3,1);--nav:84px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:18px}
+body{font-family:var(--f);background:var(--ivory);color:var(--text);overflow-x:hidden;cursor:none;opacity:0;animation:pageFade .7s .1s ease forwards}
+@keyframes pageFade{to{opacity:1}}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-thumb{background:var(--c2)}
+#cur{position:fixed;width:14px;height:14px;background:var(--c2);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s;mix-blend-mode:multiply}
+#cur.big{width:40px;height:40px;background:var(--gold);opacity:.6}
+/* NAV */
+#nav{position:fixed;top:0;left:0;right:0;z-index:900;background:rgba(255,255,255,.98);border-bottom:2px solid var(--c2);box-shadow:0 2px 24px rgba(0,0,0,.08);transition:all .4s}
+.nb{max-width:1440px;margin:0 auto;padding:0 3rem;height:var(--nav);display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.nl{display:flex;align-items:center;gap:.85rem;text-decoration:none;flex-shrink:0}
+.nl-logo{width:56px;height:56px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.nl-logo img{width:100%;height:100%;object-fit:contain}
+.nl-logo-ph{font-family:var(--fd);font-size:1.5rem;font-weight:700;color:var(--c2)}
+.nl-txt{display:flex;flex-direction:column;gap:.05rem}
+.nl-t1{font-family:var(--fd);font-size:1rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--c2);line-height:1.2}
+.nl-t2{font-family:var(--f);font-size:.76rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text3)}
+.nb-links{display:flex;align-items:center;gap:1.5rem}
+.nb-link{font-family:var(--f);font-size:.92rem;font-weight:600;color:var(--text2);transition:color .18s}
+.nb-link:hover{color:var(--c2)}
+.nb-back{font-family:var(--f);font-size:.88rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.65rem 2rem;background:var(--c2);color:white;cursor:pointer;border-radius:50px;border:2px solid var(--c2);transition:all .22s}
+.nb-back:hover{background:transparent;color:var(--c2)}
+/* HERO */
+.dept-hero{
+  height:100vh;min-height:600px;
+  background:linear-gradient(145deg,var(--c1) 0%,var(--c2) 50%,var(--c3) 100%);
+  position:relative;overflow:hidden;
+  display:flex;align-items:flex-end;
+  padding-bottom:6rem;padding-top:var(--nav);
+}
+.dh-bg-text{
+  position:absolute;bottom:-3rem;right:-2rem;
+  font-family:var(--fd);font-size:35vw;font-weight:700;
+  color:rgba(255,255,255,.04);letter-spacing:-.1em;line-height:1;pointer-events:none;
+}
+.dh-orb{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none}
+.dh-orb-1{width:500px;height:500px;background:rgba(255,255,255,.06);top:-200px;left:-100px;animation:orbF 12s ease-in-out infinite}
+.dh-orb-2{width:350px;height:350px;background:rgba(201,168,76,.12);bottom:-100px;right:-100px;animation:orbF 9s ease-in-out infinite reverse}
+@keyframes orbF{0%,100%{transform:translate(0,0)}50%{transform:translate(25px,15px)}}
+.dh-cross{
+  position:absolute;right:10%;top:50%;transform:translateY(-50%);
+  font-size:40vw;font-weight:200;color:rgba(255,255,255,.04);line-height:1;font-family:serif;pointer-events:none;
+}
+.dh-content{position:relative;z-index:2;max-width:1360px;margin:0 auto;padding:0 3.5rem;width:100%}
+.dh-eyebrow{font-family:var(--f);font-size:.9rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--gold2);margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem;opacity:0;animation:fadeUp .7s .2s var(--ease) forwards}
+.dh-eyebrow::before{content:'';width:30px;height:1.5px;background:var(--gold2)}
+.dh-title{font-family:var(--fd);font-size:clamp(3.5rem,7vw,9rem);font-weight:700;color:white;line-height:.85;letter-spacing:-.04em;margin-bottom:1.5rem;text-shadow:0 4px 40px rgba(0,0,0,.3);opacity:0;animation:fadeUp .9s .3s var(--ease) forwards}
+.dh-title em{font-family:var(--fp);font-style:italic;font-weight:400;color:var(--gold2)}
+.dh-tagline{font-family:var(--fd);font-size:1.5rem;font-style:italic;color:rgba(255,255,255,.75);margin-bottom:2.5rem;max-width:600px;opacity:0;animation:fadeUp .8s .45s var(--ease) forwards}
+.dh-tags{display:flex;flex-wrap:wrap;gap:.7rem;opacity:0;animation:fadeUp .8s .6s var(--ease) forwards}
+.dh-tag{font-family:var(--f);font-size:.82rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:white;border:1.5px solid rgba(255,255,255,.3);padding:.5rem 1.3rem;border-radius:50px;background:rgba(255,255,255,.08);backdrop-filter:blur(8px)}
+.dh-scroll-hint{
+  position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:.5rem;
+  font-family:var(--f);font-size:.72rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.4);
+  opacity:0;animation:fadeUp .7s .8s var(--ease) forwards;
+}
+.dh-scroll-line{width:1.5px;height:40px;background:linear-gradient(to bottom,rgba(255,255,255,.4),transparent);animation:scrollPulse 2s ease-in-out infinite}
+@keyframes scrollPulse{0%,100%{transform:scaleY(1);opacity:.4}50%{transform:scaleY(1.3);opacity:.8}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+
+/* STATS BAR */
+.stats-bar{
+  background:var(--dark);
+  border-top:3px solid var(--gold);border-bottom:2px solid rgba(201,168,76,.2);
+}
+.stats-inner{max-width:1360px;margin:0 auto;padding:0 3.5rem;display:grid;grid-template-columns:repeat(4,1fr)}
+.stat-item{padding:2.5rem 2rem;border-right:1px solid rgba(255,255,255,.07);transition:background .3s;cursor:default;position:relative;overflow:hidden}
+.stat-item:last-child{border-right:none}
+.stat-item:hover{background:rgba(255,255,255,.03)}
+.stat-item::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--c2),var(--gold));transform:scaleX(0);transform-origin:left;transition:transform .4s}
+.stat-item:hover::before{transform:scaleX(1)}
+.stat-val{font-family:var(--fd);font-size:3rem;font-weight:700;line-height:1;letter-spacing:-.04em;background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.stat-lbl{font-family:var(--f);font-size:.8rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:.4rem}
+
+/* ABOUT */
+.dept-about{padding:8rem 0;background:var(--ivory2);position:relative;overflow:hidden}
+.da-grid{display:grid;grid-template-columns:1fr 1fr;gap:8rem;align-items:center;max-width:1360px;margin:0 auto;padding:0 3.5rem}
+.da-sl{font-family:var(--f);font-size:.9rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--c2);margin-bottom:1rem;display:flex;align-items:center;gap:.9rem}
+.da-sl::before{content:'';width:28px;height:2px;background:var(--c2)}
+.da-h{font-family:var(--fd);font-size:clamp(2.8rem,4vw,5rem);font-weight:700;line-height:.9;letter-spacing:-.03em;color:var(--text);margin-bottom:.6rem}
+.da-h em{font-family:var(--fp);font-style:italic;font-weight:400;color:var(--c2)}
+.da-rule{width:40px;height:2.5px;background:var(--c2);margin-bottom:2rem}
+.da-body{font-size:1.05rem;font-weight:400;line-height:2.2;color:var(--text2);margin-bottom:2rem}
+.da-verse{
+  padding:1.5rem 2rem;background:rgba(204,0,102,.04);
+  border-left:4px solid var(--c2);border-radius:0 16px 16px 0;
+  font-family:var(--fd);font-size:1.2rem;font-style:italic;color:var(--c2);line-height:1.7;
+}
+.da-img{
+  border-radius:28px;overflow:hidden;
+  background:linear-gradient(145deg,var(--c1),var(--c2),var(--c3));
+  aspect-ratio:4/5;position:relative;
+  box-shadow:0 32px 80px rgba(0,0,0,.25);
+}
+.da-img::before{
+  content:'✝';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font-size:12rem;color:rgba(255,255,255,.06);font-family:serif;font-weight:200;
+  display:flex;align-items:center;justify-content:center;
+}
+.da-img img{width:100%;height:100%;object-fit:cover}
+.da-img-tag{position:absolute;bottom:2rem;left:2rem;right:2rem;font-family:var(--fd);font-size:1.3rem;font-weight:700;color:rgba(255,255,255,.85);z-index:2}
+.da-img-tag span{display:block;font-family:var(--f);font-size:.76rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold2);margin-bottom:.3rem}
+
+/* SERVICES */
+.dept-services{padding:8rem 0;background:var(--ivory)}
+.ds-head{text-align:center;margin-bottom:4.5rem;max-width:1360px;margin-left:auto;margin-right:auto;padding:0 3.5rem}
+.ds-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1360px;margin:0 auto;padding:0 3.5rem}
+.ds-card{
+  background:white;border-radius:24px;padding:2.8rem 2.4rem;
+  border:2px solid var(--ivory3);position:relative;overflow:hidden;
+  transition:all .4s var(--ease);cursor:default;
+}
+.ds-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--c2),var(--gold));transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease)}
+.ds-card:hover::before{transform:scaleX(1)}
+.ds-card:hover{transform:translateY(-8px);box-shadow:0 24px 60px rgba(0,0,0,.12);border-color:var(--c2)}
+.ds-num{font-family:var(--fd);font-size:4rem;font-weight:700;color:rgba(204,0,102,.06);line-height:1;position:absolute;bottom:.5rem;right:1rem}
+.ds-icon{
+  width:52px;height:52px;border-radius:16px;
+  background:linear-gradient(135deg,rgba(204,0,102,.1),rgba(204,0,102,.04));
+  border:1.5px solid rgba(204,0,102,.15);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:1.4rem;transition:all .35s var(--ease);
+}
+.ds-card:hover .ds-icon{background:linear-gradient(135deg,var(--c2),var(--c3));border-color:var(--c2);box-shadow:0 8px 24px rgba(204,0,102,.3)}
+.ds-icon svg{width:22px;height:22px;fill:var(--c2);transition:fill .3s}
+.ds-card:hover .ds-icon svg{fill:white}
+.ds-title{font-family:var(--fd);font-size:1.5rem;font-weight:700;color:var(--text);margin-bottom:.7rem;line-height:1.2}
+.ds-desc{font-size:1rem;font-weight:400;line-height:2;color:var(--text2)}
+
+/* CTA */
+.dept-cta{
+  background:linear-gradient(135deg,var(--c1) 0%,var(--c2) 60%,var(--c3) 100%);
+  padding:7rem 0;position:relative;overflow:hidden;
+}
+.dc-bg{position:absolute;right:-4%;top:50%;transform:translateY(-50%);font-family:var(--fd);font-size:28vw;font-weight:700;color:rgba(255,255,255,.04);letter-spacing:-.1em;line-height:1;pointer-events:none}
+.dc-inner{max-width:1360px;margin:0 auto;padding:0 3.5rem;display:flex;align-items:center;justify-content:space-between;gap:4rem;position:relative;z-index:1;flex-wrap:wrap}
+.dc-h{font-family:var(--fd);font-size:clamp(2.5rem,5vw,6rem);font-weight:700;color:white;line-height:.9;letter-spacing:-.04em}
+.dc-h span{display:block;font-family:var(--fp);font-style:italic;font-weight:400;font-size:.55em;margin-bottom:.3rem;color:rgba(255,255,255,.7)}
+.dc-links{display:flex;flex-direction:column;gap:.75rem;align-items:flex-end}
+.dc-a{font-family:var(--f);font-size:.9rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.9);padding:.9rem 2.2rem;border:1.5px solid rgba(255,255,255,.4);border-radius:50px;transition:all .25s;white-space:nowrap}
+.dc-a:hover{background:white;color:var(--c2);border-color:white}
+
+/* FOOTER */
+footer{background:var(--dark);padding:4rem 0 2rem}
+.ft-inner{max-width:1360px;margin:0 auto;padding:0 3.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:2rem;border-bottom:1px solid rgba(255,255,255,.07);padding-bottom:2rem;margin-bottom:2rem}
+.ft-brand{font-family:var(--fd);font-size:1.2rem;font-weight:700;color:white;line-height:1.3}
+.ft-brand span{color:var(--gold2)}
+.ft-links{display:flex;flex-wrap:wrap;gap:1.5rem}
+.ft-link{font-family:var(--f);font-size:.88rem;color:rgba(255,255,255,.4);transition:color .15s}
+.ft-link:hover{color:rgba(255,255,255,.8)}
+.ft-bot{max-width:1360px;margin:0 auto;padding:0 3.5rem;display:flex;justify-content:space-between;align-items:center;font-family:var(--f);font-size:.82rem;color:rgba(255,255,255,.2);flex-wrap:wrap;gap:.5rem}
+
+/* Reveal */
+.rv{opacity:0;transform:translateY(32px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.rv2{opacity:0;transform:translateY(32px);transition:opacity .9s .14s var(--ease),transform .9s .14s var(--ease)}
+.rv.on,.rv2.on{opacity:1;transform:none}
+
+@media(max-width:1100px){
+  .da-grid{grid-template-columns:1fr;gap:4rem}
+  .ds-grid{grid-template-columns:1fr 1fr}
+  .stats-inner{grid-template-columns:1fr 1fr}
+  .stat-item:nth-child(2){border-right:none}
+  .nb-links{display:none}
+}
+@media(max-width:768px){
+  html{font-size:16px}
+  .ds-grid{grid-template-columns:1fr}
+  .stats-inner{grid-template-columns:1fr 1fr}
+  .nb{padding:0 1.2rem}
+  .dh-content{padding:0 1.5rem}
+  .da-grid{padding:0 1.5rem}
+  .ds-head,.ds-grid,.dc-inner,.ft-inner,.ft-bot{padding:0 1.5rem}
+}
+</style>
+</head>
+<body>
+<div id="cur"></div>
+<nav id="nav">
+  <div class="nb">
+    <a href="index.html" class="nl">
+      <div class="nl-logo">
+        <img src="download.png" alt="COG Logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="nl-logo-ph" style="display:none">✝</div>
+      </div>
+      <div class="nl-txt">
+        <span class="nl-t1">Church of God (Full Gospel)</span>
+        <span class="nl-t2">Kerala State · India</span>
+      </div>
+    </a>
+    <div class="nb-links">
+      <a href="index.html#vision" class="nb-link">Vision</a>
+      <a href="index.html#about" class="nb-link">History</a>
+      <a href="index.html#depts" class="nb-link">Departments</a>
+      <a href="index.html#leaders" class="nb-link">Leaders</a>
+      <a href="index.html#cta" class="nb-link">Contact</a>
+    </div>
+    <a href="index.html" class="nb-back">← Back to Home</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="dept-hero">
+  <div class="dh-orb dh-orb-1"></div>
+  <div class="dh-orb dh-orb-2"></div>
+  <div class="dh-bg-text">SUN</div>
+  <div class="dh-cross">✝</div>
+  <div class="dh-content">
+    <div class="dh-eyebrow">COG Kerala · Department</div>
+    <div class="dh-title">Sunday<br><em>School</em></div>
+    <div class="dh-tagline">Nurturing Children in the Word</div>
+    <div class="dh-tags">
+      <span class="dh-tag">1200+ Sunday Schools</span><span class="dh-tag">50,000+ Children</span><span class="dh-tag">5000+ Teachers</span><span class="dh-tag">Weekly Classes</span>
+    </div>
+  </div>
+  <div class="dh-scroll-hint"><span>Scroll</span><div class="dh-scroll-line"></div></div>
+</div>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item"><div class="stat-val">1200+</div><div class="stat-lbl">Sunday Schools</div></div><div class="stat-item"><div class="stat-val">50,000+</div><div class="stat-lbl">Children</div></div><div class="stat-item"><div class="stat-val">5000+</div><div class="stat-lbl">Teachers</div></div><div class="stat-item"><div class="stat-val">Weekly</div><div class="stat-lbl">Classes</div></div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div class="dept-about">
+  <div class="da-grid">
+    <div>
+      <div class="da-sl rv">About This Department</div>
+      <h2 class="da-h rv">Sunday <em>School</em></h2>
+      <div class="da-rule rv"></div>
+      <p class="da-body rv">The Sunday School Department nurtures over 50,000 children across 1,200+ churches in the faith. Through age-appropriate, Spirit-led curriculum, trained teachers plant the seeds of the Gospel in the hearts of the youngest generation in Kerala.</p>
+      <div class="da-verse rv2">"Train up a child in the way he should go; even when he is old he will not depart from it." — Proverbs 22:6</div>
+    </div>
+    <div class="da-img rv2">
+      <img src="dept-sundayschool.jpg" alt="Sunday School" onerror="this.style.display='none'">
+      <div class="da-img-tag"><span>Sunday School Department</span>Church of God Kerala</div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<div class="dept-services">
+  <div class="ds-head rv">
+    <div class="da-sl" style="justify-content:center">What We Do</div>
+    <h2 class="da-h" style="font-size:clamp(2.5rem,4vw,5rem);text-align:center">Our <em>Ministries</em></h2>
+    <div class="da-rule" style="margin:0 auto 1.5rem"></div>
+    <p style="font-size:1.05rem;color:var(--text2);line-height:2;max-width:600px;margin:0 auto">The Sunday School Department serves through these key areas of ministry across Kerala.</p>
+  </div>
+  <div class="ds-grid rv2">
+    
+    <div class="ds-card">
+      <div class="ds-num">01</div>
+      <div class="ds-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+      </div>
+      <div class="ds-title">Curriculum Development</div>
+      <p class="ds-desc">Age-graded, Biblically rich teaching materials developed for Kerala's cultural and linguistic context.</p>
+    </div>
+    <div class="ds-card">
+      <div class="ds-num">02</div>
+      <div class="ds-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+      </div>
+      <div class="ds-title">Teacher Training</div>
+      <p class="ds-desc">Regular workshops and certification programmes equipping Sunday School teachers across all districts.</p>
+    </div>
+    <div class="ds-card">
+      <div class="ds-num">03</div>
+      <div class="ds-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+      </div>
+      <div class="ds-title">Annual Children's Day</div>
+      <p class="ds-desc">A state-wide celebration of children in Christ with programmes, competitions, and Gospel presentations.</p>
+    </div>
+    <div class="ds-card">
+      <div class="ds-num">04</div>
+      <div class="ds-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+      </div>
+      <div class="ds-title">Vacation Bible School</div>
+      <p class="ds-desc">Intensive summer programmes deepening children's knowledge of the Bible and love for Jesus.</p>
+    </div>
+    <div class="ds-card">
+      <div class="ds-num">05</div>
+      <div class="ds-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+      </div>
+      <div class="ds-title">Scripture Memory</div>
+      <p class="ds-desc">Structured programmes encouraging children to hide God's Word in their hearts from an early age.</p>
+    </div>
+    <div class="ds-card">
+      <div class="ds-num">06</div>
+      <div class="ds-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+      </div>
+      <div class="ds-title">Children's Conventions</div>
+      <p class="ds-desc">District and state level gatherings for Sunday School children with age-appropriate ministry and worship.</p>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="dept-cta">
+  <div class="dc-bg">SUN</div>
+  <div class="dc-inner">
+    <div>
+      <div class="dc-h">
+        <span>Connect with</span>
+        Sunday School<br>Department
+      </div>
+    </div>
+    <div class="dc-links">
+      <a class="dc-a" href="index.html">← Back to Main Site</a>
+      <a class="dc-a" href="index.html#cta">Contact Us ↗</a>
+      <a class="dc-a" href="mailto:cogkeralastate@gmail.com">Email Us ↗</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-inner">
+    <div class="ft-brand">Church of God<br>(Full Gospel) in India · <span>Kerala State</span></div>
+    <div class="ft-links">
+      <a href="index.html" class="ft-link">Home</a>
+      <a href="dept-counselling.html" class="ft-link">Counselling</a>
+      <a href="dept-education.html" class="ft-link">Education</a>
+      <a href="dept-ladies.html" class="ft-link">Ladies Ministry</a>
+      <a href="dept-youth.html" class="ft-link">Youth</a>
+      <a href="dept-sundayschool.html" class="ft-link">Sunday School</a>
+      <a href="dept-evangelism.html" class="ft-link">Evangelism</a>
+      <a href="dept-charity.html" class="ft-link">Charity</a>
+    </div>
+  </div>
+  <div class="ft-bot">
+    <span>© 2025 Church of God (Full Gospel) in India, Kerala State</span>
+    <span>Sunday School Department</span>
+  </div>
+</footer>
+
+<script>
+const cur=document.getElementById('cur');
+document.addEventListener('mousemove',e=>{cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px';});
+document.querySelectorAll('a,.ds-card,.stat-item').forEach(el=>{el.addEventListener('mouseenter',()=>cur.classList.add('big'));el.addEventListener('mouseleave',()=>cur.classList.remove('big'));});
+const revIO=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');revIO.unobserve(e.target);}}),{threshold:.07,rootMargin:'0px 0px -44px 0px'});
+document.querySelectorAll('.rv,.rv2').forEach(el=>revIO.observe(el));
+// Stagger DS cards
+document.querySelectorAll('.ds-card').forEach((c,i)=>{c.style.cssText+=`opacity:0;transform:translateY(28px);transition:opacity .7s ${i*.08}s cubic-bezier(.16,1,.3,1),transform .7s ${i*.08}s cubic-bezier(.16,1,.3,1)`;const io=new IntersectionObserver(([e])=>{if(e.isIntersecting){c.style.opacity='1';c.style.transform='none';io.unobserve(c);}},{threshold:.06});io.observe(c);});
+</script>
+</body>
+</html>

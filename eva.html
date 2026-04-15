@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evangelism Department — COG Kerala</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,900;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --magenta:#CC0066;--magenta2:#E6007A;--gold:#C9A84C;--gold2:#E8C46A;
+  --ivory:#FDF8F0;--ivory2:#F5EDE0;--dark:#1A0A0E;--dark2:#2D1018;
+  --text:#2A0E18;--text2:#5C3040;--text3:#8B5A6A;
+  --accent1:#003322;--accent2:#005533;--accent3:#007744;
+  --f:'Outfit',sans-serif;--fd:'Cormorant Garamond',serif;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--f);background:var(--ivory);color:var(--text);overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-thumb{background:var(--magenta)}
+nav{position:fixed;top:0;left:0;right:0;z-index:900;background:rgba(255,255,255,.97);border-bottom:2px solid rgba(204,0,102,.15);box-shadow:0 2px 24px rgba(0,0,0,.08)}
+.nb{max-width:1440px;margin:0 auto;padding:0 3rem;height:76px;display:flex;align-items:center;justify-content:space-between}
+.nl-txt .t1{font-family:var(--fd);font-size:.95rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--magenta)}
+.nl-txt .t2{font-family:var(--f);font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text3)}
+.back-btn{font-family:var(--f);font-size:.88rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.65rem 1.8rem;border:2px solid var(--magenta);color:var(--magenta);border-radius:50px;transition:all .22s;cursor:pointer;background:transparent;display:inline-flex;align-items:center;gap:.5rem}
+.back-btn:hover{background:var(--magenta);color:white}
+.dept-hero{min-height:90vh;display:flex;align-items:center;position:relative;overflow:hidden;background:linear-gradient(145deg,var(--accent1),var(--accent2),var(--accent3))}
+.dept-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 70% 50%,rgba(255,255,255,.08),transparent 60%)}
+.dh-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:60px 60px}
+.dh-content{position:relative;z-index:1;max-width:1360px;margin:0 auto;padding:0 3.5rem;padding-top:100px}
+.dh-eyebrow{font-family:var(--f);font-size:.85rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--gold2);display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;opacity:0;animation:fadeUp .8s .2s var(--ease) forwards}
+.dh-eyebrow i{display:block;width:36px;height:1px;background:var(--gold2)}
+.dh-title{font-family:var(--fd);font-size:clamp(4rem,8vw,9rem);font-weight:700;color:white;line-height:.92;letter-spacing:-.04em;margin-bottom:1.5rem;opacity:0;animation:fadeUp .9s .35s var(--ease) forwards}
+.dh-desc{font-size:1.3rem;font-weight:400;line-height:2;color:rgba(255,255,255,.7);max-width:600px;margin-bottom:3rem;opacity:0;animation:fadeUp .8s .5s var(--ease) forwards}
+.dh-img{position:absolute;right:0;top:0;bottom:0;width:45%;overflow:hidden}
+.dh-img img{width:100%;height:100%;object-fit:cover;opacity:.3}
+.dh-img::before{content:'';position:absolute;inset:0;background:linear-gradient(to right,var(--accent1) 0%,transparent 40%);z-index:1}
+.dh-stats{display:flex;gap:3rem;opacity:0;animation:fadeUp .8s .65s var(--ease) forwards}
+.dh-stat-val{font-family:var(--fd);font-size:3rem;font-weight:700;color:var(--gold2);line-height:1}
+.dh-stat-lbl{font-size:.8rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:.2rem}
+.dept-content{max-width:1360px;margin:0 auto;padding:7rem 3.5rem}
+.dc-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.dc-label{font-family:var(--f);font-size:.82rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--magenta);display:flex;align-items:center;gap:.8rem;margin-bottom:1rem}
+.dc-label::before{content:'';width:24px;height:2px;background:var(--magenta)}
+.dc-h{font-family:var(--fd);font-size:clamp(2.5rem,4vw,4.5rem);font-weight:700;color:var(--text);line-height:.95;margin-bottom:1.2rem}
+.dc-h em{font-style:italic;color:var(--magenta)}
+.dc-p{font-size:1.1rem;font-weight:400;line-height:2.2;color:var(--text2)}
+.dc-p+.dc-p{margin-top:1.2rem}
+.services-section{background:var(--dark);padding:7rem 0;position:relative;overflow:hidden}
+.services-section::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 80%,rgba(204,0,102,.08),transparent 50%)}
+.ss-inner{max-width:1360px;margin:0 auto;padding:0 3.5rem}
+.ss-label{font-family:var(--f);font-size:.82rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--gold2);display:flex;align-items:center;gap:.8rem;margin-bottom:1rem}
+.ss-label::before{content:'';width:24px;height:2px;background:var(--gold2)}
+.ss-h{font-family:var(--fd);font-size:clamp(2.5rem,4vw,5rem);font-weight:700;color:white;line-height:.95;margin-bottom:3.5rem}
+.ss-h em{font-style:italic;color:var(--gold2)}
+.sv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.sv-card{background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.08);border-radius:24px;padding:2.5rem 2rem;transition:all .4s var(--ease);cursor:default;position:relative;overflow:hidden}
+.sv-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--magenta),var(--gold));transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
+.sv-card:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.2);transform:translateY(-8px)}
+.sv-card:hover::before{transform:scaleX(1)}
+.sv-num{font-family:var(--fd);font-size:4rem;font-weight:700;color:rgba(255,255,255,.04);line-height:1;margin-bottom:1rem}
+.sv-title{font-family:var(--fd);font-size:1.6rem;font-weight:700;color:white;margin-bottom:.6rem}
+.sv-desc{font-size:1rem;font-weight:400;line-height:2;color:rgba(255,255,255,.55)}
+.gallery-section{padding:7rem 0;background:var(--ivory2)}
+.gs-inner{max-width:1360px;margin:0 auto;padding:0 3.5rem}
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:3rem}
+.gallery-item{aspect-ratio:1/1;background:linear-gradient(145deg,var(--accent1),var(--accent2));border-radius:16px;overflow:hidden;position:relative}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease)}
+.gallery-item:hover img{transform:scale(1.08)}
+.gallery-item .gi-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:3rem;font-weight:700;color:rgba(255,255,255,.1)}
+.contact-banner{background:linear-gradient(135deg,var(--magenta),var(--magenta2));padding:5rem 0;text-align:center}
+.cb-h{font-family:var(--fd);font-size:clamp(2.5rem,5vw,5rem);font-weight:700;color:white;line-height:1;margin-bottom:1rem}
+.cb-p{font-size:1.1rem;font-weight:400;color:rgba(255,255,255,.75);margin-bottom:2.5rem}
+.cb-btn{display:inline-flex;align-items:center;gap:.7rem;font-family:var(--f);font-size:.9rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:1rem 2.8rem;border:2.5px solid white;border-radius:50px;color:white;transition:all .25s}
+.cb-btn:hover{background:white;color:var(--magenta)}
+footer{background:var(--dark);padding:3rem 0;text-align:center}
+footer p{font-size:.9rem;font-weight:400;color:rgba(255,255,255,.3)}
+footer span{color:var(--magenta)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@media(max-width:1024px){.dc-grid,.sv-grid{grid-template-columns:1fr}.dh-img{display:none}.gallery-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.dept-content,.ss-inner,.gs-inner{padding:4rem 1.5rem}.nb{padding:0 1.2rem}}
+</style>
+</head>
+<body>
+<nav><div class="nb">
+  <a href="index.html" class="nl"><div class="nl-txt"><div class="t1">Church of God (Full Gospel)</div><div class="t2">Kerala State · India</div></div></a>
+  <a href="index.html#depts" class="back-btn">← Back to Departments</a>
+</div></nav>
+
+<section class="dept-hero">
+  <div class="dh-grid"></div>
+  <div class="dh-img"><img src="dept-evangelism.jpg" alt="Evangelism Department" onerror="this.style.display='none'"></div>
+  <div class="dh-content">
+    <div class="dh-eyebrow"><i></i>Department · COG Kerala</div>
+    <h1 class="dh-title">Go Into<br>All the World</h1>
+    <p class="dh-desc">Crusades, home missions, and church planting — carrying the full Gospel beyond church walls into every village of Kerala.</p>
+    <div class="dh-stats">
+      <div><div class="dh-stat-val">1,479</div><div class="dh-stat-lbl">Revenue Villages</div></div>
+      <div><div class="dh-stat-val">New</div><div class="dh-stat-lbl">Church Plants</div></div>
+      <div><div class="dh-stat-val">FINISH</div><div class="dh-stat-lbl">Commission</div></div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--ivory)">
+  <div class="dept-content">
+    <div class="dc-grid">
+      <div>
+        <div class="dc-label">Our Mission</div>
+        <h2 class="dc-h">Go Into<br><em>All the World</em></h2>
+        <p class="dc-p">The Evangelism Department is the frontline of the FINISH Commission in Kerala. Through mass crusades, village outreach teams, one-on-one witnessing training, and pioneering church plants, we are determined to see every soul in Kerala reached with the Good News.</p>
+        <p class="dc-p">Kerala has 1,479 revenue villages. Our mission is clear — no village left without a witness, no community left without a church.</p>
+      </div>
+      <div>
+        <div class="dc-label">Scripture Foundation</div>
+        <div style="background:linear-gradient(145deg,var(--accent1),var(--accent2));border-radius:24px;padding:3rem;position:relative;overflow:hidden">
+          <div style="position:absolute;inset:0;opacity:.05;font-family:var(--fd);font-size:15rem;font-weight:700;color:white;line-height:1;display:flex;align-items:center;justify-content:center;pointer-events:none">✝</div>
+          <p style="font-family:var(--fd);font-size:1.6rem;font-style:italic;color:white;line-height:1.7;margin-bottom:1.5rem;position:relative;z-index:1">"Go therefore and make disciples of all nations, baptising them in the name of the Father and of the Son and of the Holy Spirit."</p>
+          <p style="font-family:var(--f);font-size:.85rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold2);position:relative;z-index:1">Matthew 28:19</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services-section">
+  <div class="ss-inner">
+    <div class="ss-label">What We Offer</div>
+    <h2 class="ss-h">Our <em>Services</em></h2>
+    <div class="sv-grid">
+      <div class="sv-card"><div class="sv-num">01</div><div class="sv-title">Mass Crusades</div><div class="sv-desc">Large-scale Gospel campaigns in open grounds, stadiums, and public spaces across Kerala's districts.</div></div>
+<div class="sv-card"><div class="sv-num">02</div><div class="sv-title">Village Evangelism</div><div class="sv-desc">Teams penetrating rural and tribal communities with the Gospel — reaching the unreached.</div></div>
+<div class="sv-card"><div class="sv-num">03</div><div class="sv-title">Church Planting</div><div class="sv-desc">Establishing new local congregations in areas without a COG witness — the heart of the FINISH Commission.</div></div>
+<div class="sv-card"><div class="sv-num">04</div><div class="sv-title">Home Missions</div><div class="sv-desc">Trained evangelists placed strategically in unreached pockets of Kerala for sustained witness.</div></div>
+<div class="sv-card"><div class="sv-num">05</div><div class="sv-title">Gospel Literature</div><div class="sv-desc">Distribution of tracts, New Testaments, and Suvisesha Nadam across every district.</div></div>
+<div class="sv-card"><div class="sv-num">06</div><div class="sv-title">Prayer Evangelism</div><div class="sv-desc">Organised intercession covering every taluk and village — prayer as the foundation of all outreach.</div></div>
+
+    </div>
+  </div>
+</section>
+
+<section class="gallery-section">
+  <div class="gs-inner">
+    <div class="dc-label">Gallery</div>
+    <h2 class="dc-h" style="margin-bottom:0">Ministry <em>Moments</em></h2>
+    <div class="gallery-grid">
+      <div class="gallery-item"><img src="evangelism1.jpg" alt="" onerror="this.style.display='none'"><div class="gi-ph">✝</div></div>
+      <div class="gallery-item"><img src="evangelism2.jpg" alt="" onerror="this.style.display='none'"><div class="gi-ph">✝</div></div>
+      <div class="gallery-item"><img src="evangelism3.jpg" alt="" onerror="this.style.display='none'"><div class="gi-ph">✝</div></div>
+      <div class="gallery-item"><img src="evangelism4.jpg" alt="" onerror="this.style.display='none'"><div class="gi-ph">✝</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-banner">
+  <div style="max-width:800px;margin:0 auto;padding:0 2rem">
+    <h2 class="cb-h">Join the Mission</h2>
+    <p class="cb-p">Take part in the FINISH Commission and help reach every soul in Kerala.</p>
+    <a href="index.html#cta" class="cb-btn">Contact Us →</a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 <span>Church of God (Full Gospel) in India, Kerala State</span> · Evangelism Department</p>
+</footer>
+</body></html>
