@@ -8,162 +8,265 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,900;1,400&display=swap" rel="stylesheet">
 <style>
 :root{
-  --magenta:#CC0066;--magenta2:#E6007A;--gold:#C9A84C;--gold2:#E8C46A;
-  --ivory:#FDF8F0;--ivory2:#F5EDE0;--dark:#1A0A0E;--dark2:#2D1018;
+  --magenta:#CC0066;--magenta2:#E6007A;--rose:#E91E8C;--rose2:#F48FB1;
+  --gold:#C9A84C;--gold2:#E8C46A;
+  --ivory:#FDF8F0;--ivory2:#F5EDE0;--ivory3:#EBD9C5;
+  --dark:#1A0A0E;--dark2:#2D1018;
   --text:#2A0E18;--text2:#5C3040;--text3:#8B5A6A;
-  --accent1:#1A0A0E;--accent2:#6B0032;--accent3:#CC0066;
   --f:'Outfit',sans-serif;--fd:'Cormorant Garamond',serif;
-  --ease:cubic-bezier(.16,1,.3,1);
+  --ease:cubic-bezier(.16,1,.3,1);--nav:72px;
 }
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:var(--f);background:var(--ivory);color:var(--text);overflow-x:hidden}
-a{text-decoration:none;color:inherit}
-::-webkit-scrollbar{width:4px}
-::-webkit-scrollbar-thumb{background:var(--magenta)}
-nav{position:fixed;top:0;left:0;right:0;z-index:900;background:rgba(255,255,255,.97);border-bottom:2px solid rgba(204,0,102,.15);box-shadow:0 2px 24px rgba(0,0,0,.08)}
-.nb{max-width:1440px;margin:0 auto;padding:0 3rem;height:76px;display:flex;align-items:center;justify-content:space-between}
-.nl-txt .t1{font-family:var(--fd);font-size:.95rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--magenta)}
-.nl-txt .t2{font-family:var(--f);font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text3)}
-.back-btn{font-family:var(--f);font-size:.88rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.65rem 1.8rem;border:2px solid var(--magenta);color:var(--magenta);border-radius:50px;transition:all .22s;cursor:pointer;background:transparent;display:inline-flex;align-items:center;gap:.5rem}
-.back-btn:hover{background:var(--magenta);color:white}
-.dept-hero{min-height:90vh;display:flex;align-items:center;position:relative;overflow:hidden;background:linear-gradient(145deg,var(--accent1),var(--accent2),var(--accent3))}
-.dept-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 70% 50%,rgba(255,255,255,.08),transparent 60%)}
-.dh-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:60px 60px}
-.dh-content{position:relative;z-index:1;max-width:1360px;margin:0 auto;padding:0 3.5rem;padding-top:100px}
-.dh-eyebrow{font-family:var(--f);font-size:.85rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--gold2);display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;opacity:0;animation:fadeUp .8s .2s var(--ease) forwards}
-.dh-eyebrow i{display:block;width:36px;height:1px;background:var(--gold2)}
-.dh-title{font-family:var(--fd);font-size:clamp(4rem,8vw,9rem);font-weight:700;color:white;line-height:.92;letter-spacing:-.04em;margin-bottom:1.5rem;opacity:0;animation:fadeUp .9s .35s var(--ease) forwards}
-.dh-desc{font-size:1.3rem;font-weight:400;line-height:2;color:rgba(255,255,255,.7);max-width:600px;margin-bottom:3rem;opacity:0;animation:fadeUp .8s .5s var(--ease) forwards}
-.dh-img{position:absolute;right:0;top:0;bottom:0;width:45%;overflow:hidden}
-.dh-img img{width:100%;height:100%;object-fit:cover;opacity:.3}
-.dh-img::before{content:'';position:absolute;inset:0;background:linear-gradient(to right,var(--accent1) 0%,transparent 40%);z-index:1}
-.dh-stats{display:flex;gap:3rem;opacity:0;animation:fadeUp .8s .65s var(--ease) forwards}
-.dh-stat-val{font-family:var(--fd);font-size:3rem;font-weight:700;color:var(--gold2);line-height:1}
-.dh-stat-lbl{font-size:.8rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:.2rem}
-.dept-content{max-width:1360px;margin:0 auto;padding:7rem 3.5rem}
-.dc-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
-.dc-label{font-family:var(--f);font-size:.82rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--magenta);display:flex;align-items:center;gap:.8rem;margin-bottom:1rem}
-.dc-label::before{content:'';width:24px;height:2px;background:var(--magenta)}
-.dc-h{font-family:var(--fd);font-size:clamp(2.5rem,4vw,4.5rem);font-weight:700;color:var(--text);line-height:.95;margin-bottom:1.2rem}
-.dc-h em{font-style:italic;color:var(--magenta)}
-.dc-p{font-size:1.1rem;font-weight:400;line-height:2.2;color:var(--text2)}
-.dc-p+.dc-p{margin-top:1.2rem}
-.services-section{background:var(--dark);padding:7rem 0;position:relative;overflow:hidden}
-.services-section::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 80%,rgba(204,0,102,.08),transparent 50%)}
-.ss-inner{max-width:1360px;margin:0 auto;padding:0 3.5rem}
-.ss-label{font-family:var(--f);font-size:.82rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--gold2);display:flex;align-items:center;gap:.8rem;margin-bottom:1rem}
-.ss-label::before{content:'';width:24px;height:2px;background:var(--gold2)}
-.ss-h{font-family:var(--fd);font-size:clamp(2.5rem,4vw,5rem);font-weight:700;color:white;line-height:.95;margin-bottom:3.5rem}
-.ss-h em{font-style:italic;color:var(--gold2)}
-.sv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-.sv-card{background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.08);border-radius:24px;padding:2.5rem 2rem;transition:all .4s var(--ease);cursor:default;position:relative;overflow:hidden}
-.sv-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--magenta),var(--gold));transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
-.sv-card:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.2);transform:translateY(-8px)}
-.sv-card:hover::before{transform:scaleX(1)}
-.sv-num{font-family:var(--fd);font-size:4rem;font-weight:700;color:rgba(255,255,255,.04);line-height:1;margin-bottom:1rem}
-.sv-title{font-family:var(--fd);font-size:1.6rem;font-weight:700;color:white;margin-bottom:.6rem}
-.sv-desc{font-size:1rem;font-weight:400;line-height:2;color:rgba(255,255,255,.55)}
-.gallery-section{padding:7rem 0;background:var(--ivory2)}
-.gs-inner{max-width:1360px;margin:0 auto;padding:0 3.5rem}
-.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:3rem}
-.gallery-item{aspect-ratio:1/1;background:linear-gradient(145deg,var(--accent1),var(--accent2));border-radius:16px;overflow:hidden;position:relative}
-.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease)}
-.gallery-item:hover img{transform:scale(1.08)}
-.gallery-item .gi-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:3rem;font-weight:700;color:rgba(255,255,255,.1)}
-.contact-banner{background:linear-gradient(135deg,var(--magenta),var(--magenta2));padding:5rem 0;text-align:center}
-.cb-h{font-family:var(--fd);font-size:clamp(2.5rem,5vw,5rem);font-weight:700;color:white;line-height:1;margin-bottom:1rem}
-.cb-p{font-size:1.1rem;font-weight:400;color:rgba(255,255,255,.75);margin-bottom:2.5rem}
-.cb-btn{display:inline-flex;align-items:center;gap:.7rem;font-family:var(--f);font-size:.9rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:1rem 2.8rem;border:2.5px solid white;border-radius:50px;color:white;transition:all .25s}
-.cb-btn:hover{background:white;color:var(--magenta)}
-footer{background:var(--dark);padding:3rem 0;text-align:center}
-footer p{font-size:.9rem;font-weight:400;color:rgba(255,255,255,.3)}
-footer span{color:var(--magenta)}
-@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
-@media(max-width:1024px){.dc-grid,.sv-grid{grid-template-columns:1fr}.dh-img{display:none}.gallery-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:600px){.dept-content,.ss-inner,.gs-inner{padding:4rem 1.5rem}.nb{padding:0 1.2rem}}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--f);background:var(--ivory);color:var(--text);overflow-x:hidden;}
+img{max-width:100%;display:block;}
+a{text-decoration:none;color:inherit;}
+::-webkit-scrollbar{width:3px;}
+::-webkit-scrollbar-thumb{background:var(--rose);}
+
+#nav{position:fixed;top:0;left:0;right:0;z-index:9000;background:rgba(255,255,255,.98);border-bottom:1px solid rgba(204,0,102,.12);box-shadow:0 2px 24px rgba(0,0,0,.08);}
+.nb{max-width:1440px;margin:0 auto;padding:0 1.5rem;height:var(--nav);display:flex;align-items:center;justify-content:space-between;}
+.nl{display:flex;align-items:center;gap:.7rem;}
+.nl-logo{font-family:var(--fd);font-size:1.5rem;font-weight:700;color:var(--magenta);}
+.nl-t1{font-family:var(--fd);font-size:.88rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--magenta);}
+.nl-t2{font-size:.68rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);}
+.nav-back{font-size:.82rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:.6rem 1.6rem;background:var(--magenta);color:white;border-radius:50px;border:2px solid var(--magenta);transition:all .22s;}
+.nav-back:hover{background:transparent;color:var(--magenta);}
+
+/* HERO — Floral elegant */
+.dept-hero{padding-top:var(--nav);min-height:68vh;background:linear-gradient(145deg,#2A0018,#550030,#8B0046,#AA0055);position:relative;overflow:hidden;display:flex;align-items:center;}
+.hero-petals{position:absolute;inset:0;overflow:hidden;pointer-events:none;}
+.petal{position:absolute;width:3px;height:3px;background:rgba(248,187,208,.3);border-radius:50%;animation:floatPetal linear infinite;}
+@keyframes floatPetal{0%{transform:translateY(100vh) rotate(0deg);opacity:0;}10%{opacity:1;}90%{opacity:1;}100%{transform:translateY(-20px) rotate(720deg);opacity:0;}}
+.dept-hero-inner{max-width:1360px;margin:0 auto;padding:5rem 1.5rem;position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+.hero-left{}
+.dept-tag{display:inline-flex;align-items:center;gap:.6rem;font-size:.75rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--rose2);margin-bottom:1.2rem;}
+.dept-tag::before{content:'🌸';font-size:.8rem;}
+.dept-hero-title{font-family:var(--fd);font-size:clamp(3rem,6vw,7.5rem);font-weight:700;color:white;line-height:.9;letter-spacing:-.02em;margin-bottom:1.2rem;}
+.dept-hero-title .italic{display:block;font-style:italic;font-weight:300;font-size:.38em;color:rgba(255,255,255,.5);letter-spacing:.1em;margin-bottom:.4rem;}
+.dept-hero-title .accent{background:linear-gradient(135deg,#F48FB1,#E91E8C,#CC0066);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.dept-hero-desc{font-size:1rem;line-height:2;color:rgba(255,255,255,.6);margin-bottom:2rem;}
+.dept-hero-stats{display:flex;gap:2rem;flex-wrap:wrap;}
+.dhs-num{font-family:var(--fd);font-size:2.2rem;font-weight:700;color:var(--rose2);}
+.dhs-label{font-size:.66rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.4);}
+.hero-right-deco{display:flex;align-items:center;justify-content:center;position:relative;}
+.hero-verse-card{background:rgba(255,255,255,.07);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.15);border-radius:24px;padding:2.5rem;text-align:center;}
+.hvc-quote{font-family:var(--fd);font-size:1.4rem;font-style:italic;color:rgba(255,255,255,.9);line-height:1.7;margin-bottom:.8rem;}
+.hvc-ref{font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--rose2);}
+
+.sec{padding:5rem 0;position:relative;overflow:hidden;}
+.cont{max-width:1360px;margin:0 auto;padding:0 1.5rem;}
+.sl{font-size:.8rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--magenta);margin-bottom:.7rem;display:flex;align-items:center;gap:.7rem;}
+.sl::before{content:'';width:22px;height:2px;background:var(--magenta);}
+.sh{font-family:var(--fd);font-size:clamp(2.2rem,4vw,5rem);font-weight:700;line-height:.9;color:var(--text);margin-bottom:.5rem;}
+.sh em{font-style:italic;font-weight:400;color:var(--magenta);}
+.sr{width:36px;height:3px;background:var(--magenta);margin-bottom:2.5rem;}
+.rv{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease);}
+.rv.on{opacity:1;transform:none;}
+.rv2{opacity:0;transform:translateY(28px);transition:opacity .9s .14s var(--ease),transform .9s .14s var(--ease);}
+.rv2.on{opacity:1;transform:none;}
+
+/* STATE BOARD — Wide cards */
+.board-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem;}
+.board-card{background:white;border-radius:22px;overflow:hidden;border:1.5px solid var(--ivory3);transition:all .4s var(--ease);position:relative;}
+.board-card:hover{transform:translateY(-8px);box-shadow:0 24px 60px rgba(204,0,102,.16);border-color:var(--magenta);}
+.board-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--rose),var(--gold));border-radius:22px 22px 0 0;opacity:0;transition:opacity .3s;}
+.board-card:hover::before{opacity:1;}
+.bc-photo{width:100%;aspect-ratio:1/1;overflow:hidden;background:linear-gradient(145deg,#3D0018,#6B002E);position:relative;}
+.bc-photo img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .5s;}
+.board-card:hover .bc-photo img{transform:scale(1.06);}
+.bc-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:4rem;color:rgba(255,255,255,.1);}
+.bc-photo::after{content:'';position:absolute;bottom:0;left:0;right:0;height:50%;background:linear-gradient(to top,rgba(40,0,20,.85),transparent);}
+.bc-badge{position:absolute;bottom:.8rem;left:.8rem;right:.8rem;z-index:2;background:rgba(255,255,255,.12);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.2);border-radius:10px;padding:.6rem .9rem;}
+.bc-badge-name{font-family:var(--fd);font-size:1rem;font-weight:700;color:white;}
+.bc-badge-title{font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--rose2);margin-top:.1rem;}
+.bc-body{padding:1rem 1.2rem 1.4rem;}
+.bc-role{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--magenta);margin-bottom:.25rem;}
+.bc-desc{font-size:.85rem;color:var(--text2);line-height:1.7;}
+
+/* COMMITTEE */
+.committee-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;margin-top:2rem;}
+.cm-card{background:white;border-radius:16px;overflow:hidden;border:1.5px solid var(--ivory3);transition:all .35s;position:relative;}
+.cm-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(204,0,102,.14);border-color:rgba(204,0,102,.3);}
+.cm-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--rose),var(--magenta));transform:scaleX(0);transform-origin:left;transition:transform .4s;z-index:2;}
+.cm-card:hover::before{transform:scaleX(1);}
+.cm-photo{width:100%;aspect-ratio:1/1;overflow:hidden;background:linear-gradient(145deg,#f5e0ec,#eed5e5);position:relative;}
+.cm-photo img{width:100%;height:100%;object-fit:cover;object-position:top;}
+.cm-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:2rem;color:rgba(204,0,102,.2);}
+.cm-info{padding:.8rem .9rem .9rem;}
+.cm-name{font-family:var(--fd);font-size:.9rem;font-weight:700;color:var(--text);}
+.cm-pos{font-size:.6rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--magenta);margin-top:.1rem;}
+.cm-zone{font-size:.72rem;color:var(--text3);margin-top:.1rem;}
+
+/* ACTIVITIES */
+.act-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:2rem;}
+.act-card{background:white;border-radius:18px;padding:2rem;border:1.5px solid var(--ivory3);transition:all .4s;position:relative;overflow:hidden;}
+.act-card::after{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--rose),var(--gold));transform:scaleX(0);transform-origin:left;transition:transform .4s;border-radius:18px 18px 0 0;}
+.act-card:hover::after{transform:scaleX(1);}
+.act-card:hover{transform:translateY(-5px);box-shadow:0 18px 44px rgba(204,0,102,.12);}
+.act-icon{font-size:2.2rem;margin-bottom:.8rem;}
+.act-name{font-family:var(--fd);font-size:1.3rem;font-weight:700;color:var(--text);margin-bottom:.4rem;}
+.act-desc{font-size:.88rem;color:var(--text2);line-height:1.8;}
+
+/* GALLERY */
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem;margin-top:2rem;}
+.gal-item{border-radius:14px;overflow:hidden;aspect-ratio:1/1;background:linear-gradient(145deg,#3D0018,#6B002E);position:relative;cursor:pointer;}
+.gal-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s;}
+.gal-item:hover img{transform:scale(1.08);}
+.gal-item::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(204,0,102,.65),transparent);opacity:0;transition:opacity .35s;}
+.gal-item:hover::after{opacity:1;}
+.gal-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.12);font-size:2rem;}
+
+.dept-cta{background:linear-gradient(135deg,#2A0018,#550030,var(--magenta));padding:4rem 0;text-align:center;}
+.dept-cta h3{font-family:var(--fd);font-size:clamp(2rem,4vw,4rem);font-weight:700;color:white;margin-bottom:.8rem;}
+.dept-cta p{font-size:1rem;color:rgba(255,255,255,.65);margin-bottom:2rem;}
+.cta-btn{display:inline-block;font-size:.85rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.85rem 2.2rem;background:white;color:var(--magenta);border-radius:50px;margin:.3rem;transition:all .25s;}
+.cta-btn:hover{background:var(--dark);color:white;}
+.cta-btn.outline{background:transparent;color:white;border:2px solid rgba(255,255,255,.5);}
+.cta-btn.outline:hover{background:white;color:var(--magenta);}
+
+footer{background:var(--dark);padding:2rem 0;text-align:center;}
+footer p{font-size:.85rem;color:rgba(255,255,255,.3);}
+footer a{color:var(--gold2);}
+
+@media(max-width:900px){
+  .dept-hero-inner{grid-template-columns:1fr;}
+  .hero-right-deco{display:none;}
+  .board-grid{grid-template-columns:1fr 1fr;}
+  .committee-grid{grid-template-columns:repeat(3,1fr);}
+  .act-grid{grid-template-columns:1fr 1fr;}
+  .gallery-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:640px){
+  .board-grid{grid-template-columns:1fr;}
+  .committee-grid{grid-template-columns:1fr 1fr;}
+  .act-grid{grid-template-columns:1fr;}
+}
 </style>
 </head>
 <body>
-<nav><div class="nb">
-  <a href="index.html" class="nl"><div class="nl-txt"><div class="t1">Church of God (Full Gospel)</div><div class="t2">Kerala State · India</div></div></a>
-  <a href="index.html#depts" class="back-btn">← Back to Departments</a>
-</div></nav>
+
+<nav id="nav">
+  <div class="nb">
+    <a href="index.html" class="nl">
+      <div class="nl-logo">✝</div>
+      <div><div class="nl-t1">Church of God (Full Gospel)</div><div class="nl-t2">Kerala State · India</div></div>
+    </a>
+    <a href="index.html" class="nav-back">← Back to Home</a>
+  </div>
+</nav>
 
 <section class="dept-hero">
-  <div class="dh-grid"></div>
-  <div class="dh-img"><img src="dept-ladies.jpg" alt="Ladies Ministry" onerror="this.style.display='none'"></div>
-  <div class="dh-content">
-    <div class="dh-eyebrow"><i></i>Department · COG Kerala</div>
-    <h1 class="dh-title">Women of<br>Purpose</h1>
-    <p class="dh-desc">Equipping women across Kerala to fulfil their God-given calling through fellowship, prayer, service, and Spirit-filled leadership.</p>
-    <div class="dh-stats">
-      <div><div class="dh-stat-val">1,200+</div><div class="dh-stat-lbl">Fellowships</div></div>
-      <div><div class="dh-stat-val">14</div><div class="dh-stat-lbl">Districts</div></div>
-      <div><div class="dh-stat-val">All</div><div class="dh-stat-lbl">Ages Welcome</div></div>
+  <div class="hero-petals" id="heroP"></div>
+  <div class="dept-hero-inner">
+    <div class="hero-left">
+      <div class="dept-tag">Department</div>
+      <h1 class="dept-hero-title">
+        <span class="italic">Women of Grace</span>
+        <span class="accent">Ladies</span><br>Ministry
+      </h1>
+      <p class="dept-hero-desc">Empowering, equipping, and uniting women in faith — building a fellowship of grace, prayer, and Spirit-led service across Kerala.</p>
+      <div class="dept-hero-stats">
+        <div><div class="dhs-num">1,200+</div><div class="dhs-label">Prayer Groups</div></div>
+        <div><div class="dhs-num">14</div><div class="dhs-label">Districts</div></div>
+        <div><div class="dhs-num">50,000+</div><div class="dhs-label">Women Members</div></div>
+      </div>
+    </div>
+    <div class="hero-right-deco">
+      <div class="hero-verse-card">
+        <div class="hvc-quote">"She is clothed with strength and dignity; she can laugh at the days to come."</div>
+        <div class="hvc-ref">🌸 Proverbs 31:25</div>
+      </div>
     </div>
   </div>
 </section>
 
-<section style="background:var(--ivory)">
-  <div class="dept-content">
-    <div class="dc-grid">
-      <div>
-        <div class="dc-label">Our Mission</div>
-        <h2 class="dc-h">Women of<br><em>Purpose</em></h2>
-        <p class="dc-p">The Ladies Ministry of COG Kerala gathers women from all 14 districts in a spirit of unity, prayer, and purposeful action. Through retreats, Bible study groups, and community service, we nurture women into bold disciples and compassionate servants.</p>
-        <p class="dc-p">From urban Thiruvananthapuram to the high ranges of Idukki, our women's fellowships are pillars of every local church — interceding, serving, and leading with grace.</p>
-      </div>
-      <div>
-        <div class="dc-label">Scripture Foundation</div>
-        <div style="background:linear-gradient(145deg,var(--accent1),var(--accent2));border-radius:24px;padding:3rem;position:relative;overflow:hidden">
-          <div style="position:absolute;inset:0;opacity:.05;font-family:var(--fd);font-size:15rem;font-weight:700;color:white;line-height:1;display:flex;align-items:center;justify-content:center;pointer-events:none">✝</div>
-          <p style="font-family:var(--fd);font-size:1.6rem;font-style:italic;color:white;line-height:1.7;margin-bottom:1.5rem;position:relative;z-index:1">"A woman who fears the LORD is to be praised. She opens her arms to the poor and extends her hands to the needy."</p>
-          <p style="font-family:var(--f);font-size:.85rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold2);position:relative;z-index:1">Proverbs 31:30, 20</p>
+<section class="sec" style="background:white">
+  <div class="cont">
+    <div class="sl rv">What We Do</div>
+    <h2 class="sh rv">LM <em>Activities</em></h2>
+    <div class="sr rv"></div>
+    <div class="act-grid">
+      <div class="act-card rv"><div class="act-icon"></div><div class="act-name">State and Zonal Camps</div><div class="act-desc">Annual Camps uniting thousands of women in intercession for families, communities, and Kerala.</div></div>
+      <div class="act-card rv"><div class="act-icon"></div><div class="act-name">United Prayer</div><div class="act-desc">Weekly and monthly prayer sessions in zonal,center levels.</div></div>
+      <div class="act-card rv"><div class="act-icon"></div><div class="act-name">Charity &amp; Care Projects</div><div class="act-desc">Visiting hospitals, orphanages, and homes for the elderly — expressing Christ's compassion through hands-on service.</div></div>
+      <div class="act-card rv"><div class="act-icon"></div><div class="act-name">Leadership Development</div><div class="act-desc">Training seminars and workshops equipping women to lead prayer groups, teach Sunday School, and serve their communities.</div></div>
+      <div class="act-card rv"><div class="act-icon"></div><div class="act-name"></div><div class="act-desc">Mobilising LM members to pray for and support missionaries — partnering with the Mission Board for global outreach.</div></div>
+      <div class="act-card rv"><div class="act-icon"></div><div class="act-name">Family Strengthening</div><div class="act-desc">Marriage enrichment retreats, parenting seminars, and family prayer programs — building strong, Spirit-filled homes in Kerala.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="background:white">
+  <div class="cont">
+    <div class="sl rv">Leadership</div>
+    <h2 class="sh rv">State LM <em>Board</em></h2>
+    <div class="sr rv"></div>
+    <div class="board-grid">
+      <div class="board-card rv">
+        <div class="bc-photo"><img src="lm-director.jpg" onerror="this.style.display='none'"><div class="bc-ph">🌸</div>
+          <div class="bc-badge"><div class="bc-badge-name">[State Director Name]</div><div class="bc-badge-title">State Director · Ladies Ministry</div></div>
         </div>
+        <div class="bc-body"><div class="bc-role">State Director</div><div class="bc-desc">Leading the Ladies Ministry across Kerala with grace and faith — building a legacy of prayerful, Spirit-filled women.</div></div>
+      </div>
+      <div class="board-card rv">
+        <div class="bc-photo"><img src="lm-secretary.jpg" onerror="this.style.display='none'"><div class="bc-ph">🌸</div>
+          <div class="bc-badge"><div class="bc-badge-name">[State Secretary Name]</div><div class="bc-badge-title">State Secretary</div></div>
+        </div>
+        <div class="bc-body"><div class="bc-role">State Secretary</div><div class="bc-desc">Coordinating all Ladies Ministry programs, conventions, and communications across the Kerala State.</div></div>
+      </div>
+      <div class="board-card rv">
+        <div class="bc-photo"><img src="lm-treasurer.jpg" onerror="this.style.display='none'"><div class="bc-ph">🌸</div>
+          <div class="bc-badge"><div class="bc-badge-name">[State Treasurer Name]</div><div class="bc-badge-title">State Treasurer</div></div>
+        </div>
+        <div class="bc-body"><div class="bc-role">State Treasurer</div><div class="bc-desc">Overseeing financial stewardship to ensure resources are used effectively for women's ministry throughout Kerala.</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="services-section">
-  <div class="ss-inner">
-    <div class="ss-label">What We Offer</div>
-    <h2 class="ss-h">Our <em>Services</em></h2>
-    <div class="sv-grid">
-      <div class="sv-card"><div class="sv-num">01</div><div class="sv-title">Women's Fellowships</div><div class="sv-desc">Regular gatherings for prayer, worship, Word study, and mutual encouragement across every local church.</div></div>
-<div class="sv-card"><div class="sv-num">02</div><div class="sv-title">Annual Convention</div><div class="sv-desc">The state-wide Ladies Convention — a landmark of celebration, anointing, and spiritual renewal.</div></div>
-<div class="sv-card"><div class="sv-num">03</div><div class="sv-title">Intercessory Prayer</div><div class="sv-desc">Organised prayer chains and prayer rooms covering Kerala's churches, ministers, and communities.</div></div>
-<div class="sv-card"><div class="sv-num">04</div><div class="sv-title">Community Outreach</div><div class="sv-desc">Visiting the sick, caring for orphans, and serving widows — the hands of Christ made visible.</div></div>
-<div class="sv-card"><div class="sv-num">05</div><div class="sv-title">Leadership Training</div><div class="sv-desc">Equipping women for church leadership roles, Sunday School teaching, and ministry coordination.</div></div>
-<div class="sv-card"><div class="sv-num">06</div><div class="sv-title">Youth Mentoring</div><div class="sv-desc">Older women discipling younger women according to the pattern of Titus 2 — life-on-life impact.</div></div>
 
+
+
+
+<section class="sec" style="background:var(--ivory)">
+  <div class="cont">
+    <div class="sl rv">Moments of Fellowship</div>
+    <h2 class="sh rv">Photo <em>Gallery</em></h2>
+    <div class="sr rv"></div>
+    <div class="gallery-grid rv">
+      <div class="gal-item"><img src="lm-g1.jpg" onerror="this.style.display='none'"><div class="gal-ph">📸</div></div>
+      <div class="gal-item"><img src="lm-g2.jpg" onerror="this.style.display='none'"><div class="gal-ph">📸</div></div>
+      <div class="gal-item"><img src="lm-g3.jpg" onerror="this.style.display='none'"><div class="gal-ph">📸</div></div>
+      <div class="gal-item"><img src="lm-g4.jpg" onerror="this.style.display='none'"><div class="gal-ph">📸</div></div>
+      <div class="gal-item"><img src="lm-g5.jpg" onerror="this.style.display='none'"><div class="gal-ph">📸</div></div>
+      <div class="gal-item"><img src="lm-g6.jpg" onerror="this.style.display='none'"><div class="gal-ph">📸</div></div>
+      <div class="gal-item"><img src="lm-g7.jpg" onerror="this.style.display='none'"><div class="gal-ph">📸</div></div>
+      <div class="gal-item"><img src="lm-g8.jpg" onerror="this.style.display='none'"><div class="gal-ph">📸</div></div>
     </div>
   </div>
 </section>
 
-<section class="gallery-section">
-  <div class="gs-inner">
-    <div class="dc-label">Gallery</div>
-    <h2 class="dc-h" style="margin-bottom:0">Ministry <em>Moments</em></h2>
-    <div class="gallery-grid">
-      <div class="gallery-item"><img src="ladies1.jpg" alt="" onerror="this.style.display='none'"><div class="gi-ph">✝</div></div>
-      <div class="gallery-item"><img src="ladies2.jpg" alt="" onerror="this.style.display='none'"><div class="gi-ph">✝</div></div>
-      <div class="gallery-item"><img src="ladies3.jpg" alt="" onerror="this.style.display='none'"><div class="gi-ph">✝</div></div>
-      <div class="gallery-item"><img src="ladies4.jpg" alt="" onerror="this.style.display='none'"><div class="gi-ph">✝</div></div>
-    </div>
-  </div>
+<section class="dept-cta">
+  <h3>Women of Grace, Women of God</h3>
+  <p>Join the Ladies Ministry and be part of something eternal.</p>
+  <a href="mailto:cogkeralastate@gmail.com" class="cta-btn">Connect With Us</a>
+  <a href="index.html" class="cta-btn outline">Back to Home</a>
 </section>
 
-<section class="contact-banner">
-  <div style="max-width:800px;margin:0 auto;padding:0 2rem">
-    <h2 class="cb-h">Join Our Sisterhood</h2>
-    <p class="cb-p">Connect with the Ladies Ministry in your zone or district.</p>
-    <a href="index.html#cta" class="cb-btn">Contact Us →</a>
-  </div>
-</section>
+<footer><p>© 2025 Church of God (Full Gospel) in India, Kerala State · <a href="mailto:cogkeralastate@gmail.com">cogkeralastate@gmail.com</a></p></footer>
 
-<footer>
-  <p>© 2025 <span>Church of God (Full Gospel) in India, Kerala State</span> · Ladies Ministry</p>
-</footer>
-</body></html>
+<script>
+// Floating petals
+var heroP=document.getElementById('heroP');
+for(var i=0;i<20;i++){
+  var p=document.createElement('div');
+  p.className='petal';
+  p.style.cssText='left:'+Math.random()*100+'%;width:'+(2+Math.random()*4)+'px;height:'+(2+Math.random()*4)+'px;animation-duration:'+(8+Math.random()*12)+'s;animation-delay:'+(Math.random()*10)+'s;opacity:'+(0.2+Math.random()*.5);
+  heroP.appendChild(p);
+}
+var io=new IntersectionObserver(function(e){e.forEach(function(en){if(en.isIntersecting){en.target.classList.add('on');io.unobserve(en.target);}});},{threshold:0.06,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.rv,.rv2').forEach(function(el){io.observe(el);});
+</script>
+</body>
+</html>

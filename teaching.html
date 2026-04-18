@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teachings – Church of God Kerala</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--magenta:#CC0066;--magenta2:#E6007A;--magenta-light:#fce4f0;--gold:#C9A84C;--gold2:#E8C46A;--gold3:#F5E0A0;--gold-light:#fdf6e3;--ivory:#FDF8F0;--ivory2:#F5EDE0;--ivory3:#EBD9C5;--ink:#1e0a14;--ink2:#3d1728;--muted:#7a5060}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Jost',sans-serif;background:var(--ivory);color:var(--ink);overflow-x:hidden}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 3rem;background:rgba(253,248,240,0.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(201,168,76,0.25)}
+  .nav-logo{font-family:'Cinzel',serif;font-size:12px;letter-spacing:3px;color:var(--magenta);text-transform:uppercase;line-height:1.4}
+  .nav-logo span{display:block;font-size:9px;letter-spacing:4px;color:var(--gold);margin-top:2px}
+  .nav-pages{display:flex;gap:0.5rem}
+  .nav-pages a{font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:6px 14px;border:1px solid transparent;color:var(--muted);text-decoration:none;transition:all 0.25s}
+  .nav-pages a:hover,.nav-pages a.active{color:var(--magenta);border-color:var(--magenta-light);background:var(--magenta-light)}
+
+  /* HERO */
+  .hero{padding-top:68px;background:var(--ivory);position:relative;overflow:hidden}
+  .hero-inner{max-width:1100px;margin:0 auto;padding:5rem 3rem 0;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:end}
+  .hero-text .tag{font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--magenta);margin-bottom:1.5rem;display:block}
+  .hero-title{font-family:'Cinzel',serif;font-size:clamp(2.5rem,5vw,5rem);font-weight:400;line-height:1.05;color:var(--ink)}
+  .hero-title em{font-style:italic;color:var(--gold);font-family:'Cormorant Garamond',serif;font-size:1.1em;font-weight:300}
+  .hero-desc{font-family:'Cormorant Garamond',serif;font-size:1.2rem;line-height:1.85;color:var(--muted);font-weight:300;margin-top:1.5rem}
+
+  .hero-verse{align-self:end;padding-bottom:2rem}
+  .verse-card{background:var(--magenta);padding:2.5rem;position:relative}
+  .verse-card::before{content:'';position:absolute;top:10px;left:10px;right:10px;bottom:10px;border:1px solid rgba(255,255,255,0.15);pointer-events:none}
+  .verse-text{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-style:italic;color:#fff;line-height:1.7;margin-bottom:1rem}
+  .verse-ref{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold3);opacity:0.8}
+
+  .hero-banner{margin-top:3rem;background:var(--gold2);display:flex;justify-content:center;align-items:center;gap:4rem;padding:1.5rem 3rem;flex-wrap:wrap}
+  .banner-item{text-align:center}
+  .banner-num{font-family:'Cinzel',serif;font-size:1.5rem;color:var(--ink)}
+  .banner-label{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(30,10,20,0.55)}
+
+  /* MARQUEE */
+  .marquee-bar{background:var(--magenta);padding:10px 0;overflow:hidden;white-space:nowrap}
+  .marquee-inner{display:inline-flex;animation:marquee 24s linear infinite}
+  .marquee-item{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,0.85);padding:0 2.5rem}
+  .marquee-item span{color:var(--gold3);margin:0 0.25rem}
+  @keyframes marquee{to{transform:translateX(-50%)}}
+
+  /* SECTIONS */
+  .container{max-width:1100px;margin:0 auto;padding:0 3rem}
+  .section-eyebrow{font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--magenta);margin-bottom:1rem;display:block}
+  .section-title{font-family:'Cinzel',serif;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:400;color:var(--ink);line-height:1.15;margin-bottom:0.5rem}
+  .section-title em{font-style:italic;color:var(--gold);font-family:'Cormorant Garamond',serif;font-size:1.1em;font-weight:300}
+  .accent-bar{width:60px;height:3px;background:linear-gradient(to right,var(--magenta),var(--gold));margin:1.5rem 0 2.5rem}
+  .body-text{font-family:'Cormorant Garamond',serif;font-size:1.15rem;line-height:1.9;color:var(--muted);font-weight:300}
+
+  /* DECLARATION */
+  .declaration-section{padding:100px 0;background:#fff}
+  .decl-intro{max-width:650px;margin-bottom:4rem}
+  .doctrines-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--ivory3)}
+  .doctrine{background:#fff;padding:3rem 2.5rem;position:relative;overflow:hidden;transition:all 0.4s;opacity:0;transform:translateY(16px);transition:all 0.5s;cursor:default}
+  .doctrine.visible{opacity:1;transform:none}
+  .doctrine:hover{background:var(--magenta-light)}
+  .doctrine-border{position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(to right,var(--magenta),var(--gold));transform:scaleX(0);transition:transform 0.4s;transform-origin:left}
+  .doctrine:hover .doctrine-border{transform:scaleX(1)}
+  .doctrine-num{font-family:'Cinzel',serif;font-size:4rem;color:rgba(204,0,102,0.06);line-height:1;margin-bottom:1rem}
+  .doctrine-icon-wrap{margin-bottom:1.2rem}
+  .mini-cross{width:18px;height:24px;position:relative;display:inline-block}
+  .mini-cross::before{content:'';position:absolute;width:3px;height:100%;background:linear-gradient(var(--gold),var(--magenta));left:50%;transform:translateX(-50%);border-radius:1px}
+  .mini-cross::after{content:'';position:absolute;width:100%;height:3px;background:linear-gradient(var(--gold),var(--magenta));top:28%;border-radius:1px}
+  .doctrine-title{font-family:'Cinzel',serif;font-size:0.8rem;letter-spacing:2px;text-transform:uppercase;color:var(--ink);margin-bottom:0.8rem}
+  .doctrine-text{font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--muted);line-height:1.8;font-weight:300}
+
+  /* CORE VALUES */
+  .values-section{padding:100px 0;background:var(--gold-light)}
+  .values-layout{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;margin-top:3rem}
+  .value-list{display:flex;flex-direction:column;gap:1px;background:var(--ivory3)}
+  .value-item{background:var(--gold-light);padding:2rem 2.5rem;border-left:4px solid var(--gold2);transition:all 0.3s;opacity:0;transform:translateX(-16px);transition:all 0.5s}
+  .value-item.visible{opacity:1;transform:none}
+  .value-item:hover{border-left-color:var(--magenta);background:#fff}
+  .value-title{font-weight:600;font-size:0.9rem;letter-spacing:1px;color:var(--ink);margin-bottom:0.4rem;text-transform:uppercase}
+  .value-text{font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--muted);line-height:1.7}
+
+  /* DECLARATION OF FAITH SCROLL */
+  .faith-section{padding:100px 0;background:var(--ivory)}
+  .faith-columns{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:3rem}
+  .faith-item{padding:1.5rem 0;border-bottom:1px solid var(--ivory3);opacity:0;transform:translateY(12px);transition:all 0.4s}
+  .faith-item.visible{opacity:1;transform:none}
+  .faith-item:last-child{border-bottom:none}
+  .faith-bullet{display:flex;gap:1rem;align-items:flex-start}
+  .faith-dot{width:6px;height:6px;border-radius:50%;background:var(--magenta);margin-top:0.55rem;flex-shrink:0}
+  .faith-text{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--ink);line-height:1.75}
+
+  /* QUOTE */
+  .quote-band{background:var(--magenta);padding:70px 0;text-align:center}
+  .quote-band blockquote{font-family:'Cormorant Garamond',serif;font-size:clamp(1.3rem,2.5vw,2rem);font-style:italic;color:#fff;max-width:800px;margin:0 auto;padding:0 3rem;line-height:1.65}
+  .quote-band cite{display:block;margin-top:1.5rem;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--gold3);font-style:normal;opacity:0.8}
+
+  footer{background:var(--ink);padding:3rem 0 2rem}
+  .footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+  .footer-brand{font-family:'Cinzel',serif;font-size:0.85rem;color:var(--gold2);letter-spacing:2px}
+  .footer-links-row{display:flex;gap:1.5rem}
+  .footer-links-row a{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.2s}
+  .footer-links-row a:hover{color:var(--gold2)}
+  .footer-copy{font-size:10px;color:rgba(255,255,255,0.25);letter-spacing:1px;margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,0.07);text-align:center}
+
+  .fade-up{opacity:0;transform:translateY(20px);transition:all 0.6s}
+  .fade-up.visible{opacity:1;transform:none}
+
+  @media(max-width:900px){
+    .hero-inner{grid-template-columns:1fr;gap:2.5rem}
+    .doctrines-grid{grid-template-columns:1fr 1fr}
+    .values-layout,.faith-columns{grid-template-columns:1fr}
+    .nav-pages{display:none}
+    .container{padding:0 1.5rem}
+  }
+  @media(max-width:600px){.doctrines-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Church of God Kerala<span>Full Gospel in India</span></div>
+  <div class="nav-pages">
+    <a href="founder.html">Our Founder</a>
+    <a href="international.html">International</a>
+    <a href="headquarters.html">State HQ</a>
+    <a href="teachings.html" class="active">Teachings</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <span class="tag">Doctrine · Faith · Practice</span>
+      <h1 class="hero-title">What <em>We</em><br>Believe</h1>
+      <p class="hero-desc">The Church of God stands for the whole Bible rightly divided. The New Testament is our only rule for government and discipline — the eternal Word as our supreme guide for all matters of faith, life, and practice.</p>
+    </div>
+    <div class="hero-verse">
+      <div class="verse-card">
+        <p class="verse-text">"The Church of God stands for the whole Bible rightly divided. The New Testament is the only rule for the government and discipline."</p>
+        <span class="verse-ref">Declaration of Faith · Church of God</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-banner">
+    <div class="banner-item"><div class="banner-num">1886</div><div class="banner-label">Faith Established</div></div>
+    <div class="banner-item"><div class="banner-num">29</div><div class="banner-label">Articles of Faith</div></div>
+    <div class="banner-item"><div class="banner-num">66</div><div class="banner-label">Books of the Bible</div></div>
+    <div class="banner-item"><div class="banner-num">173</div><div class="banner-label">Nations Reached</div></div>
+  </div>
+</div>
+
+<div class="marquee-bar">
+  <div class="marquee-inner">
+    <span class="marquee-item">The Whole Bible Rightly Divided <span>✦</span></span>
+    <span class="marquee-item">Holiness &amp; Sanctification <span>✦</span></span>
+    <span class="marquee-item">Water Baptism by Immersion <span>✦</span></span>
+    <span class="marquee-item">Holy Spirit &amp; Speaking in Tongues <span>✦</span></span>
+    <span class="marquee-item">Divine Healing <span>✦</span></span>
+    <span class="marquee-item">Second Coming of Christ <span>✦</span></span>
+    <span class="marquee-item">The Whole Bible Rightly Divided <span>✦</span></span>
+    <span class="marquee-item">Holiness &amp; Sanctification <span>✦</span></span>
+    <span class="marquee-item">Water Baptism by Immersion <span>✦</span></span>
+    <span class="marquee-item">Holy Spirit &amp; Speaking in Tongues <span>✦</span></span>
+    <span class="marquee-item">Divine Healing <span>✦</span></span>
+    <span class="marquee-item">Second Coming of Christ <span>✦</span></span>
+  </div>
+</div>
+
+<!-- DOCTRINES -->
+<section class="declaration-section">
+  <div class="container">
+    <div class="decl-intro">
+      <span class="section-eyebrow fade-up">Declaration of Faith</span>
+      <h2 class="section-title fade-up">Core <em>Doctrines</em><br>We Hold Fast</h2>
+      <div class="accent-bar fade-up"></div>
+      <p class="body-text fade-up">The Church of God believes the whole Bible to be completely and equally inspired — the written Word of God. The following Declaration of Faith is our standard and official expression of doctrine, adopted as the cornerstone of all ministry.</p>
+    </div>
+    <div class="doctrines-grid">
+      <div class="doctrine">
+        <div class="doctrine-border"></div>
+        <div class="doctrine-num">01</div>
+        <div class="doctrine-icon-wrap"><div class="mini-cross"></div></div>
+        <div class="doctrine-title">The Holy Scriptures</div>
+        <p class="doctrine-text">The Church of God believes the whole Bible to be completely and equally inspired — the written Word of God, completely sufficient as our guide for faith, practice, and all matters of life.</p>
+      </div>
+      <div class="doctrine">
+        <div class="doctrine-border"></div>
+        <div class="doctrine-num">02</div>
+        <div class="doctrine-icon-wrap"><div class="mini-cross"></div></div>
+        <div class="doctrine-title">The Holy Trinity</div>
+        <p class="doctrine-text">In one God eternally existing in three persons — the Father, the Son, and the Holy Ghost. Co-equal, co-eternal, and of one divine nature, three distinct persons in perfect unity.</p>
+      </div>
+      <div class="doctrine">
+        <div class="doctrine-border"></div>
+        <div class="doctrine-num">03</div>
+        <div class="doctrine-icon-wrap"><div class="mini-cross"></div></div>
+        <div class="doctrine-title">Jesus Christ</div>
+        <p class="doctrine-text">That Jesus Christ is the only begotten Son of the Father, conceived of the Holy Ghost, and born of the Virgin Mary. That He was crucified, buried, and raised from the dead — now at the right hand of the Father as our Intercessor.</p>
+      </div>
+      <div class="doctrine">
+        <div class="doctrine-border"></div>
+        <div class="doctrine-num">04</div>
+        <div class="doctrine-icon-wrap"><div class="mini-cross"></div></div>
+        <div class="doctrine-title">Salvation & New Birth</div>
+        <p class="doctrine-text">That all have sinned and come short of the glory of God — and that repentance is commanded of God for all. Justification, regeneration, and the new birth are wrought by faith in the blood of Jesus Christ.</p>
+      </div>
+      <div class="doctrine">
+        <div class="doctrine-border"></div>
+        <div class="doctrine-num">05</div>
+        <div class="doctrine-icon-wrap"><div class="mini-cross"></div></div>
+        <div class="doctrine-title">Water Baptism</div>
+        <p class="doctrine-text">Baptism by immersion — to plunge or dip beneath the surface of the water and lift out again — a burial and resurrection with Christ, as commanded for all who believe and are born again.</p>
+      </div>
+      <div class="doctrine">
+        <div class="doctrine-border"></div>
+        <div class="doctrine-num">06</div>
+        <div class="doctrine-icon-wrap"><div class="mini-cross"></div></div>
+        <div class="doctrine-title">The Holy Spirit</div>
+        <p class="doctrine-text">The foundation of our church is built upon Biblical holiness. We believe in the sanctifying work of the Holy Spirit and in the full Gospel experience — including speaking with other tongues as the initial evidence of the baptism of the Holy Ghost.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CORE VALUES -->
+<section class="values-section">
+  <div class="container">
+    <span class="section-eyebrow fade-up">Core Values</span>
+    <h2 class="section-title fade-up">How We <em>Live</em><br>Our Faith</h2>
+    <div class="accent-bar fade-up"></div>
+    <div class="values-layout">
+      <div>
+        <p class="body-text fade-up">Our beliefs are not merely doctrinal positions — they are lived convictions that shape how we worship, serve, and reach our communities. The Church of God in Kerala expresses these values daily through care for the poor, active evangelism, and discipleship of all who believe.</p>
+        <p class="body-text fade-up" style="margin-top:1.2rem">Every local church is called to embody the full Gospel — not only in word, but in the power of the Holy Spirit, in acts of compassion, and in the relentless proclamation of Christ to the lost.</p>
+      </div>
+      <div class="value-list">
+        <div class="value-item">
+          <div class="value-title">Biblical Holiness</div>
+          <div class="value-text">The foundation of the Church of God, laid upon the principles of Biblical holiness — separation from sin, consecration to God, and living set apart for His purposes.</div>
+        </div>
+        <div class="value-item">
+          <div class="value-title">Care for the Poor</div>
+          <div class="value-text">Care for the poor, homeless, and needy. This core value is commanded by Scripture and lived out through our local churches across all of Kerala.</div>
+        </div>
+        <div class="value-item">
+          <div class="value-title">Evangelism & Missions</div>
+          <div class="value-text">Reaching the unconverted, baptising them in water, and leading them to unite with the church — viewing all the districts of Kerala as our mission field.</div>
+        </div>
+        <div class="value-item">
+          <div class="value-title">Church Planting</div>
+          <div class="value-text">Starting new mission stations equal to a minimum of 20% of the total number of churches in a District annually — recognising church planting as an apostolic ministry for our day.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FULL DECLARATION -->
+<section class="faith-section">
+  <div class="container">
+    <span class="section-eyebrow fade-up">Full Declaration</span>
+    <h2 class="section-title fade-up">The <em>Complete</em> Articles of Belief</h2>
+    <div class="accent-bar fade-up"></div>
+    <div class="faith-columns">
+      <div>
+        <div class="faith-item"><div class="faith-bullet"><div class="faith-dot"></div><div class="faith-text">In the verbal inspiration of the Bible.</div></div></div>
+        <div class="faith-item"><div class="faith-bullet"><div class="faith-dot"></div><div class="faith-text">In one God eternally existing in three persons — the Father, Son, and Holy Ghost.</div></div></div>
+        <div class="faith-item"><div class="faith-bullet"><div class="faith-dot"></div><div class="faith-text">That Jesus Christ is the only begotten Son of the Father, conceived of the Holy Ghost, and born of the Virgin Mary.</div></div></div>
+        <div class="faith-item"><div class="faith-bullet"><div class="faith-dot"></div><div class="faith-text">That Jesus was crucified, buried, and raised from the dead. That He ascended to heaven and is today at the right hand of the Father as the Intercessor.</div></div></div>
+        <div class="faith-item"><div class="faith-bullet"><div class="faith-dot"></div><div class="faith-text">That all have sinned and come short of the glory of God and that repentance is commanded of God for all and necessary for forgiveness of sins.</div></div></div>
+        <div class="faith-item"><div class="faith-bullet"><div class="faith-dot"></div><div class="faith-text">That justification, regeneration, and the new birth are wrought by faith in the blood of Jesus Christ.</div></div></div>
+        <div class="faith-item"><div class="faith-bullet"><div class="faith-dot"></div><div class="faith-text">In sanctification subsequent to the new birth, through faith in the blood of Jesus Christ, through the Word, and by the Holy Ghost.</div></div></div>
+        <div class="faith-item"><div class="faith-bullet"><div class="faith-dot"></div><div class="faith-text">Holiness to be God's standard of living for His people.</div></div></div>
+      </div>
+      <div>
+        <div class="faith-item"><div class="faith-bullet"><div class="faith-dot"></div><div class="faith-text">In the baptism with the Holy Ghost subsequent to a clean heart, with the initial evidence of speaking with other tongues as the Spirit gives utterance.</div></div></div>
+        <div class="faith-item"><div class="faith-bullet"><div class="faith-dot"></div><div class="faith-text">In water baptism by immersion — a burial with Christ and a resurrection with Him to newness of life.</div></div></div>
+        <div class="faith-item"><div class="faith-bullet"><div class="faith-dot"></div><div class="faith-text">In the Lord's Supper — a memorial of Christ's sacrifice, celebrated until He comes again.</div></div></div>
+        <div class="faith-item"><div class="faith-bullet"><div class="faith-dot"></div><div class="faith-text">In divine healing provided for all in the atonement through the Name of Jesus Christ.</div></div></div>
+        <div class="faith-item"><div class="faith-bullet"><div class="faith-dot"></div><div class="faith-text">In the premillennial second coming of Jesus — first to resurrect the dead saints and to catch away the living, then to reign on earth a thousand years.</div></div></div>
+        <div class="faith-item"><div class="faith-bullet"><div class="faith-dot"></div><div class="faith-text">In the bodily resurrection — eternal life for the righteous, eternal punishment for the wicked.</div></div></div>
+        <div class="faith-item"><div class="faith-bullet"><div class="faith-dot"></div><div class="faith-text">Tithing and giving as God's financial plan for the church.</div></div></div>
+        <div class="faith-item"><div class="faith-bullet"><div class="faith-dot"></div><div class="faith-text">The Great Commission: to go and make disciples of all nations, baptising them in the name of the Father, Son, and Holy Ghost.</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="quote-band">
+  <blockquote>
+    "The Church of God stands for the whole Bible rightly divided — the New Testament as the only rule for government and discipline."
+    <cite>Declaration of Faith · Church of God (Full Gospel) in India</cite>
+  </blockquote>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">Church of God (Full Gospel) · Kerala State</div>
+      <div class="footer-links-row">
+      <a href="fo.html" class="active">Our Founder</a>
+    <a href="inter.html">International</a>
+    <a href="head.html">State HQ</a>
+    <a href="teaching.html">Teachings</a>
+      </div>
+    </div>
+    <p class="footer-copy">© 2025 Church of God (Full Gospel) in India, Kerala State · Mount Zion, Mulakuzha, Chengannur</p>
+  </div>
+</footer>
+
+<script>
+const io = new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add('visible')),{threshold:0.1,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.fade-up,.doctrine,.value-item,.faith-item').forEach((el,i)=>{el.style.transitionDelay=(i%5)*0.08+'s';io.observe(el)});
+</script>
+</body>
+</html>

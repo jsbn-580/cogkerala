@@ -8,8 +8,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,900;1,400&display=swap" rel="stylesheet">
 <style>
 :root{
-  --c1:#6B0026;--c2:#CC0066;--c3:#AA0055;--acc:#E6007A;
-  --magenta:#CC0066;--gold:#C9A84C;--gold2:#E8C46A;
+  --c1:#6B0026;--c2:#CC0066;--c3:#AA0055;
+  --gold:#C9A84C;--gold2:#E8C46A;
   --ivory:#FDF8F0;--ivory2:#F5EDE0;--ivory3:#EBD9C5;
   --dark:#1A0A0E;--dark2:#2D1018;
   --text:#2A0E18;--text2:#5C3040;--text3:#8B5A6A;
@@ -18,148 +18,267 @@
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;font-size:18px}
-body{font-family:var(--f);background:var(--ivory);color:var(--text);overflow-x:hidden;cursor:none;opacity:0;animation:pageFade .7s .1s ease forwards}
+body{font-family:var(--f);background:var(--ivory);color:var(--text);overflow-x:hidden;opacity:0;animation:pageFade .7s .1s ease forwards}
 @keyframes pageFade{to{opacity:1}}
 img{max-width:100%;display:block}
 a{text-decoration:none;color:inherit}
 ::-webkit-scrollbar{width:4px}
 ::-webkit-scrollbar-thumb{background:var(--c2)}
-#cur{position:fixed;width:14px;height:14px;background:var(--c2);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s;mix-blend-mode:multiply}
-#cur.big{width:40px;height:40px;background:var(--gold);opacity:.6}
+
 /* NAV */
 #nav{position:fixed;top:0;left:0;right:0;z-index:900;background:rgba(255,255,255,.98);border-bottom:2px solid var(--c2);box-shadow:0 2px 24px rgba(0,0,0,.08);transition:all .4s}
 .nb{max-width:1440px;margin:0 auto;padding:0 3rem;height:var(--nav);display:flex;align-items:center;justify-content:space-between;gap:1rem}
-.nl{display:flex;align-items:center;gap:.85rem;text-decoration:none;flex-shrink:0}
-.nl-logo{width:56px;height:56px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.nl-logo img{width:100%;height:100%;object-fit:contain}
-.nl-logo-ph{font-family:var(--fd);font-size:1.5rem;font-weight:700;color:var(--c2)}
-.nl-txt{display:flex;flex-direction:column;gap:.05rem}
+.nl{display:flex;align-items:center;gap:.85rem;flex-shrink:0}
+.nl-logo{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--c1),var(--c2));display:flex;align-items:center;justify-content:center;font-size:1.6rem;color:white;flex-shrink:0}
+.nl-logo img{width:100%;height:100%;object-fit:contain;border-radius:50%}
 .nl-t1{font-family:var(--fd);font-size:1rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--c2);line-height:1.2}
 .nl-t2{font-family:var(--f);font-size:.76rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text3)}
 .nb-links{display:flex;align-items:center;gap:1.5rem}
-.nb-link{font-family:var(--f);font-size:.92rem;font-weight:600;color:var(--text2);transition:color .18s}
+.nb-link{font-size:.92rem;font-weight:600;color:var(--text2);transition:color .18s}
 .nb-link:hover{color:var(--c2)}
-.nb-back{font-family:var(--f);font-size:.88rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.65rem 2rem;background:var(--c2);color:white;cursor:pointer;border-radius:50px;border:2px solid var(--c2);transition:all .22s}
+.nb-back{font-size:.88rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.65rem 2rem;background:var(--c2);color:white;border-radius:50px;border:2px solid var(--c2);transition:all .22s}
 .nb-back:hover{background:transparent;color:var(--c2)}
-/* HERO */
-.dept-hero{
-  height:100vh;min-height:600px;
-  background:linear-gradient(145deg,var(--c1) 0%,var(--c2) 50%,var(--c3) 100%);
-  position:relative;overflow:hidden;
-  display:flex;align-items:flex-end;
-  padding-bottom:6rem;padding-top:var(--nav);
-}
-.dh-bg-text{
-  position:absolute;bottom:-3rem;right:-2rem;
-  font-family:var(--fd);font-size:35vw;font-weight:700;
-  color:rgba(255,255,255,.04);letter-spacing:-.1em;line-height:1;pointer-events:none;
-}
-.dh-orb{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none}
-.dh-orb-1{width:500px;height:500px;background:rgba(255,255,255,.06);top:-200px;left:-100px;animation:orbF 12s ease-in-out infinite}
-.dh-orb-2{width:350px;height:350px;background:rgba(201,168,76,.12);bottom:-100px;right:-100px;animation:orbF 9s ease-in-out infinite reverse}
-@keyframes orbF{0%,100%{transform:translate(0,0)}50%{transform:translate(25px,15px)}}
-.dh-cross{
-  position:absolute;right:10%;top:50%;transform:translateY(-50%);
-  font-size:40vw;font-weight:200;color:rgba(255,255,255,.04);line-height:1;font-family:serif;pointer-events:none;
-}
-.dh-content{position:relative;z-index:2;max-width:1360px;margin:0 auto;padding:0 3.5rem;width:100%}
-.dh-eyebrow{font-family:var(--f);font-size:.9rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--gold2);margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem;opacity:0;animation:fadeUp .7s .2s var(--ease) forwards}
-.dh-eyebrow::before{content:'';width:30px;height:1.5px;background:var(--gold2)}
-.dh-title{font-family:var(--fd);font-size:clamp(3.5rem,7vw,9rem);font-weight:700;color:white;line-height:.85;letter-spacing:-.04em;margin-bottom:1.5rem;text-shadow:0 4px 40px rgba(0,0,0,.3);opacity:0;animation:fadeUp .9s .3s var(--ease) forwards}
-.dh-title em{font-family:var(--fp);font-style:italic;font-weight:400;color:var(--gold2)}
-.dh-tagline{font-family:var(--fd);font-size:1.5rem;font-style:italic;color:rgba(255,255,255,.75);margin-bottom:2.5rem;max-width:600px;opacity:0;animation:fadeUp .8s .45s var(--ease) forwards}
-.dh-tags{display:flex;flex-wrap:wrap;gap:.7rem;opacity:0;animation:fadeUp .8s .6s var(--ease) forwards}
-.dh-tag{font-family:var(--f);font-size:.82rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:white;border:1.5px solid rgba(255,255,255,.3);padding:.5rem 1.3rem;border-radius:50px;background:rgba(255,255,255,.08);backdrop-filter:blur(8px)}
-.dh-scroll-hint{
-  position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);
-  display:flex;flex-direction:column;align-items:center;gap:.5rem;
-  font-family:var(--f);font-size:.72rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.4);
-  opacity:0;animation:fadeUp .7s .8s var(--ease) forwards;
-}
-.dh-scroll-line{width:1.5px;height:40px;background:linear-gradient(to bottom,rgba(255,255,255,.4),transparent);animation:scrollPulse 2s ease-in-out infinite}
-@keyframes scrollPulse{0%,100%{transform:scaleY(1);opacity:.4}50%{transform:scaleY(1.3);opacity:.8}}
-@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
 
-/* STATS BAR */
-.stats-bar{
-  background:var(--dark);
-  border-top:3px solid var(--gold);border-bottom:2px solid rgba(201,168,76,.2);
-}
+/* ═══════ HERO — fully revamped ═══════ */
+.dept-hero{min-height:100vh;position:relative;overflow:hidden;display:flex;align-items:center;padding-top:var(--nav);background:#1A0008}
+
+/* layered background */
+.hero-bg-gradient{position:absolute;inset:0;background:radial-gradient(ellipse 80% 70% at 30% 40%,#6B0026 0%,#3D0016 40%,#1A0008 70%,#0D0004 100%)}
+.hero-bg-gradient2{position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 80% 60%,rgba(204,0,102,.35) 0%,transparent 65%)}
+.hero-bg-gradient3{position:absolute;inset:0;background:radial-gradient(ellipse 40% 50% at 60% 20%,rgba(201,168,76,.12) 0%,transparent 60%)}
+
+/* geometry lines */
+.hero-geo{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.hero-geo svg{width:100%;height:100%;opacity:.18}
+
+/* stained-glass inspired orbs */
+.hero-orb{position:absolute;border-radius:50%;pointer-events:none}
+.hero-orb-1{width:700px;height:700px;left:-200px;top:-200px;background:radial-gradient(circle,rgba(107,0,38,.7) 0%,transparent 70%);animation:orbDrift1 14s ease-in-out infinite}
+.hero-orb-2{width:500px;height:500px;right:-100px;bottom:-100px;background:radial-gradient(circle,rgba(204,0,102,.5) 0%,transparent 70%);animation:orbDrift2 11s ease-in-out infinite}
+.hero-orb-3{width:350px;height:350px;left:40%;top:10%;background:radial-gradient(circle,rgba(201,168,76,.2) 0%,transparent 70%);animation:orbDrift3 9s ease-in-out infinite}
+@keyframes orbDrift1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(40px,30px) scale(1.07)}}
+@keyframes orbDrift2{0%,100%{transform:translate(0,0)}50%{transform:translate(-30px,-20px)}}
+@keyframes orbDrift3{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(20px,40px) scale(.9)}}
+
+/* canvas particles */
+#heroCanvas{position:absolute;inset:0;pointer-events:none}
+
+/* stained-glass cross */
+.hero-cross-wrap{position:absolute;right:4%;top:50%;transform:translateY(-50%);pointer-events:none;opacity:.07;animation:crossFloat 10s ease-in-out infinite}
+.hero-cross-wrap svg{width:min(52vw,600px);height:auto}
+@keyframes crossFloat{0%,100%{transform:translateY(-50%)}50%{transform:translateY(-52%)}}
+
+/* light rays */
+.hero-rays{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.hero-ray{position:absolute;top:0;left:50%;width:2px;background:linear-gradient(to bottom,rgba(201,168,76,.3),transparent);transform-origin:top center;animation:rayPulse 4s ease-in-out infinite}
+.hero-ray:nth-child(1){height:60%;transform:rotate(-35deg);animation-delay:0s}
+.hero-ray:nth-child(2){height:70%;transform:rotate(-20deg);animation-delay:.6s}
+.hero-ray:nth-child(3){height:65%;transform:rotate(0deg);animation-delay:1.2s}
+.hero-ray:nth-child(4){height:55%;transform:rotate(20deg);animation-delay:.3s}
+.hero-ray:nth-child(5){height:75%;transform:rotate(38deg);animation-delay:.9s}
+@keyframes rayPulse{0%,100%{opacity:.3}50%{opacity:.7}}
+
+/* floating verse chips */
+.hero-chips{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.hero-chip{position:absolute;font-family:var(--fd);font-style:italic;font-size:.7rem;color:rgba(255,255,255,.15);white-space:nowrap;animation:chipFloat linear infinite}
+@keyframes chipFloat{0%{transform:translateY(0) translateX(0);opacity:0}10%{opacity:1}90%{opacity:.8}100%{transform:translateY(-120vh) translateX(40px);opacity:0}}
+
+.dh-content{position:relative;z-index:2;max-width:1360px;margin:0 auto;padding:4rem 3.5rem 5rem;width:100%;display:grid;grid-template-columns:1.1fr 1fr;gap:5rem;align-items:center}
+.dh-eyebrow{font-size:.85rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--gold2);margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem;opacity:0;animation:fadeUp .7s .2s var(--ease) forwards}
+.dh-eyebrow::before{content:'';width:30px;height:1.5px;background:var(--gold2)}
+.dh-title{font-family:var(--fd);font-size:clamp(3rem,6vw,7.5rem);font-weight:700;color:white;line-height:.88;letter-spacing:-.04em;margin-bottom:1.2rem;text-shadow:0 4px 40px rgba(0,0,0,.5);opacity:0;animation:fadeUp .9s .3s var(--ease) forwards}
+.dh-title em{font-family:var(--fp);font-style:italic;font-weight:400;color:var(--gold2)}
+.dh-tagline{font-family:var(--fd);font-size:1.3rem;font-style:italic;color:rgba(255,255,255,.75);margin-bottom:1.8rem;opacity:0;animation:fadeUp .8s .45s var(--ease) forwards}
+.dh-verse-hero{padding:1.2rem 1.6rem;background:rgba(255,255,255,.08);border-left:3px solid var(--gold2);border-radius:0 12px 12px 0;font-family:var(--fd);font-size:1rem;font-style:italic;color:rgba(255,255,255,.85);line-height:1.7;margin-bottom:2rem;opacity:0;animation:fadeUp .8s .5s var(--ease) forwards}
+.dh-tags{display:flex;flex-wrap:wrap;gap:.6rem;opacity:0;animation:fadeUp .8s .6s var(--ease) forwards}
+.dh-tag{font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:white;border:1.5px solid rgba(255,255,255,.3);padding:.45rem 1.1rem;border-radius:50px;background:rgba(255,255,255,.08);backdrop-filter:blur(4px)}
+.dh-right{opacity:0;animation:fadeRight .9s .5s var(--ease) forwards}
+@keyframes fadeRight{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:none}}
+.dh-card{background:rgba(255,255,255,.1);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.2);border-radius:24px;padding:2.5rem;box-shadow:0 24px 60px rgba(0,0,0,.3)}
+.dh-card h3{font-family:var(--fd);font-size:1.8rem;font-weight:700;color:white;margin-bottom:.4rem}
+.dh-card h3 em{font-family:var(--fp);font-style:italic;color:var(--gold2)}
+.dh-card p{font-size:.92rem;line-height:1.85;color:rgba(255,255,255,.75);margin-bottom:1.4rem}
+.dh-checklist{list-style:none;display:flex;flex-direction:column;gap:.7rem;margin-bottom:1.8rem}
+.dh-checklist li{display:flex;align-items:flex-start;gap:.75rem;font-size:.9rem;color:rgba(255,255,255,.8);line-height:1.5}
+.dh-checklist li::before{content:'✓';width:20px;height:20px;background:var(--gold2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.6rem;color:var(--dark);font-weight:700;flex-shrink:0;margin-top:.1rem}
+.dh-btn{display:inline-block;background:white;color:var(--c2);font-size:.88rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.85rem 2rem;border-radius:50px;transition:all .25s;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.dh-btn:hover{background:var(--gold2);color:var(--dark);transform:translateY(-2px)}
+.dh-scroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.4rem;font-size:.7rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.4);opacity:0;animation:fadeUp .7s .9s var(--ease) forwards}
+.dh-scroll-line{width:1.5px;height:36px;background:linear-gradient(to bottom,rgba(255,255,255,.4),transparent);animation:scrollPulse 2s ease-in-out infinite}
+@keyframes scrollPulse{0%,100%{opacity:.4}50%{opacity:.8}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+
+/* STATS */
+.stats-bar{background:var(--dark);border-top:3px solid var(--gold)}
 .stats-inner{max-width:1360px;margin:0 auto;padding:0 3.5rem;display:grid;grid-template-columns:repeat(4,1fr)}
-.stat-item{padding:2.5rem 2rem;border-right:1px solid rgba(255,255,255,.07);transition:background .3s;cursor:default;position:relative;overflow:hidden}
+.stat-item{padding:2.2rem 2rem;border-right:1px solid rgba(255,255,255,.07);transition:background .3s;position:relative;overflow:hidden}
 .stat-item:last-child{border-right:none}
 .stat-item:hover{background:rgba(255,255,255,.03)}
-.stat-item::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--c2),var(--gold));transform:scaleX(0);transform-origin:left;transition:transform .4s}
-.stat-item:hover::before{transform:scaleX(1)}
-.stat-val{font-family:var(--fd);font-size:3rem;font-weight:700;line-height:1;letter-spacing:-.04em;background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.stat-lbl{font-family:var(--f);font-size:.8rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:.4rem}
+.stat-item::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--c2),var(--gold));transform:scaleX(0);transform-origin:left;transition:transform .4s}
+.stat-item:hover::after{transform:scaleX(1)}
+.stat-val{font-family:var(--fd);font-size:2.8rem;font-weight:700;line-height:1;background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.stat-lbl{font-size:.78rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:.4rem}
 
-/* ABOUT */
-.dept-about{padding:8rem 0;background:var(--ivory2);position:relative;overflow:hidden}
-.da-grid{display:grid;grid-template-columns:1fr 1fr;gap:8rem;align-items:center;max-width:1360px;margin:0 auto;padding:0 3.5rem}
-.da-sl{font-family:var(--f);font-size:.9rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--c2);margin-bottom:1rem;display:flex;align-items:center;gap:.9rem}
-.da-sl::before{content:'';width:28px;height:2px;background:var(--c2)}
-.da-h{font-family:var(--fd);font-size:clamp(2.8rem,4vw,5rem);font-weight:700;line-height:.9;letter-spacing:-.03em;color:var(--text);margin-bottom:.6rem}
-.da-h em{font-family:var(--fp);font-style:italic;font-weight:400;color:var(--c2)}
-.da-rule{width:40px;height:2.5px;background:var(--c2);margin-bottom:2rem}
-.da-body{font-size:1.05rem;font-weight:400;line-height:2.2;color:var(--text2);margin-bottom:2rem}
-.da-verse{
-  padding:1.5rem 2rem;background:rgba(204,0,102,.04);
-  border-left:4px solid var(--c2);border-radius:0 16px 16px 0;
-  font-family:var(--fd);font-size:1.2rem;font-style:italic;color:var(--c2);line-height:1.7;
-}
-.da-img{
-  border-radius:28px;overflow:hidden;
-  background:linear-gradient(145deg,var(--c1),var(--c2),var(--c3));
-  aspect-ratio:4/5;position:relative;
-  box-shadow:0 32px 80px rgba(0,0,0,.25);
-}
-.da-img::before{
-  content:'✝';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-  font-size:12rem;color:rgba(255,255,255,.06);font-family:serif;font-weight:200;
-  display:flex;align-items:center;justify-content:center;
-}
-.da-img img{width:100%;height:100%;object-fit:cover}
-.da-img-tag{position:absolute;bottom:2rem;left:2rem;right:2rem;font-family:var(--fd);font-size:1.3rem;font-weight:700;color:rgba(255,255,255,.85);z-index:2}
-.da-img-tag span{display:block;font-family:var(--f);font-size:.76rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold2);margin-bottom:.3rem}
+/* SHARED */
+.sec-wrap{max-width:1360px;margin:0 auto;padding:0 3.5rem}
+.sec-label{font-size:.85rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--c2);margin-bottom:.9rem;display:flex;align-items:center;gap:.9rem}
+.sec-label::before{content:'';width:28px;height:2px;background:var(--c2)}
+.sec-h{font-family:var(--fd);font-size:clamp(2.2rem,3.8vw,4rem);font-weight:700;line-height:.92;letter-spacing:-.03em;color:var(--text);margin-bottom:.6rem}
+.sec-h em{font-family:var(--fp);font-style:italic;font-weight:400;color:var(--c2)}
+.sec-rule{width:40px;height:2.5px;background:var(--c2);margin-bottom:2rem}
+.body-txt{font-size:1rem;line-height:2.1;color:var(--text2);margin-bottom:1.5rem}
+.verse-block{padding:1.3rem 1.7rem;background:rgba(204,0,102,.04);border-left:4px solid var(--c2);border-radius:0 14px 14px 0;font-family:var(--fd);font-size:1.1rem;font-style:italic;color:var(--c2);line-height:1.7;margin-bottom:1.5rem}
+
+/* WHAT IS COUNSELLING */
+.what-sec{padding:7rem 0;background:var(--ivory)}
+.what-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;margin-top:4rem}
+.sub-h{font-family:var(--fd);font-size:1.55rem;font-weight:700;color:var(--text);margin-bottom:.7rem;margin-top:2rem}
+
+/* IS / IS NOT */
+.is-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:2rem}
+.is-box{background:white;border-radius:18px;padding:1.8rem;border:2px solid var(--ivory3);transition:all .35s}
+.is-box:hover{border-color:var(--c2);transform:translateY(-4px);box-shadow:0 14px 36px rgba(204,0,102,.1)}
+.is-box-h{font-family:var(--fd);font-size:1.25rem;font-weight:700;color:var(--text);margin-bottom:.9rem;display:flex;align-items:center;gap:.6rem}
+.badge{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;flex-shrink:0}
+.is-yes .badge{background:rgba(204,0,102,.12);color:var(--c2)}
+.is-no .badge{background:rgba(201,168,76,.2);color:#8a6a00}
+.is-list{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+.is-list li{display:flex;align-items:flex-start;gap:.6rem;font-size:.88rem;color:var(--text2);line-height:1.55}
+.is-yes .is-list li::before{content:'✓';color:var(--c2);font-weight:700;font-size:.8rem;margin-top:.15rem;flex-shrink:0}
+.is-no .is-list li::before{content:'✗';color:#c07800;font-size:.8rem;margin-top:.15rem;flex-shrink:0}
+
+/* ABOUT DEPT */
+.about-sec{padding:7rem 0;background:var(--ivory2)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+.visual-box{border-radius:24px;background:linear-gradient(145deg,var(--c1),var(--c2),var(--c3));aspect-ratio:4/5;position:relative;box-shadow:0 28px 70px rgba(0,0,0,.22);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.8rem;padding:2.5rem;text-align:center;overflow:hidden}
+.visual-cross{font-size:9rem;color:rgba(255,255,255,.1);font-family:serif;line-height:1;animation:crossFloat 8s ease-in-out infinite}
+.visual-title{font-family:var(--fd);font-size:1.8rem;font-weight:700;color:white;line-height:1.2;position:relative;z-index:1}
+.visual-title em{font-family:var(--fp);font-style:italic;color:var(--gold2);display:block;font-size:1.05rem;margin-bottom:.3rem}
+.visual-sub{font-size:.75rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:.6rem;position:relative;z-index:1}
+.visual-pills{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-top:1.5rem;position:relative;z-index:1}
+.visual-pill{font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:white;border:1px solid rgba(255,255,255,.3);padding:.35rem .9rem;border-radius:50px;background:rgba(255,255,255,.08)}
+
+/* ═══ LEADERSHIP SECTION ═══ */
+.leadership-sec{padding:7rem 0;background:var(--dark);position:relative;overflow:hidden}
+.leadership-bg{position:absolute;inset:0;pointer-events:none}
+.leadership-bg-orb1{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(107,0,38,.5) 0%,transparent 70%);top:-200px;left:-200px}
+.leadership-bg-orb2{position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(204,0,102,.3) 0%,transparent 70%);bottom:-150px;right:-100px}
+.leadership-bg-cross{position:absolute;right:5%;top:50%;transform:translateY(-50%);font-size:40vw;color:rgba(255,255,255,.02);font-family:serif;pointer-events:none}
+.ls-head{text-align:center;margin-bottom:4rem;position:relative;z-index:1}
+.ls-label{font-size:.85rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--gold2);margin-bottom:.9rem;display:flex;align-items:center;justify-content:center;gap:.9rem}
+.ls-label::before,.ls-label::after{content:'';width:28px;height:1.5px;background:var(--gold2)}
+.ls-title{font-family:var(--fd);font-size:clamp(2.2rem,3.8vw,4rem);font-weight:700;color:white;line-height:.92;letter-spacing:-.03em;margin-bottom:.6rem}
+.ls-title em{font-family:var(--fp);font-style:italic;color:var(--gold2)}
+.ls-rule{width:40px;height:2.5px;background:var(--gold2);margin:0 auto 1.2rem}
+.ls-sub{font-size:.95rem;color:rgba(255,255,255,.45);max-width:480px;margin:0 auto;line-height:1.9}
+
+.ls-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;max-width:900px;margin:0 auto;position:relative;z-index:1}
+
+/* Leadership card */
+.lc{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:28px;padding:0;overflow:hidden;position:relative;transition:all .5s var(--ease);cursor:default}
+.lc::before{content:'';position:absolute;inset:0;border-radius:28px;background:linear-gradient(135deg,rgba(204,0,102,.2) 0%,transparent 60%);opacity:0;transition:opacity .5s}
+.lc:hover{transform:translateY(-10px);box-shadow:0 32px 80px rgba(0,0,0,.4);border-color:rgba(204,0,102,.4)}
+.lc:hover::before{opacity:1}
+
+/* card top accent */
+.lc-accent{height:5px;background:linear-gradient(90deg,var(--c1),var(--c2),var(--gold));animation:accentShimmer 3s linear infinite;background-size:200% 100%}
+@keyframes accentShimmer{0%{background-position:0%}100%{background-position:200%}}
+
+.lc-body{padding:2.2rem 2rem 2rem}
+.lc-avatar-wrap{position:relative;display:inline-block;margin-bottom:1.4rem}
+.lc-avatar{width:110px;height:110px;border-radius:50%;object-fit:cover;border:3px solid rgba(255,255,255,.15);display:block;background:linear-gradient(135deg,var(--c2),var(--c1));position:relative;z-index:1;transition:transform .4s var(--ease),border-color .4s}
+.lc:hover .lc-avatar{border-color:var(--gold2);transform:scale(1.05)}
+.lc-avatar-ring{position:absolute;inset:-6px;border-radius:50%;border:2px solid transparent;background:linear-gradient(135deg,var(--c2),var(--gold),var(--c2)) border-box;-webkit-mask:linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);-webkit-mask-composite:destination-out;mask-composite:exclude;opacity:0;transition:opacity .4s;animation:ringRotate 4s linear infinite}
+.lc:hover .lc-avatar-ring{opacity:1}
+@keyframes ringRotate{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+
+/* placeholder avatar (when no image) */
+.lc-avatar-placeholder{width:110px;height:110px;border-radius:50%;border:3px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(107,0,38,.8),rgba(204,0,102,.6));position:relative;z-index:1;transition:transform .4s var(--ease),border-color .4s;font-family:var(--fd);font-size:2.5rem;font-weight:700;color:rgba(255,255,255,.6)}
+.lc:hover .lc-avatar-placeholder{border-color:var(--gold2);transform:scale(1.05)}
+
+.lc-role-badge{display:inline-flex;align-items:center;gap:.4rem;font-size:.72rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold2);background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.25);padding:.35rem .9rem;border-radius:50px;margin-bottom:.8rem}
+.lc-name{font-family:var(--fd);font-size:1.7rem;font-weight:700;color:white;line-height:1.1;margin-bottom:.3rem}
+.lc-church{font-size:.82rem;font-weight:500;color:rgba(255,255,255,.4);margin-bottom:1rem;letter-spacing:.05em}
+.lc-divider{width:32px;height:1.5px;background:linear-gradient(90deg,var(--c2),transparent);margin-bottom:1rem}
+.lc-bio{font-size:.87rem;line-height:1.9;color:rgba(255,255,255,.55);margin-bottom:1.4rem}
+.lc-contact-row{display:flex;flex-wrap:wrap;gap:.5rem}
+.lc-contact-chip{display:flex;align-items:center;gap:.4rem;font-size:.75rem;color:rgba(255,255,255,.4);background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:.35rem .75rem;border-radius:50px;transition:all .3s}
+.lc:hover .lc-contact-chip{border-color:rgba(204,0,102,.3);color:rgba(255,255,255,.6)}
+
+/* floating cross behind avatar */
+.lc-bg-cross{position:absolute;right:-10px;bottom:-10px;font-size:7rem;color:rgba(255,255,255,.03);font-family:serif;pointer-events:none;line-height:1}
+
+/* info cards */
+.info-sec{padding:6rem 0;background:var(--ivory)}
+.info-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:3rem}
+.info-card{background:white;border-radius:20px;padding:2rem;border:2px solid var(--ivory3);transition:all .4s var(--ease);position:relative;overflow:hidden}
+.info-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--c2),var(--gold));transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease)}
+.info-card:hover::before{transform:scaleX(1)}
+.info-card:hover{transform:translateY(-6px);box-shadow:0 18px 44px rgba(0,0,0,.1);border-color:rgba(204,0,102,.25)}
+.ic-icon{width:46px;height:46px;border-radius:13px;background:rgba(204,0,102,.07);border:1.5px solid rgba(204,0,102,.12);display:flex;align-items:center;justify-content:center;margin-bottom:1.1rem;font-size:1.3rem;transition:all .35s}
+.info-card:hover .ic-icon{background:linear-gradient(135deg,var(--c2),var(--c3));box-shadow:0 6px 20px rgba(204,0,102,.3)}
+.ic-title{font-family:var(--fd);font-size:1.3rem;font-weight:700;color:var(--text);margin-bottom:.5rem}
+.ic-body{font-size:.88rem;line-height:1.9;color:var(--text2)}
 
 /* SERVICES */
-.dept-services{padding:8rem 0;background:var(--ivory)}
-.ds-head{text-align:center;margin-bottom:4.5rem;max-width:1360px;margin-left:auto;margin-right:auto;padding:0 3.5rem}
-.ds-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1360px;margin:0 auto;padding:0 3.5rem}
-.ds-card{
-  background:white;border-radius:24px;padding:2.8rem 2.4rem;
-  border:2px solid var(--ivory3);position:relative;overflow:hidden;
-  transition:all .4s var(--ease);cursor:default;
-}
+.services-sec{padding:7rem 0;background:var(--ivory2)}
+.ds-head{text-align:center;margin-bottom:3.5rem}
+.ds-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.ds-card{background:white;border-radius:20px;padding:2.2rem 2rem;border:2px solid var(--ivory3);position:relative;overflow:hidden;transition:all .4s var(--ease)}
 .ds-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--c2),var(--gold));transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease)}
 .ds-card:hover::before{transform:scaleX(1)}
-.ds-card:hover{transform:translateY(-8px);box-shadow:0 24px 60px rgba(0,0,0,.12);border-color:var(--c2)}
-.ds-num{font-family:var(--fd);font-size:4rem;font-weight:700;color:rgba(204,0,102,.06);line-height:1;position:absolute;bottom:.5rem;right:1rem}
-.ds-icon{
-  width:52px;height:52px;border-radius:16px;
-  background:linear-gradient(135deg,rgba(204,0,102,.1),rgba(204,0,102,.04));
-  border:1.5px solid rgba(204,0,102,.15);
-  display:flex;align-items:center;justify-content:center;
-  margin-bottom:1.4rem;transition:all .35s var(--ease);
-}
-.ds-card:hover .ds-icon{background:linear-gradient(135deg,var(--c2),var(--c3));border-color:var(--c2);box-shadow:0 8px 24px rgba(204,0,102,.3)}
-.ds-icon svg{width:22px;height:22px;fill:var(--c2);transition:fill .3s}
-.ds-card:hover .ds-icon svg{fill:white}
-.ds-title{font-family:var(--fd);font-size:1.5rem;font-weight:700;color:var(--text);margin-bottom:.7rem;line-height:1.2}
-.ds-desc{font-size:1rem;font-weight:400;line-height:2;color:var(--text2)}
+.ds-card:hover{transform:translateY(-8px);box-shadow:0 22px 54px rgba(0,0,0,.12);border-color:var(--c2)}
+.ds-num{font-family:var(--fd);font-size:4rem;font-weight:700;color:rgba(204,0,102,.05);line-height:1;position:absolute;bottom:.4rem;right:1rem}
+.ds-icon{width:48px;height:48px;border-radius:13px;background:rgba(204,0,102,.07);border:1.5px solid rgba(204,0,102,.12);display:flex;align-items:center;justify-content:center;margin-bottom:1.1rem;font-size:1.3rem;transition:all .35s}
+.ds-card:hover .ds-icon{background:linear-gradient(135deg,var(--c2),var(--c3));box-shadow:0 8px 24px rgba(204,0,102,.3)}
+.ds-title{font-family:var(--fd);font-size:1.35rem;font-weight:700;color:var(--text);margin-bottom:.5rem;line-height:1.2}
+.ds-desc{font-size:.9rem;line-height:1.9;color:var(--text2)}
+
+/* ENQUIRY */
+.enquiry-sec{padding:7rem 0;background:var(--dark);position:relative;overflow:hidden}
+.eq-cross{position:absolute;right:-3%;top:50%;transform:translateY(-50%);font-size:40vw;color:rgba(255,255,255,.02);font-family:serif;pointer-events:none}
+.eq-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:6rem;align-items:start;position:relative;z-index:1}
+.eq-label{font-size:.85rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--gold2);margin-bottom:.9rem;display:flex;align-items:center;gap:.9rem}
+.eq-label::before{content:'';width:28px;height:2px;background:var(--gold2)}
+.eq-title{font-family:var(--fd);font-size:clamp(2rem,3.2vw,3.8rem);font-weight:700;color:white;line-height:.92;letter-spacing:-.03em;margin-bottom:.7rem}
+.eq-title em{font-family:var(--fp);font-style:italic;color:var(--gold2)}
+.eq-rule{width:40px;height:2.5px;background:var(--gold2);margin-bottom:1.6rem}
+.eq-body{font-size:.92rem;line-height:1.9;color:rgba(255,255,255,.5);margin-bottom:1.8rem}
+.eq-contacts{display:flex;flex-direction:column;gap:.9rem}
+.eq-contact{display:flex;align-items:center;gap:.85rem;font-size:.88rem;color:rgba(255,255,255,.55)}
+.eq-contact .ic{width:34px;height:34px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0}
+.eq-form-wrap{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:24px;padding:2.6rem;backdrop-filter:blur(10px)}
+.eq-form-h{font-family:var(--fd);font-size:1.55rem;font-weight:700;color:white;margin-bottom:.25rem}
+.eq-form-sub{font-size:.84rem;color:rgba(255,255,255,.4);margin-bottom:1.8rem}
+.tabs{display:flex;gap:.4rem;background:rgba(255,255,255,.05);border-radius:50px;padding:.25rem;margin-bottom:2rem}
+.tab-btn{flex:1;font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.55rem 1rem;border-radius:50px;border:none;cursor:pointer;transition:all .25s;color:rgba(255,255,255,.4);background:transparent;font-family:var(--f)}
+.tab-btn.active{background:var(--c2);color:white;box-shadow:0 4px 16px rgba(204,0,102,.4)}
+.panel{display:none}
+.panel.active{display:block}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin-bottom:.9rem}
+.frow.full{grid-template-columns:1fr}
+.fg{display:flex;flex-direction:column;gap:.35rem}
+.fg label{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45);font-family:var(--f)}
+.fg input,.fg select,.fg textarea{background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.1);border-radius:11px;padding:.8rem 1rem;font-family:var(--f);font-size:.9rem;color:white;outline:none;transition:border-color .2s,background .2s;width:100%}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(255,255,255,.22)}
+.fg select option{background:var(--dark2);color:white}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--c2);background:rgba(204,0,102,.08)}
+.fg textarea{resize:vertical;min-height:85px}
+.f-submit{width:100%;background:linear-gradient(135deg,var(--c2),var(--c3));color:white;border:none;border-radius:50px;padding:.95rem 2rem;font-family:var(--f);font-size:.92rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:all .25s;margin-top:.4rem;box-shadow:0 8px 24px rgba(204,0,102,.35)}
+.f-submit:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(204,0,102,.5)}
+.success-box{display:none;text-align:center;padding:2rem}
+.success-box .s-icon{font-size:3rem;margin-bottom:.8rem}
+.success-box h3{font-family:var(--fd);font-size:1.55rem;font-weight:700;color:var(--gold2);margin-bottom:.4rem}
+.success-box p{font-size:.88rem;color:rgba(255,255,255,.55)}
 
 /* CTA */
-.dept-cta{
-  background:linear-gradient(135deg,var(--c1) 0%,var(--c2) 60%,var(--c3) 100%);
-  padding:7rem 0;position:relative;overflow:hidden;
-}
-.dc-bg{position:absolute;right:-4%;top:50%;transform:translateY(-50%);font-family:var(--fd);font-size:28vw;font-weight:700;color:rgba(255,255,255,.04);letter-spacing:-.1em;line-height:1;pointer-events:none}
+.dept-cta{background:linear-gradient(135deg,var(--c1) 0%,var(--c2) 60%,var(--c3) 100%);padding:6rem 0;position:relative;overflow:hidden}
+.dc-bg{position:absolute;right:-4%;top:50%;transform:translateY(-50%);font-family:var(--fd);font-size:28vw;font-weight:700;color:rgba(255,255,255,.04);pointer-events:none}
 .dc-inner{max-width:1360px;margin:0 auto;padding:0 3.5rem;display:flex;align-items:center;justify-content:space-between;gap:4rem;position:relative;z-index:1;flex-wrap:wrap}
-.dc-h{font-family:var(--fd);font-size:clamp(2.5rem,5vw,6rem);font-weight:700;color:white;line-height:.9;letter-spacing:-.04em}
+.dc-h{font-family:var(--fd);font-size:clamp(2rem,4vw,5rem);font-weight:700;color:white;line-height:.9;letter-spacing:-.04em}
 .dc-h span{display:block;font-family:var(--fp);font-style:italic;font-weight:400;font-size:.55em;margin-bottom:.3rem;color:rgba(255,255,255,.7)}
-.dc-links{display:flex;flex-direction:column;gap:.75rem;align-items:flex-end}
-.dc-a{font-family:var(--f);font-size:.9rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.9);padding:.9rem 2.2rem;border:1.5px solid rgba(255,255,255,.4);border-radius:50px;transition:all .25s;white-space:nowrap}
+.dc-links{display:flex;flex-direction:column;gap:.65rem;align-items:flex-end}
+.dc-a{font-size:.85rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.9);padding:.8rem 1.9rem;border:1.5px solid rgba(255,255,255,.4);border-radius:50px;transition:all .25s;white-space:nowrap}
 .dc-a:hover{background:white;color:var(--c2);border-color:white}
 
 /* FOOTER */
@@ -168,170 +287,454 @@ footer{background:var(--dark);padding:4rem 0 2rem}
 .ft-brand{font-family:var(--fd);font-size:1.2rem;font-weight:700;color:white;line-height:1.3}
 .ft-brand span{color:var(--gold2)}
 .ft-links{display:flex;flex-wrap:wrap;gap:1.5rem}
-.ft-link{font-family:var(--f);font-size:.88rem;color:rgba(255,255,255,.4);transition:color .15s}
+.ft-link{font-size:.88rem;color:rgba(255,255,255,.4);transition:color .15s}
 .ft-link:hover{color:rgba(255,255,255,.8)}
-.ft-bot{max-width:1360px;margin:0 auto;padding:0 3.5rem;display:flex;justify-content:space-between;align-items:center;font-family:var(--f);font-size:.82rem;color:rgba(255,255,255,.2);flex-wrap:wrap;gap:.5rem}
+.ft-bot{max-width:1360px;margin:0 auto;padding:0 3.5rem;display:flex;justify-content:space-between;align-items:center;font-size:.82rem;color:rgba(255,255,255,.2);flex-wrap:wrap;gap:.5rem}
 
 /* Reveal */
-.rv{opacity:0;transform:translateY(32px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
-.rv2{opacity:0;transform:translateY(32px);transition:opacity .9s .14s var(--ease),transform .9s .14s var(--ease)}
-.rv.on,.rv2.on{opacity:1;transform:none}
+.rv{opacity:0;transform:translateY(28px);transition:opacity .85s var(--ease),transform .85s var(--ease)}
+.rv2{opacity:0;transform:translateY(28px);transition:opacity .85s .12s var(--ease),transform .85s .12s var(--ease)}
+.rv3{opacity:0;transform:translateY(28px);transition:opacity .85s .24s var(--ease),transform .85s .24s var(--ease)}
+.rv.on,.rv2.on,.rv3.on{opacity:1;transform:none}
+
+/* Toast */
+.toast{position:fixed;bottom:2rem;right:2rem;background:var(--c2);color:white;font-size:.88rem;font-weight:600;padding:.9rem 1.6rem;border-radius:50px;box-shadow:0 8px 28px rgba(204,0,102,.4);z-index:9999;transform:translateY(80px);opacity:0;transition:all .4s var(--ease);font-family:var(--f)}
+.toast.show{transform:none;opacity:1}
 
 @media(max-width:1100px){
-  .da-grid{grid-template-columns:1fr;gap:4rem}
-  .ds-grid{grid-template-columns:1fr 1fr}
-  .stats-inner{grid-template-columns:1fr 1fr}
+  .dh-content,.what-grid,.about-grid,.eq-grid{grid-template-columns:1fr;gap:3rem}
+  .dh-right{display:none}
+  .stats-inner,.info-cards,.ds-grid{grid-template-columns:1fr 1fr}
   .stat-item:nth-child(2){border-right:none}
   .nb-links{display:none}
+  .is-grid{grid-template-columns:1fr}
+  .ls-grid{grid-template-columns:1fr 1fr}
 }
 @media(max-width:768px){
   html{font-size:16px}
-  .ds-grid{grid-template-columns:1fr}
-  .stats-inner{grid-template-columns:1fr 1fr}
+  .stats-inner,.info-cards,.ds-grid{grid-template-columns:1fr}
+  .frow{grid-template-columns:1fr}
   .nb{padding:0 1.2rem}
-  .dh-content{padding:0 1.5rem}
-  .da-grid{padding:0 1.5rem}
-  .ds-head,.ds-grid,.dc-inner,.ft-inner,.ft-bot{padding:0 1.5rem}
+  .dh-content,.sec-wrap,.about-grid,.eq-grid,.dc-inner,.ft-inner,.ft-bot{padding:0 1.5rem}
+  .eq-form-wrap{padding:1.8rem 1.4rem}
+  .dc-links{align-items:flex-start}
+  .ls-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
 <body>
-<div id="cur"></div>
+
 <nav id="nav">
   <div class="nb">
-    <a href="index.html" class="nl">
-      <div class="nl-logo">
-        <img src="download.png" alt="COG Logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="nl-logo-ph" style="display:none">✝</div>
-      </div>
-      <div class="nl-txt">
-        <span class="nl-t1">Church of God (Full Gospel)</span>
-        <span class="nl-t2">Kerala State · India</span>
+    <a href="home.html" class="nl">
+      <div>
+        <div class="nl-t1">Church of God (Full Gospel)</div>
+        <div class="nl-t2">Kerala State · India</div>
       </div>
     </a>
-    <div class="nb-links">
-      <a href="index.html#vision" class="nb-link">Vision</a>
-      <a href="index.html#about" class="nb-link">History</a>
-      <a href="index.html#depts" class="nb-link">Departments</a>
-      <a href="index.html#leaders" class="nb-link">Leaders</a>
-      <a href="index.html#cta" class="nb-link">Contact</a>
-    </div>
-    <a href="index.html" class="nb-back">← Back to Home</a>
+    <a href="home.html" class="nb-back">← Back to Home</a>
   </div>
 </nav>
 
-<!-- HERO -->
+<!-- ═══════════════ HERO ═══════════════ -->
 <div class="dept-hero">
-  <div class="dh-orb dh-orb-1"></div>
-  <div class="dh-orb dh-orb-2"></div>
-  <div class="dh-bg-text">COU</div>
-  <div class="dh-cross">✝</div>
+  <!-- layered gradient backgrounds -->
+  <div class="hero-bg-gradient"></div>
+  <div class="hero-bg-gradient2"></div>
+  <div class="hero-bg-gradient3"></div>
+
+  <!-- animated orbs -->
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <div class="hero-orb hero-orb-3"></div>
+
+  <!-- light rays -->
+  <div class="hero-rays">
+    <div class="hero-ray"></div>
+    <div class="hero-ray"></div>
+    <div class="hero-ray"></div>
+    <div class="hero-ray"></div>
+    <div class="hero-ray"></div>
+  </div>
+
+  <!-- floating verse chips -->
+  <div class="hero-chips" id="heroChips"></div>
+
+  <!-- decorative cross SVG -->
+  <div class="hero-cross-wrap">
+    <svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg" fill="white">
+      <rect x="120" y="0" width="60" height="400" rx="10"/>
+      <rect x="0" y="120" width="300" height="60" rx="10"/>
+    </svg>
+  </div>
+
+  <!-- canvas particles -->
+  <canvas id="heroCanvas"></canvas>
+
   <div class="dh-content">
-    <div class="dh-eyebrow">COG Kerala · Department</div>
-    <div class="dh-title">Counselling</div>
-    <div class="dh-tagline">Healing Souls, Restoring Lives</div>
-    <div class="dh-tags">
-      <span class="dh-tag">500+ Sessions Annually</span><span class="dh-tag">14 Districts Covered</span><span class="dh-tag">24/7 Crisis Support</span><span class="dh-tag">50+ Trained Counsellors</span>
+    <div>
+      <div class="dh-eyebrow">COG Kerala · Department</div>
+      <div class="dh-title">Christian<br><em>Counselling</em></div>
+      <div class="dh-tagline">Healing Souls, Restoring Lives in Christ</div>
+      <div class="dh-verse-hero">"Come to me, all you who are weary and burdened, and I will give you rest." — Matthew 11:28</div>
+      <div class="dh-tags">
+        <span class="dh-tag">500+ Sessions Annually</span>
+        <span class="dh-tag">14 Districts Covered</span>
+        <span class="dh-tag">24/7 Crisis Support</span>
+        <span class="dh-tag">50+ Trained Counsellors</span>
+      </div>
+    </div>
+    <div class="dh-right">
+      <div class="dh-card">
+        <h3>Need <em>Counselling?</em></h3>
+        <p>You are not alone. Our trained Christian counsellors are here to walk alongside you with compassion, prayer, and Biblical wisdom.</p>
+        <ul class="dh-checklist">
+          <li>Confidential &amp; compassionate support</li>
+          <li>Rooted in Biblical truth &amp; prayer</li>
+          <li>Available across all 14 districts</li>
+          <li>Marriage, family &amp; personal guidance</li>
+          <li>Crisis support around the clock</li>
+        </ul>
+        <a href="#enquiry" class="dh-btn">Request a Session ↓</a>
+      </div>
     </div>
   </div>
-  <div class="dh-scroll-hint"><span>Scroll</span><div class="dh-scroll-line"></div></div>
+  <div class="dh-scroll"><span>Scroll</span><div class="dh-scroll-line"></div></div>
 </div>
 
-<!-- STATS BAR -->
+<!-- ═══════════════ STATS ═══════════════ -->
 <div class="stats-bar">
   <div class="stats-inner">
-    <div class="stat-item"><div class="stat-val">500+</div><div class="stat-lbl">Sessions Annually</div></div><div class="stat-item"><div class="stat-val">14</div><div class="stat-lbl">Districts Covered</div></div><div class="stat-item"><div class="stat-val">24/7</div><div class="stat-lbl">Crisis Support</div></div><div class="stat-item"><div class="stat-val">50+</div><div class="stat-lbl">Trained Counsellors</div></div>
+    <div class="stat-item rv"><div class="stat-val">500+</div><div class="stat-lbl">Sessions Annually</div></div>
+    <div class="stat-item rv"><div class="stat-val">14</div><div class="stat-lbl">Districts Covered</div></div>
+    <div class="stat-item rv2"><div class="stat-val">24/7</div><div class="stat-lbl">Crisis Support</div></div>
+    <div class="stat-item rv2"><div class="stat-val">50+</div><div class="stat-lbl">Trained Counsellors</div></div>
   </div>
 </div>
 
-<!-- ABOUT -->
-<div class="dept-about">
-  <div class="da-grid">
-    <div>
-      <div class="da-sl rv">About This Department</div>
-      <h2 class="da-h rv"> <em>Counselling</em></h2>
-      <div class="da-rule rv"></div>
-      <p class="da-body rv">The Counselling Department of Church of God Kerala provides compassionate pastoral care, mental health support, and spiritual guidance to individuals and families across all 14 districts of Kerala. Rooted in Biblical truth and empowered by the Holy Spirit, our counsellors walk alongside those in need.</p>
-      <div class="da-verse rv2">"Come to me, all you who are weary and burdened, and I will give you rest." — Matthew 11:28</div>
+<!-- ═══════════════ WHAT IS CHRISTIAN COUNSELLING ═══════════════ -->
+<div class="what-sec">
+  <div class="sec-wrap">
+    <div class="rv">
+      <div class="sec-label">Understanding Our Approach</div>
+      <h2 class="sec-h">What is <em>Christian Counselling?</em></h2>
+      <div class="sec-rule"></div>
     </div>
-    <div class="da-img rv2">
-      <img src="dept-counselling.jpg" alt="Counselling" onerror="this.style.display='none'">
-      <div class="da-img-tag"><span>Counselling Department</span>Church of God Kerala</div>
-    </div>
-  </div>
-</div>
-
-<!-- SERVICES -->
-<div class="dept-services">
-  <div class="ds-head rv">
-    <div class="da-sl" style="justify-content:center">What We Do</div>
-    <h2 class="da-h" style="font-size:clamp(2.5rem,4vw,5rem);text-align:center">Our <em>Ministries</em></h2>
-    <div class="da-rule" style="margin:0 auto 1.5rem"></div>
-    <p style="font-size:1.05rem;color:var(--text2);line-height:2;max-width:600px;margin:0 auto">The Counselling Department serves through these key areas of ministry across Kerala.</p>
-  </div>
-  <div class="ds-grid rv2">
-    
-    <div class="ds-card">
-      <div class="ds-num">01</div>
-      <div class="ds-icon">
-        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+    <div class="what-grid">
+      <div>
+        <p class="body-txt rv">Christian counselling focuses on intertwining the disciplines of faith and psychology to provide an approach to mental and emotional health that draws from biblical teachings. Practitioners incorporate religious scripture and teachings to guide you through challenging life issues.</p>
+        <p class="body-txt rv">When facing turbulent life events, incorporating and strengthening your faith may be the missing piece in finding proper treatment. Through a personal relationship with God, Christian counselling helps replace emotional instability with self-worth and spiritual fulfilment.</p>
+        <div class="sub-h rv">Origins of Christian Counselling</div>
+        <p class="body-txt rv">Rooted deep within biblical accounts, this form of therapy places an emphasis on fundamental values and beliefs that comprise the framework of modern Christianity. Ministers and other religious figures must seek licensed training and accreditation. In 1968, Christian counsellors officially formed the Christian Counseling &amp; Educational Foundation — bound not only to religious code but secular standards of ethical practice as well.</p>
+        <div class="sub-h rv">What to Expect</div>
+        <p class="body-txt rv">Your decision should be based on the credentials and ability of the prospective counsellor. With a Christian counsellor, an additional factor is your personal faith. Finding a counsellor who expresses religious beliefs in an agreeable way, and a willingness to accept the spiritual aspect, is necessary to gain the full benefit.</p>
+        <div class="verse-block rv2">"Both <em>psychotherapy</em> and <em>counselling</em> describe the same process — both relate to overcoming personal difficulties and working towards positive changes."</div>
+        <div class="sub-h rv">What is Spiritual Health?</div>
+        <p class="body-txt rv">Christian counsellors understand the importance of mental and emotional health. However, they recognise that traditional methods alone do not provide a comprehensive overview of what may be affecting you. With the additional focus on spiritual health and your relationship with God, personal problems and emotional concerns can be replaced with self-worth and spiritual fulfilment.</p>
+        <div class="verse-block rv2">"Cast all your anxiety on him because he cares for you." — 1 Peter 5:7</div>
       </div>
-      <div class="ds-title">Pastoral Counselling</div>
-      <p class="ds-desc">One-on-one spiritual guidance from trained pastoral counsellors grounded in Biblical wisdom and prayer.</p>
-    </div>
-    <div class="ds-card">
-      <div class="ds-num">02</div>
-      <div class="ds-icon">
-        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+      <div>
+        <div class="is-grid rv">
+          <div class="is-box is-yes">
+            <div class="is-box-h"><span class="badge">✓</span>Counselling IS:</div>
+            <ul class="is-list">
+              <li>A process where client and counsellor explore difficulties together, including stressful or emotional feelings</li>
+              <li>Helping the client see things more clearly, possibly from a different viewpoint, to facilitate positive change</li>
+              <li>A relationship of trust — confidentiality is paramount and professionally upheld</li>
+              <li>Highlighting the emotional and intellectual experience of a client</li>
+            </ul>
+          </div>
+          <div class="is-box is-no">
+            <div class="is-box-h"><span class="badge">✗</span>Counselling is NOT:</div>
+            <ul class="is-list">
+              <li>Giving advice or attempting to sort out the client's problems for them</li>
+              <li>Expecting a client to behave as the counsellor would in a similar situation</li>
+              <li>Getting emotionally involved with the client</li>
+              <li>Looking at problems from the counsellor's own perspective or value system</li>
+              <li>Looking at a client's problems from your own perspective</li>
+            </ul>
+          </div>
+        </div>
+        <div style="margin-top:2.5rem">
+          <div class="verse-block rv2">"He heals the broken-hearted and binds up their wounds." — Psalm 147:3</div>
+          <div class="verse-block rv2">"The Lord is close to the broken-hearted and saves those who are crushed in spirit." — Psalm 34:18</div>
+        </div>
       </div>
-      <div class="ds-title">Family Mediation</div>
-      <p class="ds-desc">Helping families navigate conflict, restoration, and reconciliation with Christ at the centre.</p>
-    </div>
-    <div class="ds-card">
-      <div class="ds-num">03</div>
-      <div class="ds-icon">
-        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
-      </div>
-      <div class="ds-title">Grief & Trauma Support</div>
-      <p class="ds-desc">Compassionate care for those walking through loss, trauma, and life transitions.</p>
-    </div>
-    <div class="ds-card">
-      <div class="ds-num">04</div>
-      <div class="ds-icon">
-        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
-      </div>
-      <div class="ds-title">Marriage Enrichment</div>
-      <p class="ds-desc">Pre-marital and marital counselling to strengthen God-ordained unions across Kerala.</p>
-    </div>
-    <div class="ds-card">
-      <div class="ds-num">05</div>
-      <div class="ds-icon">
-        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
-      </div>
-      <div class="ds-title">Youth Counselling</div>
-      <p class="ds-desc">Age-appropriate guidance for young people facing pressures of modern life, identity, and faith.</p>
-    </div>
-    <div class="ds-card">
-      <div class="ds-num">06</div>
-      <div class="ds-icon">
-        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
-      </div>
-      <div class="ds-title">Crisis Intervention</div>
-      <p class="ds-desc">Immediate support for those in spiritual, emotional, or situational crisis — available around the clock.</p>
     </div>
   </div>
 </div>
 
-<!-- CTA -->
+<!-- ═══════════════ ABOUT DEPT ═══════════════ -->
+<div class="about-sec">
+  <div class="sec-wrap">
+    <div class="about-grid">
+      <div>
+        <div class="sec-label rv">About This Department</div>
+        <h2 class="sec-h rv">COG Kerala<br><em>Counselling Dept.</em></h2>
+        <div class="sec-rule rv"></div>
+        <p class="body-txt rv">The Counselling Department of Church of God Kerala provides compassionate pastoral care, mental health support, and spiritual guidance to individuals and families across all 14 districts of Kerala. Rooted in Biblical truth and empowered by the Holy Spirit, our counsellors walk alongside those in need.</p>
+        <p class="body-txt rv">Our department is committed to maintaining the highest standards of both Christian ethics and professional counselling practice. Every session is conducted with utmost confidentiality, prayer, and a genuine desire to see lives transformed by the grace of God.</p>
+        <div class="verse-block rv2">"He heals the broken-hearted and binds up their wounds." — Psalm 147:3</div>
+      </div>
+      <div class="visual-box rv2">
+        <div class="visual-cross">✝</div>
+        <div class="visual-title">
+          <em>Church of God Kerala</em>
+          Counselling Department
+        </div>
+        <div class="visual-sub">Healing · Restoring · Transforming</div>
+        <div class="visual-pills">
+          <span class="visual-pill">Compassion</span>
+          <span class="visual-pill">Faith</span>
+          <span class="visual-pill">Confidential</span>
+          <span class="visual-pill">Prayer</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ LEADERSHIP ═══════════════ -->
+<div class="leadership-sec">
+  <div class="leadership-bg">
+    <div class="leadership-bg-orb1"></div>
+    <div class="leadership-bg-orb2"></div>
+    <div class="leadership-bg-cross">✝</div>
+  </div>
+
+  <div class="sec-wrap">
+    <div class="ls-head rv">
+      <div class="ls-label">Meet Our Leadership</div>
+      <h2 class="ls-title">Department <em>Leaders</em></h2>
+      <div class="ls-rule"></div>
+      <p class="ls-sub">Serving with faith, compassion and a heart to restore lives across all of Kerala.</p>
+    </div>
+
+    <div class="ls-grid">
+
+      <!-- Director Card -->
+      <div class="lc rv" id="lc-director">
+        <div class="lc-accent"></div>
+        <div class="lc-body">
+          <div class="lc-bg-cross">✝</div>
+          <div class="lc-avatar-wrap">
+            <!-- Replace src with actual photo URL. If no image, remove <img> and use the placeholder below -->
+            <div class="lc-avatar-placeholder" id="director-avatar">D</div>
+            <!-- Uncomment below and add photo src to use a real image:
+            <img class="lc-avatar" src="director-photo.jpg" alt="Director Photo" id="director-avatar">
+            -->
+            <div class="lc-avatar-ring"></div>
+          </div>
+          <div class="lc-role-badge">✝ Director</div>
+          <div class="lc-name">Rev. [Director Name]</div>
+          <div class="lc-church">COG Kerala · Counselling Department</div>
+          <div class="lc-divider"></div>
+          <p class="lc-bio">A seasoned pastor and trained counsellor with a calling to bring healing and restoration through the love of Christ. Leading the department's vision across all 14 districts of Kerala with compassion and Biblical wisdom.</p>
+          <div class="lc-contact-row">
+            <span class="lc-contact-chip">✉ director@cogkerala.org</span>
+            <span class="lc-contact-chip">📍 Kerala State</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Secretary Card -->
+      <div class="lc rv2" id="lc-secretary">
+        <div class="lc-accent"></div>
+        <div class="lc-body">
+          <div class="lc-bg-cross">✝</div>
+          <div class="lc-avatar-wrap">
+            <!-- Replace src with actual photo URL -->
+            <div class="lc-avatar-placeholder" id="secretary-avatar">S</div>
+            <!-- Uncomment below to use real image:
+            <img class="lc-avatar" src="secretary-photo.jpg" alt="Secretary Photo" id="secretary-avatar">
+            -->
+            <div class="lc-avatar-ring"></div>
+          </div>
+          <div class="lc-role-badge">✝ Secretary</div>
+          <div class="lc-name">Rev. [Secretary Name]</div>
+          <div class="lc-church">COG Kerala · Counselling Department</div>
+          <div class="lc-divider"></div>
+          <p class="lc-bio">A dedicated servant of the Lord committed to coordinating ministry efforts, supporting counsellors statewide, and ensuring that every person who reaches out receives timely, compassionate care.</p>
+          <div class="lc-contact-row">
+            <span class="lc-contact-chip">✉ secretary@cogkerala.org</span>
+            <span class="lc-contact-chip">📍 Kerala State</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ SERVICES ═══════════════ -->
+<div class="services-sec">
+  <div class="sec-wrap">
+    <div class="ds-head rv">
+      <div class="sec-label" style="justify-content:center">What We Do</div>
+      <h2 class="sec-h" style="text-align:center">Our <em>Ministries</em></h2>
+      <div class="sec-rule" style="margin:0 auto 1.2rem"></div>
+      <p style="font-size:.95rem;color:var(--text2);line-height:2;max-width:540px;margin:0 auto">The Counselling Department serves through these key areas of ministry across all of Kerala.</p>
+    </div>
+    <div class="ds-grid">
+      <div class="ds-card">
+        <div class="ds-num">01</div>
+        <div class="ds-icon">🕊️</div>
+        <div class="ds-title">Pastoral Counselling</div>
+        <p class="ds-desc">One-on-one spiritual guidance from trained pastoral counsellors grounded in Biblical wisdom and prayer.</p>
+      </div>
+      <div class="ds-card">
+        <div class="ds-num">02</div>
+        <div class="ds-icon">🏠</div>
+        <div class="ds-title">Family Mediation</div>
+        <p class="ds-desc">Helping families navigate conflict, restoration, and reconciliation with Christ at the centre.</p>
+      </div>
+      <div class="ds-card">
+        <div class="ds-num">03</div>
+        <div class="ds-icon">💛</div>
+        <div class="ds-title">Grief &amp; Trauma Support</div>
+        <p class="ds-desc">Compassionate care for those walking through loss, trauma, and difficult life transitions.</p>
+      </div>
+      <div class="ds-card">
+        <div class="ds-num">04</div>
+        <div class="ds-icon">💑</div>
+        <div class="ds-title">Marriage Enrichment</div>
+        <p class="ds-desc">Pre-marital and marital counselling to strengthen God-ordained unions across Kerala.</p>
+      </div>
+      <div class="ds-card">
+        <div class="ds-num">05</div>
+        <div class="ds-icon">🌱</div>
+        <div class="ds-title">Youth Counselling</div>
+        <p class="ds-desc">Age-appropriate guidance for young people facing pressures of modern life, identity, and faith.</p>
+      </div>
+      <div class="ds-card">
+        <div class="ds-num">06</div>
+        <div class="ds-icon">🆘</div>
+        <div class="ds-title">Crisis Intervention</div>
+        <p class="ds-desc">Immediate support for those in spiritual, emotional, or situational crisis — available around the clock.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ ENQUIRY ═══════════════ -->
+<div class="enquiry-sec" id="enquiry">
+  <div class="eq-cross">✝</div>
+  <div class="sec-wrap">
+    <div class="eq-grid">
+      <div class="rv">
+        <div class="eq-label">Get In Touch</div>
+        <h2 class="eq-title">We're Here<br>for <em>You</em></h2>
+        <div class="eq-rule"></div>
+        <p class="eq-body">Whether you need counselling support or wish to join our ministry as a volunteer counsellor, fill in the form and our team will reach out with care and complete confidentiality.</p>
+        <div class="eq-contacts">
+          <div class="eq-contact"><span class="ic">✉️</span><span>cogkeralastate@gmail.com</span></div>
+          <div class="eq-contact"><span class="ic">🕊️</span><span>Counselling Dept · COG Kerala State</span></div>
+          <div class="eq-contact"><span class="ic">📍</span><span>All 14 Districts of Kerala, India</span></div>
+          <div class="eq-contact"><span class="ic">🔒</span><span>All enquiries are completely confidential</span></div>
+        </div>
+      </div>
+      <div class="rv2">
+        <div class="eq-form-wrap">
+          <div class="eq-form-h">Send an Enquiry</div>
+          <div class="eq-form-sub">Choose the type of enquiry below and fill in your details.</div>
+          <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('c')">🙏 Need Counselling</button>
+            <button class="tab-btn" onclick="switchTab('j')">✝ Join Ministry</button>
+          </div>
+          <div class="panel active" id="panel-c">
+            <div class="frow">
+              <div class="fg"><label>Full Name *</label><input type="text" placeholder="Your full name" id="c-name"></div>
+              <div class="fg"><label>Phone Number *</label><input type="tel" placeholder="+91 XXXXX XXXXX" id="c-phone"></div>
+            </div>
+            <div class="frow">
+              <div class="fg"><label>Email Address</label><input type="email" placeholder="your@email.com"></div>
+              <div class="fg"><label>District *</label>
+                <select id="c-dist">
+                  <option value="">Select your district</option>
+                  <option>Thiruvananthapuram</option><option>Kollam</option><option>Pathanamthitta</option>
+                  <option>Alappuzha</option><option>Kottayam</option><option>Idukki</option>
+                  <option>Ernakulam</option><option>Thrissur</option><option>Palakkad</option>
+                  <option>Malappuram</option><option>Kozhikode</option><option>Wayanad</option>
+                  <option>Kannur</option><option>Kasaragod</option>
+                </select>
+              </div>
+            </div>
+            <div class="frow">
+              <div class="fg"><label>Type of Counselling *</label>
+                <select>
+                  <option value="">Select type</option>
+                  <option>Pastoral / Spiritual Guidance</option><option>Family / Relationship Issues</option>
+                  <option>Marriage Counselling</option><option>Grief &amp; Trauma Support</option>
+                  <option>Youth / Adolescent</option><option>Crisis Support</option><option>Other</option>
+                </select>
+              </div>
+              <div class="fg"><label>Preferred Mode</label>
+                <select>
+                  <option value="">Select</option>
+                  <option>In-person (at church)</option><option>Phone call</option>
+                  <option>Video call</option><option>Home visit (if available)</option>
+                </select>
+              </div>
+            </div>
+            <div class="frow full">
+              <div class="fg"><label>Briefly describe your need</label>
+                <textarea placeholder="Please share briefly what you are going through. Everything shared is completely confidential."></textarea>
+              </div>
+            </div>
+            <button class="f-submit" onclick="submitForm('c')">Submit Counselling Request →</button>
+          </div>
+          <div class="panel" id="panel-j">
+            <div class="frow">
+              <div class="fg"><label>Full Name *</label><input type="text" placeholder="Your full name" id="j-name"></div>
+              <div class="fg"><label>Phone Number *</label><input type="tel" placeholder="+91 XXXXX XXXXX" id="j-phone"></div>
+            </div>
+            <div class="frow">
+              <div class="fg"><label>Email Address *</label><input type="email" placeholder="your@email.com"></div>
+              <div class="fg"><label>District *</label>
+                <select>
+                  <option value="">Select your district</option>
+                  <option>Thiruvananthapuram</option><option>Kollam</option><option>Pathanamthitta</option>
+                  <option>Alappuzha</option><option>Kottayam</option><option>Idukki</option>
+                  <option>Ernakulam</option><option>Thrissur</option><option>Palakkad</option>
+                  <option>Malappuram</option><option>Kozhikode</option><option>Wayanad</option>
+                  <option>Kannur</option><option>Kasaragod</option>
+                </select>
+              </div>
+            </div>
+            <div class="frow">
+              <div class="fg"><label>Church / Congregation</label><input type="text" placeholder="Your local church name"></div>
+              <div class="fg"><label>Qualification / Background</label>
+                <select>
+                  <option value="">Select</option>
+                  <option>Pastor / Minister</option><option>Psychology / Counselling Graduate</option>
+                  <option>Social Worker</option><option>Trained Volunteer</option>
+                  <option>No formal training (willing to learn)</option>
+                </select>
+              </div>
+            </div>
+            <div class="frow full">
+              <div class="fg"><label>Why do you want to join this ministry?</label>
+                <textarea placeholder="Share your heart and calling for this ministry..."></textarea>
+              </div>
+            </div>
+            <button class="f-submit" onclick="submitForm('j')">Submit Application →</button>
+          </div>
+          <div class="success-box" id="success-box">
+            <div class="s-icon">✝️</div>
+            <h3>Thank You &amp; God Bless!</h3>
+            <p>Your enquiry has been received. Our team will reach out to you soon with care and complete confidentiality.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ CTA ═══════════════ -->
 <div class="dept-cta">
   <div class="dc-bg">COU</div>
   <div class="dc-inner">
-    <div>
-      <div class="dc-h">
-        <span>Connect with</span>
-        Counselling<br>Department
-      </div>
-    </div>
+    <div class="dc-h"><span>Connect with</span>Counselling<br>Department</div>
     <div class="dc-links">
       <a class="dc-a" href="index.html">← Back to Main Site</a>
       <a class="dc-a" href="index.html#cta">Contact Us ↗</a>
@@ -340,19 +743,19 @@ footer{background:var(--dark);padding:4rem 0 2rem}
   </div>
 </div>
 
-<!-- FOOTER -->
+<!-- ═══════════════ FOOTER ═══════════════ -->
 <footer>
   <div class="ft-inner">
     <div class="ft-brand">Church of God<br>(Full Gospel) in India · <span>Kerala State</span></div>
     <div class="ft-links">
       <a href="index.html" class="ft-link">Home</a>
-      <a href="dept-counselling.html" class="ft-link">Counselling</a>
-      <a href="dept-education.html" class="ft-link">Education</a>
-      <a href="dept-ladies.html" class="ft-link">Ladies Ministry</a>
-      <a href="dept-youth.html" class="ft-link">Youth</a>
-      <a href="dept-sundayschool.html" class="ft-link">Sunday School</a>
-      <a href="dept-evangelism.html" class="ft-link">Evangelism</a>
-      <a href="dept-charity.html" class="ft-link">Charity</a>
+      <a href="co.html" class="ft-link">Counselling</a>
+      <a href="edu.html" class="ft-link">Education</a>
+      <a href="lm.html" class="ft-link">Ladies Ministry</a>
+      <a href="ype.html" class="ft-link">Youth</a>
+      <a href="ss.html" class="ft-link">Sunday School</a>
+      <a href="eva.html" class="ft-link">Evangelism</a>
+      <a href="index.html#contact" class="ft-link">Contact</a>
     </div>
   </div>
   <div class="ft-bot">
@@ -361,14 +764,147 @@ footer{background:var(--dark);padding:4rem 0 2rem}
   </div>
 </footer>
 
+<div class="toast" id="toast"></div>
+
 <script>
-const cur=document.getElementById('cur');
-document.addEventListener('mousemove',e=>{cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px';});
-document.querySelectorAll('a,.ds-card,.stat-item').forEach(el=>{el.addEventListener('mouseenter',()=>cur.classList.add('big'));el.addEventListener('mouseleave',()=>cur.classList.remove('big'));});
-const revIO=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');revIO.unobserve(e.target);}}),{threshold:.07,rootMargin:'0px 0px -44px 0px'});
-document.querySelectorAll('.rv,.rv2').forEach(el=>revIO.observe(el));
-// Stagger DS cards
-document.querySelectorAll('.ds-card').forEach((c,i)=>{c.style.cssText+=`opacity:0;transform:translateY(28px);transition:opacity .7s ${i*.08}s cubic-bezier(.16,1,.3,1),transform .7s ${i*.08}s cubic-bezier(.16,1,.3,1)`;const io=new IntersectionObserver(([e])=>{if(e.isIntersecting){c.style.opacity='1';c.style.transform='none';io.unobserve(c);}},{threshold:.06});io.observe(c);});
+/* ─── HERO PARTICLES ─── */
+(function(){
+  const canvas = document.getElementById('heroCanvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, particles = [];
+
+  function resize(){
+    W = canvas.width = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const COLORS = [
+    'rgba(201,168,76,',   // gold
+    'rgba(255,255,255,',  // white
+    'rgba(204,0,102,',    // crimson
+    'rgba(107,0,38,',     // dark red
+  ];
+
+  class Particle {
+    constructor(){
+      this.reset();
+    }
+    reset(){
+      this.x = Math.random() * W;
+      this.y = Math.random() * H;
+      this.r = Math.random() * 2.5 + .5;
+      this.alpha = Math.random() * .5 + .1;
+      this.vx = (Math.random() - .5) * .3;
+      this.vy = -(Math.random() * .4 + .1);
+      this.color = COLORS[Math.floor(Math.random() * COLORS.length)];
+      this.life = 0;
+      this.maxLife = Math.random() * 200 + 100;
+    }
+    draw(){
+      const fade = this.life < 30 ? this.life/30 : this.life > this.maxLife - 30 ? (this.maxLife - this.life)/30 : 1;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.r, 0, Math.PI*2);
+      ctx.fillStyle = this.color + (this.alpha * fade) + ')';
+      ctx.fill();
+    }
+    update(){
+      this.x += this.vx;
+      this.y += this.vy;
+      this.life++;
+      if(this.life > this.maxLife || this.x < 0 || this.x > W || this.y < 0) this.reset();
+    }
+  }
+
+  for(let i = 0; i < 120; i++){
+    const p = new Particle();
+    p.life = Math.floor(Math.random() * p.maxLife);
+    particles.push(p);
+  }
+
+  function loop(){
+    ctx.clearRect(0,0,W,H);
+    particles.forEach(p => { p.update(); p.draw(); });
+    requestAnimationFrame(loop);
+  }
+  loop();
+})();
+
+/* ─── FLOATING VERSE CHIPS ─── */
+(function(){
+  const verses = [
+    '"Come to me..." — Matt 11:28',
+    '"He heals the broken-hearted" — Ps 147:3',
+    '"Cast all your anxiety on him" — 1 Pet 5:7',
+    '"The Lord is close..." — Ps 34:18',
+    '"Be still, and know..." — Ps 46:10',
+    '"God is our refuge..." — Ps 46:1',
+    '"Fear not, for I am with you" — Is 41:10',
+    '"My grace is sufficient" — 2 Cor 12:9',
+  ];
+  const container = document.getElementById('heroChips');
+  verses.forEach((v, i) => {
+    const el = document.createElement('div');
+    el.className = 'hero-chip';
+    el.textContent = v;
+    el.style.left = (8 + Math.random() * 70) + '%';
+    el.style.top = (20 + Math.random() * 70) + '%';
+    el.style.animationDuration = (18 + Math.random() * 14) + 's';
+    el.style.animationDelay = (i * 2.5) + 's';
+    container.appendChild(el);
+  });
+})();
+
+/* ─── SCROLL REVEAL ─── */
+const IO = new IntersectionObserver(es => es.forEach(e => {
+  if(e.isIntersecting){ e.target.classList.add('on'); IO.unobserve(e.target); }
+}), {threshold:.07, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv,.rv2,.rv3').forEach(el => IO.observe(el));
+
+/* ─── STAGGER CARDS ─── */
+['.ds-card','.info-card','.lc'].forEach(sel => {
+  document.querySelectorAll(sel).forEach((c,i) => {
+    Object.assign(c.style, {
+      opacity:'0', transform:'translateY(28px)',
+      transition:`opacity .8s ${i*.12}s cubic-bezier(.16,1,.3,1), transform .8s ${i*.12}s cubic-bezier(.16,1,.3,1)`
+    });
+    const io2 = new IntersectionObserver(([e]) => {
+      if(e.isIntersecting){ c.style.opacity='1'; c.style.transform='none'; io2.unobserve(c); }
+    },{threshold:.06});
+    io2.observe(c);
+  });
+});
+
+/* ─── TABS ─── */
+function switchTab(t) {
+  document.querySelectorAll('.tab-btn').forEach((b,i) => b.classList.toggle('active', (t==='c'&&i===0)||(t==='j'&&i===1)));
+  document.getElementById('panel-c').classList.toggle('active', t==='c');
+  document.getElementById('panel-j').classList.toggle('active', t==='j');
+  document.getElementById('success-box').style.display='none';
+}
+
+/* ─── FORM SUBMIT ─── */
+function submitForm(t) {
+  const n = t==='c' ? document.getElementById('c-name') : document.getElementById('j-name');
+  const p = t==='c' ? document.getElementById('c-phone') : document.getElementById('j-phone');
+  if(!n.value.trim() || !p.value.trim()){ toast('⚠️ Please fill in your name and phone number.'); return; }
+  document.getElementById('panel-c').style.display='none';
+  document.getElementById('panel-j').style.display='none';
+  document.getElementById('success-box').style.display='block';
+  toast('✝ Enquiry submitted! God bless you.');
+}
+
+function toast(msg) {
+  const el = document.getElementById('toast');
+  el.textContent = msg; el.classList.add('show');
+  setTimeout(()=>el.classList.remove('show'), 3500);
+}
+
+/* ─── NAV SHADOW ON SCROLL ─── */
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').style.boxShadow = scrollY>50 ? '0 4px 30px rgba(0,0,0,.15)' : '0 2px 24px rgba(0,0,0,.08)';
+});
 </script>
 </body>
 </html>

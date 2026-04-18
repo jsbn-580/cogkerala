@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ordained Minister – Church of God Kerala</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Lora:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold2: #A0810A;
+    --gold3: #7a5f00;
+    --gold4: #5c4500;
+    --gold-light: #FFF8E6;
+    --gold-light2: #FFF0C8;
+    --gold-light3: #FFE49A;
+    --ivory: #FDF8F0;
+    --ivory2: #F5EDE0;
+    --ivory3: #E8D5B7;
+    --dark: #1a0010;
+    --text: #160008;
+    --text2: #3a2800;
+    --text3: #5a4010;
+    --magenta: #CC0066;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #fff; font-family: 'Lora', Georgia, serif; color: var(--text); min-height: 100vh; }
+
+  nav {
+    background: #fff; border-bottom: 3px solid var(--ivory3);
+    padding: 0 2.5rem; display: flex; align-items: center; justify-content: space-between;
+    height: 68px; position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 3px 16px rgba(201,168,76,0.14);
+  }
+  .nav-brand { font-family: 'Cinzel', serif; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.18em; color: var(--dark); text-decoration: none; }
+  .nav-links { display: flex; }
+  .nav-links a { font-family: 'Cinzel', serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.14em; color: var(--text3); text-decoration: none; padding: 0 18px; height: 68px; display: flex; align-items: center; border-bottom: 4px solid transparent; transition: color 0.2s, border-color 0.2s; }
+  .nav-links a:hover { color: var(--gold2); }
+  .nav-links a.active { color: var(--gold4); border-bottom-color: var(--gold); }
+
+  /* HERO – rich gold ivory */
+  .hero {
+    background: linear-gradient(155deg, var(--gold-light) 0%, var(--gold-light2) 50%, #FFE088 100%);
+    padding: 5.5rem 2rem 4.5rem; text-align: center;
+    position: relative; overflow: hidden;
+    border-bottom: 4px solid var(--gold-light3);
+  }
+  .hero-wm { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); pointer-events: none; opacity: 0.09; }
+  .hero-wm svg { width: 400px; height: 400px; }
+
+  /* Floating particles */
+  .particle { position: absolute; border-radius: 50%; background: var(--gold); animation: rise linear infinite; opacity: 0; }
+  @keyframes rise { 0%{transform:translateY(0) scale(1);opacity:0} 20%{opacity:.5} 80%{opacity:.2} 100%{transform:translateY(-120px) scale(0.2);opacity:0} }
+
+  .hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 5px; background: linear-gradient(90deg, transparent, var(--gold), var(--gold2), var(--gold), transparent); animation: shimmer 3s ease-in-out infinite; }
+  @keyframes shimmer { 0%,100%{opacity:.55} 50%{opacity:1} }
+
+  .hero-badge { display: inline-flex; align-items: center; gap: 14px; border: 2px solid var(--gold-light3); background: #fff; padding: 9px 24px; border-radius: 4px; margin-bottom: 2.2rem; animation: fadeUp 0.7s 0.1s both; box-shadow: 0 2px 10px rgba(201,168,76,0.15); }
+  .badge-line { width: 30px; height: 2px; background: var(--gold); }
+  .badge-text { font-family: 'Cinzel', serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.28em; color: var(--text3); }
+
+  .rank-label { font-family: 'Cinzel', serif; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.42em; color: var(--gold4); margin-bottom: 1rem; animation: fadeUp 0.7s 0.25s both; }
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 7.5vw, 5.2rem); font-weight: 800; color: var(--dark); letter-spacing: 0.02em; line-height: 1.08; animation: fadeUp 0.8s 0.4s both; }
+  .hero h1 em { color: var(--gold2); font-style: italic; }
+  .hero-verse { font-family: 'Lora', serif; font-style: italic; font-size: 1.3rem; font-weight: 500; color: var(--text2); margin: 1.6rem auto 0; max-width: 640px; line-height: 1.75; animation: fadeUp 0.7s 0.6s both; }
+  .hero-ref { font-family: 'Cinzel', serif; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.3em; color: var(--gold3); margin-top: 0.8rem; display: block; animation: fadeUp 0.6s 0.75s both; }
+  .ornament-row { display: flex; align-items: center; justify-content: center; gap: 14px; margin: 2.2rem auto 0; animation: fadeUp 0.6s 0.85s both; }
+  .orn-line { width: 90px; height: 2px; background: linear-gradient(90deg, transparent, var(--gold)); }
+  .orn-line.r { background: linear-gradient(90deg, var(--gold), transparent); }
+  .orn-diamond { width: 12px; height: 12px; background: var(--gold); transform: rotate(45deg); }
+  .orn-small { width: 7px; height: 7px; background: var(--gold2); transform: rotate(45deg); }
+
+  main { max-width: 980px; margin: 0 auto; padding: 4.5rem 1.5rem 5.5rem; }
+
+  .section-label { font-family: 'Cinzel', serif; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.35em; color: var(--gold3); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 14px; }
+  .section-label::after { content: ''; flex: 1; height: 2.5px; background: var(--ivory3); }
+  h2 { font-family: 'Playfair Display', serif; font-size: 2.6rem; font-weight: 800; color: var(--dark); margin-bottom: 2rem; line-height: 1.2; }
+  h2 span { color: var(--gold2); }
+
+  /* Scripture callout */
+  .scripture-block {
+    background: var(--dark); border-radius: 18px;
+    padding: 2.8rem 3rem; margin-bottom: 3.5rem; text-align: center;
+    position: relative; overflow: hidden;
+    animation: fadeUp 0.8s 1s both;
+  }
+  .scripture-block::before { content: '\201C'; position: absolute; top: -20px; left: 18px; font-family: 'Playfair Display', serif; font-size: 10rem; color: rgba(201,168,76,0.07); line-height: 1; pointer-events: none; }
+  .scripture-quote { font-family: 'Lora', serif; font-style: italic; font-size: 1.45rem; font-weight: 500; color: #fff; line-height: 1.75; position: relative; z-index: 1; max-width: 660px; margin: 0 auto 1rem; }
+  .scripture-ref { font-family: 'Cinzel', serif; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.3em; color: var(--gold2); }
+
+  /* Age cards */
+  .age-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 3.5rem; }
+  @media(max-width:560px){ .age-cards{ grid-template-columns:1fr; } }
+  .age-card { background: var(--gold-light); border: 2.5px solid var(--gold-light3); border-radius: 16px; padding: 2.2rem 1.8rem; text-align: center; position: relative; overflow: hidden; animation: fadeUp 0.7s both; transition: transform 0.3s, box-shadow 0.3s; }
+  .age-card:nth-child(1){ animation-delay:1.1s } .age-card:nth-child(2){ animation-delay:1.25s }
+  .age-card:hover { transform: translateY(-7px); box-shadow: 0 16px 44px rgba(201,168,76,0.22); }
+  .age-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px; background: linear-gradient(90deg, var(--gold), var(--gold2)); }
+  .age-big { font-family: 'Playfair Display', serif; font-size: 4.5rem; font-weight: 800; color: var(--gold2); line-height: 1; margin-bottom: 0.3rem; }
+  .age-sub { font-family: 'Cinzel', serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.22em; color: var(--gold3); margin-bottom: 1rem; }
+  .age-desc { font-family: 'Lora', serif; font-size: 1rem; font-weight: 500; color: var(--text2); line-height: 1.7; }
+  .age-highlight { display: inline-block; margin-top: 0.8rem; background: #fff; border: 2px solid var(--gold); border-radius: 6px; padding: 4px 12px; font-family: 'Cinzel', serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.16em; color: var(--gold3); }
+
+  /* Qual grid */
+  .qual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 4rem; }
+  @media(max-width:620px){ .qual-grid{ grid-template-columns:1fr; } }
+  .qual-card { background: var(--gold-light); border: 2.5px solid var(--gold-light3); border-radius: 14px; padding: 1.8rem 2rem; position: relative; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s; animation: fadeUp 0.7s both; }
+  .qual-card:nth-child(1){ animation-delay:1.3s } .qual-card:nth-child(2){ animation-delay:1.4s }
+  .qual-card:nth-child(3){ animation-delay:1.5s } .qual-card:nth-child(4){ animation-delay:1.6s }
+  .qual-card:nth-child(5){ animation-delay:1.7s } .qual-card:nth-child(6){ animation-delay:1.8s }
+  .qual-card:hover { transform: translateY(-7px); box-shadow: 0 16px 44px rgba(201,168,76,0.2); border-color: var(--gold); }
+  .qual-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px; background: linear-gradient(90deg, var(--gold), var(--gold2)); transform: scaleX(0); transform-origin: left; transition: transform 0.35s; }
+  .qual-card:hover::before { transform: scaleX(1); }
+  .qual-num { font-family: 'Cinzel', serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.25em; color: var(--gold3); margin-bottom: 0.7rem; }
+  .qual-title { font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 800; color: var(--dark); margin-bottom: 0.7rem; }
+  .qual-text { font-family: 'Lora', serif; font-size: 1.05rem; font-weight: 500; color: var(--text2); line-height: 1.75; }
+
+  /* Exam panel */
+  .exam-section { background: var(--dark); border-radius: 20px; padding: 3rem 2.8rem; margin-bottom: 4rem; animation: fadeUp 0.8s 1.9s both; }
+  .exam-section .section-label { color: var(--gold2); }
+  .exam-section .section-label::after { background: rgba(255,255,255,0.12); }
+  .exam-section h2 { color: #fff; }
+  .exam-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px,1fr)); gap: 16px; }
+  .exam-item { background: rgba(255,255,255,0.05); border: 2px solid rgba(201,168,76,0.25); border-radius: 14px; padding: 1.6rem 1.4rem; text-align: center; transition: background 0.3s, border-color 0.3s, transform 0.3s; }
+  .exam-item:hover { background: rgba(201,168,76,0.1); border-color: var(--gold); transform: translateY(-5px); }
+  .exam-icon { font-size: 2.2rem; display: block; margin-bottom: 0.8rem; }
+  .exam-label { font-family: 'Cinzel', serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.2em; color: var(--gold2); display: block; margin-bottom: 0.5rem; }
+  .exam-desc { font-family: 'Lora', serif; font-size: 1rem; font-weight: 500; color: rgba(253,248,240,0.88); line-height: 1.65; }
+
+  /* Chaplain note */
+  .chaplain-note { background: var(--gold-light); border: 2.5px solid var(--gold-light3); border-left: 6px solid var(--gold); border-radius: 0 14px 14px 0; padding: 2rem 2.4rem; margin-bottom: 4rem; font-family: 'Lora', serif; font-size: 1.1rem; font-weight: 500; color: var(--text2); line-height: 1.8; animation: fadeUp 0.8s 2.1s both; }
+  .chaplain-note strong { font-family: 'Cinzel', serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.2em; color: var(--gold3); display: block; margin-bottom: 0.6rem; }
+
+  /* Complete progression */
+  .complete-section { background: var(--gold-light); border: 2.5px solid var(--gold-light3); border-radius: 18px; padding: 2.8rem 2rem 2.4rem; text-align: center; animation: fadeUp 0.8s 2.3s both; }
+  .complete-section h3 { font-family: 'Cinzel', serif; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.3em; color: var(--gold4); margin-bottom: 2.2rem; }
+  .promo-path { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; }
+  .promo-step { text-align: center; padding: 0 1.8rem; }
+  .promo-dot { width: 60px; height: 60px; border-radius: 50%; margin: 0 auto 0.8rem; display: flex; align-items: center; justify-content: center; font-family: 'Cinzel', serif; font-size: 0.9rem; font-weight: 700; transition: transform 0.3s; }
+  .promo-dot:hover { transform: scale(1.12); }
+  .promo-step.done .promo-dot { background: rgba(201,168,76,0.2); color: var(--gold3); border: 2.5px solid var(--gold); }
+  .promo-step.current .promo-dot { background: var(--gold); color: #fff; border: 3px solid var(--gold2); box-shadow: 0 0 32px rgba(201,168,76,0.45); }
+  .promo-name { font-family: 'Cinzel', serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.2em; color: #bbb; }
+  .promo-step.done .promo-name { color: var(--gold3); }
+  .promo-step.current .promo-name { color: var(--gold4); }
+  .promo-arrow { font-size: 1.4rem; color: var(--gold-light3); padding: 0 8px; margin-top: -24px; }
+  .promo-note { margin-top: 1.8rem; font-family: 'Lora', serif; font-style: italic; font-size: 1.05rem; font-weight: 500; color: var(--text3); }
+
+  footer { background: var(--dark); border-top: 4px solid var(--gold); text-align: center; padding: 2.8rem 2rem; }
+  .footer-ornament { display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 1.2rem; }
+  .footer-ornament span { width: 54px; height: 2px; background: rgba(201,168,76,0.4); }
+  .footer-ornament em { color: var(--gold2); font-style: normal; font-size: 1.4rem; }
+  .footer-text { font-family: 'Cinzel', serif; letter-spacing: 0.2em; font-size: 0.72rem; font-weight: 700; color: rgba(253,248,240,0.5); }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-brand">COG KERALA STATE</a>
+  <div class="nav-links">
+    <a href="EX.HTML">EXHORTER</a>
+    <a href="LI.HTML">LICENSED</a>
+    <a href="OR.HTML" class="active">ORDAINED</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-wm">
+    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <rect x="85" y="15" width="30" height="170" fill="#C9A84C"/>
+      <rect x="25" y="65" width="150" height="30" fill="#C9A84C"/>
+    </svg>
+  </div>
+  <div class="particle" style="width:4px;height:4px;left:22%;bottom:12%;animation-duration:4s;animation-delay:0s;"></div>
+  <div class="particle" style="width:3px;height:3px;left:38%;bottom:18%;animation-duration:5s;animation-delay:1.2s;"></div>
+  <div class="particle" style="width:5px;height:5px;left:58%;bottom:8%;animation-duration:4.5s;animation-delay:0.5s;"></div>
+  <div class="particle" style="width:3px;height:3px;left:72%;bottom:22%;animation-duration:6s;animation-delay:2s;"></div>
+  <div class="particle" style="width:4px;height:4px;left:82%;bottom:6%;animation-duration:3.5s;animation-delay:1.5s;"></div>
+
+  <div class="hero-badge">
+    <div class="badge-line"></div>
+    <span class="badge-text">CHURCH OF GOD (FULL GOSPEL) IN INDIA · KERALA STATE</span>
+    <div class="badge-line"></div>
+  </div>
+  <div class="rank-label">RANK · III · HIGHEST ORDER</div>
+  <h1>Ordained <em>Minister</em></h1>
+  <p class="hero-verse">"If anyone aspires to the office of overseer, he desires a noble task — meet the biblical requirements and be found worthy of this sacred call."</p>
+  <span class="hero-ref">1 TIMOTHY 3:1–7</span>
+  <div class="ornament-row">
+    <div class="orn-line"></div><div class="orn-small"></div>
+    <div class="orn-diamond"></div>
+    <div class="orn-small"></div><div class="orn-line r"></div>
+  </div>
+</div>
+
+<main>
+
+  <div class="scripture-block">
+    <p class="scripture-quote">"The overseer must be above reproach, faithful to his wife, temperate, self-controlled, respectable, hospitable, able to teach — he must manage his own family well and see that his children obey him."</p>
+    <div class="scripture-ref">1 TIMOTHY 3:2–4 · BIBLICAL FOUNDATION FOR ORDINATION</div>
+  </div>
+
+  <div class="section-label">Age & Experience</div>
+  <h2>Requirements for <span>Ordination</span></h2>
+  <div class="age-cards">
+    <div class="age-card">
+      <div class="age-big">25</div>
+      <div class="age-sub">YEARS OF AGE</div>
+      <p class="age-desc">The applicant may be ordained at 25 years of age, provided they have been active in ministry for the required period and are otherwise fully qualified.</p>
+      <div class="age-highlight">MIN. 8 YEARS ACTIVE MINISTRY</div>
+    </div>
+    <div class="age-card">
+      <div class="age-big">30</div>
+      <div class="age-sub">YEARS OF AGE</div>
+      <p class="age-desc">May be ordained at 30 years of age with the required years of active ministry, if otherwise fully qualified before the Board of Examiners.</p>
+      <div class="age-highlight">MIN. 5 YEARS ACTIVE MINISTRY</div>
+    </div>
+  </div>
+
+  <div class="section-label">Qualifications</div>
+  <h2>Requirements for <span>Ordained Rank</span></h2>
+  <div class="qual-grid">
+    <div class="qual-card"><div class="qual-num">01</div><div class="qual-title">Biblical Standards</div><p class="qual-text">Must meet the full biblical requirements for ministry as set forth in 1 Timothy 3:1–7 without exception or compromise.</p></div>
+    <div class="qual-card"><div class="qual-num">02</div><div class="qual-title">Active Ministry</div><p class="qual-text">Must have served in active ministry for the required number of years based on age of ordination, as assessed by the State Overseer.</p></div>
+    <div class="qual-card"><div class="qual-num">03</div><div class="qual-title">Holy Spirit Baptism</div><p class="qual-text">Must have received the baptism of the Holy Ghost, evidenced by the initial sign of speaking in other tongues as the Spirit gives utterance.</p></div>
+    <div class="qual-card"><div class="qual-num">04</div><div class="qual-title">Board Examination</div><p class="qual-text">Must successfully pass the examination administered by a duly constituted Board of Examination for Ministerial Candidates.</p></div>
+    <div class="qual-card"><div class="qual-num">05</div><div class="qual-title">Church Government</div><p class="qual-text">Examination will embrace a thorough knowledge of church government as practiced within the Church of God organizational structure.</p></div>
+    <div class="qual-card"><div class="qual-num">06</div><div class="qual-title">Doctrine &amp; Scripture</div><p class="qual-text">Must demonstrate comprehensive knowledge of doctrine and general biblical knowledge as required by the International General Assembly.</p></div>
+  </div>
+
+  <div class="exam-section">
+    <div class="section-label">Board Examination</div>
+    <h2>Areas of <span style="color:var(--gold2)">Examination</span></h2>
+    <div class="exam-grid">
+      <div class="exam-item"><span class="exam-icon">📖</span><span class="exam-label">Scripture</span><p class="exam-desc">General biblical knowledge across both Testaments of the Holy Scriptures</p></div>
+      <div class="exam-item"><span class="exam-icon">⚖</span><span class="exam-label">Church Govt.</span><p class="exam-desc">Organizational structure and governance of the Church of God at all levels</p></div>
+      <div class="exam-item"><span class="exam-icon">✝</span><span class="exam-label">Doctrine</span><p class="exam-desc">Core doctrines and teachings as set forth by the International General Assembly</p></div>
+      <div class="exam-item"><span class="exam-icon">🕊</span><span class="exam-label">Theology</span><p class="exam-desc">Full Gospel theology including Spirit baptism, divine healing, and eschatology</p></div>
+    </div>
+  </div>
+
+  <div class="chaplain-note">
+    <strong>MILITARY CHAPLAIN EXCEPTION</strong>
+    In the case of military chaplains, the General Executive Committee shall be empowered to waive age, time, and performance minimums for ordination, if the applicant is otherwise qualified and serving in active military ministry. This exceptional provision recognizes the unique calling and service context of military pastoral work.
+  </div>
+
+  <div class="complete-section">
+    <h3>MINISTERIAL PROGRESSION PATH — COMPLETE</h3>
+    <div class="promo-path">
+      <div class="promo-step done"><div class="promo-dot">I</div><span class="promo-name">EXHORTER</span></div>
+      <div class="promo-arrow">→</div>
+      <div class="promo-step done"><div class="promo-dot">II</div><span class="promo-name">LICENSED</span></div>
+      <div class="promo-arrow">→</div>
+      <div class="promo-step current"><div class="promo-dot">III</div><span class="promo-name">ORDAINED</span></div>
+    </div>
+    <p class="promo-note">The Ordained Minister represents the highest ministerial rank — the culmination of faithful service, proven character, and deep knowledge of the Word of God.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-ornament"><span></span><em>✝</em><span></span></div>
+  <p class="footer-text">CHURCH OF GOD (FULL GOSPEL) IN INDIA · KERALA STATE · ALL RIGHTS RESERVED</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>State Headquarters – Church of God Kerala</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--magenta:#CC0066;--magenta2:#E6007A;--magenta-light:#fce4f0;--gold:#C9A84C;--gold2:#E8C46A;--gold3:#F5E0A0;--gold-light:#fdf6e3;--ivory:#FDF8F0;--ivory2:#F5EDE0;--ivory3:#EBD9C5;--ink:#1e0a14;--ink2:#3d1728;--muted:#7a5060}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Jost',sans-serif;background:var(--ivory);color:var(--ink);overflow-x:hidden}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 3rem;background:rgba(253,248,240,0.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(201,168,76,0.25)}
+  .nav-logo{font-family:'Cinzel',serif;font-size:12px;letter-spacing:3px;color:var(--magenta);text-transform:uppercase;line-height:1.4}
+  .nav-logo span{display:block;font-size:9px;letter-spacing:4px;color:var(--gold);margin-top:2px}
+  .nav-pages{display:flex;gap:0.5rem}
+  .nav-pages a{font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:6px 14px;border:1px solid transparent;color:var(--muted);text-decoration:none;transition:all 0.25s}
+  .nav-pages a:hover,.nav-pages a.active{color:var(--magenta);border-color:var(--magenta-light);background:var(--magenta-light)}
+
+  /* HERO */
+  .hero{padding-top:68px;background:var(--ivory);min-height:75vh;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden}
+  .hero-pattern{position:absolute;inset:0;pointer-events:none;opacity:0.04}
+  .hero-pattern svg{width:100%;height:100%}
+  .hero-content{position:relative;z-index:2;padding:4rem 3rem 0;max-width:1100px;margin:0 auto;width:100%}
+  .hero-tag{font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--magenta);margin-bottom:1.5rem;display:block}
+  .hero-title{font-family:'Cinzel',serif;font-size:clamp(2.5rem,5vw,5rem);font-weight:400;line-height:1.05;color:var(--ink)}
+  .hero-title em{font-style:italic;color:var(--gold);font-family:'Cormorant Garamond',serif;font-size:1.1em;font-weight:300}
+  .hero-sub{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:300;color:var(--muted);margin-top:1rem;font-style:italic}
+
+  .hero-strip{margin-top:4rem;display:grid;grid-template-columns:repeat(4,1fr);background:var(--magenta)}
+  .strip-item{padding:1.8rem 2rem;border-right:1px solid rgba(255,255,255,0.15);text-align:center}
+  .strip-item:last-child{border-right:none}
+  .strip-num{font-family:'Cinzel',serif;font-size:2rem;color:#fff;line-height:1}
+  .strip-label{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-top:0.4rem}
+
+  /* MARQUEE */
+  .marquee-bar{background:var(--gold2);padding:10px 0;overflow:hidden;white-space:nowrap}
+  .marquee-inner{display:inline-flex;animation:marquee 22s linear infinite}
+  .marquee-item{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--ink);padding:0 2.5rem}
+  .marquee-item span{color:var(--magenta);margin:0 0.25rem}
+  @keyframes marquee{to{transform:translateX(-50%)}}
+
+  /* SECTIONS */
+  .container{max-width:1100px;margin:0 auto;padding:0 3rem}
+  .section-eyebrow{font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--magenta);margin-bottom:1rem;display:block}
+  .section-title{font-family:'Cinzel',serif;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:400;color:var(--ink);line-height:1.15;margin-bottom:0.5rem}
+  .section-title em{font-style:italic;color:var(--gold);font-family:'Cormorant Garamond',serif;font-size:1.1em;font-weight:300}
+  .accent-bar{width:60px;height:3px;background:linear-gradient(to right,var(--magenta),var(--gold));margin:1.5rem 0 2.5rem}
+  .body-text{font-family:'Cormorant Garamond',serif;font-size:1.15rem;line-height:1.9;color:var(--muted);font-weight:300}
+
+  /* HISTORY */
+  .history-section{padding:100px 0;background:#fff}
+  .history-layout{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+
+  /* ADDRESS CARD */
+  .address-card{background:var(--gold-light);border:1px solid var(--gold3);padding:2.5rem;margin-top:2.5rem;position:relative}
+  .address-card::before{content:'';position:absolute;top:10px;left:10px;right:10px;bottom:10px;border:1px solid rgba(201,168,76,0.3);pointer-events:none}
+  .address-line{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--ink);line-height:2}
+  .address-label{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:0.5rem}
+
+  /* MILESTONES */
+  .milestones-section{padding:100px 0;background:var(--ivory)}
+  .milestones-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--ivory3);margin-top:3rem}
+  .milestone{background:var(--ivory);padding:3rem 2.5rem;position:relative;overflow:hidden;transition:all 0.4s;opacity:0;transform:translateY(20px);transition:all 0.5s;cursor:default}
+  .milestone.visible{opacity:1;transform:none}
+  .milestone::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(to bottom,var(--magenta),var(--gold));transform:scaleY(0);transition:transform 0.4s;transform-origin:top}
+  .milestone:hover::before{transform:scaleY(1)}
+  .milestone:hover{background:var(--magenta-light)}
+  .m-icon{width:48px;height:48px;border-radius:50%;background:var(--magenta-light);display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem}
+  .m-cross{width:14px;height:20px;position:relative}
+  .m-cross::before{content:'';position:absolute;width:3px;height:100%;background:var(--magenta);left:50%;transform:translateX(-50%);border-radius:1px}
+  .m-cross::after{content:'';position:absolute;width:100%;height:3px;background:var(--magenta);top:28%;border-radius:1px}
+  .m-title{font-family:'Cinzel',serif;font-size:0.85rem;letter-spacing:2px;color:var(--ink);text-transform:uppercase;margin-bottom:0.8rem}
+  .m-text{font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--muted);line-height:1.8}
+
+  /* DISTRICTS */
+  .districts-section{padding:80px 0;background:var(--gold-light)}
+  .districts-layout{display:grid;grid-template-columns:2fr 3fr;gap:5rem;align-items:center;margin-top:3rem}
+  .big-number{font-family:'Cinzel',serif;font-size:8rem;color:var(--magenta);line-height:1;opacity:0.15;position:absolute;top:-1rem;left:0}
+  .district-facts{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5rem}
+  .dfact{padding:1.5rem;background:#fff;border-bottom:3px solid var(--gold2);text-align:center;transition:all 0.3s;opacity:0;transform:scale(0.95);transition:all 0.4s}
+  .dfact.visible{opacity:1;transform:none}
+  .dfact:hover{border-bottom-color:var(--magenta);transform:translateY(-4px)}
+  .dfact-num{font-family:'Cinzel',serif;font-size:1.8rem;color:var(--magenta);margin-bottom:0.3rem}
+  .dfact-label{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted)}
+
+  /* OVERSEER */
+  .overseer-section{padding:100px 0;background:#fff}
+  .overseer-layout{display:grid;grid-template-columns:1fr 2fr;gap:5rem;align-items:start}
+  .overseer-emblem{width:180px;height:180px;border-radius:50%;border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;position:relative;background:var(--gold-light)}
+  .overseer-emblem::before{content:'';position:absolute;inset:10px;border-radius:50%;border:1px solid rgba(204,0,102,0.2);animation:rotateSlow 8s linear infinite}
+  @keyframes rotateSlow{to{transform:rotate(360deg)}}
+  .overseer-cross{width:40px;height:56px;position:relative}
+  .overseer-cross::before{content:'';position:absolute;width:5px;height:100%;background:linear-gradient(to bottom,var(--gold),var(--magenta));left:50%;transform:translateX(-50%);border-radius:2px}
+  .overseer-cross::after{content:'';position:absolute;width:100%;height:5px;background:linear-gradient(to right,var(--gold),var(--magenta));top:28%;border-radius:2px}
+  .overseer-text blockquote{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-style:italic;color:var(--ink);line-height:1.8;border-left:3px solid var(--magenta);padding-left:1.5rem;margin-bottom:1.5rem}
+
+  /* QUOTE BAND */
+  .quote-band{background:var(--magenta);padding:70px 0;text-align:center}
+  .quote-band blockquote{font-family:'Cormorant Garamond',serif;font-size:clamp(1.2rem,2.2vw,1.8rem);font-style:italic;color:#fff;max-width:800px;margin:0 auto;padding:0 3rem;line-height:1.65}
+  .quote-band cite{display:block;margin-top:1.5rem;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--gold3);font-style:normal;opacity:0.8}
+
+  footer{background:var(--ink);padding:3rem 0 2rem}
+  .footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+  .footer-brand{font-family:'Cinzel',serif;font-size:0.85rem;color:var(--gold2);letter-spacing:2px}
+  .footer-links-row{display:flex;gap:1.5rem}
+  .footer-links-row a{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.2s}
+  .footer-links-row a:hover{color:var(--gold2)}
+  .footer-copy{font-size:10px;color:rgba(255,255,255,0.25);letter-spacing:1px;margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,0.07);text-align:center}
+
+  .fade-up{opacity:0;transform:translateY(20px);transition:all 0.6s}
+  .fade-up.visible{opacity:1;transform:none}
+
+  @media(max-width:900px){
+    .history-layout,.overseer-layout,.districts-layout{grid-template-columns:1fr}
+    .milestones-grid{grid-template-columns:1fr}
+    .hero-strip{grid-template-columns:1fr 1fr}
+    .district-facts{grid-template-columns:1fr 1fr}
+    .nav-pages{display:none}
+    .container{padding:0 1.5rem}
+  }
+  @media(max-width:500px){.hero-strip,.district-facts{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Church of God Kerala<span>Full Gospel in India</span></div>
+  <div class="nav-pages">
+    <a href="founder.html">Our Founder</a>
+    <a href="international.html">International</a>
+    <a href="headquarters.html" class="active">State HQ</a>
+    <a href="teachings.html">Teachings</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-content">
+    <span class="hero-tag">State Headquarters · Kerala</span>
+    <h1 class="hero-title">Mount Zion,<br><em>Mulakuzha</em></h1>
+    <p class="hero-sub">Chengannur, Kerala, India — the beating heart of Church of God Kerala</p>
+  </div>
+  <div class="hero-strip">
+    <div class="strip-item"><div class="strip-num">1200+</div><div class="strip-label">Local Churches</div></div>
+    <div class="strip-item"><div class="strip-num">1500+</div><div class="strip-label">Ministers</div></div>
+    <div class="strip-item"><div class="strip-num">14</div><div class="strip-label">Revenue Districts</div></div>
+    <div class="strip-item"><div class="strip-num">63</div><div class="strip-label">Taluks Covered</div></div>
+  </div>
+</div>
+
+<div class="marquee-bar">
+  <div class="marquee-inner">
+    <span class="marquee-item">Mt. Zion · Mulakuzha <span>✦</span></span>
+    <span class="marquee-item">Chengannur · Kerala <span>✦</span></span>
+    <span class="marquee-item">1200+ Churches <span>✦</span></span>
+    <span class="marquee-item">FINISH Commitment <span>✦</span></span>
+    <span class="marquee-item">Great Commission <span>✦</span></span>
+    <span class="marquee-item">337 Lakh People <span>✦</span></span>
+    <span class="marquee-item">Mt. Zion · Mulakuzha <span>✦</span></span>
+    <span class="marquee-item">Chengannur · Kerala <span>✦</span></span>
+    <span class="marquee-item">1200+ Churches <span>✦</span></span>
+    <span class="marquee-item">FINISH Commitment <span>✦</span></span>
+    <span class="marquee-item">Great Commission <span>✦</span></span>
+    <span class="marquee-item">337 Lakh People <span>✦</span></span>
+  </div>
+</div>
+
+<!-- HISTORY -->
+<section class="history-section">
+  <div class="container">
+    <div class="history-layout">
+      <div>
+        <span class="section-eyebrow fade-up">Our History</span>
+        <h2 class="section-title fade-up">From <em>Arattupuzha</em><br>to All of Kerala</h2>
+        <div class="accent-bar fade-up"></div>
+        <p class="body-text fade-up">The history of the Church of God in Kerala traces back to Rev. Robert Felix Cook and his pioneering work. In January 1914, after a four-day revival at Thuvayoor, sixty-three souls were baptised — establishing the very first Pentecostal church in India, which remains a Church of God congregation to this day.</p>
+        <p class="body-text fade-up" style="margin-top:1.2rem">In December 1923, the first General Convention of all Pentecostal Churches in India was held on the banks of the river Pampa at Arattupuzha — a gathering that united all Pentecostal missionaries and native ministers. Today, the State Headquarters at Mount Zion, Mulakuzha, Chengannur, oversees a flourishing network of over 1,200 local churches across all of Kerala.</p>
+
+        <div class="address-card fade-up">
+          <span class="address-label">State Headquarters Address</span>
+          <div class="address-line">
+            Mount Zion, Mulakuzha P.O.<br>
+            Chengannur, Kerala<br>
+            India<br><br>
+            <strong style="font-size:0.9rem;letter-spacing:1px">cogkeralastate@gmail.com</strong>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <span class="section-eyebrow fade-up">Timeline</span>
+        <div style="display:flex;flex-direction:column;gap:0;margin-top:3.2rem">
+          <!-- stacked timeline -->
+          <div style="display:flex;gap:1.5rem;margin-bottom:2.5rem;opacity:0;transform:translateX(20px);transition:all 0.5s" class="tl-row">
+            <div style="display:flex;flex-direction:column;align-items:center">
+              <div style="width:12px;height:12px;border-radius:50%;background:var(--magenta);border:3px solid #fff;box-shadow:0 0 0 2px var(--magenta);flex-shrink:0;margin-top:4px"></div>
+              <div style="flex:1;width:1px;background:linear-gradient(var(--magenta),var(--gold));margin-top:4px"></div>
+            </div>
+            <div style="padding-bottom:1.5rem">
+              <div style="font-family:'Cinzel',serif;font-size:0.85rem;letter-spacing:2px;color:var(--gold)">January 1914</div>
+              <div style="font-weight:600;font-size:0.9rem;margin:0.3rem 0;color:var(--ink)">First Pentecostal Church in India</div>
+              <div style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--muted);line-height:1.7">63 converts baptised at Thuvayoor after a four-day revival — the foundation of Pentecostalism in India.</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:1.5rem;margin-bottom:2.5rem;opacity:0;transform:translateX(20px);transition:all 0.5s;transition-delay:0.1s" class="tl-row">
+            <div style="display:flex;flex-direction:column;align-items:center">
+              <div style="width:12px;height:12px;border-radius:50%;background:var(--magenta);border:3px solid #fff;box-shadow:0 0 0 2px var(--magenta);flex-shrink:0;margin-top:4px"></div>
+              <div style="flex:1;width:1px;background:linear-gradient(var(--magenta),var(--gold));margin-top:4px"></div>
+            </div>
+            <div style="padding-bottom:1.5rem">
+              <div style="font-family:'Cinzel',serif;font-size:0.85rem;letter-spacing:2px;color:var(--gold)">1922</div>
+              <div style="font-weight:600;font-size:0.9rem;margin:0.3rem 0;color:var(--ink)">South India's First Bible School</div>
+              <div style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--muted);line-height:1.7">Rev. Cook begins the Home Bible Training School at Villakonam Bungalow — now the internationally accredited Mt. Zion Bible College.</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:1.5rem;margin-bottom:2.5rem;opacity:0;transform:translateX(20px);transition:all 0.5s;transition-delay:0.2s" class="tl-row">
+            <div style="display:flex;flex-direction:column;align-items:center">
+              <div style="width:12px;height:12px;border-radius:50%;background:var(--magenta);border:3px solid #fff;box-shadow:0 0 0 2px var(--magenta);flex-shrink:0;margin-top:4px"></div>
+              <div style="flex:1;width:1px;background:linear-gradient(var(--magenta),var(--gold));margin-top:4px"></div>
+            </div>
+            <div style="padding-bottom:1.5rem">
+              <div style="font-family:'Cinzel',serif;font-size:0.85rem;letter-spacing:2px;color:var(--gold)">December 1923</div>
+              <div style="font-weight:600;font-size:0.9rem;margin:0.3rem 0;color:var(--ink)">First General Convention</div>
+              <div style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--muted);line-height:1.7">The first General Convention of all Pentecostal Churches in India, held on the banks of the river Pampa at Arattupuzha — a landmark moment for Indian Christianity.</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:1.5rem;opacity:0;transform:translateX(20px);transition:all 0.5s;transition-delay:0.3s" class="tl-row">
+            <div style="display:flex;flex-direction:column;align-items:center">
+              <div style="width:12px;height:12px;border-radius:50%;background:var(--gold);border:3px solid #fff;box-shadow:0 0 0 2px var(--gold);flex-shrink:0;margin-top:4px"></div>
+            </div>
+            <div>
+              <div style="font-family:'Cinzel',serif;font-size:0.85rem;letter-spacing:2px;color:var(--gold)">Today</div>
+              <div style="font-weight:600;font-size:0.9rem;margin:0.3rem 0;color:var(--ink)">1,200+ Churches · All of Kerala</div>
+              <div style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--muted);line-height:1.7">From the State HQ at Mount Zion, Mulakuzha — ministering across all 14 revenue districts, 63 taluks, and reaching 337 lakh people of Kerala.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MILESTONES -->
+<section class="milestones-section">
+  <div class="container">
+    <span class="section-eyebrow fade-up">Milestones</span>
+    <h2 class="section-title fade-up">Pillars of <em>Kerala's</em> Pentecostal Heritage</h2>
+    <div class="accent-bar fade-up"></div>
+    <div class="milestones-grid">
+      <div class="milestone">
+        <div class="m-icon"><div class="m-cross"></div></div>
+        <div class="m-title">First Pentecostal Church</div>
+        <p class="m-text">Thuvayoor, January 1914. The congregation established at the very first Pentecostal revival in India — sixty-three baptised souls who became the seed of a movement that now spans all of Kerala and beyond.</p>
+      </div>
+      <div class="milestone">
+        <div class="m-icon"><div class="m-cross"></div></div>
+        <div class="m-title">Mt. Zion Bible College</div>
+        <p class="m-text">Founded in 1922 as a humble Home Bible School, it grew into the fully accredited Mt. Zion Bible College — holding the 3rd grade level international accreditation of the Church of God Education Department.</p>
+      </div>
+      <div class="milestone">
+        <div class="m-icon"><div class="m-cross"></div></div>
+        <div class="m-title">First General Convention</div>
+        <p class="m-text">December 1923, on the banks of the river Pampa at Arattupuzha — the first General Convention of all Pentecostal Churches in India, uniting all Pentecostal missionaries and native ministers as one body.</p>
+      </div>
+      <div class="milestone">
+        <div class="m-icon"><div class="m-cross"></div></div>
+        <div class="m-title">The FINISH Commitment</div>
+        <p class="m-text">Kerala State Church of God has joined the global Church of God family in the FINISH Commitment — fulfilling the Great Commission of Matthew 28:19 to make disciples of all nations, beginning with Kerala's 337 lakh people.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DISTRICTS -->
+<section class="districts-section">
+  <div class="container">
+    <span class="section-eyebrow fade-up">Reach Across Kerala</span>
+    <h2 class="section-title fade-up">Covering <em>Every Corner</em> of the State</h2>
+    <div class="accent-bar fade-up"></div>
+    <div class="districts-layout">
+      <div>
+        <p class="body-text fade-up">Our small state of Kerala has 14 revenue districts and 63 taluks, consisting of 1,479 revenue villages, 6 corporations, and 87 municipalities — home to about 337 lakh people. Since AD 52 Kerala has heard the gospel, and the Church of God Kerala is committed to reaching every soul.</p>
+        <p class="body-text fade-up" style="margin-top:1.2rem">Through the FINISH Commitment, we are reaching the unconverted, baptising them in water, and leading them to unite with the church — viewing all the districts of Kerala as our mission field.</p>
+      </div>
+      <div class="district-facts">
+        <div class="dfact"><div class="dfact-num">14</div><div class="dfact-label">Revenue Districts</div></div>
+        <div class="dfact"><div class="dfact-num">63</div><div class="dfact-label">Taluks</div></div>
+        <div class="dfact"><div class="dfact-num">1479</div><div class="dfact-label">Revenue Villages</div></div>
+        <div class="dfact"><div class="dfact-num">6</div><div class="dfact-label">Corporations</div></div>
+        <div class="dfact"><div class="dfact-num">87</div><div class="dfact-label">Municipalities</div></div>
+        <div class="dfact"><div class="dfact-num">337L</div><div class="dfact-label">Population</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="quote-band">
+  <blockquote>
+    "It is vested on our shoulders to declare the good news and lead the lost to His kingdom. Let us launch to FINISH Commission with a great commitment — as one body, with one purpose, in unity."
+    <cite>State Overseer, Church of God Kerala</cite>
+  </blockquote>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">Church of God (Full Gospel) · Kerala State</div>
+      <div class="footer-links-row">
+       <a href="fo.html" class="active">Our Founder</a>
+    <a href="inter.html">International</a>
+    <a href="head.html">State HQ</a>
+    <a href="teaching.html">Teachings</a>
+      </div>
+    </div>
+    <p class="footer-copy">© 2025 Church of God (Full Gospel) in India, Kerala State · Mount Zion, Mulakuzha, Chengannur</p>
+  </div>
+</footer>
+
+<script>
+const io = new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add('visible')),{threshold:0.1,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.fade-up,.milestone,.dfact,.tl-row').forEach((el,i)=>{el.style.transitionDelay||(el.style.transitionDelay=(i%4)*0.1+'s');io.observe(el)});
+</script>
+</body>
+</html>

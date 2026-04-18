@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>International Office – Church of God Kerala</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--magenta:#CC0066;--magenta2:#E6007A;--magenta-light:#fce4f0;--gold:#C9A84C;--gold2:#E8C46A;--gold3:#F5E0A0;--gold-light:#fdf6e3;--ivory:#FDF8F0;--ivory2:#F5EDE0;--ivory3:#EBD9C5;--ink:#1e0a14;--ink2:#3d1728;--muted:#7a5060}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Jost',sans-serif;background:var(--ivory);color:var(--ink);overflow-x:hidden}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 3rem;background:rgba(253,248,240,0.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(201,168,76,0.25)}
+  .nav-logo{font-family:'Cinzel',serif;font-size:12px;letter-spacing:3px;color:var(--magenta);text-transform:uppercase;line-height:1.4}
+  .nav-logo span{display:block;font-size:9px;letter-spacing:4px;color:var(--gold);margin-top:2px}
+  .nav-pages{display:flex;gap:0.5rem}
+  .nav-pages a{font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:6px 14px;border:1px solid transparent;color:var(--muted);text-decoration:none;transition:all 0.25s}
+  .nav-pages a:hover,.nav-pages a.active{color:var(--magenta);border-color:var(--magenta-light);background:var(--magenta-light)}
+
+  /* HERO — full-width banner with gold diagonal split */
+  .hero{min-height:80vh;padding-top:68px;background:var(--ivory);position:relative;overflow:hidden;display:flex;align-items:center}
+  .hero-bg-shape{position:absolute;top:0;right:0;width:55%;height:100%;background:var(--gold-light);clip-path:polygon(12% 0,100% 0,100% 100%,0 100%)}
+  .hero-accent{position:absolute;top:0;right:0;width:55%;height:100%;border-left:3px solid var(--gold2);clip-path:polygon(12% 0,12% 0,12% 100%,12% 100%);pointer-events:none}
+  .hero-content{position:relative;z-index:2;padding:4rem 3rem;max-width:1100px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+  .hero-text{}
+  .hero-tag{font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--magenta);margin-bottom:1.5rem;display:block}
+  .hero-title{font-family:'Cinzel',serif;font-size:clamp(2rem,4vw,3.5rem);font-weight:400;line-height:1.1;color:var(--ink);margin-bottom:1rem}
+  .hero-title em{font-style:italic;color:var(--gold);font-family:'Cormorant Garamond',serif;font-size:1.12em;font-weight:300}
+  .hero-body{font-family:'Cormorant Garamond',serif;font-size:1.15rem;line-height:1.9;color:var(--muted);font-weight:300;margin-top:1.5rem}
+
+  .globe-visual{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.5rem}
+  .globe-ring{width:260px;height:260px;border-radius:50%;border:2px solid var(--gold);position:relative;display:flex;align-items:center;justify-content:center;animation:spin 20s linear infinite}
+  .globe-ring::before{content:'';position:absolute;inset:16px;border-radius:50%;border:1px solid rgba(204,0,102,0.2);animation:spin 12s linear infinite reverse}
+  .globe-ring::after{content:'';position:absolute;inset:-16px;border-radius:50%;border:1px dashed rgba(201,168,76,0.25);animation:spin 30s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .globe-center{position:absolute;text-align:center}
+  .globe-num{font-family:'Cinzel',serif;font-size:3rem;color:var(--magenta);line-height:1}
+  .globe-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted)}
+  .globe-caption{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-top:0.5rem}
+
+  /* MARQUEE */
+  .marquee-bar{background:var(--magenta);padding:10px 0;overflow:hidden;white-space:nowrap}
+  .marquee-inner{display:inline-flex;animation:marquee 20s linear infinite}
+  .marquee-item{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,0.85);padding:0 2.5rem}
+  .marquee-item span{color:var(--gold3);margin:0 0.25rem}
+  @keyframes marquee{to{transform:translateX(-50%)}}
+
+  /* SECTIONS */
+  .container{max-width:1100px;margin:0 auto;padding:0 3rem}
+  .section-eyebrow{font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--magenta);margin-bottom:1rem;display:block}
+  .section-title{font-family:'Cinzel',serif;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:400;color:var(--ink);line-height:1.15;margin-bottom:0.5rem}
+  .section-title em{font-style:italic;color:var(--gold);font-family:'Cormorant Garamond',serif;font-size:1.1em;font-weight:300}
+  .accent-bar{width:60px;height:3px;background:linear-gradient(to right,var(--magenta),var(--gold));margin:1.5rem 0 2.5rem}
+  .body-text{font-family:'Cormorant Garamond',serif;font-size:1.15rem;line-height:1.9;color:var(--muted);font-weight:300}
+  .body-text+.body-text{margin-top:1.2rem}
+
+  /* STATS */
+  .stats-section{padding:80px 0;background:#fff}
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--ivory3);margin-top:3rem}
+  .stat-block{background:#fff;padding:2.5rem 2rem;text-align:center;position:relative;overflow:hidden;transition:all 0.35s;opacity:0;transform:translateY(16px);transition:all 0.5s}
+  .stat-block.visible{opacity:1;transform:none}
+  .stat-block::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(to right,var(--magenta),var(--gold));transform:scaleX(0);transition:transform 0.35s;transform-origin:left}
+  .stat-block:hover::before{transform:scaleX(1)}
+  .stat-block:hover{background:var(--magenta-light)}
+  .stat-number{font-family:'Cinzel',serif;font-size:3rem;color:var(--magenta);line-height:1;margin-bottom:0.5rem}
+  .stat-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted)}
+
+  /* HISTORY */
+  .history-section{padding:100px 0;background:var(--ivory)}
+  .history-layout{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+  .history-cards{display:flex;flex-direction:column;gap:1px;background:var(--ivory3)}
+  .hcard{background:var(--ivory);padding:2rem 2.5rem;border-left:4px solid transparent;transition:all 0.3s;opacity:0;transform:translateX(20px);transition:all 0.5s;cursor:default}
+  .hcard.visible{opacity:1;transform:none}
+  .hcard:hover{border-left-color:var(--magenta);background:var(--magenta-light)}
+  .hcard-year{font-family:'Cinzel',serif;font-size:1.6rem;color:var(--gold);margin-bottom:0.3rem}
+  .hcard-title{font-size:13px;font-weight:600;letter-spacing:1px;color:var(--ink);margin-bottom:0.5rem;text-transform:uppercase}
+  .hcard-text{font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--muted);line-height:1.7}
+
+  /* GLOBAL REACH */
+  .reach-section{padding:100px 0;background:var(--gold-light)}
+  .reach-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem}
+  .reach-card{background:#fff;padding:2rem;border:1px solid var(--gold3);position:relative;transition:all 0.35s;opacity:0;transform:translateY(20px);transition:all 0.5s}
+  .reach-card.visible{opacity:1;transform:none}
+  .reach-card:hover{border-color:var(--magenta);transform:translateY(-4px);box-shadow:0 12px 40px rgba(204,0,102,0.08)}
+  .reach-icon{width:40px;height:3px;background:linear-gradient(to right,var(--magenta),var(--gold));margin-bottom:1.2rem}
+  .reach-title{font-family:'Cinzel',serif;font-size:0.9rem;letter-spacing:1.5px;color:var(--ink);margin-bottom:0.6rem;text-transform:uppercase}
+  .reach-text{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--muted);line-height:1.75}
+
+  /* QUOTE BAND */
+  .quote-band{background:var(--magenta);padding:70px 0;text-align:center}
+  .quote-band blockquote{font-family:'Cormorant Garamond',serif;font-size:clamp(1.3rem,2.5vw,2rem);font-style:italic;color:#fff;max-width:800px;margin:0 auto;padding:0 3rem;line-height:1.65}
+  .quote-band cite{display:block;margin-top:1.5rem;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--gold3);font-style:normal;opacity:0.8}
+
+  footer{background:var(--ink);padding:3rem 0 2rem}
+  .footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+  .footer-brand{font-family:'Cinzel',serif;font-size:0.85rem;color:var(--gold2);letter-spacing:2px}
+  .footer-links-row{display:flex;gap:1.5rem}
+  .footer-links-row a{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.2s}
+  .footer-links-row a:hover{color:var(--gold2)}
+  .footer-copy{font-size:10px;color:rgba(255,255,255,0.25);letter-spacing:1px;margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,0.07);text-align:center}
+
+  .fade-up{opacity:0;transform:translateY(20px);transition:all 0.6s}
+  .fade-up.visible{opacity:1;transform:none}
+
+  @media(max-width:900px){
+    .hero-content{grid-template-columns:1fr}
+    .globe-visual{display:none}
+    .history-layout{grid-template-columns:1fr}
+    .stats-grid{grid-template-columns:1fr 1fr}
+    .reach-grid{grid-template-columns:1fr 1fr}
+    .nav-pages{display:none}
+    .container{padding:0 1.5rem}
+  }
+  @media(max-width:600px){.reach-grid,.stats-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Church of God Kerala<span>Full Gospel in India</span></div>
+  <div class="nav-pages">
+    <a href="founder.html">Our Founder</a>
+    <a href="international.html" class="active">International</a>
+    <a href="headquarters.html">State HQ</a>
+    <a href="teachings.html">Teachings</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-bg-shape"></div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <span class="hero-tag">International Office · Cleveland, Tennessee, USA</span>
+      <h1 class="hero-title">A <em>Global Movement</em><br>Born in a Millhouse</h1>
+      <p class="hero-body">The Church of God began on August 19, 1886, when Richard Green Spurling preached in a millhouse along Barney Creek, Tennessee. Eight persons gathered to follow the New Testament as their rule of faith — and that flame has never gone out, spreading now to 173 countries around the world.</p>
+      <p class="hero-body">The Church of God International, headquartered at Cleveland, Tennessee, USA, stands today as the leading Pentecostal Holiness organisation on earth — and Church of God Kerala is a proud part of this global family.</p>
+    </div>
+    <div class="globe-visual">
+      <div class="globe-ring">
+        <div class="globe-center">
+          <div class="globe-num">173</div>
+          <div class="globe-label">Nations</div>
+        </div>
+      </div>
+      <div class="globe-caption">Countries of ministry</div>
+    </div>
+  </div>
+</div>
+
+<div class="marquee-bar">
+  <div class="marquee-inner">
+    <span class="marquee-item">Founded 1886 <span>✦</span></span>
+    <span class="marquee-item">Monroe County, Tennessee <span>✦</span></span>
+    <span class="marquee-item">173 Nations <span>✦</span></span>
+    <span class="marquee-item">Cleveland, Tennessee HQ <span>✦</span></span>
+    <span class="marquee-item">Holiness Pentecostal <span>✦</span></span>
+    <span class="marquee-item">Barney Creek Millhouse <span>✦</span></span>
+    <span class="marquee-item">Founded 1886 <span>✦</span></span>
+    <span class="marquee-item">Monroe County, Tennessee <span>✦</span></span>
+    <span class="marquee-item">173 Nations <span>✦</span></span>
+    <span class="marquee-item">Cleveland, Tennessee HQ <span>✦</span></span>
+    <span class="marquee-item">Holiness Pentecostal <span>✦</span></span>
+    <span class="marquee-item">Barney Creek Millhouse <span>✦</span></span>
+  </div>
+</div>
+
+<!-- STATS -->
+<section class="stats-section">
+  <div class="container">
+    <span class="section-eyebrow fade-up">By the Numbers</span>
+    <h2 class="section-title fade-up">The Scale of <em>God's Work</em></h2>
+    <div class="accent-bar fade-up"></div>
+    <div class="stats-grid">
+      <div class="stat-block"><div class="stat-number">1886</div><div class="stat-label">Year Founded</div></div>
+      <div class="stat-block"><div class="stat-number">173</div><div class="stat-label">Nations Reached</div></div>
+      <div class="stat-block"><div class="stat-number">187</div><div class="stat-label">Countries (Kerala's network)</div></div>
+      <div class="stat-block"><div class="stat-number">138</div><div class="stat-label">Years of Ministry</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- HISTORY -->
+<section class="history-section">
+  <div class="container">
+    <div class="history-layout">
+      <div>
+        <span class="section-eyebrow fade-up">Origin Story</span>
+        <h2 class="section-title fade-up">From a <em>Millhouse</em><br>to the World</h2>
+        <div class="accent-bar fade-up"></div>
+        <p class="body-text fade-up">Former Baptist Richard Green Spurling gathered eight persons at a millhouse along Barney Creek in Monroe County, Tennessee. They formed a Christian Union with one purpose: to follow the New Testament as their rule for faith and practice, giving each other equal rights and privilege to interpret Scripture.</p>
+        <p class="body-text fade-up">Twenty-one years later the growing movement formally adopted the name Church of God. A revival at the Shearer Schoolhouse in nearby Camp Creek, North Carolina introduced the doctrine of sanctification — and despite fierce persecution, the Holy Spirit outpouring prevailed, including speaking in tongues and divine healing.</p>
+        <p class="body-text fade-up" style="margin-top:1.2rem">Today, from its international headquarters in Cleveland, Tennessee, the Church of God oversees a movement present in 173 countries — making it the leading Pentecostal Holiness organisation in the world.</p>
+      </div>
+      <div>
+        <div class="history-cards">
+          <div class="hcard">
+            <div class="hcard-year">1886</div>
+            <div class="hcard-title">The Beginning</div>
+            <div class="hcard-text">Richard Green Spurling preaches at Barney Creek millhouse. Eight persons form the Christian Union — the seed of the global Church of God movement.</div>
+          </div>
+          <div class="hcard">
+            <div class="hcard-year">1896</div>
+            <div class="hcard-title">Revival at Camp Creek</div>
+            <div class="hcard-text">A revival at the Shearer Schoolhouse introduces sanctification doctrine. The Holy Spirit outpouring follows — with speaking in tongues and divine healing.</div>
+          </div>
+          <div class="hcard">
+            <div class="hcard-year">1907</div>
+            <div class="hcard-title">Name Adopted</div>
+            <div class="hcard-text">The growing movement formally adopts the name "Church of God" at its first General Assembly in Cleveland, Tennessee — establishing the institutional home of the movement.</div>
+          </div>
+          <div class="hcard">
+            <div class="hcard-year">1936</div>
+            <div class="hcard-title">Kerala Joins the Family</div>
+            <div class="hcard-text">During the Church of God's Golden Jubilee World Tour, Rev. J.H. Ingram meets Rev. Cook in India — uniting Kerala's Pentecostal movement with the Church of God International.</div>
+          </div>
+          <div class="hcard">
+            <div class="hcard-year">Present</div>
+            <div class="hcard-title">173 Nations & Growing</div>
+            <div class="hcard-text">From a humble millhouse to the entire world — the Church of God remains the leading Pentecostal Holiness organisation on earth, with Kerala as a shining beacon of its global mission.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GLOBAL REACH -->
+<section class="reach-section">
+  <div class="container">
+    <span class="section-eyebrow fade-up">Our Global Family</span>
+    <h2 class="section-title fade-up">Kerala's Place in a <em>World Mission</em></h2>
+    <div class="accent-bar fade-up"></div>
+    <div class="reach-grid">
+      <div class="reach-card">
+        <div class="reach-icon"></div>
+        <div class="reach-title">International HQ</div>
+        <p class="reach-text">The Church of God International maintains its headquarters in Cleveland, Tennessee, USA — directing mission, ministry, and education across 173 nations.</p>
+      </div>
+      <div class="reach-card">
+        <div class="reach-icon"></div>
+        <div class="reach-title">Kerala's Connection</div>
+        <p class="reach-text">Kerala State Church of God is an integral part of the Church of God International, having formally affiliated in 1936. Today Kerala networks with churches in 187 countries.</p>
+      </div>
+      <div class="reach-card">
+        <div class="reach-icon"></div>
+        <div class="reach-title">The FINISH Commission</div>
+        <p class="reach-text">Kerala State joins the global Church of God family in the FINISH Commitment — fulfilling the Great Commission of Matthew 28:19 to reach every people group on earth.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="quote-band">
+  <blockquote>
+    "Church of God in Kerala has come to a new era of challenges and with a vision to fulfill the Great Commission — proclaiming the love of our Saviour to the lost as His disciples."
+    <cite>State Overseer, Church of God Kerala</cite>
+  </blockquote>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">Church of God (Full Gospel) · Kerala State</div>
+      <div class="footer-links-row">
+    <a href="fo.html" class="active">Our Founder</a>
+    <a href="inter.html">International</a>
+    <a href="head.html">State HQ</a>
+    <a href="teaching.html">Teachings</a>
+      </div>
+    </div>
+    <p class="footer-copy">© 2025 Church of God (Full Gospel) in India, Kerala State · Mount Zion, Mulakuzha, Chengannur</p>
+  </div>
+</footer>
+
+<script>
+const io = new IntersectionObserver(e => e.forEach(x => x.isIntersecting && x.target.classList.add('visible')),{threshold:0.1,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.fade-up,.stat-block,.hcard,.reach-card').forEach((el,i)=>{el.style.transitionDelay=(i%4)*0.1+'s';io.observe(el)});
+</script>
+</body>
+</html>

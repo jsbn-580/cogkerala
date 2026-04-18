@@ -3,372 +3,1533 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sunday School Department — COG Kerala</title>
+<title>Sunday School — COG Kerala</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,900;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Outfit:wght@300;400;500;600;700;800&family=Fredoka+One&display=swap" rel="stylesheet">
 <style>
 :root{
-  --c1:#2D1018;--c2:#8B0032;--c3:#CC0066;--acc:#E6007A;
-  --magenta:#CC0066;--gold:#C9A84C;--gold2:#E8C46A;
+  --mg:#CC0066;--mg2:#E6007A;
+  --gold:#C9A84C;--gold2:#E8C46A;--gold3:#F5E0A0;
   --ivory:#FDF8F0;--ivory2:#F5EDE0;--ivory3:#EBD9C5;
-  --dark:#1A0A0E;--dark2:#2D1018;
+  --dark:#1A0A0E;--dark2:#2D1018;--dark3:#4A1A28;
   --text:#2A0E18;--text2:#5C3040;--text3:#8B5A6A;
-  --f:'Outfit',sans-serif;--fd:'Cormorant Garamond',serif;--fp:'Playfair Display',serif;
-  --ease:cubic-bezier(.16,1,.3,1);--nav:84px;
+  --f:'Outfit',sans-serif;
+  --fd:'Cormorant Garamond',serif;
+  --fk:'Fredoka One',cursive;
+  --ease:cubic-bezier(.16,1,.3,1);
+  --ann:40px;--nav:72px;
 }
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;font-size:18px}
-body{font-family:var(--f);background:var(--ivory);color:var(--text);overflow-x:hidden;cursor:none;opacity:0;animation:pageFade .7s .1s ease forwards}
-@keyframes pageFade{to{opacity:1}}
-img{max-width:100%;display:block}
-a{text-decoration:none;color:inherit}
-::-webkit-scrollbar{width:4px}
-::-webkit-scrollbar-thumb{background:var(--c2)}
-#cur{position:fixed;width:14px;height:14px;background:var(--c2);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s;mix-blend-mode:multiply}
-#cur.big{width:40px;height:40px;background:var(--gold);opacity:.6}
-/* NAV */
-#nav{position:fixed;top:0;left:0;right:0;z-index:900;background:rgba(255,255,255,.98);border-bottom:2px solid var(--c2);box-shadow:0 2px 24px rgba(0,0,0,.08);transition:all .4s}
-.nb{max-width:1440px;margin:0 auto;padding:0 3rem;height:var(--nav);display:flex;align-items:center;justify-content:space-between;gap:1rem}
-.nl{display:flex;align-items:center;gap:.85rem;text-decoration:none;flex-shrink:0}
-.nl-logo{width:56px;height:56px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.nl-logo img{width:100%;height:100%;object-fit:contain}
-.nl-logo-ph{font-family:var(--fd);font-size:1.5rem;font-weight:700;color:var(--c2)}
-.nl-txt{display:flex;flex-direction:column;gap:.05rem}
-.nl-t1{font-family:var(--fd);font-size:1rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--c2);line-height:1.2}
-.nl-t2{font-family:var(--f);font-size:.76rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text3)}
-.nb-links{display:flex;align-items:center;gap:1.5rem}
-.nb-link{font-family:var(--f);font-size:.92rem;font-weight:600;color:var(--text2);transition:color .18s}
-.nb-link:hover{color:var(--c2)}
-.nb-back{font-family:var(--f);font-size:.88rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.65rem 2rem;background:var(--c2);color:white;cursor:pointer;border-radius:50px;border:2px solid var(--c2);transition:all .22s}
-.nb-back:hover{background:transparent;color:var(--c2)}
-/* HERO */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--f);background:var(--ivory);color:var(--text);overflow-x:hidden;}
+img{max-width:100%;display:block;}
+a{text-decoration:none;color:inherit;}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-thumb{background:var(--mg);}
+
+/* ── ANNOUNCEMENT BAR ── */
+#ann-bar{
+  position:fixed;top:0;left:0;right:0;z-index:9100;
+  background:var(--dark);height:var(--ann);
+  display:flex;align-items:stretch;
+  border-bottom:1px solid rgba(204,0,102,.3);
+}
+.ann-left{display:flex;align-items:stretch;flex:1;overflow:hidden;}
+.ann-label{
+  flex-shrink:0;background:var(--mg);
+  display:flex;align-items:center;gap:7px;
+  padding:0 24px 0 16px;
+  font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:white;
+  clip-path:polygon(0 0,calc(100% - 10px) 0,100% 50%,calc(100% - 10px) 100%,0 100%);
+  white-space:nowrap;
+}
+.ticker-overflow{
+  flex:1;overflow:hidden;display:flex;align-items:center;
+  mask-image:linear-gradient(to right,transparent 0,black 40px,black calc(100% - 40px),transparent 100%);
+}
+.ticker-track{display:flex;white-space:nowrap;animation:ann-scroll 32s linear infinite;}
+.ticker-track:hover{animation-play-state:paused;}
+.t-item{display:inline-flex;align-items:center;gap:9px;padding:0 36px;font-size:12px;color:rgba(255,255,255,.65);}
+.t-item .t-date{font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold2);}
+.t-item .t-sep{color:rgba(255,255,255,.18);}
+.t-item .t-new{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:var(--mg);color:white;padding:2px 7px;border-radius:50px;}
+@keyframes ann-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ── NAV ── */
+#nav{
+  position:fixed;top:var(--ann);left:0;right:0;z-index:9000;
+  background:rgba(255,255,255,.98);
+  border-bottom:1px solid rgba(204,0,102,.12);
+  box-shadow:0 2px 24px rgba(0,0,0,.08);
+}
+.nb{max-width:1440px;margin:0 auto;padding:0 1.5rem;height:var(--nav);display:flex;align-items:center;justify-content:space-between;gap:1rem;}
+.nl{display:flex;align-items:center;gap:.7rem;}
+.nl-logo{font-family:var(--fd);font-size:1.5rem;font-weight:700;color:var(--mg);}
+.nl-t1{font-family:var(--fd);font-size:.88rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--mg);}
+.nl-t2{font-size:.68rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);}
+.nav-back{font-size:.82rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:.6rem 1.6rem;background:var(--mg);color:white;border-radius:50px;border:2px solid var(--mg);transition:all .22s;}
+.nav-back:hover{background:transparent;color:var(--mg);}
+
+/* ── HERO ── */
 .dept-hero{
-  height:100vh;min-height:600px;
-  background:linear-gradient(145deg,var(--c1) 0%,var(--c2) 50%,var(--c3) 100%);
+  padding-top:calc(var(--ann) + var(--nav));
+  min-height:72vh;
+  background:linear-gradient(145deg,#0D1B2A,#1B3A4B,#0F3D2E);
+  position:relative;overflow:hidden;display:flex;align-items:center;
+}
+.hero-sky{position:absolute;inset:0;overflow:hidden;}
+.hero-cloud{position:absolute;background:rgba(255,255,255,.07);border-radius:50px;animation:cloud-drift 20s linear infinite;}
+.hero-cloud:nth-child(1){width:200px;height:60px;top:15%;left:-200px;animation-duration:25s;}
+.hero-cloud:nth-child(2){width:140px;height:40px;top:35%;left:-140px;animation-duration:18s;animation-delay:-8s;}
+.hero-cloud:nth-child(3){width:180px;height:55px;top:55%;left:-180px;animation-duration:30s;animation-delay:-15s;}
+@keyframes cloud-drift{to{left:110%;}}
+.hero-stars{position:absolute;inset:0;}
+.star{position:absolute;background:white;border-radius:50%;animation:twinkle var(--d,3s) ease-in-out infinite;opacity:var(--o,.6);}
+@keyframes twinkle{0%,100%{opacity:.15;}50%{opacity:1;}}
+.dept-hero-inner{max-width:1360px;margin:0 auto;padding:5rem 1.5rem;position:relative;z-index:2;width:100%;}
+.dept-tag{display:inline-flex;align-items:center;gap:.6rem;font-size:.75rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold2);margin-bottom:1.2rem;}
+.dept-tag::before{content:'';width:28px;height:2px;background:var(--gold2);}
+.dept-hero-title{font-family:var(--fd);font-size:clamp(3rem,7vw,8rem);font-weight:700;color:white;line-height:.9;letter-spacing:-.02em;margin-bottom:1.5rem;}
+.dept-hero-title em{display:block;font-style:italic;font-weight:300;font-size:.45em;color:rgba(255,255,255,.55);letter-spacing:.08em;margin-bottom:.3rem;}
+.dept-hero-title span{color:var(--gold2);}
+.dept-hero-desc{font-size:1.08rem;line-height:2;color:rgba(255,255,255,.65);max-width:560px;margin-bottom:2rem;}
+.dept-hero-stats{display:flex;gap:2.5rem;flex-wrap:wrap;}
+.dhs-num{font-family:var(--fd);font-size:2.2rem;font-weight:700;color:var(--gold2);}
+.dhs-label{font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:.1rem;}
+
+/* Floating ark in hero */
+.hero-ark{position:absolute;right:4%;bottom:0;pointer-events:none;animation:bob 4s ease-in-out infinite;}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+.hero-dove{position:absolute;right:28%;bottom:48%;pointer-events:none;animation:dovefly 5s ease-in-out infinite;}
+@keyframes dovefly{0%,100%{transform:translate(0,0) rotate(-5deg)}33%{transform:translate(18px,-14px) rotate(5deg)}66%{transform:translate(-10px,-7px) rotate(0deg)}}
+.hero-rainbow{position:absolute;top:8%;left:5%;pointer-events:none;opacity:.55;}
+.hero-lion{position:absolute;left:2%;bottom:0;pointer-events:none;animation:lionbob 3.5s ease-in-out infinite;}
+@keyframes lionbob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+/* ── SECTION BASES ── */
+.sec{padding:5rem 0;position:relative;overflow:hidden;}
+.cont{max-width:1360px;margin:0 auto;padding:0 1.5rem;}
+.sl{font-size:.8rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--mg);margin-bottom:.7rem;display:flex;align-items:center;gap:.7rem;}
+.sl::before{content:'';width:22px;height:2px;background:var(--mg);}
+.sl-light{color:var(--gold2);}
+.sl-light::before{background:var(--gold2);}
+.sh{font-family:var(--fd);font-size:clamp(2.2rem,4vw,5rem);font-weight:700;line-height:.9;color:var(--text);margin-bottom:.5rem;}
+.sh-white{color:white;}
+.sh em{font-style:italic;font-weight:400;color:var(--mg);}
+.sh-white em{color:var(--gold2);}
+.sr{width:36px;height:3px;background:var(--mg);margin-bottom:2.5rem;}
+.sr-gold{background:var(--gold2);}
+
+/* ── REVEAL ANIMATIONS ── */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease);}
+.rv.on{opacity:1;transform:none;}
+.rv2{opacity:0;transform:translateY(28px);transition:opacity .9s .14s var(--ease),transform .9s .14s var(--ease);}
+.rv2.on{opacity:1;transform:none;}
+.rv3{opacity:0;transform:translateY(28px);transition:opacity .9s .28s var(--ease),transform .9s .28s var(--ease);}
+.rv3.on{opacity:1;transform:none;}
+
+/* ── CHARACTER PARADE ── */
+.parade-sec{
+  padding:2.5rem 0;
+  background:linear-gradient(180deg,#C8F5C8,#A5E8A5);
+  overflow:hidden;border-top:3px solid #4CAF50;border-bottom:3px solid #4CAF50;
+}
+.parade-track{display:flex;animation:parade 35s linear infinite;width:max-content;}
+.parade-track:hover{animation-play-state:paused;}
+.parade-char{display:flex;flex-direction:column;align-items:center;gap:.5rem;padding:0 2rem;cursor:default;}
+.parade-char svg{filter:drop-shadow(0 3px 6px rgba(0,0,0,.18));transition:transform .3s;}
+.parade-char:hover svg{transform:scale(1.18) translateY(-6px);}
+.parade-char-name{font-family:var(--fk);font-size:.9rem;color:#1B5E20;}
+@keyframes parade{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ── BIBLE STORIES ── */
+.stories-sec{padding:5rem 0;background:linear-gradient(180deg,#0D2010,#163520,#0F2818);}
+.stories-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-top:2rem;}
+.story-card{border-radius:22px;overflow:hidden;cursor:pointer;transition:transform .4s var(--ease),box-shadow .4s;position:relative;border:2px solid rgba(255,255,255,.1);}
+.story-card:hover{transform:translateY(-12px) scale(1.02);box-shadow:0 30px 70px rgba(0,0,0,.5);}
+.story-scene{height:230px;position:relative;display:flex;align-items:flex-end;justify-content:center;overflow:hidden;}
+.story-label{padding:1.2rem;background:rgba(0,0,0,.72);backdrop-filter:blur(12px);}
+.story-name{font-family:var(--fk);font-size:1.15rem;color:white;margin-bottom:.25rem;}
+.story-verse{font-size:.72rem;color:rgba(255,255,255,.58);font-style:italic;}
+
+/* ── ABOUT ── */
+.about-strip{
+  background:white;border-radius:24px;padding:3rem;
+  border:1.5px solid rgba(204,0,102,.1);
+  box-shadow:0 8px 40px rgba(204,0,102,.07);
+  display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;
+}
+.as-verse{font-family:var(--fd);font-size:1.5rem;font-style:italic;color:var(--mg);line-height:1.6;border-left:4px solid var(--gold);padding-left:1.2rem;}
+.as-ref{font-size:.75rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-top:.5rem;}
+.as-body{font-size:.96rem;line-height:2.1;color:var(--text2);}
+.as-body strong{color:var(--mg);}
+
+/* ── CURRICULUM ── */
+.grade-tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:2rem;}
+.grade-tab{
+  font-family:var(--fk);font-size:.85rem;padding:.5rem 1.2rem;
+  border-radius:50px;border:2px solid var(--ivory3);
+  background:white;color:var(--text2);cursor:pointer;transition:all .25s;
+}
+.grade-tab.active,.grade-tab:hover{background:var(--mg);color:white;border-color:var(--mg);}
+.curr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;}
+.curr-card{
+  background:white;border-radius:20px;padding:1.5rem;
+  border:2px solid var(--ivory3);transition:all .3s;
   position:relative;overflow:hidden;
-  display:flex;align-items:flex-end;
-  padding-bottom:6rem;padding-top:var(--nav);
 }
-.dh-bg-text{
-  position:absolute;bottom:-3rem;right:-2rem;
-  font-family:var(--fd);font-size:35vw;font-weight:700;
-  color:rgba(255,255,255,.04);letter-spacing:-.1em;line-height:1;pointer-events:none;
+.curr-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:5px;
+  border-radius:20px 20px 0 0;
 }
-.dh-orb{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none}
-.dh-orb-1{width:500px;height:500px;background:rgba(255,255,255,.06);top:-200px;left:-100px;animation:orbF 12s ease-in-out infinite}
-.dh-orb-2{width:350px;height:350px;background:rgba(201,168,76,.12);bottom:-100px;right:-100px;animation:orbF 9s ease-in-out infinite reverse}
-@keyframes orbF{0%,100%{transform:translate(0,0)}50%{transform:translate(25px,15px)}}
-.dh-cross{
-  position:absolute;right:10%;top:50%;transform:translateY(-50%);
-  font-size:40vw;font-weight:200;color:rgba(255,255,255,.04);line-height:1;font-family:serif;pointer-events:none;
+.curr-card.beginners::before{background:linear-gradient(90deg,#FF9800,#FFB74D);}
+.curr-card.primary::before{background:linear-gradient(90deg,#4CAF50,#81C784);}
+.curr-card.middle::before{background:linear-gradient(90deg,#2196F3,#64B5F6);}
+.curr-card.high::before{background:linear-gradient(90deg,#9C27B0,#CE93D8);}
+.curr-card.senior::before{background:linear-gradient(90deg,#CC0066,#E6007A);}
+.curr-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,.1);border-color:transparent;}
+.curr-grade{font-family:var(--fk);font-size:1.4rem;color:var(--text);margin-bottom:.25rem;}
+.curr-std{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mg);margin-bottom:.8rem;}
+.curr-topics{list-style:none;margin-bottom:1rem;}
+.curr-topics li{font-size:.85rem;color:var(--text2);padding:.25rem 0;border-bottom:1px dashed var(--ivory3);display:flex;align-items:center;gap:.5rem;}
+.curr-topics li::before{content:'📖';font-size:.75rem;flex-shrink:0;}
+.curr-dl{
+  display:inline-flex;align-items:center;gap:.4rem;
+  font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  padding:.5rem 1.1rem;background:var(--mg);color:white;border-radius:50px;
+  transition:all .25s;margin-top:.3rem;
 }
-.dh-content{position:relative;z-index:2;max-width:1360px;margin:0 auto;padding:0 3.5rem;width:100%}
-.dh-eyebrow{font-family:var(--f);font-size:.9rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--gold2);margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem;opacity:0;animation:fadeUp .7s .2s var(--ease) forwards}
-.dh-eyebrow::before{content:'';width:30px;height:1.5px;background:var(--gold2)}
-.dh-title{font-family:var(--fd);font-size:clamp(3.5rem,7vw,9rem);font-weight:700;color:white;line-height:.85;letter-spacing:-.04em;margin-bottom:1.5rem;text-shadow:0 4px 40px rgba(0,0,0,.3);opacity:0;animation:fadeUp .9s .3s var(--ease) forwards}
-.dh-title em{font-family:var(--fp);font-style:italic;font-weight:400;color:var(--gold2)}
-.dh-tagline{font-family:var(--fd);font-size:1.5rem;font-style:italic;color:rgba(255,255,255,.75);margin-bottom:2.5rem;max-width:600px;opacity:0;animation:fadeUp .8s .45s var(--ease) forwards}
-.dh-tags{display:flex;flex-wrap:wrap;gap:.7rem;opacity:0;animation:fadeUp .8s .6s var(--ease) forwards}
-.dh-tag{font-family:var(--f);font-size:.82rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:white;border:1.5px solid rgba(255,255,255,.3);padding:.5rem 1.3rem;border-radius:50px;background:rgba(255,255,255,.08);backdrop-filter:blur(8px)}
-.dh-scroll-hint{
-  position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);
-  display:flex;flex-direction:column;align-items:center;gap:.5rem;
-  font-family:var(--f);font-size:.72rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.4);
-  opacity:0;animation:fadeUp .7s .8s var(--ease) forwards;
-}
-.dh-scroll-line{width:1.5px;height:40px;background:linear-gradient(to bottom,rgba(255,255,255,.4),transparent);animation:scrollPulse 2s ease-in-out infinite}
-@keyframes scrollPulse{0%,100%{transform:scaleY(1);opacity:.4}50%{transform:scaleY(1.3);opacity:.8}}
-@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.curr-dl:hover{background:var(--dark);transform:scale(1.04);}
+.curr-icon{font-size:2.5rem;margin-bottom:.7rem;display:block;}
 
-/* STATS BAR */
-.stats-bar{
-  background:var(--dark);
-  border-top:3px solid var(--gold);border-bottom:2px solid rgba(201,168,76,.2);
+/* ── LEADERSHIP ── */
+.lead-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem;}
+.lead-card{
+  background:white;border-radius:20px;overflow:hidden;
+  border:1.5px solid var(--ivory3);transition:all .4s var(--ease);position:relative;
 }
-.stats-inner{max-width:1360px;margin:0 auto;padding:0 3.5rem;display:grid;grid-template-columns:repeat(4,1fr)}
-.stat-item{padding:2.5rem 2rem;border-right:1px solid rgba(255,255,255,.07);transition:background .3s;cursor:default;position:relative;overflow:hidden}
-.stat-item:last-child{border-right:none}
-.stat-item:hover{background:rgba(255,255,255,.03)}
-.stat-item::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--c2),var(--gold));transform:scaleX(0);transform-origin:left;transition:transform .4s}
-.stat-item:hover::before{transform:scaleX(1)}
-.stat-val{font-family:var(--fd);font-size:3rem;font-weight:700;line-height:1;letter-spacing:-.04em;background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.stat-lbl{font-family:var(--f);font-size:.8rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:.4rem}
+.lead-card:hover{transform:translateY(-8px);box-shadow:0 24px 60px rgba(204,0,102,.16);border-color:var(--mg);}
+.lead-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:4px;
+  background:linear-gradient(90deg,var(--mg),var(--gold));
+  border-radius:20px 20px 0 0;opacity:0;transition:opacity .3s;
+}
+.lead-card:hover::before{opacity:1;}
+.lc-photo{width:100%;aspect-ratio:3/4;overflow:hidden;background:linear-gradient(145deg,var(--dark2),var(--dark3));position:relative;}
+.lc-photo img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .5s;}
+.lead-card:hover .lc-photo img{transform:scale(1.06);}
+.lc-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:4rem;font-weight:700;color:rgba(255,255,255,.12);}
+.lc-photo::after{content:'';position:absolute;bottom:0;left:0;right:0;height:50%;background:linear-gradient(to top,rgba(26,10,14,.8),transparent);}
+.lc-badge{position:absolute;bottom:.8rem;left:.8rem;right:.8rem;z-index:2;background:rgba(255,255,255,.1);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.2);border-radius:10px;padding:.6rem .9rem;}
+.lc-badge-name{font-family:var(--fd);font-size:1rem;font-weight:700;color:white;}
+.lc-badge-title{font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gold2);margin-top:.1rem;}
+.lc-body{padding:1rem 1.2rem 1.4rem;}
+.lc-role{font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--mg);margin-bottom:.3rem;}
+.lc-desc{font-size:.85rem;color:var(--text2);line-height:1.7;}
 
-/* ABOUT */
-.dept-about{padding:8rem 0;background:var(--ivory2);position:relative;overflow:hidden}
-.da-grid{display:grid;grid-template-columns:1fr 1fr;gap:8rem;align-items:center;max-width:1360px;margin:0 auto;padding:0 3.5rem}
-.da-sl{font-family:var(--f);font-size:.9rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--c2);margin-bottom:1rem;display:flex;align-items:center;gap:.9rem}
-.da-sl::before{content:'';width:28px;height:2px;background:var(--c2)}
-.da-h{font-family:var(--fd);font-size:clamp(2.8rem,4vw,5rem);font-weight:700;line-height:.9;letter-spacing:-.03em;color:var(--text);margin-bottom:.6rem}
-.da-h em{font-family:var(--fp);font-style:italic;font-weight:400;color:var(--c2)}
-.da-rule{width:40px;height:2.5px;background:var(--c2);margin-bottom:2rem}
-.da-body{font-size:1.05rem;font-weight:400;line-height:2.2;color:var(--text2);margin-bottom:2rem}
-.da-verse{
-  padding:1.5rem 2rem;background:rgba(204,0,102,.04);
-  border-left:4px solid var(--c2);border-radius:0 16px 16px 0;
-  font-family:var(--fd);font-size:1.2rem;font-style:italic;color:var(--c2);line-height:1.7;
-}
-.da-img{
-  border-radius:28px;overflow:hidden;
-  background:linear-gradient(145deg,var(--c1),var(--c2),var(--c3));
-  aspect-ratio:4/5;position:relative;
-  box-shadow:0 32px 80px rgba(0,0,0,.25);
-}
-.da-img::before{
-  content:'✝';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-  font-size:12rem;color:rgba(255,255,255,.06);font-family:serif;font-weight:200;
-  display:flex;align-items:center;justify-content:center;
-}
-.da-img img{width:100%;height:100%;object-fit:cover}
-.da-img-tag{position:absolute;bottom:2rem;left:2rem;right:2rem;font-family:var(--fd);font-size:1.3rem;font-weight:700;color:rgba(255,255,255,.85);z-index:2}
-.da-img-tag span{display:block;font-family:var(--f);font-size:.76rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold2);margin-bottom:.3rem}
+/* ── COMMITTEE ── */
+.committee-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;margin-top:2rem;}
+.cm-card{background:white;border-radius:16px;overflow:hidden;border:1.5px solid var(--ivory3);transition:all .35s;position:relative;}
+.cm-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(204,0,102,.14);border-color:rgba(204,0,102,.3);}
+.cm-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--mg),var(--gold));transform:scaleX(0);transform-origin:left;transition:transform .4s;z-index:2;}
+.cm-card:hover::before{transform:scaleX(1);}
+.cm-photo{width:100%;aspect-ratio:1;background:linear-gradient(145deg,#f5e8f0,#f0e0ea);display:flex;align-items:center;justify-content:center;}
+.cm-ph{font-family:var(--fd);font-size:2rem;font-weight:700;color:rgba(204,0,102,.2);}
+.cm-info{padding:.8rem .9rem .9rem;}
+.cm-name{font-family:var(--fd);font-size:.9rem;font-weight:700;color:var(--text);line-height:1.2;}
+.cm-pos{font-size:.6rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mg);margin-top:.1rem;}
+.cm-zone{font-size:.75rem;color:var(--text3);margin-top:.1rem;}
 
-/* SERVICES */
-.dept-services{padding:8rem 0;background:var(--ivory)}
-.ds-head{text-align:center;margin-bottom:4.5rem;max-width:1360px;margin-left:auto;margin-right:auto;padding:0 3.5rem}
-.ds-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1360px;margin:0 auto;padding:0 3.5rem}
-.ds-card{
-  background:white;border-radius:24px;padding:2.8rem 2.4rem;
-  border:2px solid var(--ivory3);position:relative;overflow:hidden;
-  transition:all .4s var(--ease);cursor:default;
+/* ── ACTIVITIES ── */
+.act-list{display:flex;flex-direction:column;margin-top:2rem;}
+.act-row{
+  display:grid;grid-template-columns:80px 1fr 52px;
+  align-items:start;gap:1.8rem;padding:1.8rem 0;
+  border-bottom:1px solid var(--ivory3);
+  transition:all .25s var(--ease);cursor:default;
 }
-.ds-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--c2),var(--gold));transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease)}
-.ds-card:hover::before{transform:scaleX(1)}
-.ds-card:hover{transform:translateY(-8px);box-shadow:0 24px 60px rgba(0,0,0,.12);border-color:var(--c2)}
-.ds-num{font-family:var(--fd);font-size:4rem;font-weight:700;color:rgba(204,0,102,.06);line-height:1;position:absolute;bottom:.5rem;right:1rem}
-.ds-icon{
-  width:52px;height:52px;border-radius:16px;
-  background:linear-gradient(135deg,rgba(204,0,102,.1),rgba(204,0,102,.04));
-  border:1.5px solid rgba(204,0,102,.15);
-  display:flex;align-items:center;justify-content:center;
-  margin-bottom:1.4rem;transition:all .35s var(--ease);
+.act-row:last-child{border-bottom:none;}
+.act-row:hover{padding-left:.5rem;}
+.act-num{font-family:var(--fd);font-size:4.5rem;font-weight:700;color:var(--ivory3);line-height:1;text-align:right;transition:color .3s;padding-top:.1rem;user-select:none;}
+.act-row:hover .act-num{color:var(--mg);}
+.act-name{font-family:var(--fd);font-size:1.6rem;font-weight:700;color:var(--text);line-height:1.05;margin-bottom:.4rem;}
+.act-desc{font-size:.9rem;color:var(--text2);line-height:1.85;max-width:540px;}
+.act-icon-pill{width:44px;height:44px;border-radius:12px;background:var(--ivory2);display:flex;align-items:center;justify-content:center;transition:background .3s;flex-shrink:0;margin-top:.3rem;}
+.act-icon-pill svg{width:20px;height:20px;fill:var(--mg);transition:fill .3s;}
+.act-row:hover .act-icon-pill{background:var(--mg);}
+.act-row:hover .act-icon-pill svg{fill:white;}
+
+/* ── TEACHER COMMUNITY ── */
+.community-sec{padding:5rem 0;background:linear-gradient(135deg,#1A0A0E,#3D0018,#200A14);}
+.comm-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:3rem;align-items:start;margin-top:3rem;}
+.comm-features{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.comm-feat{background:rgba(255,255,255,.05);border-radius:16px;padding:1.4rem;border:1px solid rgba(255,255,255,.09);transition:all .3s;}
+.comm-feat:hover{background:rgba(255,255,255,.1);transform:translateY(-4px);border-color:rgba(201,168,76,.3);}
+.comm-feat-icon{font-size:2rem;margin-bottom:.7rem;}
+.comm-feat-title{font-family:var(--fk);font-size:1rem;color:white;margin-bottom:.4rem;}
+.comm-feat-desc{font-size:.82rem;color:rgba(255,255,255,.5);line-height:1.7;}
+.comm-panel{background:rgba(255,255,255,.05);border-radius:20px;border:1px solid rgba(255,255,255,.1);overflow:hidden;}
+.comm-tabs{display:flex;border-bottom:1px solid rgba(255,255,255,.09);}
+.comm-tab{flex:1;padding:.8rem;text-align:center;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);cursor:pointer;transition:all .25s;border-bottom:2px solid transparent;}
+.comm-tab.active{color:var(--gold2);border-bottom-color:var(--gold2);background:rgba(232,196,106,.06);}
+.comm-posts{padding:1.2rem;max-height:380px;overflow-y:auto;}
+.comm-posts::-webkit-scrollbar{width:3px;}
+.comm-posts::-webkit-scrollbar-thumb{background:rgba(204,0,102,.5);}
+.comm-post{background:rgba(255,255,255,.04);border-radius:12px;padding:1rem;margin-bottom:.8rem;border:1px solid rgba(255,255,255,.07);transition:border-color .25s;}
+.comm-post:last-child{margin-bottom:0;}
+.comm-post:hover{border-color:rgba(255,255,255,.18);}
+.comm-post-header{display:flex;align-items:center;gap:.6rem;margin-bottom:.5rem;}
+.comm-avatar{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;color:white;flex-shrink:0;}
+.comm-post-meta{flex:1;}
+.comm-poster{font-size:.82rem;font-weight:700;color:rgba(255,255,255,.9);}
+.comm-time{font-size:.7rem;color:rgba(255,255,255,.32);}
+.comm-post-tag{font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:2px 8px;border-radius:50px;background:rgba(204,0,102,.28);color:var(--gold2);white-space:nowrap;}
+.comm-post-text{font-size:.84rem;color:rgba(255,255,255,.62);line-height:1.7;}
+.comm-post-attach{display:inline-flex;align-items:center;gap:.3rem;font-size:.75rem;color:var(--gold2);margin-top:.5rem;background:rgba(201,168,76,.1);padding:.25rem .6rem;border-radius:6px;}
+.comm-cta{padding:1.2rem;border-top:1px solid rgba(255,255,255,.08);}
+.comm-input{
+  width:100%;background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.12);border-radius:10px;
+  padding:.7rem 1rem;font-size:.85rem;color:white;
+  font-family:var(--f);outline:none;transition:border-color .25s;
 }
-.ds-card:hover .ds-icon{background:linear-gradient(135deg,var(--c2),var(--c3));border-color:var(--c2);box-shadow:0 8px 24px rgba(204,0,102,.3)}
-.ds-icon svg{width:22px;height:22px;fill:var(--c2);transition:fill .3s}
-.ds-card:hover .ds-icon svg{fill:white}
-.ds-title{font-family:var(--fd);font-size:1.5rem;font-weight:700;color:var(--text);margin-bottom:.7rem;line-height:1.2}
-.ds-desc{font-size:1rem;font-weight:400;line-height:2;color:var(--text2)}
-
-/* CTA */
-.dept-cta{
-  background:linear-gradient(135deg,var(--c1) 0%,var(--c2) 60%,var(--c3) 100%);
-  padding:7rem 0;position:relative;overflow:hidden;
+.comm-input:focus{border-color:rgba(201,168,76,.5);}
+.comm-input::placeholder{color:rgba(255,255,255,.28);}
+.comm-submit{
+  margin-top:.6rem;width:100%;background:var(--mg);border:none;
+  border-radius:10px;padding:.7rem;font-family:var(--fk);font-size:.95rem;
+  color:white;cursor:pointer;transition:all .25s;letter-spacing:.05em;
 }
-.dc-bg{position:absolute;right:-4%;top:50%;transform:translateY(-50%);font-family:var(--fd);font-size:28vw;font-weight:700;color:rgba(255,255,255,.04);letter-spacing:-.1em;line-height:1;pointer-events:none}
-.dc-inner{max-width:1360px;margin:0 auto;padding:0 3.5rem;display:flex;align-items:center;justify-content:space-between;gap:4rem;position:relative;z-index:1;flex-wrap:wrap}
-.dc-h{font-family:var(--fd);font-size:clamp(2.5rem,5vw,6rem);font-weight:700;color:white;line-height:.9;letter-spacing:-.04em}
-.dc-h span{display:block;font-family:var(--fp);font-style:italic;font-weight:400;font-size:.55em;margin-bottom:.3rem;color:rgba(255,255,255,.7)}
-.dc-links{display:flex;flex-direction:column;gap:.75rem;align-items:flex-end}
-.dc-a{font-family:var(--f);font-size:.9rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.9);padding:.9rem 2.2rem;border:1.5px solid rgba(255,255,255,.4);border-radius:50px;transition:all .25s;white-space:nowrap}
-.dc-a:hover{background:white;color:var(--c2);border-color:white}
+.comm-submit:hover{background:#E6007A;transform:scale(1.02);}
 
-/* FOOTER */
-footer{background:var(--dark);padding:4rem 0 2rem}
-.ft-inner{max-width:1360px;margin:0 auto;padding:0 3.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:2rem;border-bottom:1px solid rgba(255,255,255,.07);padding-bottom:2rem;margin-bottom:2rem}
-.ft-brand{font-family:var(--fd);font-size:1.2rem;font-weight:700;color:white;line-height:1.3}
-.ft-brand span{color:var(--gold2)}
-.ft-links{display:flex;flex-wrap:wrap;gap:1.5rem}
-.ft-link{font-family:var(--f);font-size:.88rem;color:rgba(255,255,255,.4);transition:color .15s}
-.ft-link:hover{color:rgba(255,255,255,.8)}
-.ft-bot{max-width:1360px;margin:0 auto;padding:0 3.5rem;display:flex;justify-content:space-between;align-items:center;font-family:var(--f);font-size:.82rem;color:rgba(255,255,255,.2);flex-wrap:wrap;gap:.5rem}
+/* ── GALLERY ── */
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem;margin-top:2rem;}
+.gal-item{
+  border-radius:14px;overflow:hidden;aspect-ratio:1;
+  background:linear-gradient(145deg,var(--dark2),var(--dark3));
+  position:relative;cursor:pointer;
+}
+.gal-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s;}
+.gal-item:hover img{transform:scale(1.08);}
+.gal-item::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(204,0,102,.65),transparent);opacity:0;transition:opacity .35s;}
+.gal-item:hover::after{opacity:1;}
+.gal-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:2rem;color:rgba(255,255,255,.13);}
 
-/* Reveal */
-.rv{opacity:0;transform:translateY(32px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
-.rv2{opacity:0;transform:translateY(32px);transition:opacity .9s .14s var(--ease),transform .9s .14s var(--ease)}
-.rv.on,.rv2.on{opacity:1;transform:none}
+/* ── CTA ── */
+.dept-cta{background:linear-gradient(135deg,var(--mg),var(--mg2));padding:4.5rem 0;text-align:center;}
+.dept-cta h3{font-family:var(--fd);font-size:clamp(2rem,4vw,4rem);font-weight:700;color:white;margin-bottom:.8rem;}
+.dept-cta p{font-size:1rem;color:rgba(255,255,255,.7);margin-bottom:2rem;}
+.cta-btn{display:inline-block;font-size:.85rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.85rem 2.2rem;background:white;color:var(--mg);border-radius:50px;margin:.3rem;transition:all .25s;}
+.cta-btn:hover{background:var(--dark);color:white;}
+.cta-btn.outline{background:transparent;color:white;border:2px solid rgba(255,255,255,.5);}
+.cta-btn.outline:hover{background:white;color:var(--mg);}
 
+/* ── FOOTER ── */
+footer{background:var(--dark);padding:2.2rem 0;text-align:center;}
+footer p{font-size:.85rem;color:rgba(255,255,255,.3);}
+footer a{color:var(--gold2);}
+
+/* ── RESPONSIVE ── */
 @media(max-width:1100px){
-  .da-grid{grid-template-columns:1fr;gap:4rem}
-  .ds-grid{grid-template-columns:1fr 1fr}
-  .stats-inner{grid-template-columns:1fr 1fr}
-  .stat-item:nth-child(2){border-right:none}
-  .nb-links{display:none}
+  .committee-grid{grid-template-columns:repeat(4,1fr);}
 }
-@media(max-width:768px){
-  html{font-size:16px}
-  .ds-grid{grid-template-columns:1fr}
-  .stats-inner{grid-template-columns:1fr 1fr}
-  .nb{padding:0 1.2rem}
-  .dh-content{padding:0 1.5rem}
-  .da-grid{padding:0 1.5rem}
-  .ds-head,.ds-grid,.dc-inner,.ft-inner,.ft-bot{padding:0 1.5rem}
+@media(max-width:900px){
+  .about-strip,.comm-grid{grid-template-columns:1fr;}
+  .lead-grid,.curr-grid{grid-template-columns:1fr 1fr;}
+  .committee-grid{grid-template-columns:repeat(3,1fr);}
+  .gallery-grid,.stories-grid{grid-template-columns:repeat(2,1fr);}
+  .dept-hero-stats{gap:1.5rem;}
+  .act-row{grid-template-columns:60px 1fr 44px;gap:1.2rem;}
+  .act-num{font-size:3.2rem;}
+  .hero-ark,.hero-rainbow,.hero-lion,.hero-dove{display:none;}
+}
+@media(max-width:640px){
+  .lead-grid,.curr-grid{grid-template-columns:1fr;}
+  .committee-grid,.comm-features{grid-template-columns:1fr 1fr;}
+  .act-row{grid-template-columns:48px 1fr;}
+  .act-icon-pill{display:none;}
+  .act-num{font-size:2.6rem;}
+  .stories-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:420px){
+  .stories-grid{grid-template-columns:1fr;}
+  .committee-grid{grid-template-columns:1fr 1fr;}
 }
 </style>
 </head>
 <body>
-<div id="cur"></div>
+
+<!-- ── ANNOUNCEMENT BAR ── -->
+<div id="ann-bar">
+  <div class="ann-left">
+    <div class="ann-label">📢 Updates</div>
+    <div class="ticker-overflow">
+      <div class="ticker-track" id="ticker-track">
+        <div class="t-item"><span class="t-date">Apr 2025</span><span class="t-sep">|</span>State Sunday School Annual Convention — Zion Hills, Chengannur<span class="t-new">New</span></div>
+        <div class="t-item"><span class="t-date">Mar 2025</span><span class="t-sep">|</span>State Level Bible Quiz Finals — Registration open for all 14 districts<span class="t-new">New</span></div>
+        <div class="t-item"><span class="t-date">Feb 2025</span><span class="t-sep">|</span>Teacher Training Workshop — Mount Zion Bible Seminary, Chengannur</div>
+        <div class="t-item"><span class="t-date">Jan 2025</span><span class="t-sep">|</span>New Sunday School curriculum distributed across all 1,200 churches</div>
+        <div class="t-item"><span class="t-date">Dec 2024</span><span class="t-sep">|</span>Christmas Carol competitions held across all districts. Results at State Convention</div>
+        <div class="t-item"><span class="t-date">Apr 2025</span><span class="t-sep">|</span>State Sunday School Annual Convention — Zion Hills, Chengannur<span class="t-new">New</span></div>
+        <div class="t-item"><span class="t-date">Mar 2025</span><span class="t-sep">|</span>State Level Bible Quiz Finals — Registration open for all 14 districts<span class="t-new">New</span></div>
+        <div class="t-item"><span class="t-date">Feb 2025</span><span class="t-sep">|</span>Teacher Training Workshop — Mount Zion Bible Seminary, Chengannur</div>
+        <div class="t-item"><span class="t-date">Jan 2025</span><span class="t-sep">|</span>New Sunday School curriculum distributed across all 1,200 churches</div>
+        <div class="t-item"><span class="t-date">Dec 2024</span><span class="t-sep">|</span>Christmas Carol competitions held across all districts. Results at State Convention</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── NAV ── -->
 <nav id="nav">
   <div class="nb">
     <a href="index.html" class="nl">
-      <div class="nl-logo">
-        <img src="download.png" alt="COG Logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="nl-logo-ph" style="display:none">✝</div>
-      </div>
+      <div class="nl-logo">✝</div>
       <div class="nl-txt">
-        <span class="nl-t1">Church of God (Full Gospel)</span>
-        <span class="nl-t2">Kerala State · India</span>
+        <div class="nl-t1">Church of God (Full Gospel)</div>
+        <div class="nl-t2">Kerala State · India</div>
       </div>
     </a>
-    <div class="nb-links">
-      <a href="index.html#vision" class="nb-link">Vision</a>
-      <a href="index.html#about" class="nb-link">History</a>
-      <a href="index.html#depts" class="nb-link">Departments</a>
-      <a href="index.html#leaders" class="nb-link">Leaders</a>
-      <a href="index.html#cta" class="nb-link">Contact</a>
-    </div>
-    <a href="index.html" class="nb-back">← Back to Home</a>
+    <a href="index.html" class="nav-back">← Back to Home</a>
   </div>
 </nav>
 
-<!-- HERO -->
-<div class="dept-hero">
-  <div class="dh-orb dh-orb-1"></div>
-  <div class="dh-orb dh-orb-2"></div>
-  <div class="dh-bg-text">SUN</div>
-  <div class="dh-cross">✝</div>
-  <div class="dh-content">
-    <div class="dh-eyebrow">COG Kerala · Department</div>
-    <div class="dh-title">Sunday<br><em>School</em></div>
-    <div class="dh-tagline">Nurturing Children in the Word</div>
-    <div class="dh-tags">
-      <span class="dh-tag">1200+ Sunday Schools</span><span class="dh-tag">50,000+ Children</span><span class="dh-tag">5000+ Teachers</span><span class="dh-tag">Weekly Classes</span>
-    </div>
+<!-- ── HERO ── -->
+<section class="dept-hero">
+  <div class="hero-sky">
+    <div class="hero-cloud"></div>
+    <div class="hero-cloud"></div>
+    <div class="hero-cloud"></div>
+    <div class="hero-stars" id="hero-stars"></div>
   </div>
-  <div class="dh-scroll-hint"><span>Scroll</span><div class="dh-scroll-line"></div></div>
-</div>
 
-<!-- STATS BAR -->
-<div class="stats-bar">
-  <div class="stats-inner">
-    <div class="stat-item"><div class="stat-val">1200+</div><div class="stat-lbl">Sunday Schools</div></div><div class="stat-item"><div class="stat-val">50,000+</div><div class="stat-lbl">Children</div></div><div class="stat-item"><div class="stat-val">5000+</div><div class="stat-lbl">Teachers</div></div><div class="stat-item"><div class="stat-val">Weekly</div><div class="stat-lbl">Classes</div></div>
-  </div>
-</div>
+  <!-- Rainbow (top-left of hero) -->
+  <svg class="hero-rainbow" width="300" height="130" viewBox="0 0 300 130" aria-hidden="true">
+    <path d="M10 120 Q150 10 290 120" fill="none" stroke="#FF5252" stroke-width="6" stroke-linecap="round"/>
+    <path d="M22 120 Q150 28 278 120" fill="none" stroke="#FF9800" stroke-width="5" stroke-linecap="round"/>
+    <path d="M34 120 Q150 44 266 120" fill="none" stroke="#FFEB3B" stroke-width="5" stroke-linecap="round"/>
+    <path d="M46 120 Q150 60 254 120" fill="none" stroke="#4CAF50" stroke-width="4" stroke-linecap="round"/>
+    <path d="M58 120 Q150 76 242 120" fill="none" stroke="#2196F3" stroke-width="4" stroke-linecap="round"/>
+    <path d="M70 120 Q150 90 230 120" fill="none" stroke="#9C27B0" stroke-width="3" stroke-linecap="round"/>
+  </svg>
 
-<!-- ABOUT -->
-<div class="dept-about">
-  <div class="da-grid">
-    <div>
-      <div class="da-sl rv">About This Department</div>
-      <h2 class="da-h rv">Sunday <em>School</em></h2>
-      <div class="da-rule rv"></div>
-      <p class="da-body rv">The Sunday School Department nurtures over 50,000 children across 1,200+ churches in the faith. Through age-appropriate, Spirit-led curriculum, trained teachers plant the seeds of the Gospel in the hearts of the youngest generation in Kerala.</p>
-      <div class="da-verse rv2">"Train up a child in the way he should go; even when he is old he will not depart from it." — Proverbs 22:6</div>
-    </div>
-    <div class="da-img rv2">
-      <img src="dept-sundayschool.jpg" alt="Sunday School" onerror="this.style.display='none'">
-      <div class="da-img-tag"><span>Sunday School Department</span>Church of God Kerala</div>
-    </div>
-  </div>
-</div>
+  <!-- Floating Dove -->
+  <svg class="hero-dove" width="80" height="55" viewBox="0 0 80 55" aria-hidden="true">
+    <path d="M5 28 Q22 10 40 22 Q32 36 18 30Z" fill="white" opacity=".92"/>
+    <path d="M40 22 Q60 8 72 20 Q62 34 46 26Z" fill="white" opacity=".92"/>
+    <circle cx="41" cy="20" r="6" fill="white"/>
+    <circle cx="43" cy="18" r="2" fill="#333"/>
+    <path d="M38 24 Q44 18 50 24" fill="none" stroke="#FFC107" stroke-width="2" stroke-linecap="round"/>
+    <path d="M42 28 Q50 38 58 34" fill="none" stroke="#4CAF50" stroke-width="2.5" stroke-linecap="round"/>
+    <ellipse cx="54" cy="33" rx="5" ry="3" fill="#4CAF50" transform="rotate(-20 54 33)"/>
+  </svg>
 
-<!-- SERVICES -->
-<div class="dept-services">
-  <div class="ds-head rv">
-    <div class="da-sl" style="justify-content:center">What We Do</div>
-    <h2 class="da-h" style="font-size:clamp(2.5rem,4vw,5rem);text-align:center">Our <em>Ministries</em></h2>
-    <div class="da-rule" style="margin:0 auto 1.5rem"></div>
-    <p style="font-size:1.05rem;color:var(--text2);line-height:2;max-width:600px;margin:0 auto">The Sunday School Department serves through these key areas of ministry across Kerala.</p>
-  </div>
-  <div class="ds-grid rv2">
-    
-    <div class="ds-card">
-      <div class="ds-num">01</div>
-      <div class="ds-icon">
-        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
-      </div>
-      <div class="ds-title">Curriculum Development</div>
-      <p class="ds-desc">Age-graded, Biblically rich teaching materials developed for Kerala's cultural and linguistic context.</p>
-    </div>
-    <div class="ds-card">
-      <div class="ds-num">02</div>
-      <div class="ds-icon">
-        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
-      </div>
-      <div class="ds-title">Teacher Training</div>
-      <p class="ds-desc">Regular workshops and certification programmes equipping Sunday School teachers across all districts.</p>
-    </div>
-    <div class="ds-card">
-      <div class="ds-num">03</div>
-      <div class="ds-icon">
-        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
-      </div>
-      <div class="ds-title">Annual Children's Day</div>
-      <p class="ds-desc">A state-wide celebration of children in Christ with programmes, competitions, and Gospel presentations.</p>
-    </div>
-    <div class="ds-card">
-      <div class="ds-num">04</div>
-      <div class="ds-icon">
-        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
-      </div>
-      <div class="ds-title">Vacation Bible School</div>
-      <p class="ds-desc">Intensive summer programmes deepening children's knowledge of the Bible and love for Jesus.</p>
-    </div>
-    <div class="ds-card">
-      <div class="ds-num">05</div>
-      <div class="ds-icon">
-        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
-      </div>
-      <div class="ds-title">Scripture Memory</div>
-      <p class="ds-desc">Structured programmes encouraging children to hide God's Word in their hearts from an early age.</p>
-    </div>
-    <div class="ds-card">
-      <div class="ds-num">06</div>
-      <div class="ds-icon">
-        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
-      </div>
-      <div class="ds-title">Children's Conventions</div>
-      <p class="ds-desc">District and state level gatherings for Sunday School children with age-appropriate ministry and worship.</p>
-    </div>
-  </div>
-</div>
+  <!-- Ark (right side) -->
+  <svg class="hero-ark" width="320" height="180" viewBox="0 0 320 180" aria-hidden="true">
+    <!-- Water -->
+    <path d="M0 148 Q40 136 80 148 Q120 160 160 148 Q200 136 240 148 Q280 160 320 148 L320 180 L0 180Z" fill="#1565C0" opacity=".8"/>
+    <path d="M0 158 Q40 150 80 158 Q120 166 160 158 Q200 150 240 158 Q280 166 320 158 L320 180 L0 180Z" fill="#0D47A1"/>
+    <!-- Hull -->
+    <path d="M60 120 L260 120 Q278 120 282 140 L38 140 Q42 120 60 120Z" fill="#8B4513"/>
+    <!-- Cabin -->
+    <rect x="78" y="78" width="164" height="44" rx="5" fill="#A0522D"/>
+    <!-- Roof -->
+    <polygon points="88,79 232,79 220,52 100,52" fill="#6D3410"/>
+    <!-- Roof ridge -->
+    <line x1="154" y1="52" x2="154" y2="79" stroke="#5D3A0E" stroke-width="2"/>
+    <!-- Windows -->
+    <rect x="98" y="87" width="24" height="22" rx="4" fill="#FFD54F" opacity=".9"/>
+    <rect x="130" y="87" width="24" height="22" rx="4" fill="#FFD54F" opacity=".9"/>
+    <rect x="162" y="87" width="24" height="22" rx="4" fill="#FFD54F" opacity=".9"/>
+    <rect x="194" y="87" width="24" height="22" rx="4" fill="#FFD54F" opacity=".9"/>
+    <!-- Animal peeks -->
+    <!-- Elephant in window 1 -->
+    <ellipse cx="110" cy="87" rx="8" ry="7" fill="#90A4AE"/>
+    <rect cx="108" cy="93" width="4" height="8" rx="2" fill="#90A4AE"/>
+    <!-- Giraffe neck in window 3 -->
+    <rect x="170" y="62" width="8" height="28" rx="4" fill="#FFB300"/>
+    <ellipse cx="174" cy="60" rx="9" ry="10" fill="#FFB300"/>
+    <circle cx="171" cy="56" r="2" fill="#333"/>
+    <!-- Noah figure on deck -->
+    <circle cx="155" cy="45" r="10" fill="#FFCC80"/>
+    <path d="M144 40 Q155 32 166 40" fill="#8D6E63" stroke="#5D4037" stroke-width="1"/>
+    <rect x="148" y="55" width="14" height="20" rx="4" fill="#4E342E"/>
+    <!-- Noah's arms raised -->
+    <path d="M142 62 Q136 55 132 50" stroke="#FFCC80" stroke-width="4" stroke-linecap="round" fill="none"/>
+    <path d="M168 62 Q174 55 178 50" stroke="#FFCC80" stroke-width="4" stroke-linecap="round" fill="none"/>
+  </svg>
 
-<!-- CTA -->
-<div class="dept-cta">
-  <div class="dc-bg">SUN</div>
-  <div class="dc-inner">
-    <div>
-      <div class="dc-h">
-        <span>Connect with</span>
-        Sunday School<br>Department
-      </div>
-    </div>
-    <div class="dc-links">
-      <a class="dc-a" href="index.html">← Back to Main Site</a>
-      <a class="dc-a" href="index.html#cta">Contact Us ↗</a>
-      <a class="dc-a" href="mailto:cogkeralastate@gmail.com">Email Us ↗</a>
+  <!-- Lion (bottom-left) -->
+  <svg class="hero-lion" width="130" height="100" viewBox="0 0 130 100" aria-hidden="true">
+    <!-- Body -->
+    <ellipse cx="70" cy="72" rx="45" ry="28" fill="#FFA726"/>
+    <!-- Legs -->
+    <rect x="32" y="82" width="12" height="18" rx="5" fill="#FF9800"/>
+    <rect x="52" y="84" width="12" height="16" rx="5" fill="#FF9800"/>
+    <rect x="75" y="84" width="12" height="16" rx="5" fill="#FF9800"/>
+    <rect x="95" y="82" width="12" height="18" rx="5" fill="#FF9800"/>
+    <!-- Tail -->
+    <path d="M112 70 Q128 55 122 42" fill="none" stroke="#FF9800" stroke-width="5" stroke-linecap="round"/>
+    <ellipse cx="120" cy="40" rx="8" ry="10" fill="#FF9800"/>
+    <!-- Mane -->
+    <circle cx="42" cy="52" r="22" fill="#E65100"/>
+    <!-- Head -->
+    <circle cx="42" cy="50" r="17" fill="#FFB300"/>
+    <!-- Ears -->
+    <circle cx="27" cy="36" r="7" fill="#FF9800"/>
+    <circle cx="57" cy="36" r="7" fill="#FF9800"/>
+    <circle cx="27" cy="36" r="4" fill="#FFCC80"/>
+    <circle cx="57" cy="36" r="4" fill="#FFCC80"/>
+    <!-- Face -->
+    <circle cx="36" cy="46" r="4" fill="#333"/>
+    <circle cx="48" cy="46" r="4" fill="#333"/>
+    <circle cx="37" cy="45" r="1.5" fill="white"/>
+    <circle cx="49" cy="45" r="1.5" fill="white"/>
+    <!-- Nose -->
+    <ellipse cx="42" cy="54" rx="5" ry="3" fill="#E65100"/>
+    <!-- Smile -->
+    <path d="M36 57 Q42 63 48 57" fill="none" stroke="#E65100" stroke-width="2" stroke-linecap="round"/>
+    <!-- Whiskers -->
+    <line x1="20" y1="52" x2="34" y2="54" stroke="rgba(0,0,0,.25)" stroke-width="1.5"/>
+    <line x1="20" y1="56" x2="34" y2="56" stroke="rgba(0,0,0,.25)" stroke-width="1.5"/>
+    <line x1="50" y1="54" x2="64" y2="52" stroke="rgba(0,0,0,.25)" stroke-width="1.5"/>
+    <line x1="50" y1="56" x2="64" y2="56" stroke="rgba(0,0,0,.25)" stroke-width="1.5"/>
+  </svg>
+
+  <div class="dept-hero-inner">
+    <div class="dept-tag">Department</div>
+    <h1 class="dept-hero-title">
+      <em>Nurturing Young Disciples</em>
+      Sunday <span>School</span>
+    </h1>
+    <p class="dept-hero-desc">Training children and youth in the Word of God — building the next generation of Spirit-filled believers across all of Kerala, from LKG to Class 12.</p>
+    <div class="dept-hero-stats">
+      <div class="dhs"><div class="dhs-num">1,200+</div><div class="dhs-label">Sunday Schools</div></div>
+      <div class="dhs"><div class="dhs-num">50,000+</div><div class="dhs-label">Students</div></div>
+      <div class="dhs"><div class="dhs-num">14</div><div class="dhs-label">Districts</div></div>
+      <div class="dhs"><div class="dhs-num">LKG–12</div><div class="dhs-label">All Grades</div></div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- FOOTER -->
+<!-- ── CHARACTER PARADE ── -->
+<section class="parade-sec" aria-label="Bible Characters Parade">
+  <div class="parade-track" id="parade-track">
+
+    <!-- NOAH -->
+    <div class="parade-char">
+      <svg width="72" height="92" viewBox="0 0 72 92" aria-label="Noah">
+        <rect x="18" y="62" width="36" height="28" rx="6" fill="#8B4513"/>
+        <rect x="22" y="44" width="28" height="20" rx="4" fill="#A0522D"/>
+        <polygon points="24,45 48,45 44,30 28,30" fill="#6D3410"/>
+        <circle cx="36" cy="22" r="10" fill="#FFCC80"/>
+        <rect x="31" y="32" width="10" height="14" rx="3" fill="#3E2723"/>
+        <path d="M26 18 Q36 8 46 18" fill="#8D6E63" stroke="#5D4037" stroke-width="1"/>
+        <!-- Dove on hand -->
+        <path d="M46 38 Q52 32 56 36 Q53 41 48 39Z" fill="white"/>
+        <path d="M56 36 Q61 30 64 34 Q61 39 57 37Z" fill="white"/>
+        <circle cx="57" cy="35" r="3" fill="white"/>
+      </svg>
+      <span class="parade-char-name">Noah</span>
+    </div>
+
+    <!-- DAVID -->
+    <div class="parade-char">
+      <svg width="72" height="92" viewBox="0 0 72 92" aria-label="David">
+        <circle cx="36" cy="20" r="11" fill="#FFCC80"/>
+        <path d="M25 15 Q36 5 47 15" fill="#FFB300" stroke="#F57F17" stroke-width="1"/>
+        <rect x="28" y="31" width="16" height="18" rx="3" fill="#1565C0"/>
+        <rect x="22" y="36" width="8" height="14" rx="2" fill="#FFCC80"/>
+        <rect x="42" y="36" width="8" height="14" rx="2" fill="#FFCC80"/>
+        <rect x="26" y="49" width="8" height="22" rx="2" fill="#0D47A1"/>
+        <rect x="38" y="49" width="8" height="22" rx="2" fill="#0D47A1"/>
+        <!-- Sling -->
+        <path d="M48 36 Q60 24 56 16" fill="none" stroke="#8B6914" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="57" cy="14" r="5" fill="#9E9E9E"/>
+        <!-- Star of David -->
+        <polygon points="36,33 38.5,38 33.5,38" fill="#FFD700" opacity=".85"/>
+        <polygon points="36,38 38.5,33 33.5,33" fill="#FFD700" opacity=".85"/>
+      </svg>
+      <span class="parade-char-name">David</span>
+    </div>
+
+    <!-- JONAH -->
+    <div class="parade-char">
+      <svg width="72" height="92" viewBox="0 0 72 92" aria-label="Jonah">
+        <!-- Whale -->
+        <path d="M4 62 Q36 44 68 58 Q72 65 68 74 Q36 88 4 74 Q0 68 4 62Z" fill="#1A237E"/>
+        <path d="M56 56 Q70 48 70 64 Q70 78 56 72Z" fill="#283593"/>
+        <!-- Eye -->
+        <circle cx="18" cy="64" r="6" fill="white"/>
+        <circle cx="19" cy="64" r="4" fill="#1A237E"/>
+        <circle cx="20" cy="63" r="1.5" fill="white"/>
+        <!-- Mouth -->
+        <path d="M6 68 Q12 76 18 72" fill="#4FC3F7"/>
+        <!-- Jonah inside (peeking) -->
+        <circle cx="36" cy="64" r="9" fill="#FFCC80" opacity=".9"/>
+        <path d="M27 60 Q36 54 45 60" fill="#795548"/>
+        <rect x="30" y="73" width="12" height="6" rx="2" fill="#795548" opacity=".7"/>
+        <!-- Water spout -->
+        <path d="M10 56 Q7 42 4 32 Q6 30 8 32 Q9 26 12 32 Q14 30 14 32 Q16 26 18 32 Q20 30 20 32 Q18 40 16 56Z" fill="#42A5F5" opacity=".65"/>
+      </svg>
+      <span class="parade-char-name">Jonah</span>
+    </div>
+
+    <!-- JESUS -->
+    <div class="parade-char">
+      <svg width="72" height="92" viewBox="0 0 72 92" aria-label="Jesus">
+        <!-- Halo -->
+        <circle cx="36" cy="16" r="15" fill="none" stroke="#FFD700" stroke-width="2.5" opacity=".95"/>
+        <!-- Head -->
+        <circle cx="36" cy="18" r="11" fill="#FFCC80"/>
+        <path d="M25 13 Q36 5 47 13" fill="#8D6E63"/>
+        <!-- Hair strands -->
+        <path d="M25 13 Q20 22 22 32" fill="none" stroke="#8D6E63" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M47 13 Q52 22 50 32" fill="none" stroke="#8D6E63" stroke-width="2.5" stroke-linecap="round"/>
+        <!-- Robe -->
+        <path d="M22 30 Q36 24 50 30 L54 72 Q36 80 18 72Z" fill="white"/>
+        <!-- Sash -->
+        <path d="M22 45 Q36 41 50 45" fill="none" stroke="#FFD700" stroke-width="2" opacity=".7"/>
+        <!-- Cross on robe -->
+        <rect x="34" y="32" width="4" height="16" rx="1" fill="#FFD700" opacity=".75"/>
+        <rect x="29" y="37" width="14" height="4" rx="1" fill="#FFD700" opacity=".75"/>
+        <!-- Arms/hands -->
+        <path d="M22 35 L12 44" stroke="white" stroke-width="6" stroke-linecap="round"/>
+        <path d="M50 35 L60 44" stroke="white" stroke-width="6" stroke-linecap="round"/>
+        <circle cx="11" cy="45" r="4" fill="#FFCC80"/>
+        <circle cx="61" cy="45" r="4" fill="#FFCC80"/>
+      </svg>
+      <span class="parade-char-name">Jesus</span>
+    </div>
+
+    <!-- MOSES -->
+    <div class="parade-char">
+      <svg width="72" height="92" viewBox="0 0 72 92" aria-label="Moses">
+        <circle cx="36" cy="18" r="11" fill="#FFCC80"/>
+        <!-- White hair/beard -->
+        <path d="M25 13 Q36 5 47 13" fill="#E0E0E0" stroke="#BDBDBD" stroke-width="1"/>
+        <path d="M26 22 Q22 35 26 45" fill="#E0E0E0" stroke="#BDBDBD" stroke-width="1"/>
+        <path d="M46 22 Q50 35 46 45" fill="#E0E0E0" stroke="#BDBDBD" stroke-width="1"/>
+        <rect x="29" y="29" width="14" height="22" rx="3" fill="#EF6C00"/>
+        <rect x="21" y="33" width="10" height="18" rx="2" fill="#FFCC80"/>
+        <rect x="41" y="33" width="10" height="18" rx="2" fill="#FFCC80"/>
+        <!-- Staff -->
+        <rect x="58" y="22" width="5" height="48" rx="2.5" fill="#795548"/>
+        <path d="M58 23 Q64 14 68 18" fill="none" stroke="#795548" stroke-width="3.5" stroke-linecap="round"/>
+        <!-- Stone tablets -->
+        <rect x="20" y="35" width="13" height="17" rx="2" fill="#F5F5F5" stroke="#9E9E9E" stroke-width="1.5"/>
+        <line x1="22" y1="39" x2="31" y2="39" stroke="#666" stroke-width="1.2"/>
+        <line x1="22" y1="42" x2="31" y2="42" stroke="#666" stroke-width="1.2"/>
+        <line x1="22" y1="45" x2="31" y2="45" stroke="#666" stroke-width="1.2"/>
+        <line x1="22" y1="48" x2="31" y2="48" stroke="#666" stroke-width="1.2"/>
+        <rect x="27" y="51" width="14" height="22" rx="3" fill="#F57C00"/>
+      </svg>
+      <span class="parade-char-name">Moses</span>
+    </div>
+
+    <!-- DANIEL -->
+    <div class="parade-char">
+      <svg width="72" height="92" viewBox="0 0 72 92" aria-label="Daniel">
+        <circle cx="36" cy="18" r="10" fill="#8D6E63"/>
+        <rect x="29" y="28" width="14" height="24" rx="3" fill="#4A148C"/>
+        <rect x="22" y="32" width="9" height="18" rx="2" fill="#8D6E63"/>
+        <rect x="41" y="32" width="9" height="18" rx="2" fill="#8D6E63"/>
+        <!-- Two lions -->
+        <ellipse cx="14" cy="74" rx="13" ry="11" fill="#FFA726"/>
+        <circle cx="14" cy="66" r="9" fill="#FFB300"/>
+        <circle cx="10" cy="63" r="2.5" fill="#333"/>
+        <circle cx="18" cy="63" r="2.5" fill="#333"/>
+        <path d="M10 69 Q14 73 18 69" fill="none" stroke="#E65100" stroke-width="1.5"/>
+        <ellipse cx="58" cy="74" rx="13" ry="11" fill="#FFA726"/>
+        <circle cx="58" cy="66" r="9" fill="#FFB300"/>
+        <circle cx="54" cy="63" r="2.5" fill="#333"/>
+        <circle cx="62" cy="63" r="2.5" fill="#333"/>
+        <path d="M54 69 Q58 73 62 69" fill="none" stroke="#E65100" stroke-width="1.5"/>
+        <!-- Daniel standing in middle -->
+        <rect x="29" y="52" width="14" height="22" rx="3" fill="#6A1B9A"/>
+        <!-- Angel glow above -->
+        <circle cx="36" cy="44" r="7" fill="#FFF9C4" opacity=".92"/>
+        <path d="M24 44 Q29 35 36 40 Q43 35 48 44" fill="#FFF9C4" opacity=".55"/>
+      </svg>
+      <span class="parade-char-name">Daniel</span>
+    </div>
+
+    <!-- MARY -->
+    <div class="parade-char">
+      <svg width="72" height="92" viewBox="0 0 72 92" aria-label="Mary">
+        <circle cx="36" cy="17" r="10" fill="#FFCC80"/>
+        <!-- Blue veil -->
+        <path d="M22 14 Q36 4 50 14 Q48 21 36 23 Q24 21 22 14Z" fill="#1565C0" opacity=".85"/>
+        <!-- Cloak -->
+        <path d="M16 27 Q36 20 56 27 L59 76 Q36 84 13 76Z" fill="#1565C0" opacity=".88"/>
+        <!-- White robe underneath -->
+        <path d="M24 29 L48 29 L51 74 L21 74Z" fill="#E3F2FD" opacity=".92"/>
+        <!-- Arms -->
+        <rect x="18" y="33" width="9" height="18" rx="2" fill="#FFCC80"/>
+        <rect x="45" y="33" width="9" height="18" rx="2" fill="#FFCC80"/>
+        <!-- Baby Jesus in arms -->
+        <circle cx="28" cy="42" r="7" fill="#FFCC80"/>
+        <rect x="22" y="49" width="14" height="9" rx="3" fill="#FFFDE7"/>
+        <!-- Baby halo -->
+        <circle cx="28" cy="40" r="4" fill="none" stroke="#FFD700" stroke-width="1.5" opacity=".8"/>
+      </svg>
+      <span class="parade-char-name">Mary</span>
+    </div>
+
+    <!-- ELIJAH -->
+    <div class="parade-char">
+      <svg width="72" height="92" viewBox="0 0 72 92" aria-label="Elijah">
+        <circle cx="36" cy="18" r="10" fill="#8D6E63"/>
+        <path d="M26 12 Q36 5 46 12" fill="#5D4037" stroke="#4E342E" stroke-width="1"/>
+        <!-- Fire chariot base -->
+        <path d="M8 80 Q20 62 32 68 Q36 60 40 68 Q52 62 64 80Z" fill="#FF6D00" opacity=".85"/>
+        <path d="M14 80 Q26 65 38 70 Q50 65 58 80Z" fill="#FFD600" opacity=".75"/>
+        <path d="M20 80 Q32 68 44 73 Q56 68 56 80Z" fill="#FF3D00" opacity=".65"/>
+        <!-- Fiery wheels -->
+        <circle cx="22" cy="78" r="8" fill="none" stroke="#FF9800" stroke-width="3"/>
+        <circle cx="50" cy="78" r="8" fill="none" stroke="#FF9800" stroke-width="3"/>
+        <!-- Elijah ascending -->
+        <rect x="30" y="40" width="12" height="20" rx="3" fill="#795548"/>
+        <rect x="22" y="44" width="10" height="16" rx="2" fill="#8D6E63"/>
+        <rect x="40" y="44" width="10" height="16" rx="2" fill="#8D6E63"/>
+        <rect x="29" y="60" width="6" height="12" rx="2" fill="#6D4C41"/>
+        <rect x="37" y="60" width="6" height="12" rx="2" fill="#6D4C41"/>
+        <!-- Mantle/cloak -->
+        <path d="M20 42 Q28 30 44 42" fill="#E0E0E0" stroke="#BDBDBD" stroke-width="1" opacity=".9"/>
+      </svg>
+      <span class="parade-char-name">Elijah</span>
+    </div>
+
+    <!-- ESTHER -->
+    <div class="parade-char">
+      <svg width="72" height="92" viewBox="0 0 72 92" aria-label="Esther">
+        <circle cx="36" cy="16" r="10" fill="#FFCC80"/>
+        <!-- Crown -->
+        <path d="M24 12 L26 6 L30 11 L36 5 L42 11 L46 6 L48 12 Q36 10 24 12Z" fill="#FFD700"/>
+        <circle cx="36" cy="6" r="2.5" fill="#E91E63"/>
+        <circle cx="27" cy="9" r="2" fill="#9C27B0"/>
+        <circle cx="45" cy="9" r="2" fill="#2196F3"/>
+        <!-- Elegant robe -->
+        <path d="M20 28 Q36 22 52 28 L56 74 Q36 82 16 74Z" fill="#9C27B0" opacity=".9"/>
+        <!-- Gold trim -->
+        <path d="M20 28 Q36 22 52 28" fill="none" stroke="#FFD700" stroke-width="2.5"/>
+        <path d="M22 45 Q36 40 50 45" fill="none" stroke="#FFD700" stroke-width="1.5" opacity=".7"/>
+        <!-- Arms -->
+        <rect x="12" y="32" width="10" height="20" rx="3" fill="#9C27B0" opacity=".9"/>
+        <rect x="50" y="32" width="10" height="20" rx="3" fill="#9C27B0" opacity=".9"/>
+        <circle cx="11" cy="52" r="5" fill="#FFCC80"/>
+        <circle cx="61" cy="52" r="5" fill="#FFCC80"/>
+        <!-- Scepter -->
+        <rect x="59" y="30" width="4" height="38" rx="2" fill="#FFD700"/>
+        <circle cx="61" cy="29" r="6" fill="#FFD700"/>
+        <circle cx="61" cy="29" r="3" fill="#E91E63"/>
+      </svg>
+      <span class="parade-char-name">Esther</span>
+    </div>
+
+    <!-- JOSEPH -->
+    <div class="parade-char">
+      <svg width="72" height="92" viewBox="0 0 72 92" aria-label="Joseph">
+        <circle cx="36" cy="18" r="10" fill="#FFCC80"/>
+        <path d="M26 13 Q36 6 46 13" fill="#8D6E63"/>
+        <!-- Coat of many colours -->
+        <path d="M22 28 Q36 22 50 28 L54 74 Q36 82 18 74Z" fill="#FF5722"/>
+        <!-- Colour patches on coat -->
+        <path d="M22 28 L28 50 L36 28Z" fill="#9C27B0" opacity=".8"/>
+        <path d="M28 50 L36 28 L44 50Z" fill="#2196F3" opacity=".8"/>
+        <path d="M44 50 L36 28 L50 28Z" fill="#4CAF50" opacity=".8"/>
+        <path d="M22 28 L18 74 L28 74 L28 50Z" fill="#FFD700" opacity=".8"/>
+        <path d="M44 50 L44 74 L54 74 L50 28Z" fill="#FF9800" opacity=".8"/>
+        <path d="M28 74 L44 74 L44 50 L28 50Z" fill="#E91E63" opacity=".8"/>
+        <!-- Arms -->
+        <rect x="14" y="32" width="10" height="16" rx="2" fill="#FFCC80"/>
+        <rect x="48" y="32" width="10" height="16" rx="2" fill="#FFCC80"/>
+      </svg>
+      <span class="parade-char-name">Joseph</span>
+    </div>
+
+    <!-- Duplicates for seamless loop -->
+    <div class="parade-char">
+      <svg width="72" height="92" viewBox="0 0 72 92" aria-label="Noah"><rect x="18" y="62" width="36" height="28" rx="6" fill="#8B4513"/><rect x="22" y="44" width="28" height="20" rx="4" fill="#A0522D"/><polygon points="24,45 48,45 44,30 28,30" fill="#6D3410"/><circle cx="36" cy="22" r="10" fill="#FFCC80"/><rect x="31" y="32" width="10" height="14" rx="3" fill="#3E2723"/><path d="M26 18 Q36 8 46 18" fill="#8D6E63" stroke="#5D4037" stroke-width="1"/><path d="M46 38 Q52 32 56 36 Q53 41 48 39Z" fill="white"/><path d="M56 36 Q61 30 64 34 Q61 39 57 37Z" fill="white"/><circle cx="57" cy="35" r="3" fill="white"/></svg>
+      <span class="parade-char-name">Noah</span>
+    </div>
+    <div class="parade-char">
+      <svg width="72" height="92" viewBox="0 0 72 92" aria-label="David"><circle cx="36" cy="20" r="11" fill="#FFCC80"/><path d="M25 15 Q36 5 47 15" fill="#FFB300" stroke="#F57F17" stroke-width="1"/><rect x="28" y="31" width="16" height="18" rx="3" fill="#1565C0"/><rect x="22" y="36" width="8" height="14" rx="2" fill="#FFCC80"/><rect x="42" y="36" width="8" height="14" rx="2" fill="#FFCC80"/><rect x="26" y="49" width="8" height="22" rx="2" fill="#0D47A1"/><rect x="38" y="49" width="8" height="22" rx="2" fill="#0D47A1"/><path d="M48 36 Q60 24 56 16" fill="none" stroke="#8B6914" stroke-width="2" stroke-linecap="round"/><circle cx="57" cy="14" r="5" fill="#9E9E9E"/><polygon points="36,33 38.5,38 33.5,38" fill="#FFD700" opacity=".85"/><polygon points="36,38 38.5,33 33.5,33" fill="#FFD700" opacity=".85"/></svg>
+      <span class="parade-char-name">David</span>
+    </div>
+    <div class="parade-char">
+      <svg width="72" height="92" viewBox="0 0 72 92" aria-label="Jonah"><path d="M4 62 Q36 44 68 58 Q72 65 68 74 Q36 88 4 74 Q0 68 4 62Z" fill="#1A237E"/><path d="M56 56 Q70 48 70 64 Q70 78 56 72Z" fill="#283593"/><circle cx="18" cy="64" r="6" fill="white"/><circle cx="19" cy="64" r="4" fill="#1A237E"/><circle cx="20" cy="63" r="1.5" fill="white"/><path d="M6 68 Q12 76 18 72" fill="#4FC3F7"/><circle cx="36" cy="64" r="9" fill="#FFCC80" opacity=".9"/><path d="M27 60 Q36 54 45 60" fill="#795548"/><rect x="30" y="73" width="12" height="6" rx="2" fill="#795548" opacity=".7"/><path d="M10 56 Q7 42 4 32 Q6 30 8 32 Q9 26 12 32 Q14 30 14 32 Q16 26 18 32 Q20 30 20 32 Q18 40 16 56Z" fill="#42A5F5" opacity=".65"/></svg>
+      <span class="parade-char-name">Jonah</span>
+    </div>
+    <div class="parade-char">
+      <svg width="72" height="92" viewBox="0 0 72 92" aria-label="Jesus"><circle cx="36" cy="16" r="15" fill="none" stroke="#FFD700" stroke-width="2.5" opacity=".95"/><circle cx="36" cy="18" r="11" fill="#FFCC80"/><path d="M25 13 Q36 5 47 13" fill="#8D6E63"/><path d="M25 13 Q20 22 22 32" fill="none" stroke="#8D6E63" stroke-width="2.5" stroke-linecap="round"/><path d="M47 13 Q52 22 50 32" fill="none" stroke="#8D6E63" stroke-width="2.5" stroke-linecap="round"/><path d="M22 30 Q36 24 50 30 L54 72 Q36 80 18 72Z" fill="white"/><path d="M22 45 Q36 41 50 45" fill="none" stroke="#FFD700" stroke-width="2" opacity=".7"/><rect x="34" y="32" width="4" height="16" rx="1" fill="#FFD700" opacity=".75"/><rect x="29" y="37" width="14" height="4" rx="1" fill="#FFD700" opacity=".75"/><path d="M22 35 L12 44" stroke="white" stroke-width="6" stroke-linecap="round"/><path d="M50 35 L60 44" stroke="white" stroke-width="6" stroke-linecap="round"/><circle cx="11" cy="45" r="4" fill="#FFCC80"/><circle cx="61" cy="45" r="4" fill="#FFCC80"/></svg>
+      <span class="parade-char-name">Jesus</span>
+    </div>
+    <div class="parade-char">
+      <svg width="72" height="92" viewBox="0 0 72 92" aria-label="Moses"><circle cx="36" cy="18" r="11" fill="#FFCC80"/><path d="M25 13 Q36 5 47 13" fill="#E0E0E0" stroke="#BDBDBD" stroke-width="1"/><path d="M26 22 Q22 35 26 45" fill="#E0E0E0" stroke="#BDBDBD" stroke-width="1"/><path d="M46 22 Q50 35 46 45" fill="#E0E0E0" stroke="#BDBDBD" stroke-width="1"/><rect x="29" y="29" width="14" height="22" rx="3" fill="#EF6C00"/><rect x="21" y="33" width="10" height="18" rx="2" fill="#FFCC80"/><rect x="41" y="33" width="10" height="18" rx="2" fill="#FFCC80"/><rect x="58" y="22" width="5" height="48" rx="2.5" fill="#795548"/><path d="M58 23 Q64 14 68 18" fill="none" stroke="#795548" stroke-width="3.5" stroke-linecap="round"/><rect x="20" y="35" width="13" height="17" rx="2" fill="#F5F5F5" stroke="#9E9E9E" stroke-width="1.5"/><line x1="22" y1="39" x2="31" y2="39" stroke="#666" stroke-width="1.2"/><line x1="22" y1="42" x2="31" y2="42" stroke="#666" stroke-width="1.2"/><line x1="22" y1="45" x2="31" y2="45" stroke="#666" stroke-width="1.2"/><line x1="22" y1="48" x2="31" y2="48" stroke="#666" stroke-width="1.2"/><rect x="27" y="51" width="14" height="22" rx="3" fill="#F57C00"/></svg>
+      <span class="parade-char-name">Moses</span>
+    </div>
+    <div class="parade-char">
+      <svg width="72" height="92" viewBox="0 0 72 92" aria-label="Daniel"><circle cx="36" cy="18" r="10" fill="#8D6E63"/><rect x="29" y="28" width="14" height="24" rx="3" fill="#4A148C"/><rect x="22" y="32" width="9" height="18" rx="2" fill="#8D6E63"/><rect x="41" y="32" width="9" height="18" rx="2" fill="#8D6E63"/><ellipse cx="14" cy="74" rx="13" ry="11" fill="#FFA726"/><circle cx="14" cy="66" r="9" fill="#FFB300"/><circle cx="10" cy="63" r="2.5" fill="#333"/><circle cx="18" cy="63" r="2.5" fill="#333"/><path d="M10 69 Q14 73 18 69" fill="none" stroke="#E65100" stroke-width="1.5"/><ellipse cx="58" cy="74" rx="13" ry="11" fill="#FFA726"/><circle cx="58" cy="66" r="9" fill="#FFB300"/><circle cx="54" cy="63" r="2.5" fill="#333"/><circle cx="62" cy="63" r="2.5" fill="#333"/><path d="M54 69 Q58 73 62 69" fill="none" stroke="#E65100" stroke-width="1.5"/><rect x="29" y="52" width="14" height="22" rx="3" fill="#6A1B9A"/><circle cx="36" cy="44" r="7" fill="#FFF9C4" opacity=".92"/><path d="M24 44 Q29 35 36 40 Q43 35 48 44" fill="#FFF9C4" opacity=".55"/></svg>
+      <span class="parade-char-name">Daniel</span>
+    </div>
+    <div class="parade-char">
+      <svg width="72" height="92" viewBox="0 0 72 92" aria-label="Mary"><circle cx="36" cy="17" r="10" fill="#FFCC80"/><path d="M22 14 Q36 4 50 14 Q48 21 36 23 Q24 21 22 14Z" fill="#1565C0" opacity=".85"/><path d="M16 27 Q36 20 56 27 L59 76 Q36 84 13 76Z" fill="#1565C0" opacity=".88"/><path d="M24 29 L48 29 L51 74 L21 74Z" fill="#E3F2FD" opacity=".92"/><rect x="18" y="33" width="9" height="18" rx="2" fill="#FFCC80"/><rect x="45" y="33" width="9" height="18" rx="2" fill="#FFCC80"/><circle cx="28" cy="42" r="7" fill="#FFCC80"/><rect x="22" y="49" width="14" height="9" rx="3" fill="#FFFDE7"/><circle cx="28" cy="40" r="4" fill="none" stroke="#FFD700" stroke-width="1.5" opacity=".8"/></svg>
+      <span class="parade-char-name">Mary</span>
+    </div>
+    <div class="parade-char">
+      <svg width="72" height="92" viewBox="0 0 72 92" aria-label="Elijah"><circle cx="36" cy="18" r="10" fill="#8D6E63"/><path d="M26 12 Q36 5 46 12" fill="#5D4037" stroke="#4E342E" stroke-width="1"/><path d="M8 80 Q20 62 32 68 Q36 60 40 68 Q52 62 64 80Z" fill="#FF6D00" opacity=".85"/><path d="M14 80 Q26 65 38 70 Q50 65 58 80Z" fill="#FFD600" opacity=".75"/><path d="M20 80 Q32 68 44 73 Q56 68 56 80Z" fill="#FF3D00" opacity=".65"/><circle cx="22" cy="78" r="8" fill="none" stroke="#FF9800" stroke-width="3"/><circle cx="50" cy="78" r="8" fill="none" stroke="#FF9800" stroke-width="3"/><rect x="30" y="40" width="12" height="20" rx="3" fill="#795548"/><rect x="22" y="44" width="10" height="16" rx="2" fill="#8D6E63"/><rect x="40" y="44" width="10" height="16" rx="2" fill="#8D6E63"/><rect x="29" y="60" width="6" height="12" rx="2" fill="#6D4C41"/><rect x="37" y="60" width="6" height="12" rx="2" fill="#6D4C41"/><path d="M20 42 Q28 30 44 42" fill="#E0E0E0" stroke="#BDBDBD" stroke-width="1" opacity=".9"/></svg>
+      <span class="parade-char-name">Elijah</span>
+    </div>
+    <div class="parade-char">
+      <svg width="72" height="92" viewBox="0 0 72 92" aria-label="Esther"><circle cx="36" cy="16" r="10" fill="#FFCC80"/><path d="M24 12 L26 6 L30 11 L36 5 L42 11 L46 6 L48 12 Q36 10 24 12Z" fill="#FFD700"/><circle cx="36" cy="6" r="2.5" fill="#E91E63"/><circle cx="27" cy="9" r="2" fill="#9C27B0"/><circle cx="45" cy="9" r="2" fill="#2196F3"/><path d="M20 28 Q36 22 52 28 L56 74 Q36 82 16 74Z" fill="#9C27B0" opacity=".9"/><path d="M20 28 Q36 22 52 28" fill="none" stroke="#FFD700" stroke-width="2.5"/><path d="M22 45 Q36 40 50 45" fill="none" stroke="#FFD700" stroke-width="1.5" opacity=".7"/><rect x="12" y="32" width="10" height="20" rx="3" fill="#9C27B0" opacity=".9"/><rect x="50" y="32" width="10" height="20" rx="3" fill="#9C27B0" opacity=".9"/><circle cx="11" cy="52" r="5" fill="#FFCC80"/><circle cx="61" cy="52" r="5" fill="#FFCC80"/><rect x="59" y="30" width="4" height="38" rx="2" fill="#FFD700"/><circle cx="61" cy="29" r="6" fill="#FFD700"/><circle cx="61" cy="29" r="3" fill="#E91E63"/></svg>
+      <span class="parade-char-name">Esther</span>
+    </div>
+    <div class="parade-char">
+      <svg width="72" height="92" viewBox="0 0 72 92" aria-label="Joseph"><circle cx="36" cy="18" r="10" fill="#FFCC80"/><path d="M26 13 Q36 6 46 13" fill="#8D6E63"/><path d="M22 28 Q36 22 50 28 L54 74 Q36 82 18 74Z" fill="#FF5722"/><path d="M22 28 L28 50 L36 28Z" fill="#9C27B0" opacity=".8"/><path d="M28 50 L36 28 L44 50Z" fill="#2196F3" opacity=".8"/><path d="M44 50 L36 28 L50 28Z" fill="#4CAF50" opacity=".8"/><path d="M22 28 L18 74 L28 74 L28 50Z" fill="#FFD700" opacity=".8"/><path d="M44 50 L44 74 L54 74 L50 28Z" fill="#FF9800" opacity=".8"/><path d="M28 74 L44 74 L44 50 L28 50Z" fill="#E91E63" opacity=".8"/><rect x="14" y="32" width="10" height="16" rx="2" fill="#FFCC80"/><rect x="48" y="32" width="10" height="16" rx="2" fill="#FFCC80"/></svg>
+      <span class="parade-char-name">Joseph</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── BIBLE STORIES ── -->
+<section class="stories-sec">
+  <div class="cont">
+    <div class="sl sl-light rv">Bible Stories for Children</div>
+    <h2 class="sh sh-white rv">Learn from <em>Heroes of Faith</em></h2>
+    <div class="sr sr-gold rv"></div>
+    <div class="stories-grid">
+
+      <!-- Noah & the Ark -->
+      <div class="story-card rv">
+        <div class="story-scene" style="background:linear-gradient(180deg,#1a3a5c 0%,#0d5c8a 40%,#1976D2 70%,#1565C0 100%);">
+          <svg width="100%" height="100%" viewBox="0 0 200 230" preserveAspectRatio="xMidYMid slice" style="position:absolute;inset:0;">
+            <!-- Stars -->
+            <circle cx="28" cy="18" r="2" fill="white" opacity=".8"/>
+            <circle cx="165" cy="14" r="1.5" fill="white" opacity=".65"/>
+            <circle cx="88" cy="26" r="1" fill="white" opacity=".5"/>
+            <circle cx="142" cy="38" r="1.5" fill="white" opacity=".7"/>
+            <circle cx="55" cy="12" r="1" fill="white" opacity=".4"/>
+            <circle cx="178" cy="32" r="1.5" fill="white" opacity=".55"/>
+            <!-- Moon -->
+            <circle cx="170" cy="25" r="16" fill="#FFF9C4" opacity=".8"/>
+            <circle cx="178" cy="20" r="12" fill="#1a3a5c"/>
+            <!-- Rainbow -->
+            <path d="M18 105 Q100 18 182 105" fill="none" stroke="#FF5252" stroke-width="6" opacity=".75" stroke-linecap="round"/>
+            <path d="M26 105 Q100 32 174 105" fill="none" stroke="#FF9800" stroke-width="5" opacity=".75" stroke-linecap="round"/>
+            <path d="M34 105 Q100 46 166 105" fill="none" stroke="#FFEB3B" stroke-width="5" opacity=".75" stroke-linecap="round"/>
+            <path d="M42 105 Q100 60 158 105" fill="none" stroke="#4CAF50" stroke-width="4" opacity=".7" stroke-linecap="round"/>
+            <path d="M50 105 Q100 72 150 105" fill="none" stroke="#2196F3" stroke-width="4" opacity=".7" stroke-linecap="round"/>
+            <path d="M58 105 Q100 84 142 105" fill="none" stroke="#9C27B0" stroke-width="3" opacity=".65" stroke-linecap="round"/>
+            <!-- Water waves -->
+            <path d="M0 175 Q25 162 50 175 Q75 188 100 175 Q125 162 150 175 Q175 188 200 175 L200 230 L0 230Z" fill="#1565C0" opacity=".9"/>
+            <path d="M0 186 Q30 176 60 186 Q90 196 120 186 Q150 176 180 186 Q190 190 200 186 L200 230 L0 230Z" fill="#0D47A1"/>
+            <!-- Ark hull -->
+            <path d="M45 148 L155 148 Q172 148 176 168 L24 168 Q28 148 45 148Z" fill="#8B4513"/>
+            <!-- Ark cabin -->
+            <rect x="58" y="106" width="84" height="44" rx="5" fill="#A0522D"/>
+            <!-- Roof -->
+            <polygon points="66,107 134,107 126,80 74,80" fill="#6D3410"/>
+            <!-- Ridge -->
+            <line x1="100" y1="80" x2="100" y2="107" stroke="#5D3A0E" stroke-width="2"/>
+            <!-- Windows -->
+            <rect x="70" y="115" width="20" height="18" rx="3" fill="#FFD54F" opacity=".9"/>
+            <rect x="96" y="115" width="20" height="18" rx="3" fill="#FFD54F" opacity=".9"/>
+            <rect x="122" y="115" width="20" height="18" rx="3" fill="#FFD54F" opacity=".9"/>
+            <!-- Giraffe neck -->
+            <rect x="128" y="70" width="7" height="38" rx="3.5" fill="#FFB300"/>
+            <ellipse cx="131" cy="68" rx="8" ry="10" fill="#FFB300"/>
+            <circle cx="128" cy="63" r="2" fill="#333"/>
+            <!-- Elephant in w1 -->
+            <ellipse cx="80" cy="106" rx="7" ry="6" fill="#90A4AE"/>
+            <rect x="78" y="112" width="4" height="9" rx="2" fill="#90A4AE"/>
+            <!-- Noah on deck -->
+            <circle cx="100" cy="72" r="9" fill="#FFCC80"/>
+            <path d="M90 67 Q100 60 110 67" fill="#795548"/>
+            <rect x="94" y="81" width="12" height="16" rx="3" fill="#4E342E"/>
+            <!-- Arms raised -->
+            <path d="M88 87 Q82 79 78 72" stroke="#FFCC80" stroke-width="4" stroke-linecap="round" fill="none"/>
+            <path d="M112 87 Q118 79 122 72" stroke="#FFCC80" stroke-width="4" stroke-linecap="round" fill="none"/>
+            <!-- Dove -->
+            <path d="M55 56 Q66 46 76 53 Q71 62 62 58Z" fill="white"/>
+            <path d="M76 53 Q84 44 90 50 Q85 59 78 56Z" fill="white"/>
+            <circle cx="77" cy="52" r="4" fill="white"/>
+            <circle cx="79" cy="50" r="1.5" fill="#333"/>
+            <!-- Olive branch -->
+            <path d="M77 56 Q82 63 88 60" fill="none" stroke="#4CAF50" stroke-width="2.5" stroke-linecap="round"/>
+            <ellipse cx="87" cy="60" rx="5" ry="3" fill="#4CAF50" transform="rotate(-25 87 60)"/>
+          </svg>
+        </div>
+        <div class="story-label">
+          <div class="story-name">🚢 Noah & the Ark</div>
+          <div class="story-verse">Genesis 6–9 · God's Covenant & the Rainbow</div>
+        </div>
+      </div>
+
+      <!-- David & Goliath -->
+      <div class="story-card rv">
+        <div class="story-scene" style="background:linear-gradient(180deg,#87CEEB 0%,#B0E0E6 30%,#90EE90 60%,#4CAF50 100%);">
+          <svg width="100%" height="100%" viewBox="0 0 200 230" preserveAspectRatio="xMidYMid slice" style="position:absolute;inset:0;">
+            <!-- Sun -->
+            <circle cx="155" cy="32" r="24" fill="#FFD54F" opacity=".9"/>
+            <line x1="155" y1="4" x2="155" y2="14" stroke="#FFD54F" stroke-width="3" opacity=".6" stroke-linecap="round"/>
+            <line x1="155" y1="50" x2="155" y2="60" stroke="#FFD54F" stroke-width="3" opacity=".6" stroke-linecap="round"/>
+            <line x1="127" y1="32" x2="137" y2="32" stroke="#FFD54F" stroke-width="3" opacity=".6" stroke-linecap="round"/>
+            <line x1="173" y1="32" x2="183" y2="32" stroke="#FFD54F" stroke-width="3" opacity=".6" stroke-linecap="round"/>
+            <!-- Clouds -->
+            <ellipse cx="40" cy="28" rx="32" ry="13" fill="white" opacity=".8"/>
+            <ellipse cx="55" cy="22" rx="22" ry="11" fill="white" opacity=".9"/>
+            <!-- Hills -->
+            <ellipse cx="40" cy="150" rx="75" ry="45" fill="#66BB6A"/>
+            <ellipse cx="170" cy="158" rx="65" ry="38" fill="#4CAF50"/>
+            <rect x="0" y="152" width="200" height="78" fill="#388E3C"/>
+            <!-- Ground texture -->
+            <path d="M0 162 Q20 154 40 162 Q60 170 80 162 Q100 154 120 162 Q140 170 160 162 Q180 154 200 162 L200 230 L0 230Z" fill="#2E7D32"/>
+            <!-- Rocks -->
+            <ellipse cx="72" cy="175" rx="10" ry="7" fill="#8D6E63" opacity=".6"/>
+            <ellipse cx="140" cy="180" rx="8" ry="5" fill="#8D6E63" opacity=".5"/>
+            <!-- GOLIATH (big) - right side -->
+            <circle cx="148" cy="85" r="22" fill="#8D6E63"/>
+            <!-- Helmet -->
+            <path d="M126 86 Q148 62 170 86" fill="#546E7A"/>
+            <rect x="134" y="86" width="28" height="5" fill="#607D8B"/>
+            <!-- Body armour -->
+            <rect x="128" y="107" width="40" height="52" rx="5" fill="#B71C1C"/>
+            <rect x="130" y="107" width="36" height="8" fill="#C62828"/>
+            <!-- Armour plates -->
+            <line x1="130" y1="120" x2="168" y2="120" stroke="#9B0000" stroke-width="2"/>
+            <line x1="130" y1="132" x2="168" y2="132" stroke="#9B0000" stroke-width="2"/>
+            <line x1="130" y1="144" x2="168" y2="144" stroke="#9B0000" stroke-width="2"/>
+            <!-- Goliath arms -->
+            <rect x="110" y="112" width="20" height="40" rx="4" fill="#8D6E63"/>
+            <rect x="168" y="112" width="20" height="40" rx="4" fill="#8D6E63"/>
+            <!-- Goliath legs -->
+            <rect x="132" y="158" width="14" height="32" rx="4" fill="#B71C1C"/>
+            <rect x="152" y="158" width="14" height="32" rx="4" fill="#B71C1C"/>
+            <!-- Spear -->
+            <rect x="174" y="72" width="5" height="80" rx="2.5" fill="#795548"/>
+            <polygon points="174,72 179,72 176.5,54" fill="#607D8B"/>
+            <!-- Shield -->
+            <path d="M110 112 Q110 138 130 150 Q110 150 108 130Z" fill="#607D8B"/>
+            <!-- DAVID (small) - left side -->
+            <circle cx="48" cy="120" r="11" fill="#FFCC80"/>
+            <path d="M37 115 Q48 106 59 115" fill="#FFB300" stroke="#F57F17" stroke-width="1"/>
+            <rect x="41" y="131" width="14" height="20" rx="3" fill="#1565C0"/>
+            <rect x="34" y="135" width="9" height="16" rx="2" fill="#FFCC80"/>
+            <rect x="55" y="135" width="9" height="16" rx="2" fill="#FFCC80"/>
+            <!-- Sling -->
+            <path d="M62 133 Q80 112 88 100" fill="none" stroke="#8D6E63" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="89" cy="97" r="6" fill="#9E9E9E"/>
+            <!-- Star of David on chest -->
+            <polygon points="48,133 50.5,138.5 45.5,138.5" fill="#FFD700" opacity=".9"/>
+            <polygon points="48,138.5 50.5,133 45.5,133" fill="#FFD700" opacity=".9"/>
+            <!-- David legs -->
+            <rect x="38" y="151" width="9" height="22" rx="3" fill="#0D47A1"/>
+            <rect x="53" y="151" width="9" height="22" rx="3" fill="#0D47A1"/>
+          </svg>
+        </div>
+        <div class="story-label">
+          <div class="story-name">🗡️ David & Goliath</div>
+          <div class="story-verse">1 Samuel 17 · Faith overcomes giants</div>
+        </div>
+      </div>
+
+      <!-- Jonah & the Whale -->
+      <div class="story-card rv">
+        <div class="story-scene" style="background:linear-gradient(180deg,#0D1B2A 0%,#0a3d62 30%,#1565C0 65%,#0d47a1 100%);">
+          <svg width="100%" height="100%" viewBox="0 0 200 230" preserveAspectRatio="xMidYMid slice" style="position:absolute;inset:0;">
+            <!-- Stars -->
+            <circle cx="25" cy="14" r="1.5" fill="white" opacity=".8"/>
+            <circle cx="78" cy="10" r="1" fill="white" opacity=".6"/>
+            <circle cx="130" cy="20" r="2" fill="white" opacity=".85"/>
+            <circle cx="168" cy="12" r="1" fill="white" opacity=".5"/>
+            <circle cx="50" cy="28" r="1" fill="white" opacity=".4"/>
+            <circle cx="150" cy="35" r="1.5" fill="white" opacity=".6"/>
+            <!-- Moon -->
+            <circle cx="162" cy="26" r="18" fill="#FFF9C4" opacity=".82"/>
+            <circle cx="170" cy="20" r="14" fill="#0D1B2A"/>
+            <!-- Ship on surface -->
+            <rect x="58" y="48" width="84" height="20" rx="4" fill="#5D4037"/>
+            <path d="M72 48 Q100 32 128 48" fill="#6D4C41"/>
+            <rect x="97" y="30" width="6" height="20" fill="#795548"/>
+            <!-- Sail -->
+            <path d="M100 32 Q88 40 100 48 Q112 40 100 32Z" fill="#ECEFF1"/>
+            <!-- Water surface -->
+            <path d="M0 68 Q20 58 40 68 Q60 78 80 68 Q100 58 120 68 Q140 78 160 68 Q180 58 200 68 L200 90 L0 90Z" fill="#1565C0" opacity=".7"/>
+            <!-- Deep water bg -->
+            <rect x="0" y="78" width="200" height="152" fill="#0D47A1"/>
+            <!-- Bubbles -->
+            <circle cx="55" cy="128" r="5" fill="none" stroke="#42A5F5" stroke-width="1.5" opacity=".6"/>
+            <circle cx="78" cy="98" r="3" fill="none" stroke="#42A5F5" stroke-width="1.5" opacity=".5"/>
+            <circle cx="148" cy="118" r="6" fill="none" stroke="#42A5F5" stroke-width="1.5" opacity=".65"/>
+            <circle cx="122" cy="148" r="3" fill="none" stroke="#64B5F6" stroke-width="1" opacity=".45"/>
+            <circle cx="170" cy="108" r="4" fill="none" stroke="#42A5F5" stroke-width="1" opacity=".4"/>
+            <!-- Seaweed -->
+            <path d="M28 230 Q22 206 28 188 Q34 206 28 230Z" fill="#1B5E20" opacity=".65"/>
+            <path d="M172 230 Q170 212 176 196 Q180 212 172 230Z" fill="#1B5E20" opacity=".55"/>
+            <!-- Light shaft from above -->
+            <path d="M95 68 L80 170 L120 170Z" fill="#FFD54F" opacity=".05"/>
+            <!-- WHALE BODY -->
+            <path d="M18 158 Q100 128 182 150 Q200 158 182 174 Q100 200 18 178 Q4 168 18 158Z" fill="#1A237E"/>
+            <path d="M158 148 Q184 138 186 160 Q184 178 158 172Z" fill="#283593"/>
+            <!-- Whale tail fins -->
+            <path d="M170 154 Q192 140 190 160 Q192 180 170 172Z" fill="#1A237E"/>
+            <!-- Whale skin details -->
+            <path d="M40 165 Q70 156 100 162 Q130 168 160 162" fill="none" stroke="#283593" stroke-width="1.5" opacity=".5"/>
+            <!-- Eye -->
+            <circle cx="50" cy="162" r="9" fill="white"/>
+            <circle cx="52" cy="162" r="6" fill="#1A237E"/>
+            <circle cx="54" cy="160" r="2.5" fill="white"/>
+            <!-- Mouth opening -->
+            <path d="M22 165 Q34 178 50 172" fill="#4FC3F7" stroke="#29B6F6" stroke-width="1"/>
+            <!-- Teeth hint -->
+            <path d="M22 165 Q28 162 34 165 Q28 168 22 165Z" fill="white" opacity=".6"/>
+            <!-- Jonah inside whale (glowing) -->
+            <circle cx="88" cy="162" r="12" fill="#FFF9C4" opacity=".25"/>
+            <circle cx="88" cy="160" r="9" fill="#FFCC80" opacity=".9"/>
+            <path d="M79 156 Q88 150 97 156" fill="#795548"/>
+            <rect x="82" y="169" width="12" height="8" rx="3" fill="#795548" opacity=".75"/>
+            <!-- Water spout at top -->
+            <path d="M18 148 Q15 134 10 122 Q12 120 14 122 Q15 115 18 122 Q20 120 20 122 Q22 115 24 122 Q26 120 26 122 Q24 128 22 148Z" fill="#42A5F5" opacity=".68"/>
+          </svg>
+        </div>
+        <div class="story-label">
+          <div class="story-name">🐋 Jonah & the Whale</div>
+          <div class="story-verse">Jonah 1–4 · God's mercy never ends</div>
+        </div>
+      </div>
+
+      <!-- Jesus with Children -->
+      <div class="story-card rv">
+        <div class="story-scene" style="background:linear-gradient(180deg,#FFF8E1 0%,#FFF3CD 25%,#C8E6C9 60%,#66BB6A 100%);">
+          <svg width="100%" height="100%" viewBox="0 0 200 230" preserveAspectRatio="xMidYMid slice" style="position:absolute;inset:0;">
+            <!-- Warm sky -->
+            <!-- Sun with rays -->
+            <circle cx="100" cy="32" r="28" fill="#FFD54F" opacity=".85"/>
+            <line x1="100" y1="0" x2="100" y2="12" stroke="#FFD54F" stroke-width="3" stroke-linecap="round" opacity=".6"/>
+            <line x1="100" y1="52" x2="100" y2="64" stroke="#FFD54F" stroke-width="3" stroke-linecap="round" opacity=".6"/>
+            <line x1="68" y1="32" x2="76" y2="32" stroke="#FFD54F" stroke-width="3" stroke-linecap="round" opacity=".6"/>
+            <line x1="124" y1="32" x2="132" y2="32" stroke="#FFD54F" stroke-width="3" stroke-linecap="round" opacity=".6"/>
+            <line x1="76" y1="8" x2="82" y2="16" stroke="#FFD54F" stroke-width="2.5" stroke-linecap="round" opacity=".5"/>
+            <line x1="118" y1="8" x2="112" y2="16" stroke="#FFD54F" stroke-width="2.5" stroke-linecap="round" opacity=".5"/>
+            <!-- Mountains -->
+            <polygon points="0,148 55,82 110,148" fill="#A5D6A7"/>
+            <polygon points="70,148 135,72 200,148" fill="#81C784"/>
+            <!-- Ground -->
+            <rect x="0" y="146" width="200" height="84" fill="#66BB6A"/>
+            <ellipse cx="100" cy="147" rx="100" ry="14" fill="#4CAF50"/>
+            <!-- Flowers -->
+            <circle cx="18" cy="153" r="5" fill="#FF5252"/><circle cx="18" cy="153" r="3" fill="#FFD700"/>
+            <circle cx="178" cy="155" r="4" fill="#FFEB3B"/><circle cx="178" cy="155" r="2.5" fill="#FF9800"/>
+            <circle cx="55" cy="158" r="4" fill="#E91E63"/><circle cx="55" cy="158" r="2.5" fill="#FFD700"/>
+            <circle cx="148" cy="152" r="5" fill="#AB47BC"/><circle cx="148" cy="152" r="3" fill="#FFF9C4"/>
+            <circle cx="85" cy="162" r="3.5" fill="#FF9800"/><circle cx="115" cy="160" r="3.5" fill="#4CAF50"/>
+            <!-- JESUS FIGURE (centre) -->
+            <!-- Outer halo glow -->
+            <circle cx="100" cy="79" r="22" fill="none" stroke="#FFD700" stroke-width="1.5" opacity=".4"/>
+            <!-- Inner halo -->
+            <circle cx="100" cy="79" r="17" fill="none" stroke="#FFD700" stroke-width="2.5" opacity=".92"/>
+            <!-- Head -->
+            <circle cx="100" cy="81" r="13" fill="#FFCC80"/>
+            <!-- Hair -->
+            <path d="M87 76 Q100 66 113 76" fill="#8D6E63"/>
+            <path d="M87 76 Q82 88 84 100" fill="none" stroke="#8D6E63" stroke-width="3" stroke-linecap="round"/>
+            <path d="M113 76 Q118 88 116 100" fill="none" stroke="#8D6E63" stroke-width="3" stroke-linecap="round"/>
+            <!-- Beard -->
+            <path d="M93 90 Q100 96 107 90" fill="#8D6E63" opacity=".7"/>
+            <!-- Robe white -->
+            <path d="M84 94 Q100 88 116 94 L120 148 Q100 158 80 148Z" fill="white"/>
+            <!-- Robe blue mantle -->
+            <path d="M78 98 L90 148 L80 148 L74 110Z" fill="#1565C0" opacity=".8"/>
+            <path d="M122 98 L110 148 L120 148 L126 110Z" fill="#1565C0" opacity=".8"/>
+            <!-- Gold sash -->
+            <path d="M84 110 Q100 106 116 110" fill="none" stroke="#FFD700" stroke-width="2.5" opacity=".75"/>
+            <!-- Cross on robe -->
+            <rect x="98" y="96" width="4" height="18" rx="1" fill="#FFD700" opacity=".75"/>
+            <rect x="93" y="101" width="14" height="4" rx="1" fill="#FFD700" opacity=".75"/>
+            <!-- Arms outstretched -->
+            <path d="M84 100 L66 112" stroke="white" stroke-width="7" stroke-linecap="round"/>
+            <path d="M116 100 L134 112" stroke="white" stroke-width="7" stroke-linecap="round"/>
+            <circle cx="64" cy="113" r="6" fill="#FFCC80"/>
+            <circle cx="136" cy="113" r="6" fill="#FFCC80"/>
+            <!-- CHILD 1 (left, standing) -->
+            <circle cx="58" cy="128" r="9" fill="#FFCC80"/>
+            <path d="M49 123 Q58 116 67 123" fill="#FF9800"/>
+            <rect x="51" y="137" width="14" height="18" rx="3" fill="#E91E63"/>
+            <path d="M51 137 L44 152 Q48 155 52 152Z" fill="#FFCC80"/>
+            <rect x="53" y="155" width="6" height="12" rx="2" fill="#C2185B"/>
+            <rect x="60" y="155" width="6" height="12" rx="2" fill="#C2185B"/>
+            <!-- Child 1 reaching to Jesus -->
+            <path d="M65 140 L78 130" stroke="#FFCC80" stroke-width="4" stroke-linecap="round" fill="none"/>
+            <!-- CHILD 2 (right, standing) -->
+            <circle cx="142" cy="126" r="9" fill="#FFCC80"/>
+            <path d="M133 121 Q142 114 151 121" fill="#795548"/>
+            <rect x="135" y="135" width="14" height="18" rx="3" fill="#2196F3"/>
+            <rect x="137" y="153" width="6" height="12" rx="2" fill="#1565C0"/>
+            <rect x="144" y="153" width="6" height="12" rx="2" fill="#1565C0"/>
+            <!-- Child 2 reaching -->
+            <path d="M135 138 L122 128" stroke="#FFCC80" stroke-width="4" stroke-linecap="round" fill="none"/>
+            <!-- CHILD 3 (sitting at feet) -->
+            <circle cx="100" cy="152" r="8" fill="#FFCC80"/>
+            <path d="M92 148 Q100 141 108 148" fill="#FF5722"/>
+            <rect x="93" y="160" width="14" height="10" rx="3" fill="#9C27B0"/>
+            <!-- Child 3 looking up -->
+            <circle cx="97" cy="150" r="2" fill="#333"/>
+            <circle cx="103" cy="150" r="2" fill="#333"/>
+          </svg>
+        </div>
+        <div class="story-label">
+          <div class="story-name">✝️ Jesus & the Children</div>
+          <div class="story-verse">Mark 10:14 · "Let the little children come to Me"</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section class="sec" style="background:var(--ivory);">
+  <div class="cont">
+    <div class="about-strip rv">
+      <div>
+        <div class="as-verse">"Train up a child in the way he should go, and when he is old he will not depart from it."</div>
+        <div class="as-ref">✦ Proverbs 22:6</div>
+      </div>
+      <div class="as-body">
+        The <strong>Sunday School Department</strong> of Church of God Kerala is committed to nurturing children and youth in Biblical knowledge and Pentecostal faith. With over <strong>1,200 Sunday Schools</strong> across all 14 districts, we reach thousands of young hearts each week with the Gospel of Jesus Christ.<br><br>
+        Our curriculum is grounded in Scripture, Spirit-led, and age-appropriate — from <strong>LKG through Class 12</strong>. Each level has its own dedicated textbooks, activity books, and teacher guides, equipping every child and teacher for a fruitful ministry.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CURRICULUM & TEXTBOOKS ── -->
+<section class="sec" style="background:white;">
+  <div class="cont">
+    <div class="sl rv">Academics &amp; Textbooks</div>
+    <h2 class="sh rv">Grade-wise <em>Curriculum</em></h2>
+    <div class="sr rv"></div>
+    <p class="rv" style="font-size:.95rem;color:var(--text2);max-width:640px;margin-bottom:2rem;line-height:1.95;">Structured, age-graded curriculum from LKG to Class 12 — every level with dedicated textbooks, activity books, and teacher guides. Click any grade to explore topics and download the textbook.</p>
+    <div class="grade-tabs rv">
+      <button class="grade-tab active" onclick="filterGrade(this,'all')">All Grades</button>
+      <button class="grade-tab" onclick="filterGrade(this,'beginners')">Beginners</button>
+      <button class="grade-tab" onclick="filterGrade(this,'primary')">Primary</button>
+      <button class="grade-tab" onclick="filterGrade(this,'middle')">Middle School</button>
+      <button class="grade-tab" onclick="filterGrade(this,'high')">High School</button>
+      <button class="grade-tab" onclick="filterGrade(this,'senior')">Senior</button>
+    </div>
+    <div class="curr-grid rv2" id="curr-grid">
+
+      <div class="curr-card beginners" data-grade="beginners">
+        <span class="curr-icon">🧸</span>
+        <div class="curr-grade">Little Buds</div>
+        <div class="curr-std">LKG – Class 1</div>
+        <ul class="curr-topics">
+          <li>God Created the World</li>
+          <li>Noah's Ark &amp; Animals</li>
+          <li>Jesus Loves Me</li>
+          <li>Prayer &amp; Praise Songs</li>
+          <li>Bible Memory Verses</li>
+        </ul>
+        <a href="#" class="curr-dl">📥 Download Textbook</a>
+      </div>
+
+      <div class="curr-card beginners" data-grade="beginners">
+        <span class="curr-icon">🌱</span>
+        <div class="curr-grade">Primary Sprouts</div>
+        <div class="curr-std">Class 2 – Class 3</div>
+        <ul class="curr-topics">
+          <li>Abraham &amp; Isaac</li>
+          <li>Moses &amp; the Exodus</li>
+          <li>The Good Shepherd</li>
+          <li>Miracles of Jesus</li>
+          <li>Ten Commandments</li>
+        </ul>
+        <a href="#" class="curr-dl">📥 Download Textbook</a>
+      </div>
+
+      <div class="curr-card primary" data-grade="primary">
+        <span class="curr-icon">📗</span>
+        <div class="curr-grade">Junior Class</div>
+        <div class="curr-std">Class 4 – Class 5</div>
+        <ul class="curr-topics">
+          <li>David &amp; Solomon</li>
+          <li>Daniel in the Lion's Den</li>
+          <li>Life of Paul</li>
+          <li>Sermon on the Mount</li>
+          <li>Books of the Bible</li>
+        </ul>
+        <a href="#" class="curr-dl">📥 Download Textbook</a>
+      </div>
+
+      <div class="curr-card middle" data-grade="middle">
+        <span class="curr-icon">📘</span>
+        <div class="curr-grade">Middle School</div>
+        <div class="curr-std">Class 6 – Class 8</div>
+        <ul class="curr-topics">
+          <li>Prophets of Israel</li>
+          <li>Gospel of John</li>
+          <li>Acts of the Apostles</li>
+          <li>Holy Spirit &amp; Pentecost</li>
+          <li>Christian Ethics</li>
+        </ul>
+        <a href="#" class="curr-dl">📥 Download Textbook</a>
+      </div>
+
+      <div class="curr-card high" data-grade="high">
+        <span class="curr-icon">📙</span>
+        <div class="curr-grade">High School</div>
+        <div class="curr-std">Class 9 – Class 10</div>
+        <ul class="curr-topics">
+          <li>Old Testament Survey</li>
+          <li>New Testament Survey</li>
+          <li>Pentecostal Doctrines</li>
+          <li>Church History</li>
+          <li>Christian Apologetics</li>
+        </ul>
+        <a href="#" class="curr-dl">📥 Download Textbook</a>
+      </div>
+
+      <div class="curr-card senior" data-grade="senior">
+        <span class="curr-icon">📕</span>
+        <div class="curr-grade">Senior Class</div>
+        <div class="curr-std">Class 11 – Class 12</div>
+        <ul class="curr-topics">
+          <li>Systematic Theology</li>
+          <li>Pauline Epistles</li>
+          <li>Revelation &amp; Prophecy</li>
+          <li>Christian Leadership</li>
+          <li>Missions &amp; Evangelism</li>
+        </ul>
+        <a href="#" class="curr-dl">📥 Download Textbook</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── LEADERSHIP ── -->
+<section class="sec" style="background:var(--ivory);">
+  <div class="cont">
+    <div class="sl rv">Leadership</div>
+    <h2 class="sh rv">Director &amp; <em>Secretary</em></h2>
+    <div class="sr rv"></div>
+    <div class="lead-grid">
+      <div class="lead-card rv">
+        <div class="lc-photo">
+          <img src="ss-director.jpg" alt="State Director" onerror="this.style.display='none'">
+          <div class="lc-ph">SS</div>
+          <div class="lc-badge">
+            <div class="lc-badge-name">Rev. [Director Name]</div>
+            <div class="lc-badge-title">State Director</div>
+          </div>
+        </div>
+        <div class="lc-body">
+          <div class="lc-role">State Director · Sunday School</div>
+          <div class="lc-desc">Leading the Sunday School department with vision and passion for equipping children in the Word of God across all of Kerala.</div>
+        </div>
+      </div>
+      <div class="lead-card rv2">
+        <div class="lc-photo">
+          <img src="ss-secretary.jpg" alt="State Secretary" onerror="this.style.display='none'">
+          <div class="lc-ph">SS</div>
+          <div class="lc-badge">
+            <div class="lc-badge-name">Rev. [Secretary Name]</div>
+            <div class="lc-badge-title">State Secretary</div>
+          </div>
+        </div>
+        <div class="lc-body">
+          <div class="lc-role">State Secretary · Sunday School</div>
+          <div class="lc-desc">Coordinating all administrative and organisational functions of the Sunday School department statewide.</div>
+        </div>
+      </div>
+      <div class="lead-card rv3">
+        <div class="lc-photo">
+          <img src="ss-treasurer.jpg" alt="State Treasurer" onerror="this.style.display='none'">
+          <div class="lc-ph">SS</div>
+          <div class="lc-badge">
+            <div class="lc-badge-name">Rev. [Treasurer Name]</div>
+            <div class="lc-badge-title">State Treasurer</div>
+          </div>
+        </div>
+        <div class="lc-body">
+          <div class="lc-role">State Treasurer · Sunday School</div>
+          <div class="lc-desc">Managing financial stewardship and resource allocation for the Sunday School ministry across all of Kerala.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── COMMITTEE ── -->
+<section class="sec" style="background:var(--ivory2);">
+  <div class="cont">
+    <div class="sl rv">Governing Body</div>
+    <h2 class="sh rv">State Committee <em>Members</em></h2>
+    <div class="sr rv"></div>
+    <div class="committee-grid">
+      <div class="cm-card rv"><div class="cm-photo"><div class="cm-ph">✝</div></div><div class="cm-info"><div class="cm-name">[Committee Member]</div><div class="cm-pos">Committee Member</div><div class="cm-zone">Thiruvananthapuram</div></div></div>
+      <div class="cm-card rv"><div class="cm-photo"><div class="cm-ph">✝</div></div><div class="cm-info"><div class="cm-name">[Committee Member]</div><div class="cm-pos">Committee Member</div><div class="cm-zone">Kottayam District</div></div></div>
+      <div class="cm-card rv"><div class="cm-photo"><div class="cm-ph">✝</div></div><div class="cm-info"><div class="cm-name">[Committee Member]</div><div class="cm-pos">Committee Member</div><div class="cm-zone">Ernakulam District</div></div></div>
+      <div class="cm-card rv"><div class="cm-photo"><div class="cm-ph">✝</div></div><div class="cm-info"><div class="cm-name">[Committee Member]</div><div class="cm-pos">Committee Member</div><div class="cm-zone">Kozhikode District</div></div></div>
+      <div class="cm-card rv"><div class="cm-photo"><div class="cm-ph">✝</div></div><div class="cm-info"><div class="cm-name">[Committee Member]</div><div class="cm-pos">Committee Member</div><div class="cm-zone">Palakkad District</div></div></div>
+      <div class="cm-card rv"><div class="cm-photo"><div class="cm-ph">✝</div></div><div class="cm-info"><div class="cm-name">[Committee Member]</div><div class="cm-pos">Committee Member</div><div class="cm-zone">Thrissur District</div></div></div>
+      <div class="cm-card rv"><div class="cm-photo"><div class="cm-ph">✝</div></div><div class="cm-info"><div class="cm-name">[Committee Member]</div><div class="cm-pos">Committee Member</div><div class="cm-zone">Malappuram District</div></div></div>
+      <div class="cm-card rv"><div class="cm-photo"><div class="cm-ph">✝</div></div><div class="cm-info"><div class="cm-name">[Committee Member]</div><div class="cm-pos">Committee Member</div><div class="cm-zone">Kannur District</div></div></div>
+      <div class="cm-card rv"><div class="cm-photo"><div class="cm-ph">✝</div></div><div class="cm-info"><div class="cm-name">[Committee Member]</div><div class="cm-pos">Committee Member</div><div class="cm-zone">Kasaragod District</div></div></div>
+      <div class="cm-card rv"><div class="cm-photo"><div class="cm-ph">✝</div></div><div class="cm-info"><div class="cm-name">[Committee Member]</div><div class="cm-pos">Committee Member</div><div class="cm-zone">Alappuzha District</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ACTIVITIES ── -->
+<section class="sec" style="background:white;">
+  <div class="cont">
+    <div class="sl rv">What We Do</div>
+    <h2 class="sh rv">Our <em>Activities</em></h2>
+    <div class="sr rv"></div>
+    <div class="act-list">
+
+      <div class="act-row rv">
+        <div class="act-num">01</div>
+        <div class="act-body">
+          <div class="act-name">Bible Quiz Competitions</div>
+          <div class="act-desc">State-level competitions testing Biblical knowledge — motivating students to memorise and meditate on Scripture across all 14 districts of Kerala.</div>
+        </div>
+        <div class="act-icon-pill"><svg viewBox="0 0 24 24"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg></div>
+      </div>
+
+      <div class="act-row rv">
+        <div class="act-num">02</div>
+        <div class="act-body">
+          <div class="act-name">Creative Arts &amp; Crafts</div>
+          <div class="act-desc">Expressing faith through art, drawing, and craft activities rooted in Biblical stories and themes — nurturing creativity as an act of worship.</div>
+        </div>
+        <div class="act-icon-pill"><svg viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8zm-5.5 9c-.83 0-1.5-.67-1.5-1.5S5.67 9 6.5 9 8 9.67 8 10.5 7.33 12 6.5 12zm3-4C8.67 8 8 7.33 8 6.5S8.67 5 9.5 5s1.5.67 1.5 1.5S10.33 8 9.5 8zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 5 14.5 5s1.5.67 1.5 1.5S15.33 8 14.5 8zm3 4c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg></div>
+      </div>
+
+      <div class="act-row rv">
+        <div class="act-num">03</div>
+        <div class="act-body">
+          <div class="act-name">Children's Choir &amp; Worship</div>
+          <div class="act-desc">Training children to lead in worship — developing a generation of Spirit-filled worshippers who glorify God through song, music, and praise.</div>
+        </div>
+        <div class="act-icon-pill"><svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg></div>
+      </div>
+
+      <div class="act-row rv">
+        <div class="act-num">04</div>
+        <div class="act-body">
+          <div class="act-name">Annual Summer Camps</div>
+          <div class="act-desc">Intensive spiritual retreats for children and youth — prayer, worship, deep teaching, and building lifelong bonds of faith and fellowship.</div>
+        </div>
+        <div class="act-icon-pill"><svg viewBox="0 0 24 24"><path d="M13.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM9.8 8.9L7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3C14.8 12 16.8 13 19 13v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1L6 8.3V13h2V9.6l1.8-.7"/></svg></div>
+      </div>
+
+      <div class="act-row rv">
+        <div class="act-num">05</div>
+        <div class="act-body">
+          <div class="act-name">Drama &amp; Biblical Presentations</div>
+          <div class="act-desc">Christmas programs, Easter pageants, and Biblical dramas — communicating the Gospel through creative performance and powerful storytelling.</div>
+        </div>
+        <div class="act-icon-pill"><svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z"/></svg></div>
+      </div>
+
+      <div class="act-row rv">
+        <div class="act-num">06</div>
+        <div class="act-body">
+          <div class="act-name">Teacher Training Workshops</div>
+          <div class="act-desc">Equipping Sunday School teachers with modern pedagogical skills rooted in Biblical principles, Pentecostal theology, and child development.</div>
+        </div>
+        <div class="act-icon-pill"><svg viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── TEACHER COMMUNITY ── -->
+<section class="community-sec">
+  <div class="cont">
+    <div class="sl sl-light rv">For Educators</div>
+    <h2 class="sh sh-white rv">Teacher <em>Community Hub</em></h2>
+    <div class="sr sr-gold rv"></div>
+    <p class="rv" style="font-size:.95rem;color:rgba(255,255,255,.58);max-width:640px;margin-bottom:0;line-height:1.95;">A dedicated space for Sunday School teachers across all 14 districts of Kerala — collaborate, share lesson notes, upload teaching videos, and encourage one another in ministry.</p>
+    <div class="comm-grid">
+      <div class="comm-features rv">
+        <div class="comm-feat">
+          <div class="comm-feat-icon">📝</div>
+          <div class="comm-feat-title">Lesson Notes</div>
+          <div class="comm-feat-desc">Share and download weekly lesson plans, teaching notes, and classroom guides for every grade level.</div>
+        </div>
+        <div class="comm-feat">
+          <div class="comm-feat-icon">🎬</div>
+          <div class="comm-feat-title">Video Library</div>
+          <div class="comm-feat-desc">Upload teaching videos, worship songs, Bible story animations, and craft tutorials for classroom use.</div>
+        </div>
+        <div class="comm-feat">
+          <div class="comm-feat-icon">🗣️</div>
+          <div class="comm-feat-title">Discussions</div>
+          <div class="comm-feat-desc">Ask questions, share challenges, and get advice from experienced Sunday School teachers across districts.</div>
+        </div>
+        <div class="comm-feat">
+          <div class="comm-feat-icon">📅</div>
+          <div class="comm-feat-title">Events &amp; Dates</div>
+          <div class="comm-feat-desc">Stay updated on state conventions, quiz dates, teacher training workshops, and district events.</div>
+        </div>
+        <div class="comm-feat">
+          <div class="comm-feat-icon">📊</div>
+          <div class="comm-feat-title">Exam Resources</div>
+          <div class="comm-feat-desc">Access past question papers, quiz preparation materials, and evaluation guidelines for all classes.</div>
+        </div>
+        <div class="comm-feat">
+          <div class="comm-feat-icon">🏆</div>
+          <div class="comm-feat-title">Achievements</div>
+          <div class="comm-feat-desc">Celebrate district and state-level winners, outstanding teachers, and top-performing Sunday Schools.</div>
+        </div>
+      </div>
+
+      <div class="comm-panel rv2">
+        <div class="comm-tabs">
+          <div class="comm-tab active" onclick="switchTab(this,'recent')">Recent Posts</div>
+          <div class="comm-tab" onclick="switchTab(this,'notes')">Lesson Notes</div>
+          <div class="comm-tab" onclick="switchTab(this,'videos')">Videos</div>
+        </div>
+        <div class="comm-posts" id="comm-posts">
+          <!-- Rendered by JS -->
+        </div>
+        <div class="comm-cta">
+          <input class="comm-input" type="text" id="comm-input-field" placeholder="Share a resource, question, or encouragement…">
+          <button class="comm-submit" onclick="submitPost()">Post to Community ✝</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── GALLERY ── -->
+<section class="sec" style="background:var(--ivory);">
+  <div class="cont">
+    <div class="sl rv">Moments of Grace</div>
+    <h2 class="sh rv">Photo <em>Gallery</em></h2>
+    <div class="sr rv"></div>
+    <div class="gallery-grid rv">
+      <div class="gal-item"><img src="ss-g1.jpg" onerror="this.style.display='none'" alt="Gallery 1"><div class="gal-ph">📸</div></div>
+      <div class="gal-item"><img src="ss-g2.jpg" onerror="this.style.display='none'" alt="Gallery 2"><div class="gal-ph">📸</div></div>
+      <div class="gal-item"><img src="ss-g3.jpg" onerror="this.style.display='none'" alt="Gallery 3"><div class="gal-ph">📸</div></div>
+      <div class="gal-item"><img src="ss-g4.jpg" onerror="this.style.display='none'" alt="Gallery 4"><div class="gal-ph">📸</div></div>
+      <div class="gal-item"><img src="ss-g5.jpg" onerror="this.style.display='none'" alt="Gallery 5"><div class="gal-ph">📸</div></div>
+      <div class="gal-item"><img src="ss-g6.jpg" onerror="this.style.display='none'" alt="Gallery 6"><div class="gal-ph">📸</div></div>
+      <div class="gal-item"><img src="ss-g7.jpg" onerror="this.style.display='none'" alt="Gallery 7"><div class="gal-ph">📸</div></div>
+      <div class="gal-item"><img src="ss-g8.jpg" onerror="this.style.display='none'" alt="Gallery 8"><div class="gal-ph">📸</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section class="dept-cta">
+  <h3>Get Involved in Sunday School</h3>
+  <p>Connect with the Sunday School department for resources, training, and more.</p>
+  <a href="mailto:cogkeralastate@gmail.com" class="cta-btn">Contact Us</a>
+  <a href="index.html" class="cta-btn outline">Back to Home</a>
+</section>
+
 <footer>
-  <div class="ft-inner">
-    <div class="ft-brand">Church of God<br>(Full Gospel) in India · <span>Kerala State</span></div>
-    <div class="ft-links">
-      <a href="index.html" class="ft-link">Home</a>
-      <a href="dept-counselling.html" class="ft-link">Counselling</a>
-      <a href="dept-education.html" class="ft-link">Education</a>
-      <a href="dept-ladies.html" class="ft-link">Ladies Ministry</a>
-      <a href="dept-youth.html" class="ft-link">Youth</a>
-      <a href="dept-sundayschool.html" class="ft-link">Sunday School</a>
-      <a href="dept-evangelism.html" class="ft-link">Evangelism</a>
-      <a href="dept-charity.html" class="ft-link">Charity</a>
-    </div>
-  </div>
-  <div class="ft-bot">
-    <span>© 2025 Church of God (Full Gospel) in India, Kerala State</span>
-    <span>Sunday School Department</span>
-  </div>
+  <p>© 2025 Church of God (Full Gospel) in India, Kerala State · <a href="mailto:cogkeralastate@gmail.com">cogkeralastate@gmail.com</a></p>
 </footer>
 
 <script>
-const cur=document.getElementById('cur');
-document.addEventListener('mousemove',e=>{cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px';});
-document.querySelectorAll('a,.ds-card,.stat-item').forEach(el=>{el.addEventListener('mouseenter',()=>cur.classList.add('big'));el.addEventListener('mouseleave',()=>cur.classList.remove('big'));});
-const revIO=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');revIO.unobserve(e.target);}}),{threshold:.07,rootMargin:'0px 0px -44px 0px'});
-document.querySelectorAll('.rv,.rv2').forEach(el=>revIO.observe(el));
-// Stagger DS cards
-document.querySelectorAll('.ds-card').forEach((c,i)=>{c.style.cssText+=`opacity:0;transform:translateY(28px);transition:opacity .7s ${i*.08}s cubic-bezier(.16,1,.3,1),transform .7s ${i*.08}s cubic-bezier(.16,1,.3,1)`;const io=new IntersectionObserver(([e])=>{if(e.isIntersecting){c.style.opacity='1';c.style.transform='none';io.unobserve(c);}},{threshold:.06});io.observe(c);});
+/* ── Generate hero stars ── */
+(function(){
+  var c = document.getElementById('hero-stars');
+  if(!c) return;
+  for(var i=0;i<70;i++){
+    var s = document.createElement('div');
+    s.className = 'star';
+    var sz = Math.random()*2.5+.8;
+    s.style.cssText = 'width:'+sz+'px;height:'+sz+'px;top:'+(Math.random()*100)+'%;left:'+(Math.random()*100)+'%;--d:'+(Math.random()*5+2)+'s;--o:'+(Math.random()*.8+.15)+';animation-delay:'+(Math.random()*6)+'s;';
+    c.appendChild(s);
+  }
+})();
+
+/* ── Scroll reveal ── */
+var io = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);}
+  });
+},{threshold:0.06,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.rv,.rv2,.rv3').forEach(function(el){io.observe(el);});
+
+/* ── Grade tab filter ── */
+function filterGrade(btn,grade){
+  document.querySelectorAll('.grade-tab').forEach(function(t){t.classList.remove('active');});
+  btn.classList.add('active');
+  document.querySelectorAll('.curr-card').forEach(function(c){
+    c.style.display = (grade==='all'||c.dataset.grade===grade) ? '' : 'none';
+  });
+}
+
+/* ── Teacher Community ── */
+var tabData = {
+  recent:[
+    {avatar:'SR',color:'#E65100',name:'Sr. Rose Mary (Kottayam)',time:'2 hours ago',tag:'Class 4–5',text:'Sharing my David & Goliath lesson plan — includes a fun paper sling craft the kids absolutely loved! Very effective for explaining faith in God.',attach:'📄 David_Goliath_Lesson_Plan.pdf'},
+    {avatar:'PJ',color:'#1565C0',name:'Pr. Jacob Mathew (Thrissur)',time:'Yesterday',tag:'Quiz Prep',text:'State Bible Quiz 2025 — compiled previous 5 years\' questions for Classes 8–10. Download and use for your students\' preparation!',attach:'📊 StateQuiz_2020-2024_Q&A.xlsx'},
+    {avatar:'AA',color:'#2E7D32',name:'Sis. Ancy Abraham (Ernakulam)',time:'2 days ago',tag:'Worship',text:'New Malayalam children\'s worship video — "Yeshu Enne Sneham" — great for Beginners and LKG classes. 8 minutes with actions and on-screen lyrics.',attach:'🎬 Yeshu_Enne_Sneham_Kids.mp4'}
+  ],
+  notes:[
+    {avatar:'MT',color:'#6A1B9A',name:'Pr. Mathew Thomas (TVM)',time:'1 day ago',tag:'Class 6–8',text:'Complete lesson notes for Acts of the Apostles — 12-week plan with discussion questions and activity sheets.',attach:'📝 Acts_Apostles_12Week_Notes.pdf'},
+    {avatar:'LG',color:'#CC0066',name:'Sis. Leena George (Palakkad)',time:'3 days ago',tag:'Beginners',text:'Story-based lesson for Noah\'s Ark — includes craft template for kids to make their own ark and animals out of cardboard!',attach:'📄 NoahsArk_Craft_Lesson.pdf'},
+    {avatar:'BJ',color:'#0277BD',name:'Pr. Binu John (Kannur)',time:'1 week ago',tag:'Class 9–10',text:'Comprehensive notes on Pentecostal doctrines for High School — covers baptism, Holy Spirit, divine healing, and second coming.',attach:'📝 Pentecostal_Doctrines_HS.pdf'}
+  ],
+  videos:[
+    {avatar:'NK',color:'#E65100',name:'Sis. Nisha Kurian (Kochi)',time:'5 hours ago',tag:'Worship Song',text:'Uploaded a new animated Bible song in Malayalam for Classes 1–3. Kids love the colourful characters — very engaging!',attach:'🎬 Bible_Song_Malayalam_Animated.mp4'},
+    {avatar:'TM',color:'#2E7D32',name:'Pr. Thomas Mathews (Muvattupuzha)',time:'3 days ago',tag:'Story Video',text:'Recorded a 15-minute dramatised telling of Elijah and the prophets of Baal — perfect for Classes 7–8.',attach:'🎬 Elijah_Drama_Malayalam.mp4'},
+    {avatar:'SV',color:'#6A1B9A',name:'Sis. Sheeba Varghese (Kottayam)',time:'1 week ago',tag:'Teacher Training',text:'Video recording from last month\'s teacher training workshop at Mount Zion Seminary — full 2-hour session with Q&A.',attach:'🎬 TeacherTraining_Feb2025_Full.mp4'}
+  ]
+};
+var activeTab = 'recent';
+
+function renderPosts(tab){
+  var posts = tabData[tab];
+  var html = '';
+  posts.forEach(function(p){
+    html += '<div class="comm-post">'
+      + '<div class="comm-post-header">'
+      + '<div class="comm-avatar" style="background:'+p.color+'">'+p.avatar+'</div>'
+      + '<div class="comm-post-meta"><div class="comm-poster">'+p.name+'</div><div class="comm-time">'+p.time+'</div></div>'
+      + '<div class="comm-post-tag">'+p.tag+'</div>'
+      + '</div>'
+      + '<div class="comm-post-text">'+p.text+'</div>'
+      + (p.attach ? '<div class="comm-post-attach">'+p.attach+'</div>' : '')
+      + '</div>';
+  });
+  document.getElementById('comm-posts').innerHTML = html;
+}
+
+function switchTab(el, tab){
+  document.querySelectorAll('.comm-tab').forEach(function(t){t.classList.remove('active');});
+  el.classList.add('active');
+  activeTab = tab;
+  renderPosts(tab);
+}
+
+function submitPost(){
+  var inp = document.getElementById('comm-input-field');
+  var val = inp.value.trim();
+  if(!val) return;
+  tabData[activeTab].unshift({
+    avatar:'YOU',color:'#CC0066',
+    name:'You (Just now)',time:'Moments ago',
+    tag:'Community',text:val,attach:''
+  });
+  renderPosts(activeTab);
+  inp.value = '';
+}
+
+/* Init community panel */
+renderPosts('recent');
 </script>
 </body>
 </html>
