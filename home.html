@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>Church of God (Full Gospel) in India — Kerala State</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,900;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Cinzel:wght@400;600;700;900&display=swap" rel="stylesheet">
 <style>
 :root{
   --magenta:#CC0066;--magenta2:#E6007A;
@@ -13,7 +13,7 @@
   --ivory:#FDF8F0;--ivory2:#F5EDE0;--ivory3:#EBD9C5;
   --dark:#1A0A0E;--dark2:#2D1018;--dark3:#4A1A28;
   --text:#2A0E18;--text2:#5C3040;--text3:#8B5A6A;
-  --f:'Outfit',sans-serif;--fd:'Cormorant Garamond',serif;--fp:'Playfair Display',serif;
+  --f:'Outfit',sans-serif;--fd:'Cormorant Garamond',serif;--fp:'Playfair Display',serif;--fc:'Cinzel',serif;
   --ease:cubic-bezier(.16,1,.3,1);--nav:72px;
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
@@ -61,7 +61,7 @@ a{text-decoration:none;color:inherit;}
 .mob-cta{margin-top:1.5rem;padding:.9rem;background:var(--magenta);color:white;text-align:center;border-radius:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:.88rem;}
 
 /* ══════════════════════════════════════
-   HERO — MOBILE PERFECT
+   HERO — DESKTOP (two-column)
 ══════════════════════════════════════ */
 #hero{padding-top:var(--nav);min-height:100vh;position:relative;overflow:hidden;}
 .hero-grid{display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - var(--nav));}
@@ -84,7 +84,7 @@ a{text-decoration:none;color:inherit;}
 .hero-bottom-row{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;}
 .hero-stats-mini{display:flex;gap:1.5rem;opacity:0;animation:fadeUp .8s .6s var(--ease) forwards;}
 .hero-stat-mini{text-align:center;}
-.hero-stat-mini .num{font-family:var(--fd);font-size:1.6rem;font-weight:700;color:var(--gold2);line-height:1;}
+.hero-stat-mini .num{font-family:var(--fc);font-size:1.6rem;font-weight:700;color:var(--gold2);line-height:1;}
 .hero-stat-mini .lbl{font-size:.62rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:.1rem;}
 .hero-dots{display:flex;gap:.5rem;opacity:0;animation:fadeUp .8s .75s var(--ease) forwards;}
 .hdot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.3);cursor:pointer;transition:all .3s;border:none;padding:0;}
@@ -126,6 +126,119 @@ a{text-decoration:none;color:inherit;}
 .hrm-sig-role{font-size:.7rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);margin-top:.1rem;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
 
+/* ══════════════════════════════════════
+   HERO MOBILE — FULLSCREEN SLIDESHOW
+   Director box + half-size video box
+══════════════════════════════════════ */
+.hero-mobile-layout{display:none;}
+.hm-slide-wrap{position:absolute;inset:0;z-index:0;}
+.hm-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.4s ease;}
+.hm-slide.active{opacity:1;}
+.hm-slide img{width:100%;height:100%;object-fit:cover;object-position:center top;}
+.hm-overlay-top{
+  position:absolute;inset:0;
+  background:linear-gradient(to bottom,rgba(26,10,14,.85) 0%,rgba(26,10,14,.25) 35%,rgba(26,10,14,.25) 50%,rgba(26,10,14,.80) 100%);
+  z-index:1;pointer-events:none;
+}
+.hm-content{
+  position:absolute;inset:0;z-index:2;
+  display:flex;flex-direction:column;
+  padding:1.2rem 1rem 1rem;
+}
+
+/* title block */
+.hm-eyebrow{font-size:.65rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--gold2);display:flex;align-items:center;gap:.5rem;margin-bottom:.3rem;opacity:0;animation:fadeUp .8s .3s var(--ease) forwards;}
+.hm-eyebrow i{display:block;width:14px;height:1px;background:var(--gold2);}
+.hm-title-wrap{opacity:0;animation:fadeUp .9s .45s var(--ease) forwards;}
+.hm-church-name{font-family:var(--fd);font-size:clamp(.78rem,3vw,1rem);font-weight:800;letter-spacing:.15em;color:white;text-transform:uppercase;line-height:1.2;}
+.hm-acc{font-family:var(--fd);font-size:clamp(1.9rem,9vw,3rem);font-weight:900;letter-spacing:-.02em;background:linear-gradient(135deg,#FFD700,var(--gold2),#C9A84C);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:.92;margin-bottom:.45rem;}
+
+/* stats row under title */
+.hm-stats{display:flex;gap:1rem;margin-top:.45rem;margin-bottom:0;}
+.hm-stat .num{font-family:var(--fc);font-size:1.05rem;font-weight:700;color:var(--gold2);}
+.hm-stat .lbl{font-size:.5rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);}
+
+/* flex spacer — pushes boxes to bottom half */
+.hm-spacer{flex:1;}
+
+/* boxes wrapper — stacked column, no gap */
+.hm-boxes{display:flex;flex-direction:column;gap:5px;flex-shrink:0;}
+
+/* ── DIRECTOR BOX ── */
+.hm-director-box{
+  height:155px;flex-shrink:0;
+  border-radius:14px;overflow:hidden;
+  border:1.5px solid rgba(255,255,255,.18);
+  background:rgba(20,6,11,.72);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  display:flex;flex-direction:row;
+  position:relative;
+}
+.hm-director-box::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2.5px;
+  background:linear-gradient(90deg,var(--magenta),var(--gold));
+  border-radius:14px 14px 0 0;z-index:3;
+}
+/* subtle concentric arc decoration */
+.hm-box-arc{position:absolute;bottom:-18px;right:-18px;width:64px;height:64px;border-radius:50%;border:1.5px solid rgba(255,255,255,.07);pointer-events:none;z-index:0;}
+.hm-box-arc::before{content:'';position:absolute;inset:14px;border-radius:50%;border:1px solid rgba(255,255,255,.04);}
+
+/* photo column */
+.hm-dir-photo{width:82px;flex-shrink:0;background:linear-gradient(160deg,var(--dark2),var(--dark3));position:relative;overflow:hidden;}
+.hm-dir-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,transparent 55%,rgba(20,6,11,.55));}
+.hm-dir-photo img{width:100%;height:100%;object-fit:cover;object-position:top center;}
+.hm-dir-photo-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:1.5rem;font-weight:700;color:rgba(255,255,255,.1);}
+.hm-dir-nameplate{position:absolute;bottom:0;left:0;right:0;padding:.3rem .45rem;background:linear-gradient(to top,rgba(20,6,11,.92),transparent);z-index:2;}
+.hm-dir-pname{font-family:var(--fd);font-size:.72rem;font-weight:700;color:white;line-height:1.2;}
+.hm-dir-prole{font-size:.56rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--gold2);}
+
+/* note column */
+.hm-dir-note{flex:1;display:flex;flex-direction:column;padding:.65rem .75rem .6rem;min-width:0;overflow:hidden;position:relative;z-index:1;}
+.hm-note-lbl{font-size:.58rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.35rem;display:flex;align-items:center;gap:.3rem;flex-shrink:0;}
+.hm-note-lbl::before{content:'';width:9px;height:1.5px;background:var(--gold);}
+.hm-note-quote{font-family:var(--fd);font-size:.82rem;font-style:italic;color:rgba(255,255,255,.9);line-height:1.45;border-left:2px solid var(--gold);padding-left:.45rem;margin-bottom:.4rem;flex-shrink:0;}
+.hm-note-scroll{flex:1;overflow-y:auto;min-height:0;scrollbar-width:thin;scrollbar-color:rgba(201,168,76,.2) transparent;}
+.hm-note-body{font-size:.72rem;line-height:1.75;color:rgba(255,255,255,.58);}
+.hm-note-body strong{color:rgba(255,255,255,.85);}
+.hm-note-acro{margin:.35rem 0;padding:.3rem .55rem;background:rgba(204,0,102,.1);border-left:2px solid var(--magenta);border-radius:0 5px 5px 0;}
+.hm-acro-line{font-size:.68rem;line-height:2;color:rgba(255,255,255,.62);}
+.hm-acro-line strong{color:var(--magenta);}
+.hm-note-sig{margin-top:.35rem;padding-top:.35rem;border-top:1px solid rgba(255,255,255,.09);display:flex;align-items:center;gap:.35rem;flex-shrink:0;}
+.hm-sig-bar{width:10px;height:1.5px;background:var(--gold);flex-shrink:0;}
+.hm-sig-name{font-family:var(--fd);font-size:.8rem;font-weight:700;color:var(--magenta);}
+.hm-sig-role{font-size:.56rem;letter-spacing:.04em;color:rgba(255,255,255,.3);}
+
+/* ── VIDEO BOX — half height of director box ── */
+.hm-video-box{
+  height:72px;flex-shrink:0;
+  border-radius:14px;overflow:hidden;
+  border:1.5px solid rgba(255,255,255,.18);
+  background:linear-gradient(135deg,var(--dark2),var(--dark3));
+  position:relative;cursor:pointer;
+}
+.hm-video-box::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2.5px;
+  background:linear-gradient(90deg,var(--gold),var(--magenta));
+  border-radius:14px 14px 0 0;z-index:3;
+}
+.hm-video-box video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.hm-vid-scrim{position:absolute;inset:0;background:rgba(26,10,14,.5);z-index:1;transition:opacity .3s;}
+.hm-vid-inner{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:12px;z-index:2;}
+.hm-play-ring{width:36px;height:36px;border-radius:50%;border:2px solid rgba(255,255,255,.65);display:flex;align-items:center;justify-content:center;background:rgba(204,0,102,.22);flex-shrink:0;transition:transform .3s,background .3s;}
+.hm-video-box:active .hm-play-ring{transform:scale(1.1);background:rgba(204,0,102,.45);}
+.hm-play-tri{width:0;height:0;border-top:7px solid transparent;border-bottom:7px solid transparent;border-left:13px solid white;margin-left:3px;}
+.hm-vid-text .hm-vt{font-size:.82rem;font-weight:700;color:white;}
+.hm-vid-text .hm-vs{font-size:.6rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.48);margin-top:.1rem;}
+/* wave decoration at bottom of video box */
+.hm-vid-wave{position:absolute;bottom:0;left:0;right:0;z-index:1;pointer-events:none;opacity:.1;}
+
+/* dots row */
+.hm-dots-row{display:flex;justify-content:flex-end;margin-top:.5rem;}
+.hm-dots{display:flex;gap:.3rem;align-items:center;}
+.hm-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.28);border:none;padding:0;cursor:pointer;transition:all .3s;}
+.hm-dot.active{background:var(--gold);width:16px;border-radius:2.5px;}
+
 /* TICKER */
 .tkw{background:linear-gradient(90deg,var(--dark2),var(--magenta),var(--dark2));overflow:hidden;padding:1rem 0;border-top:2px solid var(--gold);border-bottom:2px solid var(--gold);}
 .tk-inner{display:flex;white-space:nowrap;}
@@ -155,9 +268,7 @@ a{text-decoration:none;color:inherit;}
 .rvr{opacity:0;transform:translateX(30px);transition:opacity .9s var(--ease),transform .9s var(--ease);}
 .rv.on,.rv2.on,.rv3.on,.rvl.on,.rvr.on{opacity:1;transform:none;}
 
-/* ═══════════════════════════════════════
-   STATS COUNTER SECTION
-═══════════════════════════════════════ */
+/* STATS COUNTER */
 #stats-banner{background:linear-gradient(135deg,var(--dark2),var(--dark3),var(--dark2));padding:4rem 0;border-top:3px solid var(--gold);border-bottom:3px solid var(--gold);position:relative;overflow:hidden;}
 #stats-banner::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(201,168,76,.06) 1px,transparent 1px);background-size:28px 28px;pointer-events:none;}
 .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;max-width:1200px;margin:0 auto;padding:0 1.5rem;}
@@ -166,8 +277,8 @@ a{text-decoration:none;color:inherit;}
 .stat-item::before{content:'';position:absolute;bottom:0;left:20%;right:20%;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .4s;}
 .stat-item:hover::before{opacity:1;}
 .stat-icon{font-size:1.6rem;margin-bottom:.5rem;display:block;}
-.stat-num{font-family:var(--fd);font-size:clamp(2.2rem,4vw,3.8rem);font-weight:700;color:var(--gold2);line-height:1;letter-spacing:-.02em;}
-.stat-suffix{font-family:var(--fd);font-size:clamp(1.4rem,2.5vw,2.4rem);color:var(--magenta);font-weight:700;}
+.stat-num{font-family:var(--fc);font-size:clamp(2rem,4vw,3.6rem);font-weight:700;color:var(--gold2);line-height:1;letter-spacing:.02em;}
+.stat-suffix{font-family:var(--fc);font-size:clamp(1.2rem,2.5vw,2.2rem);color:var(--magenta);font-weight:700;}
 .stat-label{font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-top:.4rem;}
 
 /* VISION */
@@ -198,9 +309,7 @@ a{text-decoration:none;color:inherit;}
 .vis-finish-item:last-child{border-bottom:none;}
 .vis-finish-letter{font-family:var(--fd);font-size:1.4rem;font-weight:700;color:var(--magenta);width:24px;flex-shrink:0;line-height:1;}
 
-/* ═══════════════════════════════════════
-   DEPARTMENTS — 3D CARDS
-═══════════════════════════════════════ */
+/* DEPARTMENTS */
 #depts{background:var(--ivory);padding:5rem 0;}
 .dept-header{text-align:center;margin-bottom:3rem;}
 .dept-header .sl{justify-content:center;}
@@ -211,7 +320,7 @@ a{text-decoration:none;color:inherit;}
 .dept-card:hover .dc-inner::before{opacity:1;}
 .dc-inner::after{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--magenta),var(--gold));z-index:5;}
 .dc-shine{position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.1) 0%,transparent 50%);z-index:2;pointer-events:none;border-radius:20px;}
-.dc-bg-num{position:absolute;top:-.5rem;right:.6rem;font-family:var(--fd);font-size:5.5rem;font-weight:700;color:rgba(255,255,255,.05);line-height:1;z-index:1;transition:color .3s;pointer-events:none;}
+.dc-bg-num{position:absolute;top:-.5rem;right:.6rem;font-family:var(--fc);font-size:5.5rem;font-weight:700;color:rgba(255,255,255,.05);line-height:1;z-index:1;transition:color .3s;pointer-events:none;}
 .dept-card:hover .dc-bg-num{color:rgba(255,255,255,.1);}
 .dc-content{position:absolute;inset:0;padding:1.5rem 1.6rem;display:flex;flex-direction:column;justify-content:flex-end;z-index:3;}
 .dc-bar{width:28px;height:3px;border-radius:2px;background:linear-gradient(90deg,var(--magenta),var(--gold));margin-bottom:.7rem;transition:width .4s cubic-bezier(.16,1,.3,1);}
@@ -224,9 +333,7 @@ a{text-decoration:none;color:inherit;}
 .dc-shadow{position:absolute;bottom:-14px;left:10%;right:10%;height:28px;background:rgba(204,0,102,.35);border-radius:50%;filter:blur(14px);opacity:.3;z-index:-1;transition:opacity .4s,transform .4s;}
 .dept-card:hover .dc-shadow{opacity:.65;transform:scaleX(1.12);}
 
-/* ═══════════════════════════════════════
-   HISTORY + BIG PIE
-═══════════════════════════════════════ */
+/* HISTORY */
 #about{background:var(--ivory2);padding:5rem 0 0;}
 .ab-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;}
 .ab-l{padding:5rem 3.5rem 5rem 1.5rem;border-right:2px solid var(--ivory3);}
@@ -237,10 +344,10 @@ a{text-decoration:none;color:inherit;}
 .tl-row::before{content:'';position:absolute;left:-1px;top:0;bottom:0;width:3px;background:var(--magenta);transform:scaleY(0);transform-origin:top;transition:transform .4s var(--ease);}
 .tl-row:hover::before{transform:scaleY(1);}
 .tl-row:hover{padding-left:.7rem;}
-.tl-yr{font-family:var(--fd);font-size:1.4rem;font-weight:700;color:var(--magenta);letter-spacing:-.01em;line-height:1.3;}
+.tl-yr{font-family:var(--fc);font-size:1.3rem;font-weight:700;color:var(--magenta);letter-spacing:.02em;line-height:1.3;}
 .tl-tx{font-size:.95rem;font-weight:400;line-height:2;color:var(--text2);}
 
-/* BIGGER PIE */
+/* PIE */
 .pie-wrapper{width:100%;display:flex;flex-direction:column;align-items:center;gap:1.2rem;}
 .pie-title-row{text-align:center;width:100%;}
 .pie-title-row p{font-size:.88rem;color:var(--text2);line-height:1.5;margin-top:.2rem;}
@@ -252,7 +359,7 @@ a{text-decoration:none;color:inherit;}
 .pie-info-card{width:100%;max-width:560px;background:white;border:2px solid var(--magenta);border-top:4px solid var(--magenta);border-radius:14px;padding:1.4rem 1.8rem;transition:opacity .35s,transform .35s;opacity:0;transform:translateY(10px);pointer-events:none;box-shadow:0 10px 32px rgba(204,0,102,.1);}
 .pie-info-card.visible{opacity:1;transform:translateY(0);pointer-events:auto;}
 .pic-label{font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--magenta);margin-bottom:.3rem;}
-.pic-value{font-family:var(--fd);font-size:2.8rem;font-weight:700;letter-spacing:-.04em;color:var(--text);line-height:1;margin-bottom:.3rem;}
+.pic-value{font-family:var(--fc);font-size:2.6rem;font-weight:700;letter-spacing:.02em;color:var(--text);line-height:1;margin-bottom:.3rem;}
 .pic-desc{font-size:.88rem;font-weight:400;line-height:1.9;color:var(--text2);}
 .pie-modal-overlay{position:fixed;inset:0;z-index:10000;background:rgba(26,10,14,.75);backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;padding:1rem;}
 .pie-modal-overlay.open{opacity:1;pointer-events:auto;}
@@ -261,7 +368,7 @@ a{text-decoration:none;color:inherit;}
 .pm-close{position:absolute;top:1rem;right:1.2rem;background:none;border:none;color:var(--text3);font-size:1.4rem;cursor:pointer;transition:color .2s;}
 .pm-close:hover{color:var(--magenta);}
 .pm-tag{font-size:.76rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--magenta);margin-bottom:.6rem;}
-.pm-value{font-family:var(--fd);font-size:3.5rem;font-weight:700;letter-spacing:-.04em;color:var(--text);line-height:1;margin-bottom:.4rem;}
+.pm-value{font-family:var(--fc);font-size:3.2rem;font-weight:700;letter-spacing:.02em;color:var(--text);line-height:1;margin-bottom:.4rem;}
 .pm-title{font-family:var(--fd);font-size:1.6rem;font-weight:700;color:var(--text);margin-bottom:.8rem;border-bottom:2px solid var(--ivory3);padding-bottom:.7rem;}
 .pm-body{font-size:.95rem;font-weight:400;line-height:2.1;color:var(--text2);}
 .pm-body strong{color:var(--magenta);font-weight:600;}
@@ -372,7 +479,7 @@ a{text-decoration:none;color:inherit;}
 .bel-card:hover{transform:translateY(-7px);box-shadow:0 18px 44px rgba(204,0,102,.16);border-color:var(--magenta);}
 .bel-card::after{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--magenta),var(--gold));border-radius:18px 18px 0 0;transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease);}
 .bel-card:hover::after{transform:scaleX(1);}
-.bel-num{font-family:var(--fd);font-size:3rem;font-weight:700;color:rgba(204,0,102,.07);line-height:1;margin-bottom:.15rem;}
+.bel-num{font-family:var(--fc);font-size:2.8rem;font-weight:700;color:rgba(204,0,102,.07);line-height:1;margin-bottom:.15rem;}
 .bel-label{font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem;display:flex;align-items:center;gap:.4rem;}
 .bel-label::before{content:'';width:12px;height:1.5px;background:var(--gold);}
 .bel-title{font-family:var(--fd);font-size:1.4rem;font-weight:700;color:var(--text);margin-bottom:.5rem;line-height:1.15;}
@@ -393,7 +500,7 @@ a{text-decoration:none;color:inherit;}
 .mrow:hover::after{width:100%;}
 .mrow:hover{background:rgba(204,0,102,.03);padding-left:.4rem;}
 .mrow:hover .mr-n{color:var(--magenta);}
-.mr-n{font-family:var(--fd);font-size:2.2rem;font-weight:700;color:var(--ivory3);line-height:1;flex-shrink:0;width:46px;transition:color .25s;}
+.mr-n{font-family:var(--fc);font-size:2rem;font-weight:700;color:var(--ivory3);line-height:1;flex-shrink:0;width:46px;transition:color .25s;}
 .mr-name{font-family:var(--fd);font-size:1.2rem;font-weight:700;color:var(--text);margin-bottom:.25rem;}
 .mr-desc{font-size:.9rem;font-weight:400;color:var(--text2);line-height:1.8;}
 
@@ -501,13 +608,12 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
 .chat-powered a{color:var(--magenta);}
 .api-mode{font-size:.6rem;letter-spacing:.08em;color:rgba(255,255,255,.6);display:flex;align-items:center;gap:.3rem;}
 .api-mode.ai{color:#4ade80;}
-
 #backTop{position:fixed;bottom:6rem;right:1.5rem;z-index:7000;width:42px;height:42px;border-radius:50%;background:var(--magenta);color:white;border:none;cursor:pointer;font-size:1rem;opacity:0;transform:translateY(12px);transition:all .35s;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(204,0,102,.38);}
 #backTop.show{opacity:1;transform:none;}
 #backTop:hover{background:var(--dark);transform:translateY(-2px);}
 
 /* ════════════════════════════════════════
-   MOBILE — PERFECT HERO & ALL SECTIONS
+   RESPONSIVE BREAKPOINTS
 ════════════════════════════════════════ */
 @media(max-width:1200px){
   .vis-main-layout{grid-template-columns:1fr;}
@@ -522,61 +628,31 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
   .council-header{grid-template-columns:1fr;gap:1.2rem;}
 }
 
+/* ── TABLET / MOBILE BREAKPOINT ── */
 @media(max-width:900px){
-  :root{--nav:64px;}
+  :root{--nav:60px;}
   .nls{display:none!important;}
   .hbg{display:flex!important;}
   .nav-btn{display:none;}
+  .nl-t2{display:none;}
 
-  /* ── HERO MOBILE — STACKED, NO GAPS ── */
-  #hero{min-height:100vh;padding-top:var(--nav);}
-  .hero-grid{
-    grid-template-columns:1fr;
-    grid-template-rows:auto auto;
+  /* hide desktop, show mobile hero */
+  .hero-grid{display:none!important;}
+  .hero-mobile-layout{
+    display:block;
+    position:relative;
     min-height:calc(100vh - var(--nav));
+    overflow:hidden;
+    background:var(--dark2);
   }
-  .hero-left{
-    height:55vw;
-    min-height:240px;
-    max-height:380px;
-    flex:none;
-  }
-  .hero-left-content{padding:1.4rem 1.2rem;}
-  .hero-eyebrow{font-size:.68rem;letter-spacing:.14em;}
-  .hero-title .church-name{font-size:clamp(.9rem,3.5vw,1.5rem);letter-spacing:.1em;}
-  .hero-title .acc{font-size:clamp(2rem,8vw,3.5rem);}
-  .hero-stats-mini{gap:1rem;}
-  .hero-stat-mini .num{font-size:1.3rem;}
-  .hero-right{
-    border-left:none;
-    border-top:3px solid var(--magenta);
-    flex:1;
-    min-height:0;
-  }
-  .hero-right-inner{height:100%;}
-  .hr-media{
-    flex-direction:row;
-    height:190px;
-    min-height:190px;
-    flex:none;
-  }
-  .hr-photo{flex:0 0 42%;height:190px;}
-  .hr-video{flex:1;height:190px;border-left:1px solid rgba(204,0,102,.15);border-top:none;}
-  .hr-msg{overflow:visible;flex:1;}
-  .hrm-scroll{overflow-y:visible;max-height:none;flex:none;padding-bottom:1rem;}
-  .hrm-quote{font-size:.92rem;}
-  .hrm-body{font-size:.86rem;}
 
-  /* Stats */
   .stats-grid{grid-template-columns:repeat(2,1fr);}
   .stat-item{border-right:none;border-bottom:1px solid rgba(255,255,255,.08);}
   .stat-item:nth-child(odd){border-right:1px solid rgba(255,255,255,.08);}
 
-  /* Departments */
   .dept-grid{grid-template-columns:1fr 1fr;gap:14px;}
-  .dept-card{height:195px;}
+  .dept-card{height:185px;}
 
-  /* History */
   .ab-grid{grid-template-columns:1fr;}
   .ab-l{border-right:none;border-bottom:2px solid var(--ivory3);padding:3.5rem 1.5rem;}
   .ab-r{padding:2.5rem 1.5rem;}
@@ -584,94 +660,76 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
   .pie-chart-area{max-width:100%;}
   .pie-info-card{max-width:100%;}
 
-  /* Leaders */
   .lead-head{grid-template-columns:1fr;gap:1.5rem;margin-bottom:2rem;}
   .lead-strip{grid-template-columns:repeat(3,1fr)!important;}
 
-  /* Council */
   .overseer-card{grid-template-columns:1fr;}
   .ov-photo{min-height:220px;}
   .ov-info{padding:1.8rem 1.5rem;}
+  .council-header{grid-template-columns:1fr;gap:1rem;}
   .council-grid{grid-template-columns:repeat(2,1fr);}
 
-  /* State Board */
   .sb-five-grid{grid-template-columns:repeat(2,1fr);}
 
-  /* Ministry */
   .min-grid{grid-template-columns:1fr;}
   .min-l{border-right:none;padding-right:0;border-bottom:2px solid var(--ivory3);padding-bottom:1rem;}
   .min-r{padding-left:0;padding-top:1rem;}
 
-  /* Contact */
   .contact-grid{grid-template-columns:1fr;}
   .cf-row{grid-template-columns:1fr;}
 
-  /* CTA */
   .cta-inner{grid-template-columns:1fr;}
   .cta-links{align-items:flex-start;}
 
-  /* Footer */
   .ft-t{grid-template-columns:1fr 1fr;gap:2.5rem;}
 
-  /* Chat */
   .chat-box{width:calc(100vw - 2rem);right:-.75rem;bottom:68px;}
 
-  /* Vision */
   .vis-main-layout{grid-template-columns:1fr;}
+
+  .sec{padding:3.5rem 0;}
+  .cont,.vis-inner,.contact-inner,.council-wrap,.ft{padding:0 1rem;}
 }
 
 @media(max-width:640px){
-  .sec{padding:3.5rem 0;}
-  .cont{padding:0 1rem;}
-  .vis-inner,.contact-inner,.council-wrap,.ft{padding:0 1rem;}
-  .nl-t2{display:none;}
-  .nl-t1{font-size:.78rem;}
-  .nl-logo{width:40px;height:40px;}
-
-  /* Hero perfect on small phones */
-  .hero-left{height:50vw;min-height:210px;}
-  .hero-title .church-name{font-size:clamp(.85rem,3vw,1.2rem);}
-  .hero-title .acc{font-size:clamp(1.8rem,9vw,3rem);}
-  .hero-stats-mini{gap:.8rem;}
-  .hero-stat-mini .num{font-size:1.1rem;}
-  .hero-stat-mini .lbl{font-size:.55rem;}
-  .hr-media{height:165px;min-height:165px;}
-  .hr-photo{height:165px;}
-  .hr-video{height:165px;}
-  .hrm-quote{font-size:.88rem;}
-  .hrp-name{font-size:1rem;}
-
-  .dept-grid{grid-template-columns:1fr 1fr;gap:12px;}
-  .dept-card{height:175px;}
+  .nl-logo{width:36px;height:36px;}
+  .nl-t1{font-size:.76rem;}
+  .dept-grid{grid-template-columns:1fr 1fr;gap:10px;}
+  .dept-card{height:170px;}
   .lead-strip{grid-template-columns:repeat(2,1fr)!important;}
   .council-grid{grid-template-columns:repeat(2,1fr);}
   .ft-t{grid-template-columns:1fr;}
   .ft-bot{flex-direction:column;text-align:center;}
   .chat-box{width:calc(100vw - 1.5rem);right:-.5rem;}
   .stats-grid{grid-template-columns:repeat(2,1fr);}
-  .stat-num{font-size:2rem;}
+  .stat-num{font-size:1.8rem;}
+  /* director box slightly shorter */
+  .hm-director-box{height:140px;}
+  .hm-video-box{height:64px;}
+  .hm-acc{font-size:clamp(1.7rem,9vw,2.6rem);}
 }
 
 @media(max-width:480px){
-  .hero-left{height:58vw;min-height:200px;}
-  .hero-title .acc{font-size:clamp(1.6rem,10vw,2.6rem);}
-
-  .hr-media{flex-direction:column;height:auto;min-height:auto;}
-  .hr-photo{flex:none;height:160px;width:100%;}
-  .hr-video{flex:none;height:120px;width:100%;border-left:none;border-top:1px solid rgba(204,0,102,.15);}
-
-  .dept-grid{grid-template-columns:1fr;gap:12px;}
-  .dept-card{height:165px;}
+  .dept-grid{grid-template-columns:1fr 1fr;gap:10px;}
+  .dept-card{height:155px;}
   .lead-strip{grid-template-columns:1fr 1fr!important;}
   .sb-five-grid{grid-template-columns:1fr 1fr;}
   .council-grid{grid-template-columns:1fr 1fr;}
-  .nb{padding:0 1rem;}
+  .nb{padding:0 .8rem;}
   .stats-grid{grid-template-columns:1fr 1fr;}
+  .hm-director-box{height:130px;}
+  .hm-dir-photo{width:72px;}
+  .hm-video-box{height:60px;}
+  .hm-stats{gap:.7rem;}
+  .hm-stat .num{font-size:.95rem;}
+  .hm-stat .lbl{font-size:.48rem;}
 }
-@media(max-width:360px){
+
+@media(max-width:380px){
   .dept-grid{grid-template-columns:1fr;}
-  .lead-strip{grid-template-columns:1fr 1fr!important;}
-  .chat-box{width:calc(100vw - 1rem);right:-.25rem;}
+  .hm-director-box{height:125px;}
+  .hm-dir-photo{width:68px;}
+  .hm-video-box{height:56px;}
 }
 </style>
 </head>
@@ -716,8 +774,7 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
           <a href="ss.html">Sunday School</a>
           <a href="cha.html">Charity</a>
           <a href="edu.html">Education</a>
-          <a href="eva.html">Evangalism</a>
-          <
+          <a href="eva.html">Evangelism</a>
         </div>
       </li>
       <li class="nli"><button>Ministry ▾</button>
@@ -728,7 +785,7 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
       <li class="nli"><button>More ▾</button>
         <div class="drop">
           <a href="#leaders">Leaders</a><a href="#council">Council</a>
-          <a href="#stateboard">State Office administration</a><a href="#contact">Contact</a>
+          <a href="#stateboard">State Office</a><a href="#contact">Contact</a>
         </div>
       </li>
     </ul>
@@ -765,7 +822,7 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
   <a href="#contact" class="mob-cta">Contact the State Office →</a>
 </div>
 
-<!-- HERO -->
+<!-- HERO — DESKTOP -->
 <section id="hero">
   <div class="hero-grid">
     <div class="hero-left">
@@ -803,7 +860,6 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
         </div>
       </div>
     </div>
-
     <div class="hero-right">
       <div class="hero-right-inner">
         <div class="hr-media">
@@ -856,6 +912,111 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
       </div>
     </div>
   </div>
+
+  <!-- ══ HERO MOBILE ══ -->
+  <div class="hero-mobile-layout" id="heroMobile">
+    <div class="hm-slide-wrap">
+      <div class="hm-slide active">
+        <img src="WhatsApp Image 2026-04-04 at 11.08.53 (1).jpeg" alt="Church gathering" onerror="this.onerror=null;this.parentElement.innerHTML='<div style=\'width:100%;height:100%;background:linear-gradient(145deg,#1A0A0E,#4A1A28,#8B0032)\'></div>'">
+      </div>
+      <div class="hm-slide">
+        <img src="WhatsApp Image 2026-04-04 at 11.08.53 (2).jpeg" alt="Church event" onerror="this.onerror=null;this.parentElement.innerHTML='<div style=\'width:100%;height:100%;background:linear-gradient(145deg,#2D1018,#8B0032,#C9A84C)\'></div>'">
+      </div>
+      <div class="hm-slide">
+        <img src="WhatsApp Image 2026-04-04 at 11.08.54 (1).jpeg" alt="Church ministry" onerror="this.onerror=null;this.parentElement.innerHTML='<div style=\'width:100%;height:100%;background:linear-gradient(145deg,#0A0005,#2D0018,#C0003E)\'></div>'">
+      </div>
+    </div>
+
+    <div class="hm-overlay-top"></div>
+
+    <div class="hm-content">
+      <!-- Title block — floats over background image -->
+      <div class="hm-eyebrow"><i></i>Church of God (Full Gospel) in India</div>
+      <div class="hm-title-wrap">
+        <div class="hm-church-name">CHURCH OF GOD IN INDIA</div>
+        <div class="hm-acc">KERALA STATE</div>
+        <div class="hm-stats">
+          <div class="hm-stat"><div class="num">1,200+</div><div class="lbl">Churches</div></div>
+          <div class="hm-stat"><div class="num">1,500+</div><div class="lbl">Ministers</div></div>
+          <div class="hm-stat"><div class="num">194</div><div class="lbl">Nations</div></div>
+        </div>
+      </div>
+
+      <!-- Spacer — pushes boxes to bottom half of screen -->
+      <div class="hm-spacer"></div>
+
+      <!-- Stacked boxes -->
+      <div class="hm-boxes">
+
+        <!-- Director box: photo left + scrollable note right -->
+        <div class="hm-director-box">
+          <div class="hm-box-arc"></div>
+          <div class="hm-dir-photo">
+            <img src="Ps.jpg" alt="Rev. Y. Reji" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="hm-dir-photo-ph" style="display:none">YR</div>
+            <div class="hm-dir-nameplate">
+              <div class="hm-dir-pname">Rev. Y. Reji</div>
+              <div class="hm-dir-prole">State Overseer</div>
+            </div>
+          </div>
+          <div class="hm-dir-note">
+            <div class="hm-note-lbl">Director's Note</div>
+            <p class="hm-note-quote">"Blessed be the Name of Our Lord Jesus Christ who commissioned us to be His disciples."</p>
+            <div class="hm-note-scroll">
+              <div class="hm-note-body">
+                COG Kerala has come to a new era of challenges with a vision to fulfill the great commission. Over <strong>1,200 local churches</strong> and <strong>1,500+ ministers</strong> across 14 districts.<br><br>
+                Let us launch the <strong>FINISH Commission</strong> — Matthew 28:19:
+                <div class="hm-note-acro">
+                  <div class="hm-acro-line"><strong>F</strong> — Find the lost and disenfranchised</div>
+                  <div class="hm-acro-line"><strong>I</strong> — Intercede and pray for a lost world</div>
+                  <div class="hm-acro-line"><strong>N</strong> — Network with others to reach everyone</div>
+                  <div class="hm-acro-line"><strong>I</strong> — Invest our resources strategically</div>
+                  <div class="hm-acro-line"><strong>S</strong> — Send disciples to all nations</div>
+                  <div class="hm-acro-line"><strong>H</strong> — Harvest a world of souls for Christ</div>
+                </div>
+                COG Kerala is part of Church of God International — present in <strong>194 countries</strong>. Let us go forward with HIS power.
+              </div>
+              <div class="hm-note-sig">
+                <div class="hm-sig-bar"></div>
+                <div>
+                  <div class="hm-sig-name">Rev. Y. Reji</div>
+                  <div class="hm-sig-role">Zion Hills, Chengannur</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video box — half height of director box -->
+        <div class="hm-video-box" id="hmVideoBox">
+          <video autoplay muted loop playsinline id="hmVideo">
+            <source src="VN20260402_233527.mp4" type="video/mp4">
+          </video>
+          <div class="hm-vid-scrim" id="hmVidScrim"></div>
+          <div class="hm-vid-inner" id="hmVidInner">
+            <div class="hm-play-ring"><div class="hm-play-tri"></div></div>
+            <div class="hm-vid-text">
+              <div class="hm-vt">Director's Video Message</div>
+              <div class="hm-vs">Rev. Y. Reji · State Overseer</div>
+            </div>
+          </div>
+          <svg class="hm-vid-wave" viewBox="0 0 400 16" preserveAspectRatio="none">
+            <path d="M0,8 Q100,0 200,8 Q300,16 400,8 L400,16 L0,16 Z" fill="white"/>
+          </svg>
+        </div>
+
+      </div>
+
+      <!-- Slide dots -->
+      <div class="hm-dots-row">
+        <div class="hm-dots" id="hmDots">
+          <button class="hm-dot active"></button>
+          <button class="hm-dot"></button>
+          <button class="hm-dot"></button>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- TICKER -->
@@ -887,12 +1048,12 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
   <div class="stats-grid">
     <div class="stat-item">
       <span class="stat-icon">⛪</span>
-      <div><span class="stat-num counter" data-target="1200" data-suffix="+">0</span><span class="stat-suffix">+</span></div>
+      <div><span class="stat-num counter" data-target="1200">0</span><span class="stat-suffix">+</span></div>
       <div class="stat-label">Local Churches · Kerala</div>
     </div>
     <div class="stat-item">
       <span class="stat-icon">✝️</span>
-      <div><span class="stat-num counter" data-target="1500" data-suffix="+">0</span><span class="stat-suffix">+</span></div>
+      <div><span class="stat-num counter" data-target="1500">0</span><span class="stat-suffix">+</span></div>
       <div class="stat-label">Ordained Ministers</div>
     </div>
     <div class="stat-item">
@@ -942,7 +1103,7 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
   </div>
 </section>
 
-<!-- DEPARTMENTS — 3D EQUAL GRID -->
+<!-- DEPARTMENTS -->
 <section id="depts">
   <div class="cont">
     <div class="dept-header rv">
@@ -955,7 +1116,7 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
   </div>
 </section>
 
-<!-- HISTORY + BIG PIE -->
+<!-- HISTORY + PIE -->
 <section id="about" style="background:var(--ivory2);padding:5rem 0 0;">
   <div class="ab-grid">
     <div class="ab-l">
@@ -1263,8 +1424,8 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a){
   });
 });
 
-/* ── HERO SLIDES ── */
-var slides=document.querySelectorAll('.slide');
+/* ── DESKTOP HERO SLIDES ── */
+var slides=document.querySelectorAll('.hero-left .slide');
 var dots=document.querySelectorAll('.hdot');
 var curSlide=0;
 function showSlide(i){
@@ -1275,20 +1436,47 @@ function showSlide(i){
 if(slides.length){setInterval(function(){showSlide((curSlide+1)%slides.length);},4500);}
 dots.forEach(function(d,i){d.addEventListener('click',function(){showSlide(i);});});
 
+/* ── MOBILE HERO SLIDES ── */
+var hmSlides=document.querySelectorAll('.hm-slide');
+var hmDotBtns=document.querySelectorAll('#hmDots .hm-dot');
+var curHmSlide=0;
+function showHmSlide(i){
+  hmSlides.forEach(function(s,j){s.classList.toggle('active',j===i);});
+  hmDotBtns.forEach(function(d,j){d.classList.toggle('active',j===i);});
+  curHmSlide=i;
+}
+if(hmSlides.length){setInterval(function(){showHmSlide((curHmSlide+1)%hmSlides.length);},4500);}
+hmDotBtns.forEach(function(d,i){d.addEventListener('click',function(){showHmSlide(i);});});
+
+/* ── MOBILE VIDEO BOX — tap to unmute ── */
+var hmVideoBox=document.getElementById('hmVideoBox');
+var hmVideo=document.getElementById('hmVideo');
+var hmVidScrim=document.getElementById('hmVidScrim');
+var hmVidInner=document.getElementById('hmVidInner');
+if(hmVideoBox&&hmVideo){
+  hmVideoBox.addEventListener('click',function(){
+    if(hmVideo.muted){
+      hmVideo.muted=false;hmVideo.play();
+      if(hmVidScrim)hmVidScrim.style.opacity='0.15';
+      if(hmVidInner)hmVidInner.style.opacity='0';
+    } else {
+      hmVideo.muted=true;
+      if(hmVidScrim)hmVidScrim.style.opacity='0.5';
+      if(hmVidInner)hmVidInner.style.opacity='1';
+    }
+  });
+}
+
 /* ── ANIMATED NUMBER COUNTERS ── */
 function animateCounter(el){
   var target=parseInt(el.getAttribute('data-target'),10);
-  var duration=2200;
-  var start=null;
+  var duration=2200;var start=null;
   function easeOutExpo(t){return t===1?1:1-Math.pow(2,-10*t);}
   function step(ts){
     if(!start)start=ts;
     var progress=Math.min((ts-start)/duration,1);
-    var eased=easeOutExpo(progress);
-    var current=Math.floor(eased*target);
-    el.textContent=current.toLocaleString();
-    if(progress<1){requestAnimationFrame(step);}
-    else{el.textContent=target.toLocaleString();}
+    el.textContent=Math.floor(easeOutExpo(progress)*target).toLocaleString();
+    if(progress<1){requestAnimationFrame(step);}else{el.textContent=target.toLocaleString();}
   }
   requestAnimationFrame(step);
 }
@@ -1315,10 +1503,7 @@ function stagger(sel,delay,y){
     io.observe(c);
   });
 }
-stagger('.lcard',.08,22);
-stagger('.sb-box',.09,18);
-stagger('.ci-card',.07,18);
-stagger('.cm-card',.04,18);
+stagger('.lcard',.08,22);stagger('.sb-box',.09,18);stagger('.ci-card',.07,18);stagger('.cm-card',.04,18);
 
 /* ── 3D DEPT CARDS ── */
 var DEPTS=[
@@ -1341,8 +1526,7 @@ if(dg){
     a.innerHTML='<div class="dc-inner"><div class="dc-shine"></div><div class="dc-bg-num">'+d.n+'</div><div class="dc-arrow">↗</div><div class="dc-content"><div class="dc-bar"></div><div class="dc-name">'+d.name+'</div><div class="dc-desc">'+d.desc+'</div></div></div><div class="dc-shadow"></div>';
     a.addEventListener('mousemove',function(e){
       var r=a.getBoundingClientRect();
-      var x=((e.clientX-r.left)/r.width-0.5)*20;
-      var y=((e.clientY-r.top)/r.height-0.5)*-14;
+      var x=((e.clientX-r.left)/r.width-0.5)*20,y=((e.clientY-r.top)/r.height-0.5)*-14;
       a.querySelector('.dc-inner').style.transform='rotateX('+y+'deg) rotateY('+x+'deg) translateY(-8px) scale(1.03)';
     });
     a.addEventListener('mouseleave',function(){a.querySelector('.dc-inner').style.transform='';});
@@ -1356,31 +1540,12 @@ if(dg){
   });
 }
 
-/* ── VIDEO PLACEHOLDER ── */
+/* ── VIDEO PLACEHOLDER (desktop) ── */
 var hrVidPh=document.getElementById('hrVidPh');
 if(hrVidPh){hrVidPh.addEventListener('click',function(){var f=document.createElement('iframe');f.src='https://www.youtube.com/embed/?autoplay=1';f.setAttribute('allowfullscreen','');f.style.cssText='position:absolute;inset:0;width:100%;height:100%;border:none';hrVidPh.parentElement.appendChild(f);hrVidPh.style.display='none';});}
 
-/* ── BELIEFS CAROUSEL ── */
-var belTrack=document.getElementById('belTrack');
-if(belTrack){
-  var belDots=document.querySelectorAll('.bel-ndot');
-  if(belDots.length){
-    function updateBelDot(){
-      var cards=belTrack.querySelectorAll('.bel-card');
-      if(!cards.length)return;
-      var cardW=cards[0].offsetWidth+19;
-      var matrix=new DOMMatrix(window.getComputedStyle(belTrack).transform);
-      var tx=Math.abs(matrix.m41)%(belTrack.scrollWidth/2);
-      var idx=Math.round(tx/cardW)%6;
-      belDots.forEach(function(d,i){d.classList.toggle('active',i===idx);});
-      requestAnimationFrame(updateBelDot);
-    }
-    requestAnimationFrame(updateBelDot);
-  }
-}
-
 /* ══════════════════════════════════════
-   BIGGER PIE CHART (VB=800)
+   PIE CHART
 ══════════════════════════════════════ */
 var PIE_DATA=[
   {id:'churches',label:'Churches',value:'1,200+',raw:1200,color:'#CC0066',colorLight:'#E6007A',description:'Over <strong>1,200 local churches</strong> spread across all 14 revenue districts of Kerala — from coast to high ranges.'},
@@ -1394,8 +1559,7 @@ var pieSvgWrap=document.getElementById('pieSvgWrap');
 if(pieSvgWrap){
   var VB=800,VCX=VB/2,VCY=VB/2,R_OUT=240,R_IN=95;
   var NS='http://www.w3.org/2000/svg';
-  var svg=document.createElementNS(NS,'svg');
-  svg.setAttribute('viewBox','0 0 '+VB+' '+VB);
+  var svg=document.createElementNS(NS,'svg');svg.setAttribute('viewBox','0 0 '+VB+' '+VB);
   var defs=document.createElementNS(NS,'defs');svg.appendChild(defs);
   function polar(cx,cy,r,deg){var rad=(deg-90)*Math.PI/180;return{x:cx+r*Math.cos(rad),y:cy+r*Math.sin(rad)};}
   function arcPath(cx,cy,rO,rI,s,e){
@@ -1423,14 +1587,13 @@ if(pieSvgWrap){
     path.style.opacity='0';path.style.transform='scale(0.3)';
     setTimeout((function(pe){return function(){pe.style.transition='transform .9s '+(i*.13)+'s cubic-bezier(.34,1.26,.64,1),opacity .6s '+(i*.13)+'s ease';pe.style.opacity='.95';pe.style.transform='scale(1)';};})(path),400);
     g.appendChild(path);
-    /* Labels */
     var elbowR=R_OUT+20,elbowPt=polar(VCX,VCY,elbowR,mid),outerR=R_OUT+65,outerPt=polar(VCX,VCY,outerR,mid);
     var isRight=outerPt.x>=VCX,hLineEnd=outerPt.x+(isRight?44:-44);
     var pl=document.createElementNS(NS,'polyline');
     pl.setAttribute('points',elbowPt.x+','+elbowPt.y+' '+outerPt.x+','+outerPt.y+' '+hLineEnd+','+outerPt.y);
     pl.setAttribute('fill','none');pl.setAttribute('stroke',d.colorLight);pl.setAttribute('stroke-width','2');pl.setAttribute('stroke-linecap','round');pl.setAttribute('opacity','0.9');g.appendChild(pl);
     var dot=document.createElementNS(NS,'circle');dot.setAttribute('cx',outerPt.x);dot.setAttribute('cy',outerPt.y);dot.setAttribute('r','4.5');dot.setAttribute('fill',d.colorLight);g.appendChild(dot);
-    var vt=document.createElementNS(NS,'text');vt.setAttribute('x',hLineEnd+(isRight?6:-6));vt.setAttribute('y',outerPt.y-8);vt.setAttribute('text-anchor',isRight?'start':'end');vt.setAttribute('fill',d.colorLight);vt.setAttribute('font-family','Cormorant Garamond,serif');vt.setAttribute('font-size','18');vt.setAttribute('font-weight','700');vt.textContent=d.value;g.appendChild(vt);
+    var vt=document.createElementNS(NS,'text');vt.setAttribute('x',hLineEnd+(isRight?6:-6));vt.setAttribute('y',outerPt.y-8);vt.setAttribute('text-anchor',isRight?'start':'end');vt.setAttribute('fill',d.colorLight);vt.setAttribute('font-family','Cinzel,serif');vt.setAttribute('font-size','18');vt.setAttribute('font-weight','700');vt.textContent=d.value;g.appendChild(vt);
     var lt=document.createElementNS(NS,'text');lt.setAttribute('x',hLineEnd+(isRight?6:-6));lt.setAttribute('y',outerPt.y+13);lt.setAttribute('text-anchor',isRight?'start':'end');lt.setAttribute('fill','rgba(90,48,64,.9)');lt.setAttribute('font-family','Outfit,sans-serif');lt.setAttribute('font-size','11');lt.setAttribute('font-weight','700');lt.textContent=d.label.toUpperCase();g.appendChild(lt);
     svg.appendChild(g);
     var active=false;
@@ -1462,9 +1625,8 @@ if(pieSvgWrap){
     g.addEventListener('touchend',function(e){e.preventDefault();setTimeout(onLeave,2000);openPieModal(d);},{passive:false});
     startAngle=end;
   });
-  /* Centre */
   var dBg=document.createElementNS(NS,'circle');dBg.setAttribute('cx',VCX);dBg.setAttribute('cy',VCY);dBg.setAttribute('r',R_IN-6);dBg.setAttribute('fill','#FDF8F0');dBg.setAttribute('stroke','rgba(204,0,102,.25)');dBg.setAttribute('stroke-width','2.5');svg.appendChild(dBg);
-  var ct1=document.createElementNS(NS,'text');ct1.setAttribute('x',VCX);ct1.setAttribute('y',VCY-10);ct1.setAttribute('text-anchor','middle');ct1.setAttribute('fill','#CC0066');ct1.setAttribute('font-size','28');ct1.setAttribute('font-family','Cormorant Garamond,serif');ct1.setAttribute('font-weight','700');ct1.textContent='COG';svg.appendChild(ct1);
+  var ct1=document.createElementNS(NS,'text');ct1.setAttribute('x',VCX);ct1.setAttribute('y',VCY-10);ct1.setAttribute('text-anchor','middle');ct1.setAttribute('fill','#CC0066');ct1.setAttribute('font-size','28');ct1.setAttribute('font-family','Cinzel,serif');ct1.setAttribute('font-weight','700');ct1.textContent='COG';svg.appendChild(ct1);
   var ct2=document.createElementNS(NS,'text');ct2.setAttribute('x',VCX);ct2.setAttribute('y',VCY+16);ct2.setAttribute('text-anchor','middle');ct2.setAttribute('fill','rgba(42,14,24,.4)');ct2.setAttribute('font-size','13');ct2.setAttribute('font-family','Outfit,sans-serif');ct2.setAttribute('font-weight','700');ct2.setAttribute('letter-spacing','5');ct2.textContent='KERALA';svg.appendChild(ct2);
   pieSvgWrap.appendChild(svg);
   function showPieInfo(d){var card=document.getElementById('pieInfoCard');card.querySelector('.pic-label').textContent=d.label;card.querySelector('.pic-value').textContent=d.value;card.querySelector('.pic-desc').innerHTML=d.description;card.classList.add('visible');}
@@ -1507,7 +1669,7 @@ window.addEventListener('scroll',function(){bt.classList.toggle('show',window.sc
 bt.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
 
 /* ══════════════════════════════════════
-   AI CHATBOT — CLAUDE API BACKEND
+   AI CHATBOT — CLAUDE API
 ══════════════════════════════════════ */
 var SYSTEM_PROMPT=`You are the official AI assistant for the Church of God (Full Gospel) in India — Kerala State. 
 
@@ -1527,7 +1689,7 @@ Key facts you must know:
 - State Council: Secretary: Ps. Shaji M Sakaria, Treasurer: Ps. Vinod Jacob, Joint Secretary: Ps. M A Thomaskutty
 - Kerala has 14 districts, 63 taluks, 1,479 revenue villages
 
-Be warm, welcoming, and spiritually encouraging. Keep responses concise but helpful. Use occasional scripture references. Always direct people to cogkeralastate@gmail.com for detailed inquiries. If asked about something you don't know, be honest and suggest contacting the state office.`;
+Be warm, welcoming, and spiritually encouraging. Keep responses concise but helpful. Use occasional scripture references. Always direct people to cogkeralastate@gmail.com for detailed inquiries.`;
 
 var chatToggle=document.getElementById('chatToggle');
 var chatBox=document.getElementById('chatBox');
@@ -1542,30 +1704,24 @@ var conversationHistory=[];
 var useClaudeAPI=true;
 
 function getTime(){var now=new Date();return String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0');}
-
 function addMsg(html,type){
-  var div=document.createElement('div');
-  div.className='chat-msg '+type;
+  var div=document.createElement('div');div.className='chat-msg '+type;
   div.innerHTML=html+'<div class="chat-msg-time">'+getTime()+'</div>';
-  chatMsgs.appendChild(div);
-  chatMsgs.scrollTop=chatMsgs.scrollHeight;
-  return div;
+  chatMsgs.appendChild(div);chatMsgs.scrollTop=chatMsgs.scrollHeight;return div;
 }
 function showTyping(){var t=document.createElement('div');t.className='chat-typing';t.id='chatTyping';t.innerHTML='<span></span><span></span><span></span>';chatMsgs.appendChild(t);chatMsgs.scrollTop=chatMsgs.scrollHeight;}
 function removeTyping(){var t=document.getElementById('chatTyping');if(t)t.remove();}
 function setInputEnabled(en){chatInput.disabled=!en;chatSend.disabled=!en;chatSend.style.opacity=en?'1':'0.5';}
 
-/* LOCAL FALLBACK */
 var localResponses={
   'about|cog|church of god|kerala':'🏛️ The <strong>Church of God (Full Gospel) in India — Kerala State</strong> has over <strong>1,200 local churches</strong> and <strong>1,500+ ministers</strong> across all 14 districts. Led by State Overseer <strong>Rev. Y. Reji</strong>, headquartered at Zion Hills, Chengannur. Part of COG International, present in <strong>194 nations</strong> worldwide! 🙏',
-  'join|membership|church near':'😊 We\'d love to welcome you! With <strong>1,200+ churches</strong> across Kerala, there\'s likely one very near you. Visit <strong>cogkerala.org</strong> to find your nearest assembly, or email <strong>cogkeralastate@gmail.com</strong>. God bless you! 🏛️',
+  'join|membership|church near':'😊 With <strong>1,200+ churches</strong> across Kerala, there\'s likely one very near you. Visit <strong>cogkerala.org</strong> to find your nearest assembly, or email <strong>cogkeralastate@gmail.com</strong>. God bless you! 🏛️',
   'event|convention|upcoming|program':'📅 Our <strong>102nd State Convention</strong> was held in 2025! Annual district conventions, YPE camps, Ladies Ministry gatherings, and Sunday School events happen throughout the year. Visit <strong>cogkerala.org</strong> for the latest schedule.',
-  'contact|address|location|phone|email':'📍 <strong>Zion Hills, Chengannur, Kerala</strong><br>✉️ <strong>cogkeralastate@gmail.com</strong><br>🌐 <strong>cogkerala.org</strong><br>🏛️ International: <strong>churchofgod.org</strong>',
+  'contact|address|location|phone|email':'📍 <strong>Zion Hills, Chengannur, Kerala</strong><br>✉️ <strong>cogkeralastate@gmail.com</strong><br>🌐 <strong>cogkerala.org</strong>',
   'prayer|pray|request|intercede':'🙏 We believe deeply in the power of prayer! Send your prayer request to <strong>cogkeralastate@gmail.com</strong> and our prayer team will intercede for you. God hears and answers! ✨',
   'belief|believe|doctrine|faith|pillar':'✝️ The Church of God stands on <strong>6 Pillars</strong>:<br>1. The Holy Bible<br>2. The Holy Trinity<br>3. Salvation by Grace<br>4. Water Baptism<br>5. Holy Spirit Baptism (with tongues)<br>6. Divine Healing &amp; Second Coming of Christ',
   'history|founded|origin|heritage':'📖 Church of God was founded in <strong>1886</strong> by R.G. Spurling in Tennessee, USA. Missionary <strong>Robert F. Cook</strong> brought the Full Gospel to India in the early 1900s. Kerala has been a stronghold of Pentecostal faith ever since! 🔥',
   'leader|overseer|pastor|reverend|reji':'👤 <strong>Rev. Y. Reji</strong> serves as the State Overseer, based at <strong>Zion Hills, Chengannur</strong>. Globally led by Dr. Gary J. Lewis (24th General Overseer, COG Intl. HQ, Cleveland, Tennessee).',
-  'department|ministry|ladies|youth|sunday|education|evangelism':'🏛️ COG Kerala has 9 active departments: Pastoral Counselling, Biblical Education, Ladies Ministry, Youth Ministry (YPE), Sunday School, Evangelism, Charity &amp; Relief, Mission Board, and Literature &amp; Media.',
   'hello|hi|hey|good morning|good evening':'👋 Hello! <strong>God bless you!</strong> Welcome to COG Kerala\'s AI assistant. How can I help you today? 🙏',
   'thank|thanks':'🙏 You\'re very welcome! <em>"Give thanks to the Lord, for He is good."</em> — Psalm 107:1. God bless you! ✨'
 };
@@ -1578,19 +1734,12 @@ function getLocalResponse(msg){
   return '🙏 Thank you for your message! For detailed enquiries, please email <strong>cogkeralastate@gmail.com</strong> or visit <strong>cogkerala.org</strong>. God bless you! ✨';
 }
 
-/* CLAUDE API CALL */
 async function callClaude(userMsg){
   conversationHistory.push({role:'user',content:userMsg});
   if(conversationHistory.length>20)conversationHistory=conversationHistory.slice(-20);
   var res=await fetch('https://api.anthropic.com/v1/messages',{
-    method:'POST',
-    headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({
-      model:'claude-sonnet-4-20250514',
-      max_tokens:1000,
-      system:SYSTEM_PROMPT,
-      messages:conversationHistory
-    })
+    method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:SYSTEM_PROMPT,messages:conversationHistory})
   });
   if(!res.ok)throw new Error('API error: '+res.status);
   var data=await res.json();
@@ -1601,8 +1750,7 @@ async function callClaude(userMsg){
 
 async function sendMessage(text){
   if(!text.trim()||chatInput.disabled)return;
-  addMsg(text,'user');
-  chatInput.value='';
+  addMsg(text,'user');chatInput.value='';
   chatQRCont.style.display='none';
   setInputEnabled(false);showTyping();
   try{
@@ -1610,20 +1758,15 @@ async function sendMessage(text){
     if(useClaudeAPI){
       try{reply=await callClaude(text);}
       catch(e){
-        useClaudeAPI=false;
-        apiMode.textContent='● Local Mode';apiMode.className='api-mode';
-        aiBadge.textContent='Assistant';
-        await new Promise(function(r){setTimeout(r,600);});
-        reply=getLocalResponse(text);
+        useClaudeAPI=false;apiMode.textContent='● Local Mode';apiMode.className='api-mode';aiBadge.textContent='Assistant';
+        await new Promise(function(r){setTimeout(r,600);});reply=getLocalResponse(text);
       }
     } else {
-      await new Promise(function(r){setTimeout(r,700+Math.random()*500);});
-      reply=getLocalResponse(text);
+      await new Promise(function(r){setTimeout(r,700+Math.random()*500);});reply=getLocalResponse(text);
     }
     removeTyping();addMsg(reply,'bot');
-  }catch(e){
-    removeTyping();addMsg(getLocalResponse(text),'bot');
-  }finally{setInputEnabled(true);chatInput.focus();}
+  }catch(e){removeTyping();addMsg(getLocalResponse(text),'bot');}
+  finally{setInputEnabled(true);chatInput.focus();}
 }
 
 chatToggle.addEventListener('click',function(){
@@ -1636,12 +1779,8 @@ chatSend.addEventListener('click',function(){sendMessage(chatInput.value);});
 chatInput.addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMessage(chatInput.value);}});
 chatQRCont.querySelectorAll('.chat-qr').forEach(function(btn){btn.addEventListener('click',function(){sendMessage(btn.dataset.msg||btn.textContent);});});
 
-/* ESC closes modals */
 document.addEventListener('keydown',function(e){
-  if(e.key==='Escape'){
-    document.getElementById('pieModalOverlay').classList.remove('open');
-    document.body.style.overflow='';
-  }
+  if(e.key==='Escape'){document.getElementById('pieModalOverlay').classList.remove('open');document.body.style.overflow='';}
 });
 
 })();
