@@ -61,11 +61,19 @@ a{text-decoration:none;color:inherit;}
 .mob-cta{margin-top:1.5rem;padding:.9rem;background:var(--magenta);color:white;text-align:center;border-radius:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:.88rem;}
 
 /* ══════════════════════════════════════
-   HERO — DESKTOP (two-column)
+   HERO — Exactly 100vh to fit all contents
 ══════════════════════════════════════ */
-#hero{padding-top:var(--nav);min-height:100vh;position:relative;overflow:hidden;}
-.hero-grid{display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - var(--nav));}
-.hero-left{position:relative;overflow:hidden;min-height:50vh;}
+#hero{
+  padding-top:var(--nav);
+  height:100vh;
+  min-height:600px;
+  display:flex;
+  flex-direction:column;
+  position:relative;
+  overflow:hidden;
+}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;flex:1;min-height:0;}
+.hero-left{position:relative;overflow:hidden;height:100%;}
 .slide-wrap{position:absolute;inset:0;z-index:0;}
 .slide{position:absolute;inset:0;opacity:0;transition:opacity 1.4s ease;}
 .slide.active{opacity:1;}
@@ -79,8 +87,8 @@ a{text-decoration:none;color:inherit;}
 .hero-eyebrow{font-size:.8rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--gold2);display:flex;align-items:center;gap:.7rem;opacity:0;animation:fadeUp .8s .3s var(--ease) forwards;}
 .hero-eyebrow i{display:block;width:22px;height:1px;background:var(--gold2);}
 .hero-title{font-family:var(--fd);font-size:clamp(1.6rem,3vw,4rem);font-weight:700;color:white;line-height:1;letter-spacing:.05em;text-transform:uppercase;opacity:0;animation:fadeUp .9s .45s var(--ease) forwards;text-shadow:0 4px 32px rgba(0,0,0,.6);}
-.hero-title .church-name{display:block;font-size:clamp(1rem,1.8vw,2.6rem);font-weight:800;letter-spacing:.18em;color:white;margin-bottom:.3rem;line-height:1.1;}
-.hero-title .acc{display:block;font-family:var(--fd);font-size:clamp(2.5rem,5vw,6.5rem);font-weight:900;letter-spacing:-.02em;background:linear-gradient(135deg,#FFD700,var(--gold2),#C9A84C);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-top:.1rem;line-height:.95;}
+.hero-title .church-name{display:block;font-size:clamp(.9rem,1.5vw,2.2rem);font-weight:800;letter-spacing:.18em;color:white;margin-bottom:.3rem;line-height:1.1;}
+.hero-title .acc{display:block;font-family:var(--fd);font-size:clamp(2rem,4vw,5.5rem);font-weight:900;letter-spacing:-.02em;background:linear-gradient(135deg,#FFD700,var(--gold2),#C9A84C);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-top:.1rem;line-height:.95;}
 .hero-bottom-row{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;}
 .hero-stats-mini{display:flex;gap:1.5rem;opacity:0;animation:fadeUp .8s .6s var(--ease) forwards;}
 .hero-stat-mini{text-align:center;}
@@ -89,11 +97,13 @@ a{text-decoration:none;color:inherit;}
 .hero-dots{display:flex;gap:.5rem;opacity:0;animation:fadeUp .8s .75s var(--ease) forwards;}
 .hdot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.3);cursor:pointer;transition:all .3s;border:none;padding:0;}
 .hdot.active{background:var(--gold);width:24px;border-radius:4px;}
+
+/* ── HERO RIGHT ── */
 .hero-right{position:relative;background:#fff;display:flex;flex-direction:column;overflow:hidden;border-left:3px solid var(--magenta);}
 .hero-right::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(204,0,102,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(204,0,102,.025) 1px,transparent 1px);background-size:40px 40px;z-index:0;}
 .hero-right-inner{position:relative;z-index:1;display:flex;flex-direction:column;height:100%;}
-.hr-media{flex:0 0 42%;display:flex;border-bottom:2px solid rgba(204,0,102,.15);overflow:hidden;min-height:180px;}
-.hr-photo{flex:0 0 38%;position:relative;overflow:hidden;}
+.hr-media{flex:0 0 36%;display:flex;border-bottom:2px solid rgba(204,0,102,.15);overflow:hidden;min-height:160px;}
+.hr-photo{flex:0 0 34%;position:relative;overflow:hidden;}
 .hr-photo img{width:100%;height:100%;object-fit:cover;object-position:top center;}
 .hr-photo-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,var(--ivory2),var(--ivory3));font-family:var(--fd);font-size:3rem;font-weight:700;color:rgba(204,0,102,.15);}
 .hr-video{flex:1;position:relative;overflow:hidden;background:var(--ivory2);border-left:1px solid rgba(204,0,102,.15);}
@@ -104,31 +114,30 @@ a{text-decoration:none;color:inherit;}
 .hr-vid-ph:hover .hvp-ring{border-color:var(--magenta);transform:scale(1.1);}
 .hvp-tri{width:0;height:0;border-top:10px solid transparent;border-bottom:10px solid transparent;border-left:18px solid var(--magenta);margin-left:4px;}
 .hvp-lbl{font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--magenta);text-align:center;line-height:1.7;max-width:110px;}
-.hr-plate{background:linear-gradient(90deg,var(--magenta),var(--magenta2));padding:.9rem 1.5rem;display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid var(--gold);flex-shrink:0;}
-.hrp-name{font-family:var(--fd);font-size:clamp(1.1rem,2vw,1.6rem);font-weight:700;color:white;letter-spacing:-.01em;}
+.hr-plate{background:linear-gradient(90deg,var(--magenta),var(--magenta2));padding:.65rem 1.2rem;display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid var(--gold);flex-shrink:0;}
+.hrp-name{font-family:var(--fd);font-size:clamp(.95rem,1.6vw,1.3rem);font-weight:700;color:white;letter-spacing:-.01em;}
 .hrp-role{font-size:.68rem;font-weight:400;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.75);margin-top:.1rem;}
 .hrp-cross{font-size:1.6rem;color:rgba(255,255,255,.35);}
 .hr-msg{flex:1;display:flex;flex-direction:column;overflow:hidden;min-height:0;background:white;}
-.hrm-head{padding:1.2rem 1.5rem .8rem;flex-shrink:0;}
-.hrm-label{font-size:.72rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:.7rem;display:flex;align-items:center;gap:.6rem;}
+.hrm-head{padding:.8rem 1.2rem .5rem;flex-shrink:0;}
+.hrm-label{font-size:.72rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem;display:flex;align-items:center;gap:.6rem;}
 .hrm-label::before{content:'';width:16px;height:1.5px;background:var(--gold);}
-.hrm-quote{font-family:var(--fd);font-size:clamp(1rem,1.5vw,1.25rem);font-style:italic;color:var(--magenta);line-height:1.6;border-left:3px solid var(--gold);padding-left:.8rem;}
-.hrm-scroll{flex:1;overflow-y:auto;padding:.5rem 1.5rem;min-height:0;scrollbar-width:thin;scrollbar-color:rgba(204,0,102,.2) transparent;}
-.hrm-body{font-size:.92rem;font-weight:400;line-height:2;color:var(--text2);}
+.hrm-quote{font-family:var(--fd);font-size:clamp(.88rem,1.2vw,1.05rem);font-style:italic;color:var(--magenta);line-height:1.55;border-left:3px solid var(--gold);padding-left:.8rem;}
+.hrm-scroll{flex:1;overflow-y:auto;padding:.5rem 1.2rem;min-height:0;scrollbar-width:thin;scrollbar-color:rgba(204,0,102,.2) transparent;}
+.hrm-body{font-size:.84rem;font-weight:400;line-height:1.8;color:var(--text2);}
 .hrm-body strong{color:var(--magenta);font-weight:700;}
 .hrm-body .fw{color:var(--gold);font-weight:700;}
-.hrm-acro{margin:.8rem 0;padding:.9rem 1.2rem;background:rgba(204,0,102,.04);border-left:3px solid var(--magenta);border-radius:0 8px 8px 0;}
-.hrm-acro-line{font-size:.88rem;font-weight:400;line-height:2.2;color:var(--text2);}
-.hrm-acro-line strong{color:var(--magenta);font-weight:700;font-size:1rem;}
-.hrm-sig{padding:.9rem 1.5rem 1.2rem;border-top:1.5px solid rgba(204,0,102,.1);flex-shrink:0;display:flex;align-items:center;gap:.9rem;}
+.hrm-acro{margin:.7rem 0;padding:.8rem 1rem;background:rgba(204,0,102,.04);border-left:3px solid var(--magenta);border-radius:0 8px 8px 0;}
+.hrm-acro-line{font-size:.84rem;font-weight:400;line-height:2;color:var(--text2);}
+.hrm-acro-line strong{color:var(--magenta);font-weight:700;font-size:.95rem;}
+.hrm-sig{padding:.6rem 1.2rem .9rem;border-top:1.5px solid rgba(204,0,102,.1);flex-shrink:0;display:flex;align-items:center;gap:.9rem;}
 .hrm-sig-bar{width:18px;height:2px;background:var(--gold);flex-shrink:0;}
-.hrm-sig-name{font-family:var(--fd);font-size:1.1rem;font-weight:700;color:var(--magenta);}
+.hrm-sig-name{font-family:var(--fd);font-size:1.05rem;font-weight:700;color:var(--magenta);}
 .hrm-sig-role{font-size:.7rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);margin-top:.1rem;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
 
 /* ══════════════════════════════════════
    HERO MOBILE — FULLSCREEN SLIDESHOW
-   Director box + half-size video box
 ══════════════════════════════════════ */
 .hero-mobile-layout{display:none;}
 .hm-slide-wrap{position:absolute;inset:0;z-index:0;}
@@ -145,26 +154,16 @@ a{text-decoration:none;color:inherit;}
   display:flex;flex-direction:column;
   padding:1.2rem 1rem 1rem;
 }
-
-/* title block */
 .hm-eyebrow{font-size:.65rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--gold2);display:flex;align-items:center;gap:.5rem;margin-bottom:.3rem;opacity:0;animation:fadeUp .8s .3s var(--ease) forwards;}
 .hm-eyebrow i{display:block;width:14px;height:1px;background:var(--gold2);}
 .hm-title-wrap{opacity:0;animation:fadeUp .9s .45s var(--ease) forwards;}
 .hm-church-name{font-family:var(--fd);font-size:clamp(.78rem,3vw,1rem);font-weight:800;letter-spacing:.15em;color:white;text-transform:uppercase;line-height:1.2;}
 .hm-acc{font-family:var(--fd);font-size:clamp(1.9rem,9vw,3rem);font-weight:900;letter-spacing:-.02em;background:linear-gradient(135deg,#FFD700,var(--gold2),#C9A84C);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:.92;margin-bottom:.45rem;}
-
-/* stats row under title */
 .hm-stats{display:flex;gap:1rem;margin-top:.45rem;margin-bottom:0;}
 .hm-stat .num{font-family:var(--fc);font-size:1.05rem;font-weight:700;color:var(--gold2);}
 .hm-stat .lbl{font-size:.5rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);}
-
-/* flex spacer — pushes boxes to bottom half */
 .hm-spacer{flex:1;}
-
-/* boxes wrapper — stacked column, no gap */
 .hm-boxes{display:flex;flex-direction:column;gap:5px;flex-shrink:0;}
-
-/* ── DIRECTOR BOX ── */
 .hm-director-box{
   height:155px;flex-shrink:0;
   border-radius:14px;overflow:hidden;
@@ -180,11 +179,8 @@ a{text-decoration:none;color:inherit;}
   background:linear-gradient(90deg,var(--magenta),var(--gold));
   border-radius:14px 14px 0 0;z-index:3;
 }
-/* subtle concentric arc decoration */
 .hm-box-arc{position:absolute;bottom:-18px;right:-18px;width:64px;height:64px;border-radius:50%;border:1.5px solid rgba(255,255,255,.07);pointer-events:none;z-index:0;}
 .hm-box-arc::before{content:'';position:absolute;inset:14px;border-radius:50%;border:1px solid rgba(255,255,255,.04);}
-
-/* photo column */
 .hm-dir-photo{width:82px;flex-shrink:0;background:linear-gradient(160deg,var(--dark2),var(--dark3));position:relative;overflow:hidden;}
 .hm-dir-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,transparent 55%,rgba(20,6,11,.55));}
 .hm-dir-photo img{width:100%;height:100%;object-fit:cover;object-position:top center;}
@@ -192,8 +188,6 @@ a{text-decoration:none;color:inherit;}
 .hm-dir-nameplate{position:absolute;bottom:0;left:0;right:0;padding:.3rem .45rem;background:linear-gradient(to top,rgba(20,6,11,.92),transparent);z-index:2;}
 .hm-dir-pname{font-family:var(--fd);font-size:.72rem;font-weight:700;color:white;line-height:1.2;}
 .hm-dir-prole{font-size:.56rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--gold2);}
-
-/* note column */
 .hm-dir-note{flex:1;display:flex;flex-direction:column;padding:.65rem .75rem .6rem;min-width:0;overflow:hidden;position:relative;z-index:1;}
 .hm-note-lbl{font-size:.58rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.35rem;display:flex;align-items:center;gap:.3rem;flex-shrink:0;}
 .hm-note-lbl::before{content:'';width:9px;height:1.5px;background:var(--gold);}
@@ -208,8 +202,6 @@ a{text-decoration:none;color:inherit;}
 .hm-sig-bar{width:10px;height:1.5px;background:var(--gold);flex-shrink:0;}
 .hm-sig-name{font-family:var(--fd);font-size:.8rem;font-weight:700;color:var(--magenta);}
 .hm-sig-role{font-size:.56rem;letter-spacing:.04em;color:rgba(255,255,255,.3);}
-
-/* ── VIDEO BOX — half height of director box ── */
 .hm-video-box{
   height:72px;flex-shrink:0;
   border-radius:14px;overflow:hidden;
@@ -230,23 +222,37 @@ a{text-decoration:none;color:inherit;}
 .hm-play-tri{width:0;height:0;border-top:7px solid transparent;border-bottom:7px solid transparent;border-left:13px solid white;margin-left:3px;}
 .hm-vid-text .hm-vt{font-size:.82rem;font-weight:700;color:white;}
 .hm-vid-text .hm-vs{font-size:.6rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.48);margin-top:.1rem;}
-/* wave decoration at bottom of video box */
 .hm-vid-wave{position:absolute;bottom:0;left:0;right:0;z-index:1;pointer-events:none;opacity:.1;}
-
-/* dots row */
 .hm-dots-row{display:flex;justify-content:flex-end;margin-top:.5rem;}
 .hm-dots{display:flex;gap:.3rem;align-items:center;}
 .hm-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.28);border:none;padding:0;cursor:pointer;transition:all .3s;}
 .hm-dot.active{background:var(--gold);width:16px;border-radius:2.5px;}
 
-/* TICKER */
-.tkw{background:linear-gradient(90deg,var(--dark2),var(--magenta),var(--dark2));overflow:hidden;padding:1rem 0;border-top:2px solid var(--gold);border-bottom:2px solid var(--gold);}
+/* ══════════════════════════════════════
+   TICKER — inside hero, after hero-grid
+══════════════════════════════════════ */
+.tkw{background:linear-gradient(90deg,var(--dark2),var(--magenta),var(--dark2));overflow:hidden;padding:.7rem 0;border-top:2px solid var(--gold);border-bottom:2px solid var(--gold);}
 .tk-inner{display:flex;white-space:nowrap;}
 .tki{display:flex;white-space:nowrap;animation:tk 35s linear infinite;will-change:transform;}
 .tki:hover{animation-play-state:paused;}
 @keyframes tk{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 .tkitem{display:inline-flex;align-items:center;gap:1rem;font-family:var(--fd);font-size:1rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:white;padding:0 2rem;border-right:1px solid rgba(255,255,255,.15);}
 .tkitem .tk-star{color:var(--gold2);}
+
+/* ══════════════════════════════════════
+   STATS BANNER — inside hero, after ticker
+══════════════════════════════════════ */
+#stats-banner{background:linear-gradient(135deg,var(--dark2),var(--dark3),var(--dark2));padding:1.4rem 0;border-bottom:3px solid var(--gold);position:relative;overflow:hidden;}
+#stats-banner::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(201,168,76,.06) 1px,transparent 1px);background-size:28px 28px;pointer-events:none;}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;max-width:1200px;margin:0 auto;padding:0 1.5rem;}
+.stat-item{text-align:center;padding:.6rem 1rem;border-right:1px solid rgba(255,255,255,.08);position:relative;}
+.stat-item:last-child{border-right:none;}
+.stat-item::before{content:'';position:absolute;bottom:0;left:20%;right:20%;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .4s;}
+.stat-item:hover::before{opacity:1;}
+.stat-icon{font-size:1.1rem;margin-bottom:.2rem;display:block;}
+.stat-num{font-family:var(--fc);font-size:clamp(1.4rem,2.5vw,2.4rem);font-weight:700;color:var(--gold2);line-height:1;letter-spacing:.02em;}
+.stat-suffix{font-family:var(--fc);font-size:clamp(.8rem,1.5vw,1.5rem);color:var(--magenta);font-weight:700;}
+.stat-label{font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-top:.15rem;}
 
 /* SECTION UTILS */
 .sec{padding:5rem 0;position:relative;overflow:hidden;}
@@ -267,19 +273,6 @@ a{text-decoration:none;color:inherit;}
 .rvl{opacity:0;transform:translateX(-30px);transition:opacity .9s var(--ease),transform .9s var(--ease);}
 .rvr{opacity:0;transform:translateX(30px);transition:opacity .9s var(--ease),transform .9s var(--ease);}
 .rv.on,.rv2.on,.rv3.on,.rvl.on,.rvr.on{opacity:1;transform:none;}
-
-/* STATS COUNTER */
-#stats-banner{background:linear-gradient(135deg,var(--dark2),var(--dark3),var(--dark2));padding:4rem 0;border-top:3px solid var(--gold);border-bottom:3px solid var(--gold);position:relative;overflow:hidden;}
-#stats-banner::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(201,168,76,.06) 1px,transparent 1px);background-size:28px 28px;pointer-events:none;}
-.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;max-width:1200px;margin:0 auto;padding:0 1.5rem;}
-.stat-item{text-align:center;padding:1.5rem 1rem;border-right:1px solid rgba(255,255,255,.08);position:relative;}
-.stat-item:last-child{border-right:none;}
-.stat-item::before{content:'';position:absolute;bottom:0;left:20%;right:20%;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .4s;}
-.stat-item:hover::before{opacity:1;}
-.stat-icon{font-size:1.6rem;margin-bottom:.5rem;display:block;}
-.stat-num{font-family:var(--fc);font-size:clamp(2rem,4vw,3.6rem);font-weight:700;color:var(--gold2);line-height:1;letter-spacing:.02em;}
-.stat-suffix{font-family:var(--fc);font-size:clamp(1.2rem,2.5vw,2.2rem);color:var(--magenta);font-weight:700;}
-.stat-label{font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-top:.4rem;}
 
 /* VISION */
 #vision{background:linear-gradient(150deg,#fff9f5 0%,#fef3f7 40%,#fffbf0 100%);padding:5rem 0;}
@@ -627,70 +620,53 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
   .dept-grid{grid-template-columns:repeat(3,1fr);}
   .council-header{grid-template-columns:1fr;gap:1.2rem;}
 }
-
-/* ── TABLET / MOBILE BREAKPOINT ── */
 @media(max-width:900px){
   :root{--nav:60px;}
   .nls{display:none!important;}
   .hbg{display:flex!important;}
   .nav-btn{display:none;}
   .nl-t2{display:none;}
-
-  /* hide desktop, show mobile hero */
   .hero-grid{display:none!important;}
   .hero-mobile-layout{
     display:block;
+    flex:1;
     position:relative;
-    min-height:calc(100vh - var(--nav));
+    min-height:0;
     overflow:hidden;
     background:var(--dark2);
   }
-
   .stats-grid{grid-template-columns:repeat(2,1fr);}
   .stat-item{border-right:none;border-bottom:1px solid rgba(255,255,255,.08);}
   .stat-item:nth-child(odd){border-right:1px solid rgba(255,255,255,.08);}
-
   .dept-grid{grid-template-columns:1fr 1fr;gap:14px;}
   .dept-card{height:185px;}
-
   .ab-grid{grid-template-columns:1fr;}
   .ab-l{border-right:none;border-bottom:2px solid var(--ivory3);padding:3.5rem 1.5rem;}
   .ab-r{padding:2.5rem 1.5rem;}
   .tl-row{grid-template-columns:75px 1fr;gap:1rem;}
   .pie-chart-area{max-width:100%;}
   .pie-info-card{max-width:100%;}
-
   .lead-head{grid-template-columns:1fr;gap:1.5rem;margin-bottom:2rem;}
   .lead-strip{grid-template-columns:repeat(3,1fr)!important;}
-
   .overseer-card{grid-template-columns:1fr;}
   .ov-photo{min-height:220px;}
   .ov-info{padding:1.8rem 1.5rem;}
   .council-header{grid-template-columns:1fr;gap:1rem;}
   .council-grid{grid-template-columns:repeat(2,1fr);}
-
   .sb-five-grid{grid-template-columns:repeat(2,1fr);}
-
   .min-grid{grid-template-columns:1fr;}
   .min-l{border-right:none;padding-right:0;border-bottom:2px solid var(--ivory3);padding-bottom:1rem;}
   .min-r{padding-left:0;padding-top:1rem;}
-
   .contact-grid{grid-template-columns:1fr;}
   .cf-row{grid-template-columns:1fr;}
-
   .cta-inner{grid-template-columns:1fr;}
   .cta-links{align-items:flex-start;}
-
   .ft-t{grid-template-columns:1fr 1fr;gap:2.5rem;}
-
   .chat-box{width:calc(100vw - 2rem);right:-.75rem;bottom:68px;}
-
   .vis-main-layout{grid-template-columns:1fr;}
-
   .sec{padding:3.5rem 0;}
   .cont,.vis-inner,.contact-inner,.council-wrap,.ft{padding:0 1rem;}
 }
-
 @media(max-width:640px){
   .nl-logo{width:36px;height:36px;}
   .nl-t1{font-size:.76rem;}
@@ -702,13 +678,11 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
   .ft-bot{flex-direction:column;text-align:center;}
   .chat-box{width:calc(100vw - 1.5rem);right:-.5rem;}
   .stats-grid{grid-template-columns:repeat(2,1fr);}
-  .stat-num{font-size:1.8rem;}
-  /* director box slightly shorter */
+  .stat-num{font-size:1.4rem;}
   .hm-director-box{height:140px;}
   .hm-video-box{height:64px;}
   .hm-acc{font-size:clamp(1.7rem,9vw,2.6rem);}
 }
-
 @media(max-width:480px){
   .dept-grid{grid-template-columns:1fr 1fr;gap:10px;}
   .dept-card{height:155px;}
@@ -724,7 +698,6 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
   .hm-stat .num{font-size:.95rem;}
   .hm-stat .lbl{font-size:.48rem;}
 }
-
 @media(max-width:380px){
   .dept-grid{grid-template-columns:1fr;}
   .hm-director-box{height:125px;}
@@ -735,7 +708,6 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
 </head>
 <body>
 
-<!-- NAVIGATION -->
 <nav id="nav">
   <div class="nb">
     <a href="#hero" class="nl">
@@ -796,7 +768,6 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
   </div>
 </nav>
 
-<!-- MOBILE MENU -->
 <div class="mob" id="mob">
   <a href="#hero">🏠 Home</a>
   <a href="#hero">✉️ Director's Message</a>
@@ -819,8 +790,8 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
   <a href="#contact" class="mob-cta">Contact the State Office →</a>
 </div>
 
-<!-- HERO — DESKTOP -->
 <section id="hero">
+
   <div class="hero-grid">
     <div class="hero-left">
       <div class="slide-wrap">
@@ -857,6 +828,7 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
         </div>
       </div>
     </div>
+
     <div class="hero-right">
       <div class="hero-right-inner">
         <div class="hr-media">
@@ -909,8 +881,6 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
       </div>
     </div>
   </div>
-
-  <!-- ══ HERO MOBILE ══ -->
   <div class="hero-mobile-layout" id="heroMobile">
     <div class="hm-slide-wrap">
       <div class="hm-slide active">
@@ -923,11 +893,8 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
         <img src="WhatsApp Image 2026-04-04 at 11.08.54 (1).jpeg" alt="Church ministry" onerror="this.onerror=null;this.parentElement.innerHTML='<div style=\'width:100%;height:100%;background:linear-gradient(145deg,#0A0005,#2D0018,#C0003E)\'></div>'">
       </div>
     </div>
-
     <div class="hm-overlay-top"></div>
-
     <div class="hm-content">
-      <!-- Title block — floats over background image -->
       <div class="hm-eyebrow"><i></i>Church of God (Full Gospel) in India</div>
       <div class="hm-title-wrap">
         <div class="hm-church-name">CHURCH OF GOD IN INDIA</div>
@@ -938,14 +905,8 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
           <div class="hm-stat"><div class="num">194</div><div class="lbl">Nations</div></div>
         </div>
       </div>
-
-      <!-- Spacer — pushes boxes to bottom half of screen -->
       <div class="hm-spacer"></div>
-
-      <!-- Stacked boxes -->
       <div class="hm-boxes">
-
-        <!-- Director box: photo left + scrollable note right -->
         <div class="hm-director-box">
           <div class="hm-box-arc"></div>
           <div class="hm-dir-photo">
@@ -983,8 +944,6 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
             </div>
           </div>
         </div>
-
-        <!-- Video box — half height of director box -->
         <div class="hm-video-box" id="hmVideoBox">
           <video autoplay muted loop playsinline id="hmVideo">
             <source src="VN20260402_233527.mp4" type="video/mp4">
@@ -1001,10 +960,7 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
             <path d="M0,8 Q100,0 200,8 Q300,16 400,8 L400,16 L0,16 Z" fill="white"/>
           </svg>
         </div>
-
       </div>
-
-      <!-- Slide dots -->
       <div class="hm-dots-row">
         <div class="hm-dots" id="hmDots">
           <button class="hm-dot active"></button>
@@ -1014,59 +970,55 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
       </div>
     </div>
   </div>
-</section>
-
-<!-- TICKER -->
-<div class="tkw">
-  <div class="tk-inner">
-    <div class="tki">
-      <span class="tkitem"><span class="tk-star">✦</span>102nd State Convention · 2025</span>
-      <span class="tkitem"><span class="tk-star">✦</span>1,200+ Churches · Kerala State</span>
-      <span class="tkitem"><span class="tk-star">✦</span>Mount Zion Bible Seminary · Chengannur</span>
-      <span class="tkitem"><span class="tk-star">✦</span>State Overseer: Rev. Y. Reji</span>
-      <span class="tkitem"><span class="tk-star">✦</span>1,500+ Ministers · Kerala</span>
-      <span class="tkitem"><span class="tk-star">✦</span>194 Countries · COG International</span>
-      <span class="tkitem"><span class="tk-star">✦</span>FINISH Commission · Matthew 28:19</span>
-      <span class="tkitem"><span class="tk-star">✦</span>Zion Hills · Chengannur · HQ</span>
-      <span class="tkitem"><span class="tk-star">✦</span>102nd State Convention · 2025</span>
-      <span class="tkitem"><span class="tk-star">✦</span>1,200+ Churches · Kerala State</span>
-      <span class="tkitem"><span class="tk-star">✦</span>Mount Zion Bible Seminary · Chengannur</span>
-      <span class="tkitem"><span class="tk-star">✦</span>State Overseer: Rev. Y. Reji</span>
-      <span class="tkitem"><span class="tk-star">✦</span>1,500+ Ministers · Kerala</span>
-      <span class="tkitem"><span class="tk-star">✦</span>194 Countries · COG International</span>
-      <span class="tkitem"><span class="tk-star">✦</span>FINISH Commission · Matthew 28:19</span>
-      <span class="tkitem"><span class="tk-star">✦</span>Zion Hills · Chengannur · HQ</span>
+  <div class="tkw">
+    <div class="tk-inner">
+      <div class="tki">
+        <span class="tkitem"><span class="tk-star">✦</span>102nd State Convention · 2025</span>
+        <span class="tkitem"><span class="tk-star">✦</span>1,200+ Churches · Kerala State</span>
+        <span class="tkitem"><span class="tk-star">✦</span>Mount Zion Bible Seminary · Chengannur</span>
+        <span class="tkitem"><span class="tk-star">✦</span>State Overseer: Rev. Y. Reji</span>
+        <span class="tkitem"><span class="tk-star">✦</span>1,500+ Ministers · Kerala</span>
+        <span class="tkitem"><span class="tk-star">✦</span>194 Countries · COG International</span>
+        <span class="tkitem"><span class="tk-star">✦</span>FINISH Commission · Matthew 28:19</span>
+        <span class="tkitem"><span class="tk-star">✦</span>Zion Hills · Chengannur · HQ</span>
+        <span class="tkitem"><span class="tk-star">✦</span>102nd State Convention · 2025</span>
+        <span class="tkitem"><span class="tk-star">✦</span>1,200+ Churches · Kerala State</span>
+        <span class="tkitem"><span class="tk-star">✦</span>Mount Zion Bible Seminary · Chengannur</span>
+        <span class="tkitem"><span class="tk-star">✦</span>State Overseer: Rev. Y. Reji</span>
+        <span class="tkitem"><span class="tk-star">✦</span>1,500+ Ministers · Kerala</span>
+        <span class="tkitem"><span class="tk-star">✦</span>194 Countries · COG International</span>
+        <span class="tkitem"><span class="tk-star">✦</span>FINISH Commission · Matthew 28:19</span>
+        <span class="tkitem"><span class="tk-star">✦</span>Zion Hills · Chengannur · HQ</span>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- ANIMATED STATS BANNER -->
-<section id="stats-banner">
-  <div class="stats-grid">
-    <div class="stat-item">
-      <span class="stat-icon">⛪</span>
-      <div><span class="stat-num counter" data-target="1200">0</span><span class="stat-suffix">+</span></div>
-      <div class="stat-label">Local Churches · Kerala</div>
-    </div>
-    <div class="stat-item">
-      <span class="stat-icon">✝️</span>
-      <div><span class="stat-num counter" data-target="1500">0</span><span class="stat-suffix">+</span></div>
-      <div class="stat-label">Ordained Ministers</div>
-    </div>
-    <div class="stat-item">
-      <span class="stat-icon">🌍</span>
-      <div><span class="stat-num counter" data-target="194">0</span></div>
-      <div class="stat-label">Nations · COG International</div>
-    </div>
-    <div class="stat-item">
-      <span class="stat-icon">📖</span>
-      <div><span class="stat-num counter" data-target="102">0</span><span class="stat-suffix">nd</span></div>
-      <div class="stat-label">State Convention · 2025</div>
+  <div id="stats-banner">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <span class="stat-icon">⛪</span>
+        <div><span class="stat-num counter" data-target="1200">0</span><span class="stat-suffix">+</span></div>
+        <div class="stat-label">Local Churches · Kerala</div>
+      </div>
+      <div class="stat-item">
+        <span class="stat-icon">✝️</span>
+        <div><span class="stat-num counter" data-target="1500">0</span><span class="stat-suffix">+</span></div>
+        <div class="stat-label">Ordained Ministers</div>
+      </div>
+      <div class="stat-item">
+        <span class="stat-icon">🌍</span>
+        <div><span class="stat-num counter" data-target="194">0</span></div>
+        <div class="stat-label">Nations · COG International</div>
+      </div>
+      <div class="stat-item">
+        <span class="stat-icon">📖</span>
+        <div><span class="stat-num counter" data-target="102">0</span><span class="stat-suffix">nd</span></div>
+        <div class="stat-label">State Convention · 2025</div>
+      </div>
     </div>
   </div>
-</section>
 
-<!-- VISION & MISSION -->
+</section>
 <section id="vision">
   <div class="vis-inner">
     <div class="vis-header rv">
@@ -1100,7 +1052,6 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
   </div>
 </section>
 
-<!-- DEPARTMENTS -->
 <section id="depts">
   <div class="cont">
     <div class="dept-header rv">
@@ -1113,7 +1064,6 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
   </div>
 </section>
 
-<!-- HISTORY + PIE -->
 <section id="about" style="background:var(--ivory2);padding:5rem 0 0;">
   <div class="ab-grid">
     <div class="ab-l">
@@ -1154,7 +1104,6 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
   </div>
 </div>
 
-<!-- LEADERS -->
 <section id="leaders" class="sec">
   <div class="cont">
     <div class="lead-head">
@@ -1172,7 +1121,6 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
   </div>
 </section>
 
-<!-- COUNCIL -->
 <section id="council">
   <div class="council-wrap">
     <div class="council-header">
@@ -1211,7 +1159,6 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
   </div>
 </section>
 
-<!-- STATE BOARD -->
 <section id="stateboard">
   <div class="sb-wave-top"></div>
   <div class="cont">
@@ -1231,7 +1178,6 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
   </div>
 </section>
 
-<!-- BELIEFS -->
 <section id="beliefs">
   <div class="cont" style="position:relative;z-index:1">
     <div class="bel-head rv">
@@ -1259,7 +1205,6 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
   </div>
 </section>
 
-<!-- MINISTRY -->
 <section id="ministry" class="sec" style="background:var(--ivory2)">
   <div class="cont">
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:end;margin-bottom:3rem">
@@ -1281,7 +1226,6 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
   <div class="contact-inner">
     <div class="contact-header rv">
@@ -1318,7 +1262,6 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
   </div>
 </section>
 
-<!-- CTA -->
 <section id="cta">
   <div class="cta-bg">COG</div>
   <div class="cta-inner">
@@ -1332,7 +1275,6 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="ft">
     <div class="ft-t">
@@ -1345,7 +1287,6 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
   </div>
 </footer>
 
-<!-- AI CHATBOT -->
 <div id="chatWidget">
   <div class="chat-box" id="chatBox">
     <div class="chat-header">
@@ -1445,7 +1386,7 @@ function showHmSlide(i){
 if(hmSlides.length){setInterval(function(){showHmSlide((curHmSlide+1)%hmSlides.length);},4500);}
 hmDotBtns.forEach(function(d,i){d.addEventListener('click',function(){showHmSlide(i);});});
 
-/* ── MOBILE VIDEO BOX — tap to unmute ── */
+/* ── MOBILE VIDEO BOX ── */
 var hmVideoBox=document.getElementById('hmVideoBox');
 var hmVideo=document.getElementById('hmVideo');
 var hmVidScrim=document.getElementById('hmVidScrim');
