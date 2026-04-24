@@ -89,11 +89,7 @@ a{text-decoration:none;color:inherit;}
 .hero-title{font-family:var(--fd);font-size:clamp(1.6rem,3vw,4rem);font-weight:700;color:white;line-height:1;letter-spacing:.05em;text-transform:uppercase;opacity:0;animation:fadeUp .9s .45s var(--ease) forwards;text-shadow:0 4px 32px rgba(0,0,0,.6);}
 .hero-title .church-name{display:block;font-size:clamp(.9rem,1.5vw,2.2rem);font-weight:800;letter-spacing:.18em;color:white;margin-bottom:.3rem;line-height:1.1;}
 .hero-title .acc{display:block;font-family:var(--fd);font-size:clamp(2rem,4vw,5.5rem);font-weight:900;letter-spacing:-.02em;background:linear-gradient(135deg,#FFD700,var(--gold2),#C9A84C);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-top:.1rem;line-height:.95;}
-.hero-bottom-row{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;}
-.hero-stats-mini{display:flex;gap:1.5rem;opacity:0;animation:fadeUp .8s .6s var(--ease) forwards;}
-.hero-stat-mini{text-align:center;}
-.hero-stat-mini .num{font-family:var(--fc);font-size:1.6rem;font-weight:700;color:var(--gold2);line-height:1;}
-.hero-stat-mini .lbl{font-size:.62rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:.1rem;}
+.hero-bottom-row{display:flex;align-items:flex-end;justify-content:flex-end;gap:1rem;}
 .hero-dots{display:flex;gap:.5rem;opacity:0;animation:fadeUp .8s .75s var(--ease) forwards;}
 .hdot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.3);cursor:pointer;transition:all .3s;border:none;padding:0;}
 .hdot.active{background:var(--gold);width:24px;border-radius:4px;}
@@ -159,9 +155,6 @@ a{text-decoration:none;color:inherit;}
 .hm-title-wrap{opacity:0;animation:fadeUp .9s .45s var(--ease) forwards;}
 .hm-church-name{font-family:var(--fd);font-size:clamp(.78rem,3vw,1rem);font-weight:800;letter-spacing:.15em;color:white;text-transform:uppercase;line-height:1.2;}
 .hm-acc{font-family:var(--fd);font-size:clamp(1.9rem,9vw,3rem);font-weight:900;letter-spacing:-.02em;background:linear-gradient(135deg,#FFD700,var(--gold2),#C9A84C);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:.92;margin-bottom:.45rem;}
-.hm-stats{display:flex;gap:1rem;margin-top:.45rem;margin-bottom:0;}
-.hm-stat .num{font-family:var(--fc);font-size:1.05rem;font-weight:700;color:var(--gold2);}
-.hm-stat .lbl{font-size:.5rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);}
 .hm-spacer{flex:1;}
 .hm-boxes{display:flex;flex-direction:column;gap:5px;flex-shrink:0;}
 .hm-director-box{
@@ -231,28 +224,28 @@ a{text-decoration:none;color:inherit;}
 /* ══════════════════════════════════════
    TICKER — inside hero, after hero-grid
 ══════════════════════════════════════ */
-.tkw{background:linear-gradient(90deg,var(--dark2),var(--magenta),var(--dark2));overflow:hidden;padding:.7rem 0;border-top:2px solid var(--gold);border-bottom:2px solid var(--gold);}
+.tkw{background:linear-gradient(90deg,var(--dark2),var(--magenta),var(--dark2));overflow:hidden;padding:1.2rem 0;border-top:3px solid var(--gold);border-bottom:3px solid var(--gold);}
 .tk-inner{display:flex;white-space:nowrap;}
 .tki{display:flex;white-space:nowrap;animation:tk 35s linear infinite;will-change:transform;}
 .tki:hover{animation-play-state:paused;}
 @keyframes tk{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-.tkitem{display:inline-flex;align-items:center;gap:1rem;font-family:var(--fd);font-size:1rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:white;padding:0 2rem;border-right:1px solid rgba(255,255,255,.15);}
+.tkitem{display:inline-flex;align-items:center;gap:1.5rem;font-family:var(--fd);font-size:1.25rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:white;padding:0 2.5rem;border-right:1px solid rgba(255,255,255,.15);}
 .tkitem .tk-star{color:var(--gold2);}
 
 /* ══════════════════════════════════════
-   STATS BANNER — inside hero, after ticker
+   STATS BANNER — Moved outside hero section
 ══════════════════════════════════════ */
-#stats-banner{background:linear-gradient(135deg,var(--dark2),var(--dark3),var(--dark2));padding:1.4rem 0;border-bottom:3px solid var(--gold);position:relative;overflow:hidden;}
+#stats-banner{background:linear-gradient(135deg,var(--dark2),var(--dark3),var(--dark2));padding:1.8rem 0;border-bottom:3px solid var(--gold);position:relative;overflow:hidden;}
 #stats-banner::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(201,168,76,.06) 1px,transparent 1px);background-size:28px 28px;pointer-events:none;}
 .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;max-width:1200px;margin:0 auto;padding:0 1.5rem;}
-.stat-item{text-align:center;padding:.6rem 1rem;border-right:1px solid rgba(255,255,255,.08);position:relative;}
+.stat-item{text-align:center;padding:.8rem 1rem;border-right:1px solid rgba(255,255,255,.08);position:relative;}
 .stat-item:last-child{border-right:none;}
 .stat-item::before{content:'';position:absolute;bottom:0;left:20%;right:20%;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .4s;}
 .stat-item:hover::before{opacity:1;}
-.stat-icon{font-size:1.1rem;margin-bottom:.2rem;display:block;}
-.stat-num{font-family:var(--fc);font-size:clamp(1.4rem,2.5vw,2.4rem);font-weight:700;color:var(--gold2);line-height:1;letter-spacing:.02em;}
-.stat-suffix{font-family:var(--fc);font-size:clamp(.8rem,1.5vw,1.5rem);color:var(--magenta);font-weight:700;}
-.stat-label{font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-top:.15rem;}
+.stat-icon{font-size:1.3rem;margin-bottom:.3rem;display:block;}
+.stat-num{font-family:var(--f);font-size:clamp(2rem,4vw,3.2rem);font-weight:800;color:var(--gold2);line-height:1;letter-spacing:.02em;}
+.stat-suffix{font-family:var(--f);font-size:clamp(1.2rem,2vw,1.8rem);color:var(--magenta);font-weight:800;}
+.stat-label{font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:.3rem;}
 
 /* SECTION UTILS */
 .sec{padding:5rem 0;position:relative;overflow:hidden;}
@@ -694,9 +687,6 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
   .hm-director-box{height:130px;}
   .hm-dir-photo{width:72px;}
   .hm-video-box{height:60px;}
-  .hm-stats{gap:.7rem;}
-  .hm-stat .num{font-size:.95rem;}
-  .hm-stat .lbl{font-size:.48rem;}
 }
 @media(max-width:380px){
   .dept-grid{grid-template-columns:1fr;}
@@ -815,11 +805,6 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
           </h1>
         </div>
         <div class="hero-bottom-row">
-          <div class="hero-stats-mini">
-            <div class="hero-stat-mini"><div class="num">1,200+</div><div class="lbl">Churches</div></div>
-            <div class="hero-stat-mini"><div class="num">1,500+</div><div class="lbl">Ministers</div></div>
-            <div class="hero-stat-mini"><div class="num">194</div><div class="lbl">Nations</div></div>
-          </div>
           <div class="hero-dots">
             <button class="hdot active" aria-label="Slide 1"></button>
             <button class="hdot" aria-label="Slide 2"></button>
@@ -899,11 +884,6 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
       <div class="hm-title-wrap">
         <div class="hm-church-name">CHURCH OF GOD IN INDIA</div>
         <div class="hm-acc">KERALA STATE</div>
-        <div class="hm-stats">
-          <div class="hm-stat"><div class="num">1,200+</div><div class="lbl">Churches</div></div>
-          <div class="hm-stat"><div class="num">1,500+</div><div class="lbl">Ministers</div></div>
-          <div class="hm-stat"><div class="num">194</div><div class="lbl">Nations</div></div>
-        </div>
       </div>
       <div class="hm-spacer"></div>
       <div class="hm-boxes">
@@ -973,7 +953,7 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
   <div class="tkw">
     <div class="tk-inner">
       <div class="tki">
-        <span class="tkitem"><span class="tk-star">✦</span>102nd State Convention · 2025</span>
+        <span class="tkitem"><span class="tk-star">✦</span>103rd State Convention · 2026</span>
         <span class="tkitem"><span class="tk-star">✦</span>1,200+ Churches · Kerala State</span>
         <span class="tkitem"><span class="tk-star">✦</span>Mount Zion Bible Seminary · Chengannur</span>
         <span class="tkitem"><span class="tk-star">✦</span>State Overseer: Rev. Y. Reji</span>
@@ -981,7 +961,7 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
         <span class="tkitem"><span class="tk-star">✦</span>194 Countries · COG International</span>
         <span class="tkitem"><span class="tk-star">✦</span>FINISH Commission · Matthew 28:19</span>
         <span class="tkitem"><span class="tk-star">✦</span>Zion Hills · Chengannur · HQ</span>
-        <span class="tkitem"><span class="tk-star">✦</span>102nd State Convention · 2025</span>
+        <span class="tkitem"><span class="tk-star">✦</span>103rd State Convention · 2026</span>
         <span class="tkitem"><span class="tk-star">✦</span>1,200+ Churches · Kerala State</span>
         <span class="tkitem"><span class="tk-star">✦</span>Mount Zion Bible Seminary · Chengannur</span>
         <span class="tkitem"><span class="tk-star">✦</span>State Overseer: Rev. Y. Reji</span>
@@ -992,33 +972,33 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
       </div>
     </div>
   </div>
-
-  <div id="stats-banner">
-    <div class="stats-grid">
-      <div class="stat-item">
-        <span class="stat-icon">⛪</span>
-        <div><span class="stat-num counter" data-target="1200">0</span><span class="stat-suffix">+</span></div>
-        <div class="stat-label">Local Churches · Kerala</div>
-      </div>
-      <div class="stat-item">
-        <span class="stat-icon">✝️</span>
-        <div><span class="stat-num counter" data-target="1500">0</span><span class="stat-suffix">+</span></div>
-        <div class="stat-label">Ordained Ministers</div>
-      </div>
-      <div class="stat-item">
-        <span class="stat-icon">🌍</span>
-        <div><span class="stat-num counter" data-target="194">0</span></div>
-        <div class="stat-label">Nations · COG International</div>
-      </div>
-      <div class="stat-item">
-        <span class="stat-icon">📖</span>
-        <div><span class="stat-num counter" data-target="102">0</span><span class="stat-suffix">nd</span></div>
-        <div class="stat-label">State Convention · 2025</div>
-      </div>
-    </div>
-  </div>
-
 </section>
+
+<div id="stats-banner">
+  <div class="stats-grid">
+    <div class="stat-item">
+      <span class="stat-icon">⛪</span>
+      <div><span class="stat-num counter" data-target="1200">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-label">Local Churches · Kerala</div>
+    </div>
+    <div class="stat-item">
+      <span class="stat-icon">✝️</span>
+      <div><span class="stat-num counter" data-target="1500">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-label">Ordained Ministers</div>
+    </div>
+    <div class="stat-item">
+      <span class="stat-icon">🌍</span>
+      <div><span class="stat-num counter" data-target="194">0</span></div>
+      <div class="stat-label">Nations · COG International</div>
+    </div>
+    <div class="stat-item">
+      <span class="stat-icon">📖</span>
+      <div><span class="stat-num counter" data-target="102">0</span><span class="stat-suffix">nd</span></div>
+      <div class="stat-label">State Convention · 2026</div>
+    </div>
+  </div>
+</div>
+
 <section id="vision">
   <div class="vis-inner">
     <div class="vis-header rv">
@@ -1052,8 +1032,6 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
   </div>
 </section>
 
-
-
 <section id="about" style="background:var(--ivory2);padding:5rem 0 0;">
   <div class="ab-grid">
     <div class="ab-l">
@@ -1065,7 +1043,7 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
         <div class="tl-row rv"><div class="tl-yr">1886</div><div class="tl-tx">R.G. Spurling founds the Church of God in Monroe County, Tennessee — the beginning of a global Pentecostal movement committed to Biblical holiness.</div></div>
         <div class="tl-row rv2"><div class="tl-yr">1907</div><div class="tl-tx">Azusa Street revival expands Pentecostal fire worldwide. Church of God grows rapidly across continents under the leading of the Holy Spirit.</div></div>
         <div class="tl-row rv3"><div class="tl-yr">Early 1900s</div><div class="tl-tx">Missionary Robert F. Cook establishes the Full Gospel Church in India. Kerala becomes a stronghold of Pentecostal faith and witness.</div></div>
-        <div class="tl-row rv"><div class="tl-yr">2025</div><div class="tl-tx">102nd State Convention held in Kerala. Over 1,200 churches, 1,500+ ministers, and three Bible seminaries continue the FINISH Commission legacy.</div></div>
+        <div class="tl-row rv"><div class="tl-yr">2025</div><div class="tl-tx">103rd State Convention held in Kerala. Over 1,200 churches, 1,500+ ministers, and three Bible seminaries continue the FINISH Commission legacy.</div></div>
       </div>
     </div>
     <div class="ab-r rvr">
