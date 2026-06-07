@@ -60,18 +60,9 @@ a{text-decoration:none;color:inherit;}
 .mob-lbl{font-family:var(--f);font-size:.72rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--magenta);margin:1.2rem 0 .4rem;opacity:.7;}
 .mob-cta{margin-top:1.5rem;padding:.9rem;background:var(--magenta);color:white;text-align:center;border-radius:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:.88rem;}
 
-/* ══════════════════════════════════════
-   HERO — Exactly 100vh to fit all contents
-══════════════════════════════════════ */
-#hero{
-  padding-top:var(--nav);
-  height:100vh;
-  min-height:600px;
-  display:flex;
-  flex-direction:column;
-  position:relative;
-  overflow:hidden;
-}
+/* HERO */
+/* HERO */
+#hero{padding-top:var(--nav);height:100vh;min-height:600px;display:flex;flex-direction:column;position:relative;overflow:hidden;}
 .hero-grid{display:grid;grid-template-columns:1fr 1fr;flex:1;min-height:0;}
 .hero-left{position:relative;overflow:hidden;height:100%;}
 .slide-wrap{position:absolute;inset:0;z-index:0;}
@@ -94,9 +85,9 @@ a{text-decoration:none;color:inherit;}
 .hdot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.3);cursor:pointer;transition:all .3s;border:none;padding:0;}
 .hdot.active{background:var(--gold);width:24px;border-radius:4px;}
 
-/* ── HERO RIGHT ── */
 .hero-right{position:relative;background:#fff;display:flex;flex-direction:column;overflow:hidden;border-left:3px solid var(--magenta);}
-.hero-right::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(204,0,102,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(204,0,102,.025) 1px,transparent 1px);background-size:40px 40px;z-index:0;}
+/* Grid layout generation overlay removed from here */
+
 .hero-right-inner{position:relative;z-index:1;display:flex;flex-direction:column;height:100%;}
 .hr-media{flex:0 0 36%;display:flex;border-bottom:2px solid rgba(204,0,102,.15);overflow:hidden;min-height:160px;}
 .hr-photo{flex:0 0 34%;position:relative;overflow:hidden;}
@@ -131,25 +122,14 @@ a{text-decoration:none;color:inherit;}
 .hrm-sig-name{font-family:var(--fd);font-size:1.05rem;font-weight:700;color:var(--magenta);}
 .hrm-sig-role{font-size:.7rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);margin-top:.1rem;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
-
-/* ══════════════════════════════════════
-   HERO MOBILE — FULLSCREEN SLIDESHOW
-══════════════════════════════════════ */
+/* HERO MOBILE */
 .hero-mobile-layout{display:none;}
 .hm-slide-wrap{position:absolute;inset:0;z-index:0;}
 .hm-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.4s ease;}
 .hm-slide.active{opacity:1;}
 .hm-slide img{width:100%;height:100%;object-fit:cover;object-position:center top;}
-.hm-overlay-top{
-  position:absolute;inset:0;
-  background:linear-gradient(to bottom,rgba(26,10,14,.85) 0%,rgba(26,10,14,.25) 35%,rgba(26,10,14,.25) 50%,rgba(26,10,14,.80) 100%);
-  z-index:1;pointer-events:none;
-}
-.hm-content{
-  position:absolute;inset:0;z-index:2;
-  display:flex;flex-direction:column;
-  padding:1.2rem 1rem 1rem;
-}
+.hm-overlay-top{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(26,10,14,.85) 0%,rgba(26,10,14,.25) 35%,rgba(26,10,14,.25) 50%,rgba(26,10,14,.80) 100%);z-index:1;pointer-events:none;}
+.hm-content{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;padding:1.2rem 1rem 1rem;}
 .hm-eyebrow{font-size:.65rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--gold2);display:flex;align-items:center;gap:.5rem;margin-bottom:.3rem;opacity:0;animation:fadeUp .8s .3s var(--ease) forwards;}
 .hm-eyebrow i{display:block;width:14px;height:1px;background:var(--gold2);}
 .hm-title-wrap{opacity:0;animation:fadeUp .9s .45s var(--ease) forwards;}
@@ -157,21 +137,8 @@ a{text-decoration:none;color:inherit;}
 .hm-acc{font-family:var(--fd);font-size:clamp(1.9rem,9vw,3rem);font-weight:900;letter-spacing:-.02em;background:linear-gradient(135deg,#FFD700,var(--gold2),#C9A84C);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:.92;margin-bottom:.45rem;}
 .hm-spacer{flex:1;}
 .hm-boxes{display:flex;flex-direction:column;gap:5px;flex-shrink:0;}
-.hm-director-box{
-  height:155px;flex-shrink:0;
-  border-radius:14px;overflow:hidden;
-  border:1.5px solid rgba(255,255,255,.18);
-  background:rgba(20,6,11,.72);
-  backdrop-filter:blur(10px);
-  -webkit-backdrop-filter:blur(10px);
-  display:flex;flex-direction:row;
-  position:relative;
-}
-.hm-director-box::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:2.5px;
-  background:linear-gradient(90deg,var(--magenta),var(--gold));
-  border-radius:14px 14px 0 0;z-index:3;
-}
+.hm-director-box{height:155px;flex-shrink:0;border-radius:14px;overflow:hidden;border:1.5px solid rgba(255,255,255,.18);background:rgba(20,6,11,.72);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);display:flex;flex-direction:row;position:relative;}
+.hm-director-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2.5px;background:linear-gradient(90deg,var(--magenta),var(--gold));border-radius:14px 14px 0 0;z-index:3;}
 .hm-box-arc{position:absolute;bottom:-18px;right:-18px;width:64px;height:64px;border-radius:50%;border:1.5px solid rgba(255,255,255,.07);pointer-events:none;z-index:0;}
 .hm-box-arc::before{content:'';position:absolute;inset:14px;border-radius:50%;border:1px solid rgba(255,255,255,.04);}
 .hm-dir-photo{width:82px;flex-shrink:0;background:linear-gradient(160deg,var(--dark2),var(--dark3));position:relative;overflow:hidden;}
@@ -195,18 +162,8 @@ a{text-decoration:none;color:inherit;}
 .hm-sig-bar{width:10px;height:1.5px;background:var(--gold);flex-shrink:0;}
 .hm-sig-name{font-family:var(--fd);font-size:.8rem;font-weight:700;color:var(--magenta);}
 .hm-sig-role{font-size:.56rem;letter-spacing:.04em;color:rgba(255,255,255,.3);}
-.hm-video-box{
-  height:72px;flex-shrink:0;
-  border-radius:14px;overflow:hidden;
-  border:1.5px solid rgba(255,255,255,.18);
-  background:linear-gradient(135deg,var(--dark2),var(--dark3));
-  position:relative;cursor:pointer;
-}
-.hm-video-box::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:2.5px;
-  background:linear-gradient(90deg,var(--gold),var(--magenta));
-  border-radius:14px 14px 0 0;z-index:3;
-}
+.hm-video-box{height:72px;flex-shrink:0;border-radius:14px;overflow:hidden;border:1.5px solid rgba(255,255,255,.18);background:linear-gradient(135deg,var(--dark2),var(--dark3));position:relative;cursor:pointer;}
+.hm-video-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2.5px;background:linear-gradient(90deg,var(--gold),var(--magenta));border-radius:14px 14px 0 0;z-index:3;}
 .hm-video-box video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
 .hm-vid-scrim{position:absolute;inset:0;background:rgba(26,10,14,.5);z-index:1;transition:opacity .3s;}
 .hm-vid-inner{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:12px;z-index:2;}
@@ -221,9 +178,7 @@ a{text-decoration:none;color:inherit;}
 .hm-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.28);border:none;padding:0;cursor:pointer;transition:all .3s;}
 .hm-dot.active{background:var(--gold);width:16px;border-radius:2.5px;}
 
-/* ══════════════════════════════════════
-   TICKER — inside hero, after hero-grid
-══════════════════════════════════════ */
+/* TICKER & STATS */
 .tkw{background:linear-gradient(90deg,var(--dark2),var(--magenta),var(--dark2));overflow:hidden;padding:1.2rem 0;border-top:3px solid var(--gold);border-bottom:3px solid var(--gold);}
 .tk-inner{display:flex;white-space:nowrap;}
 .tki{display:flex;white-space:nowrap;animation:tk 35s linear infinite;will-change:transform;}
@@ -231,10 +186,6 @@ a{text-decoration:none;color:inherit;}
 @keyframes tk{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 .tkitem{display:inline-flex;align-items:center;gap:1.5rem;font-family:var(--fd);font-size:1.25rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:white;padding:0 2.5rem;border-right:1px solid rgba(255,255,255,.15);}
 .tkitem .tk-star{color:var(--gold2);}
-
-/* ══════════════════════════════════════
-   STATS BANNER — Moved outside hero section
-══════════════════════════════════════ */
 #stats-banner{background:linear-gradient(135deg,var(--dark2),var(--dark3),var(--dark2));padding:1.8rem 0;border-bottom:3px solid var(--gold);position:relative;overflow:hidden;}
 #stats-banner::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(201,168,76,.06) 1px,transparent 1px);background-size:28px 28px;pointer-events:none;}
 .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;max-width:1200px;margin:0 auto;padding:0 1.5rem;}
@@ -247,7 +198,7 @@ a{text-decoration:none;color:inherit;}
 .stat-suffix{font-family:var(--f);font-size:clamp(1.2rem,2vw,1.8rem);color:var(--magenta);font-weight:800;}
 .stat-label{font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:.3rem;}
 
-/* SECTION UTILS */
+/* SECTIONS */
 .sec{padding:5rem 0;position:relative;overflow:hidden;}
 .cont{max-width:1360px;margin:0 auto;padding:0 1.5rem;}
 .sl{font-family:var(--f);font-size:.82rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--magenta);margin-bottom:.8rem;display:flex;align-items:center;gap:.8rem;}
@@ -429,6 +380,19 @@ a{text-decoration:none;color:inherit;}
 .cm-dot{width:5px;height:5px;border-radius:50%;background:var(--magenta);opacity:.3;flex-shrink:0;transition:opacity .3s;}
 .cm-card:hover .cm-dot{opacity:.8;}
 
+/* FORMER OVERSEERS */
+#former-overseers { background: var(--ivory2); padding: 5rem 0; }
+.fo-head { text-align: center; margin-bottom: 3rem; }
+.fo-head .sl { justify-content: center; }
+.fo-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.2rem; }
+.fo-card { background: white; border-radius: 14px; padding: .8rem; border: 1.5px solid var(--ivory3); transition: all .35s var(--ease); text-align: center; cursor: default; }
+.fo-card:hover { transform: translateY(-6px); box-shadow: 0 12px 30px rgba(204,0,102,.12); border-color: var(--magenta); }
+.fo-photo { width: 100%; aspect-ratio: 3/4; border-radius: 8px; overflow: hidden; margin-bottom: .8rem; background: linear-gradient(145deg, var(--dark2), var(--dark3)); position: relative; }
+.fo-photo img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(20%); transition: filter .3s; }
+.fo-card:hover .fo-photo img { filter: grayscale(0%); }
+.fo-name { font-family: var(--fd); font-size: 1.05rem; font-weight: 700; color: var(--text); line-height: 1.2; margin-bottom: .2rem; }
+.fo-years { font-size: .75rem; font-weight: 700; color: var(--magenta); letter-spacing: .05em; }
+
 /* STATE BOARD */
 #stateboard{background:var(--ivory);padding:5rem 0;}
 .sb-wave-top{position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--magenta),var(--gold),var(--magenta));}
@@ -598,9 +562,7 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
 #backTop.show{opacity:1;transform:none;}
 #backTop:hover{background:var(--dark);transform:translateY(-2px);}
 
-/* ════════════════════════════════════════
-   RESPONSIVE BREAKPOINTS
-════════════════════════════════════════ */
+/* RESPONSIVE BREAKPOINTS */
 @media(max-width:1200px){
   .vis-main-layout{grid-template-columns:1fr;}
   .council-grid{grid-template-columns:repeat(3,1fr);}
@@ -612,6 +574,7 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
   .lead-strip{grid-template-columns:repeat(3,1fr)!important;}
   .dept-grid{grid-template-columns:repeat(3,1fr);}
   .council-header{grid-template-columns:1fr;gap:1.2rem;}
+  .fo-grid { grid-template-columns: repeat(4, 1fr); }
 }
 @media(max-width:900px){
   :root{--nav:60px;}
@@ -620,14 +583,7 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
   .nav-btn{display:none;}
   .nl-t2{display:none;}
   .hero-grid{display:none!important;}
-  .hero-mobile-layout{
-    display:block;
-    flex:1;
-    position:relative;
-    min-height:0;
-    overflow:hidden;
-    background:var(--dark2);
-  }
+  .hero-mobile-layout{display:block;flex:1;position:relative;min-height:0;overflow:hidden;background:var(--dark2);}
   .stats-grid{grid-template-columns:repeat(2,1fr);}
   .stat-item{border-right:none;border-bottom:1px solid rgba(255,255,255,.08);}
   .stat-item:nth-child(odd){border-right:1px solid rgba(255,255,255,.08);}
@@ -659,6 +615,7 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
   .vis-main-layout{grid-template-columns:1fr;}
   .sec{padding:3.5rem 0;}
   .cont,.vis-inner,.contact-inner,.council-wrap,.ft{padding:0 1rem;}
+  .fo-grid { grid-template-columns: repeat(3, 1fr); }
 }
 @media(max-width:640px){
   .nl-logo{width:36px;height:36px;}
@@ -675,6 +632,7 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
   .hm-director-box{height:140px;}
   .hm-video-box{height:64px;}
   .hm-acc{font-size:clamp(1.7rem,9vw,2.6rem);}
+  .fo-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media(max-width:480px){
   .dept-grid{grid-template-columns:1fr 1fr;gap:10px;}
@@ -737,6 +695,8 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
           <a href="cha.html">Charity</a>
           <a href="edu.html">Education</a>
           <a href="eva.html">Evangelism</a>
+
+          
         </div>
       </li>
       <li class="nli"><button>Ministry ▾</button>
@@ -747,7 +707,11 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
       <li class="nli"><button>More ▾</button>
         <div class="drop">
           <a href="#leaders">Leaders</a><a href="#council">Council</a>
+          <a href="#former-overseers">Former Overseers</a>
           <a href="#stateboard">State Office</a><a href="#contact">Contact</a>
+          <a href="belivers.html">Beliver's Board</a>
+          <a href="prayaer.html">Prayer Board</a>
+          <a href="boards.html">Other Boards</a>
         </div>
       </li>
     </ul>
@@ -774,6 +738,7 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
   <a href="mission.html">🛫 Mission Board</a>
   <a href="#leaders">🌐 International Leaders</a>
   <a href="#council">👥 State Council</a>
+  <a href="#former-overseers">🏛️ Former Overseers</a>
   <a href="#stateboard">🏛️ State Board</a>
   <a href="#ministry">🎓 Ministry &amp; Ordination</a>
   <a href="#contact">📞 Contact Us</a>
@@ -781,12 +746,11 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
 </div>
 
 <section id="hero">
-
   <div class="hero-grid">
     <div class="hero-left">
       <div class="slide-wrap">
         <div class="slide active">
-          <img src="WhatsApp Image 2026-04-04 at 11.08.53 (1).jpeg" alt="Church gathering" onerror="this.onerror=null;this.parentElement.innerHTML='<div class=\'slide-bg-1\'></div>'">
+          <img src="audidclr.jpeg" alt="Church gathering" onerror="this.onerror=null;this.parentElement.innerHTML='<div class=\'slide-bg-1\'></div>'">
         </div>
         <div class="slide">
           <img src="WhatsApp Image 2026-04-04 at 11.08.53 (2).jpeg" alt="Church event" onerror="this.onerror=null;this.parentElement.innerHTML='<div class=\'slide-bg-2\'></div>'">
@@ -813,7 +777,6 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
         </div>
       </div>
     </div>
-
     <div class="hero-right">
       <div class="hero-right-inner">
         <div class="hr-media">
@@ -1031,6 +994,27 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
     </div>
   </div>
 </section>
+<section id="former-overseers">
+  <div class="cont">
+    <div class="fo-head rv">
+      <div class="sl">Our Heritage</div>
+      <h2 class="sh">Former State <em>Overseers</em></h2>
+      <div class="sr" style="margin:0 auto"></div>
+    </div>
+    <div class="fo-grid rv2">
+      <div class="fo-card"><div class="fo-photo"><img src="over/1.png" alt="Pr. U. Thomas" onerror="this.style.display='none'"></div><div class="fo-name">Pr. U. Thomas</div><div class="fo-years">(1964 - 66)</div></div>
+      <div class="fo-card"><div class="fo-photo"><img src="over/2.png" alt="Pr. P. C. Chacko" onerror="this.style.display='none'"></div><div class="fo-name">Pr. P. C. Chacko</div><div class="fo-years">(1966 - 70)</div></div>
+      <div class="fo-card"><div class="fo-photo"><img src="over/3.png" alt="Pr. A. V. Abraham" onerror="this.style.display='none'"></div><div class="fo-name">Pr. A. V. Abraham</div><div class="fo-years">(1970 - 78)</div></div>
+      <div class="fo-card"><div class="fo-photo"><img src="over/4.png" alt="Pr. M. V. Chacko" onerror="this.style.display='none'"></div><div class="fo-name">Pr. M. V. Chacko</div><div class="fo-years">(1978 - 88)</div></div>
+      <div class="fo-card"><div class="fo-photo"><img src="over/5.png" alt="Pr. P. A. V. Sam" onerror="this.style.display='none'"></div><div class="fo-name">Pr. P. A. V. Sam</div><div class="fo-years">(1988 - 2000)</div></div>
+      <div class="fo-card"><div class="fo-photo"><img src="over/6.png" alt="Pr. V. C. Itty" onerror="this.style.display='none'"></div><div class="fo-name">Pr. V. C. Itty</div><div class="fo-years">(2000 - 02)</div></div>
+      <div class="fo-card"><div class="fo-photo"><img src="over/7.png" alt="Pr. K. C. John" onerror="this.style.display='none'"></div><div class="fo-name">Pr. K. C. John</div><div class="fo-years">(2002 - 08)</div></div>
+      <div class="fo-card"><div class="fo-photo"><img src="over/8.png" alt="Pr. M. Kunjappy" onerror="this.style.display='none'"></div><div class="fo-name">Pr. M. Kunjappy</div><div class="fo-years">(2008 - 12)</div></div>
+      <div class="fo-card"><div class="fo-photo"><img src="over/9.png" alt="Pr. P. J. James" onerror="this.style.display='none'"></div><div class="fo-name">Pr. P. J. James</div><div class="fo-years">(2012 - 16)</div></div>
+      <div class="fo-card"><div class="fo-photo"><img src="over/10.png" alt="Pr. C.C. Thomas" onerror="this.style.display='none'"></div><div class="fo-name">Pr. C.C. Thomas</div><div class="fo-years">(2016 - 24)</div></div>
+    </div>
+  </div>
+</section>
 
 <section id="about" style="background:var(--ivory2);padding:5rem 0 0;">
   <div class="ab-grid">
@@ -1126,6 +1110,8 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
     </div>
   </div>
 </section>
+
+
 
 <section id="stateboard">
   <div class="sb-wave-top"></div>
@@ -1245,7 +1231,7 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
   <div class="ft">
     <div class="ft-t">
       <div><div class="ft-brand">Church of God<br>(Full Gospel) in India<br><span>Kerala State</span></div><p class="ft-tag">A Spirit-filled Pentecostal movement rooted in holiness, prayer, and the proclamation of the full Gospel. Affiliated with Church of God International, Cleveland, Tennessee, USA. Est. 1886.</p></div>
-      <div class="ft-col"><div class="ft-ch">Navigate</div><a href="#vision">Vision &amp; Mission</a><a href="#about">History</a><a href="#beliefs">Declaration of Faith</a><a href="#depts">Departments</a><a href="#leaders">Leaders</a><a href="#council">Council</a><a href="#stateboard">State Board</a><a href="#contact">Contact</a></div>
+      <div class="ft-col"><div class="ft-ch">Navigate</div><a href="#vision">Vision &amp; Mission</a><a href="#about">History</a><a href="#beliefs">Declaration of Faith</a><a href="#depts">Departments</a><a href="#leaders">Leaders</a><a href="#council">Council</a><a href="#former-overseers">Former Overseers</a><a href="#stateboard">State Board</a><a href="#contact">Contact</a></div>
       <div class="ft-col"><div class="ft-ch">Departments</div><a href="edu.html">Education</a><a href="lm.html">Ladies Ministry</a><a href="ype.html">Youth</a><a href="ss.html">Sunday School</a><a href="eva.html">Evangelism</a><a href="co.html">counselling</a></div>
       <div class="ft-col"><div class="ft-ch">Contact</div><p>Zion Hills, Chengannur, Kerala</p><a href="mailto:cogkeralastate@gmail.com">cogkeralastate@gmail.com</a><p style="margin-top:.6rem">cogkerala.org</p><p>churchofgod.org</p></div>
     </div>
@@ -1298,7 +1284,7 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
 (function(){
 'use strict';
 
-/* ── NAV ── */
+/* NAV */
 var nav=document.getElementById('nav');
 window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>60);},{passive:true});
 var hbg=document.getElementById('hbg');
@@ -1311,13 +1297,13 @@ mob.querySelectorAll('a').forEach(function(a){
   a.addEventListener('click',function(){hbg.classList.remove('open');mob.classList.remove('open');document.body.style.overflow='';});
 });
 
-/* ── SCROLL REVEAL ── */
+/* SCROLL REVEAL */
 var revIO=new IntersectionObserver(function(entries){
   entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');revIO.unobserve(e.target);}});
 },{threshold:0.06,rootMargin:'0px 0px -36px 0px'});
 document.querySelectorAll('.rv,.rv2,.rv3,.rvl,.rvr').forEach(function(el){revIO.observe(el);});
 
-/* ── SMOOTH SCROLL ── */
+/* SMOOTH SCROLL */
 document.querySelectorAll('a[href^="#"]').forEach(function(a){
   a.addEventListener('click',function(e){
     var id=a.getAttribute('href').slice(1);
@@ -1328,7 +1314,7 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a){
   });
 });
 
-/* ── DESKTOP HERO SLIDES ── */
+/* DESKTOP HERO SLIDES */
 var slides=document.querySelectorAll('.hero-left .slide');
 var dots=document.querySelectorAll('.hdot');
 var curSlide=0;
@@ -1340,7 +1326,7 @@ function showSlide(i){
 if(slides.length){setInterval(function(){showSlide((curSlide+1)%slides.length);},4500);}
 dots.forEach(function(d,i){d.addEventListener('click',function(){showSlide(i);});});
 
-/* ── MOBILE HERO SLIDES ── */
+/* MOBILE HERO SLIDES */
 var hmSlides=document.querySelectorAll('.hm-slide');
 var hmDotBtns=document.querySelectorAll('#hmDots .hm-dot');
 var curHmSlide=0;
@@ -1352,7 +1338,7 @@ function showHmSlide(i){
 if(hmSlides.length){setInterval(function(){showHmSlide((curHmSlide+1)%hmSlides.length);},4500);}
 hmDotBtns.forEach(function(d,i){d.addEventListener('click',function(){showHmSlide(i);});});
 
-/* ── MOBILE VIDEO BOX ── */
+/* MOBILE VIDEO BOX */
 var hmVideoBox=document.getElementById('hmVideoBox');
 var hmVideo=document.getElementById('hmVideo');
 var hmVidScrim=document.getElementById('hmVidScrim');
@@ -1371,7 +1357,7 @@ if(hmVideoBox&&hmVideo){
   });
 }
 
-/* ── ANIMATED NUMBER COUNTERS ── */
+/* ANIMATED NUMBER COUNTERS */
 function animateCounter(el){
   var target=parseInt(el.getAttribute('data-target'),10);
   var duration=2200;var start=null;
@@ -1397,7 +1383,7 @@ var counterIO=new IntersectionObserver(function(entries){
 var statsBanner=document.getElementById('stats-banner');
 if(statsBanner)counterIO.observe(statsBanner);
 
-/* ── STAGGER CARDS ── */
+/* STAGGER CARDS */
 function stagger(sel,delay,y){
   document.querySelectorAll(sel).forEach(function(c,i){
     c.style.cssText+='opacity:0;transform:translateY('+(y||20)+'px);transition:opacity .7s '+(i*(delay||.07))+'s cubic-bezier(.16,1,.3,1),transform .7s '+(i*(delay||.07))+'s cubic-bezier(.16,1,.3,1)';
@@ -1407,9 +1393,9 @@ function stagger(sel,delay,y){
     io.observe(c);
   });
 }
-stagger('.lcard',.08,22);stagger('.sb-box',.09,18);stagger('.ci-card',.07,18);stagger('.cm-card',.04,18);
+stagger('.lcard',.08,22);stagger('.fo-card',.06,20);stagger('.sb-box',.09,18);stagger('.ci-card',.07,18);stagger('.cm-card',.04,18);
 
-/* ── 3D DEPT CARDS ── */
+/* 3D DEPT CARDS */
 var DEPTS=[
   {n:'01',name:'Pastoral Counselling',desc:'Healing hearts, restoring families through Biblical pastoral care across Kerala.',href:'cha.html'},
   {n:'02',name:'Biblical Education',desc:'Three Bible seminaries equipping Spirit-filled ministers for harvest fields.',href:'eva.html'},
@@ -1444,13 +1430,11 @@ if(dg){
   });
 }
 
-/* ── VIDEO PLACEHOLDER (desktop) ── */
+/* VIDEO PLACEHOLDER */
 var hrVidPh=document.getElementById('hrVidPh');
 if(hrVidPh){hrVidPh.addEventListener('click',function(){var f=document.createElement('iframe');f.src='https://www.youtube.com/embed/?autoplay=1';f.setAttribute('allowfullscreen','');f.style.cssText='position:absolute;inset:0;width:100%;height:100%;border:none';hrVidPh.parentElement.appendChild(f);hrVidPh.style.display='none';});}
 
-/* ══════════════════════════════════════
-   PIE CHART
-══════════════════════════════════════ */
+/* PIE CHART */
 var PIE_DATA=[
   {id:'churches',label:'Churches',value:'1,200+',raw:1200,color:'#CC0066',colorLight:'#E6007A',description:'Over <strong>1,200 local churches</strong> spread across all 14 revenue districts of Kerala — from coast to high ranges.'},
   {id:'ministers',label:'Ministers',value:'1,500+',raw:1500,color:'#C9A84C',colorLight:'#E8C46A',description:'Over <strong>1,500 ordained, licensed, and exhorter ministers</strong> serve COG Kerala. Three Bible seminaries credential new ministers every year.'},
@@ -1541,7 +1525,7 @@ if(pieSvgWrap){
   if(pieOverlay)pieOverlay.addEventListener('click',function(e){if(e.target===pieOverlay)closePieModal();});
 }
 
-/* ── CONTACT FORM ── */
+/* CONTACT FORM */
 var cfSubmit=document.getElementById('cfSubmit');
 if(cfSubmit){
   cfSubmit.addEventListener('click',function(){
@@ -1567,14 +1551,12 @@ if(cfSubmit){
   });
 }
 
-/* ── BACK TO TOP ── */
+/* BACK TO TOP */
 var bt=document.getElementById('backTop');
 window.addEventListener('scroll',function(){bt.classList.toggle('show',window.scrollY>400);},{passive:true});
 bt.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
 
-/* ══════════════════════════════════════
-   AI CHATBOT — CLAUDE API
-══════════════════════════════════════ */
+/* AI CHATBOT — CLAUDE API */
 var SYSTEM_PROMPT=`You are the official AI assistant for the Church of God (Full Gospel) in India — Kerala State. 
 
 Key facts you must know:
