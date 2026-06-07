@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Believers Board — COG Kerala</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,900;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --magenta:#CC0066;--magenta2:#E6007A;--rose:#E91E8C;--rose2:#F48FB1;
+  --gold:#C9A84C;--gold2:#E8C46A;
+  --ivory:#FDF8F0;--ivory2:#F5EDE0;--ivory3:#EBD9C5;
+  --dark:#1A0A0E;--dark2:#2D1018;
+  --text:#2A0E18;--text2:#5C3040;--text3:#8B5A6A;
+
+  /* Board-specific deep navy/gold accent */
+  --navy:#0A1628;--navy2:#112240;--navy3:#1E3A5F;
+  --steel:#2C4A7C;--steel2:#3D6499;
+  --boardgold:#B8963E;--boardgold2:#D4AF5A;--boardgold3:#F0CE7A;
+
+  --f:'Outfit',sans-serif;--fd:'Cormorant Garamond',serif;
+  --ease:cubic-bezier(.16,1,.3,1);--nav:72px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--f);background:var(--ivory);color:var(--text);overflow-x:hidden;}
+img{max-width:100%;display:block;}
+a{text-decoration:none;color:inherit;}
+::-webkit-scrollbar{width:3px;}
+::-webkit-scrollbar-thumb{background:var(--boardgold);}
+
+/* ── NAV ── */
+#nav{position:fixed;top:0;left:0;right:0;z-index:9000;background:rgba(255,255,255,.98);border-bottom:1px solid rgba(10,22,40,.1);box-shadow:0 2px 24px rgba(0,0,0,.07);}
+.nb{max-width:1440px;margin:0 auto;padding:0 1.5rem;height:var(--nav);display:flex;align-items:center;justify-content:space-between;}
+.nl{display:flex;align-items:center;gap:.7rem;}
+.nl-logo{font-family:var(--fd);font-size:1.5rem;font-weight:700;color:var(--magenta);}
+.nl-t1{font-family:var(--fd);font-size:.88rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--magenta);}
+.nl-t2{font-size:.68rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);}
+.nav-back{font-size:.82rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:.6rem 1.6rem;background:var(--navy);color:white;border-radius:50px;border:2px solid var(--navy);transition:all .22s;}
+.nav-back:hover{background:transparent;color:var(--navy);}
+
+/* ── HERO ── */
+.dept-hero{
+  padding-top:var(--nav);
+  min-height:70vh;
+  background:linear-gradient(145deg,#050D1A,#0A1628,#112240,#1A3355);
+  position:relative;overflow:hidden;display:flex;align-items:center;
+}
+/* Animated cross-hatch / grid pattern */
+.hero-grid-bg{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(184,150,62,.06) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(184,150,62,.06) 1px,transparent 1px);
+  background-size:60px 60px;
+  animation:gridDrift 25s linear infinite;
+}
+@keyframes gridDrift{0%{background-position:0 0;}100%{background-position:60px 60px;}}
+
+/* Floating orbs */
+.orb{position:absolute;border-radius:50%;pointer-events:none;animation:orbFloat ease-in-out infinite;}
+@keyframes orbFloat{0%,100%{transform:translateY(0) scale(1);}50%{transform:translateY(-30px) scale(1.05);}}
+.orb1{width:400px;height:400px;background:radial-gradient(circle,rgba(184,150,62,.12),transparent 70%);top:-120px;right:-80px;animation-duration:14s;}
+.orb2{width:250px;height:250px;background:radial-gradient(circle,rgba(61,100,153,.2),transparent 70%);bottom:-60px;left:-60px;animation-duration:10s;animation-delay:3s;}
+
+/* Gold particle dots */
+.particles{position:absolute;inset:0;overflow:hidden;pointer-events:none;}
+.pt{position:absolute;border-radius:50%;animation:ptDrift linear infinite;}
+@keyframes ptDrift{0%{transform:translateY(100vh) rotate(0deg);opacity:0;}10%{opacity:1;}90%{opacity:.6;}100%{transform:translateY(-20px) rotate(360deg);opacity:0;}}
+
+.dept-hero-inner{max-width:1360px;margin:0 auto;padding:5rem 1.5rem;position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+
+/* Left hero content */
+.dept-tag{display:inline-flex;align-items:center;gap:.6rem;font-size:.75rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--boardgold2);margin-bottom:1.2rem;}
+.dept-tag-icon{width:20px;height:2px;background:var(--boardgold);display:inline-block;}
+.dept-hero-title{font-family:var(--fd);font-size:clamp(3rem,6vw,7.5rem);font-weight:700;color:white;line-height:.9;letter-spacing:-.02em;margin-bottom:1.2rem;}
+.dept-hero-title .italic{display:block;font-style:italic;font-weight:300;font-size:.38em;color:rgba(255,255,255,.45);letter-spacing:.1em;margin-bottom:.4rem;}
+.dept-hero-title .accent{background:linear-gradient(135deg,var(--boardgold3),var(--boardgold2),var(--boardgold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.dept-hero-desc{font-size:1rem;line-height:2;color:rgba(255,255,255,.58);margin-bottom:2rem;max-width:480px;}
+.dept-hero-stats{display:flex;gap:2rem;flex-wrap:wrap;}
+.dhs-num{font-family:var(--fd);font-size:2.2rem;font-weight:700;color:var(--boardgold2);}
+.dhs-label{font-size:.66rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.35);}
+
+/* ── HERO BOARD (2–3 vertical cards) ── */
+.hero-board-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;width:100%;max-width:620px;margin-left:auto;}
+.hb-vcard{background:white;border-radius:14px;overflow:hidden;position:relative;transition:all .4s var(--ease);box-shadow:0 12px 36px rgba(0,0,0,.35);display:flex;flex-direction:column;cursor:default;}
+.hb-vcard::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--boardgold),var(--boardgold2),var(--boardgold3));opacity:0;transition:opacity .4s;z-index:3;}
+.hb-vcard:hover::before{opacity:1;}
+.hb-vcard:hover{transform:translateY(-6px);box-shadow:0 22px 52px rgba(0,0,0,.4);}
+.hb-vphoto{width:100%;aspect-ratio:3/4;position:relative;overflow:hidden;background:linear-gradient(145deg,var(--navy),var(--steel));}
+.hb-vphoto img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .5s var(--ease);}
+.hb-vcard:hover .hb-vphoto img{transform:scale(1.05);}
+.hb-vphoto::after{content:'';position:absolute;bottom:0;left:0;right:0;height:55%;background:linear-gradient(to top,rgba(5,13,26,.92),transparent);z-index:1;pointer-events:none;}
+.hb-vbadge{position:absolute;bottom:.6rem;left:.6rem;right:.6rem;z-index:2;background:rgba(255,255,255,.08);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:.6rem;}
+.hb-vbadge-name{font-family:var(--fd);font-size:1rem;font-weight:700;color:white;line-height:1.1;}
+.hb-vbadge-role{font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--boardgold3);margin-top:.2rem;}
+.hb-vdetails{padding:.9rem;background:white;flex:1;transition:background .3s;}
+.hb-vcard:hover .hb-vdetails{background:rgba(10,22,40,.02);}
+.hb-vdesc{font-size:.78rem;color:var(--text2);line-height:1.6;}
+
+/* Photo placeholder silhouette */
+.hb-vph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
+.hb-vph svg{opacity:.2;}
+
+/* ── SECTION COMMON ── */
+.sec{padding:5rem 0;position:relative;overflow:hidden;}
+.cont{max-width:1360px;margin:0 auto;padding:0 1.5rem;}
+.sl{font-size:.8rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--navy3);margin-bottom:.7rem;display:flex;align-items:center;gap:.7rem;}
+.sl::before{content:'';width:22px;height:2px;background:var(--boardgold);}
+.sh{font-family:var(--fd);font-size:clamp(2.2rem,4vw,5rem);font-weight:700;line-height:.9;color:var(--text);margin-bottom:.5rem;}
+.sh em{font-style:italic;font-weight:400;color:var(--navy3);}
+.sr{width:36px;height:3px;background:var(--boardgold);margin-bottom:2.5rem;}
+
+/* Scroll reveal */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease);}
+.rv.on{opacity:1;transform:none;}
+.rv2{opacity:0;transform:translateY(28px);transition:opacity .9s .14s var(--ease),transform .9s .14s var(--ease);}
+.rv2.on{opacity:1;transform:none;}
+
+/* ── ABOUT SECTION ── */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-top:1rem;}
+.about-text p{font-size:1rem;line-height:2;color:var(--text2);margin-bottom:1.2rem;}
+.about-text p:last-child{margin-bottom:0;}
+.about-text strong{color:var(--navy);}
+.about-quote{background:var(--navy);border-radius:18px;padding:2.5rem;position:relative;overflow:hidden;}
+.about-quote::before{content:'\201C';font-family:var(--fd);font-size:8rem;color:rgba(184,150,62,.15);position:absolute;top:-1rem;left:1.5rem;line-height:1;pointer-events:none;}
+.about-quote blockquote{font-family:var(--fd);font-size:1.4rem;font-style:italic;color:white;line-height:1.6;position:relative;z-index:1;}
+.about-quote cite{display:block;font-family:var(--f);font-style:normal;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--boardgold2);margin-top:1.2rem;}
+
+.about-pillars{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-top:2rem;}
+.pillar{background:var(--ivory2);border-radius:12px;padding:1.2rem 1.4rem;border:1.5px solid var(--ivory3);transition:all .3s;}
+.pillar:hover{border-color:rgba(184,150,62,.35);background:white;transform:translateY(-3px);box-shadow:0 8px 24px rgba(10,22,40,.06);}
+.pillar-icon{font-size:1.4rem;margin-bottom:.5rem;}
+.pillar-name{font-family:var(--fd);font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:.2rem;}
+.pillar-txt{font-size:.8rem;color:var(--text3);line-height:1.6;}
+
+/* ── COMMITTEE GRID ── */
+.committee-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:1rem;margin-top:2rem;}
+.cm-card{background:white;border-radius:10px;overflow:hidden;border:1.5px solid var(--ivory3);transition:all .35s;position:relative;cursor:default;}
+.cm-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(10,22,40,.1);border-color:rgba(184,150,62,.4);}
+.cm-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--boardgold),var(--boardgold3));transform:scaleX(0);transform-origin:left;transition:transform .4s;z-index:2;}
+.cm-card:hover::before{transform:scaleX(1);}
+.cm-photo{width:100%;aspect-ratio:1/1;overflow:hidden;background:linear-gradient(145deg,#e8f0ff,#d0ddf5);position:relative;}
+.cm-photo img{width:100%;height:100%;object-fit:fill;object-position:top;}
+.cm-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:2rem;color:rgba(10,22,40,.15);}
+.cm-info{padding:.8rem .9rem .9rem;}
+.cm-name{font-family:var(--fd);font-size:.9rem;font-weight:700;color:var(--text);}
+.cm-pos{font-size:.6rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--navy3);margin-top:.1rem;}
+.cm-zone{font-size:.72rem;color:var(--text3);margin-top:.1rem;}
+@media(max-width:1200px){.committee-grid{grid-template-columns:repeat(4,1fr);}}
+@media(max-width:900px){.committee-grid{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:600px){.committee-grid{grid-template-columns:repeat(2,1fr);}}
+
+/* ── RESPONSIBILITIES ── */
+.resp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:2rem;}
+.resp-card{background:white;border-radius:18px;padding:2rem;border:1.5px solid var(--ivory3);transition:all .4s;position:relative;overflow:hidden;}
+.resp-card::after{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--navy),var(--boardgold));transform:scaleX(0);transform-origin:left;transition:transform .4s;border-radius:18px 18px 0 0;}
+.resp-card:hover::after{transform:scaleX(1);}
+.resp-card:hover{transform:translateY(-5px);box-shadow:0 18px 44px rgba(10,22,40,.1);}
+.resp-icon{font-size:2rem;margin-bottom:.8rem;}
+.resp-name{font-family:var(--fd);font-size:1.3rem;font-weight:700;color:var(--text);margin-bottom:.4rem;}
+.resp-desc{font-size:.88rem;color:var(--text2);line-height:1.8;}
+
+/* ── MEETINGS ── */
+.meetings-row{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:2rem;}
+.meet-card{background:var(--navy);border-radius:18px;padding:2rem 2.5rem;display:flex;gap:1.5rem;align-items:flex-start;transition:transform .3s;}
+.meet-card:hover{transform:translateY(-4px);}
+.meet-num{font-family:var(--fd);font-size:3rem;font-weight:700;color:var(--boardgold);line-height:1;flex-shrink:0;}
+.meet-content{}
+.meet-title{font-family:var(--fd);font-size:1.2rem;font-weight:700;color:white;margin-bottom:.5rem;}
+.meet-desc{font-size:.88rem;color:rgba(255,255,255,.55);line-height:1.8;}
+
+/* ── CTA ── */
+.dept-cta{background:linear-gradient(135deg,var(--navy),#1A3355,var(--steel));padding:4rem 0;text-align:center;position:relative;overflow:hidden;}
+.dept-cta::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(184,150,62,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(184,150,62,.04) 1px,transparent 1px);background-size:50px 50px;}
+.dept-cta h3{font-family:var(--fd);font-size:clamp(2rem,4vw,4rem);font-weight:700;color:white;margin-bottom:.8rem;position:relative;}
+.dept-cta p{font-size:1rem;color:rgba(255,255,255,.6);margin-bottom:2rem;position:relative;}
+.cta-btn{display:inline-block;font-size:.85rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.85rem 2.2rem;background:var(--boardgold2);color:var(--navy);border-radius:50px;margin:.3rem;transition:all .25s;position:relative;}
+.cta-btn:hover{background:var(--boardgold3);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.2);}
+.cta-btn.outline{background:transparent;color:white;border:2px solid rgba(255,255,255,.4);}
+.cta-btn.outline:hover{background:white;color:var(--navy);}
+
+footer{background:var(--dark);padding:2rem 0;text-align:center;}
+footer p{font-size:.85rem;color:rgba(255,255,255,.3);}
+footer a{color:var(--boardgold2);}
+
+/* ── DIVIDER ORNAMENT ── */
+.ornament{text-align:center;padding:2rem 0;font-family:var(--fd);color:var(--boardgold);font-size:1.4rem;letter-spacing:.5em;opacity:.5;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .hero-board-grid{max-width:100%;gap:.8rem;}
+  .hb-vdesc{font-size:.65rem;}
+  .about-grid{gap:2.5rem;}
+}
+@media(max-width:900px){
+  .dept-hero-inner{grid-template-columns:1fr;gap:3rem;}
+  .about-grid{grid-template-columns:1fr;}
+  .resp-grid{grid-template-columns:1fr 1fr;}
+  .meetings-row{grid-template-columns:1fr;}
+}
+@media(max-width:640px){
+  .resp-grid{grid-template-columns:1fr;}
+  .about-pillars{grid-template-columns:1fr;}
+  .hero-board-grid{grid-template-columns:1fr;max-width:300px;margin:0 auto;}
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav id="nav">
+  <div class="nb">
+    <a href="home.html" class="nl">
+      <div class="nl-logo">✝</div>
+      <div><div class="nl-t1">Church of God (Full Gospel)</div><div class="nl-t2">Kerala State · India</div></div>
+    </a>
+    <a href="home.html" class="nav-back">← Back to Home</a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="dept-hero">
+  <div class="hero-grid-bg"></div>
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="particles" id="particles"></div>
+
+  <div class="dept-hero-inner">
+    <!-- Left -->
+    <div class="hero-left">
+      <div class="dept-tag">
+        <span class="dept-tag-icon"></span>
+        Governing Body
+      </div>
+      <h1 class="dept-hero-title">
+        <span class="italic">Stewards of the Church</span>
+        <span class="accent">Believers</span><br>Board
+      </h1>
+      <p class="dept-hero-desc">
+        The governing board of the Church of God, Kerala — upholding spiritual integrity, 
+        sound doctrine, and faithful stewardship across all districts and ministries of the State.
+      </p>
+      <div class="dept-hero-stats">
+        <div>
+          <div class="dhs-num">14</div>
+          <div class="dhs-label">Districts</div>
+        </div>
+        <div>
+          <div class="dhs-num">500+</div>
+          <div class="dhs-label">Local Churches</div>
+        </div>
+        <div>
+          <div class="dhs-num">Since 1952</div>
+          <div class="dhs-label">Established</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right — Main Board (3 vertical cards) -->
+    <div class="rv">
+      <div class="hero-board-grid">
+
+        <!-- State Overseer -->
+        <div class="hb-vcard">
+          <div class="hb-vphoto">
+            <img src="Ps.jpg" alt="State Overseer" onerror="this.style.display='none'">
+            <div class="hb-vph">
+              <svg width="60" height="70" viewBox="0 0 60 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="30" cy="22" r="16" stroke="white" stroke-width="2"/>
+                <path d="M4 66c0-14.36 11.64-26 26-26s26 11.64 26 26" stroke="white" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="hb-vbadge">
+              <div class="hb-vbadge-name">Rev. Pr. Y. Reji</div>
+              <div class="hb-vbadge-role">State Overseer</div>
+            </div>
+          </div>
+          <div class="hb-vdetails">
+            <div class="hb-vdesc">Presiding over the Kerala State and guiding the Church with Spirit-led vision and apostolic authority.</div>
+          </div>
+        </div>
+
+        <!-- State Secretary -->
+        <div class="hb-vcard">
+          <div class="hb-vphoto">
+            <img src="bb-secretary.jpg" alt="State Secretary" onerror="this.style.display='none'">
+            <div class="hb-vph">
+              <svg width="60" height="70" viewBox="0 0 60 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="30" cy="22" r="16" stroke="white" stroke-width="2"/>
+                <path d="M4 66c0-14.36 11.64-26 26-26s26 11.64 26 26" stroke="white" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="hb-vbadge">
+              <div class="hb-vbadge-name">[Secretary Name]</div>
+              <div class="hb-vbadge-role">State Secretary</div>
+            </div>
+          </div>
+          <div class="hb-vdetails">
+            <div class="hb-vdesc">Managing official records, correspondence, and coordination of Board meetings statewide.</div>
+          </div>
+        </div>
+
+        <!-- State Treasurer -->
+        <div class="hb-vcard">
+          <div class="hb-vphoto">
+            <img src="bb-treasurer.jpg" alt="State Treasurer" onerror="this.style.display='none'">
+            <div class="hb-vph">
+              <svg width="60" height="70" viewBox="0 0 60 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="30" cy="22" r="16" stroke="white" stroke-width="2"/>
+                <path d="M4 66c0-14.36 11.64-26 26-26s26 11.64 26 26" stroke="white" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="hb-vbadge">
+              <div class="hb-vbadge-name">[Treasurer Name]</div>
+              <div class="hb-vbadge-role">State Treasurer</div>
+            </div>
+          </div>
+          <div class="hb-vdetails">
+            <div class="hb-vdesc">Ensuring faithful financial stewardship and transparency across all State operations.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT SECTION ── -->
+<section class="sec" style="background:white">
+  <div class="cont">
+    <div class="sl rv">About the Board</div>
+    <h2 class="sh rv">Who We <em>Are</em></h2>
+    <div class="sr rv"></div>
+
+    <div class="about-grid rv">
+      <div class="about-text">
+        <p>
+          The <strong>Believers Board</strong> is the supreme governing body of the Church of God (Full Gospel) in Kerala. 
+          Constituted by elected representatives from every district across the State, the Board provides 
+          spiritual oversight, doctrinal accountability, and administrative direction to the entire church fellowship.
+        </p>
+        <p>
+          Rooted in the Pentecostal heritage and the <strong>full gospel</strong> of Jesus Christ, Board members serve 
+          as trustees of the faith — protecting the integrity of the Church's mission, resources, and witness. 
+          Every decision is made prayerfully, with the Word of God as the final authority.
+        </p>
+        <p>
+          The Board meets regularly to review ministry reports, ratify appointments, approve budgets, 
+          and chart the course for evangelism, discipleship, and social outreach across all 14 districts of Kerala.
+        </p>
+
+        <div class="about-pillars">
+          <div class="pillar">
+            <div class="pillar-icon">📖</div>
+            <div class="pillar-name">Doctrinal Fidelity</div>
+            <div class="pillar-txt">Upholding the full gospel and Pentecostal distinctives.</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">⚖️</div>
+            <div class="pillar-name">Accountable Governance</div>
+            <div class="pillar-txt">Transparent leadership serving the Church body.</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">🤝</div>
+            <div class="pillar-name">Unity in Mission</div>
+            <div class="pillar-txt">Uniting all districts around the Great Commission.</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">🙏</div>
+            <div class="pillar-name">Prayer-led Decisions</div>
+            <div class="pillar-txt">Every resolution discerned through corporate prayer.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-quote">
+        <blockquote>
+          "So then you are no longer strangers and aliens, but you are fellow citizens 
+          with the saints and members of the household of God."
+        </blockquote>
+        <cite>Ephesians 2:19 · The Foundation of the Board</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── BOARD MEMBERS GRID ── -->
+<section class="sec" style="background:var(--ivory2)">
+  <div class="cont">
+    <div class="sl rv">Full Membership</div>
+    <h2 class="sh rv">State Believers <em>Board</em></h2>
+    <div class="sr rv"></div>
+
+    <div class="committee-grid">
+
+      <!-- Member 1 -->
+      <div class="cm-card rv2">
+        <div class="cm-photo"><img src="Ps.png" onerror="this.style.display='none'"><div class="cm-ph">✝</div></div>
+        <div class="cm-info">
+          <div class="cm-name">Rev. Y. Reji</div>
+          <div class="cm-pos">(Kerala State Overseer)</div>
+        </div>
+      </div>
+
+      <!-- Member 2 -->
+      <div class="cm-card rv2">
+        <div class="cm-photo"><img src="beli/b (1).png" onerror="this.style.display='none'"><div class="cm-ph">✝</div></div>
+        <div class="cm-info">
+          <div class="cm-name">Bro. C.P. Varghese</div>
+          <div class="cm-pos">(Vice President)</div>
+        </div>
+      </div>
+
+      <!-- Member 3 -->
+      <div class="cm-card rv2">
+        <div class="cm-photo"><img src="beli/b (2).png" onerror="this.style.display='none'"><div class="cm-ph">✝</div></div>
+        <div class="cm-info">
+          <div class="cm-name">Bro. Abraham M. Thomas</div>
+          <div class="cm-pos">(Vice President)</div>
+        </div>
+      </div>
+
+      <!-- Member 4 -->
+      <div class="cm-card rv2">
+        <div class="cm-photo"><img src="beli/b (3).png" onerror="this.style.display='none'"><div class="cm-ph">✝</div></div>
+        <div class="cm-info">
+          <div class="cm-name">Bro. Joseph Mattathukala</div>
+          <div class="cm-pos">(Secretary)</div>
+        </div>
+      </div>
+
+      <!-- Member 5 -->
+      <div class="cm-card rv2">
+        <div class="cm-photo"><img src="beli/b (4).png" onerror="this.style.display='none'"><div class="cm-ph">✝</div></div>
+        <div class="cm-info">
+          <div class="cm-name">Bro. Aji Kulangara</div>
+          <div class="cm-pos">(Jt. Secretary)</div>
+        </div>
+      </div>
+
+      <!-- Member 6 -->
+      <div class="cm-card rv2">
+        <div class="cm-photo"><img src="beli/b (5).png" onerror="this.style.display='none'"><div class="cm-ph">✝</div></div>
+        <div class="cm-info">
+          <div class="cm-name">Bro. Saji K. Sam</div>
+          <div class="cm-pos">Board Member</div>
+        </div>
+      </div>
+
+      <!-- Member 7 -->
+      <div class="cm-card rv2">
+        <div class="cm-photo"><img src="beli/b (6).png" onerror="this.style.display='none'"><div class="cm-ph">✝</div></div>
+        <div class="cm-info">
+          <div class="cm-name">Bro. Paul Raj</div>
+          <div class="cm-pos">Board Member</div>
+        </div>
+      </div>
+
+      <!-- Member 8 -->
+      <div class="cm-card rv2">
+        <div class="cm-photo"><img src="beli/b (7).png" onerror="this.style.display='none'"><div class="cm-ph">✝</div></div>
+        <div class="cm-info">
+          <div class="cm-name">Bro. Raju P.J.</div>
+          <div class="cm-pos">Board Member</div>
+        </div>
+      </div>
+
+      <!-- Member 9 -->
+      <div class="cm-card rv2">
+        <div class="cm-photo"><img src="beli/b (8).png" onerror="this.style.display='none'"><div class="cm-ph">✝</div></div>
+        <div class="cm-info">
+          <div class="cm-name">Bro. Suresh Thomas</div>
+          <div class="cm-pos">Board Member</div>
+        </div>
+      </div>
+
+      <!-- Member 10 -->
+      <div class="cm-card rv2">
+        <div class="cm-photo"><img src="beli/b (9).png" onerror="this.style.display='none'"><div class="cm-ph">✝</div></div>
+        <div class="cm-info">
+          <div class="cm-name">Bro. Yohannan Samuel</div>
+          <div class="cm-pos">Board Member</div>
+        </div>
+      </div>
+
+      <!-- Member 11 -->
+      <div class="cm-card rv2">
+        <div class="cm-photo"><img src="beli/b (10).png" onerror="this.style.display='none'"><div class="cm-ph">✝</div></div>
+        <div class="cm-info">
+          <div class="cm-name">Bro. Reji Eappen</div>
+          <div class="cm-pos">Board Member</div>
+        </div>
+      </div>
+
+      <!-- Member 12 -->
+      <div class="cm-card rv2">
+        <div class="cm-photo"><img src="beli/b (11).png" onerror="this.style.display='none'"><div class="cm-ph"></div></div>
+        <div class="cm-info">
+          <div class="cm-name">Bro. John Mathai</div>
+          <div class="cm-pos">Board Member</div>
+        </div>
+      </div>
+
+      <!-- Member 13 -->
+      <div class="cm-card rv2">
+        <div class="cm-photo"><img src="beli/b (12).png" onerror="this.style.display='none'"><div class="cm-ph"></div></div>
+        <div class="cm-info">
+          <div class="cm-name">Bro. Alexander Varghese</div>
+          <div class="cm-pos">Board Member</div>
+        </div>
+      </div>
+
+      <!-- Member 14 -->
+      <div class="cm-card rv2">
+        <div class="cm-photo"><img src="beli/b (13).png" onerror="this.style.display='none'"><div class="cm-ph"></div></div>
+        <div class="cm-info">
+          <div class="cm-name">Bro. Biju Joshua</div>
+          <div class="cm-pos">Board Member</div>
+        </div>
+      </div>
+
+      <!-- Member 15 -->
+      <div class="cm-card rv2">
+        <div class="cm-photo"><img src="beli/b (14).png" onerror="this.style.display='none'"><div class="cm-ph"></div></div>
+        <div class="cm-info">
+          <div class="cm-name">Bro. Abraham George</div>
+          <div class="cm-pos">Board Member</div>
+        </div>
+      </div>
+
+      <!-- Member 16 -->
+      <div class="cm-card rv2">
+        <div class="cm-photo"><img src="beli/b (15).png" onerror="this.style.display='none'"><div class="cm-ph"></div></div>
+        <div class="cm-info">
+          <div class="cm-name">Bro. Joe Thomas</div>
+          <div class="cm-pos">Board Member</div>
+        </div>
+      </div>
+
+      <!-- Member 17 -->
+      <div class="cm-card rv2">
+        <div class="cm-photo"><img src="beli/b (16).png" onerror="this.style.display='none'"><div class="cm-ph"></div></div>
+        <div class="cm-info">
+          <div class="cm-name">Bro. Biju P. John</div>
+          <div class="cm-pos">Board Member</div>
+        </div>
+      </div>
+
+      <!-- Member 18 -->
+      <div class="cm-card rv2">
+        <div class="cm-photo"><img src="beli/b (17).png" onerror="this.style.display='none'"><div class="cm-ph"></div></div>
+        <div class="cm-info">
+          <div class="cm-name">Bro. K.V. Esow</div>
+          <div class="cm-pos">Board Member</div>
+        </div>
+      </div>
+
+      <!-- Member 19 -->
+      <div class="cm-card rv2">
+        <div class="cm-photo"><img src="beli/b (18).png" onerror="this.style.display='none'"><div class="cm-ph"></div></div>
+        <div class="cm-info">
+          <div class="cm-name">Bro. Saju Sunny</div>
+          <div class="cm-pos">Board Member</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section> 
+
+
+
+<!-- ── MEETINGS ── -->
+<section class="sec" style="background:var(--ivory2)">
+  <div class="cont">
+    <div class="sl rv">Schedule</div>
+    <h2 class="sh rv">Board <em>Meetings</em></h2>
+    <div class="sr rv"></div>
+    <div class="meetings-row">
+      <div class="meet-card rv">
+        <div class="meet-num">01</div>
+        <div class="meet-content">
+          <div class="meet-title">Annual General Meeting</div>
+          <div class="meet-desc">The full Board convenes once a year at the State headquarters. All members present ministry reports, review accounts, approve next year's budget, and set the strategic direction for the Church across Kerala.</div>
+        </div>
+      </div>
+      <div class="meet-card rv">
+        <div class="meet-num">02</div>
+        <div class="meet-content">
+          <div class="meet-title">Quarterly Review Sessions</div>
+          <div class="meet-desc">Executive committee meets every quarter to review progress on resolutions, address urgent church matters, and provide interim governance between the annual sessions.</div>
+        </div>
+      </div>
+      <div class="meet-card rv">
+        <div class="meet-num">03</div>
+        <div class="meet-content">
+          <div class="meet-title">District Consultations</div>
+          <div class="meet-desc">Board members periodically visit their respective districts, holding consultations with local overseers, elders, and congregations to stay connected to the grassroots Church.</div>
+        </div>
+      </div>
+      <div class="meet-card rv">
+        <div class="meet-num">04</div>
+        <div class="meet-content">
+          <div class="meet-title">Special Convocations</div>
+          <div class="meet-desc">Called as needed for urgent matters — ordinations, doctrinal clarifications, emergency appropriations, or responding to significant opportunities for the Kingdom of God in Kerala.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section class="dept-cta">
+  <h3>Governed by Grace, Guided by the Spirit</h3>
+  <p>The Believers Board exists to serve — the Church, the Mission, and the Lord Jesus Christ.</p>
+  <a href="mailto:cogkeralastate@gmail.com" class="cta-btn">Contact the Board</a>
+  <a href="home.html" class="cta-btn outline">Back to Home</a>
+</section>
+
+<footer>
+  <p>© 2025 Church of God (Full Gospel) in India, Kerala State · <a href="mailto:cogkeralastate@gmail.com">cogkeralastate@gmail.com</a></p>
+</footer>
+
+<script>
+// ── Floating gold particles ──
+var pEl = document.getElementById('particles');
+for (var i = 0; i < 22; i++) {
+  var p = document.createElement('div');
+  p.className = 'pt';
+  var size = 1.5 + Math.random() * 3;
+  p.style.cssText =
+    'left:' + Math.random() * 100 + '%;' +
+    'width:' + size + 'px;height:' + size + 'px;' +
+    'background:rgba(212,175,90,' + (0.15 + Math.random() * 0.3) + ');' +
+    'animation-duration:' + (10 + Math.random() * 14) + 's;' +
+    'animation-delay:' + (Math.random() * 12) + 's;';
+  pEl.appendChild(p);
+}
+
+// ── Scroll reveal ──
+var io = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) {
+      e.target.classList.add('on');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
+
+document.querySelectorAll('.rv, .rv2').forEach(function(el) { io.observe(el); });
+
+// ── Staggered committee card animation ──
+var cmCards = document.querySelectorAll('.cm-card');
+var cmObs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) {
+      var idx = Array.from(cmCards).indexOf(e.target);
+      e.target.style.transitionDelay = (idx % 6) * 0.07 + 's';
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'none';
+      cmObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.05 });
+
+cmCards.forEach(function(c) {
+  c.style.opacity = '0';
+  c.style.transform = 'translateY(20px)';
+  c.style.transition = 'opacity .6s ease, transform .6s ease';
+  cmObs.observe(c);
+});
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

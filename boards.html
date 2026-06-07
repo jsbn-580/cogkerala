@@ -1,0 +1,1706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Church Boards - Church of God (Full Gospel) Kerala State</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Serif:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #d41e87;
+            --primary-light: #e74fa0;
+            --secondary: #f97316;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --gray-100: #f1f5f9;
+            --gray-400: #94a3b8;
+            --gray-600: #475569;
+            --text: #1e293b;
+            --border: #e2e8f0;
+            --card-radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #ffffff;
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        @keyframes float-animation {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes slide-in-left {
+            from {
+                opacity: 0;
+                transform: translateX(-60px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slide-in-right {
+            from {
+                opacity: 0;
+                transform: translateX(60px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes glow-pulse {
+            0%, 100% {
+                box-shadow: 0 20px 60px rgba(212, 30, 135, 0.2);
+            }
+            50% {
+                box-shadow: 0 20px 80px rgba(212, 30, 135, 0.4);
+            }
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(212, 30, 135, 0.1);
+            padding: 1rem 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .header-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #d41e87, #f97316);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            letter-spacing: -0.8px;
+        }
+
+        nav {
+            display: flex;
+            gap: 3rem;
+        }
+
+        nav a {
+            font-size: 0.95rem;
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(135deg, #d41e87, #f97316);
+            transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border-radius: 2px;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            margin-top: 70px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #fdf8ff 0%, #fef4fb 40%, #fff5f0 70%, #fffbf8 100%);
+            min-height: 600px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -10%;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(212, 30, 135, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 0;
+            pointer-events: none;
+            animation: float-animation 6s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            left: -15%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(249, 115, 22, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 0;
+            pointer-events: none;
+            animation: float-animation 8s ease-in-out infinite reverse;
+        }
+
+        .hero-content {
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            animation: slide-in-left 0.8s ease-out;
+        }
+
+        .breadcrumb {
+            font-size: 0.75rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            display: inline-flex;
+            width: fit-content;
+            padding: 0.5rem 1.2rem;
+            background: rgba(212, 30, 135, 0.08);
+            border-radius: 50px;
+            border: 1px solid rgba(212, 30, 135, 0.2);
+        }
+
+        .breadcrumb a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+            line-height: 1.05;
+            letter-spacing: -1.5px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, #d41e87 0%, #f97316 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: #555;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+            max-width: 520px;
+            font-weight: 400;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            gap: 1.2rem;
+            max-width: fit-content;
+        }
+
+        .btn {
+            padding: 1rem 2.2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #d41e87, #f97316);
+            color: white;
+            box-shadow: 0 10px 30px rgba(212, 30, 135, 0.35);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.4s ease;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 45px rgba(212, 30, 135, 0.45);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--primary);
+            border: 2.5px solid var(--primary);
+            box-shadow: 0 4px 15px rgba(212, 30, 135, 0.15);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 45px rgba(212, 30, 135, 0.3);
+        }
+
+        /* ===== SLIDESHOW ===== */
+        .hero-slideshow {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(212, 30, 135, 0.25), 0 10px 40px rgba(0, 0, 0, 0.1);
+            min-height: 500px;
+            background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+            z-index: 2;
+            border: 2px solid rgba(212, 30, 135, 0.1);
+            animation: slide-in-right 0.8s ease-out, glow-pulse 3s ease-in-out infinite;
+        }
+
+        .slideshow-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .slideshow-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid rgba(212, 30, 135, 0.2);
+            color: var(--primary);
+            font-size: 1.8rem;
+            padding: 1rem 1.2rem;
+            cursor: pointer;
+            border-radius: 50%;
+            z-index: 10;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slideshow-nav:hover {
+            background: white;
+            box-shadow: 0 8px 25px rgba(212, 30, 135, 0.3);
+            transform: translateY(-50%) scale(1.15);
+            border-color: var(--primary);
+        }
+
+        .slideshow-nav.prev {
+            left: 1.5rem;
+        }
+
+        .slideshow-nav.next {
+            right: 1.5rem;
+        }
+
+        .slideshow-dots {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 1rem;
+            z-index: 10;
+        }
+
+        .slideshow-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid rgba(255, 255, 255, 0.7);
+        }
+
+        .slideshow-dot:hover {
+            background: rgba(255, 255, 255, 0.85);
+            transform: scale(1.2);
+        }
+
+        .slideshow-dot.active {
+            background: white;
+            border-color: white;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            transform: scale(1.3);
+        }
+
+        /* ===== BOARDS OVERVIEW SECTION ===== */
+        .boards-overview {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: slide-in-left 0.8s ease-out 0.2s both;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--gray-600);
+            line-height: 1.8;
+        }
+
+        .boards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .board-card {
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .board-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .board-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 12px 30px rgba(212, 30, 135, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .board-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .board-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .board-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .board-card > p {
+            font-size: 0.85rem;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .board-description {
+            color: var(--gray-600);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .board-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .board-features li {
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--gray-600);
+            margin-bottom: 0.75rem;
+            font-size: 0.9rem;
+        }
+
+        .board-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .board-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .member-count {
+            font-size: 0.85rem;
+            color: var(--gray-600);
+            font-weight: 600;
+        }
+
+        /* ===== MEMBERS SECTION ===== */
+        .members-section {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+
+        .board-members {
+            margin-bottom: 6rem;
+            scroll-margin-top: 100px;
+        }
+
+        .board-members-header {
+            margin-bottom: 3rem;
+            text-align: center;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .board-members-header h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.5px;
+        }
+
+        .board-members-header p {
+            color: var(--gray-600);
+            font-size: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .member-card {
+            background: white;
+            border-radius: var(--card-radius);
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+            transition: var(--transition);
+            border: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .member-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+            border-color: var(--primary);
+        }
+
+        .member-image {
+            width: 100%;
+            aspect-ratio: 3 / 4;
+            overflow: hidden;
+            background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+            position: relative;
+        }
+
+        .member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .member-card:hover .member-image img {
+            transform: scale(1.05);
+        }
+
+        .member-image-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+        }
+
+        .member-info {
+            padding: 1.5rem;
+            text-align: left;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            flex-grow: 1;
+            justify-content: flex-end;
+        }
+
+        .member-name {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--dark);
+            line-height: 1.3;
+        }
+
+        .member-position {
+            font-family: 'IBM Plex Serif', serif;
+            font-size: 0.8rem;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            font-weight: 600;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 2rem 2rem;
+            margin-top: 6rem;
+        }
+
+        .footer-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+
+        .footer-section p {
+            font-size: 0.95rem;
+            opacity: 0.85;
+            line-height: 1.8;
+        }
+
+        .footer-section a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            opacity: 0.7;
+        }
+
+        .footer-bottom {
+            max-width: 1280px;
+            margin: 0 auto;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 3rem 2rem;
+                min-height: auto;
+            }
+
+            .hero-slideshow {
+                min-height: 400px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            nav {
+                gap: 1.5rem;
+            }
+
+            nav a {
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 0.75rem 0;
+            }
+
+            .header-container {
+                padding: 0 1rem;
+            }
+
+            .logo {
+                font-size: 1.25rem;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .hero {
+                margin-top: 60px;
+                padding: 2rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .hero-slideshow {
+                min-height: 300px;
+            }
+
+            .slideshow-nav {
+                padding: 0.5rem 0.75rem;
+                font-size: 1.2rem;
+            }
+
+            .slideshow-nav.prev {
+                left: 0.75rem;
+            }
+
+            .slideshow-nav.next {
+                right: 0.75rem;
+            }
+
+            .section-header h2 {
+                font-size: 1.75rem;
+            }
+
+            .section-header p {
+                font-size: 1rem;
+            }
+
+            .boards-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .members-grid {
+                grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+                gap: 1.5rem;
+            }
+
+            .board-members-header h3 {
+                font-size: 1.5rem;
+            }
+
+            .member-info {
+                padding: 1rem;
+            }
+
+            .member-name {
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero h1 span {
+                display: block;
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .members-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-header h2 {
+                font-size: 1.4rem;
+            }
+
+            .board-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">⛪ Church of God</a>
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#boards">Boards</a>
+                <a href="#members">Members</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== HERO SECTION ===== -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="breadcrumb">Welcome to Church Leadership</div>
+            <h1>Church <span>Boards</span></h1>
+            <p>Serving the Church of God (Full Gospel) in Kerala State with wisdom, integrity, and dedicated spiritual leadership across all ministries and departments.</p>
+            <div class="hero-cta">
+                <button class="btn btn-primary" onclick="document.getElementById('boards').scrollIntoView({ behavior: 'smooth' })">
+                    View Boards
+                </button>
+                <button class="btn btn-secondary" onclick="alert('Contact information coming soon')">
+                    Get in Touch
+                </button>
+            </div>
+        </div>
+
+        <div class="hero-slideshow">
+            <div class="slideshow-container">
+                <div class="slide active">
+                    <img src="audidclr.jpeg" alt="Church Leadership 1" onerror="this.style.display='none'">
+                </div>
+                <div class="slide">
+                    <img src="path/to/member2.jpg" alt="Church Leadership 2" onerror="this.style.display='none'">
+                </div>
+                <div class="slide">
+                    <img src="path/to/member3.jpg" alt="Church Leadership 3" onerror="this.style.display='none'">
+                </div>
+                <div class="slide">
+                    <img src="path/to/member4.jpg" alt="Church Leadership 4" onerror="this.style.display='none'">
+                </div>
+                <div class="slide">
+                    <img src="path/to/member5.jpg" alt="Church Leadership 5" onerror="this.style.display='none'">
+                </div>
+
+                <button class="slideshow-nav prev" onclick="changeSlide(-1)">❮</button>
+                <button class="slideshow-nav next" onclick="changeSlide(1)">❯</button>
+
+                <div class="slideshow-dots">
+                    <span class="slideshow-dot active" onclick="currentSlide(0)"></span>
+                    <span class="slideshow-dot" onclick="currentSlide(1)"></span>
+                    <span class="slideshow-dot" onclick="currentSlide(2)"></span>
+                    <span class="slideshow-dot" onclick="currentSlide(3)"></span>
+                    <span class="slideshow-dot" onclick="currentSlide(4)"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== BOARDS OVERVIEW ===== -->
+    <section class="boards-overview" id="boards">
+        <div class="section-header">
+            <h2>Our Leadership Boards</h2>
+            <p>Six specialized boards working together to advance the gospel and strengthen the body of Christ across Kerala State.</p>
+        </div>
+
+        <div class="boards-grid">
+            <!-- Credential Board -->
+            <div class="board-card" onclick="scrollToSection('credential-members')">
+                <div class="board-icon">📜</div>
+                <h3>Credential Board</h3>
+                <p>Minister Excellence</p>
+                <p class="board-description">Maintains the highest standards of ministerial excellence by overseeing examination, approval, and professional development of ordained and licensed ministers.</p>
+                <ul class="board-features">
+                    <li>Minister qualification</li>
+                    <li>Professional development</li>
+                    <li>Ethics monitoring</li>
+                </ul>
+                <div class="board-footer">
+                    <span class="member-count">6 Members</span>
+                    <a href="#credential-members" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.85rem; margin: 0;">View</a>
+                </div>
+            </div>
+
+            <!-- Home Mission Board -->
+            <div class="board-card" onclick="scrollToSection('homemission-members')">
+                <div class="board-icon">🏠</div>
+                <h3>Home Mission Board</h3>
+                <p>Church Planting & Outreach</p>
+                <p class="board-description">Dedicated to expanding God's Kingdom within Kerala State through strategic church planting and community service initiatives.</p>
+                <ul class="board-features">
+                    <li>Strategic church planting</li>
+                    <li>Community outreach programs</li>
+                    <li>Local evangelism coordination</li>
+                </ul>
+                <div class="board-footer">
+                    <span class="member-count">21 Members</span>
+                    <a href="#homemission-members" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.85rem; margin: 0;">View</a>
+                </div>
+            </div>
+
+            <!-- UPG Board -->
+            <div class="board-card" onclick="scrollToSection('upg-members')">
+                <div class="board-icon">🌍</div>
+                <h3>UPG Board</h3>
+                <p>Unreached People Groups</p>
+                <p class="board-description">Works tirelessly to bring the gospel to communities beyond traditional church outreach with culturally sensitive strategies and cross-cultural ministry.</p>
+                <ul class="board-features">
+                    <li>UPG research & identification</li>
+                    <li>Contextualized evangelism</li>
+                    <li>Cross-cultural ministry training</li>
+                </ul>
+                <div class="board-footer">
+                    <span class="member-count">6 Members</span>
+                    <a href="#upg-members" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.85rem; margin: 0;">View</a>
+                </div>
+            </div>
+
+            <!-- Music Board -->
+            <div class="board-card" onclick="scrollToSection('music-members')">
+                <div class="board-icon">🎵</div>
+                <h3>Music Board</h3>
+                <p>Worship & Musical Ministry</p>
+                <p class="board-description">Oversees all aspects of music ministry and worship direction, ensuring quality musical excellence and spiritual depth across all church services and events.</p>
+                <ul class="board-features">
+                    <li>Worship leadership development</li>
+                    <li>Musical training & coordination</li>
+                    <li>Event music direction</li>
+                </ul>
+                <div class="board-footer">
+                    <span class="member-count">7 Members</span>
+                    <a href="#music-members" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.85rem; margin: 0;">View</a>
+                </div>
+            </div>
+
+            <!-- Media Board -->
+            <div class="board-card" onclick="scrollToSection('media-members')">
+                <div class="board-icon">📱</div>
+                <h3>Media Board</h3>
+                <p>Communication & Digital Outreach</p>
+                <p class="board-description">Leading strategic communication and digital gospel outreach through publications, content distribution, and technical media infrastructure development.</p>
+                <ul class="board-features">
+                    <li>Publication & content creation</li>
+                    <li>Digital media distribution</li>
+                    <li>Technical infrastructure management</li>
+                </ul>
+                <div class="board-footer">
+                    <span class="member-count">6 Members</span>
+                    <a href="#media-members" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.85rem; margin: 0;">View</a>
+                </div>
+            </div>
+
+            <!-- Mount Carmel Childrens Home Board -->
+            <div class="board-card" onclick="scrollToSection('state-members')">
+                <div class="board-icon">🏛️</div>
+                <h3>Mount Carmel Childrens Home</h3>
+                <p>Child Welfare & Development</p>
+                <p class="board-description">Provides spiritual guidance and oversight for the church's child welfare ministry, ensuring compassionate care and holistic development of vulnerable children.</p>
+                <ul class="board-features">
+                    <li>Child welfare programs</li>
+                    <li>Care & development coordination</li>
+                    <li>Financial & spiritual oversight</li>
+                </ul>
+                <div class="board-footer">
+                    <span class="member-count">12 Members</span>
+                    <a href="#state-members" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.85rem; margin: 0;">View</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MEMBERS SECTION -->
+    <section class="members-section" id="members">
+
+
+        <!-- MUSIC BOARD MEMBERS -->
+        <div class="board-members" id="music-members">
+            <div class="board-members-header">
+                <h3 style="color: #9333ea;">Music Board Members</h3>
+                <p>Leading worship excellence and musical ministry across Kerala State churches.</p>
+            </div>
+            <div class="members-grid">
+                <div class="member-card">
+                    <div class="member-image"><img src="ps.jpg" alt="Rev. Y. Reji"></div>
+                    <div class="member-info">
+                        <div class="member-name">Rev. Y. Reji</div>
+                        <div class="member-position">State Overseer</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-image"><img src="board/music (7).png" alt="Bro. Bovus Raju"></div>
+                    <div class="member-info">
+                        <div class="member-name">Bro. Bovus Raju</div>
+                        <div class="member-position">Director</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-image"><img src="board/music (1).png" alt="Pr. Robin Thomas Mathew"></div>
+                    <div class="member-info">
+                        <div class="member-name">Pr. Robin Thomas Mathew</div>
+                        <div class="member-position">Member</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-image"><img src="board/music (2).png" alt="Pr. Sajan Yohannan"></div>
+                    <div class="member-info">
+                        <div class="member-name">Pr. Sajan Yohannan</div>
+                        <div class="member-position">Member</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-image"><img src="board/music (3).png" alt="Br. Moses Titus"></div>
+                    <div class="member-info">
+                        <div class="member-name">Br. Moses Titus</div>
+                        <div class="member-position">Member</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-image"><img src="board/music (4).png" alt="Pr. Bennet Philip"></div>
+                    <div class="member-info">
+                        <div class="member-name">Pr. Bennet Philip</div>
+                        <div class="member-position">Member</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-image"><img src="board/music (5).png" alt="Br. Shawn Biju"></div>
+                    <div class="member-info">
+                        <div class="member-name">Br. Shawn Biju</div>
+                        <div class="member-position">Member</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CREDENTIAL BOARD MEMBERS DETAILED -->
+        <div class="board-members" id="credential-board">
+            <div class="board-members-header">
+                <h3 style="color: #d81b60;">Credential Board Members</h3>
+                <p>Serving with wisdom and spiritual accountability in all matters of ministerial credentials.</p>
+            </div>
+            <div class="members-grid">
+                
+                <div class="member-card">
+                    <div class="member-image">
+                        <img src="ps.jpg" alt="Rev. Y. Reji">
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">Rev. Y. Reji</div>
+                        <div class="member-position">State Overseer</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-image">
+                        <img src="board/cb (1).png" alt="Pr. Shaiju Thomas Njarackal">
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">Pr. Shaiju Thomas Njarackal</div>
+                        <div class="member-position">Director</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-image">
+                        <img src="board/cb (2).png" alt="Dr. Shibu K. Mathew">
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">Dr. Shibu K. Mathew</div>
+                        <div class="member-position">Member</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-image">
+                        <img src="board/cb (3).png" alt="Pr. Noble P. Jacob">
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">Pr. Noble P. Jacob</div>
+                        <div class="member-position">Member</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-image">
+                        <img src="board/cb (4).png" alt="Pr. A. T. Joseph">
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">Pr. A. T. Joseph</div>
+                        <div class="member-position">Member</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-image">
+                        <img src="board/cb (5).png" alt="Pr. H. M. Ebenezer">
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">Pr. H. M. Ebenezer</div>
+                        <div class="member-position">Member</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- MEDIA BOARD MEMBERS -->
+        <div id="media-members" class="board-members">
+            <div class="board-members-header">
+                <h3 style="color: #0891b2;">Media Board Members</h3>
+                <p>Executive panel directing publication, content distribution, and technical outreach</p>
+            </div>
+            
+            <div class="members-grid">
+                <div class="member-card">
+                    <div class="member-image">
+                        <img src="ps.jpg" alt="Rev. Pr. Y. Reji">
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">Rev. Pr. Y. Reji</div>
+                        <div class="member-position">State Overseer</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-image">
+                        <img src="board/m1.png" alt="Pr. Samkutty Mathew">
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">Pr. Samkutty Mathew</div>
+                        <div class="member-position">Director</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-image">
+                        <img src="board/m2.png" alt="Pr. Bibin Thomas">
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">Pr. Bibin Thomas</div>
+                        <div class="member-position">Jt. Director</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-image">
+                        <img src="board/m3.png" alt="Pr. Rajeev Xavier">
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">Pr. Rajeev Xavier</div>
+                        <div class="member-position">Secretary</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-image">
+                        <img src="board/m4.png" alt="P. S. Cherian">
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">P. S. Cherian</div>
+                        <div class="member-position">Member</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-image">
+                        <img src="board/m5.png" alt="Pr. Lijo Thomas">
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">Pr. Lijo Thomas</div>
+                        <div class="member-position">Member</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- HOME MISSION BOARD MEMBERS -->
+        <div class="board-members" id="homemission-members">
+            <div class="board-members-header">
+                <h3 style="color: #f97316;">Home Mission Board Members</h3>
+                <p>Pioneering church planting and community transformation across Kerala State.</p>
+            </div>
+            <div class="members-grid">
+                <div class="member-card">
+                    <div class="member-image"><img src="ps.jpg" alt="Rev. Pr. Y. Reji"></div>
+                    <div class="member-info">
+                        <div class="member-name">Rev. Pr. Y. Reji</div>
+                        <div class="member-position">State Overseer</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-image"><img src="board/hm (1).png" alt="Pr. Sam Chandra Sekharan"></div>
+                    <div class="member-info">
+                        <div class="member-name">Pr. Sam Chandra Sekharan</div>
+                        <div class="member-position">Director</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-image"><img src="board/hm (2).png" alt="Prof. Dr. Blesson George"></div>
+                    <div class="member-info">
+                        <div class="member-name">Prof. Dr. Blesson George</div>
+                        <div class="member-position">Secretary</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-image"><img src="board/hm (3).png" alt="Pr. Joji M. George"></div>
+                    <div class="member-info">
+                        <div class="member-name">Pr. Joji M. George</div>
+                        <div class="member-position">Co-ordinator</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-image"><img src="board/hm (4).png" alt="Pr. Mathew Samuel"></div>
+                    <div class="member-info">
+                        <div class="member-name">Pr. Mathew Samuel</div>
+                        <div class="member-position">Treasurer</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-image"><img src="board/hm (5).png" alt="Pr. Alex Abraham"></div>
+                    <div class="member-info">
+                        <div class="member-name">Pr. Alex Abraham</div>
+                        <div class="member-position">Member</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-image"><img src="board/hm (6).png" alt="Pr. Biju Jacob"></div>
+                    <div class="member-info">
+                        <div class="member-name">Pr. Biju Jacob</div>
+                        <div class="member-position">Member</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-image"><img src="board/hm (7).png" alt="Pr. Joji Michael"></div>
+                    <div class="member-info">
+                        <div class="member-name">Pr. Joji Michael</div>
+                        <div class="member-position">Member</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-image"><img src="board/hm (8).png" alt="Pr. Shaiju Thomas"></div>
+                    <div class="member-info">
+                        <div class="member-name">Pr. Shaiju Thomas</div>
+                        <div class="member-position">Member</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-image"><img src="board/hm (9).png" alt="Pr. Mathew Kurian"></div>
+                    <div class="member-info">
+                        <div class="member-name">Pr. Mathew Kurian</div>
+                        <div class="member-position">Member</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-image"><img src="board/hm (10).png" alt="Pr. Jacob Mathew"></div>
+                    <div class="member-info">
+                        <div class="member-name">Pr. Jacob Mathew</div>
+                        <div class="member-position">Member</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-image"><img src="board/hm (11).png" alt="Pr. Siju Thomas"></div>
+                    <div class="member-info">
+                        <div class="member-name">Pr. Siju Thomas</div>
+                        <div class="member-position">Member</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-image"><img src="board/hm (12).png" alt="Pr. Santhosh K. Thomas"></div>
+                    <div class="member-info">
+                        <div class="member-name">Pr. Santhosh K. Thomas</div>
+                        <div class="member-position">Member</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-image"><img src="board/hm (13).png" alt="Pr. Godly B. Koruth"></div>
+                    <div class="member-info">
+                        <div class="member-name">Pr. Godly B. Koruth</div>
+                        <div class="member-position">Member</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-image"><img src="board/hm (14).png" alt="Pr. Varghese Mathew"></div>
+                    <div class="member-info">
+                        <div class="member-name">Pr. Varghese Mathew</div>
+                        <div class="member-position">Member</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-image"><img src="board/hm (15).png" alt="Pr. Stephen Mathew"></div>
+                    <div class="member-info">
+                        <div class="member-name">Pr. Stephen Mathew</div>
+                        <div class="member-position">Member</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-image"><img src="board/hm (16).png" alt="Pr. Thomas T. Chacko"></div>
+                    <div class="member-info">
+                        <div class="member-name">Pr. Thomas T. Chacko</div>
+                        <div class="member-position">Member</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-image"><img src="board/hm (17).png" alt="Prof. Dinu Monachen"></div>
+                    <div class="member-info">
+                        <div class="member-name">Prof. Dinu Monachen</div>
+                        <div class="member-position">Member</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-image"><img src="board/hm (18).png" alt="Br. Mathew Samuel"></div>
+                    <div class="member-info">
+                        <div class="member-name">Br. Mathew Samuel</div>
+                        <div class="member-position">Member</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-image"><img src="board/hm (19).png" alt="Br. T. M. Joseph"></div>
+                    <div class="member-info">
+                        <div class="member-name">Br. T. M. Joseph</div>
+                        <div class="member-position">Member</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-image"><img src="board/hm (20).png" alt="Br. Thomas Daniel"></div>
+                    <div class="member-info">
+                        <div class="member-name">Br. Thomas Daniel</div>
+                        <div class="member-position">Member</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- UPG BOARD MEMBERS -->
+        <div class="board-members" id="upg-members">
+            <div class="board-members-header">
+                <h3 style="color: #0d9488;">UPG Board Members</h3>
+                <p>Reaching unreached people groups with culturally sensitive ministry and gospel witness.</p>
+            </div>
+            <div class="members-grid">
+                <div class="member-card">
+                    <div class="member-image">
+                        <img src="ps.jpg" alt="Rev. Y. Reji" class="member-img">
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">Rev. Y. Reji</div>
+                        <div class="member-position">State Overseer</div>
+                    </div>
+                </div>
+                <div class="member-card">
+                    <div class="member-image">
+                        <img src="board/upg (2).png" alt="Pr. Vinoth Jacob" class="member-img">
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">Pr. Vinoth Jacob</div>
+                        <div class="member-position">Director</div>
+                    </div>
+                </div>
+                <div class="member-card">
+                    <div class="member-image">
+                        <img src="board/upg (3).png" alt="Bro. Thomas Koshy" class="member-img">
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">Bro. Thomas Koshy</div>
+                        <div class="member-position">Secretary</div>
+                    </div>
+                </div>
+                <div class="member-card">
+                    <div class="member-image">
+                        <img src="board/upg (4).png" alt="Pr. Rajan John" class="member-img">
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">Pr. Rajan John</div>
+                        <div class="member-position">Treasurer</div>
+                    </div>
+                </div>
+                <div class="member-card">
+                    <div class="member-image">
+                        <img src="board/upg (5).png" alt="Pr. Paul George" class="member-img">
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">Pr. Paul George</div>
+                        <div class="member-position">Member</div>
+                    </div>
+                </div>
+                <div class="member-card">
+                    <div class="member-image">
+                        <img src="board/upg (6).png" alt="Bro. Sony Kuruvila" class="member-img">
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">Bro. Sony Kuruvila</div>
+                        <div class="member-position">Media Convenor</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MOUNT CARMEL CHILDRENS HOME BOARD MEMBERS -->
+        <div class="board-members" id="state-members">
+            <div class="board-members-header">
+                <h3 style="color: #b45309;">Mount Carmel Childrens Home Board</h3>
+                <p>Dedicated to child welfare and holistic development through Christian care and spiritual nurturing.</p>
+            </div>
+            <div class="members-grid">
+                <div class="member-card">
+                    <div class="member-image">
+                        <img src="ps.jpg" alt="Rev. Pr. Y. Reji">
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">Rev. Pr. Y. Reji</div>
+                        <div class="member-position">State Overseer</div>
+                    </div>
+                </div>
+                
+                <div class="member-card">
+                    <div class="member-image">
+                        <img src="board/chi (1).png" alt="Pr. Johnson Thomas">
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">Pr. Johnson Thomas</div>
+                        <div class="member-position">Director</div>
+                    </div>
+                </div>
+                
+                <div class="member-card">
+                    <div class="member-image">
+                        <img src="board/chi (2).png" alt="Pr. T. Georgekutty">
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">Pr. T. Georgekutty</div>
+                        <div class="member-position">Jt. Director</div>
+                    </div>
+                </div>
+                
+                <div class="member-card">
+                    <div class="member-image">
+                        <img src="board/chi (3).png" alt="Pr. Benny Samuel">
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">Pr. Benny Samuel</div>
+                        <div class="member-position">Co-ordinator</div>
+                    </div>
+                </div>
+                
+                <div class="member-card">
+                    <div class="member-image">
+                        <img src="board/chi (4).png" alt="Stephen George">
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">Stephen George</div>
+                        <div class="member-position">Secretary</div>
+                    </div>
+                </div>
+                
+                <div class="member-card">
+                    <div class="member-image">
+                        <img src="board/chi (5).png" alt="Joseph John Gabriel">
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">Joseph John Gabriel</div>
+                        <div class="member-position">Jt. Secretary</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-image">
+                        <img src="board/chi (6).png" alt="Pr. Regi Mammen">
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">Pr. Regi Mammen</div>
+                        <div class="member-position">Treasurer</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-image">
+                        <img src="board/chi (7).png" alt="Pr. Lijo Thomas">
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">Pr. Lijo Thomas</div>
+                        <div class="member-position">Media Convenor</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-image">
+                        <img src="board/chi (8).png" alt="Pr. T.S. Mathew">
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">Pr. T.S. Mathew</div>
+                        <div class="member-position">Member</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-image">
+                        <img src="board/chi (9).png" alt="Pr. Jinu Mathew">
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">Pr. Jinu Mathew</div>
+                        <div class="member-position">Member</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-image">
+                        <img src="board/chi (10).png" alt="Chackochan Joseph">
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">Chackochan Joseph</div>
+                        <div class="member-position">Member</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-image">
+                        <img src="board/cm (11).png" alt="Pr. Shijo T.T">
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">Pr. Shijo T.T</div>
+                        <div class="member-position">Member</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer id="contact">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>About COG Kerala</h4>
+                <p>Church of God (Full Gospel) in India is dedicated to spiritual growth, community service, and transforming lives through the Gospel of Jesus Christ across Kerala State since 1886.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <p>
+                    <a href="#boards">Church Boards</a><br>
+                    <a href="#credential-members">Credential Board</a><br>
+                    <a href="#media-members">Media Board</a><br>
+                    <a href="#state-members">Mount Carmel Board</a>
+                </p>
+            </div>
+            <div class="footer-section">
+                <h4>Contact Information</h4>
+                <p>
+                    Email: <a href="mailto:cogkeralastate@gmail.com">cogkeralastate@gmail.com</a><br>
+                    Website: <a href="#">www.cogkerala.org</a><br>
+                    State HQ: Zion Hills, Chengannur<br>
+                    Phone: +91 (0) 481-XXXX
+                </p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Church of God (Full Gospel) in India, Kerala State. All Rights Reserved. | Est. 1886</p>
+        </div>
+    </footer>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        let currentSlideIndex = 0;
+        const totalSlides = document.querySelectorAll('.slide').length;
+        let autoSlideInterval;
+
+        function changeSlide(n) {
+            showSlide(currentSlideIndex += n);
+            resetAutoSlide();
+        }
+
+        function currentSlide(n) {
+            showSlide(currentSlideIndex = n);
+            resetAutoSlide();
+        }
+
+        function showSlide(n) {
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.slideshow-dot');
+            
+            if (n >= totalSlides) {
+                currentSlideIndex = 0;
+            }
+            if (n < 0) {
+                currentSlideIndex = totalSlides - 1;
+            }
+            
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            slides[currentSlideIndex].classList.add('active');
+            dots[currentSlideIndex].classList.add('active');
+        }
+
+        function autoSlide() {
+            currentSlideIndex++;
+            if (currentSlideIndex >= totalSlides) {
+                currentSlideIndex = 0;
+            }
+            showSlide(currentSlideIndex);
+        }
+
+        function resetAutoSlide() {
+            clearInterval(autoSlideInterval);
+            autoSlideInterval = setInterval(autoSlide, 5000);
+        }
+
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        // Start automatic slideshow
+        autoSlideInterval = setInterval(autoSlide, 5000);
+    </script>
+
+</body>
+</html>

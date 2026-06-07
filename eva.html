@@ -90,6 +90,232 @@ a{text-decoration:none;color:inherit;}
 .lc-role{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--magenta);margin-bottom:.25rem;}
 .lc-desc{font-size:.85rem;color:var(--text2);line-height:1.7;}
 
+/* ── BOARD SECTION STYLES ── */
+.board-section {
+  padding: 20px 5px;
+  background-color: #fcfbfa; /* Soft ivory background */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.section-header-centered {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.section-eyebrow {
+  display: block;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #8c7853;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.section-main-heading {
+  font-size: 2.2rem;
+  color: #1a2530;
+  margin: 0;
+  position: relative;
+  display: inline-block;
+}
+
+.section-main-heading::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 3px;
+  background-color: #2b4c7e; /* Theme Accent Color */
+  border-radius: 2px;
+}
+
+/* Desktop Responsive Grid Layout */
+.board-grid-15 {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ── RECTANGULAR CARD ANIMATIONS & DESIGN ── */
+.board-box {
+  background: #ffffff;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), 
+              box-shadow 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  opacity: 3;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+/* Entrance animation for cards */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Grid Card Hover Effects */
+.board-box:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(43, 76, 126, 0.12);
+}
+
+/* Rectangular Image Wrapper */
+.board-avatar-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 125%; /* Fixed portrait aspect ratio */
+  background: #eaeaea;
+  overflow: hidden;
+}
+
+.board-avatar-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.board-avatar-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Uniform scaling without stretching pictures */
+  object-position: top center;
+  transition: transform 0.5s ease;
+}
+
+/* Image zoom effect on card hover */
+.board-box:hover .board-avatar-inner img {
+  transform: scale(1.06);
+}
+
+/* Accent decorative strip */
+.board-avatar-decor {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #2b4c7e, #4a7bb0);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+  z-index: 2;
+}
+
+.board-box:hover .board-avatar-decor {
+  transform: scaleX(1);
+}
+
+/* ── TEXT DETAILS BOTTOM HOLDER ── */
+.board-details-holder {
+  padding: 18px 15px;
+  text-align: center;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #ffffff;
+  border-top: 1px solid #f0f0f0;
+}
+
+.board-name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #1a2530;
+  margin-bottom: 4px;
+  line-height: 1.3;
+  transition: color 0.3s ease;
+}
+
+.board-box:hover .board-name {
+  color: #2b4c7e;
+}
+
+.board-role {
+  font-size: 0.85rem;
+  color: #627180;
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+.board-region {
+  font-size: 0.75rem;
+  color: #9cb0c3;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: auto;
+}
+
+/* Special Highlighting style for Prime Executive Leader Card */
+.exec-prime {
+  border: 1px solid rgba(43, 76, 126, 0.15);
+}
+.exec-prime .board-details-holder {
+  background: linear-gradient(to bottom, #ffffff, #f4f7fc);
+}
+
+/* ── MOBILE VIEW OPTIMIZATIONS ── */
+@media screen and (max-width: 768px) {
+  .board-section {
+    padding: 40px 15px;
+  }
+
+  .section-main-heading {
+    font-size: 1.75rem;
+  }
+
+  .board-grid-15 {
+    /* Transitions to 2 clean columns on tablets/large phones */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .board-details-holder {
+    padding: 12px 10px;
+  }
+
+  .board-name {
+    font-size: 0.95rem;
+  }
+
+  .board-role {
+    font-size: 0.8rem;
+  }
+
+  /* Optimize animations for mobile performance */
+  .board-box:hover {
+    transform: translateY(-4px);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .board-grid-15 {
+    /* Single card presentation mode on small phone screens */
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 12px;
+  }
+  
+  /* Optional rule: uncomment below if you prefer full width cards on very narrow devices */
+  /*
+  .board-grid-15 {
+    grid-template-columns: 1fr;
+    max-width: 300px;
+  }
+  */
+}
+
 /* ACTIVITIES */
 .act-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:2rem;}
 .act-card{background:white;border-radius:18px;padding:2rem;border:1.5px solid var(--ivory3);transition:all .4s;position:relative;overflow:hidden;}
@@ -191,31 +417,249 @@ footer a{color:var(--gold2);}
   </div>
 </section>
 
-<section class="sec" style="background:white">
-  <div class="cont">
-    <div class="sl rv">Leadership</div>
-    <h2 class="sh rv">Department <em>Leaders</em></h2>
-    <div class="sr rv"></div>
-    <div class="lead-grid">
-      <div class="lead-card rv">
-        <div class="lc-photo"><img src="eva-director.jpg" onerror="this.style.display='none'"><div class="lc-ph">EV</div>
-          <div class="lc-badge"><div class="lc-badge-name">[State Director Name]</div><div class="lc-badge-title">Evangelism Director</div></div>
+<section class="board-section" id="board">
+  <div class="section-header-centered">
+    <span class="section-eyebrow">Governing Council</span>
+    <h2 class="section-main-heading">Evangelism Board</h2>
+  </div>
+
+  <div class="board-grid-15">
+    
+    <!-- Member 1 -->
+    <div class="board-box exec-prime">
+      <div class="board-avatar-wrapper">
+        <div class="board-avatar-inner">
+          <img src="Ps.jpg" onerror="this.style.display='none'">
         </div>
-        <div class="lc-body"><div class="lc-role">State Director · Evangelism</div><div class="lc-desc">Leading evangelism campaigns and outreach operations across all 14 districts of Kerala.</div></div>
+        <div class="board-avatar-decor"></div>
       </div>
-      <div class="lead-card rv">
-        <div class="lc-photo"><img src="eva-secretary.jpg" onerror="this.style.display='none'"><div class="lc-ph">EV</div>
-          <div class="lc-badge"><div class="lc-badge-name">[State Secretary Name]</div><div class="lc-badge-title">Evangelism Secretary</div></div>
-        </div>
-        <div class="lc-body"><div class="lc-role">State Secretary · Evangelism</div><div class="lc-desc">Coordinating outreach teams, village campaigns, and all administrative functions of the Evangelism department.</div></div>
-      </div>
-      <div class="lead-card rv">
-        <div class="lc-photo"><img src="cha-director.jpg" onerror="this.style.display='none'"><div class="lc-ph">CH</div>
-          <div class="lc-badge"><div class="lc-badge-name">[Charity Director Name]</div><div class="lc-badge-title">Charity &amp; Relief Director</div></div>
-        </div>
-        <div class="lc-body"><div class="lc-role">State Director · Charity &amp; Relief</div><div class="lc-desc">Overseeing all charitable programs — food distribution, disaster relief, and care for the vulnerable across Kerala.</div></div>
-      </div>
+      <div class="board-name">Rev. Y. Reji</div>
+      <div class="board-role">State Overseer</div>
+      <div class="board-region">State Center</div>
     </div>
+
+    <!-- Member 2 -->
+    <div class="board-box">
+      <div class="board-avatar-wrapper">
+        <div class="board-avatar-inner">
+          <img src="eva/1.png" onerror="this.style.display='none'">
+        </div>
+        <div class="board-avatar-decor"></div>
+      </div>
+      <div class="board-name">Pr. Saji George</div>
+      <div class="board-role">(Director)</div>
+      <div class="board-region">Thiruvananthapuram</div>
+    </div>
+
+    <!-- Member 3 -->
+    <div class="board-box">
+      <div class="board-avatar-wrapper">
+        <div class="board-avatar-inner">
+          <img src="eva/2.png" onerror="this.style.display='none'">
+        </div>
+        <div class="board-avatar-decor"></div>
+      </div>
+      <div class="board-name">Br. Aji Kulangara</div>
+      <div class="board-role">(Secretary)</div>
+      <div class="board-region">Kollam</div>
+    </div>
+
+    <!-- Member 4 -->
+    <div class="board-box">
+      <div class="board-avatar-wrapper">
+        <div class="board-avatar-inner">
+          <img src="eva/3.png" onerror="this.style.display='none'">
+        </div>
+        <div class="board-avatar-decor"></div>
+      </div>
+      <div class="board-name">Yohannan K. George</div>
+      <div class="board-role">(Jt. Secretary)</div>
+      <div class="board-region">Pathanamthitta</div>
+    </div>
+
+    <!-- Member 5 -->
+    <div class="board-box">
+      <div class="board-avatar-wrapper">
+        <div class="board-avatar-inner">
+          <img src="eva/4.png" onerror="this.style.display='none'">
+        </div>
+        <div class="board-avatar-decor"></div>
+      </div>
+      <div class="board-name">Pr. Biju Joy</div>
+      <div class="board-role">(Co-ordinator)</div>
+      <div class="board-region">Alappuzha</div>
+    </div>
+
+    <!-- Member 6 -->
+    <div class="board-box">
+      <div class="board-avatar-wrapper">
+        <div class="board-avatar-inner">
+          <img src="eva/5.png" onerror="this.style.display='none'">
+        </div>
+        <div class="board-avatar-decor"></div>
+      </div>
+      <div class="board-name">Pr. K. Benny</div>
+      <div class="board-role">(Treasurer)</div>
+      <div class="board-region">Kottayam</div>
+    </div>
+
+    <!-- Member 7 -->
+    <div class="board-box">
+      <div class="board-avatar-wrapper">
+        <div class="board-avatar-inner">
+          <img src="eva/6.png" onerror="this.style.display='none'">
+        </div>
+        <div class="board-avatar-decor"></div>
+      </div>
+      <div class="board-name">Pr. Praise Thomas</div>
+      <div class="board-role">Board Member</div>
+      <div class="board-region">Idukki</div>
+    </div>
+
+    <!-- Member 8 -->
+    <div class="board-box">
+      <div class="board-avatar-wrapper">
+        <div class="board-avatar-inner">
+          <img src="eva/7.png" onerror="this.style.display='none'">
+        </div>
+        <div class="board-avatar-decor"></div>
+      </div>
+      <div class="board-name">Pr. Sunil Skariah</div>
+      <div class="board-role">Board Member</div>
+      <div class="board-region">Ernakulam</div>
+    </div>
+
+    <!-- Member 9 -->
+    <div class="board-box">
+      <div class="board-avatar-wrapper">
+        <div class="board-avatar-inner">
+          <img src="eva/8.png" onerror="this.style.display='none'">
+        </div>
+        <div class="board-avatar-decor"></div>
+      </div>
+      <div class="board-name">Pr. Biju Thankachan</div>
+      <div class="board-role">Board Member</div>
+      <div class="board-region">Thrissur</div>
+    </div>
+
+    <!-- Member 10 -->
+    <div class="board-box">
+      <div class="board-avatar-wrapper">
+        <div class="board-avatar-inner">
+          <img src="eva/9.png" onerror="this.style.display='none'">
+        </div>
+        <div class="board-avatar-decor"></div>
+      </div>
+      <div class="board-name">Pr. V.A. Mathew</div>
+      <div class="board-role">Board Member</div>
+      <div class="board-region">Palakkad</div>
+    </div>
+
+    <!-- Member 11 -->
+    <div class="board-box">
+      <div class="board-avatar-wrapper">
+        <div class="board-avatar-inner">
+          <img src="eva/10.png" onerror="this.style.display='none'">
+        </div>
+        <div class="board-avatar-decor"></div>
+      </div>
+      <div class="board-name">Pr. Shaji K. Mathew</div>
+      <div class="board-role">Board Member</div>
+      <div class="board-region">Malappuram</div>
+    </div>
+
+    <!-- Member 12 -->
+    <div class="board-box">
+      <div class="board-avatar-wrapper">
+        <div class="board-avatar-inner">
+          <img src="eva/11.png" onerror="this.style.display='none'">
+        </div>
+        <div class="board-avatar-decor"></div>
+      </div>
+      <div class="board-name">Pr. Shajan Varghese</div>
+      <div class="board-role">Board Member</div>
+      <div class="board-region">Kozhikode</div>
+    </div>
+
+    <!-- Member 13 -->
+    <div class="board-box">
+      <div class="board-avatar-wrapper">
+        <div class="board-avatar-inner">
+          <img src="eva/12.png" onerror="this.style.display='none'">
+        </div>
+        <div class="board-avatar-decor"></div>
+      </div>
+      <div class="board-name">Pr. Simson Martin</div>
+      <div class="board-role">Board Member</div>
+      <div class="board-region">Wayanad</div>
+    </div>
+
+    <!-- Member 14 -->
+    <div class="board-box">
+      <div class="board-avatar-wrapper">
+        <div class="board-avatar-inner">
+          <img src="eva/13.png" onerror="this.style.display='none'">
+        </div>
+        <div class="board-avatar-decor"></div>
+      </div>
+      <div class="board-name">Pr. Baiju Thomas</div>
+      <div class="board-role">Board Member</div>
+      <div class="board-region">Kannur</div>
+    </div>
+
+    <!-- Member 15 -->
+    <div class="board-box">
+      <div class="board-avatar-wrapper">
+        <div class="board-avatar-inner">
+          <img src="eva/14.png" onerror="this.style.display='none'">
+        </div>
+        <div class="board-avatar-decor"></div>
+      </div>
+      <div class="board-name">Pr. Shaji T Sam</div>
+      <div class="board-role">Board Member</div>
+      <div class="board-region">Kasaragod</div>
+    </div>
+
+    <!-- Note: Adding the remaining 3 board members present in the directory image to complete the board view -->
+    <!-- Member 16 -->
+    <div class="board-box">
+      <div class="board-avatar-wrapper">
+        <div class="board-avatar-inner">
+          <img src="eva/15.png" onerror="this.style.display='none'">
+        </div>
+        <div class="board-avatar-decor"></div>
+      </div>
+      <div class="board-name">Pr. Binoy K.</div>
+      <div class="board-role">Board Member</div>
+      <div class="board-region">District Center</div>
+    </div>
+
+    <!-- Member 17 -->
+    <div class="board-box">
+      <div class="board-avatar-wrapper">
+        <div class="board-avatar-inner">
+          <img src="eva/16.png" onerror="this.style.display='none'">
+        </div>
+        <div class="board-avatar-decor"></div>
+      </div>
+      <div class="board-name">Pr. Antony Mayue</div>
+      <div class="board-role">Board Member</div>
+      <div class="board-region">District Center</div>
+    </div>
+
+    <!-- Member 18 -->
+    <div class="board-box">
+      <div class="board-avatar-wrapper">
+        <div class="board-avatar-inner">
+          <img src="eva/17.png" onerror="this.style.display='none'">
+        </div>
+        <div class="board-avatar-decor"></div>
+      </div>
+      <div class="board-name">Pr. Shibu M. Thomas</div>
+      <div class="board-role">Board Member</div>
+      <div class="board-region">District Center</div>
+    </div>
+
   </div>
 </section>
 
@@ -249,23 +693,7 @@ footer a{color:var(--gold2);}
   </div>
 </section>
 
-<section class="sec" style="background:var(--ivory)">
-  <div class="cont">
-    <div class="sl rv">From the Field</div>
-    <h2 class="sh rv">Photo <em>Gallery</em></h2>
-    <div class="sr rv"></div>
-    <div class="gallery-grid rv">
-      <div class="gal-item"><img src="eva-g1.jpg" onerror="this.style.display='none'"><div class="gal-ph">📸</div></div>
-      <div class="gal-item"><img src="eva-g2.jpg" onerror="this.style.display='none'"><div class="gal-ph">📸</div></div>
-      <div class="gal-item"><img src="eva-g3.jpg" onerror="this.style.display='none'"><div class="gal-ph">📸</div></div>
-      <div class="gal-item"><img src="eva-g4.jpg" onerror="this.style.display='none'"><div class="gal-ph">📸</div></div>
-      <div class="gal-item"><img src="eva-g5.jpg" onerror="this.style.display='none'"><div class="gal-ph">📸</div></div>
-      <div class="gal-item"><img src="eva-g6.jpg" onerror="this.style.display='none'"><div class="gal-ph">📸</div></div>
-      <div class="gal-item"><img src="eva-g7.jpg" onerror="this.style.display='none'"><div class="gal-ph">📸</div></div>
-      <div class="gal-item"><img src="eva-g8.jpg" onerror="this.style.display='none'"><div class="gal-ph">📸</div></div>
-    </div>
-  </div>
-</section>
+
 
 <section class="dept-cta">
   <h3>Go. Preach. Make Disciples.</h3>

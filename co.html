@@ -39,19 +39,13 @@ a{text-decoration:none;color:inherit}
 .nb-back{font-size:.88rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.65rem 2rem;background:var(--c2);color:white;border-radius:50px;border:2px solid var(--c2);transition:all .22s}
 .nb-back:hover{background:transparent;color:var(--c2)}
 
-/* ═══════ HERO — fully revamped ═══════ */
+/* HERO */
 .dept-hero{min-height:100vh;position:relative;overflow:hidden;display:flex;align-items:center;padding-top:var(--nav);background:#1A0008}
-
-/* layered background */
 .hero-bg-gradient{position:absolute;inset:0;background:radial-gradient(ellipse 80% 70% at 30% 40%,#6B0026 0%,#3D0016 40%,#1A0008 70%,#0D0004 100%)}
 .hero-bg-gradient2{position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 80% 60%,rgba(204,0,102,.35) 0%,transparent 65%)}
 .hero-bg-gradient3{position:absolute;inset:0;background:radial-gradient(ellipse 40% 50% at 60% 20%,rgba(201,168,76,.12) 0%,transparent 60%)}
-
-/* geometry lines */
 .hero-geo{position:absolute;inset:0;pointer-events:none;overflow:hidden}
 .hero-geo svg{width:100%;height:100%;opacity:.18}
-
-/* stained-glass inspired orbs */
 .hero-orb{position:absolute;border-radius:50%;pointer-events:none}
 .hero-orb-1{width:700px;height:700px;left:-200px;top:-200px;background:radial-gradient(circle,rgba(107,0,38,.7) 0%,transparent 70%);animation:orbDrift1 14s ease-in-out infinite}
 .hero-orb-2{width:500px;height:500px;right:-100px;bottom:-100px;background:radial-gradient(circle,rgba(204,0,102,.5) 0%,transparent 70%);animation:orbDrift2 11s ease-in-out infinite}
@@ -59,16 +53,10 @@ a{text-decoration:none;color:inherit}
 @keyframes orbDrift1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(40px,30px) scale(1.07)}}
 @keyframes orbDrift2{0%,100%{transform:translate(0,0)}50%{transform:translate(-30px,-20px)}}
 @keyframes orbDrift3{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(20px,40px) scale(.9)}}
-
-/* canvas particles */
 #heroCanvas{position:absolute;inset:0;pointer-events:none}
-
-/* stained-glass cross */
 .hero-cross-wrap{position:absolute;right:4%;top:50%;transform:translateY(-50%);pointer-events:none;opacity:.07;animation:crossFloat 10s ease-in-out infinite}
 .hero-cross-wrap svg{width:min(52vw,600px);height:auto}
 @keyframes crossFloat{0%,100%{transform:translateY(-50%)}50%{transform:translateY(-52%)}}
-
-/* light rays */
 .hero-rays{position:absolute;inset:0;pointer-events:none;overflow:hidden}
 .hero-ray{position:absolute;top:0;left:50%;width:2px;background:linear-gradient(to bottom,rgba(201,168,76,.3),transparent);transform-origin:top center;animation:rayPulse 4s ease-in-out infinite}
 .hero-ray:nth-child(1){height:60%;transform:rotate(-35deg);animation-delay:0s}
@@ -77,33 +65,121 @@ a{text-decoration:none;color:inherit}
 .hero-ray:nth-child(4){height:55%;transform:rotate(20deg);animation-delay:.3s}
 .hero-ray:nth-child(5){height:75%;transform:rotate(38deg);animation-delay:.9s}
 @keyframes rayPulse{0%,100%{opacity:.3}50%{opacity:.7}}
-
-/* floating verse chips */
 .hero-chips{position:absolute;inset:0;pointer-events:none;overflow:hidden}
 .hero-chip{position:absolute;font-family:var(--fd);font-style:italic;font-size:.7rem;color:rgba(255,255,255,.15);white-space:nowrap;animation:chipFloat linear infinite}
 @keyframes chipFloat{0%{transform:translateY(0) translateX(0);opacity:0}10%{opacity:1}90%{opacity:.8}100%{transform:translateY(-120vh) translateX(40px);opacity:0}}
 
-.dh-content{position:relative;z-index:2;max-width:1360px;margin:0 auto;padding:4rem 3.5rem 5rem;width:100%;display:grid;grid-template-columns:1.1fr 1fr;gap:5rem;align-items:center}
+/* Hero Layout */
+.dh-content{position:relative;z-index:2;max-width:1440px;margin:0 auto;padding:4rem 3.5rem 5rem;width:100%;display:grid;grid-template-columns:1fr 1.35fr;gap:4rem;align-items:center}
 .dh-eyebrow{font-size:.85rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--gold2);margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem;opacity:0;animation:fadeUp .7s .2s var(--ease) forwards}
 .dh-eyebrow::before{content:'';width:30px;height:1.5px;background:var(--gold2)}
-.dh-title{font-family:var(--fd);font-size:clamp(3rem,6vw,7.5rem);font-weight:700;color:white;line-height:.88;letter-spacing:-.04em;margin-bottom:1.2rem;text-shadow:0 4px 40px rgba(0,0,0,.5);opacity:0;animation:fadeUp .9s .3s var(--ease) forwards}
+.dh-title{font-family:var(--fd);font-size:clamp(2.8rem,5.5vw,6rem);font-weight:700;color:white;line-height:.88;letter-spacing:-.04em;margin-bottom:1.2rem;text-shadow:0 4px 40px rgba(0,0,0,.5);opacity:0;animation:fadeUp .9s .3s var(--ease) forwards}
 .dh-title em{font-family:var(--fp);font-style:italic;font-weight:400;color:var(--gold2)}
-.dh-tagline{font-family:var(--fd);font-size:1.3rem;font-style:italic;color:rgba(255,255,255,.75);margin-bottom:1.8rem;opacity:0;animation:fadeUp .8s .45s var(--ease) forwards}
+.dh-tagline{font-family:var(--fd);font-size:1.2rem;font-style:italic;color:rgba(255,255,255,.75);margin-bottom:1.8rem;opacity:0;animation:fadeUp .8s .45s var(--ease) forwards}
 .dh-verse-hero{padding:1.2rem 1.6rem;background:rgba(255,255,255,.08);border-left:3px solid var(--gold2);border-radius:0 12px 12px 0;font-family:var(--fd);font-size:1rem;font-style:italic;color:rgba(255,255,255,.85);line-height:1.7;margin-bottom:2rem;opacity:0;animation:fadeUp .8s .5s var(--ease) forwards}
 .dh-tags{display:flex;flex-wrap:wrap;gap:.6rem;opacity:0;animation:fadeUp .8s .6s var(--ease) forwards}
-.dh-tag{font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:white;border:1.5px solid rgba(255,255,255,.3);padding:.45rem 1.1rem;border-radius:50px;background:rgba(255,255,255,.08);backdrop-filter:blur(4px)}
-.dh-right{opacity:0;animation:fadeRight .9s .5s var(--ease) forwards}
+.dh-tag{font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:white;border:1.5px solid rgba(255,255,255,.3);padding:.4rem 1rem;border-radius:50px;background:rgba(255,255,255,.08);backdrop-filter:blur(4px)}
+
+/* HERO RIGHT SECTION (Compact NC + 3 Board Members) */
+.dh-right{opacity:0;animation:fadeRight .9s .5s var(--ease) forwards; display:flex; flex-direction:column; gap:1.2rem;}
 @keyframes fadeRight{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:none}}
-.dh-card{background:rgba(255,255,255,.1);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.2);border-radius:24px;padding:2.5rem;box-shadow:0 24px 60px rgba(0,0,0,.3)}
-.dh-card h3{font-family:var(--fd);font-size:1.8rem;font-weight:700;color:white;margin-bottom:.4rem}
-.dh-card h3 em{font-family:var(--fp);font-style:italic;color:var(--gold2)}
-.dh-card p{font-size:.92rem;line-height:1.85;color:rgba(255,255,255,.75);margin-bottom:1.4rem}
-.dh-checklist{list-style:none;display:flex;flex-direction:column;gap:.7rem;margin-bottom:1.8rem}
-.dh-checklist li{display:flex;align-items:flex-start;gap:.75rem;font-size:.9rem;color:rgba(255,255,255,.8);line-height:1.5}
-.dh-checklist li::before{content:'✓';width:20px;height:20px;background:var(--gold2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.6rem;color:var(--dark);font-weight:700;flex-shrink:0;margin-top:.1rem}
-.dh-btn{display:inline-block;background:white;color:var(--c2);font-size:.88rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.85rem 2rem;border-radius:50px;transition:all .25s;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+
+/* Compact Need Counselling Banner */
+.compact-nc{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;padding:1.4rem 2rem;background:rgba(255,255,255,.08);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.2);border-radius:20px;box-shadow:0 16px 40px rgba(0,0,0,.2)}
+.cnc-text h3{font-family:var(--fd);font-size:1.6rem;font-weight:700;color:white;margin-bottom:.2rem; line-height:1;}
+.cnc-text h3 em{font-family:var(--fp);font-style:italic;color:var(--gold2)}
+.cnc-text p{font-size:.85rem;color:rgba(255,255,255,.75);margin:0;line-height:1.4}
+.dh-btn{display:inline-block;background:white;color:var(--c2);font-size:.8rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.8rem 1.6rem;border-radius:50px;transition:all .25s;box-shadow:0 8px 24px rgba(0,0,0,.25); flex-shrink:0; white-space:nowrap;}
 .dh-btn:hover{background:var(--gold2);color:var(--dark);transform:translateY(-2px)}
-.dh-scroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.4rem;font-size:.7rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.4);opacity:0;animation:fadeUp .7s .9s var(--ease) forwards}
+
+/* HERO PROFILE CARDS (Image Holders) */
+.hero-board-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Adaptive grid preventing cards layout collapse */
+  gap: 1.2rem;
+}
+
+.hero-profile-card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  aspect-ratio: 3 / 4; /* Hard-locks container shape regardless of incoming image files */
+  border: 1px solid rgba(255, 255, 255, .15);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, .3);
+  transition: transform .4s var(--ease), border-color .4s;
+  cursor: default;
+  width: 100%;
+}
+
+.hero-profile-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--gold2);
+}
+
+.hpc-img {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(204, 0, 102, .5), rgba(107, 0, 38, .8)); /* Safe fallback background */
+  overflow: hidden;
+  transition: transform .6s var(--ease);
+}
+
+/* Absolute Portrait Image Lock Constraints */
+.hpc-img img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit:fit; /* Crops image cleanly to prevent distortion or squash */
+  object-position: center top;
+  display: block;
+}
+
+.hero-profile-card:hover .hpc-img {
+  transform: scale(1.05);
+}
+
+/* Text Overlay Block Styles */
+.hpc-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem 1.2rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.4) 60%, transparent 100%);
+  z-index: 2;
+}
+
+.hpc-role {
+  font-size: .75rem;
+  font-weight: 700;
+  color: var(--gold2);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.2rem;
+}
+
+.hpc-name {
+  font-family: var(--fd);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: white;
+  line-height: 1.2;
+}
+
+/* Gradient Text Overlay at bottom */
+.hpc-overlay{position:absolute;inset:0;background:linear-gradient(to top, rgba(10,0,5,0.95) 0%, rgba(10,0,5,0.4) 40%, transparent 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:1.6rem 1.2rem;z-index:2;}
+.hpc-role{font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold2);margin-bottom:.3rem;}
+.hpc-name{font-family:var(--fd);font-size:1.45rem;font-weight:700;color:white;line-height:1.1;}
+
+/* Glazing effect for profiles */
+.hero-profile-card::after {content:'';position:absolute;top:0;left:-100%;width:50%;height:100%;background:linear-gradient(to right, transparent, rgba(255,255,255,0.15), transparent);transform:skewX(-20deg);transition:left 0.7s var(--ease);pointer-events:none;z-index:3;}
+.hero-profile-card:hover::after {left:150%;}
+
+.dh-scroll{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.4rem;font-size:.7rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.4);opacity:0;animation:fadeUp .7s .9s var(--ease) forwards}
 .dh-scroll-line{width:1.5px;height:36px;background:linear-gradient(to bottom,rgba(255,255,255,.4),transparent);animation:scrollPulse 2s ease-in-out infinite}
 @keyframes scrollPulse{0%,100%{opacity:.4}50%{opacity:.8}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
@@ -133,8 +209,6 @@ a{text-decoration:none;color:inherit}
 .what-sec{padding:7rem 0;background:var(--ivory)}
 .what-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;margin-top:4rem}
 .sub-h{font-family:var(--fd);font-size:1.55rem;font-weight:700;color:var(--text);margin-bottom:.7rem;margin-top:2rem}
-
-/* IS / IS NOT */
 .is-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:2rem}
 .is-box{background:white;border-radius:18px;padding:1.8rem;border:2px solid var(--ivory3);transition:all .35s}
 .is-box:hover{border-color:var(--c2);transform:translateY(-4px);box-shadow:0 14px 36px rgba(204,0,102,.1)}
@@ -157,8 +231,7 @@ a{text-decoration:none;color:inherit}
 .visual-sub{font-size:.75rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:.6rem;position:relative;z-index:1}
 .visual-pills{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-top:1.5rem;position:relative;z-index:1}
 .visual-pill{font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:white;border:1px solid rgba(255,255,255,.3);padding:.35rem .9rem;border-radius:50px;background:rgba(255,255,255,.08)}
-
-/* ═══ LEADERSHIP SECTION ═══ */
+/* ═════ EXTENDED LEADERSHIP SECTION ═══ */
 .leadership-sec{padding:7rem 0;background:var(--dark);position:relative;overflow:hidden}
 .leadership-bg{position:absolute;inset:0;pointer-events:none}
 .leadership-bg-orb1{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(107,0,38,.5) 0%,transparent 70%);top:-200px;left:-200px}
@@ -172,43 +245,287 @@ a{text-decoration:none;color:inherit}
 .ls-rule{width:40px;height:2.5px;background:var(--gold2);margin:0 auto 1.2rem}
 .ls-sub{font-size:.95rem;color:rgba(255,255,255,.45);max-width:480px;margin:0 auto;line-height:1.9}
 
-.ls-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;max-width:900px;margin:0 auto;position:relative;z-index:1}
+/* Base Section Setup */
+#counselling-board { 
+  background: var(--ivory2, #fbfafd); 
+  padding: 5rem 1.5rem; 
+  font-family: system-ui, -apple-system, sans-serif;
+}
 
-/* Leadership card */
-.lc{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:28px;padding:0;overflow:hidden;position:relative;transition:all .5s var(--ease);cursor:default}
-.lc::before{content:'';position:absolute;inset:0;border-radius:28px;background:linear-gradient(135deg,rgba(204,0,102,.2) 0%,transparent 60%);opacity:0;transition:opacity .5s}
-.lc:hover{transform:translateY(-10px);box-shadow:0 32px 80px rgba(0,0,0,.4);border-color:rgba(204,0,102,.4)}
-.lc:hover::before{opacity:1}
+#counselling-board .cont {
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
-/* card top accent */
-.lc-accent{height:5px;background:linear-gradient(90deg,var(--c1),var(--c2),var(--gold));animation:accentShimmer 3s linear infinite;background-size:200% 100%}
-@keyframes accentShimmer{0%{background-position:0%}100%{background-position:200%}}
+/* Header Component */
+.cb-head.rv { 
+  text-align: center; 
+  margin-bottom: 4rem; 
+}
 
-.lc-body{padding:2.2rem 2rem 2rem}
-.lc-avatar-wrap{position:relative;display:inline-block;margin-bottom:1.4rem}
-.lc-avatar{width:110px;height:110px;border-radius:50%;object-fit:cover;border:3px solid rgba(255,255,255,.15);display:block;background:linear-gradient(135deg,var(--c2),var(--c1));position:relative;z-index:1;transition:transform .4s var(--ease),border-color .4s}
-.lc:hover .lc-avatar{border-color:var(--gold2);transform:scale(1.05)}
-.lc-avatar-ring{position:absolute;inset:-6px;border-radius:50%;border:2px solid transparent;background:linear-gradient(135deg,var(--c2),var(--gold),var(--c2)) border-box;-webkit-mask:linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);-webkit-mask-composite:destination-out;mask-composite:exclude;opacity:0;transition:opacity .4s;animation:ringRotate 4s linear infinite}
-.lc:hover .lc-avatar-ring{opacity:1}
-@keyframes ringRotate{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+.cb-head .sl { 
+  display: flex;
+  justify-content: center;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--magenta, #cc0066);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
 
-/* placeholder avatar (when no image) */
-.lc-avatar-placeholder{width:110px;height:110px;border-radius:50%;border:3px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(107,0,38,.8),rgba(204,0,102,.6));position:relative;z-index:1;transition:transform .4s var(--ease),border-color .4s;font-family:var(--fd);font-size:2.5rem;font-weight:700;color:rgba(255,255,255,.6)}
-.lc:hover .lc-avatar-placeholder{border-color:var(--gold2);transform:scale(1.05)}
+.cb-head .sh {
+  font-family: var(--fd, serif);
+  font-size: 2.5rem;
+  color: var(--text, #222);
+  font-weight: 400;
+  margin: 0 0 1rem 0;
+}
 
-.lc-role-badge{display:inline-flex;align-items:center;gap:.4rem;font-size:.72rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold2);background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.25);padding:.35rem .9rem;border-radius:50px;margin-bottom:.8rem}
-.lc-name{font-family:var(--fd);font-size:1.7rem;font-weight:700;color:white;line-height:1.1;margin-bottom:.3rem}
-.lc-church{font-size:.82rem;font-weight:500;color:rgba(255,255,255,.4);margin-bottom:1rem;letter-spacing:.05em}
-.lc-divider{width:32px;height:1.5px;background:linear-gradient(90deg,var(--c2),transparent);margin-bottom:1rem}
-.lc-bio{font-size:.87rem;line-height:1.9;color:rgba(255,255,255,.55);margin-bottom:1.4rem}
-.lc-contact-row{display:flex;flex-wrap:wrap;gap:.5rem}
-.lc-contact-chip{display:flex;align-items:center;gap:.4rem;font-size:.75rem;color:rgba(255,255,255,.4);background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:.35rem .75rem;border-radius:50px;transition:all .3s}
-.lc:hover .lc-contact-chip{border-color:rgba(204,0,102,.3);color:rgba(255,255,255,.6)}
+.cb-head .sh em {
+  font-style: italic;
+  font-weight: 600;
+  color: var(--text, #222);
+}
 
-/* floating cross behind avatar */
-.lc-bg-cross{position:absolute;right:-10px;bottom:-10px;font-size:7rem;color:rgba(255,255,255,.03);font-family:serif;pointer-events:none;line-height:1}
+/* Elegant Center Accent Divider Line */
+.cb-head .sr {
+  width: 50px;
+  height: 3px;
+  background: var(--magenta, #cc0066);
+  border-radius: 2px;
+}
 
-/* info cards */
+/* Responsive Grid System (5 columns down to mobile-friendly) */
+.cb-grid.rv2 { 
+  display: grid; 
+  grid-template-columns: repeat(5, 1fr); 
+  gap: 1.5rem; 
+}
+
+@media (max-width: 1024px) {
+  .cb-grid.rv2 { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 768px) {
+  .cb-grid.rv2 { grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
+}
+@media (max-width: 480px) {
+  .cb-grid.rv2 { grid-template-columns: 1fr; }
+}
+
+#counselling-board { 
+  background: var(--ivory2, #f4f6f8); 
+  padding: 5rem 1.5rem; 
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+#counselling-board .cont {
+  max-width: 1250px;
+  margin: 0 auto;
+}
+
+/* Header Component */
+.cb-head.rv { 
+  text-align: center; 
+  margin-bottom: 4rem; 
+}
+
+.cb-head .sl { 
+  display: flex;
+  justify-content: center;
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #1a1a1a;
+  font-weight: 800;
+  margin-bottom: 0.4rem;
+}
+
+.cb-head .sh {
+  font-size: 2.6rem;
+  color: #ce0e8e; 
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin: 0 0 1.2rem 0;
+}
+
+.cb-head .sh em {
+  font-style: normal;
+  font-weight: 800;
+  color: #da0b7c;
+}
+
+.cb-head .sr {
+  width: 80px;
+  height: 4px;
+  background: #b90568;
+  border-radius: 2px;
+}
+
+/* Precise 5-Column Grid scheme */
+.cb-grid.rv2 { 
+  display: grid; 
+  grid-template-columns: repeat(5, 1fr); 
+  gap: 1.2rem; 
+}
+
+/* Card Design: Decreased Borders & Compact Padding */
+.cb-card { 
+  background: #ffffff; 
+  border-radius: 4px; 
+  padding: 0.4rem; /* Lowered padding makes image box fill up maximum space */
+  border: 1px solid #e2e8f0; /* Decreased border to thin lines */
+  box-shadow: 0 2px 8px rgba(204, 3, 87, 0.04);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center; 
+  cursor: default; 
+  display: flex;
+  flex-direction: column;
+}
+
+.cb-card:hover { 
+  transform: translateY(-4px); 
+  box-shadow: 0 10px 20px rgba(99, 3, 59, 0.12);
+}
+
+/* Photo Container: Scales natively inside box margins */
+.cb-photo { 
+  width: 100%; 
+  aspect-ratio: 3 / 4; 
+  overflow: hidden; 
+  background: #f0f0f0; 
+  position: relative;
+  margin-bottom: 0.5rem;
+}
+
+.cb-photo img { 
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; /* Forces the portrait images to expand fully into the frames */
+  transition: transform 0.3s ease;
+}
+
+.cb-card:hover .cb-photo img {
+  transform: scale(1.03);
+}
+
+/* Text elements styling */
+.cb-name { 
+  font-size: 0.95rem; 
+  font-weight: 700; 
+  color: #1a1a1a; 
+  line-height: 1.2; 
+  margin-bottom: 0.3rem; 
+  margin-top: auto;
+  text-transform: uppercase;
+}
+
+.cb-role {
+  font-size: 0.78rem;
+  color: #555555;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+/* Highlighted Design styling for Top Leaders (Bishop / Director) */
+.cb-card.featured {
+  border: 1px solid #49796b;
+}
+
+.cb-card.featured .cb-info-box {
+  background: #49796b;
+  padding: 0.5rem 0.2rem;
+  margin: 0 -0.4rem -0.4rem -0.4rem; /* Flushes box borders smoothly to match image layout */
+}
+
+.cb-card.featured .cb-name {
+  color: #ffffff;
+  font-size: 0.95rem;
+  margin-bottom: 0.1rem;
+}
+
+.cb-card.featured .cb-role {
+  color: #e2f0ed;
+  font-size: 0.75rem;
+}
+
+/* Contact Widget Panel Design from image layout */
+.cb-contact-card {
+  grid-column: 5;
+  grid-row: 3 / span 2; 
+  background: #558778;
+  color: #ffffff;
+  border-radius: 12px;
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.cb-contact-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.8rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 0.4rem;
+}
+
+.cb-contact-person {
+  margin-bottom: 0.8rem;
+}
+
+.cb-contact-name {
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.cb-contact-role {
+  font-size: 0.75rem;
+  opacity: 0.9;
+  margin-bottom: 0.1rem;
+}
+
+.cb-contact-phone {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffcc;
+}
+
+.cb-socials {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.cb-social-link {
+  font-size: 0.75rem;
+  padding: 0.3rem;
+  border-radius: 4px;
+  text-align: left;
+  font-weight: 600;
+}
+.cb-social-link.fb { background: #3b5998; }
+.cb-social-link.insta { background: #e1306c; }
+.cb-social-link.yt { background: #cc181e; }
+
+/* Responsive break anchors */
+@media (max-width: 1024px) {
+  .cb-grid.rv2 { grid-template-columns: repeat(3, 1fr); }
+  .cb-contact-card { grid-column: auto; grid-row: auto; }
+}
+@media (max-width: 768px) {
+  .cb-grid.rv2 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .cb-grid.rv2 { grid-template-columns: 1fr; }
+}
+
+/* INFO CARDS */
 .info-sec{padding:6rem 0;background:var(--ivory)}
 .info-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:3rem}
 .info-card{background:white;border-radius:20px;padding:2rem;border:2px solid var(--ivory3);transition:all .4s var(--ease);position:relative;overflow:hidden}
@@ -303,12 +620,10 @@ footer{background:var(--dark);padding:4rem 0 2rem}
 
 @media(max-width:1100px){
   .dh-content,.what-grid,.about-grid,.eq-grid{grid-template-columns:1fr;gap:3rem}
-  .dh-right{display:none}
   .stats-inner,.info-cards,.ds-grid{grid-template-columns:1fr 1fr}
   .stat-item:nth-child(2){border-right:none}
   .nb-links{display:none}
   .is-grid{grid-template-columns:1fr}
-  .ls-grid{grid-template-columns:1fr 1fr}
 }
 @media(max-width:768px){
   html{font-size:16px}
@@ -318,7 +633,30 @@ footer{background:var(--dark);padding:4rem 0 2rem}
   .dh-content,.sec-wrap,.about-grid,.eq-grid,.dc-inner,.ft-inner,.ft-bot{padding:0 1.5rem}
   .eq-form-wrap{padding:1.8rem 1.4rem}
   .dc-links{align-items:flex-start}
-  .ls-grid{grid-template-columns:1fr}
+  .board-grid{grid-template-columns:1fr}
+
+  /* Compact Banner Mobile Adjustments */
+  .compact-nc { flex-direction: column; text-align: center; justify-content: center; padding: 1.5rem; }
+  
+  /* Horizontal Scroll for Hero Profiles on Mobile */
+  .hero-board-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none; /* Firefox hide scrollbar */
+  }
+  .hero-board-grid::-webkit-scrollbar { display: none; } /* Chrome hide scrollbar */
+  
+  .hero-profile-card {
+    flex: 0 0 220px; /* Fixed width for horizontal scroll */
+    height: 300px; /* Fixed height to prevent hero getting too tall */
+    aspect-ratio: auto; /* override aspect ratio for fixed height */
+    scroll-snap-align: center;
+  }
 }
 </style>
 </head>
@@ -336,19 +674,13 @@ footer{background:var(--dark);padding:4rem 0 2rem}
   </div>
 </nav>
 
-<!-- ═══════════════ HERO ═══════════════ -->
 <div class="dept-hero">
-  <!-- layered gradient backgrounds -->
   <div class="hero-bg-gradient"></div>
   <div class="hero-bg-gradient2"></div>
   <div class="hero-bg-gradient3"></div>
-
-  <!-- animated orbs -->
   <div class="hero-orb hero-orb-1"></div>
   <div class="hero-orb hero-orb-2"></div>
   <div class="hero-orb hero-orb-3"></div>
-
-  <!-- light rays -->
   <div class="hero-rays">
     <div class="hero-ray"></div>
     <div class="hero-ray"></div>
@@ -356,22 +688,17 @@ footer{background:var(--dark);padding:4rem 0 2rem}
     <div class="hero-ray"></div>
     <div class="hero-ray"></div>
   </div>
-
-  <!-- floating verse chips -->
   <div class="hero-chips" id="heroChips"></div>
-
-  <!-- decorative cross SVG -->
   <div class="hero-cross-wrap">
     <svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg" fill="white">
       <rect x="120" y="0" width="60" height="400" rx="10"/>
       <rect x="0" y="120" width="300" height="60" rx="10"/>
     </svg>
   </div>
-
-  <!-- canvas particles -->
   <canvas id="heroCanvas"></canvas>
-
+  
   <div class="dh-content">
+    
     <div>
       <div class="dh-eyebrow">COG Kerala · Department</div>
       <div class="dh-title">Christian<br><em>Counselling</em></div>
@@ -384,26 +711,52 @@ footer{background:var(--dark);padding:4rem 0 2rem}
         <span class="dh-tag">50+ Trained Counsellors</span>
       </div>
     </div>
+    
     <div class="dh-right">
-      <div class="dh-card">
-        <h3>Need <em>Counselling?</em></h3>
-        <p>You are not alone. Our trained Christian counsellors are here to walk alongside you with compassion, prayer, and Biblical wisdom.</p>
-        <ul class="dh-checklist">
-          <li>Confidential &amp; compassionate support</li>
-          <li>Rooted in Biblical truth &amp; prayer</li>
-          <li>Available across all 14 districts</li>
-          <li>Marriage, family &amp; personal guidance</li>
-          <li>Crisis support around the clock</li>
-        </ul>
+      
+      <div class="compact-nc">
+        <div class="cnc-text">
+          <h3>Need <em>Counselling?</em></h3>
+          <p>Confidential &amp; compassionate support rooted in Biblical truth.</p>
+        </div>
         <a href="#enquiry" class="dh-btn">Request a Session ↓</a>
       </div>
-    </div>
-  </div>
-  <div class="dh-scroll"><span>Scroll</span><div class="dh-scroll-line"></div></div>
-</div>
 
-<!-- ═══════════════ STATS ═══════════════ -->
-<div class="stats-bar">
+      <div class="hero-board-grid">
+        
+        <div class="hero-profile-card rv">
+          <div class="hpc-img">
+            <img src="coun/1.png" alt="Chairman Portrait" onerror="this.style.display='none'">
+          </div>
+          <div class="hpc-overlay">
+            <div class="hpc-role">Director</div>
+            <div class="hpc-name">Rev. [Name]</div>
+          </div>
+        </div>
+                <div class="hero-profile-card rv3">
+          <div class="hpc-img">
+            <img src="coun/2.png" alt="Secretary Portrait" onerror="this.style.display='none'">
+          </div>
+          <div class="hpc-overlay">
+            <div class="hpc-role">Secretary</div>
+            <div class="hpc-name">Bro.Alan Balaji</div>
+          </div>
+        </div>
+
+        <div class="hero-profile-card rv2">
+          <div class="hpc-img">
+            <img src="coun/3.png" alt="Director Portrait" onerror="this.style.display='none'">
+          </div>
+          <div class="hpc-overlay">
+            <div class="hpc-role">Co-ordinator</div>
+            <div class="hpc-name">Rev. [Name]</div>
+          </div>
+        </div>
+
+
+
+      </div> </div> </div> <div class="dh-scroll"><span>Scroll</span><div class="dh-scroll-line"></div></div>
+</div> <div class="stats-bar">
   <div class="stats-inner">
     <div class="stat-item rv"><div class="stat-val">500+</div><div class="stat-lbl">Sessions Annually</div></div>
     <div class="stat-item rv"><div class="stat-val">14</div><div class="stat-lbl">Districts Covered</div></div>
@@ -411,8 +764,6 @@ footer{background:var(--dark);padding:4rem 0 2rem}
     <div class="stat-item rv2"><div class="stat-val">50+</div><div class="stat-lbl">Trained Counsellors</div></div>
   </div>
 </div>
-
-<!-- ═══════════════ WHAT IS CHRISTIAN COUNSELLING ═══════════════ -->
 <div class="what-sec">
   <div class="sec-wrap">
     <div class="rv">
@@ -464,7 +815,6 @@ footer{background:var(--dark);padding:4rem 0 2rem}
   </div>
 </div>
 
-<!-- ═══════════════ ABOUT DEPT ═══════════════ -->
 <div class="about-sec">
   <div class="sec-wrap">
     <div class="about-grid">
@@ -493,80 +843,170 @@ footer{background:var(--dark);padding:4rem 0 2rem}
     </div>
   </div>
 </div>
-
-<!-- ═══════════════ LEADERSHIP ═══════════════ -->
-<div class="leadership-sec">
-  <div class="leadership-bg">
-    <div class="leadership-bg-orb1"></div>
-    <div class="leadership-bg-orb2"></div>
-    <div class="leadership-bg-cross">✝</div>
-  </div>
-
-  <div class="sec-wrap">
-    <div class="ls-head rv">
-      <div class="ls-label">Meet Our Leadership</div>
-      <h2 class="ls-title">Department <em>Leaders</em></h2>
-      <div class="ls-rule"></div>
-      <p class="ls-sub">Serving with faith, compassion and a heart to restore lives across all of Kerala.</p>
+<section id="counselling-board">
+  <div class="cont">
+    <div class="cb-head rv">
+      <div class="sl">Church of God in India Kerala State</div>
+      <h2 class="sh">Counselling <em>Department</em></h2>
+      <div class="sr" style="margin:0 auto"></div>
     </div>
-
-    <div class="ls-grid">
-
-      <!-- Director Card -->
-      <div class="lc rv" id="lc-director">
-        <div class="lc-accent"></div>
-        <div class="lc-body">
-          <div class="lc-bg-cross">✝</div>
-          <div class="lc-avatar-wrap">
-            <!-- Replace src with actual photo URL. If no image, remove <img> and use the placeholder below -->
-            <div class="lc-avatar-placeholder" id="director-avatar">D</div>
-            <!-- Uncomment below and add photo src to use a real image:
-            <img class="lc-avatar" src="director-photo.jpg" alt="Director Photo" id="director-avatar">
-            -->
-            <div class="lc-avatar-ring"></div>
-          </div>
-          <div class="lc-role-badge">✝ Director</div>
-          <div class="lc-name">Rev. [Director Name]</div>
-          <div class="lc-church">COG Kerala · Counselling Department</div>
-          <div class="lc-divider"></div>
-          <p class="lc-bio">A seasoned pastor and trained counsellor with a calling to bring healing and restoration through the love of Christ. Leading the department's vision across all 14 districts of Kerala with compassion and Biblical wisdom.</p>
-          <div class="lc-contact-row">
-            <span class="lc-contact-chip">✉ director@cogkerala.org</span>
-            <span class="lc-contact-chip">📍 Kerala State</span>
-          </div>
+    
+    <div class="cb-grid rv2">
+      <!-- Row 1 -->
+      <div class="cb-card featured">
+        <div class="cb-photo">
+          <img src="Ps.jpg" alt="REV. Y. REJI" onerror="this.style.display='none'">
+        </div>
+        <div class="cb-info-box">
+          <div class="cb-name">REV. Y. REJI</div>
+          <div class="cb-role">ADMINISTRATIVE BISHOP</div>
         </div>
       </div>
-
-      <!-- Secretary Card -->
-      <div class="lc rv2" id="lc-secretary">
-        <div class="lc-accent"></div>
-        <div class="lc-body">
-          <div class="lc-bg-cross">✝</div>
-          <div class="lc-avatar-wrap">
-            <!-- Replace src with actual photo URL -->
-            <div class="lc-avatar-placeholder" id="secretary-avatar">S</div>
-            <!-- Uncomment below to use real image:
-            <img class="lc-avatar" src="secretary-photo.jpg" alt="Secretary Photo" id="secretary-avatar">
-            -->
-            <div class="lc-avatar-ring"></div>
-          </div>
-          <div class="lc-role-badge">✝ Secretary</div>
-          <div class="lc-name">Rev. [Secretary Name]</div>
-          <div class="lc-church">COG Kerala · Counselling Department</div>
-          <div class="lc-divider"></div>
-          <p class="lc-bio">A dedicated servant of the Lord committed to coordinating ministry efforts, supporting counsellors statewide, and ensuring that every person who reaches out receives timely, compassionate care.</p>
-          <div class="lc-contact-row">
-            <span class="lc-contact-chip">✉ secretary@cogkerala.org</span>
-            <span class="lc-contact-chip">📍 Kerala State</span>
-          </div>
+      
+      <div class="cb-card featured">
+        <div class="cb-photo">
+          <img src="coun/1.png" alt="PR. FINNY JOSEPH" onerror="this.style.display='none'">
         </div>
+        <div class="cb-info-box">
+          <div class="cb-name">PR. FINNY JOSEPH</div>
+          <div class="cb-role">DIRECTOR</div>
+        </div>
+      </div>
+      
+      <div class="cb-card">
+        <div class="cb-photo">
+          <img src="coun/2.png" alt="BR. ALAN BALAJI" onerror="this.style.display='none'">
+        </div>
+        <div class="cb-name">BR. ALAN BALAJI</div>
+        <div class="cb-role">STATE SECRETARY</div>
+      </div>
+      
+      <div class="cb-card">
+        <div class="cb-photo">
+          <img src="coun/3.png" alt="PR. SHERVIN VARGHESE" onerror="this.style.display='none'">
+        </div>
+        <div class="cb-name">PR. SHERVIN VARGHESE</div>
+        <div class="cb-role">COUNSELLING CO-ORDINATOR</div>
+      </div>
+      
+      <div class="cb-card">
+        <div class="cb-photo">
+          <img src="coun/4.png" alt="PR. SHAJI PHILIP" onerror="this.style.display='none'">
+        </div>
+        <div class="cb-name">PR. SHAJI PHILIP</div>
+        <div class="cb-role">PROGRAM CO-ORDINATOR</div>
+      </div>
+
+      <!-- Row 2 -->
+      <div class="cb-card">
+        <div class="cb-photo">
+          <img src="coun/5.png" alt="PR. JENSON JOY" onerror="this.style.display='none'">
+        </div>
+        <div class="cb-name">PR. JENSON JOY</div>
+        <div class="cb-role">TREASURER</div>
+      </div>
+      
+      <div class="cb-card">
+        <div class="cb-photo">
+          <img src="coun/6.png" alt="PR. JEPHI PHILIP" onerror="this.style.display='none'">
+        </div>
+        <div class="cb-name">PR. JEPHI PHILIP</div>
+        <div class="cb-role">JOINT SECRETARY</div>
+      </div>
+      
+      <div class="cb-card">
+        <div class="cb-photo">
+          <img src="coun/7.png" alt="PR. STANLEY JOY" onerror="this.style.display='none'">
+        </div>
+        <div class="cb-name">PR. STANLEY JOY</div>
+        <div class="cb-role">JOINT SECRETARY</div>
+      </div>
+      
+      <div class="cb-card">
+        <div class="cb-photo">
+          <img src="coun/8.png" alt="DR. JINOS P. GEORGE" onerror="this.style.display='none'">
+        </div>
+        <div class="cb-name">DR. JINOS P. GEORGE</div>
+        <div class="cb-role">COUNSELLING CONVENOR</div>
+      </div>
+      
+      <div class="cb-card">
+        <div class="cb-photo">
+          <img src="coun/9.png" alt="DR. EBENEZER M." onerror="this.style.display='none'">
+        </div>
+        <div class="cb-name">DR. EBENEZER M.</div>
+        <div class="cb-role">COUNSELLING CONVENOR</div>
+      </div>
+
+      <!-- Row 3 -->
+      <div class="cb-card">
+        <div class="cb-photo">
+          <img src="coun/10.png" alt="PR. CHRISTOPHER PHILIP" onerror="this.style.display='none'">
+        </div>
+        <div class="cb-name">PR. CHRISTOPHER PHILIP</div>
+        <div class="cb-role">PROGRAM CONVENOR</div>
+      </div>
+      
+      <div class="cb-card">
+        <div class="cb-photo">
+          <img src="coun/11.png" alt="PR. BENNY SAMUEL" onerror="this.style.display='none'">
+        </div>
+        <div class="cb-name">PR. BENNY SAMUEL</div>
+        <div class="cb-role">PROGRAM CONVENOR</div>
+      </div>
+      
+      <div class="cb-card">
+        <div class="cb-photo">
+          <img src="coun/12.png" alt="PR. MADHU V. M." onerror="this.style.display='none'">
+        </div>
+        <div class="cb-name">PR. MADHU V. M.</div>
+        <div class="cb-role">PROGRAM CONVENOR</div>
+      </div>
+
+       <div class="cb-card">
+        <div class="cb-photo">
+          <img src="coun/13.png" alt="BR. ISAAC ABRAHAM" onerror="this.style.display='none'">
+        </div>
+        <div class="cb-name">PR.JINU ABRAHAM</div>
+        <div class="cb-role">KIDS AND YOUTH</div>
+      </div>
+      <!-- Row 4 -->
+      <div class="cb-card">
+        <div class="cb-photo">
+          <img src="coun/14.png" alt="PR. SAJAN YOHANNAN" onerror="this.style.display='none'">
+        </div>
+        <div class="cb-name">PR. SAJAN YOHANNAN</div>
+        <div class="cb-role">YOUTH & KIDS</div>
+      </div>
+      
+      <div class="cb-card">
+        <div class="cb-photo">
+          <img src="coun/15.png" alt="PR. ABIN T. KURIAN" onerror="this.style.display='none'">
+        </div>
+        <div class="cb-name">PR. ABIN T. KURIAN</div>
+        <div class="cb-role">YOUTH & KIDS</div>
+      </div>
+      
+      <div class="cb-card">
+        <div class="cb-photo">
+          <img src="coun/16.png" alt="BR. ROY JOHN" onerror="this.style.display='none'">
+        </div>
+        <div class="cb-name">BR. ROY JOHN</div>
+        <div class="cb-role">MEDIA CONVENOR</div>
+      </div>
+      
+      <div class="cb-card">
+        <div class="cb-photo">
+          <img src="coun/17.png" alt="BR. ISAAC ABRAHAM" onerror="this.style.display='none'">
+        </div>
+        <div class="cb-name">BR. ISAAC ABRAHAM</div>
+        <div class="cb-role">MEDIA CONVENOR</div>
       </div>
 
     </div>
   </div>
-</div>
+</section>
 
-<!-- ═══════════════ SERVICES ═══════════════ -->
 <div class="services-sec">
   <div class="sec-wrap">
     <div class="ds-head rv">
@@ -616,7 +1056,6 @@ footer{background:var(--dark);padding:4rem 0 2rem}
   </div>
 </div>
 
-<!-- ═══════════════ ENQUIRY ═══════════════ -->
 <div class="enquiry-sec" id="enquiry">
   <div class="eq-cross">✝</div>
   <div class="sec-wrap">
@@ -730,7 +1169,6 @@ footer{background:var(--dark);padding:4rem 0 2rem}
   </div>
 </div>
 
-<!-- ═══════════════ CTA ═══════════════ -->
 <div class="dept-cta">
   <div class="dc-bg">COU</div>
   <div class="dc-inner">
@@ -743,7 +1181,6 @@ footer{background:var(--dark);padding:4rem 0 2rem}
   </div>
 </div>
 
-<!-- ═══════════════ FOOTER ═══════════════ -->
 <footer>
   <div class="ft-inner">
     <div class="ft-brand">Church of God<br>(Full Gospel) in India · <span>Kerala State</span></div>
@@ -863,11 +1300,11 @@ const IO = new IntersectionObserver(es => es.forEach(e => {
 document.querySelectorAll('.rv,.rv2,.rv3').forEach(el => IO.observe(el));
 
 /* ─── STAGGER CARDS ─── */
-['.ds-card','.info-card','.lc'].forEach(sel => {
+['.ds-card','.info-card','.bc-card','.hero-profile-card'].forEach(sel => {
   document.querySelectorAll(sel).forEach((c,i) => {
     Object.assign(c.style, {
       opacity:'0', transform:'translateY(28px)',
-      transition:`opacity .8s ${i*.12}s cubic-bezier(.16,1,.3,1), transform .8s ${i*.12}s cubic-bezier(.16,1,.3,1)`
+      transition:`opacity .8s ${(i%5)*.12}s cubic-bezier(.16,1,.3,1), transform .8s ${(i%5)*.12}s cubic-bezier(.16,1,.3,1)`
     });
     const io2 = new IntersectionObserver(([e]) => {
       if(e.isIntersecting){ c.style.opacity='1'; c.style.transform='none'; io2.unobserve(c); }

@@ -312,6 +312,200 @@ a{text-decoration:none;color:inherit;}
 .gal-item.large{grid-column:span 2;grid-row:span 2;}
 .gal-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.06);font-size:3rem;}
 
+/* ── BOARD OF EDUCATION CONTAINER ── */
+.edu-board-section {
+  padding: 60px 20px;
+  background-color: #f7f9fc;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+.edu-header {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.edu-tag {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #c49a45; /* Clean Gold Accent */
+  margin-bottom: 6px;
+}
+
+.edu-h2 {
+  font-size: 2rem;
+  color: #162231;
+  margin: 0 0 10px 0;
+  font-weight: 800;
+}
+
+.edu-h2 em {
+  font-style: normal;
+  color: #1e3d6b; /* Accent Blue */
+}
+
+.edu-subtitle {
+  font-size: 0.95rem;
+  color: #607289;
+  margin: 0;
+}
+
+/* ── COMPACT FLEXIBLE RESPONSIVE GRID ── */
+.edu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ── RECTANGULAR ANIMATED CARD COMPONENT ── */
+.edu-card {
+  background: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(22, 34, 49, 0.04);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  border: 1px solid #eaeef4;
+  
+  /* Smooth Initial Entrance State Setup */
+  opacity: 0;
+  transform: translateY(25px);
+  animation: eduFadeInUp 0.65s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+}
+
+@keyframes eduFadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Card Interaction Animations */
+.edu-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(30, 61, 107, 0.12);
+  border-color: rgba(30, 61, 107, 0.15);
+}
+
+/* Portrait Image Engine Container */
+.edu-img-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 120%; /* Ideal Compact Portrait Aspect Metric */
+  background-color: #f0f3f7;
+  overflow: hidden;
+}
+
+.edu-img-wrapper img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.4s ease;
+}
+
+/* Delicate picture zoom dynamic response on cursor hover */
+.edu-card:hover .edu-img-wrapper img {
+  transform: scale(1.05);
+}
+
+/* System Image Placeholder Backup Frame */
+.edu-ph {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1e3d6b, #2c5693);
+  color: #ffffff;
+  font-size: 2rem;
+}
+
+/* ── CARD INFORMATION DETAILS LOWER FRAME ── */
+.edu-info {
+  padding: 14px 12px;
+  text-align: center;
+  background: #ffffff;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.edu-name {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: #162231;
+  margin-bottom: 3px;
+  line-height: 1.25;
+  transition: color 0.3s ease;
+}
+
+.edu-card:hover .edu-name {
+  color: #1e3d6b;
+}
+
+.edu-pos {
+  font-size: 0.82rem;
+  color: #4b5d73;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.edu-phone {
+  font-size: 0.75rem;
+  color: #7f8e9f;
+  margin-top: 4px;
+}
+
+/* Prominent Accent Highlight Layer Styling for Patron Box */
+.edu-card.prime-leader {
+  border: 1px solid rgba(196, 154, 69, 0.3);
+}
+.edu-card.prime-leader .edu-info {
+  background: linear-gradient(to bottom, #ffffff, #fffdf9);
+}
+
+/* ── PHONE / TABLET SCREEN BREAKPOINTS ── */
+@media screen and (max-width: 768px) {
+  .edu-board-section {
+    padding: 40px 16px;
+  }
+  
+  .edu-h2 {
+    font-size: 1.65rem;
+  }
+
+  .edu-grid {
+    grid-template-columns: repeat(2, 1fr); /* Forms symmetrical 2-column setup on smaller screen profiles */
+    gap: 16px;
+  }
+
+  .edu-info {
+    padding: 12px 8px;
+  }
+
+  .edu-name {
+    font-size: 0.92rem;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .edu-grid {
+    gap: 12px; /* Pulls elements closer on extremely narrow mobile footprints */
+  }
+}
 /* ─── CTA ─────────────────────────────────────── */
 .cta-sec{background:var(--dark);padding:6rem 0;text-align:center;position:relative;overflow:hidden;}
 .cta-sec::before{content:'';position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:800px;height:400px;background:radial-gradient(ellipse,rgba(204,0,102,.1),transparent 70%);}
@@ -474,6 +668,12 @@ footer p{font-size:.78rem;color:rgba(255,255,255,.18);}
   </div>
 </section>
 
+
+
+
+
+```
+
 <!-- COLLEGES -->
 <section class="sec" id="colleges">
   <div class="cont">
@@ -614,41 +814,140 @@ footer p{font-size:.78rem;color:rgba(255,255,255,.18);}
     <h2 class="sh rv">Guiding <em>Minds & Souls</em></h2>
     <div class="sr rv"></div>
     <div class="lead-grid">
-      <div class="lead-card rv" data-d="1">
-        <div class="lc-photo">
-          <div class="lc-initials">SK</div>
-          <img src="https://static.wixstatic.com/media/667b04_493742ffe64141cd962a8de2d4df6df9~mv2.jpeg" alt="Dr. Shibu K Mathew" onerror="this.style.display='none'">
-          <div class="lc-badge"><div class="lc-badge-name">Dr. Shibu K Mathew</div><div class="lc-badge-title">Administrative Assistant · COG Kerala</div></div>
-        </div>
-        <div class="lc-body"><div class="lc-role">Administrative Assistant</div><div class="lc-desc">Administrative support and coordination for the COG Kerala State Education Department.</div></div>
-      </div>
+      
+      <!-- Card 1 -->
       <div class="lead-card rv" data-d="2">
         <div class="lc-photo">
           <div class="lc-initials">YR</div>
           <img src="https://static.wixstatic.com/media/667b04_b5370cc5d52f415bad9a4b0eb533d37d~mv2.jpeg" alt="Rev. Y Reji" onerror="this.style.display='none'">
-          <div class="lc-badge"><div class="lc-badge-name">Rev. Y Reji</div><div class="lc-badge-title">Administrative Bishop & State Overseer</div></div>
+          <div class="lc-badge">
+            <div class="lc-badge-name">Rev. Y Reji</div>
+            <div class="lc-badge-title">Administrative Bishop & State Overseer</div>
+          </div>
         </div>
-        <div class="lc-body"><div class="lc-role">Administrative Bishop · COG Kerala State</div><div class="lc-desc">State Overseer providing spiritual direction and administrative oversight for all COG Kerala ministries.</div></div>
+        <div class="lc-body">
+          <div class="lc-role">Administrative Bishop · COG Kerala State</div>
+          <div class="lc-desc">State Overseer providing spiritual direction and administrative oversight for all COG Kerala ministries.</div>
+        </div>
       </div>
+
+      <!-- Card 2 -->
+      <div class="lead-card rv" data-d="1">
+        <div class="lc-photo">
+          <div class="lc-initials">SK</div>
+          <img src="https://static.wixstatic.com/media/667b04_493742ffe64141cd962a8de2d4df6df9~mv2.jpeg" alt="Dr. Shibu K Mathew" onerror="this.style.display='none'">
+          <div class="lc-badge">
+            <div class="lc-badge-name">Dr. Shibu K Mathew</div>
+            <div class="lc-badge-title">Administrative Assistant · COG Kerala</div>
+          </div>
+        </div>
+        <div class="lc-body">
+          <div class="lc-role">Administrative Assistant</div>
+          <div class="lc-desc">Administrative support and coordination for the COG Kerala State Education Department.</div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
       <div class="lead-card rv" data-d="3">
         <div class="lc-photo">
           <div class="lc-initials">JT</div>
           <img src="https://static.wixstatic.com/media/667b04_84206a2f07744db09034b2ef986955e3~mv2.jpeg" alt="Dr. Jaison Thomas" onerror="this.style.display='none'">
-          <div class="lc-badge"><div class="lc-badge-name">Dr. Jaison Thomas</div><div class="lc-badge-title">Education Director · COG Kerala</div></div>
+          <div class="lc-badge">
+            <div class="lc-badge-name">Dr. Jaison Thomas</div>
+            <div class="lc-badge-title">Education Director · COG Kerala</div>
+          </div>
         </div>
-        <div class="lc-body"><div class="lc-role">State Education Director</div><div class="lc-desc">Overseeing all three Bible Colleges, curriculum development, and theological education policy for COG Kerala.</div></div>
+        <div class="lc-body">
+          <div class="lc-role">State Education Director</div>
+          <div class="lc-desc">Overseeing all three Bible Colleges, curriculum development, and theological education policy for COG Kerala.</div>
+        </div>
       </div>
+
+      <!-- Card 4 (Replaced CC Thomas with Ebby T Mammen) -->
       <div class="lead-card rv" data-d="4">
         <div class="lc-photo">
-          <div class="lc-initials">CC</div>
-          <img src="https://static.wixstatic.com/media/667b04_2da27523be0a4c8fa47fb400216e64db~mv2.jpeg" alt="Rev. C C Thomas" onerror="this.style.display='none'">
-          <div class="lc-badge"><div class="lc-badge-name">Rev. C C Thomas</div><div class="lc-badge-title">COG World Missions · South Asian Supt.</div></div>
+          <div class="lc-initials">EM</div>
+          <img src="edu/7.png" alt="Dr. Ebby T Mammen" onerror="this.style.display='none'">
+          <div class="lc-badge">
+            <div class="lc-badge-name">Dr. Ebby T Mammen</div>
+            <div class="lc-badge-title">Board Member · COG Kerala</div>
+          </div>
         </div>
-        <div class="lc-body"><div class="lc-role">South Asian Superintendent · COG World Missions</div><div class="lc-desc">Leading COG World Missions outreach and theological education initiatives across South Asia.</div></div>
+        <div class="lc-body">
+          <div class="lc-role">Board Member</div>
+          <div class="lc-desc">Advancing global educational programs and supporting administrative strategy for the community.</div>
+        </div>
       </div>
+
+      <!-- Card 5 -->
+      <div class="lead-card rv" data-d="5">
+        <div class="lc-photo">
+          <div class="lc-initials">CL</div>
+          <img src="edu/3.png" alt="Dr. C.T. Luiskutty" onerror="this.style.display='none'">
+          <div class="lc-badge">
+            <div class="lc-badge-name">Dr. C.T. Luiskutty</div>
+            <div class="lc-badge-title">Board Member · COG Kerala</div>
+          </div>
+        </div>
+        <div class="lc-body">
+          <div class="lc-role">Board Member</div>
+          <div class="lc-desc">Contributing valuable theological insights and educational governance to the state department.</div>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="lead-card rv" data-d="6">
+        <div class="lc-photo">
+          <div class="lc-initials">GR</div>
+          <img src="edu/4.png" alt="Dr. Giby Raphael" onerror="this.style.display='none'">
+          <div class="lc-badge">
+            <div class="lc-badge-name">Dr. Giby Raphael</div>
+            <div class="lc-badge-title">Board Member · COG Kerala</div>
+          </div>
+        </div>
+        <div class="lc-body">
+          <div class="lc-role">Board Member</div>
+          <div class="lc-desc">Assisting the department in expanding educational reach and global academic resource networking.</div>
+        </div>
+      </div>
+
+      <!-- Card 7 -->
+      <div class="lead-card rv" data-d="7">
+        <div class="lc-photo">
+          <div class="lc-initials">BE</div>
+          <img src="edu/5.png" alt="Dr. Biju Eapen" onerror="this.style.display='none'">
+          <div class="lc-badge">
+            <div class="lc-badge-name">Dr. Biju Eapen</div>
+            <div class="lc-badge-title">Board Member · COG Kerala</div>
+          </div>
+        </div>
+        <div class="lc-body">
+          <div class="lc-role">Board Member</div>
+          <div class="lc-desc">Providing structural direction and support for institutional development and community faith initiatives.</div>
+        </div>
+      </div>
+
+      <!-- Card 8 -->
+      <div class="lead-card rv" data-d="8">
+        <div class="lc-photo">
+          <div class="lc-initials">JJ</div>
+          <img src="edu/6.png" alt="Dr. Jessy Jaison" onerror="this.style.display='none'">
+          <div class="lc-badge">
+            <div class="lc-badge-name">Dr. Jessy Jaison</div>
+            <div class="lc-badge-title">Board Member · COG Kerala</div>
+          </div>
+        </div>
+        <div class="lc-body">
+          <div class="lc-role">Board Member</div>
+          <div class="lc-desc">Enriching educational policies, research frameworks, and curriculum assessment standards.</div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
+</section>
+
 
 <!-- WHY STUDY -->
 <section class="sec" id="why">
@@ -684,6 +983,374 @@ footer p{font-size:.78rem;color:rgba(255,255,255,.18);}
       <div class="quiz-card" id="quizCard">
         <!-- Questions rendered by JS -->
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     MOUNT ZION BIBLE SEMINARY — FACULTY DIRECTORY
+     ══════════════════════════════════════════════════ -->
+<section class="edu-board-section" id="education-board">
+  <div class="edu-header">
+    <p class="edu-tag">Kerala State</p>
+    <h2 class="edu-h2">Mount Zion Bible <em>Seminary Faculty</em></h2>
+    <p class="edu-subtitle">Church of God (Full Gospel) in India</p>
+  </div>
+
+  <div class="edu-grid">
+
+    <!-- CARD 1 -->
+    <div class="edu-card prime-leader">
+      <div class="edu-img-wrapper">
+        <img src="Ps.jpg" alt="Rev. Y. Reji" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="edu-ph" style="display:none">✝</div>
+      </div>
+      <div class="edu-info">
+        <div class="edu-name">REV. Y. REJI</div>
+        <div class="edu-pos">(Administrative Bishop)</div>
+        <div class="edu-phone">94469 11520</div>
+      </div>
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="edu-card">
+      <div class="edu-img-wrapper">
+        <img src="edu/1.png" alt="Dr. Shibu K. Mathew" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="edu-ph" style="display:none">✝</div>
+      </div>
+      <div class="edu-info">
+        <div class="edu-name">DR. SHIBU K. MATHEW</div>
+        <div class="edu-pos">(Administrative Assistant)</div>
+        <div class="edu-phone">94465 32838</div>
+      </div>
+    </div>
+
+    <!-- CARD 3 -->
+    <div class="edu-card">
+      <div class="edu-img-wrapper">
+        <img src="edu/2.png" alt="Dr. Jaison Thomas" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="edu-ph" style="display:none">✝</div>
+      </div>
+      <div class="edu-info">
+        <div class="edu-name">DR. JAISON THOMAS</div>
+        <div class="edu-pos">(Education Director)</div>
+        <div class="edu-phone">98462 74976</div>
+      </div>
+    </div>
+
+    <!-- CARD 4 -->
+    <div class="edu-card">
+      <div class="edu-img-wrapper">
+        <img src="edu/noble (1).png" alt="Rev. Noble Jacob" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="edu-ph" style="display:none">✝</div>
+      </div>
+      <div class="edu-info">
+        <div class="edu-name">REV. NOBLE JACOB</div>
+        <div class="edu-pos">(Principal)</div>
+        <div class="edu-phone">9947943584</div>
+      </div>
+    </div>
+
+    <!-- CARD 5 -->
+    <div class="edu-card">
+      <div class="edu-img-wrapper">
+        <img src="edu/ebenezer.png" alt="Rev. Ebenezer M." onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="edu-ph" style="display:none">✝</div>
+      </div>
+      <div class="edu-info">
+        <div class="edu-name">REV. EBENEZER M.</div>
+        <div class="edu-pos">(Registrar-in-Charge)</div>
+        <div class="edu-phone">7736325730</div>
+      </div>
+    </div>
+
+    <!-- CARD 6 -->
+    <div class="edu-card">
+      <div class="edu-img-wrapper">
+        <img src="edu/jevan.png" alt="Rev. Jean Alexander" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="edu-ph" style="display:none">✝</div>
+      </div>
+      <div class="edu-info">
+        <div class="edu-name">REV. JEAN ALEXANDER</div>
+        <div class="edu-pos">(Librarian)</div>
+        <div class="edu-phone">8547943453</div>
+      </div>
+    </div>
+
+    <!-- CARD 7 -->
+    <div class="edu-card">
+      <div class="edu-img-wrapper">
+        <img src="edu/be hm.png" alt="Rev. Ebenezer H. M." onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="edu-ph" style="display:none">✝</div>
+      </div>
+      <div class="edu-info">
+        <div class="edu-name">REV. EBENEZER H. M.</div>
+        <div class="edu-pos">(Dean of Student Affairs)</div>
+        <div class="edu-phone">9020111070</div>
+      </div>
+    </div>
+
+    <!-- CARD 8 -->
+    <div class="edu-card">
+      <div class="edu-img-wrapper">
+        <img src="edu/shalom.png" alt="Rev. Shalom J." onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="edu-ph" style="display:none">✝</div>
+      </div>
+      <div class="edu-info">
+        <div class="edu-name">REV. SHALOM J.</div>
+        <div class="edu-pos">(Chaplain)</div>
+        <div class="edu-phone">9655352521</div>
+      </div>
+    </div>
+
+    <!-- CARD 9 -->
+    <div class="edu-card">
+      <div class="edu-img-wrapper">
+        <img src="edu/jobin.png" alt="Rev. Jobin John" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="edu-ph" style="display:none">✝</div>
+      </div>
+      <div class="edu-info">
+        <div class="edu-name">REV. JOBIN JOHN</div>
+        <div class="edu-pos">(Warden)</div>
+        <div class="edu-phone">7510125413</div>
+      </div>
+    </div>
+
+    <!-- CARD 10 -->
+    <div class="edu-card">
+      <div class="edu-img-wrapper">
+        <img src="edu/vlesson.png" alt="Rev. Blesson Mathew Thomas" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="edu-ph" style="display:none">✝</div>
+      </div>
+      <div class="edu-info">
+        <div class="edu-name">REV. BLESSON MATHEW THOMAS</div>
+        <div class="edu-pos">(Practical Ministry)</div>
+        <div class="edu-phone">9447440122</div>
+      </div>
+    </div>
+
+    <!-- CARD 11 -->
+    <div class="edu-card">
+      <div class="edu-img-wrapper">
+        <img src="edu/pushpam.png" alt="Sis. Pushpam T. G." onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="edu-ph" style="display:none">✝</div>
+      </div>
+      <div class="edu-info">
+        <div class="edu-name">SIS. PUSHPAM T. G.</div>
+        <div class="edu-pos">Faculty Member</div>
+        <div class="edu-phone">9747010416</div>
+      </div>
+    </div>
+
+    <!-- CARD 12 -->
+    <div class="edu-card">
+      <div class="edu-img-wrapper">
+        <img src="edu/biju.png" alt="Rev. Biju B. Joseph" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="edu-ph" style="display:none">✝</div>
+      </div>
+      <div class="edu-info">
+        <div class="edu-name">REV. BIJU B. JOSEPH</div>
+        <div class="edu-pos">Faculty Member</div>
+        <div class="edu-phone">9447956356</div>
+      </div>
+    </div>
+
+    <!-- CARD 13 -->
+    <div class="edu-card">
+      <div class="edu-img-wrapper">
+        <img src="edu/mathew.png" alt="Rev. P. P. Mathew" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="edu-ph" style="display:none">✝</div>
+      </div>
+      <div class="edu-info">
+        <div class="edu-name">REV. P. P. MATHEW</div>
+        <div class="edu-pos">Faculty Member</div>
+        <div class="edu-phone">9947188677</div>
+      </div>
+    </div>
+
+    <!-- CARD 14 -->
+    <div class="edu-card">
+      <div class="edu-img-wrapper">
+        <img src="edu/samkutty.png" alt="Rev. Samkutty Varghese" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="edu-ph" style="display:none">✝</div>
+      </div>
+      <div class="edu-info">
+        <div class="edu-name">REV. SAMKUTTY VARGHESE</div>
+        <div class="edu-pos">Faculty Member</div>
+        <div class="edu-phone">8281264365</div>
+      </div>
+    </div>
+
+    <!-- CARD 15 -->
+    <div class="edu-card">
+      <div class="edu-img-wrapper">
+        <img src="edu/jince.png" alt="Rev. Jince P. Thomas" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="edu-ph" style="display:none">✝</div>
+      </div>
+      <div class="edu-info">
+        <div class="edu-name">REV. JINCE P. THOMAS</div>
+        <div class="edu-pos">Faculty Member</div>
+        <div class="edu-phone">9847376729</div>
+      </div>
+    </div>
+
+    <!-- CARD 16 -->
+    <div class="edu-card">
+      <div class="edu-img-wrapper">
+        <img src="edu/finny.png" alt="Rev. Finny Samson Thomas" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="edu-ph" style="display:none">✝</div>
+      </div>
+      <div class="edu-info">
+        <div class="edu-name">REV. FINNY SAMSON THOMAS</div>
+        <div class="edu-pos">(Office Secretary)</div>
+        <div class="edu-phone">9895407276</div>
+      </div>
+    </div>
+
+    <!-- CARD 17 -->
+    <div class="edu-card">
+      <div class="edu-img-wrapper">
+        <img src="edu/chinnu.png" alt="Sis. Chinnu Thomas" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="edu-ph" style="display:none">✝</div>
+      </div>
+      <div class="edu-info">
+        <div class="edu-name">SIS. CHINNU THOMAS</div>
+        <div class="edu-pos">(Computer Tutor)</div>
+        <div class="edu-phone">7510801717</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<section class="sec" id="leaders">
+  <div class="cont">
+    <div class="sl rv">MOUNT PARAN BIBLE COLLEGE KANNUR</div>
+    <h2 class="sh rv">Guiding <em>Minds & Souls</em></h2>
+    <div class="sr rv"></div>
+    <div class="lead-grid">
+      
+      <div class="lead-card rv" data-d="1">
+        <div class="lc-photo">
+          <div class="lc-initials">YR</div>
+          <img src="ps.jpg" alt="Rev. Y. Reji" onerror="this.style.display='none'">
+          <div class="lc-badge">
+            <div class="lc-badge-name">Rev. Y. Reji</div>
+            <div class="lc-badge-title">Administrative Bishop & State Overseer</div>
+          </div>
+        </div>
+        <div class="lc-body">
+          <div class="lc-role">Administrative Bishop · COG Kerala State</div>
+          <div class="lc-desc">State Overseer providing spiritual direction and administrative oversight for all COG Kerala ministries.</div>
+        </div>
+      </div>
+
+
+
+      <div class="lead-card rv" data-d="4">
+        <div class="lc-photo">
+          <div class="lc-initials">BG</div>
+          <img src="edu/m (1).png" alt="Pr. Binu P. George" onerror="this.style.display='none'">
+          <div class="lc-badge">
+            <div class="lc-badge-name">Pr. Binu P. George</div>
+            <div class="lc-badge-title">Principal · Mount Paran</div>
+          </div>
+        </div>
+        <div class="lc-body">
+          <div class="lc-role">Principal</div>
+          <div class="lc-desc">Directs local academic affairs, campus operations, and spiritual mentorship models at Mount Paran.</div>
+        </div>
+      </div>
+
+      <div class="lead-card rv" data-d="5">
+        <div class="lc-photo">
+          <div class="lc-initials">DR</div>
+          <img src="edu/m (2).png" alt="Pr. Dinkar R.S." onerror="this.style.display='none'">
+          <div class="lc-badge">
+            <div class="lc-badge-name">Pr. Dinkar R.S.</div>
+            <div class="lc-badge-title">Vice Principal · Mount Paran</div>
+          </div>
+        </div>
+        <div class="lc-body">
+          <div class="lc-role">Vice Principal</div>
+          <div class="lc-desc">Manages strategic faculty scheduling, institutional support structures, and student development plans.</div>
+        </div>
+      </div>
+
+      <div class="lead-card rv" data-d="6">
+        <div class="lc-photo">
+          <div class="lc-initials">SM</div>
+          <img src="edu/m (3).png" alt="Pr. Sebastian M.J." onerror="this.style.display='none'">
+          <div class="lc-badge">
+            <div class="lc-badge-name">Pr. Sebastian M.J.</div>
+            <div class="lc-badge-title">Academic Dean · Mount Paran</div>
+          </div>
+        </div>
+        <div class="lc-body">
+          <div class="lc-role">Academic Dean</div>
+          <div class="lc-desc">Oversees complete theological curriculum standards, grading parameters, and registry compliance.</div>
+        </div>
+      </div>
+
+      <div class="lead-card rv" data-d="7">
+        <div class="lc-photo">
+          <div class="lc-initials">JT</div>
+          <img src="edu/m (4).png" alt="Pr. Jaison Thomas" onerror="this.style.display='none'">
+          <div class="lc-badge">
+            <div class="lc-badge-name">Pr. Jaison Thomas</div>
+            <div class="lc-badge-title">Faculty Member · Mount Paran</div>
+          </div>
+        </div>
+        <div class="lc-body">
+          <div class="lc-role">Faculty Member</div>
+          <div class="lc-desc">Lectures on core theological paradigms and Biblical studies, nurturing systematic spiritual insights.</div>
+        </div>
+      </div>
+
+      <div class="lead-card rv" data-d="8">
+        <div class="lc-photo">
+          <div class="lc-initials">CP</div>
+          <img src="edu/m (5).png" alt="Pr. Christopher Philip" onerror="this.style.display='none'">
+          <div class="lc-badge">
+            <div class="lc-badge-name">Pr. Christopher Philip</div>
+            <div class="lc-badge-title">Faculty Member · Mount Paran</div>
+          </div>
+        </div>
+        <div class="lc-body">
+          <div class="lc-role">Faculty Member</div>
+          <div class="lc-desc">Instructs ministerial candidates on missiology frameworks and active community pastoral applications.</div>
+        </div>
+      </div>
+
+      <div class="lead-card rv" data-d="9">
+        <div class="lc-photo">
+          <div class="lc-initials">KE</div>
+          <img src="edu/m (6).png" alt="Pr. Kurian Eappen" onerror="this.style.display='none'">
+          <div class="lc-badge">
+            <div class="lc-badge-name">Pr. Kurian Eappen</div>
+            <div class="lc-badge-title">Faculty Member · Mount Paran</div>
+          </div>
+        </div>
+        <div class="lc-body">
+          <div class="lc-role">Faculty Member</div>
+          <div class="lc-desc">Guides programmatic campus spiritual development and systematic homiletics education tracks.</div>
+        </div>
+      </div>
+
+      <div class="lead-card rv" data-d="10">
+        <div class="lc-photo">
+          <div class="lc-initials">ST</div>
+          <img src="edu/m (7).png" alt="Pr. Shaiju Thomas" onerror="this.style.display='none'">
+          <div class="lc-badge">
+            <div class="lc-badge-name">Pr. Shaiju Thomas</div>
+            <div class="lc-badge-title">Faculty Member · Mount Paran</div>
+          </div>
+        </div>
+        <div class="lc-body">
+          <div class="lc-role">Faculty Member</div>
+          <div class="lc-desc">Supports local institutional research, academic counseling, and student resource programs.</div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
