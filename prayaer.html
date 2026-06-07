@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prayer Board — COG Kerala</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500;600;700&family=Pinyon+Script&display=swap" rel="stylesheet">
+<style>
+/* ─────────────────────────────────────────
+   ROOT TOKENS
+───────────────────────────────────────── */
+:root {
+  --pink:#E8477A;--pink2:#F06292;--pink3:#F8BBD9;--pink4:#FCE4EC;
+  --pink5:#FFF0F5;--pinkd:#C2185B;--pinkdd:#880E4F;
+  --rose:#FF4081;--blush:#FADADD;
+  --white:#FFFFFF;--off:#FFFBFD;
+  --text:#2D0A18;--text2:#5C2035;--text3:#9B6070;--text4:#C49AA8;
+  --gold:#C9A84C;--gold2:#E8C46A;
+  --shadow:0 4px 32px rgba(232,71,122,.09);
+  --shadow2:0 12px 48px rgba(232,71,122,.14);
+  --nav:68px;
+  --ease:cubic-bezier(.16,1,.3,1);
+  --f:'DM Sans',sans-serif;
+  --fl:'Lora',serif;
+  --fs:'Pinyon Script',cursive;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--f);background:var(--off);color:var(--text);overflow-x:hidden;}
+img{max-width:100%;display:block;}
+a{text-decoration:none;color:inherit;}
+button{cursor:pointer;font-family:var(--f);}
+textarea,input,select{font-family:var(--f);}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-thumb{background:var(--pink3);border-radius:4px;}
+
+/* ─────────────────────────────────────────
+   NAV
+───────────────────────────────────────── */
+#nav {
+  position:fixed;top:0;left:0;right:0;z-index:9000;
+  background:rgba(255,255,255,.97);
+  border-bottom:1px solid rgba(232,71,122,.1);
+  box-shadow:0 2px 20px rgba(232,71,122,.06);
+  backdrop-filter:blur(12px);
+}
+.nb{max-width:1400px;margin:0 auto;padding:0 1.5rem;height:var(--nav);display:flex;align-items:center;justify-content:space-between;}
+.nl{display:flex;align-items:center;gap:.75rem;}
+.nl-cross{font-family:var(--fl);font-size:1.6rem;color:var(--pink);line-height:1;}
+.nl-info .t1{font-family:var(--fl);font-size:.95rem;font-weight:600;color:var(--pink);}
+.nl-info .t2{font-size:.65rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);margin-top:1px;}
+.nav-links{display:flex;align-items:center;gap:.3rem;}
+.nav-link{font-size:.8rem;font-weight:600;letter-spacing:.06em;padding:.45rem 1rem;border-radius:50px;color:var(--text2);transition:all .2s;}
+.nav-link:hover,.nav-link.active{background:var(--pink4);color:var(--pink);}
+.nav-cta{font-size:.8rem;font-weight:700;letter-spacing:.08em;padding:.5rem 1.4rem;background:var(--pink);color:white;border-radius:50px;border:none;transition:all .22s;}
+.nav-cta:hover{background:var(--pinkd);transform:translateY(-1px);}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:4px;}
+.hamburger span{width:22px;height:2px;background:var(--pink);border-radius:2px;transition:all .3s;}
+
+/* ─────────────────────────────────────────
+   HERO
+───────────────────────────────────────── */
+.hero {
+  padding-top:var(--nav);
+  min-height:100vh;
+  background:linear-gradient(160deg,#fff 0%,#fff5f8 40%,#fce4ec 100%);
+  position:relative;overflow:hidden;
+  display:flex;align-items:center;
+}
+
+/* Soft floating circles */
+.hero-circle{position:absolute;border-radius:50%;pointer-events:none;}
+.hc1{width:600px;height:600px;background:radial-gradient(circle,rgba(248,187,217,.35),transparent 70%);top:-200px;right:-150px;animation:hcFloat 16s ease-in-out infinite;}
+.hc2{width:350px;height:350px;background:radial-gradient(circle,rgba(240,98,146,.15),transparent 70%);bottom:-80px;left:-80px;animation:hcFloat 12s ease-in-out infinite reverse;}
+.hc3{width:180px;height:180px;background:radial-gradient(circle,rgba(201,168,76,.12),transparent 70%);top:35%;left:40%;animation:hcFloat 9s ease-in-out infinite 2s;}
+@keyframes hcFloat{0%,100%{transform:translateY(0) scale(1);}50%{transform:translateY(-24px) scale(1.03);}}
+
+/* Petals */
+.petals{position:absolute;inset:0;overflow:hidden;pointer-events:none;}
+.petal{position:absolute;border-radius:50% 0 50% 0;animation:petalFall linear infinite;}
+@keyframes petalFall{0%{transform:translateY(-20px) rotate(0deg);opacity:0;}5%{opacity:.7;}95%{opacity:.5;}100%{transform:translateY(110vh) rotate(600deg);opacity:0;}}
+
+.hero-inner{max-width:1300px;margin:0 auto;padding:4rem 1.5rem;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;position:relative;z-index:1;}
+
+.hero-eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-size:.72rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--pink);background:var(--pink4);border:1px solid rgba(232,71,122,.2);border-radius:50px;padding:.35rem 1rem;margin-bottom:1.4rem;}
+.hero-eyebrow::before{content:'✦';font-size:.6rem;}
+
+.hero-title{font-family:var(--fl);font-size:clamp(3rem,5.5vw,6.5rem);font-weight:700;line-height:.95;color:var(--text);margin-bottom:.5rem;letter-spacing:-.02em;}
+.hero-title .script{display:block;font-family:var(--fs);font-size:.6em;font-weight:400;color:var(--pink);line-height:1.1;margin-bottom:.1em;}
+.hero-title .em{color:var(--pink);}
+
+.hero-sub{font-size:1rem;line-height:1.9;color:var(--text3);margin-bottom:2.2rem;max-width:440px;}
+
+.hero-btns{display:flex;gap:.8rem;flex-wrap:wrap;}
+.btn-primary{font-size:.85rem;font-weight:700;letter-spacing:.08em;padding:.8rem 2rem;background:var(--pink);color:white;border-radius:50px;border:none;transition:all .25s;box-shadow:0 4px 18px rgba(232,71,122,.3);}
+.btn-primary:hover{background:var(--pinkd);transform:translateY(-2px);box-shadow:0 8px 28px rgba(232,71,122,.4);}
+.btn-outline{font-size:.85rem;font-weight:700;letter-spacing:.08em;padding:.8rem 2rem;background:transparent;color:var(--pink);border:1.5px solid var(--pink);border-radius:50px;transition:all .25s;}
+.btn-outline:hover{background:var(--pink4);}
+
+/* Quick stats strip */
+.hero-stats{display:flex;gap:2.5rem;margin-top:2.5rem;padding-top:2rem;border-top:1px solid rgba(232,71,122,.12);}
+.hs-item .num{font-family:var(--fl);font-size:2rem;font-weight:700;color:var(--pink);}
+.hs-item .lbl{font-size:.65rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--text3);margin-top:2px;}
+
+/* Hero right — board main cards: 3 equal columns in one row */
+.hero-board{display:grid;grid-template-columns:repeat(3,1fr);gap:.85rem;max-width:520px;margin-left:auto;}
+.hero-board .span2{grid-column:unset;}
+
+.hb-card{background:white;border-radius:14px;overflow:hidden;box-shadow:var(--shadow2);transition:all .4s var(--ease);border:1.5px solid rgba(232,71,122,.08);}
+.hb-card:hover{transform:translateY(-5px);box-shadow:0 18px 50px rgba(232,71,122,.18);}
+.hb-card.featured{background:white;}
+
+/* Top bar */
+.hb-card::before{content:'';display:block;height:3px;background:linear-gradient(90deg,var(--pink),var(--pink2),var(--gold2));transform:scaleX(0);transform-origin:left;transition:transform .4s;}
+.hb-card:hover::before{transform:scaleX(1);}
+
+.hb-photo{width:100%;aspect-ratio:3/4;overflow:hidden;background:linear-gradient(145deg,var(--blush),var(--pink3));position:relative;}
+.hb-photo img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .5s var(--ease);}
+.hb-card:hover .hb-photo img{transform:scale(1.05);}
+.hb-photo-overlay{position:absolute;bottom:0;left:0;right:0;height:55%;background:linear-gradient(to top,rgba(45,10,24,.88),transparent);z-index:1;}
+.hb-badge{position:absolute;bottom:.5rem;left:.5rem;right:.5rem;z-index:2;}
+.hb-badge-name{font-family:var(--fl);font-size:.82rem;font-weight:700;color:white;line-height:1.15;}
+.hb-badge-role{font-size:.53rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold2);margin-top:.15rem;}
+.hb-body{padding:.75rem;background:white;}
+.hb-body p{font-size:.72rem;color:var(--text3);line-height:1.6;}
+
+/* Silhouette placeholder */
+.hb-sil{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
+.hb-sil svg{opacity:.18;}
+
+/* ─────────────────────────────────────────
+   SECTION BASE
+───────────────────────────────────────── */
+.sec{padding:5rem 0;position:relative;}
+.cont{max-width:1300px;margin:0 auto;padding:0 1.5rem;}
+.sec-tag{font-size:.72rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--pink);display:flex;align-items:center;gap:.6rem;margin-bottom:.8rem;}
+.sec-tag::before{content:'';width:20px;height:2px;background:linear-gradient(90deg,var(--pink),var(--gold2));}
+.sec-h{font-family:var(--fl);font-size:clamp(2.2rem,4vw,4.5rem);font-weight:700;line-height:.95;color:var(--text);margin-bottom:.5rem;}
+.sec-h em{font-style:italic;font-weight:500;color:var(--pink);}
+.sec-rule{width:40px;height:3px;background:linear-gradient(90deg,var(--pink),var(--gold2));margin-bottom:2.5rem;border-radius:2px;}
+
+/* Scroll reveal */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .85s var(--ease),transform .85s var(--ease);}
+.rv.on{opacity:1;transform:none;}
+.rv2{opacity:0;transform:translateY(26px);transition:opacity .85s .1s var(--ease),transform .85s .1s var(--ease);}
+.rv2.on{opacity:1;transform:none;}
+
+/* ─────────────────────────────────────────
+   BOARD MEMBERS SECTION
+───────────────────────────────────────── */
+.board-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;margin-top:2rem;}
+.bm-card{background:white;border-radius:12px;overflow:hidden;border:1.5px solid rgba(232,71,122,.1);transition:all .35s;cursor:default;}
+.bm-card:hover{transform:translateY(-5px);box-shadow:var(--shadow2);border-color:rgba(232,71,122,.3);}
+.bm-card::before{content:'';display:block;height:3px;background:linear-gradient(90deg,var(--pink),var(--pink2));transform:scaleX(0);transform-origin:left;transition:transform .4s;}
+.bm-card:hover::before{transform:scaleX(1);}
+.bm-photo{width:100%;aspect-ratio:1/1;overflow:hidden;background:linear-gradient(145deg,var(--pink5),var(--pink4));position:relative;}
+.bm-photo img{width:100%;height:100%;object-fit:fit;object-position:top;}
+.bm-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--fl);font-size:2rem;color:rgba(232,71,122,.18);}
+.bm-info{padding:.75rem .9rem .9rem;}
+.bm-name{font-family:var(--fl);font-size:.9rem;font-weight:700;color:var(--text);}
+.bm-pos{font-size:.6rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--pink);margin-top:.15rem;}
+.bm-zone{font-size:.7rem;color:var(--text3);margin-top:.1rem;}
+
+@media(max-width:1100px){.board-grid{grid-template-columns:repeat(4,1fr);}}
+@media(max-width:800px){.board-grid{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:560px){.board-grid{grid-template-columns:repeat(2,1fr);}}
+
+/* ─────────────────────────────────────────
+   PRAYER REQUEST SECTION
+───────────────────────────────────────── */
+.prayer-section{background:linear-gradient(160deg,#fff5f8,#fff,#fce4ec);}
+.prayer-layout{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;}
+
+/* Form */
+.prayer-form-wrap{background:white;border-radius:24px;padding:2.5rem;box-shadow:var(--shadow2);border:1.5px solid rgba(232,71,122,.1);}
+.prayer-form-title{font-family:var(--fl);font-size:1.6rem;font-weight:700;color:var(--text);margin-bottom:.4rem;}
+.prayer-form-sub{font-size:.88rem;color:var(--text3);margin-bottom:1.8rem;line-height:1.7;}
+
+.form-row{margin-bottom:1.2rem;}
+.form-row label{display:block;font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text2);margin-bottom:.5rem;}
+.form-row input,.form-row select,.form-row textarea{
+  width:100%;border:1.5px solid rgba(232,71,122,.15);border-radius:12px;
+  padding:.8rem 1rem;font-size:.9rem;color:var(--text);background:var(--pink5);
+  outline:none;transition:border-color .2s,background .2s;
+  resize:vertical;
+}
+.form-row input:focus,.form-row select:focus,.form-row textarea:focus{
+  border-color:var(--pink);background:white;box-shadow:0 0 0 3px rgba(232,71,122,.08);
+}
+.form-row textarea{min-height:110px;}
+.form-row select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23E8477A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;cursor:pointer;}
+
+.form-row-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+
+/* Anonymous toggle */
+.anon-row{display:flex;align-items:center;gap:.7rem;margin-bottom:1.4rem;}
+.toggle-sw{position:relative;width:44px;height:24px;flex-shrink:0;}
+.toggle-sw input{opacity:0;width:0;height:0;}
+.toggle-track{position:absolute;inset:0;background:var(--pink3);border-radius:50px;cursor:pointer;transition:background .25s;}
+.toggle-sw input:checked + .toggle-track{background:var(--pink);}
+.toggle-track::before{content:'';position:absolute;left:3px;top:3px;width:18px;height:18px;background:white;border-radius:50%;transition:transform .25s;box-shadow:0 1px 4px rgba(0,0,0,.15);}
+.toggle-sw input:checked + .toggle-track::before{transform:translateX(20px);}
+.anon-label{font-size:.83rem;color:var(--text2);}
+
+.submit-btn{width:100%;padding:.9rem;background:linear-gradient(135deg,var(--pink),var(--pinkd));color:white;border:none;border-radius:50px;font-size:.9rem;font-weight:700;letter-spacing:.08em;transition:all .25s;box-shadow:0 4px 18px rgba(232,71,122,.3);}
+.submit-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(232,71,122,.4);}
+
+.form-success{display:none;text-align:center;padding:2rem;background:var(--pink5);border-radius:18px;border:1.5px solid rgba(232,71,122,.2);}
+.form-success .check{font-size:2.5rem;margin-bottom:.8rem;}
+.form-success h4{font-family:var(--fl);font-size:1.2rem;color:var(--pinkd);margin-bottom:.4rem;}
+.form-success p{font-size:.9rem;color:var(--text3);line-height:1.7;}
+
+/* Prayer wall (right column) */
+.prayer-wall-title{font-family:var(--fl);font-size:1.4rem;font-weight:700;color:var(--text);margin-bottom:.3rem;}
+.prayer-wall-sub{font-size:.85rem;color:var(--text3);margin-bottom:1.4rem;line-height:1.7;}
+
+.prayer-filter{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.4rem;}
+.pf-btn{font-size:.72rem;font-weight:700;letter-spacing:.08em;padding:.38rem .9rem;border-radius:50px;border:1.5px solid rgba(232,71,122,.2);background:white;color:var(--text3);transition:all .2s;cursor:pointer;}
+.pf-btn:hover,.pf-btn.active{background:var(--pink);color:white;border-color:var(--pink);}
+
+.prayers-list{display:flex;flex-direction:column;gap:.8rem;max-height:480px;overflow-y:auto;padding-right:.3rem;}
+.prayers-list::-webkit-scrollbar{width:3px;}
+.prayers-list::-webkit-scrollbar-thumb{background:var(--pink3);}
+
+.prayer-card{background:white;border-radius:14px;padding:1.2rem 1.4rem;border:1.5px solid rgba(232,71,122,.1);transition:all .3s;position:relative;}
+.prayer-card:hover{border-color:rgba(232,71,122,.3);box-shadow:0 4px 18px rgba(232,71,122,.08);}
+.prayer-card-head{display:flex;align-items:flex-start;gap:.8rem;margin-bottom:.6rem;}
+.prayer-avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--pink4),var(--pink3));display:flex;align-items:center;justify-content:center;font-family:var(--fl);font-size:.9rem;font-weight:700;color:var(--pink);flex-shrink:0;}
+.prayer-meta{flex:1;}
+.prayer-name{font-size:.85rem;font-weight:700;color:var(--text);}
+.prayer-date{font-size:.68rem;color:var(--text4);margin-top:1px;}
+.prayer-cat{font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.18rem .6rem;border-radius:50px;position:absolute;top:.9rem;right:.9rem;}
+.cat-healing{background:rgba(232,71,122,.1);color:var(--pinkd);}
+.cat-family{background:rgba(201,168,76,.12);color:#8B6914;}
+.cat-finance{background:rgba(66,165,245,.1);color:#1565C0;}
+.cat-guidance{background:rgba(102,187,106,.1);color:#2E7D32;}
+.cat-salvation{background:rgba(171,71,188,.1);color:#7B1FA2;}
+.cat-other{background:rgba(158,158,158,.1);color:#616161;}
+
+.prayer-text{font-size:.84rem;color:var(--text2);line-height:1.75;}
+.prayer-actions{display:flex;align-items:center;gap:.8rem;margin-top:.9rem;padding-top:.7rem;border-top:1px solid rgba(232,71,122,.07);}
+.pray-btn{display:flex;align-items:center;gap:.4rem;font-size:.75rem;font-weight:700;color:var(--text3);background:none;border:1px solid rgba(232,71,122,.15);border-radius:50px;padding:.3rem .8rem;transition:all .2s;}
+.pray-btn:hover,.pray-btn.prayed{background:var(--pink4);color:var(--pink);border-color:var(--pink);}
+.pray-btn .icon{font-size:.8rem;}
+.answered-badge{display:inline-flex;align-items:center;gap:.3rem;font-size:.68rem;font-weight:700;color:#2E7D32;background:rgba(102,187,106,.12);border-radius:50px;padding:.2rem .6rem;margin-left:auto;}
+
+/* ─────────────────────────────────────────
+   BIBLE VERSE PICKER
+───────────────────────────────────────── */
+.verse-section{background:linear-gradient(160deg,#fff,#fff5f8);}
+.verse-picker{max-width:760px;margin:0 auto;text-align:center;}
+
+/* Step indicator */
+.steps-row{display:flex;align-items:center;justify-content:center;gap:.5rem;margin-bottom:2.5rem;}
+.step-dot{width:10px;height:10px;border-radius:50%;background:var(--pink3);transition:all .4s;}
+.step-dot.active{background:var(--pink);transform:scale(1.4);}
+.step-dot.done{background:var(--gold2);}
+
+/* Step panels */
+.vp-panel{display:none;animation:fadeSlide .5s var(--ease);}
+.vp-panel.active{display:block;}
+@keyframes fadeSlide{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:none;}}
+
+/* Step 0 — intro */
+.vp-intro-icon{font-size:3.5rem;margin-bottom:1rem;}
+.vp-intro-h{font-family:var(--fl);font-size:2rem;font-weight:700;color:var(--text);margin-bottom:.6rem;}
+.vp-intro-p{font-size:.95rem;color:var(--text3);line-height:1.8;margin-bottom:1.8rem;}
+
+/* Step 1 — feeling picker */
+.vp-q{font-family:var(--fl);font-size:1.6rem;font-weight:600;color:var(--text);margin-bottom:.5rem;}
+.vp-qsub{font-size:.88rem;color:var(--text3);margin-bottom:2rem;}
+.feelings-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;text-align:left;}
+.feeling-btn{background:white;border:1.5px solid rgba(232,71,122,.15);border-radius:14px;padding:1.1rem 1.3rem;cursor:pointer;transition:all .3s;display:flex;align-items:center;gap:.8rem;}
+.feeling-btn:hover{border-color:var(--pink);background:var(--pink5);transform:translateY(-3px);box-shadow:0 6px 20px rgba(232,71,122,.1);}
+.feeling-btn.selected{border-color:var(--pink);background:var(--pink4);box-shadow:0 4px 16px rgba(232,71,122,.15);}
+.feeling-icon{font-size:1.5rem;flex-shrink:0;}
+.feeling-name{font-size:.9rem;font-weight:700;color:var(--text);}
+.feeling-sub{font-size:.72rem;color:var(--text3);margin-top:.1rem;line-height:1.3;}
+
+/* Step 2 — folder picker */
+.vp-folder-intro{font-size:.88rem;color:var(--text3);margin-bottom:1.6rem;line-height:1.8;}
+.folders-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.9rem;text-align:left;margin-bottom:1.5rem;}
+.folder-btn{background:white;border:1.5px solid rgba(232,71,122,.12);border-radius:14px;padding:1.2rem 1.4rem;cursor:pointer;transition:all .3s;display:flex;align-items:center;gap:.9rem;}
+.folder-btn:hover{border-color:var(--pink);transform:translateY(-3px);box-shadow:0 6px 20px rgba(232,71,122,.1);}
+.folder-btn.selected{border-color:var(--pink);background:var(--pink5);}
+.folder-icon{font-size:1.8rem;flex-shrink:0;}
+.folder-name{font-family:var(--fl);font-size:1rem;font-weight:700;color:var(--text);}
+.folder-desc{font-size:.73rem;color:var(--text3);margin-top:.15rem;line-height:1.4;}
+
+/* Step 3 — verse cards scroll */
+.verses-scroll{display:grid;grid-template-columns:repeat(2,1fr);gap:.8rem;margin-bottom:1.5rem;max-height:380px;overflow-y:auto;padding:.2rem;}
+.verses-scroll::-webkit-scrollbar{width:3px;}
+.verses-scroll::-webkit-scrollbar-thumb{background:var(--pink3);}
+.verse-choice-card{background:white;border:1.5px solid rgba(232,71,122,.12);border-radius:12px;padding:1rem 1.2rem;cursor:pointer;transition:all .3s;text-align:left;}
+.verse-choice-card:hover{border-color:var(--pink);background:var(--pink5);}
+.verse-choice-card.selected{border-color:var(--pink);background:var(--pink4);box-shadow:0 4px 16px rgba(232,71,122,.15);}
+.vc-ref{font-family:var(--fl);font-size:.95rem;font-weight:700;color:var(--pinkd);margin-bottom:.35rem;}
+.vc-preview{font-size:.78rem;color:var(--text3);line-height:1.6;font-style:italic;}
+
+/* Step 4 — full verse display */
+.verse-reveal{background:white;border-radius:24px;padding:3rem 2.5rem;box-shadow:var(--shadow2);border:1.5px solid rgba(232,71,122,.15);position:relative;overflow:hidden;text-align:left;}
+.verse-reveal::before{content:'\201C';font-family:var(--fl);font-size:9rem;color:rgba(232,71,122,.06);position:absolute;top:-2rem;left:1rem;line-height:1;pointer-events:none;}
+.verse-full-text{font-family:var(--fl);font-size:1.3rem;font-style:italic;color:var(--text);line-height:1.75;margin-bottom:1.5rem;position:relative;z-index:1;}
+.verse-reference{font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--pink);margin-bottom:1.5rem;}
+.verse-meaning{font-size:.88rem;color:var(--text3);line-height:1.8;padding:1.2rem 1.4rem;background:var(--pink5);border-radius:14px;border-left:3px solid var(--pink);margin-bottom:1.5rem;}
+.verse-actions{display:flex;gap:.8rem;flex-wrap:wrap;}
+.va-btn{font-size:.8rem;font-weight:700;padding:.6rem 1.4rem;border-radius:50px;border:1.5px solid var(--pink);color:var(--pink);background:white;transition:all .2s;cursor:pointer;}
+.va-btn:hover{background:var(--pink);color:white;}
+.va-btn.primary{background:var(--pink);color:white;}
+.va-btn.primary:hover{background:var(--pinkd);}
+
+/* Picker navigation */
+.vp-nav{display:flex;justify-content:center;gap:.8rem;margin-top:1.5rem;}
+.vp-nav-btn{font-size:.82rem;font-weight:700;padding:.6rem 1.4rem;border-radius:50px;border:1.5px solid rgba(232,71,122,.25);background:white;color:var(--text3);transition:all .2s;cursor:pointer;}
+.vp-nav-btn:hover{border-color:var(--pink);color:var(--pink);}
+.vp-nav-btn.next{background:var(--pink);color:white;border-color:var(--pink);}
+.vp-nav-btn.next:hover{background:var(--pinkd);}
+
+/* ─────────────────────────────────────────
+   PRAYER POINTS / SCHEDULE
+───────────────────────────────────────── */
+.pp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:2rem;}
+.pp-card{background:white;border-radius:18px;padding:1.8rem;border:1.5px solid rgba(232,71,122,.1);transition:all .4s;position:relative;overflow:hidden;}
+.pp-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--pink),var(--gold2));transform:scaleX(0);transform-origin:left;transition:transform .4s;}
+.pp-card:hover::after{transform:scaleX(1);}
+.pp-card:hover{transform:translateY(-4px);box-shadow:var(--shadow2);}
+.pp-icon{font-size:2rem;margin-bottom:.8rem;}
+.pp-title{font-family:var(--fl);font-size:1.15rem;font-weight:700;color:var(--text);margin-bottom:.4rem;}
+.pp-desc{font-size:.85rem;color:var(--text3);line-height:1.8;}
+
+/* ─────────────────────────────────────────
+   CTA
+───────────────────────────────────────── */
+.cta-section{background:linear-gradient(135deg,var(--pinkdd),var(--pinkd),var(--pink));padding:5rem 0;text-align:center;position:relative;overflow:hidden;}
+.cta-section::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");}
+.cta-section h3{font-family:var(--fl);font-size:clamp(2rem,4vw,3.5rem);font-weight:700;color:white;margin-bottom:.8rem;position:relative;}
+.cta-section p{font-size:1rem;color:rgba(255,255,255,.7);margin-bottom:2rem;position:relative;}
+.cta-btn-w{display:inline-block;font-size:.85rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.85rem 2.2rem;background:white;color:var(--pinkd);border-radius:50px;margin:.3rem;transition:all .25s;}
+.cta-btn-w:hover{background:var(--pink5);transform:translateY(-2px);}
+.cta-btn-o{display:inline-block;font-size:.85rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.85rem 2.2rem;background:transparent;color:white;border:2px solid rgba(255,255,255,.5);border-radius:50px;margin:.3rem;transition:all .25s;}
+.cta-btn-o:hover{background:rgba(255,255,255,.15);}
+
+footer{background:#1A050E;padding:2rem 0;text-align:center;}
+footer p{font-size:.83rem;color:rgba(255,255,255,.3);}
+footer a{color:var(--gold2);}
+
+/* ─────────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────────── */
+@media(max-width:1024px){
+  .hero-inner{gap:2rem;}
+  .hero-board{grid-template-columns:repeat(2,1fr);}
+  .prayer-layout{gap:2rem;}
+  .pp-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:900px){
+  .hero-inner{grid-template-columns:1fr;}
+  .prayer-layout{grid-template-columns:1fr;}
+  .pp-grid{grid-template-columns:1fr 1fr;}
+  .nav-links{display:none;}
+}
+@media(max-width:640px){
+  .hero-board{grid-template-columns:1fr;max-width:300px;margin:0 auto;}
+  .feelings-grid{grid-template-columns:1fr 1fr;}
+  .folders-grid{grid-template-columns:1fr;}
+  .verses-scroll{grid-template-columns:1fr;}
+  .pp-grid{grid-template-columns:1fr;}
+  .form-row-2{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     NAV
+══════════════════════════════════════ -->
+<nav id="nav">
+  <div class="nb">
+    <a href="home.html" class="nl">
+      <div class="nl-cross">✝</div>
+      <div class="nl-info">
+        <div class="t1">Church of God (Full Gospel)</div>
+        <div class="t2">Kerala State · India</div>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="#board" class="nav-link">Board</a>
+      <a href="#prayer-wall" class="nav-link">Prayer Wall</a>
+      <a href="#verse-picker" class="nav-link">Scripture</a>
+      <a href="#prayer-points" class="nav-link">Prayer Guide</a>
+    </div>
+    <a href="#prayer-wall" class="nav-cta">🙏 Request Prayer</a>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════
+     HERO
+══════════════════════════════════════ -->
+<section class="hero" id="top">
+  <div class="hero-circle hc1"></div>
+  <div class="hero-circle hc2"></div>
+  <div class="hero-circle hc3"></div>
+  <div class="petals" id="petals"></div>
+
+  <div class="hero-inner">
+    <!-- Left text -->
+    <div class="hero-left">
+      <div class="hero-eyebrow">Prayer Board Ministry</div>
+      <h1 class="hero-title">
+        <span class="script">A House of</span>
+        <span class="em">Prayer</span><br>for All People
+      </h1>
+      <p class="hero-sub">
+        United in intercession — lifting every burden, family, and nation to the 
+        throne of grace. Submit your prayer request, find a word from God, and 
+        join thousands of believers praying together across Kerala.
+      </p>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="scrollTo('#prayer-wall')">🙏 Submit Prayer Request</button>
+        <button class="btn-outline" onclick="scrollTo('#verse-picker')">📖 Find a Scripture</button>
+      </div>
+      <div class="hero-stats">
+        <div class="hs-item">
+          <div class="num">2,400+</div>
+          <div class="lbl">Prayers Lifted</div>
+        </div>
+        <div class="hs-item">
+          <div class="num">500+</div>
+          <div class="lbl">Local Churches</div>
+        </div>
+        <div class="hs-item">
+          <div class="num">Daily</div>
+          <div class="lbl">Prayer Coverage</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right — Main Board Cards -->
+    <div class="rv" style="transition-delay:.15s">
+      <div class="hero-board">
+        <!-- State Overseer — span full row -->
+        <!-- State Overseer -->
+        <div class="hb-card featured">
+          <div class="hb-photo">
+            <img src="prayer/1.png" alt="State Overseer" onerror="this.style.display='none'">
+            <div class="hb-sil">
+              <svg width="50" height="60" viewBox="0 0 60 72" fill="none"><circle cx="30" cy="22" r="16" stroke="#E8477A" stroke-width="2"/><path d="M4 68c0-14.36 11.64-26 26-26s26 11.64 26 26" stroke="#E8477A" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+            <div class="hb-photo-overlay"></div>
+            <div class="hb-badge">
+              <div class="hb-badge-name">Rev. Pr. Y. Reji</div>
+              <div class="hb-badge-role">Director</div>
+            </div>
+          </div>
+          <div class="hb-body"><p>Leading the Church of God, Kerala State in Spirit-led ministry and intercession.</p></div>
+        </div>
+
+        <!-- Secretary -->
+        <div class="hb-card">
+          <div class="hb-photo">
+            <img src="prayer/2.png" alt="Secretary" onerror="this.style.display='none'">
+            <div class="hb-sil">
+              <svg width="50" height="60" viewBox="0 0 60 72" fill="none"><circle cx="30" cy="22" r="16" stroke="#E8477A" stroke-width="2"/><path d="M4 68c0-14.36 11.64-26 26-26s26 11.64 26 26" stroke="#E8477A" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+            <div class="hb-photo-overlay"></div>
+            <div class="hb-badge">
+              <div class="hb-badge-name"></div>
+              <div class="hb-badge-role">Jt Director</div>
+            </div>
+          </div>
+          <div class="hb-body"><p>Coordinating all prayer board programs and communications across the State.</p></div>
+        </div>
+
+        <!-- Treasurer -->
+        <div class="hb-card">
+          <div class="hb-photo">
+            <img src="prayer/3.png" alt="Treasurer" onerror="this.style.display='none'">
+            <div class="hb-sil">
+              <svg width="50" height="60" viewBox="0 0 60 72" fill="none"><circle cx="30" cy="22" r="16" stroke="#E8477A" stroke-width="2"/><path d="M4 68c0-14.36 11.64-26 26-26s26 11.64 26 26" stroke="#E8477A" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+            <div class="hb-photo-overlay"></div>
+            <div class="hb-badge">
+              <div class="hb-badge-name">[Treasurer Name]</div>
+              <div class="hb-badge-role">State Treasurer</div>
+            </div>
+          </div>
+          <div class="hb-body"><p>Faithful stewardship of prayer board resources across all districts.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     BOARD MEMBERS
+══════════════════════════════════════ -->
+<section class="sec" id="board" style="background:white;">
+  <div class="cont">
+    <div class="sec-tag rv">Leadership</div>
+    <h2 class="sec-h rv">Prayer Board <em>Members</em></h2>
+    <div class="sec-rule rv"></div>
+    <div class="board-grid">
+
+      <!-- Row 1 -->
+      <div class="bm-card rv2"><div class="bm-photo"><img src="Ps.jpg" onerror="this.style.display='none'"><div class="bm-ph">✝</div></div><div class="bm-info"><div class="bm-name">Rev. Y. Reji</div><div class="bm-pos">(State Overseer)</div></div></div>
+
+      <div class="bm-card rv2"><div class="bm-photo"><img src="prayer/1.png" onerror="this.style.display='none'"><div class="bm-ph">🙏</div></div><div class="bm-info"><div class="bm-name">Pr. Anishmon Paulose</div><div class="bm-pos">(Director)</div></div></div>
+
+      <div class="bm-card rv2"><div class="bm-photo"><img src="prayer/2.png" onerror="this.style.display='none'"><div class="bm-ph">🙏</div></div><div class="bm-info"><div class="bm-name">Pr. P.T. Mathew</div><div class="bm-pos">(Joint Director)</div></div></div>
+
+      <div class="bm-card rv2"><div class="bm-photo"><img src="prayer/3.png" onerror="this.style.display='none'"><div class="bm-ph">🙏</div></div><div class="bm-info"><div class="bm-name">Pr. Thomas Joseph</div><div class="bm-pos">(Secretary)</div></div></div>
+
+      <!-- Row 2 -->
+      <div class="bm-card rv2"><div class="bm-photo"><img src="prayer/4.png" onerror="this.style.display='none'"><div class="bm-ph">🙏</div></div><div class="bm-info"><div class="bm-name">Pr. Jose George</div><div class="bm-pos">(Co-ordinator)</div></div></div>
+
+      <div class="bm-card rv2"><div class="bm-photo"><img src="prayer/5.png" onerror="this.style.display='none'"><div class="bm-ph">🙏</div></div><div class="bm-info"><div class="bm-name">Br. Raju P.J</div><div class="bm-pos">(Treasurer)</div></div></div>
+
+      <div class="bm-card rv2"><div class="bm-photo"><img src="prayer/6.png" onerror="this.style.display='none'"><div class="bm-ph">🙏</div></div><div class="bm-info"><div class="bm-name">Pr. Sam P. Ponnachen</div><div class="bm-pos">(Media Convenor)</div></div></div>
+
+      <div class="bm-card rv2"><div class="bm-photo"><img src="prayer/7.png" onerror="this.style.display='none'"><div class="bm-ph">🙏</div></div><div class="bm-info"><div class="bm-name">Evg. Georgy Varghese</div><div class="bm-pos">(Joint Secretary)</div></div></div>
+
+      <div class="bm-card rv2"><div class="bm-photo"><img src="prayer/8.png" onerror="this.style.display='none'"><div class="bm-ph">🙏</div></div><div class="bm-info"><div class="bm-name">Pr. Johnson V. Thomas</div><div class="bm-pos"></div></div></div>
+
+      <!-- Row 3 -->
+      <div class="bm-card rv2"><div class="bm-photo"><img src="prayer/9.png" onerror="this.style.display='none'"><div class="bm-ph">🙏</div></div><div class="bm-info"><div class="bm-name">Pr. Aji Varghese</div><div class="bm-pos"></div></div></div>
+
+      <div class="bm-card rv2"><div class="bm-photo"><img src="prayer/10.png" onerror="this.style.display='none'"><div class="bm-ph">🙏</div></div><div class="bm-info"><div class="bm-name">Pr. David Cherian</div><div class="bm-pos"></div></div></div>
+
+      <div class="bm-card rv2"><div class="bm-photo"><img src="prayer/11.png" onerror="this.style.display='none'"><div class="bm-ph">🙏</div></div><div class="bm-info"><div class="bm-name">Pr. Liju Abraham</div><div class="bm-pos"></div></div></div>
+
+      <div class="bm-card rv2"><div class="bm-photo"><img src="prayer/12.png" onerror="this.style.display='none'"><div class="bm-ph">🙏</div></div><div class="bm-info"><div class="bm-name">Pr. Sabu Kochummen</div><div class="bm-pos"></div></div></div>
+
+      <div class="bm-card rv2"><div class="bm-photo"><img src="prayer/13.png" onerror="this.style.display='none'"><div class="bm-ph">🙏</div></div><div class="bm-info"><div class="bm-name">Pr. Prathyas K.</div><div class="bm-pos"></div></div></div>
+
+      <!-- Row 4 -->
+      <div class="bm-card rv2"><div class="bm-photo"><img src="prayer/14.png" onerror="this.style.display='none'"><div class="bm-ph">🙏</div></div><div class="bm-info"><div class="bm-name">Pr. Roy Sebastian</div><div class="bm-pos"></div></div></div>
+
+      <div class="bm-card rv2"><div class="bm-photo"><img src="prayer/15.png" onerror="this.style.display='none'"><div class="bm-ph">🙏</div></div><div class="bm-info"><div class="bm-name">Pr. Prince K. Simon</div><div class="bm-pos"></div></div></div>
+
+      <div class="bm-card rv2"><div class="bm-photo"><img src="prayer/16.png" onerror="this.style.display='none'"><div class="bm-ph">🙏</div></div><div class="bm-info"><div class="bm-name">Pr. Binu George</div><div class="bm-pos"></div></div></div>
+
+      <div class="bm-card rv2"><div class="bm-photo"><img src="prayer/17.png" onerror="this.style.display='none'"><div class="bm-ph">🙏</div></div><div class="bm-info"><div class="bm-name">Pr. Binu T (Binu Vattapara)</div><div class="bm-pos"></div></div></div>
+
+      <div class="bm-card rv2"><div class="bm-photo"><img src="prayer/18.png" onerror="this.style.display='none'"><div class="bm-ph">🙏</div></div><div class="bm-info"><div class="bm-name">Pr. Thomas Mathew</div><div class="bm-pos"></div></div></div>
+
+      <div class="bm-card rv2"><div class="bm-photo"><img src="prayer/19.png" onerror="this.style.display='none'"><div class="bm-ph">🙏</div></div><div class="bm-info"><div class="bm-name">Pr. Shibu Thomas</div><div class="bm-pos"></div></div></div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     PRAYER REQUEST + WALL
+══════════════════════════════════════ -->
+<section class="sec prayer-section" id="prayer-wall">
+  <div class="cont">
+    <div class="sec-tag rv">Intercession</div>
+    <h2 class="sec-h rv">Prayer <em>Requests</em></h2>
+    <div class="sec-rule rv"></div>
+
+    <div class="prayer-layout">
+
+      <!-- ── Form ── -->
+      <div class="rv">
+        <div class="prayer-form-wrap">
+          <div class="prayer-form-title">Share Your Prayer Need</div>
+          <div class="prayer-form-sub">
+            Your request is received with love and lifted before God daily by our prayer team. 
+            Every need is treated with complete confidentiality and compassion.
+          </div>
+
+          <div id="prayerFormEl">
+            <div class="form-row-2">
+              <div class="form-row">
+                <label for="pf-name">Your Name</label>
+                <input type="text" id="pf-name" placeholder="e.g. Sarah Thomas">
+              </div>
+              <div class="form-row">
+                <label for="pf-phone">Phone (optional)</label>
+                <input type="tel" id="pf-phone" placeholder="+91 98765 00000">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <label for="pf-email">Email Address</label>
+              <input type="email" id="pf-email" placeholder="your@email.com">
+            </div>
+
+            <div class="form-row">
+              <label for="pf-cat">Prayer Category</label>
+              <select id="pf-cat">
+                <option value="">— Select a category —</option>
+                <option value="healing">🌸 Healing &amp; Health</option>
+                <option value="family">👨‍👩‍👧 Family &amp; Relationships</option>
+                <option value="finance">💼 Financial Breakthrough</option>
+                <option value="guidance">🕊️ Guidance &amp; Direction</option>
+                <option value="salvation">✝️ Salvation of Loved Ones</option>
+                <option value="marriage">💍 Marriage &amp; Children</option>
+                <option value="work">📋 Career &amp; Education</option>
+                <option value="grief">🕯️ Grief &amp; Comfort</option>
+                <option value="other">🙏 Other</option>
+              </select>
+            </div>
+
+            <div class="form-row">
+              <label for="pf-urgency">Urgency Level</label>
+              <select id="pf-urgency">
+                <option value="ongoing">Ongoing — please pray regularly</option>
+                <option value="urgent">Urgent — immediate need</option>
+                <option value="thanksgiving">Thanksgiving — God answered!</option>
+              </select>
+            </div>
+
+            <div class="form-row">
+              <label for="pf-request">Your Prayer Request</label>
+              <textarea id="pf-request" placeholder="Share your heart freely. Every word is received with prayer and love..."></textarea>
+            </div>
+
+            <div class="form-row">
+              <label for="pf-verse">Favourite Scripture (optional)</label>
+              <input type="text" id="pf-verse" placeholder="e.g. Philippians 4:6–7">
+            </div>
+
+            <div class="anon-row">
+              <label class="toggle-sw">
+                <input type="checkbox" id="pf-anon">
+                <span class="toggle-track"></span>
+              </label>
+              <span class="anon-label">Post anonymously on the prayer wall</span>
+            </div>
+
+            <div class="anon-row">
+              <label class="toggle-sw">
+                <input type="checkbox" id="pf-public" checked>
+                <span class="toggle-track"></span>
+              </label>
+              <span class="anon-label">Allow others to pray with me on the wall</span>
+            </div>
+
+            <button class="submit-btn" onclick="submitPrayer()">🙏 Submit Prayer Request</button>
+          </div>
+
+          <div class="form-success" id="formSuccess">
+            <div class="check">🌸</div>
+            <h4>Your prayer has been received</h4>
+            <p>Our prayer team will lift this need before God. <em>"The effective, fervent prayer of a righteous man avails much." — James 5:16</em></p>
+            <button style="margin-top:1.2rem;font-size:.82rem;font-weight:700;padding:.6rem 1.4rem;border-radius:50px;border:1.5px solid var(--pink);color:var(--pink);background:white;cursor:pointer;" onclick="resetForm()">Submit Another Request</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Prayer Wall ── -->
+      <div class="rv2">
+        <div class="prayer-wall-title">Community Prayer Wall</div>
+        <div class="prayer-wall-sub">
+          Believers across Kerala are praying. Tap "I Prayed" to stand in agreement with each need.
+        </div>
+
+        <div class="prayer-filter">
+          <button class="pf-btn active" onclick="filterPrayers('all',this)">All</button>
+          <button class="pf-btn" onclick="filterPrayers('healing',this)">🌸 Healing</button>
+          <button class="pf-btn" onclick="filterPrayers('family',this)">👨‍👩‍👧 Family</button>
+          <button class="pf-btn" onclick="filterPrayers('finance',this)">💼 Finance</button>
+          <button class="pf-btn" onclick="filterPrayers('guidance',this)">🕊️ Guidance</button>
+          <button class="pf-btn" onclick="filterPrayers('salvation',this)">✝️ Salvation</button>
+        </div>
+
+        <div class="prayers-list" id="prayersList"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     BIBLE VERSE PICKER
+══════════════════════════════════════ -->
+<section class="sec verse-section" id="verse-picker">
+  <div class="cont">
+    <div class="sec-tag rv" style="justify-content:center;">Scripture</div>
+    <h2 class="sec-h rv" style="text-align:center;">Hear from <em>God</em></h2>
+    <div class="sec-rule rv" style="margin:0 auto 2.5rem;"></div>
+
+    <div class="verse-picker rv">
+      <!-- Step dots -->
+      <div class="steps-row" id="stepDots">
+        <div class="step-dot active" id="dot0"></div>
+        <div class="step-dot" id="dot1"></div>
+        <div class="step-dot" id="dot2"></div>
+        <div class="step-dot" id="dot3"></div>
+        <div class="step-dot" id="dot4"></div>
+      </div>
+
+      <!-- ── STEP 0: Intro ── -->
+      <div class="vp-panel active" id="vp0">
+        <div class="vp-intro-icon">📖</div>
+        <div class="vp-intro-h">Are you carrying something today?</div>
+        <div class="vp-intro-p">
+          Whatever you are facing — a heavy heart, a difficult decision, a moment of doubt, or simply a need to hear God's voice — 
+          He has a word for you in His Scripture.<br><br>
+          Let us help you find a verse from the King James Bible that speaks directly to your situation right now.
+        </div>
+        <div class="vp-nav">
+          <button class="vp-nav-btn next" onclick="goStep(1)">Yes, I need a word ›</button>
+        </div>
+      </div>
+
+      <!-- ── STEP 1: How are you feeling? ── -->
+      <div class="vp-panel" id="vp1">
+        <div class="vp-q">How is your heart today?</div>
+        <div class="vp-qsub">Be honest — God already knows. Choose what is closest to how you feel right now.</div>
+        <div class="feelings-grid">
+          <button class="feeling-btn" onclick="selectFeeling('anxious',this)">
+            <span class="feeling-icon">😟</span>
+            <div><div class="feeling-name">Anxious / Worried</div><div class="feeling-sub">Fear about tomorrow</div></div>
+          </button>
+          <button class="feeling-btn" onclick="selectFeeling('sad',this)">
+            <span class="feeling-icon">😢</span>
+            <div><div class="feeling-name">Sad / Grieving</div><div class="feeling-sub">Loss, pain, heartbreak</div></div>
+          </button>
+          <button class="feeling-btn" onclick="selectFeeling('lost',this)">
+            <span class="feeling-icon">🌫️</span>
+            <div><div class="feeling-name">Lost / Confused</div><div class="feeling-sub">Need direction</div></div>
+          </button>
+          <button class="feeling-btn" onclick="selectFeeling('weak',this)">
+            <span class="feeling-icon">🥀</span>
+            <div><div class="feeling-name">Tired / Weak</div><div class="feeling-sub">Running out of strength</div></div>
+          </button>
+          <button class="feeling-btn" onclick="selectFeeling('doubt',this)">
+            <span class="feeling-icon">🌊</span>
+            <div><div class="feeling-name">Doubting / Struggling</div><div class="feeling-sub">Faith being tested</div></div>
+          </button>
+          <button class="feeling-btn" onclick="selectFeeling('grateful',this)">
+            <span class="feeling-icon">🌸</span>
+            <div><div class="feeling-name">Grateful / Joyful</div><div class="feeling-sub">Wanting to praise</div></div>
+          </button>
+        </div>
+        <div class="vp-nav">
+          <button class="vp-nav-btn" onclick="goStep(0)">‹ Back</button>
+          <button class="vp-nav-btn next" id="feelingNext" onclick="goStep(2)" style="display:none;">Continue ›</button>
+        </div>
+      </div>
+
+      <!-- ── STEP 2: Choose a folder ── -->
+      <div class="vp-panel" id="vp2">
+        <div class="vp-q">Choose a Scripture folder</div>
+        <div class="vp-folder-intro" id="folderIntro">Based on your heart, here are Scripture themes that hold a word for you. Choose one to explore.</div>
+        <div class="folders-grid" id="foldersGrid"></div>
+        <div class="vp-nav">
+          <button class="vp-nav-btn" onclick="goStep(1)">‹ Back</button>
+          <button class="vp-nav-btn next" id="folderNext" onclick="goStep(3)" style="display:none;">Show Verses ›</button>
+        </div>
+      </div>
+
+      <!-- ── STEP 3: Pick a verse ── -->
+      <div class="vp-panel" id="vp3">
+        <div class="vp-q">Which verse draws your heart?</div>
+        <div class="vp-qsub">Read the references. Let the Holy Spirit guide you to the one that resonates.</div>
+        <div class="verses-scroll" id="versesGrid"></div>
+        <div class="vp-nav">
+          <button class="vp-nav-btn" onclick="goStep(2)">‹ Back</button>
+          <button class="vp-nav-btn next" id="verseNext" onclick="goStep(4)" style="display:none;">Open this Verse ›</button>
+        </div>
+      </div>
+
+      <!-- ── STEP 4: Full verse ── -->
+      <div class="vp-panel" id="vp4">
+        <div class="verse-reveal" id="verseReveal">
+          <div class="verse-full-text" id="verseText"></div>
+          <div class="verse-reference" id="verseRef"></div>
+          <div class="verse-meaning" id="verseMeaning"></div>
+          <div class="verse-actions">
+            <button class="va-btn" onclick="copyVerse()">📋 Copy Verse</button>
+            <button class="va-btn" onclick="shareVerse()">↗ Share</button>
+            <button class="va-btn" onclick="goStep(1)">🔄 Choose Another</button>
+            <button class="va-btn primary" onclick="scrollTo('#prayer-wall')">🙏 Pray Now</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     PRAYER GUIDE / POINTS
+══════════════════════════════════════ -->
+<section class="sec" id="prayer-points" style="background:white;">
+  <div class="cont">
+    <div class="sec-tag rv">Daily Practice</div>
+    <h2 class="sec-h rv">How to <em>Pray</em></h2>
+    <div class="sec-rule rv"></div>
+    <div class="pp-grid">
+      <div class="pp-card rv">
+        <div class="pp-icon">🌅</div>
+        <div class="pp-title">Morning Watch</div>
+        <div class="pp-desc">Begin each day with 15–30 minutes of Scripture reading and personal prayer. "Early will I seek thee" (Psalm 63:1). Dedicate your morning before the busyness begins.</div>
+      </div>
+      <div class="pp-card rv">
+        <div class="pp-icon">📿</div>
+        <div class="pp-title">Intercessory Prayer</div>
+        <div class="pp-desc">Pray specifically for others — name by name, need by need. Stand in the gap for your family, church, nation, and those on this prayer wall who have trusted you with their burdens.</div>
+      </div>
+      <div class="pp-card rv">
+        <div class="pp-icon">✝️</div>
+        <div class="pp-title">Pray the Scriptures</div>
+        <div class="pp-desc">Take the Word and pray it back to God. "Let the words of my mouth… be acceptable in thy sight" (Psalm 19:14). Praying Scripture aligns your heart with God's will.</div>
+      </div>
+      <div class="pp-card rv">
+        <div class="pp-icon">🕯️</div>
+        <div class="pp-title">Evening Reflection</div>
+        <div class="pp-desc">Close the day in gratitude and surrender. "I will both lay me down in peace, and sleep: for thou, LORD, only makest me dwell in safety" (Psalm 4:8).</div>
+      </div>
+      <div class="pp-card rv">
+        <div class="pp-icon">🤝</div>
+        <div class="pp-title">Prayer Partnerships</div>
+        <div class="pp-desc">Find a prayer partner in your local church. Two in agreement carries extraordinary power. "Where two or three are gathered together in my name, there am I in the midst of them" (Matt 18:20).</div>
+      </div>
+      <div class="pp-card rv">
+        <div class="pp-icon">🌍</div>
+        <div class="pp-title">Pray for the Nation</div>
+        <div class="pp-desc">Lift Kerala, India, and the nations before God daily. "If my people, which are called by my name, shall humble themselves, and pray…" (2 Chronicles 7:14). The nation needs your intercession.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     CTA
+══════════════════════════════════════ -->
+<section class="cta-section">
+  <div style="position:relative;z-index:1;">
+    <h3>Your Prayer Matters to Heaven</h3>
+    <p>Join thousands of believers lifting Kerala and the world in daily intercession.</p>
+    <a href="#prayer-wall" class="cta-btn-w">🙏 Submit a Prayer Request</a>
+    <a href="home.html" class="cta-btn-o">← Back to Home</a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Church of God (Full Gospel) in India, Kerala State · <a href="mailto:cogkeralastate@gmail.com">cogkeralastate@gmail.com</a></p>
+</footer>
+
+<!-- ══════════════════════════════════════
+     JAVASCRIPT
+══════════════════════════════════════ -->
+<script>
+/* ─────────── VERSE DATABASE (KJV) ─────────── */
+var VERSES = {
+  anxious: {
+    folders: [
+      { icon:'🕊️', name:'Peace &amp; Calm', desc:'Release anxiety to God' },
+      { icon:'🛡️', name:'Protection &amp; Safety', desc:'Rest under His wings' },
+      { icon:'💪', name:'Trust &amp; Confidence', desc:'He is in control' }
+    ],
+    verses: {
+      '🕊️': [
+        { ref:'Philippians 4:6–7', preview:'Be careful for nothing…', text:'Be careful for nothing; but in every thing by prayer and supplication with thanksgiving let your requests be made known unto God. And the peace of God, which passeth all understanding, shall keep your hearts and minds through Christ Jesus.', meaning:'God is not telling you to ignore problems — He is inviting you to bring them to Him. Every anxiety is an invitation to prayer. When you do, His peace — a peace beyond human logic — will stand guard over your mind.' },
+        { ref:'Matthew 6:34', preview:'Take therefore no thought for the morrow…', text:'Take therefore no thought for the morrow: for the morrow shall take thought for the things of itself. Sufficient unto the day is the evil thereof.', meaning:'Jesus gently reminds you: today is enough. You do not need to carry tomorrow\'s burdens today. He is Lord of every tomorrow you fear.' },
+        { ref:'1 Peter 5:7', preview:'Casting all your care upon him…', text:'Casting all your care upon him; for he careth for you.', meaning:'The word "casting" is like throwing — God wants you to throw your worries onto Him, not merely lay them down gently. The reason? He genuinely cares for you, personally and deeply.' },
+        { ref:'Isaiah 41:10', preview:'Fear thou not; for I am with thee…', text:'Fear thou not; for I am with thee: be not dismayed; for I am thy God: I will strengthen thee; yea, I will help thee; yea, I will uphold thee with the right hand of my righteousness.', meaning:'Five promises in one verse: I am with you. I am your God. I will strengthen you. I will help you. I will uphold you. Not one of them depends on your circumstances — only on who God is.' }
+      ],
+      '🛡️': [
+        { ref:'Psalm 91:1', preview:'He that dwelleth in the secret place…', text:'He that dwelleth in the secret place of the most High shall abide under the shadow of the Almighty.', meaning:'The secret place is not a location — it is a posture of trust. When you dwell in God through prayer and surrender, you live under the shelter of the Almighty. Nothing can reach you that does not first pass through Him.' },
+        { ref:'Psalm 46:1', preview:'God is our refuge and strength…', text:'God is our refuge and strength, a very present help in trouble.', meaning:'He is not a distant help or a sometimes-available helper. He is a very present help — immediately close, powerfully available, in this exact moment of trouble.' },
+        { ref:'Proverbs 3:5–6', preview:'Trust in the LORD with all thine heart…', text:'Trust in the LORD with all thine heart; and lean not unto thine own understanding. In all thy ways acknowledge him, and he shall direct thy paths.', meaning:'True safety comes from full trust — not partial faith. When you stop relying only on what you can see and understand, God takes over the navigation of your life.' }
+      ],
+      '💪': [
+        { ref:'Romans 8:28', preview:'And we know that all things work together…', text:'And we know that all things work together for good to them that love God, to them who are the called according to his purpose.', meaning:'Not some things — all things. This is not a promise that everything will feel good, but that God is weaving every thread — even the painful ones — into something ultimately good for those who love Him.' },
+        { ref:'Jeremiah 29:11', preview:'For I know the thoughts that I think toward you…', text:'For I know the thoughts that I think toward you, saith the LORD, thoughts of peace, and not of evil, to give you an expected end.', meaning:'When your future feels uncertain, God says: I have already thought about this. My plans for you are full of hope, not harm. The end of your story is in His hands — and His hands are good.' },
+        { ref:'Psalm 34:18', preview:'The LORD is nigh unto them that are of a broken heart…', text:'The LORD is nigh unto them that are of a broken heart; and saveth such as be of a contrite spirit.', meaning:'God does not distance Himself from your brokenness — He draws near to it. Your wounded heart is not a barrier to His presence; it is a magnet for it.' }
+      ]
+    }
+  },
+  sad: {
+    folders: [
+      { icon:'🕯️', name:'Comfort &amp; Presence', desc:'God is close to the brokenhearted' },
+      { icon:'🌈', name:'Hope &amp; Restoration', desc:'Joy comes in the morning' },
+      { icon:'💧', name:'Grief &amp; Tears', desc:'He sees every tear you cry' }
+    ],
+    verses: {
+      '🕯️': [
+        { ref:'Psalm 34:18', preview:'The LORD is nigh unto them that are of a broken heart…', text:'The LORD is nigh unto them that are of a broken heart; and saveth such as be of a contrite spirit.', meaning:'In your grief, God does not watch from a distance. He draws near — closer than any friend, any family member. He is present in this very moment of your sadness.' },
+        { ref:'2 Corinthians 1:3–4', preview:'God of all comfort…', text:'Blessed be God, even the Father of our Lord Jesus Christ, the Father of mercies, and the God of all comfort; Who comforteth us in all our tribulation, that we may be able to comfort them which are in any trouble, by the comfort wherewith we ourselves are comforted of God.', meaning:'God\'s comfort is not generic — He knows exactly what kind of comfort you need. And one day, your pain will become the very comfort you offer to someone else walking the same valley.' },
+        { ref:'John 11:35', preview:'Jesus wept.', text:'Jesus wept.', meaning:'The shortest verse in the Bible carries the deepest comfort. Jesus, who knew Lazarus would rise, still stopped to weep with those who were grieving. He does not rush past your tears. He weeps with you.' }
+      ],
+      '🌈': [
+        { ref:'Psalm 30:5', preview:'Weeping may endure for a night…', text:'For his anger endureth but a moment; in his favour is life: weeping may endure for a night, but joy cometh in the morning.', meaning:'Your grief has a night, but it does not have forever. God has written "morning" into your story. Joy is coming — not as a denial of your pain, but as its holy resolution.' },
+        { ref:'Revelation 21:4', preview:'And God shall wipe away all tears…', text:'And God shall wipe away all tears from their eyes; and there shall be no more death, neither sorrow, nor crying, neither shall there be any more pain: for the former things are passed away.', meaning:'The final chapter of all things ends with God personally wiping every tear from every eye. All sorrow is temporary. Every wound is temporary. He is making all things new.' },
+        { ref:'Isaiah 61:3', preview:'To give unto them beauty for ashes…', text:'To give unto them beauty for ashes, the oil of joy for mourning, the garment of praise for the spirit of heaviness; that they might be called trees of righteousness, the planting of the LORD, that he might be glorified.', meaning:'God is in the business of exchange: He takes your ashes and gives beauty; takes your mourning and gives joy; takes your heaviness and gives a garment of praise. The trade is always in your favour.' }
+      ],
+      '💧': [
+        { ref:'Psalm 56:8', preview:'Thou tellest my wanderings…', text:'Thou tellest my wanderings: put thou my tears into thy bottle: are they not in thy book?', meaning:'God keeps a record of every tear you have ever cried. Not one has fallen unnoticed. Your grief is seen, counted, and precious to the One who made you.' },
+        { ref:'Matthew 5:4', preview:'Blessed are they that mourn…', text:'Blessed are they that mourn: for they shall be comforted.', meaning:'Jesus calls those who grieve "blessed" — not because grief is good, but because God has a special comfort reserved for the mourning heart. To mourn is to be in the place where God\'s comfort is most freely poured.' },
+        { ref:'Psalm 23:4', preview:'Yea, though I walk through the valley…', text:'Yea, though I walk through the valley of the shadow of death, I will fear no evil: for thou art with me; thy rod and thy staff they comfort me.', meaning:'You are walking through the valley — not staying in it. And you do not walk alone. The Good Shepherd walks every dark valley with you, His presence making the shadow safe.' }
+      ]
+    }
+  },
+  lost: {
+    folders: [
+      { icon:'🗺️', name:'Guidance &amp; Direction', desc:'He will show you the way' },
+      { icon:'💡', name:'Wisdom &amp; Clarity', desc:'Ask and He gives generously' },
+      { icon:'🌟', name:'Purpose &amp; Calling', desc:'You were made for a reason' }
+    ],
+    verses: {
+      '🗺️': [
+        { ref:'Psalm 32:8', preview:'I will instruct thee and teach thee…', text:'I will instruct thee and teach thee in the way which thou shalt go: I will guide thee with mine eye.', meaning:'God personally promises to be your guide — not just to give general principles, but to instruct you specifically, in the way you are meant to go. His eye is on you.' },
+        { ref:'Proverbs 3:5–6', preview:'Trust in the LORD with all thine heart…', text:'Trust in the LORD with all thine heart; and lean not unto thine own understanding. In all thy ways acknowledge him, and he shall direct thy paths.', meaning:'The condition is full trust, not partial faith. The promise is that God will make your paths straight. Not easier necessarily — but clear, purposeful, and right.' },
+        { ref:'Isaiah 30:21', preview:'And thine ears shall hear a word behind thee…', text:'And thine ears shall hear a word behind thee, saying, This is the way, walk ye in it, when ye turn to the right hand, and when ye turn to the left.', meaning:'When you are at the crossroads, God\'s voice comes clearly — "This is the way." He does not leave you to guess. Ask, listen, and trust the still small voice.' }
+      ],
+      '💡': [
+        { ref:'James 1:5', preview:'If any of you lack wisdom, let him ask…', text:'If any of you lack wisdom, let him ask of God, that giveth to all men liberally, and upbraideth not; and it shall be given him.', meaning:'God does not give wisdom reluctantly or with conditions. He gives liberally — generously, abundantly — to anyone who simply asks. Your confusion is an invitation to ask.' },
+        { ref:'John 8:12', preview:'I am the light of the world…', text:'Then spake Jesus again unto them, saying, I am the light of the world: he that followeth me shall not walk in darkness, but shall have the light of life.', meaning:'When you feel like you are walking in the dark, Jesus says: follow Me. Not follow a set of rules — follow a person. He is the light, and in following Him, you will never be lost.' },
+        { ref:'Psalm 119:105', preview:'Thy word is a lamp unto my feet…', text:'Thy word is a lamp unto my feet, and a light unto my path.', meaning:'God\'s Word does not illuminate the whole road at once — just enough for the next step. Trust each step as the light comes, and He will light the step after that.' }
+      ],
+      '🌟': [
+        { ref:'Jeremiah 1:5', preview:'Before I formed thee in the belly I knew thee…', text:'Before I formed thee in the belly I knew thee; and before thou camest forth out of the womb I sanctified thee, and I ordained thee a prophet unto the nations.', meaning:'Before you were born, God knew you, chose you, and had a purpose for you. Your life is not an accident or a mistake — it is a deliberate, ordained creation with a God-given calling.' },
+        { ref:'Ephesians 2:10', preview:'For we are his workmanship…', text:'For we are his workmanship, created in Christ Jesus unto good works, which God hath before ordained that we should walk in them.', meaning:'You are God\'s masterpiece — created with intentionality, purpose, and beauty. The good works you were made for were ordained before you were born. You are not lost — you are being found.' },
+        { ref:'Romans 8:28', preview:'All things work together for good…', text:'And we know that all things work together for good to them that love God, to them who are the called according to his purpose.', meaning:'Even the seasons of confusion and wandering are threads God is weaving into something good. Your being "lost" may be the very road to your purpose.' }
+      ]
+    }
+  },
+  weak: {
+    folders: [
+      { icon:'⚡', name:'Strength &amp; Renewal', desc:'God gives power to the faint' },
+      { icon:'🌊', name:'Rest &amp; Restoration', desc:'Come to me, all who are weary' },
+      { icon:'🔥', name:'Courage &amp; Perseverance', desc:'He that endures to the end' }
+    ],
+    verses: {
+      '⚡': [
+        { ref:'Isaiah 40:31', preview:'They that wait upon the LORD shall renew their strength…', text:'But they that wait upon the LORD shall renew their strength; they shall mount up with wings as eagles; they shall run, and not be weary; and they shall walk, and not faint.', meaning:'The exhausted soul finds its supply in waiting — not striving, not performing, but waiting on God. He renews from the inside. He lifts you from weariness to soaring.' },
+        { ref:'Philippians 4:13', preview:'I can do all things through Christ…', text:'I can do all things through Christ which strengtheneth me.', meaning:'Paul wrote this from prison. His "I can do all things" was not positive thinking — it was the testimony of someone who had discovered that Christ\'s strength fills every human weakness perfectly.' },
+        { ref:'2 Corinthians 12:9', preview:'My grace is sufficient for thee…', text:'And he said unto me, My grace is sufficient for thee: for my strength is made perfect in weakness. Most gladly therefore will I rather glory in my infirmities, that the power of Christ may rest upon me.', meaning:'Your weakness is not a disqualification — it is the exact space where God\'s strength most perfectly shows itself. When you can\'t, He can. That is always been the testimony of the Church.' }
+      ],
+      '🌊': [
+        { ref:'Matthew 11:28–29', preview:'Come unto me, all ye that labour…', text:'Come unto me, all ye that labour and are heavy laden, and I will give you rest. Take my yoke upon you, and learn of me; for I am meek and lowly in heart: and ye shall find rest unto your souls.', meaning:'Jesus\' invitation is to the tired, the burdened, the burnt-out. He does not say "do better" or "try harder." He says come. Come as you are — and I will give rest. Not just sleep — soul rest.' },
+        { ref:'Psalm 23:2–3', preview:'He maketh me to lie down in green pastures…', text:'He maketh me to lie down in green pastures: he leadeth me beside the still waters. He restoreth my soul.', meaning:'Restoration is God\'s work, not yours. He leads — you follow. He restores — you receive. Sometimes the most spiritual thing you can do when you are weary is to let the Shepherd lead you to stillness.' },
+        { ref:'Psalm 62:1', preview:'Truly my soul waiteth upon God…', text:'Truly my soul waiteth upon God: from him cometh my salvation.', meaning:'In the silence, in the stillness, in the waiting — that is where God replenishes. Your salvation — your rescue, your restoration — comes from Him alone.' }
+      ],
+      '🔥': [
+        { ref:'Galatians 6:9', preview:'Let us not be weary in well doing…', text:'And let us not be weary in well doing: for in due season we shall reap, if we faint not.', meaning:'There is a harvest coming. The season of sowing always feels longer than it is. Hold on. Do not faint. What you are doing in faithfulness and love will bear fruit — in due season.' },
+        { ref:'Hebrews 12:1', preview:'Let us run with patience the race…', text:'Wherefore seeing we also are compassed about with so great a cloud of witnesses, let us lay aside every weight, and the sin which doth so easily beset us, and let us run with patience the race that is set before us.', meaning:'You are not running alone. A great cloud of witnesses — those who finished the race before you — cheer you on. And the race is set for you specifically: your pace, your lane, your finish line.' },
+        { ref:'Joshua 1:9', preview:'Have not I commanded thee? Be strong…', text:'Have not I commanded thee? Be strong and of a good courage; be not afraid, neither be thou dismayed: for the LORD thy God is with thee whithersoever thou goest.', meaning:'Courage is not the absence of fear — it is the choice to trust God in the presence of fear. And God does not suggest courage; He commands it with a promise: I am with you, everywhere you go.' }
+      ]
+    }
+  },
+  doubt: {
+    folders: [
+      { icon:'⚓', name:'Faith &amp; Assurance', desc:'He is faithful who promised' },
+      { icon:'🌅', name:'God\'s Faithfulness', desc:'His mercies are new every morning' },
+      { icon:'🤲', name:'Surrender &amp; Trust', desc:'Letting go into His hands' }
+    ],
+    verses: {
+      '⚓': [
+        { ref:'Hebrews 11:1', preview:'Now faith is the substance of things hoped for…', text:'Now faith is the substance of things hoped for, the evidence of things not seen.', meaning:'Faith is not blind optimism — it is the God-given ability to live as though the unseen promises of God are already real. You are not asked to see the end; you are asked to trust the One who does.' },
+        { ref:'Mark 9:24', preview:'Lord, I believe; help thou mine unbelief…', text:'And straightway the father of the child cried out, and said with tears, Lord, I believe; help thou mine unbelief.', meaning:'This is the most honest prayer in the Gospels. Jesus did not reject this man for admitting his doubt — He healed his son. Your honesty before God is not a failure; it is faith in raw form.' },
+        { ref:'Romans 4:20–21', preview:'He staggered not at the promise of God…', text:'He staggered not at the promise of God through unbelief; but was strong in faith, giving glory to God; And being fully persuaded that, what he had promised, he was able also to perform.', meaning:'Abraham held on to the promise when there was no human reason to. God is asking the same of you — not because the odds are good, but because the God who promised is perfectly faithful.' }
+      ],
+      '🌅': [
+        { ref:'Lamentations 3:22–23', preview:'His mercies are new every morning…', text:'It is of the LORD\'s mercies that we are not consumed, because his compassions fail not. They are new every morning: great is thy faithfulness.', meaning:'Jeremiah wrote this from the ruins of Jerusalem — the worst possible circumstances. Yet even there, he discovered that God\'s faithfulness does not depend on our circumstances. It is new. Every morning. Without exception.' },
+        { ref:'1 Corinthians 1:9', preview:'God is faithful, by whom ye were called…', text:'God is faithful, by whom ye were called unto the fellowship of his Son Jesus Christ our Lord.', meaning:'The foundation of your confidence is not your faith — it is God\'s faithfulness. He called you. He will keep you. His faithfulness does not waver with your mood or your season.' },
+        { ref:'Psalm 89:1', preview:'I will sing of the mercies of the LORD for ever…', text:'I will sing of the mercies of the LORD for ever: with my mouth will I make known thy faithfulness to all generations.', meaning:'When doubt is loudest, worship is the answer. Not denying the doubt — but drowning it in the testimony of who God has been. Sing of His mercies, and faith rises.' }
+      ],
+      '🤲': [
+        { ref:'Proverbs 16:3', preview:'Commit thy works unto the LORD…', text:'Commit thy works unto the LORD, and thy thoughts shall be established.', meaning:'The word "commit" means to roll — like rolling a heavy burden off your shoulders onto God. When you roll your plans and worries onto Him, He establishes — stabilises, clarifies — your thinking.' },
+        { ref:'Psalm 46:10', preview:'Be still, and know that I am God…', text:'Be still, and know that I am God: I will be exalted among the heathen, I will be exalted in the earth.', meaning:'Stillness is not passivity — it is the active choice to stop striving and let God be God. In the stillness, doubt begins to dissolve. In the stillness, you remember who He is.' },
+        { ref:'Isaiah 26:3', preview:'Thou wilt keep him in perfect peace…', text:'Thou wilt keep him in perfect peace, whose mind is stayed on thee: because he trusteth in thee.', meaning:'The secret to perfect peace is a stayed mind — a mind anchored to God instead of the storm. As long as your thoughts are moored to Him, the waves cannot sweep you away.' }
+      ]
+    }
+  },
+  grateful: {
+    folders: [
+      { icon:'🎶', name:'Praise &amp; Worship', desc:'Enter His gates with thanksgiving' },
+      { icon:'🌺', name:'Joy &amp; Celebration', desc:'The joy of the LORD is your strength' },
+      { icon:'🙌', name:'Thanksgiving &amp; Blessing', desc:'Count your blessings one by one' }
+    ],
+    verses: {
+      '🎶': [
+        { ref:'Psalm 100:4', preview:'Enter into his gates with thanksgiving…', text:'Enter into his gates with thanksgiving, and into his courts with praise: be thankful unto him, and bless his name.', meaning:'Thanksgiving is the gateway into God\'s presence. When you are grateful, you are already at the threshold of His courts. Praise takes you all the way in. This is the posture of worship.' },
+        { ref:'Psalm 150:6', preview:'Let every thing that hath breath praise the LORD…', text:'Let every thing that hath breath praise the LORD. Praise ye the LORD.', meaning:'Every breath you draw is a gift. Every inhale is a reason to praise. The last verse of the Psalms — the greatest songbook ever written — ends with this: if you are breathing, you have a reason to praise.' },
+        { ref:'Colossians 3:17', preview:'And whatsoever ye do in word or deed…', text:'And whatsoever ye do in word or deed, do all in the name of the Lord Jesus, giving thanks to God and the Father by him.', meaning:'Gratitude is not a feeling you wait for — it is a practice you choose. In every word, every act, every ordinary moment: give thanks. Turn the whole of your life into an offering of praise.' }
+      ],
+      '🌺': [
+        { ref:'Nehemiah 8:10', preview:'The joy of the LORD is your strength…', text:'Then he said unto them, Go your way, eat the fat, and drink the sweet, and send portions unto them for whom nothing is prepared: for this day is holy unto our LORD: neither be ye sorry; for the joy of the LORD is your strength.', meaning:'Joy is not your strength — the joy of the LORD is. When you are filled with His joy — not your circumstances, not your achievements — that joy becomes indestructible strength.' },
+        { ref:'Psalm 16:11', preview:'In thy presence is fulness of joy…', text:'Thou wilt shew me the path of life: in thy presence is fulness of joy; at thy right hand there are pleasures for evermore.', meaning:'Joy in full measure is found only in one place: His presence. Not in achievement, not in comfort — but in Him. And it is not partial joy; it is fulness of joy. Overflowing, abundant, everlasting.' },
+        { ref:'John 15:11', preview:'That my joy might remain in you…', text:'These things have I spoken unto you, that my joy might remain in you, and that your joy might be full.', meaning:'Jesus\' deepest desire for you is not just that you experience joy occasionally — but that His joy remain in you, and your joy be full. The fullness He offers is beyond anything the world can give or take away.' }
+      ],
+      '🙌': [
+        { ref:'1 Thessalonians 5:18', preview:'In every thing give thanks…', text:'In every thing give thanks: for this is the will of God in Christ Jesus concerning you.', meaning:'This may be the clearest statement of God\'s will in the entire New Testament: give thanks in everything. Not for everything — but in everything. Even the hard things can be held with gratitude for what God is doing through them.' },
+        { ref:'Psalm 103:1–2', preview:'Bless the LORD, O my soul…', text:'Bless the LORD, O my soul: and all that is within me, bless his holy name. Bless the LORD, O my soul, and forget not all his benefits.', meaning:'The psalmist speaks to his own soul — because gratitude is sometimes a decision, not a feeling. Count the benefits: forgiveness, healing, redemption, love. The list never ends.' },
+        { ref:'Philippians 4:4', preview:'Rejoice in the Lord alway…', text:'Rejoice in the Lord alway: and again I say, Rejoice.', meaning:'Paul says it twice for emphasis. Rejoice — always. Not when things are perfect, not when prayers are answered yet, but always. The ground of your rejoicing is not your situation; it is the Lord Himself, who never changes.' }
+      ]
+    }
+  }
+};
+
+/* ─────────── PRAYER WALL DATA ─────────── */
+var SAMPLE_PRAYERS = [
+  { id:1, name:'Ancy Mathew', anon:false, cat:'healing', text:'Please pray for my mother who is undergoing cancer treatment. Trusting God for a miracle.', date:'2 hours ago', prayers:47, prayed:false },
+  { id:2, name:'Anonymous', anon:true, cat:'family', text:'Pray for restoration in my marriage. We are going through a very difficult season.', date:'5 hours ago', prayers:62, prayed:false },
+  { id:3, name:'Bibin Thomas', anon:false, cat:'finance', text:'Praying for a financial breakthrough — my business has been struggling for 8 months. God is still faithful.', date:'Yesterday', prayers:38, prayed:false },
+  { id:4, name:'Reena Joy', anon:false, cat:'salvation', text:'Believing for the salvation of my two sons. They have wandered far from God. Please intercede.', date:'Yesterday', prayers:91, prayed:false },
+  { id:5, name:'Anonymous', anon:true, cat:'guidance', text:'I have a major life decision to make regarding my career. Please pray for God\'s clear direction.', date:'2 days ago', prayers:29, prayed:false },
+  { id:6, name:'Saju Philip', anon:false, cat:'healing', text:'My father suffered a stroke last week. Doctors are uncertain. We are standing on Psalm 103:3.', date:'2 days ago', prayers:115, prayed:true, answered:false },
+  { id:7, name:'Liya Abraham', anon:false, cat:'family', text:'PRAISE REPORT 🙌 — God answered my prayer for my daughter\'s marriage! Sharing as a testimony of His faithfulness.', date:'3 days ago', prayers:203, prayed:false, answered:true },
+  { id:8, name:'Anonymous', anon:true, cat:'guidance', text:'Struggling with severe anxiety and depression. Please pray for peace that passes understanding.', date:'4 days ago', prayers:88, prayed:false }
+];
+
+var wallPrayers = [...SAMPLE_PRAYERS];
+var currentFilter = 'all';
+
+/* ─────────── RENDER PRAYER WALL ─────────── */
+function renderPrayers() {
+  var list = document.getElementById('prayersList');
+  var filtered = currentFilter === 'all' ? wallPrayers : wallPrayers.filter(function(p){ return p.cat === currentFilter; });
+  list.innerHTML = filtered.map(function(p) {
+    var catMap = { healing:'cat-healing', family:'cat-family', finance:'cat-finance', guidance:'cat-guidance', salvation:'cat-salvation', other:'cat-other' };
+    var catLabel = { healing:'Healing', family:'Family', finance:'Finance', guidance:'Guidance', salvation:'Salvation', other:'Other' };
+    var initials = p.anon ? '🙏' : p.name.split(' ').map(function(w){ return w[0]; }).join('').slice(0,2);
+    return '<div class="prayer-card" id="pc'+p.id+'">' +
+      '<div class="prayer-card-head">' +
+        '<div class="prayer-avatar">'+initials+'</div>' +
+        '<div class="prayer-meta">' +
+          '<div class="prayer-name">'+(p.anon?'Anonymous':p.name)+'</div>' +
+          '<div class="prayer-date">'+p.date+'</div>' +
+        '</div>' +
+        '<span class="prayer-cat '+(catMap[p.cat]||'cat-other')+'">'+catLabel[p.cat]+'</span>' +
+      '</div>' +
+      '<div class="prayer-text">'+p.text+'</div>' +
+      '<div class="prayer-actions">' +
+        '<button class="pray-btn'+(p.prayed?' prayed':'') +'" onclick="togglePray('+p.id+')">' +
+          '<span class="icon">🙏</span> '+(p.prayed?'Praying ('+p.prayers+')':'I Prayed ('+p.prayers+')')+
+        '</button>' +
+        (p.answered ? '<span class="answered-badge">✅ Answered!</span>' : '') +
+      '</div>' +
+    '</div>';
+  }).join('');
+}
+
+function togglePray(id) {
+  var p = wallPrayers.find(function(x){ return x.id===id; });
+  if (!p) return;
+  p.prayed = !p.prayed;
+  p.prayers += p.prayed ? 1 : -1;
+  renderPrayers();
+}
+
+function filterPrayers(cat, btn) {
+  currentFilter = cat;
+  document.querySelectorAll('.pf-btn').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  renderPrayers();
+}
+
+/* ─────────── PRAYER FORM ─────────── */
+function submitPrayer() {
+  var name = document.getElementById('pf-name').value.trim();
+  var req = document.getElementById('pf-request').value.trim();
+  var cat = document.getElementById('pf-cat').value;
+  var anon = document.getElementById('pf-anon').checked;
+  var pub = document.getElementById('pf-public').checked;
+  if (!req) { alert('Please share your prayer request.'); return; }
+  if (pub) {
+    var cats = ['healing','family','finance','guidance','salvation','marriage','work','grief','other'];
+    var newP = {
+      id: Date.now(),
+      name: (anon || !name) ? 'Anonymous' : name,
+      anon: anon || !name,
+      cat: cats.includes(cat) ? cat : 'other',
+      text: req,
+      date: 'Just now',
+      prayers: 0, prayed: false
+    };
+    wallPrayers.unshift(newP);
+    renderPrayers();
+  }
+  document.getElementById('prayerFormEl').style.display = 'none';
+  document.getElementById('formSuccess').style.display = 'block';
+}
+
+function resetForm() {
+  document.getElementById('prayerFormEl').style.display = 'block';
+  document.getElementById('formSuccess').style.display = 'none';
+  document.getElementById('pf-name').value='';
+  document.getElementById('pf-phone').value='';
+  document.getElementById('pf-email').value='';
+  document.getElementById('pf-cat').value='';
+  document.getElementById('pf-request').value='';
+  document.getElementById('pf-verse').value='';
+  document.getElementById('pf-anon').checked=false;
+  document.getElementById('pf-public').checked=true;
+}
+
+/* ─────────── VERSE PICKER STATE ─────────── */
+var vpState = { step:0, feeling:null, folder:null, verse:null };
+
+function goStep(n) {
+  if (n===2 && !vpState.feeling) return;
+  if (n===3 && !vpState.folder) return;
+  if (n===4 && !vpState.verse) return;
+  if (n===2) buildFolders();
+  if (n===3) buildVerses();
+  if (n===4) showVerse();
+  document.querySelectorAll('.vp-panel').forEach(function(p){ p.classList.remove('active'); });
+  var panel = document.getElementById('vp'+n);
+  if (panel) panel.classList.add('active');
+  vpState.step = n;
+  updateDots();
+  document.getElementById('verse-picker').scrollIntoView({ behavior:'smooth', block:'start' });
+}
+
+function updateDots() {
+  for (var i = 0; i <= 4; i++) {
+    var d = document.getElementById('dot'+i);
+    if (!d) continue;
+    d.classList.remove('active','done');
+    if (i < vpState.step) d.classList.add('done');
+    if (i === vpState.step) d.classList.add('active');
+  }
+}
+
+function selectFeeling(feeling, btn) {
+  vpState.feeling = feeling;
+  vpState.folder = null;
+  vpState.verse = null;
+  document.querySelectorAll('.feeling-btn').forEach(function(b){ b.classList.remove('selected'); });
+  btn.classList.add('selected');
+  document.getElementById('feelingNext').style.display = 'inline-block';
+}
+
+function buildFolders() {
+  var data = VERSES[vpState.feeling];
+  if (!data) return;
+  var introEl = document.getElementById('folderIntro');
+  var feelingLabels = { anxious:'you are feeling anxious', sad:'your heart is heavy', lost:'you feel lost or uncertain', weak:'you feel tired and weak', doubt:'your faith is being tested', grateful:'your heart is full of gratitude' };
+  introEl.textContent = 'Since ' + feelingLabels[vpState.feeling] + ', here are scripture themes that hold a word for you. Choose one to explore.';
+  var grid = document.getElementById('foldersGrid');
+  grid.innerHTML = data.folders.map(function(f) {
+    return '<button class="folder-btn" onclick="selectFolder(\''+f.icon+'\',this)">' +
+      '<span class="folder-icon">'+f.icon+'</span>' +
+      '<div><div class="folder-name">'+f.name+'</div><div class="folder-desc">'+f.desc+'</div></div>' +
+    '</button>';
+  }).join('');
+  document.getElementById('folderNext').style.display = 'none';
+}
+
+function selectFolder(icon, btn) {
+  vpState.folder = icon;
+  document.querySelectorAll('.folder-btn').forEach(function(b){ b.classList.remove('selected'); });
+  btn.classList.add('selected');
+  document.getElementById('folderNext').style.display = 'inline-block';
+}
+
+function buildVerses() {
+  var data = VERSES[vpState.feeling];
+  if (!data) return;
+  var verses = data.verses[vpState.folder] || [];
+  var grid = document.getElementById('versesGrid');
+  grid.innerHTML = verses.map(function(v, i) {
+    return '<div class="verse-choice-card" onclick="selectVerse('+i+',this)">' +
+      '<div class="vc-ref">'+v.ref+'</div>' +
+      '<div class="vc-preview">'+v.preview+'</div>' +
+    '</div>';
+  }).join('');
+  document.getElementById('verseNext').style.display = 'none';
+}
+
+function selectVerse(idx, el) {
+  vpState.verseIdx = idx;
+  document.querySelectorAll('.verse-choice-card').forEach(function(c){ c.classList.remove('selected'); });
+  el.classList.add('selected');
+  document.getElementById('verseNext').style.display = 'inline-block';
+}
+
+function showVerse() {
+  var data = VERSES[vpState.feeling];
+  if (!data) return;
+  var verses = data.verses[vpState.folder] || [];
+  var v = verses[vpState.verseIdx];
+  if (!v) return;
+  document.getElementById('verseText').textContent = v.text;
+  document.getElementById('verseRef').textContent = v.ref + ' (KJV)';
+  document.getElementById('verseMeaning').textContent = v.meaning;
+}
+
+function copyVerse() {
+  var data = VERSES[vpState.feeling];
+  if (!data) return;
+  var v = (data.verses[vpState.folder] || [])[vpState.verseIdx];
+  if (!v) return;
+  navigator.clipboard.writeText('"' + v.text + '" — ' + v.ref + ' (KJV)').then(function(){
+    alert('Verse copied to clipboard! 📋');
+  });
+}
+
+function shareVerse() {
+  var data = VERSES[vpState.feeling];
+  if (!data) return;
+  var v = (data.verses[vpState.folder] || [])[vpState.verseIdx];
+  if (!v) return;
+  var text = '"' + v.text + '" — ' + v.ref + ' (KJV) | Church of God Kerala Prayer Board';
+  if (navigator.share) {
+    navigator.share({ title:'A word from Scripture', text: text });
+  } else {
+    navigator.clipboard.writeText(text).then(function(){ alert('Copied to share! 📋'); });
+  }
+}
+
+/* ─────────── UTILITIES ─────────── */
+function scrollTo(selector) {
+  var el = document.querySelector(selector);
+  if (el) el.scrollIntoView({ behavior:'smooth', block:'start' });
+}
+
+/* ─────────── PETALS ─────────── */
+var petalCont = document.getElementById('petals');
+var petalColors = ['rgba(248,187,217,.5)','rgba(240,98,146,.25)','rgba(252,228,236,.7)','rgba(255,255,255,.4)'];
+for (var i = 0; i < 18; i++) {
+  var pt = document.createElement('div');
+  pt.className = 'petal';
+  var sz = 6 + Math.random() * 10;
+  pt.style.cssText = 'left:'+Math.random()*100+'%;width:'+sz+'px;height:'+sz+'px;background:'+petalColors[Math.floor(Math.random()*petalColors.length)]+';animation-duration:'+(12+Math.random()*16)+'s;animation-delay:'+(Math.random()*14)+'s;';
+  petalCont.appendChild(pt);
+}
+
+/* ─────────── SCROLL REVEAL ─────────── */
+var rvObs = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){ e.target.classList.add('on'); rvObs.unobserve(e.target); }
+  });
+}, { threshold:0.06, rootMargin:'0px 0px -30px 0px' });
+document.querySelectorAll('.rv,.rv2').forEach(function(el){ rvObs.observe(el); });
+
+/* ─────────── STAGGERED BOARD CARDS ─────────── */
+var bmCards = document.querySelectorAll('.bm-card');
+var bmObs = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){
+      var idx = Array.from(bmCards).indexOf(e.target);
+      e.target.style.transitionDelay = (idx % 5) * 0.07 + 's';
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'none';
+      bmObs.unobserve(e.target);
+    }
+  });
+},{ threshold:0.05 });
+bmCards.forEach(function(c){
+  c.style.opacity='0'; c.style.transform='translateY(18px)';
+  c.style.transition='opacity .6s ease, transform .6s ease';
+  bmObs.observe(c);
+});
+
+/* ─────────── INIT ─────────── */
+renderPrayers();
+</script>
+</body>
+</html>
