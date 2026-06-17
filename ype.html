@@ -5,957 +5,667 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>YPE — Young People's Endeavour · COG Kerala</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Outfit:wght@300;400;500;600;700&family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{
-  --crimson:#9B1B30;
-  --crimson-light:#C4324F;
-  --crimson-pale:#F9EAED;
-  --gold:#8C6D2F;
-  --gold-light:#B8913E;
-  --gold-pale:#FBF5E8;
-  --ink:#1A1210;
-  --ink2:#3D2E2B;
-  --ink3:#7A6560;
-  --paper:#FDFAF7;
-  --paper2:#F5F0EA;
-  --paper3:#EDE6DC;
-  --white:#FFFFFF;
-  --border:rgba(26,18,16,.1);
-  --border2:rgba(26,18,16,.07);
-  --f:'Inter',sans-serif;
-  --fd:'Cormorant Garamond',serif;
-  --ease:cubic-bezier(.16,1,.3,1);
-  --ann:36px;--nav:64px;
+/* ═══════════════════════════════
+   ROOT DESIGN TOKENS — Magenta · White · Black
+═══════════════════════════════ */
+:root {
+  --mg:    #C0186A;
+  --mg2:   #D4237A;
+  --mg3:   #E8479C;
+  --mg4:   #F9D6EA;
+  --mg5:   #FDF0F7;
+  --mgd:   #8E0F4F;
+  --mgdd:  #5C0833;
+
+  --blk:   #0D0D0D;
+  --blk2:  #1A1A1A;
+  --blk3:  #2E2E2E;
+  --blk4:  #555555;
+  --blk5:  #888888;
+
+  --white: #FFFFFF;
+  --off:   #FAF9FC;
+  --off2:  #F3EFF5;
+  --off3:  #E8E2ED;
+
+  --shadow: 0 4px 28px rgba(192,24,106,.12);
+  --shadow2: 0 16px 56px rgba(192,24,106,.18);
+  --nav:   72px;
+  --ease:  cubic-bezier(.16,1,.3,1);
+  --ff:    'Outfit', sans-serif;
+  --fg:    'Cormorant Garamond', serif;
+  --fc:    'Cinzel', serif;
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-body{font-family:var(--f);background:var(--paper);color:var(--ink);overflow-x:hidden;}
+body{font-family:var(--ff);background:var(--white);color:var(--blk);overflow-x:hidden;}
 img{max-width:100%;display:block;}
 a{text-decoration:none;color:inherit;}
-::-webkit-scrollbar{width:3px;}
-::-webkit-scrollbar-thumb{background:var(--crimson);}
+button{cursor:pointer;font-family:var(--ff);}
+textarea,input,select{font-family:var(--ff);}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-thumb{background:var(--mg4);border-radius:4px;}
 
-/* ─── ANNOUNCEMENT BAR ─── */
-#ann-bar{
-  position:fixed;top:0;left:0;right:0;z-index:9100;
-  background:var(--crimson);height:var(--ann);
-  display:flex;align-items:stretch;
+/* ═══════════════════════════════
+   NAV
+═══════════════════════════════ */
+#nav {
+  position:fixed;top:0;left:0;right:0;z-index:9000;
+  background:rgba(255,255,255,.97);
+  border-bottom:1px solid rgba(192,24,106,.1);
+  backdrop-filter:blur(14px);
+  box-shadow:0 2px 20px rgba(192,24,106,.07);
 }
-.ann-left{display:flex;align-items:stretch;flex:1;overflow:hidden;}
-.ann-label{
-  flex-shrink:0;background:rgba(0,0,0,.18);
-  display:flex;align-items:center;gap:7px;
-  padding:0 20px 0 16px;
-  font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.9);
-  clip-path:polygon(0 0,calc(100% - 8px) 0,100% 50%,calc(100% - 8px) 100%,0 100%);
-  white-space:nowrap;
-}
-.ticker-overflow{flex:1;overflow:hidden;display:flex;align-items:center;mask-image:linear-gradient(to right,transparent 0,black 30px,black calc(100% - 30px),transparent 100%);}
-.ticker-track{display:flex;white-space:nowrap;animation:ann-scroll 34s linear infinite;}
-.ticker-track:hover{animation-play-state:paused;}
-.t-item{display:inline-flex;align-items:center;gap:9px;padding:0 32px;font-size:11.5px;color:rgba(255,255,255,.75);}
-.t-date{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.55);}
-.t-sep{color:rgba(255,255,255,.25);}
-.t-new{font-size:9px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;background:rgba(255,255,255,.2);color:white;padding:1px 7px;border-radius:50px;}
-.ann-divider{width:1px;background:rgba(255,255,255,.15);flex-shrink:0;margin:6px 0;}
-.ann-right{flex-shrink:0;display:flex;align-items:center;gap:10px;padding:0 18px;min-width:240px;}
-.ann-notif{font-size:11px;color:rgba(255,255,255,.75);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;}
-.ann-notif .nh{color:white;font-weight:500;}
-@keyframes ann-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.nb{max-width:1400px;margin:0 auto;padding:0 2rem;height:var(--nav);display:flex;align-items:center;justify-content:space-between;}
+.nl{display:flex;align-items:center;gap:.85rem;}
+.nl-cross{font-size:1.5rem;color:var(--mg);line-height:1;font-family:var(--fc);}
+.nl-info .t1{font-family:var(--fc);font-size:.85rem;font-weight:600;color:var(--blk);letter-spacing:.05em;}
+.nl-info .t2{font-size:.6rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--blk4);margin-top:2px;}
+.nav-links{display:flex;align-items:center;gap:.2rem;}
+.nav-link{font-size:.78rem;font-weight:500;letter-spacing:.07em;padding:.45rem 1rem;border-radius:4px;color:var(--blk3);transition:all .2s;}
+.nav-link:hover,.nav-link.active{background:var(--mg5);color:var(--mg);}
+.nav-cta{font-size:.78rem;font-weight:600;letter-spacing:.09em;padding:.5rem 1.4rem;background:var(--mg);color:white;border-radius:4px;border:none;transition:all .22s;}
+.nav-cta:hover{background:var(--mgd);}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:4px;}
+.hamburger span{width:22px;height:1.5px;background:var(--mg);border-radius:2px;}
 
-/* ─── NAV ─── */
-#nav{
-  position:fixed;top:var(--ann);left:0;right:0;z-index:9000;
-  background:rgba(253,250,247,.96);
-  border-bottom:1px solid var(--border);
-  backdrop-filter:blur(12px);
-}
-.nb{max-width:1360px;margin:0 auto;padding:0 2rem;height:var(--nav);display:flex;align-items:center;justify-content:space-between;gap:1rem;}
-.nl{display:flex;align-items:center;gap:.8rem;}
-.nl-cross{font-size:1.3rem;color:var(--crimson);line-height:1;}
-.nl-divider{width:1px;height:28px;background:var(--border);}
-.nl-t1{font-size:.8rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);}
-.nl-t2{font-size:.65rem;font-weight:400;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);margin-top:2px;}
-.nav-back{font-size:.75rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:.5rem 1.3rem;background:transparent;color:var(--ink3);border-radius:50px;border:1px solid var(--border);transition:all .2s;}
-.nav-back:hover{background:var(--crimson);color:white;border-color:var(--crimson);}
-
-/* ─── HERO (2-COLUMN LAYOUT) ─── */
-.dept-hero{
-  padding-top:calc(var(--ann) + var(--nav));
+/* ═══════════════════════════════
+   HERO — SLIDESHOW + LAYOUT
+═══════════════════════════════ */
+.hero {
+  padding-top:var(--nav);
   min-height:100vh;
-  background:var(--paper2);
   position:relative;overflow:hidden;
-  display:flex;align-items:center;
-}
-.hero-bg{
-  position:absolute;inset:0;
-  background:linear-gradient(135deg,var(--paper2) 0%,var(--paper3) 100%);
-}
-.hero-lines{
-  position:absolute;inset:0;
-  background-image:linear-gradient(var(--border2) 1px,transparent 1px),linear-gradient(90deg,var(--border2) 1px,transparent 1px);
-  background-size:60px 60px;
-}
-.hero-big-text{
-  position:absolute;right:-2%;bottom:-6%;
-  font-family:var(--fd);font-size:28vw;color:rgba(155,27,48,.04);
-  line-height:1;letter-spacing:-.02em;pointer-events:none;user-select:none;font-weight:700;
-}
-.hero-accent{
-  position:absolute;top:0;right:0;width:40%;height:100%;
-  background:linear-gradient(to left,rgba(155,27,48,.04),transparent);
-  pointer-events:none;
-}
-.hero-accent-bar{
-  position:absolute;top:0;right:0;width:4px;height:100%;
-  background:linear-gradient(to bottom,var(--crimson),var(--gold));
+  display:flex;flex-direction:column;
 }
 
-.dept-hero-inner{
-  max-width:1360px;margin:0 auto;padding:4rem 2rem;position:relative;z-index:2;width:100%;
-  display:grid;grid-template-columns:1.2fr 1fr;gap:4rem;align-items:center;
+.slides{position:absolute;inset:0;z-index:0;}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease;display:flex;align-items:center;justify-content:center;}
+.slide.active{opacity:1;}
+.slide-bg{position:absolute;inset:0;object-fit:cover;width:100%;height:100%;filter:brightness(.28) saturate(.7);}
+
+/* Hero content */
+.hero-content{position:relative;z-index:2;flex:1;display:flex;align-items:center;padding:4rem 2rem 3rem;}
+.hero-inner{max-width:1300px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 480px;gap:2.5rem;align-items:stretch;}
+
+/* Left */
+.hero-left{}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--fc);font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--mg3);margin-bottom:1.6rem;}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';width:28px;height:1px;background:linear-gradient(90deg,transparent,var(--mg3));}
+.hero-eyebrow::after{background:linear-gradient(90deg,var(--mg3),transparent);}
+.hero-title{font-family:var(--fg);font-size:clamp(3rem,6vw,6.5rem);font-weight:300;line-height:.9;color:white;margin-bottom:1rem;letter-spacing:-.01em;}
+.hero-title strong{font-weight:600;font-style:italic;color:var(--mg3);display:block;}
+.hero-title span{display:block;}
+.hero-divider{width:52px;height:2px;background:linear-gradient(90deg,var(--mg3),var(--mg));margin:1.4rem 0;}
+.hero-sub{font-size:1rem;line-height:1.95;color:rgba(255,255,255,.68);max-width:520px;margin-bottom:2.5rem;font-weight:300;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-mg{font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.85rem 2rem;background:var(--mg);color:white;border:none;border-radius:3px;transition:all .25s;box-shadow:0 4px 18px rgba(192,24,106,.4);}
+.btn-mg:hover{background:var(--mgd);transform:translateY(-2px);}
+.btn-ghost{font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.85rem 2rem;background:transparent;color:white;border:1px solid rgba(255,255,255,.38);border-radius:3px;transition:all .25s;}
+.btn-ghost:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.7);}
+
+/* RIGHT — 3 portrait leadership cards */
+.hero-right {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+  align-self: stretch;
 }
 
-.hero-content { max-width: 600px; }
-.hero-eyebrow{
-  display:inline-flex;align-items:center;gap:.7rem;
-  font-size:.7rem;font-weight:600;letter-spacing:.25em;text-transform:uppercase;
-  color:var(--crimson);margin-bottom:1.6rem;
-}
-.hero-eyebrow::before{content:'';width:24px;height:1.5px;background:var(--crimson);}
-.hero-eyebrow-badge{
-  background:var(--crimson-pale);border:1px solid rgba(155,27,48,.15);
-  padding:.2rem .7rem;border-radius:50px;
-  font-size:.62rem;color:var(--crimson);
-}
-
-.hero-title{
-  font-family:var(--fd);
-  font-size:clamp(4rem,9vw,9rem);
-  color:var(--ink);line-height:.85;
-  letter-spacing:-.02em;font-weight:700;
-  margin-bottom:.8rem;
-}
-.hero-title .hollow{
-  -webkit-text-stroke:1.5px var(--crimson);
-  color:transparent;
-}
-.hero-subtitle{
-  font-family:var(--fd);
-  font-size:clamp(1.1rem,2vw,1.8rem);
-  font-style:italic;font-weight:300;
-  color:var(--ink3);
-  letter-spacing:.06em;
-  margin-bottom:1.8rem;
-}
-.hero-desc{
-  font-size:.93rem;line-height:2;
-  color:var(--ink3);
-  margin-bottom:2.5rem;
-  font-weight:300;
+.hero-leader-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: all .4s var(--ease);
+  cursor: default;
+  box-shadow: 0 2px 12px rgba(0,0,0,.06);
 }
 
-.hero-stats{display:flex;gap:0;margin-bottom:2.5rem; flex-wrap:wrap;}
-.hs{
-  padding:1rem 2.2rem 1rem 0;
-  border-right:1px solid var(--border);
-  margin-right:2.2rem;
+.hero-leader-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(192,24,106,.15);
 }
-.hs:last-child{border-right:none; margin-right:0;}
-.hs-num{font-family:var(--fd);font-size:2.8rem;font-weight:700;color:var(--crimson);line-height:1;}
-.hs-lbl{font-size:.62rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3);margin-top:.3rem;}
 
-.hero-ctas{display:flex;gap:.9rem;flex-wrap:wrap;}
-.btn-primary{
-  font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
-  padding:.75rem 1.9rem;border-radius:4px;
-  background:var(--crimson);color:white;border:none;cursor:pointer;
-  transition:all .22s;display:inline-flex;align-items:center;gap:.5rem;
+.hlc-photo {
+  width: 100%;
+  height: 240px;
+  background: linear-gradient(160deg, var(--mg5), #e8e2ed);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
 }
-.btn-primary:hover{background:var(--crimson-light);transform:translateY(-1px);}
-.btn-outline{
-  font-size:.75rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
-  padding:.75rem 1.9rem;border-radius:4px;
-  background:transparent;color:var(--ink2);
-  border:1px solid var(--border);
-  transition:all .22s;display:inline-flex;align-items:center;gap:.5rem;
-}
-.btn-outline:hover{border-color:var(--crimson);color:var(--crimson);}
 
-/* ─── HERO BOARD STACK (MODIFIED TO VERTICAL CARDS) ─── */
-.hero-board-stack { 
-  display: grid; 
-  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); 
-  gap: 1.2rem; 
+.hlc-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform .5s var(--ease);
 }
-.hb-card { 
-  background: rgba(255,255,255,0.75); 
-  backdrop-filter: blur(10px); 
-  border: 2px solid var(--border); 
-  padding: 0.8rem; 
-  border-radius: 15px; 
-  display: flex; flex-direction: column; align-items: center; text-align: center; gap: 1rem; 
-  transition: all .3s var(--ease); 
-}
-.hb-card:hover { 
-  transform: translateY(-8px); 
-  border-color: rgba(155,27,48,.2); 
-  background: var(--white); 
-  box-shadow: 0 16px 30px rgba(26,18,16,.05); 
-}
-.hb-img-wrap { 
-  width: 100%; 
-  aspect-ratio: 3/4; /* Makes it a vertical rectangle */
-  border-radius: 8px; /* Boxy corners instead of a circle */
-  background: var(--paper3); 
-  position: relative; overflow: hidden; flex-shrink: 0; 
-  border: 1px solid rgba(0,0,0,0.05); 
-  box-shadow: 0 4px 12px rgba(0,0,0,.08); 
-}
-.hb-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
-.hb-ph { 
-  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; 
-  font-family: var(--fd); font-size: 1.4rem; color: rgba(155,27,48,.15); font-weight: 700; 
-}
-.hb-info { display: flex; flex-direction: column; align-items: center; gap: 0.3rem; }
-.hb-name { font-family: var(--fd); font-size: 1.2rem; font-weight: 700; color: var(--ink); line-height: 1.1; }
-.hb-desig { font-size: 0.65rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--crimson); }
 
-/* ─── SECTIONS ─── */
-.sec{padding:6rem 0;position:relative;}
-.sec-white{background:var(--white);}
-.sec-paper{background:var(--paper);}
-.sec-paper2{background:var(--paper2);}
-.cont{max-width:1360px;margin:0 auto;padding:0 2rem;}
-
-.eyebrow{
-  font-size:.68rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;
-  color:var(--crimson);display:flex;align-items:center;gap:.7rem;margin-bottom:.7rem;
+.hero-leader-card:hover .hlc-photo img {
+  transform: scale(1.04);
 }
-.eyebrow::before{content:'';width:18px;height:1.5px;background:var(--crimson);}
-.eyebrow.gold{color:var(--gold);}
-.eyebrow.gold::before{background:var(--gold);}
 
-.sec-title{
-  font-family:var(--fd);
-  font-size:clamp(2.4rem,4.5vw,5rem);
-  color:var(--ink);line-height:.92;
-  margin-bottom:.5rem;font-weight:700;
+.hlc-badge {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(13,13,13,.8), transparent);
+  padding: 1rem 1rem .75rem;
+  z-index: 2;
 }
-.sec-title em{
-  font-family:var(--fd);font-style:italic;font-weight:300;
-  color:var(--crimson);
-}
-.sec-rule{width:32px;height:2px;background:var(--crimson);margin-bottom:3rem;opacity:.5;}
 
-.rv{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease);}
+.hlc-role {
+  font-family: var(--fc);
+  font-size: .68rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--mg);
+  margin-bottom: .25rem;
+}
+
+.hlc-name {
+  font-family: var(--fg);
+  font-size: 1rem;
+  font-weight: 500;
+  color: white;
+  line-height: 1.2;
+  
+}
+
+.hlc-details-bottom {
+  padding: 0.7rem 0.9rem;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hlc-note {
+  font-size: .68rem;
+  color: var(--blk4);
+  line-height: 1.35;
+  font-weight: 300;
+  font-size: 1rem;
+}
+
+/* Slide indicators */
+.slide-indicators{position:relative;z-index:2;display:flex;align-items:center;gap:.5rem;padding:1.2rem 2rem 2rem;max-width:1300px;margin:0 auto;width:100%;}
+.si-dot{width:22px;height:2px;background:rgba(255,255,255,.22);border-radius:2px;cursor:pointer;transition:all .4s;}
+.si-dot.active{width:44px;background:var(--mg3);}
+
+/* Slide caption */
+.slide-caption{position:absolute;bottom:80px;right:2rem;z-index:2;text-align:right;}
+.sc-verse{font-family:var(--fg);font-size:.95rem;font-style:italic;color:rgba(255,255,255,.55);line-height:1.6;max-width:280px;}
+.sc-ref{font-family:var(--fc);font-size:.58rem;letter-spacing:.2em;color:var(--mg3);margin-top:.35rem;}
+
+/* Stats row */
+.hero-stats-row{position:relative;z-index:2;background:rgba(0,0,0,.7);border-top:1px solid rgba(255,255,255,.06);backdrop-filter:blur(8px);}
+.hero-stats-inner{max-width:1300px;margin:0 auto;padding:1.2rem 2rem;display:flex;gap:0;}
+.hs{flex:1;text-align:center;border-right:1px solid rgba(255,255,255,.08);padding:.4rem 1rem;}
+.hs:last-child{border-right:none;}
+.hs-num{font-family:var(--fg);font-size:2.1rem;font-weight:600;color:var(--mg3);line-height:1;}
+.hs-lbl{font-size:.58rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:.3rem;}
+
+/* ═══════════════════════════════
+   SECTION BASE
+═══════════════════════════════ */
+.sec{padding:5.5rem 0;position:relative;}
+.cont{max-width:1300px;margin:0 auto;padding:0 2rem;}
+.sec-label{font-family:var(--fc);font-size:.63rem;letter-spacing:.3em;text-transform:uppercase;color:var(--mg);display:flex;align-items:center;gap:1rem;margin-bottom:.9rem;}
+.sec-label::after{content:'';flex:1;max-width:56px;height:1px;background:linear-gradient(90deg,var(--mg),transparent);}
+.sec-h{font-family:var(--fg);font-size:clamp(2.3rem,4.5vw,4.8rem);font-weight:300;line-height:.92;color:var(--blk);margin-bottom:.4rem;letter-spacing:-.015em;}
+.sec-h em{font-style:italic;font-weight:500;color:var(--mg);}
+.sec-sub{font-size:.93rem;color:var(--blk4);line-height:1.85;max-width:540px;margin-bottom:3rem;font-weight:300;}
+
+.rv{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease);}
 .rv.on{opacity:1;transform:none;}
-.rv2{opacity:0;transform:translateY(24px);transition:opacity .8s .1s var(--ease),transform .8s .1s var(--ease);}
+.rv2{opacity:0;transform:translateY(28px);transition:opacity .9s .12s var(--ease),transform .9s .12s var(--ease);}
 .rv2.on{opacity:1;transform:none;}
-.rv3{opacity:0;transform:translateY(24px);transition:opacity .8s .2s var(--ease),transform .8s .2s var(--ease);}
-.rv3.on{opacity:1;transform:none;}
 
-/* ─── MISSION ─── */
-.verse-block{
-  border-left:3px solid var(--crimson);
-  padding:1.8rem 2.2rem;
-  background:var(--crimson-pale);
-  border-radius:0 8px 8px 0;
-  position:relative;
-}
-.verse-mark{
-  position:absolute;top:-.5rem;left:1.2rem;
-  font-family:var(--fd);font-size:6rem;
-  color:rgba(155,27,48,.08);line-height:1;
-  pointer-events:none;font-weight:700;
-}
-.verse-text{font-family:var(--fd);font-size:1.45rem;font-style:italic;color:var(--ink2);line-height:1.65;position:relative;}
-.verse-ref{font-size:.68rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--crimson);margin-top:.8rem;opacity:.7;}
-.mission-body{font-size:.92rem;line-height:2.1;color:var(--ink3);font-weight:300;}
-.mission-body strong{color:var(--ink2);font-weight:500;}
+/* ═══════════════════════════════
+   MISSION SECTION
+═══════════════════════════════ */
+.mission-sec{background:var(--white);}
 .mission-layout{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+.mission-text p{font-size:.93rem;color:var(--blk4);line-height:1.95;margin-bottom:1.1rem;font-weight:300;}
+.mission-text .lead{font-family:var(--fg);font-size:1.4rem;font-weight:400;color:var(--blk);line-height:1.6;margin-bottom:1.5rem;border-left:3px solid var(--mg);padding-left:1.4rem;}
 
-/* ─── COMMITTEE / BOARD ─── */
-.committee-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1.5rem;margin-top:2rem;}
-.cm-card{
-  background:var(--white);
-  border-radius:12px;
-  overflow:hidden;
-  border:1px solid var(--border);
-  box-shadow:0 4px 15px rgba(26,18,16,.03); 
-  transition:all .3s var(--ease);
-}
-.cm-card:hover{
-  transform:translateY(-4px);
-  border-color:rgba(155,27,48,.25);
-  box-shadow:0 12px 28px rgba(26,18,16,.08);
-}
-.cm-photo{
-  width:100%;
-  aspect-ratio:4/5; 
-  overflow:hidden;
-  background:var(--paper2);
-  position:relative;
-}
-.cm-photo img{width:100%;height:100%;object-fit:cover;object-position:top;}
-.cm-ph{
-  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-  font-family:var(--fd);font-size:2.2rem;color:rgba(155,27,48,.1);font-weight:700;
-}
-.cm-info{
-  padding:1.2rem 1.2rem; 
-  text-align: left; 
-}
-.cm-name{
-  font-family:var(--fd);
-  font-size:1.15rem;
-  font-weight:700;
-  color:var(--ink);
-  line-height:1.2;
-  margin-bottom:.35rem;
-}
-.cm-pos{
-  font-size:.65rem;
-  font-weight:700;
-  letter-spacing:.05em;
-  text-transform:uppercase;
-  color:var(--crimson-light); 
+.verse-block{border-left:3px solid var(--mg);padding:1.8rem 2rem;background:var(--mg5);border-radius:0 6px 6px 0;}
+.verse-text{font-family:var(--fg);font-size:1.3rem;font-style:italic;color:var(--blk);line-height:1.6;margin-bottom:.8rem;}
+.verse-ref{font-family:var(--fc);font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mg);font-weight:600;}
+
+/* ═══════════════════════════════
+   BOARD MEMBERS — GRID
+═══════════════════════════════ */
+.members-sec{background:var(--white);}
+.members-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
 }
 
-/* ─── PROGRAMMES ─── */
-.prog-hero-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:1rem;
-  margin-top:2.5rem;
+.mem-card {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(192, 24, 106, 0.12);
+  transition: all .35s var(--ease);
+  cursor: default;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
-.prog-card{
-  border-radius:8px;
-  padding:2rem;
-  position:relative;overflow:hidden;
-  border:1px solid var(--border);
-  background:var(--white);
-  transition:all .35s var(--ease);
-}
-.prog-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(26,18,16,.07);border-color:rgba(155,27,48,.2);}
-.prog-card.large{grid-column:span 2;display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:start;}
-.prog-card::before{
-  content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--crimson);opacity:.3;
-}
-.prog-card.accent-gold::before{background:var(--gold);}
-.prog-card.accent-both::before{background:linear-gradient(to bottom,var(--crimson),var(--gold));}
-.prog-num{
-  font-family:var(--fd);font-size:5rem;font-weight:700;
-  color:rgba(26,18,16,.04);
-  position:absolute;bottom:-1rem;right:1.2rem;
-  line-height:1;pointer-events:none;
-}
-.prog-icon{
-  width:40px;height:40px;border-radius:8px;
-  display:flex;align-items:center;justify-content:center;
-  margin-bottom:1rem;background:var(--crimson-pale);
-}
-.prog-icon svg{width:20px;height:20px;fill:var(--crimson);}
-.prog-card.accent-gold .prog-icon{background:var(--gold-pale);}
-.prog-card.accent-gold .prog-icon svg{fill:var(--gold);}
-.prog-tag{font-size:.6rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--ink3);margin-bottom:.3rem;opacity:.6;}
-.prog-name{font-family:var(--fd);font-size:1.5rem;font-weight:700;color:var(--ink);letter-spacing:.01em;margin-bottom:.5rem;line-height:1.1;}
-.prog-desc{font-size:.85rem;color:var(--ink3);line-height:1.85;font-weight:300;}
-.prog-features{display:flex;flex-direction:column;gap:.5rem;margin-top:1.1rem;}
-.prog-feat{display:flex;align-items:center;gap:.6rem;font-size:.8rem;color:var(--ink3);font-weight:300;}
-.prog-feat::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--crimson);flex-shrink:0;}
 
-/* ─── ZONE COMPETITIONS ─── */
-.zone-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2rem;}
-.zone-card{
-  background:var(--white);border-radius:8px;
-  padding:1.6rem 1.4rem;
-  border:1px solid var(--border);
-  transition:all .3s;text-align:center;
+.mem-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 24px rgba(192, 24, 106, 0.2);
+  border-color: rgba(192, 24, 106, 0.25);
 }
-.zone-card:hover{transform:translateY(-4px);border-color:rgba(155,27,48,.2);box-shadow:0 12px 30px rgba(26,18,16,.07);}
-.zone-icon{
-  width:48px;height:48px;border-radius:50%;
-  background:var(--crimson-pale);
-  display:flex;align-items:center;justify-content:center;
-  margin:0 auto 1rem;
-}
-.zone-icon svg{width:20px;height:20px;fill:var(--crimson);}
-.zone-name{font-family:var(--fd);font-size:1rem;font-weight:600;color:var(--ink);letter-spacing:.02em;margin-bottom:.3rem;}
-.zone-desc{font-size:.78rem;color:var(--ink3);line-height:1.75;font-weight:300;}
 
-/* ─── CTA ─── */
-.dept-cta{
-  padding:6rem 0;text-align:center;
-  background:var(--ink);
-  position:relative;overflow:hidden;
+.mem-img-wrap {
+  width: 100%;
+  aspect-ratio: 3/3.5;
+  background: linear-gradient(135deg, var(--mg5), var(--off3));
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.dept-cta::before{
-  content:'';position:absolute;inset:0;
-  background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
-  background-size:60px 60px;
-}
-.cta-label{position:relative;font-size:.68rem;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--crimson-light);margin-bottom:.9rem;}
-.cta-title{
-  position:relative;
-  font-family:var(--fd);font-size:clamp(3rem,6vw,7rem);
-  color:white;line-height:.9;margin-bottom:1.4rem;font-weight:700;
-}
-.cta-title span{color:var(--crimson-light);}
-.cta-sub{position:relative;font-size:.93rem;color:rgba(255,255,255,.4);margin-bottom:2.5rem;max-width:440px;margin-left:auto;margin-right:auto;line-height:2;font-weight:300;}
-.cta-btns{position:relative;display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;}
-.btn-cta-primary{
-  font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
-  padding:.75rem 2rem;border-radius:4px;
-  background:var(--crimson);color:white;border:1px solid var(--crimson);
-  transition:all .22s;display:inline-flex;align-items:center;gap:.5rem;
-}
-.btn-cta-primary:hover{background:var(--crimson-light);}
-.btn-cta-ghost{
-  font-size:.75rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
-  padding:.75rem 2rem;border-radius:4px;
-  background:transparent;color:rgba(255,255,255,.5);
-  border:1px solid rgba(255,255,255,.15);
-  transition:all .22s;
-}
-.btn-cta-ghost:hover{color:white;border-color:rgba(255,255,255,.4);}
 
-footer{background:var(--ink);padding:1.6rem 0;text-align:center;border-top:1px solid rgba(255,255,255,.06);}
-footer p{font-size:.78rem;color:rgba(255,255,255,.25);}
-footer a{color:var(--gold-light);}
+.mem-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform .5s var(--ease);
+}
 
-/* ─── RESPONSIVE ─── */
+.mem-card:hover .mem-img {
+  transform: scale(1.05);
+}
+
+.mem-img-fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--fc);
+  font-size: 2.2rem;
+  color: rgba(192, 24, 106, 0.15);
+  z-index: 0;
+}
+
+.mem-info {
+  padding: .95rem 1rem;
+  background: white;
+  text-align: center;
+}
+
+.mem-name {
+  font-family: var(--fg);
+  font-size: .85rem;
+  font-weight: 500;
+  color: var(--blk);
+  line-height: 1.25;
+  margin-bottom: .35rem;
+}
+
+.mem-pos {
+  font-family: var(--fc);
+  font-size: .5rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--mg);
+  font-weight: 600;
+}
+
+/* ═══════════════════════════════
+   PROGRAMMES SECTION
+═══════════════════════════════ */
+.programmes-sec{background:var(--off);}
+.prog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem;}
+.prog-card{border-radius:6px;overflow:hidden;border:1px solid var(--off3);background:var(--white);transition:all .4s var(--ease);padding:2rem;position:relative;}
+.prog-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(192,24,106,.12);border-color:var(--mg4);}
+
+.prog-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--mg);opacity:.4;}
+.prog-icon{width:48px;height:48px;border-radius:6px;background:var(--mg5);display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem;font-size:1.5rem;}
+.prog-tag{font-family:var(--fc);font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mg);font-weight:600;margin-bottom:.5rem;}
+.prog-title{font-family:var(--fg);font-size:1.3rem;font-weight:500;color:var(--blk);line-height:1.25;margin-bottom:.7rem;}
+.prog-desc{font-size:.82rem;color:var(--blk4);line-height:1.8;font-weight:300;}
+
+/* ═══════════════════════════════
+   CTA
+═══════════════════════════════ */
+.cta-section{background:var(--blk);padding:5rem 0;text-align:center;position:relative;overflow:hidden;}
+.cta-section::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 20px,rgba(255,255,255,.015) 20px,rgba(255,255,255,.015) 21px);}
+.cta-h{font-family:var(--fg);font-size:clamp(2rem,5vw,4rem);font-weight:300;color:white;margin-bottom:.5rem;position:relative;z-index:1;}
+.cta-h em{font-style:italic;font-weight:500;color:var(--mg3);}
+.cta-sub{font-size:.93rem;color:rgba(255,255,255,.45);margin-bottom:2.5rem;position:relative;z-index:1;}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;position:relative;z-index:1;}
+.cta-btn{font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.88rem 2rem;background:var(--mg);color:white;border:none;border-radius:3px;transition:all .25s;}
+.cta-btn:hover{background:var(--mgd);}
+.cta-btn-o{font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.88rem 2rem;background:transparent;color:white;border:1px solid rgba(255,255,255,.28);border-radius:3px;transition:all .25s;}
+.cta-btn-o:hover{border-color:white;}
+
+footer{background:#050505;padding:2rem 0;text-align:center;}
+footer p{font-size:.76rem;color:rgba(255,255,255,.2);letter-spacing:.05em;}
+footer a{color:var(--mg3);}
+
+/* ═══════════════════════════════
+   RESPONSIVE
+═══════════════════════════════ */
 @media(max-width:1024px){
-  .dept-hero-inner{grid-template-columns:1fr; gap:3rem; padding-top:2rem;}
-  .hero-content{max-width:100%;}
-  .zone-strip{grid-template-columns:repeat(2,1fr);}
+  .hero-inner{grid-template-columns:1fr;gap:2rem;}
+  .hero-right{grid-template-columns:repeat(3,1fr);align-self:auto;}
+  .mission-layout{gap:3rem;}
+  .prog-grid{grid-template-columns:1fr 1fr;}
 }
 @media(max-width:900px){
   .mission-layout{grid-template-columns:1fr;}
-  .committee-grid{grid-template-columns:repeat(3,1fr);}
-  .prog-hero-grid{grid-template-columns:1fr;}
-  .prog-card.large{grid-column:span 1;grid-template-columns:1fr;}
+  .prog-grid{grid-template-columns:1fr;}
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
 }
 @media(max-width:640px){
-  .committee-grid{grid-template-columns:1fr 1fr;}
-  .zone-strip{grid-template-columns:1fr 1fr;}
-  .ann-right{display:none;}
-  .hero-board-stack{grid-template-columns:repeat(2, 1fr);} /* Wrap the top cards neatly on mobile */
+  .slide-caption{display:none;}
+  .hero-stats-inner{flex-wrap:wrap;}
+  .hs{flex:1 0 40%;}
+  .prog-grid{grid-template-columns:1fr;}
+  .members-grid{grid-template-columns:repeat(auto-fit, minmax(100px, 1fr));}
+  .hero-right{display:none;}
 }
 </style>
 </head>
 <body>
 
-<!-- ─── ANNOUNCEMENT BAR ─── -->
-<div id="ann-bar">
-  <div class="ann-left">
-    <div class="ann-label">Updates</div>
-    <div class="ticker-overflow">
-      <div class="ticker-track">
-        <div class="t-item"><span class="t-date">May 2025</span><span class="t-sep">·</span>State YPE Annual Camp 2025 — Registration open now. Venue: Zion Hills, Chengannur<span class="t-new">New</span></div>
-        <div class="t-item"><span class="t-date">Apr 2025</span><span class="t-sep">·</span>YPE District Convention Schedule released — all 14 districts, May–June 2025<span class="t-new">New</span></div>
-        <div class="t-item"><span class="t-date">Mar 2025</span><span class="t-sep">·</span>Youth Outreach Weekend — Teams deployed to 50+ villages across Kerala</div>
-        <div class="t-item"><span class="t-date">Feb 2025</span><span class="t-sep">·</span>State Worship Fest, Thiruvalla — 3,000+ youth attended. Recordings on COG Kerala YouTube</div>
-        <div class="t-item"><span class="t-date">Jan 2025</span><span class="t-sep">·</span>New YPE Discipleship curriculum launched — contact State Secretary for copies</div>
-      </div>
-    </div>
-  </div>
-  <div class="ann-divider"></div>
-  <div class="ann-right">
-    <div class="ann-notif" id="ann-notif"></div>
-  </div>
-</div>
-
-<!-- ─── NAV ─── -->
+<!-- NAV -->
 <nav id="nav">
   <div class="nb">
     <a href="home.html" class="nl">
       <div class="nl-cross">✝</div>
-      <div class="nl-divider"></div>
-      <div>
-        <div class="nl-t1">Church of God (Full Gospel)</div>
-        <div class="nl-t2">Kerala State · India</div>
+      <div class="nl-info">
+        <div class="t1">Church of God (Full Gospel) · Kerala State</div>
+        <div class="t2">Young People's Endeavour</div>
       </div>
     </a>
-    <a href="home.html" class="nav-back">← Back to Home</a>
+    <div class="nav-links">
+      <a href="#mission" class="nav-link">Mission</a>
+      <a href="#board" class="nav-link">Board</a>
+      <a href="#programmes" class="nav-link">Programmes</a>
+      <a href="home.html" class="nav-link">Home</a>
+    </div>
+    <a href="#programmes" class="nav-cta">Join YPE</a>
+    <button class="hamburger" id="ham" aria-label="Open menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
-<!-- ─── HERO WITH LEADERSHIP BOXES ON THE RIGHT ─── -->
-<section class="dept-hero">
-  <div class="hero-bg"></div>
-  <div class="hero-lines"></div>
-  <div class="hero-accent"></div>
-  <div class="hero-accent-bar"></div>
-  <div class="hero-big-text">YPE</div>
-  <div class="dept-hero-inner">
-    
-    <!-- LEFT SIDE: Text Content -->
-    <div class="hero-content">
-      <div class="hero-eyebrow">
-        Youth Department · COG Kerala
-        <span class="hero-eyebrow-badge">Est. Nationwide</span>
+<!-- HERO WITH SLIDESHOW -->
+<section class="hero" id="top">
+  <div class="slides" id="slides">
+    <div class="slide active">
+      <img class="slide-bg" src="ype2.png" alt="YPE Mission" onerror="this.style.display='none'">
+    </div>
+    <div class="slide">
+      <img class="slide-bg" src="ype (2).png" alt="YPE Spirit" onerror="this.style.display='none'">
+    </div>
+    <div class="slide">
+      <img class="slide-bg" src="ype (3).png" alt="YPE Youth" onerror="this.style.display='none'">
+    </div>
+    <div class="slide">
+      <img class="slide-bg" src="ype1.png" alt="YPE Impact" onerror="this.style.display='none'">
+    </div>
+  </div>
+  
+
+  <div class="slide-caption" id="slideCaption">
+    <div class="sc-verse">"Don't let anyone look down on you because you are young…"</div>
+    <div class="sc-ref">1 Timothy 4:12</div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-inner">
+      <!-- LEFT -->
+      <div class="hero-left">
+        <div class="hero-eyebrow">Youth Department · COG Kerala</div>
+        <h1 class="hero-title">
+          Young <span>People's</span>
+          <strong>Endeavour</strong>
+        </h1>
+        <div class="hero-divider"></div>
+        <p class="hero-sub">A generation rising. Spirit-filled youth standing bold to carry the flame of the Gospel across every corner of Kerala and beyond.</p>
+        <div class="hero-btns">
+          <button class="btn-mg" onclick="scrollTo('#mission')">Discover YPE</button>
+          <button class="btn-ghost" onclick="scrollTo('#programmes')">Our Programmes</button>
+        </div>
       </div>
-      <h1 class="hero-title">
-        Y<span class="hollow">PE</span>
-      </h1>
-      <div class="hero-subtitle">Young People's Endeavour — Kerala</div>
-      <p class="hero-desc">A generation rising. Equipping Spirit-filled youth to stand bold and carry the flame of the Gospel to every corner of Kerala and beyond.</p>
-      <div class="hero-stats">
-        <div class="hs"><div class="hs-num">10,000+</div><div class="hs-lbl">Youth Members</div></div>
-        <div class="hs"><div class="hs-num">14</div><div class="hs-lbl">Districts</div></div>
-        <div class="hs"><div class="hs-num">4</div><div class="hs-lbl">Zones</div></div>
-      </div>
-      <div class="hero-ctas">
-        <a href="#programmes" class="btn-primary">Explore Programmes</a>
-        <a href="#board" class="btn-outline">View Board →</a>
+
+      <!-- RIGHT — 3 portrait leadership cards -->
+      <div class="hero-right">
+        <!-- State President -->
+        <div class="hero-leader-card">
+          <div class="hlc-photo">
+            <img src="ype/ype(1).png" alt="State President" onerror="this.style.display='none'">
+            <div class="hlc-badge">
+              
+              <div class="hlc-name">Pr. Mathew Baby</div>
+            </div>
+          </div>
+          <div class="hlc-details-bottom">
+            <div class="hlc-role">State President</div>
+            <div class="hlc-note">Providing visionary leadership to youth across all districts of Kerala.</div>
+          </div>
+        </div>
+
+        <!-- State Secretary -->
+        <div class="hero-leader-card">
+          <div class="hlc-photo">
+            <img src="ype/ype(2).png" alt="State Secretary" onerror="this.style.display='none'">
+            <div class="hlc-badge">
+              
+              <div class="hlc-name">Br. Saju Sunny</div>
+            </div>
+          </div>
+          <div class="hlc-details-bottom">
+            <div class="hlc-role">State Secretary</div>
+            <div class="hlc-note">Coordinating all YPE communications and programmes across Kerala.</div>
+          </div>
+        </div>
+
+        <!-- State Treasurer -->
+        <div class="hero-leader-card">
+          <div class="hlc-photo">
+            <img src="ype/ype(3).png" alt="State Treasurer" onerror="this.style.display='none'">
+            <div class="hlc-badge">
+              
+              <div class="hlc-name">Pr. V.S. Vaijumon</div>
+            </div>
+          </div>
+          <div class="hlc-details-bottom">
+            <div class="hlc-role">State Treasurer</div>
+            <div class="hlc-note">Stewarding resources with faithfulness and transparency for youth ministry.</div>
+          </div>
+        </div>
       </div>
     </div>
+  </div>
 
-    <!-- RIGHT SIDE: Vertical Leadership Boxes Side-by-Side -->
-    <div class="hero-board">
-      <div class="hero-board-stack">
-        <div class="hb-card rv">
-          <div class="hb-img-wrap">
-            <img src="ype/ype(1).png" alt="President" onerror="this.style.display='none'">
-            <div class="hb-ph"></div>
-          </div>
-          <div class="hb-info">
-            <div class="hb-name">Pr.Mathew Baby</div>
-            <div class="hb-desig">State President</div>
-          </div>
-        </div>
-        <div class="hb-card rv2">
-          <div class="hb-img-wrap">
-            <img src="ype/ype(2).png" alt="Secretary" onerror="this.style.display='none'">
-            <div class="hb-ph"></div>
-          </div>
-          <div class="hb-info">
-            <div class="hb-name">Br.Saju Sunny</div>
-            <div class="hb-desig">State Secretary</div>
-          </div>
-        </div>
-        <div class="hb-card rv3">
-          <div class="hb-img-wrap">
-            <img src="ype/ype(3).png" alt="Treasurer" onerror="this.style.display='none'">
-            <div class="hb-ph"></div>
-          </div>
-          <div class="hb-info">
-            <div class="hb-name">Ps.V.S Vaijumon</div>
-            <div class="hb-desig">State Treasurer</div>
-          </div>
-        </div>
-      </div>
+  <div class="slide-indicators" id="slideIndicators">
+    <div class="si-dot active" onclick="goSlide(0)"></div>
+    <div class="si-dot" onclick="goSlide(1)"></div>
+    <div class="si-dot" onclick="goSlide(2)"></div>
+    <div class="si-dot" onclick="goSlide(3)"></div>
+  </div>
+
+  <div class="hero-stats-row">
+    <div class="hero-stats-inner">
+      <div class="hs"><div class="hs-num">10,000+</div><div class="hs-lbl">Youth Members</div></div>
+      <div class="hs"><div class="hs-num">14</div><div class="hs-lbl">Districts</div></div>
+      <div class="hs"><div class="hs-num">4</div><div class="hs-lbl">Zones</div></div>
+      <div class="hs"><div class="hs-num">24</div><div class="hs-lbl">Board Members</div></div>
+      <div class="hs"><div class="hs-num">Est. 1914</div><div class="hs-lbl">Established</div></div>
     </div>
-
   </div>
 </section>
 
-<!-- ─── MISSION ─── -->
-<section class="sec sec-white">
+<!-- MISSION SECTION -->
+<section class="sec mission-sec" id="mission">
   <div class="cont">
     <div class="mission-layout">
       <div class="rv">
-        <div class="eyebrow">Our Mission</div>
+        <div class="sec-label">Our Vision</div>
         <div class="verse-block">
-          <div class="verse-mark">"</div>
           <div class="verse-text">"Don't let anyone look down on you because you are young, but set an example in speech, in conduct, in love, in faith and in purity."</div>
-          <div class="verse-ref">✦ 1 Timothy 4:12</div>
+          <div class="verse-ref">1 Timothy 4:12</div>
         </div>
       </div>
-      <div class="rv2 mission-body">
-        The <strong>YPE (Young People's Endeavour)</strong> of Church of God Kerala is a movement raising up bold, Spirit-filled youth who live radically for Jesus. With active chapters in all <strong>14 districts</strong>, organised across <strong>4 zones</strong>, we equip young people through camps, conventions, talent programmes, sports events, outreach, and discipleship.<br><br>
-        We believe this generation is called to be warriors of the faith — not spectators. Every programme, every camp, every competition is designed to produce disciples who will carry the Gospel of the Kingdom of God across Kerala.
+      <div class="mission-text rv2">
+        <p class="lead">YPE (Young People's Endeavour) of Church of God Kerala is a movement raising up bold, Spirit-filled youth who live radically for Jesus.</p>
+        <p>With active chapters in all <strong>14 districts</strong>, organised across <strong>4 zones</strong>, we equip young people through camps, conventions, talent programmes, sports events, outreach, and discipleship.</p>
+        <p>We believe this generation is called to be warriors of the faith — not spectators. Every programme, every camp, every competition is designed to produce disciples who will carry the Gospel of the Kingdom of God across Kerala.</p>
       </div>
     </div>
   </div>
 </section>
 
-<div class="cont">
-  <div class="eyebrow rv">Governing Body</div>
-  <h2 class="sec-title rv">State Board <em>Members</em></h2>
-  <div class="sec-rule rv"></div>
-  <div class="committee-grid">
-    
-    <!-- Member 1 -->
-    <div class="cm-card rv">
-      <div class="cm-photo">
-        <img src="Ps.jpg" alt="Rev. Y. Reji" onerror="this.style.display='none'">
-      </div>
-      <div class="cm-info">
-        <div class="cm-name">Rev. Y. Reji</div>
-        <div class="cm-pos">State Overseer</div>
-      </div>
-    </div>
-    
-    <!-- Member 2 (YPE 1) -->
-    <div class="cm-card rv">
-      <div class="cm-photo">
-        <img src="ype/ype(1).png" alt="Pr. Mathew Baby" onerror="this.style.display='none'">
-      </div>
-      <div class="cm-info">
-        <div class="cm-name">Pr. Mathew Baby</div>
-        <div class="cm-pos">State President</div>
-      </div>
-    </div>
-
-    <!-- Member 3 (YPE 2) -->
-    <div class="cm-card rv">
-      <div class="cm-photo">
-        <img src="ype/ype(2).png" alt="Br. Saju Sunny" onerror="this.style.display='none'">
-      </div>
-      <div class="cm-info">
-        <div class="cm-name">Br. Saju Sunny</div>
-        <div class="cm-pos">State Secretary</div>
-      </div>
-    </div>
-
-    <!-- Member 4 (YPE 3) -->
-    <div class="cm-card rv">
-      <div class="cm-photo">
-        <img src="ype/ype(3).png" alt="Pr. V.S. Vaijumon" onerror="this.style.display='none'">
-      </div>
-      <div class="cm-info">
-        <div class="cm-name">Pr. V.S. Vaijumon</div>
-        <div class="cm-pos">Treasurer</div>
-      </div>
-    </div>
-
-    <!-- Member 5 (YPE 4) -->
-    <div class="cm-card rv">
-      <div class="cm-photo">
-        <img src="ype/ype(4).png" alt="Pr. Dennis Varghese" onerror="this.style.display='none'">
-      </div>
-      <div class="cm-info">
-        <div class="cm-name">Pr. Dennis Varghese</div>
-        <div class="cm-pos">Jn. Secretary</div>
-      </div>
-    </div>
-
-    <!-- Member 6 (YPE 5) -->
-    <div class="cm-card rv">
-      <div class="cm-photo">
-        <img src="ype/ype(5).png" alt="Pr. James P. J." onerror="this.style.display='none'">
-      </div>
-      <div class="cm-info">
-        <div class="cm-name">Pr. James P. J.</div>
-        <div class="cm-pos">Co-ordinator</div>
-      </div>
-    </div>
-
-    <!-- Member 7 (YPE 6) -->
-    <div class="cm-card rv">
-      <div class="cm-photo">
-        <img src="ype/ype(6).png" alt="Pr. Baiju Thankachen" onerror="this.style.display='none'">
-      </div>
-      <div class="cm-info">
-        <div class="cm-name">Pr. Baiju Thankachen</div>
-        <div class="cm-pos">Office Secretary</div>
-      </div>
-    </div>
-
-    <!-- Member 8 (YPE 7) -->
-    <div class="cm-card rv">
-      <div class="cm-photo">
-        <img src="ype/ype(7).png" alt="Br. Jabez P. Samuel" onerror="this.style.display='none'">
-      </div>
-      <div class="cm-info">
-        <div class="cm-name">Br. Jabez P. Samuel</div>
-        <div class="cm-pos">Talent Test Convenor</div>
-      </div>
-    </div>
-
-    <!-- Member 9 (YPE 8) -->
-    <div class="cm-card rv">
-      <div class="cm-photo">
-        <img src="ype/ype(8).png" alt="Pr. Bibin Thomas" onerror="this.style.display='none'">
-      </div>
-      <div class="cm-info">
-        <div class="cm-name">Pr. Bibin Thomas</div>
-        <div class="cm-pos">Media</div>
-      </div>
-    </div>
-
-    <!-- Member 10 (YPE 9) -->
-    <div class="cm-card rv">
-      <div class="cm-photo">
-        <img src="ype/ype(9).png" alt="Evg. Smith Sam" onerror="this.style.display='none'">
-      </div>
-      <div class="cm-info">
-        <div class="cm-name">Evg. Smith Sam</div>
-        <div class="cm-pos">Evangelism</div>
-      </div>
-    </div>
-
-    <!-- Member 11 (YPE 10) -->
-    <div class="cm-card rv">
-      <div class="cm-photo">
-        <img src="ype/ype(10).png" alt="Br. Bovas Raju" onerror="this.style.display='none'">
-      </div>
-      <div class="cm-info">
-        <div class="cm-name">Br. Bovas Raju</div>
-        <div class="cm-pos">Music Convenor</div>
-      </div>
-    </div>
-
-    <!-- Member 12 (YPE 11) -->
-    <div class="cm-card rv">
-      <div class="cm-photo">
-        <img src="ype/ype(11).png" alt="Pr. Binu K." onerror="this.style.display='none'">
-      </div>
-      <div class="cm-info">
-        <div class="cm-name">Pr. Binu K.</div>
-        <div class="cm-pos">Prayer Convenor</div>
-      </div>
-    </div>
-
-    <!-- Member 13 (YPE 12) -->
-    <div class="cm-card rv">
-      <div class="cm-photo">
-        <img src="ype/ype(12).png" alt="Pr. Jom Zachariah" onerror="this.style.display='none'">
-      </div>
-      <div class="cm-info">
-        <div class="cm-name">Pr. Jom Zachariah</div>
-        <div class="cm-pos">Publicity Convenor</div>
-      </div>
-    </div>
-
-    <!-- Member 14 (YPE 13) -->
-    <div class="cm-card rv">
-      <div class="cm-photo">
-        <img src="ype/ype(13).png" alt="Br. Sam K. Benny" onerror="this.style.display='none'">
-      </div>
-      <div class="cm-info">
-        <div class="cm-name">Br. Sam K. Benny</div>
-        <div class="cm-pos">Sports</div>
-      </div>
-    </div>
-
-    <!-- Member 15 (YPE 14) -->
-    <div class="cm-card rv">
-      <div class="cm-photo">
-        <img src="ype/ype(14).png" alt="Pr. Aby T. Joseph" onerror="this.style.display='none'">
-      </div>
-      <div class="cm-info">
-        <div class="cm-name">Pr. Aby T. Joseph</div>
-        <div class="cm-pos">Choir</div>
-      </div>
-    </div>
-
-    <!-- Member 16 (YPE 15) -->
-    <div class="cm-card rv">
-      <div class="cm-photo">
-        <img src="ype/ype(15).png" alt="Br. Jestin V. Samuel" onerror="this.style.display='none'">
-      </div>
-      <div class="cm-info">
-        <div class="cm-name">Br. Jestin V. Samuel</div>
-        <div class="cm-pos">Magazine Editor</div>
-      </div>
-    </div>
-
-    <!-- Member 17 (YPE 16) -->
-    <div class="cm-card rv">
-      <div class="cm-photo">
-        <img src="ype/ype(16).png" alt="Br. Aby Eapen" onerror="this.style.display='none'">
-      </div>
-      <div class="cm-info">
-        <div class="cm-name">Br. Aby Eapen</div>
-        <div class="cm-pos">Charity</div>
-      </div>
-    </div>
-
-    <!-- Member 18 (YPE 17) -->
-    <div class="cm-card rv">
-      <div class="cm-photo">
-        <img src="ype/ype(17).png" alt="Pr. John Daniel" onerror="this.style.display='none'">
-      </div>
-      <div class="cm-info">
-        <div class="cm-name">Pr. John Daniel</div>
-        <div class="cm-pos">Member</div>
-      </div>
-    </div>
-
-    <!-- Member 19 (YPE 18) -->
-    <div class="cm-card rv">
-      <div class="cm-photo">
-        <img src="ype/ype(18).png" alt="Br. Libin C. Mathew" onerror="this.style.display='none'">
-      </div>
-      <div class="cm-info">
-        <div class="cm-name">Br. Libin C. Mathew</div>
-        <div class="cm-pos">Member</div>
-      </div>
-    </div>
-
-    <!-- Member 20 (YPE 19) -->
-    <div class="cm-card rv">
-      <div class="cm-photo">
-        <img src="ype/ype(19).png" alt="Pr. Sam Easo" onerror="this.style.display='none'">
-      </div>
-      <div class="cm-info">
-        <div class="cm-name">Pr. Sam Easo</div>
-        <div class="cm-pos">Member</div>
-      </div>
-    </div>
-
-    <!-- Member 21 (YPE 20) -->
-    <div class="cm-card rv">
-      <div class="cm-photo">
-        <img src="ype/ype(20).png" alt="Pr. Ajil Rajarajan" onerror="this.style.display='none'">
-      </div>
-      <div class="cm-info">
-        <div class="cm-name">Pr. Ajil Rajarajan</div>
-        <div class="cm-pos">Member</div>
-      </div>
-    </div>
-
-    <!-- Member 22 (YPE 21) -->
-    <div class="cm-card rv">
-      <div class="cm-photo">
-        <img src="ype/ype(21).png" alt="Br. George Jacob" onerror="this.style.display='none'">
-      </div>
-      <div class="cm-info">
-        <div class="cm-name">Br. George Jacob</div>
-        <div class="cm-pos">Member</div>
-      </div>
-    </div>
-
-    <!-- Member 23 (YPE 22) -->
-    <div class="cm-card rv">
-      <div class="cm-photo">
-        <img src="ype/ype(22).png" alt="Pr. Y. Jobi" onerror="this.style.display='none'">
-      </div>
-      <div class="cm-info">
-        <div class="cm-name">Pr. Y. Jobi</div>
-        <div class="cm-pos">Member</div>
-      </div>
-    </div>
-
-    <!-- Member 24 (YPE 23) -->
-    <div class="cm-card rv">
-      <div class="cm-photo">
-        <img src="ype/ype(23).png" alt="Br. Joel Lal J." onerror="this.style.display='none'">
-      </div>
-      <div class="cm-info">
-        <div class="cm-name">Br. Joel Lal J.</div>
-        <div class="cm-pos">Member</div>
-      </div>
-    </div>
-
-    <!-- Member 25 (YPE 24) -->
-    <div class="cm-card rv">
-      <div class="cm-photo">
-        <img src="ype/ype(24).png" alt="Br. Lordson Jacob" onerror="this.style.display='none'">
-      </div>
-      <div class="cm-info">
-        <div class="cm-name">Br. Lordson Jacob</div>
-        <div class="cm-pos">Member</div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<!-- ─── PROGRAMMES ─── -->
-<section class="sec sec-white" id="programmes">
+<!-- BOARD MEMBERS -->
+<section class="sec members-sec" id="board">
   <div class="cont">
-    <div class="eyebrow gold rv">What We Do</div>
-    <h2 class="sec-title rv">YPE <em>Programmes</em></h2>
-    <div class="sec-rule rv" style="background:var(--gold);"></div>
-    <div class="prog-hero-grid rv">
-      <div class="prog-card large accent-both">
-        <div>
-          <div class="prog-icon"><svg viewBox="0 0 24 24"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg></div>
-          <div class="prog-tag">Flagship Event</div>
-          <div class="prog-name">Annual State Camp</div>
-          <div class="prog-desc">The heartbeat of YPE Kerala. Thousands of youth gather for an intensive week of prayer, deep worship, Spirit-encounters, and life-changing teaching that ignites a flame never forgotten.</div>
-        </div>
-        <div>
-          <div class="prog-icon" style="background:var(--gold-pale)"><svg viewBox="0 0 24 24" style="fill:var(--gold)"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg></div>
-          <div class="prog-tag">Revival Meetings</div>
-          <div class="prog-name">Fire &amp; Spirit Gatherings</div>
-          <div class="prog-desc">Quarterly revival meetings across all zones — featuring powerful preaching, worship nights, altar calls, and Pentecostal fire that transforms communities and ignites missions.</div>
-        </div>
-        <div class="prog-num">01</div>
+    <div class="sec-label rv">Governing Body</div>
+    <h2 class="sec-h rv">State Board <em>Members</em></h2>
+    <div class="members-grid">
+      
+      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="Ps.jpg" onerror="this.style.display='none'"><div class="mem-img-fallback">✝</div></div><div class="mem-info"><div class="mem-name">Rev. Y. Reji</div><div class="mem-pos">State Overseer</div></div></div>
+      
+      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(1).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Pr. Mathew Baby</div><div class="mem-pos">State President</div></div></div>
+
+      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(2).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Br. Saju Sunny</div><div class="mem-pos">State Secretary</div></div></div>
+
+      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(3).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Pr. V.S. Vaijumon</div><div class="mem-pos">State Treasurer</div></div></div>
+
+      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(4).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Pr. Dennis Varghese</div><div class="mem-pos">Jn. Secretary</div></div></div>
+
+      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(5).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Pr. James P. J.</div><div class="mem-pos">Co-ordinator</div></div></div>
+
+      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(6).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Pr. Baiju Thankachen</div><div class="mem-pos">Office Secretary</div></div></div>
+
+      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(7).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Br. Jabez P. Samuel</div><div class="mem-pos">Talent Test Convenor</div></div></div>
+
+      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(8).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Pr. Bibin Thomas</div><div class="mem-pos">Media</div></div></div>
+
+      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(9).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Evg. Smith Sam</div><div class="mem-pos">Evangelism</div></div></div>
+
+      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(10).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Br. Bovas Raju</div><div class="mem-pos">Music Convenor</div></div></div>
+
+      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(11).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Pr. Binu K.</div><div class="mem-pos">Prayer Convenor</div></div></div>
+
+      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(12).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Pr. Jom Zachariah</div><div class="mem-pos">Publicity Convenor</div></div></div>
+
+      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(13).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Br. Sam K. Benny</div><div class="mem-pos">Sports</div></div></div>
+
+      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(14).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Pr. Aby T. Joseph</div><div class="mem-pos">Choir</div></div></div>
+
+      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(15).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Br. Jestin V. Samuel</div><div class="mem-pos">Magazine Editor</div></div></div>
+
+      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(16).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Br. Aby Eapen</div><div class="mem-pos">Charity</div></div></div>
+
+      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(17).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Pr. John Daniel</div><div class="mem-pos">Member</div></div></div>
+
+      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(18).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Br. Libin C. Mathew</div><div class="mem-pos">Member</div></div></div>
+
+      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(19).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Pr. Sam Easo</div><div class="mem-pos">Member</div></div></div>
+
+      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(20).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Pr. Ajil Rajarajan</div><div class="mem-pos">Member</div></div></div>
+
+      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(21).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Br. George Jacob</div><div class="mem-pos">Member</div></div></div>
+
+      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(22).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Pr. Y. Jobi</div><div class="mem-pos">Member</div></div></div>
+
+      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(23).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Br. Joel Lal J.</div><div class="mem-pos">Member</div></div></div>
+
+      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(24).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Br. Lordson Jacob</div><div class="mem-pos">Member</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMMES SECTION -->
+<section class="sec programmes-sec" id="programmes">
+  <div class="cont">
+    <div class="sec-label rv">What We Do</div>
+    <h2 class="sec-h rv">YPE <em>Programmes</em></h2>
+    <div class="prog-grid rv2">
+      <div class="prog-card">
+        <div class="prog-icon">📅</div>
+        <div class="prog-tag">Flagship Event</div>
+        <div class="prog-title">Annual State Camp</div>
+        <div class="prog-desc">The heartbeat of YPE Kerala. Thousands of youth gather for prayer, deep worship, Spirit-encounters, and life-changing teaching that ignites a flame never forgotten.</div>
       </div>
 
       <div class="prog-card">
-        <div class="prog-icon"><svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z"/></svg></div>
-        <div class="prog-tag">Creative Excellence</div>
-        <div class="prog-name">Talent Test</div>
-        <div class="prog-desc">Multi-level talent competitions from church to state — singing, drama, oratory, Bible quiz, art, and more. A stage for every gifted young person to shine for God's glory.</div>
-        <div class="prog-num">02</div>
+        <div class="prog-icon">🔥</div>
+        <div class="prog-tag">Revival Meetings</div>
+        <div class="prog-title">Fire & Spirit Gatherings</div>
+        <div class="prog-desc">Quarterly revival meetings across all zones — featuring powerful preaching, worship nights, altar calls, and Pentecostal fire that transforms communities.</div>
       </div>
 
-      <div class="prog-card accent-gold">
-        <div class="prog-icon accent-gold"><svg viewBox="0 0 24 24"><path d="M6.5 10h-2v7h2v-7zm6 0h-2v7h2v-7zm8.5 9H2v2h19v-2zm-2.5-9h-2v7h2v-7zM11.5 1L2 6v2h19V6l-9.5-5z"/></svg></div>
-        <div class="prog-tag">Sports &amp; Athletics</div>
-        <div class="prog-name">YPE Sports Meet</div>
-        <div class="prog-desc">Annual sports competitions promoting healthy bodies, teamwork, and discipline. Football, volleyball, athletics and more — youth competing with excellence for the Kingdom.</div>
-        <div class="prog-num">03</div>
+      <div class="prog-card">
+        <div class="prog-icon">⭐</div>
+        <div class="prog-tag">Creative Excellence</div>
+        <div class="prog-title">Talent Test</div>
+        <div class="prog-desc">Multi-level talent competitions from church to state — singing, drama, oratory, Bible quiz, art, and more. A stage for every gifted young person.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ─── CTA ─── -->
-<section class="dept-cta">
-  <div class="cont">
-    <div class="cta-label">Rise Up</div>
-    <h2 class="cta-title">Set Kerala<br><span>Ablaze</span></h2>
-    <p class="cta-sub">Join the YPE movement — thousands of young warriors carrying the flame of the Gospel across every district, zone, and village of Kerala.</p>
-    <div class="cta-btns">
-      <a href="mailto:cogkeralastate@gmail.com" class="btn-cta-primary">Join YPE Today</a>
-      <a href="home.html" class="btn-cta-ghost">← Back to Home</a>
-    </div>
+<!-- CTA BANNER -->
+<section class="cta-section">
+  <h3 class="cta-h">Set Kerala <em>Ablaze</em></h3>
+  <p class="cta-sub">Join the YPE movement — thousands of young warriors carrying the flame of the Gospel across every district, zone, and village of Kerala.</p>
+  <div class="cta-btns">
+    <a href="mailto:cogkeralastate@gmail.com" class="cta-btn">Join YPE Today</a>
+    <a href="home.html" class="cta-btn-o">← Back to Home</a>
   </div>
 </section>
 
 <footer>
-  <p>© 2025 Church of God (Full Gospel) in India, Kerala State · <a href="mailto:cogkeralastate@gmail.com">cogkeralastate@gmail.com</a></p>
+  <p>© 2025 Church of God (Full Gospel) in India, Kerala State · Young People's Endeavour · <a href="mailto:cogkeralastate@gmail.com">cogkeralastate@gmail.com</a></p>
 </footer>
 
 <script>
-var io = new IntersectionObserver(function(entries){
-  entries.forEach(function(e){
-    if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); }
-  });
-},{threshold:0.06,rootMargin:'0px 0px -30px 0px'});
-document.querySelectorAll('.rv,.rv2,.rv3').forEach(function(el){ io.observe(el); });
-
-var notifications = [
-  {text:'State Camp 2025 — <span class="nh">Registration now open</span>'},
-  {text:'Zone Talent Test — <span class="nh">North Zone results out</span>'},
-  {text:'Sports Meet — <span class="nh">Zone finals announced</span>'},
-  {text:'Worship Fest — <span class="nh">Recordings on YouTube</span>'},
+/* SLIDESHOW */
+var CAPTIONS = [
+  { verse:'"Don\'t let anyone look down on you because you are young…"', ref:'1 Timothy 4:12' },
+  { verse:'"The harvest truly is plenteous, but the labourers are few."', ref:'Matthew 9:37 (KJV)' },
+  { verse:'"Set your heart on things above, not on earthly things."', ref:'Colossians 3:2 (NIV)' },
+  { verse:'"I can do all this through him who gives me strength."', ref:'Philippians 4:13 (NIV)' }
 ];
-var ni = 0;
-var notifEl = document.getElementById('ann-notif');
-function stripTags(h){ return h.replace(/<[^>]+>/g,''); }
-function typeNotif(obj){
-  if(!notifEl) return;
-  var plain = stripTags(obj.text);
-  notifEl.innerHTML = '';
-  notifEl.style.opacity = '1';
-  var i = 0;
-  function type(){
-    if(i <= plain.length){
-      notifEl.innerHTML = obj.text.substring(0,i) + (i < plain.length ? '<span style="opacity:.3">|</span>' : '');
-      i++; setTimeout(type, 40);
-    } else { setTimeout(fadeOut, 3200); }
-  }
-  type();
-}
-function fadeOut(){
-  notifEl.style.transition = 'opacity .4s';
-  notifEl.style.opacity = '0';
-  setTimeout(function(){
-    ni = (ni+1) % notifications.length;
-    notifEl.style.transition = '';
-    typeNotif(notifications[ni]);
-  }, 500);
-}
-setTimeout(function(){ typeNotif(notifications[0]); }, 900);
+var slides=document.querySelectorAll('.slide'),dots=document.querySelectorAll('.si-dot'),cap=document.getElementById('slideCaption'),cur=0,timer;
+function goSlide(n){slides[cur].classList.remove('active');dots[cur].classList.remove('active');cur=(n+slides.length)%slides.length;slides[cur].classList.add('active');dots[cur].classList.add('active');var c=CAPTIONS[cur];cap.querySelector('.sc-verse').textContent=c.verse;cap.querySelector('.sc-ref').textContent=c.ref;}
+function startSlideshow(){timer=setInterval(function(){goSlide(cur+1);},5500);}
+startSlideshow();
+dots.forEach(function(d,i){d.addEventListener('click',function(){clearInterval(timer);goSlide(i);startSlideshow();});});
+
+/* SCROLL REVEAL */
+var rvObs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');rvObs.unobserve(e.target);}});},{threshold:0.06,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.rv,.rv2').forEach(function(el){rvObs.observe(el);});
+
+/* UTILITIES */
+function scrollTo(sel){var el=document.querySelector(sel);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});}
+
+/* NAV ACTIVE */
+var sections=document.querySelectorAll('section[id]'),navLinks=document.querySelectorAll('.nav-link');
+window.addEventListener('scroll',function(){var scrollY=window.scrollY;sections.forEach(function(sec){var top=sec.offsetTop-100,bot=top+sec.offsetHeight;if(scrollY>=top&&scrollY<bot){navLinks.forEach(function(l){l.classList.remove('active');});var active=document.querySelector('.nav-link[href="#'+sec.id+'"]');if(active)active.classList.add('active');}});});
 </script>
 </body>
 </html>
