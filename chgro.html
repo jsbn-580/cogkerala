@@ -72,7 +72,7 @@ textarea,input,select{font-family:var(--ff);}
 .hamburger span{width:22px;height:1.5px;background:var(--mg);border-radius:2px;}
 
 /* ═══════════════════════════════
-   HERO — SLIDESHOW + RIGHT CARDS
+   HERO — SLIDESHOW + RIGHT CARDS (REFINED)
 ═══════════════════════════════ */
 .hero {
   padding-top:var(--nav);
@@ -86,9 +86,6 @@ textarea,input,select{font-family:var(--ff);}
 .slide.active{opacity:1;}
 .slide-bg{position:absolute;inset:0;object-fit:cover;width:100%;height:100%;filter:brightness(.28) saturate(.7);}
 .slide-color{position:absolute;inset:0;}
-
-
-
 
 /* Hero content — two-column layout */
 .hero-content{position:relative;z-index:2;flex:1;display:flex;align-items:center;padding:4rem 2rem 3rem;}
@@ -110,44 +107,43 @@ textarea,input,select{font-family:var(--ff);}
 .btn-ghost{font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.85rem 2rem;background:transparent;color:white;border:1px solid rgba(255,255,255,.38);border-radius:3px;transition:all .25s;}
 .btn-ghost:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.7);}
 
-/* RIGHT — 3 portrait leadership cards */
+/* RIGHT — 3 portrait leadership cards (REFINED) */
 .hero-right {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1rem; /* Slightly increased for better breathing room between tall elements */
+  gap: 1.2rem;
   align-self: stretch;
 }
-.hero-right-label {
-  display: none;
-}
 
-/* Updated card dimensions to form a tall portrait rectangle */
 .hero-leader-card {
   background: white;
-  border-radius: 16px; /* Increased to match the noticeably rounded corners in image_501a38.jpg */
+  border-radius: 12px;
   overflow: hidden;
-  border: 1px solid rgba(0, 0, 0, 0.08); /* Adjusted to a subtle dark border if placed on light backgrounds */
+  border: 1px solid rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
-  height: 100%; /* Stretches across the grid container height */
-  min-height: 400px;
-  width: 250x; /* Forces a tall, distinct portrait aspect ratio layout */
+  height: 100%;
   transition: all .4s var(--ease);
   cursor: default;
-}
-.hero-leader-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 16px 40px rgba(192,24,106,.25);
+  box-shadow: 0 2px 12px rgba(0,0,0,.06);
 }
 
-/* Portrait image area — covers the upper 70% of the card */
+.hero-leader-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(192,24,106,.15);
+}
+
+/* Portrait image area */
 .hlc-photo {
   width: 100%;
-  height: 280px; /* Fixed proportional height to enforce a distinct portrait shape */
+  height: 240px;
   background: linear-gradient(160deg, var(--mg5), #e8e2ed);
   position: relative;
   overflow: hidden;
+  display: flex;
+  align-items: flex-end;
 }
+
 .hlc-photo img {
   width: 100%;
   height: 100%;
@@ -155,53 +151,54 @@ textarea,input,select{font-family:var(--ff);}
   object-position: center top;
   transition: transform .5s var(--ease);
 }
+
 .hero-leader-card:hover .hlc-photo img {
-  transform: scale(1.05);
+  transform: scale(1.04);
 }
 
-/* Gradient overlay on image */
-.hlc-photo-overlay {
+/* Role + name badge overlaid on image */
+.hlc-badge {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 40%;
-  background: linear-gradient(to top, rgba(13,13,13,0.6), transparent);
-  z-index: 1;
+  background: linear-gradient(to top, rgba(13,13,13,.8), transparent);
+  padding: 1rem 1rem .75rem;
+  z-index: 2;
 }
 
-/* Fallback silhouette */
-.hlc-photo-init {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 0;
-}
-.hlc-photo-init svg {
-  opacity: .12;
+.hlc-role {
+  font-family: var(--fc);
+  font-size: .5rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--mg3);
+  margin-bottom: .25rem;
 }
 
-/* Bottom Text Container (if applicable for description under photo) */
+.hlc-name {
+  font-family: var(--fg);
+  font-size: 1rem;
+  font-weight: 500;
+  color: white;
+  line-height: 1.2;
+}
+
+/* Description below image */
 .hlc-details-bottom {
-  padding: 1.2rem;
+  padding: 1rem 1.1rem 1.1rem;
   background: white;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
 }
-/* Role + name badge overlaid on image bottom */
-.hlc-badge{
-  position:absolute;bottom:.65rem;left:.75rem;right:.75rem;
-  z-index:2;
-}
-.hlc-role{font-family:var(--fc);font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mg3);margin-bottom:.2rem;}
-.hlc-name{font-family:var(--fg);font-size:.95rem;font-weight:500;color:white;line-height:1.2;}
 
-/* Description text below the image */
-.hlc-info{padding:.75rem .85rem .85rem;background:white;}
-.hlc-note{font-size:.73rem;color:var(--blk4);line-height:1.65;font-weight:300;}
+.hlc-note {
+  font-size: .73rem;
+  color: var(--blk4);
+  line-height: 1.6;
+  font-weight: 300;
+}
 
 /* Slide indicators */
 .slide-indicators{position:relative;z-index:2;display:flex;align-items:center;gap:.5rem;padding:1.2rem 2rem 2rem;max-width:1300px;margin:0 auto;width:100%;}
@@ -261,85 +258,185 @@ textarea,input,select{font-family:var(--ff);}
 /* ═══════════════════════════════
    LEADERSHIP — 3 FULL-PAGE CARDS
 ═══════════════════════════════ */
-.leadership-sec{background:var(--off);}
-.leaders-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem;}
-.leader-card{background:white;border-radius:6px;overflow:hidden;border:1px solid var(--off3);transition:all .4s var(--ease);position:relative;}
-.leader-card:hover{transform:translateY(-8px);box-shadow:var(--shadow2);}
-.lc-photo{width:100%;aspect-ratio:3/4;background:linear-gradient(160deg,var(--mg5),var(--off3));position:relative;overflow:hidden;}
-.lc-photo img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .5s var(--ease);}
-.leader-card:hover .lc-photo img{transform:scale(1.04);}
-.lc-photo-sil{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
-.lc-photo-sil svg{opacity:.12;}
-.lc-overlay{position:absolute;bottom:0;left:0;right:0;height:55%;background:linear-gradient(to top,rgba(13,13,13,.93),transparent);z-index:1;}
-.lc-badge{position:absolute;bottom:.8rem;left:.8rem;right:.8rem;z-index:2;}
-.lc-badge-role{font-family:var(--fc);font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mg3);margin-bottom:.25rem;}
-.lc-badge-name{font-family:var(--fg);font-size:1.15rem;font-weight:500;color:white;line-height:1.2;}
-.lc-body{padding:1.2rem 1.4rem 1.4rem;}
-.lc-body p{font-size:.82rem;color:var(--blk4);line-height:1.75;font-weight:300;}
-.lc-accent{position:absolute;top:1rem;right:1rem;width:34px;height:34px;background:var(--mg);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;z-index:3;color:white;}
+/* 1. Card Container (Enforces exact height wrapper to kill the "long tail") */
+.hero-leader-card {
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #eaeaea;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  height: max-content; /* Forces the white card to perfectly hug the text length */
+}
 
+/* 2. Photo Area Layout Change */
+.hlc-photo {
+  width: 100%;
+  display: flex;
+  flex-direction: column; /* Allows content underneath the image to flow sequentially */
+  position: relative;
+  background: #f9f9f9;
+}
+
+.hlc-photo img {
+  width: 100%;
+  aspect-ratio: 4 / 4.5; /* Keeps the portrait frames uniformly shaped */
+  object-fit: cover;
+  object-position: top;
+}
+
+/* 3. The Text Box (Black background deleted, pushed to the white area) */
+.hlc-badge {
+  position: static; /* Removes absolute floating placement */
+  background: transparent; /* Completely deletes the black box */
+  border: none; /* Deletes old container borders */
+  padding: 16px 14px 4px 14px; /* Generous spacing inside the white background */
+  display: flex;
+  flex-direction: column;
+  text-align: center; /* Centers text beautifully */
+}
+
+/* 4. Elegant Name Typography on White */
+.hlc-name {
+  font-family: serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1a1a1a; /* Rich dark text for high readability on white */
+  margin-bottom: 4px;
+  order: 1; /* Keeps the name cleanly stacked on top */
+}
+
+/* 5. Elegant Designation Typography on White */
+.hlc-role {
+  font-family: sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: #b38428; /* A slightly deeper gold tone optimized for white backgrounds */
+  font-weight: 700;
+  order: 2; /* Keeps designation directly below the name */
+}
+
+/* 6. Description Note Area */
+.hlc-details-bottom {
+  padding: 0 14px 18px 14px; /* Tighter padding to prevent vertical stretching */
+  background: #ffffff;
+}
+
+.hlc-note {
+  font-size: 0.78rem;
+  color: #666666; /* Muted description gray */
+  line-height: 1.5;
+  font-weight: 400;
+  margin: 0;
+  text-align: center;
+}
 /* ═══════════════════════════════
-   BOARD MEMBERS — SQUARE IMAGE CARDS
+   BOARD MEMBERS — CLEAN GRID CARDS (REFINED)
 ═══════════════════════════════ */
-.members-sec{background:var(--blk);}
-.members-sec .sec-label{color:var(--mg3);}
-.members-sec .sec-label::after{background:linear-gradient(90deg,var(--mg3),transparent);}
-.members-sec .sec-h{color:white;}
-.members-sec .sec-h em{color:var(--mg3);}
-.members-sec .sec-sub{color:rgba(255,255,255,.45);}
+.members-sec{background:var(--white);}
+.members-sec .sec-label{color:var(--mg);}
+.members-sec .sec-label::after{background:linear-gradient(90deg,var(--mg),transparent);}
+.members-sec .sec-h{color:var(--blk);}
+.members-sec .sec-h em{color:var(--mg);}
+.members-sec .sec-sub{color:var(--blk4);}
 
-.members-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;margin-top:2rem;}
-
-.mem-card{
-  position:relative;overflow:hidden;background:var(--blk2);
-  transition:all .35s var(--ease);cursor:default;
-  aspect-ratio:3/4;
+.members-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
 }
 
-
-/* Full-cover image */
-.mem-img{
-  position:fill;inset:0;
-  width:100%;height:100%;
-  object-fit:cover;object-position:top center;
-  transition:transform .5s var(--ease);
+.mem-card {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(192, 24, 106, 0.12);
+  transition: all .35s var(--ease);
+  cursor: default;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
-.mem-card:hover .mem-img{transform:scale(1.06);}
 
-/* Fallback gradient when no image */
-
-
-.mem-initial{font-family:var(--fg);font-size:2.5rem;font-weight:600;color:rgba(255,255,255,.18);}
-
-/* Gradient overlay at bottom */
-.mem-overlay{
-  position:absolute;bottom:0;left:0;right:0;
-  height:55%;
-  background:linear-gradient(to top,rgba(0,0,0,.92) 0%,rgba(0,0,0,.5) 60%,transparent 100%);
-  z-index:1;
+.mem-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 24px rgba(192, 24, 106, 0.2);
+  border-color: rgba(192, 24, 106, 0.25);
 }
-.mem-card:hover .mem-overlay{height:65%;}
 
-/* Pink top-bar accent */
-.mem-top-bar{position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--mg),var(--mg3));z-index:2;transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease);}
-.mem-card:hover .mem-top-bar{transform:scaleX(1);}
-
-/* Card number */
-.mem-num{position:absolute;top:.7rem;right:.75rem;font-family:var(--fg);font-size:.85rem;font-weight:300;color:rgba(255,255,255,.18);z-index:2;line-height:1;}
-
-/* Name & designation at bottom */
-.mem-info{
-  position:absolute;bottom:0;left:0;right:0;
-  padding:.9rem 1rem 1rem;
-  z-index:2;
+/* Image container */
+.mem-img-wrap {
+  width: 100%;
+  aspect-ratio: 3/3.5;
+  background: linear-gradient(135deg, var(--mg5), var(--off3));
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.mem-name{font-family:var(--fg);font-size:1rem;font-weight:500;color:white;line-height:1.2;margin-bottom:.2rem;}
-.mem-pos{font-family:var(--fc);font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mg3);}
-.mem-zone{font-size:.68rem;color:rgba(255,255,255,.38);margin-top:.15rem;}
 
-@media(max-width:1100px){.members-grid{grid-template-columns:repeat(4,1fr);}}
-@media(max-width:800px){.members-grid{grid-template-columns:repeat(3,1fr);}}
-@media(max-width:560px){.members-grid{grid-template-columns:repeat(2,1fr);}}
+.mem-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform .5s var(--ease);
+}
+
+.mem-card:hover .mem-img {
+  transform: scale(1.05);
+}
+
+/* Fallback silhouette */
+.mem-img-fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--fc);
+  font-size: 2.2rem;
+  color: rgba(192, 24, 106, 0.15);
+  z-index: 0;
+}
+
+/* Info section */
+.mem-info {
+  padding: .95rem 1rem;
+  background: white;
+  text-align: center;
+}
+
+.mem-name {
+  font-family: var(--fg);
+  font-size: .85rem;
+  font-weight: 500;
+  color: var(--blk);
+  line-height: 1.25;
+  margin-bottom: .35rem;
+}
+
+.mem-pos {
+  font-family: var(--fc);
+  font-size: .5rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--mg);
+  font-weight: 600;
+}
+
+/* Responsive grid */
+@media(max-width:1200px){
+  .members-grid{grid-template-columns:repeat(auto-fit, minmax(130px, 1fr));}
+}
+@media(max-width:900px){
+  .members-grid{grid-template-columns:repeat(auto-fit, minmax(120px, 1fr));}
+}
+@media(max-width:640px){
+  .members-grid{grid-template-columns:repeat(auto-fit, minmax(100px, 1fr));}
+}
 
 /* ═══════════════════════════════
    WORKS
@@ -451,7 +548,6 @@ footer a{color:var(--mg3);}
 @media(max-width:1024px){
   .hero-inner{grid-template-columns:1fr;gap:2rem;}
   .hero-right{grid-template-columns:repeat(3,1fr);align-self:auto;}
-  .hlc-photo{min-height:200px;}
   .about-layout,.contact-layout{gap:3rem;}
   .works-grid{grid-template-columns:1fr 1fr;}
   .work-card.featured .wc-body{grid-template-columns:1fr;}
@@ -473,6 +569,7 @@ footer a{color:var(--mg3);}
   .hamburger{display:flex;}
   .frow-2{grid-template-columns:1fr;}
   .hero-right{display:none;}
+  .members-grid{grid-template-columns:repeat(auto-fit, minmax(90px, 1fr));}
 }
 </style>
 </head>
@@ -494,7 +591,6 @@ footer a{color:var(--mg3);}
       <a href="#members" class="nav-link">Board Members</a>
       <a href="#contact" class="nav-link">Contact</a>
       <a href="home.html" class="nav-link">Home</a>
-      
     </div>
     <a href="#contact" class="nav-cta">Get Involved</a>
     <button class="hamburger" id="ham" aria-label="Open menu"><span></span><span></span><span></span></button>
@@ -505,19 +601,19 @@ footer a{color:var(--mg3);}
 <section class="hero" id="top">
   <div class="slides" id="slides">
     <div class="slide active">
-      <img class="slide-bg" src="suphome (5).jpg" alt="Mission" onerror="this.style.display='none'">
+      <img class="slide-bg" src="con (3).png" alt="Mission" onerror="this.style.display='none'">
       <div class="slide-color"></div>
     </div>
     <div class="slide">
-      <img class="slide-bg" src="audidclr.jpeg" alt="Church Growth" onerror="this.style.display='none'">
+      <img class="slide-bg" src="conven.png" alt="Church Growth" onerror="this.style.display='none'">
       <div class="slide-color"></div>
     </div>
     <div class="slide">
-      <img class="slide-bg" src="audi (3).jpg" alt="Outreach" onerror="this.style.display='none'">
+      <img class="slide-bg" src="con (4).png" alt="Outreach" onerror="this.style.display='none'">
       <div class="slide-color"></div>
     </div>
     <div class="slide">
-      <img class="slide-bg" src="zoomed.jpeg" alt="Kerala Ministry" onerror="this.style.display='none'">
+      <img class="slide-bg" src="robhome (2).jpg" alt="Kerala Ministry" onerror="this.style.display='none'">
       <div class="slide-color"></div>
     </div>
   </div>
@@ -551,24 +647,20 @@ footer a{color:var(--mg3);}
         </div>
       </div>
 
-      <!-- RIGHT — 3 portrait leadership cards -->
+      <!-- RIGHT — 3 portrait leadership cards (REFINED) -->
       <div class="hero-right">
 
         <!-- State Overseer -->
         <div class="hero-leader-card">
           <div class="hlc-photo">
             <img src="cgm/cgm2.png" alt="State Overseer" onerror="this.style.display='none'">
-            <div class="hlc-photo-init">
-              <svg width="52" height="62" viewBox="0 0 60 72" fill="none"><circle cx="30" cy="22" r="16" stroke="#C0186A" stroke-width="1.5"/><path d="M4 68c0-14.36 11.64-26 26-26s26 11.64 26 26" stroke="#C0186A" stroke-width="1.5" stroke-linecap="round"/></svg>
-            </div>
-            <div class="hlc-photo-overlay"></div>
             <div class="hlc-badge">
               <div class="hlc-role">State Director</div>
               <div class="hlc-name">Ps.Y.Jose</div>
             </div>
           </div>
-          <div class="hlc-info">
-            <div class="hlc-note">Providing visionary leadership across all fourteen districts of Kerala State.</div>
+          <div class="hlc-details-bottom">
+        
           </div>
         </div>
 
@@ -576,17 +668,12 @@ footer a{color:var(--mg3);}
         <div class="hero-leader-card">
           <div class="hlc-photo">
             <img src="cgm/cgm4.png" alt="Secretary" onerror="this.style.display='none'">
-            <div class="hlc-photo-init">
-              <svg width="52" height="62" viewBox="0 0 60 72" fill="none"><circle cx="30" cy="22" r="16" stroke="#C0186A" stroke-width="1.5"/><path d="M4 68c0-14.36 11.64-26 26-26s26 11.64 26 26" stroke="#C0186A" stroke-width="1.5" stroke-linecap="round"/></svg>
-            </div>
-            <div class="hlc-photo-overlay"></div>
             <div class="hlc-badge">
               <div class="hlc-role">Co-ordinator</div>
               <div class="hlc-name">Br.Sabu T A</div>
             </div>
           </div>
-          <div class="hlc-info">
-            <div class="hlc-note">Coordinating all board communications and mission correspondence.</div>
+          <div class="hlc-details-bottom">
           </div>
         </div>
 
@@ -594,17 +681,12 @@ footer a{color:var(--mg3);}
         <div class="hero-leader-card">
           <div class="hlc-photo">
             <img src="cgm/cgm3.png" alt="Treasurer" onerror="this.style.display='none'">
-            <div class="hlc-photo-init">
-              <svg width="52" height="62" viewBox="0 0 60 72" fill="none"><circle cx="30" cy="22" r="16" stroke="#C0186A" stroke-width="1.5"/><path d="M4 68c0-14.36 11.64-26 26-26s26 11.64 26 26" stroke="#C0186A" stroke-width="1.5" stroke-linecap="round"/></svg>
-            </div>
-            <div class="hlc-photo-overlay"></div>
             <div class="hlc-badge">
-              <div class="hlc-role">Pr.P M Mathew</div>
-              <div class="hlc-name">Secretary</div>
+              <div class="hlc-role">Secretary</div>
+              <div class="hlc-name">Ps..P M Mathew</div>
             </div>
           </div>
-          <div class="hlc-info">
-            <div class="hlc-note">Stewarding all resources with transparency and faithfulness.</div>
+          <div class="hlc-details-bottom">
           </div>
         </div>
 
@@ -665,270 +747,261 @@ footer a{color:var(--mg3);}
   </div>
 </section>
 
-
-
-
-
-
-   <!-- BOARD MEMBERS -->
+<!-- BOARD MEMBERS (REFINED) -->
 <section class="sec members-sec" id="members">
   <div class="cont">
     <div class="sec-label rv">Representation</div>
     <h2 class="sec-h rv">Board <em>Members</em></h2>
     <div class="sec-sub rv">Twenty-one representatives standing together in mission — each a voice for their people, each a servant of the Kingdom.</div>
 
-   <div class="members-grid">
+    <div class="members-grid">
 
-      <!-- Row 1 -->
+      <!-- Member 1 -->
       <div class="mem-card">
-        <div class="mem-top-bar"></div>
-        <img class="mem-img" src="ps.jpg" alt="Rev. Y. Reji" onerror="this.style.display='none'">
-        <div class="mem-img-fallback"><div class="mem-initial">✝</div></div>
-        <div class="mem-overlay"></div>
-        <div class="mem-num">01</div>
+        <div class="mem-img-wrap">
+          <img class="mem-img" src="ps.jpg" alt="Rev. Y. Reji" onerror="this.style.display='none'">
+          <div class="mem-img-fallback">✝</div>
+        </div>
         <div class="mem-info">
           <div class="mem-name">Rev. Y. Reji</div>
           <div class="mem-pos">State Overseer</div>
         </div>
       </div>
 
+      <!-- Member 2 -->
       <div class="mem-card">
-        <div class="mem-top-bar"></div>
-        <img class="mem-img" src="cgm/cgm2.png" onerror="this.style.display='none'">
-        <div class="mem-img-fallback"><div class="mem-initial">M</div></div>
-        <div class="mem-overlay"></div>
-        <div class="mem-num">02</div>
+        <div class="mem-img-wrap">
+          <img class="mem-img" src="cgm/cgm2.png" alt="Pr. Y. Jose" onerror="this.style.display='none'">
+          <div class="mem-img-fallback">✝</div>
+        </div>
         <div class="mem-info">
           <div class="mem-name">Pr. Y. Jose</div>
           <div class="mem-pos">Director</div>
         </div>
       </div>
 
+      <!-- Member 3 -->
       <div class="mem-card">
-        <div class="mem-top-bar"></div>
-        <img class="mem-img" src="cgm/cgm3.png" onerror="this.style.display='none'">
-        <div class="mem-img-fallback"><div class="mem-initial">M</div></div>
-        <div class="mem-overlay"></div>
-        <div class="mem-num">03</div>
+        <div class="mem-img-wrap">
+          <img class="mem-img" src="cgm/cgm3.png" alt="Pr. P.M. Mathew" onerror="this.style.display='none'">
+          <div class="mem-img-fallback">✝</div>
+        </div>
         <div class="mem-info">
           <div class="mem-name">Pr. P.M. Mathew</div>
           <div class="mem-pos">Secretary</div>
         </div>
       </div>
 
+      <!-- Member 4 -->
       <div class="mem-card">
-        <div class="mem-top-bar"></div>
-        <img class="mem-img" src="cgm/cgm4.png" onerror="this.style.display='none'">
-        <div class="mem-img-fallback"><div class="mem-initial">M</div></div>
-        <div class="mem-overlay"></div>
-        <div class="mem-num">04</div>
+        <div class="mem-img-wrap">
+          <img class="mem-img" src="cgm/cgm4.png" alt="Bro. Sabu T.A." onerror="this.style.display='none'">
+          <div class="mem-img-fallback">✝</div>
+        </div>
         <div class="mem-info">
           <div class="mem-name">Bro. Sabu T.A.</div>
           <div class="mem-pos">Co-ordinator</div>
         </div>
       </div>
 
+      <!-- Member 5 -->
       <div class="mem-card">
-        <div class="mem-top-bar"></div>
-        <img class="mem-img" src="cgm/cgm5.png" onerror="this.style.display='none'">
-        <div class="mem-img-fallback"><div class="mem-initial">M</div></div>
-        <div class="mem-overlay"></div>
-        <div class="mem-num">05</div>
+        <div class="mem-img-wrap">
+          <img class="mem-img" src="cgm/cgm5.png" alt="Pr. Binu V. John" onerror="this.style.display='none'">
+          <div class="mem-img-fallback">✝</div>
+        </div>
         <div class="mem-info">
           <div class="mem-name">Pr. Binu V. John</div>
           <div class="mem-pos">Media Co-ordinator</div>
         </div>
       </div>
 
+      <!-- Member 6 -->
       <div class="mem-card">
-        <div class="mem-top-bar"></div>
-        <img class="mem-img" src="cgm/cgm6.png" onerror="this.style.display='none'">
-        <div class="mem-img-fallback"><div class="mem-initial">M</div></div>
-        <div class="mem-overlay"></div>
-        <div class="mem-num">06</div>
+        <div class="mem-img-wrap">
+          <img class="mem-img" src="cgm/cgm6.png" alt="Pr. K.V. Mathew" onerror="this.style.display='none'">
+          <div class="mem-img-fallback">✝</div>
+        </div>
         <div class="mem-info">
           <div class="mem-name">Pr. K.V. Mathew</div>
           <div class="mem-pos">Board Member</div>
         </div>
       </div>
 
-      <!-- Row 2 -->
+      <!-- Member 7 -->
       <div class="mem-card">
-        <div class="mem-top-bar"></div>
-        <img class="mem-img" src="cgm/cgm7.png" onerror="this.style.display='none'">
-        <div class="mem-img-fallback"><div class="mem-initial">M</div></div>
-        <div class="mem-overlay"></div>
-        <div class="mem-num">07</div>
+        <div class="mem-img-wrap">
+          <img class="mem-img" src="cgm/cgm7.png" alt="Pr. C.T. Mathew" onerror="this.style.display='none'">
+          <div class="mem-img-fallback">✝</div>
+        </div>
         <div class="mem-info">
           <div class="mem-name">Pr. C.T. Mathew</div>
           <div class="mem-pos">Board Member</div>
         </div>
       </div>
 
+      <!-- Member 8 -->
       <div class="mem-card">
-        <div class="mem-top-bar"></div>
-        <img class="mem-img" src="cgm/cgm8.png" onerror="this.style.display='none'">
-        <div class="mem-img-fallback"><div class="mem-initial">M</div></div>
-        <div class="mem-overlay"></div>
-        <div class="mem-num">08</div>
+        <div class="mem-img-wrap">
+          <img class="mem-img" src="cgm/cgm8.png" alt="Pr. Shaji Kumar" onerror="this.style.display='none'">
+          <div class="mem-img-fallback">✝</div>
+        </div>
         <div class="mem-info">
           <div class="mem-name">Pr. Shaji Kumar</div>
           <div class="mem-pos">Board Member</div>
         </div>
       </div>
 
+      <!-- Member 9 -->
       <div class="mem-card">
-        <div class="mem-top-bar"></div>
-        <img class="mem-img" src="cgm/cgm9.png" onerror="this.style.display='none'">
-        <div class="mem-img-fallback"><div class="mem-initial">M</div></div>
-        <div class="mem-overlay"></div>
-        <div class="mem-num">09</div>
+        <div class="mem-img-wrap">
+          <img class="mem-img" src="cgm/cgm9.png" alt="Pr. P.T. Biju" onerror="this.style.display='none'">
+          <div class="mem-img-fallback">✝</div>
+        </div>
         <div class="mem-info">
           <div class="mem-name">Pr. P.T. Biju</div>
           <div class="mem-pos">Board Member</div>
         </div>
       </div>
 
+      <!-- Member 10 -->
       <div class="mem-card">
-        <div class="mem-top-bar"></div>
-        <img class="mem-img" src="cgm/cgm10.png" onerror="this.style.display='none'">
-        <div class="mem-img-fallback"><div class="mem-initial">M</div></div>
-        <div class="mem-overlay"></div>
-        <div class="mem-num">10</div>
+        <div class="mem-img-wrap">
+          <img class="mem-img" src="cgm/cgm10.png" alt="Pr. Blesson Sam" onerror="this.style.display='none'">
+          <div class="mem-img-fallback">✝</div>
+        </div>
         <div class="mem-info">
           <div class="mem-name">Pr. Blesson Sam</div>
           <div class="mem-pos">Board Member</div>
         </div>
       </div>
 
+      <!-- Member 11 -->
       <div class="mem-card">
-        <div class="mem-top-bar"></div>
-        <img class="mem-img" src="cgm/cgm11.png" onerror="this.style.display='none'">
-        <div class="mem-img-fallback"><div class="mem-initial">M</div></div>
-        <div class="mem-overlay"></div>
-        <div class="mem-num">11</div>
+        <div class="mem-img-wrap">
+          <img class="mem-img" src="cgm/cgm11.png" alt="Pr. Biju John" onerror="this.style.display='none'">
+          <div class="mem-img-fallback">✝</div>
+        </div>
         <div class="mem-info">
           <div class="mem-name">Pr. Biju John</div>
           <div class="mem-pos">Board Member</div>
         </div>
       </div>
 
+      <!-- Member 12 -->
       <div class="mem-card">
-        <div class="mem-top-bar"></div>
-        <img class="mem-img" src="cgm/cgm12.png" onerror="this.style.display='none'">
-        <div class="mem-img-fallback"><div class="mem-initial">M</div></div>
-        <div class="mem-overlay"></div>
-        <div class="mem-num">12</div>
+        <div class="mem-img-wrap">
+          <img class="mem-img" src="cgm/cgm12.png" alt="Bro. Yohannan Samuel" onerror="this.style.display='none'">
+          <div class="mem-img-fallback">✝</div>
+        </div>
         <div class="mem-info">
           <div class="mem-name">Bro. Yohannan Samuel</div>
           <div class="mem-pos">Board Member</div>
         </div>
       </div>
 
-      <!-- Row 3 -->
+      <!-- Member 13 -->
       <div class="mem-card">
-        <div class="mem-top-bar"></div>
-        <img class="mem-img" src="cgm/cgm13.png" onerror="this.style.display='none'">
-        <div class="mem-img-fallback"><div class="mem-initial">M</div></div>
-        <div class="mem-overlay"></div>
-        <div class="mem-num">13</div>
+        <div class="mem-img-wrap">
+          <img class="mem-img" src="cgm/cgm13.png" alt="Bro. Abraham M. Thomas" onerror="this.style.display='none'">
+          <div class="mem-img-fallback">✝</div>
+        </div>
         <div class="mem-info">
           <div class="mem-name">Bro. Abraham M. Thomas</div>
           <div class="mem-pos">Board Member</div>
         </div>
       </div>
 
+      <!-- Member 14 -->
       <div class="mem-card">
-        <div class="mem-top-bar"></div>
-        <img class="mem-img" src="cgm/cgm14.png" onerror="this.style.display='none'">
-        <div class="mem-img-fallback"><div class="mem-initial">M</div></div>
-        <div class="mem-overlay"></div>
-        <div class="mem-num">14</div>
+        <div class="mem-img-wrap">
+          <img class="mem-img" src="cgm/cgm14.png" alt="Pr. Joy Kunjachen" onerror="this.style.display='none'">
+          <div class="mem-img-fallback">✝</div>
+        </div>
         <div class="mem-info">
           <div class="mem-name">Pr. Joy Kunjachen</div>
           <div class="mem-pos">Board Member</div>
         </div>
       </div>
 
+      <!-- Member 15 -->
       <div class="mem-card">
-        <div class="mem-top-bar"></div>
-        <img class="mem-img" src="cgm/cgm15.png" onerror="this.style.display='none'">
-        <div class="mem-img-fallback"><div class="mem-initial">M</div></div>
-        <div class="mem-overlay"></div>
-        <div class="mem-num">15</div>
+        <div class="mem-img-wrap">
+          <img class="mem-img" src="cgm/cgm15.png" alt="Pr. Biju B. Joseph" onerror="this.style.display='none'">
+          <div class="mem-img-fallback">✝</div>
+        </div>
         <div class="mem-info">
           <div class="mem-name">Pr. Biju B. Joseph</div>
           <div class="mem-pos">Board Member</div>
         </div>
       </div>
 
+      <!-- Member 16 -->
       <div class="mem-card">
-        <div class="mem-top-bar"></div>
-        <img class="mem-img" src="cgm/cgm16.png" onerror="this.style.display='none'">
-        <div class="mem-img-fallback"><div class="mem-initial">M</div></div>
-        <div class="mem-overlay"></div>
-        <div class="mem-num">16</div>
+        <div class="mem-img-wrap">
+          <img class="mem-img" src="cgm/cgm16.png" alt="Pr. Sabu Uthuppan" onerror="this.style.display='none'">
+          <div class="mem-img-fallback">✝</div>
+        </div>
         <div class="mem-info">
           <div class="mem-name">Pr. Sabu Uthuppan</div>
           <div class="mem-pos">Board Member</div>
         </div>
       </div>
 
+      <!-- Member 17 -->
       <div class="mem-card">
-        <div class="mem-top-bar"></div>
-        <img class="mem-img" src="cgm/cgm17.png" onerror="this.style.display='none'">
-        <div class="mem-img-fallback"><div class="mem-initial">M</div></div>
-        <div class="mem-overlay"></div>
-        <div class="mem-num">17</div>
+        <div class="mem-img-wrap">
+          <img class="mem-img" src="cgm/cgm17.png" alt="Pr. A.D. Johnson" onerror="this.style.display='none'">
+          <div class="mem-img-fallback">✝</div>
+        </div>
         <div class="mem-info">
           <div class="mem-name">Pr. A.D. Johnson</div>
           <div class="mem-pos">Board Member</div>
         </div>
       </div>
 
+      <!-- Member 18 -->
       <div class="mem-card">
-        <div class="mem-top-bar"></div>
-        <img class="mem-img" src="cgm/cgm18.png" onerror="this.style.display='none'">
-        <div class="mem-img-fallback"><div class="mem-initial">M</div></div>
-        <div class="mem-overlay"></div>
-        <div class="mem-num">18</div>
+        <div class="mem-img-wrap">
+          <img class="mem-img" src="cgm/cgm18.png" alt="Pr. T.V. Mathew" onerror="this.style.display='none'">
+          <div class="mem-img-fallback">✝</div>
+        </div>
         <div class="mem-info">
           <div class="mem-name">Pr. T.V. Mathew</div>
           <div class="mem-pos">Board Member</div>
         </div>
       </div>
 
-      <!-- Row 4 -->
+      <!-- Member 19 -->
       <div class="mem-card">
-        <div class="mem-top-bar"></div>
-        <img class="mem-img" src="cgm/cgm19.png" onerror="this.style.display='none'">
-        <div class="mem-img-fallback"><div class="mem-initial">M</div></div>
-        <div class="mem-overlay"></div>
-        <div class="mem-num">19</div>
+        <div class="mem-img-wrap">
+          <img class="mem-img" src="cgm/cgm19.png" alt="Thomas Koshy" onerror="this.style.display='none'">
+          <div class="mem-img-fallback">✝</div>
+        </div>
         <div class="mem-info">
           <div class="mem-name">Thomas Koshy</div>
           <div class="mem-pos">Board Member</div>
         </div>
       </div>
 
+      <!-- Member 20 -->
       <div class="mem-card">
-        <div class="mem-top-bar"></div>
-        <img class="mem-img" src="cgm/cgm20.png" onerror="this.style.display='none'">
-        <div class="mem-img-fallback"><div class="mem-initial">M</div></div>
-        <div class="mem-overlay"></div>
-        <div class="mem-num">20</div>
+        <div class="mem-img-wrap">
+          <img class="mem-img" src="cgm/cgm20.png" alt="Pr. Vinod Kumar C" onerror="this.style.display='none'">
+          <div class="mem-img-fallback">✝</div>
+        </div>
         <div class="mem-info">
           <div class="mem-name">Pr. Vinod Kumar C</div>
           <div class="mem-pos">Board Member</div>
         </div>
       </div>
 
+      <!-- Member 21 -->
       <div class="mem-card">
-        <div class="mem-top-bar"></div>
-        <img class="mem-img" src="cgm/cgm21.png" onerror="this.style.display='none'">
-        <div class="mem-img-fallback"><div class="mem-initial">M</div></div>
-        <div class="mem-overlay"></div>
-        <div class="mem-num">21</div>
+        <div class="mem-img-wrap">
+          <img class="mem-img" src="cgm/cgm21.png" alt="Bro. Jobin Varghese" onerror="this.style.display='none'">
+          <div class="mem-img-fallback">✝</div>
+        </div>
         <div class="mem-info">
           <div class="mem-name">Bro. Jobin Varghese</div>
           <div class="mem-pos">Board Member</div>
@@ -936,7 +1009,9 @@ footer a{color:var(--mg3);}
       </div>
 
     </div>
+  </div>
 </section>
+
 <!-- CONTACT -->
 <section class="sec contact-sec" id="contact">
   <div class="cont">
@@ -1028,11 +1103,6 @@ function scrollTo(sel){var el=document.querySelector(sel);if(el)el.scrollIntoVie
 /* SCROLL REVEAL */
 var rvObs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');rvObs.unobserve(e.target);}});},{threshold:0.06,rootMargin:'0px 0px -30px 0px'});
 document.querySelectorAll('.rv,.rv2').forEach(function(el){rvObs.observe(el);});
-
-/* BOARD CARDS STAGGER */
-var memCards=document.querySelectorAll('.mem-card');
-var mcObs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){var i=Array.from(memCards).indexOf(e.target);setTimeout(function(){e.target.style.opacity='1';e.target.style.transform='none';},i*55);mcObs.unobserve(e.target);}});},{threshold:0.04});
-memCards.forEach(function(c){c.style.opacity='0';c.style.transform='translateY(14px)';c.style.transition='opacity .5s ease,transform .5s ease';mcObs.observe(c);});
 
 /* NAV ACTIVE */
 var sections=document.querySelectorAll('section[id]'),navLinks=document.querySelectorAll('.nav-link');

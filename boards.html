@@ -148,59 +148,75 @@
             width: 100%;
         }
 
-        /* ===== HERO SECTION ===== */
+        /* ===== HERO SECTION - FULL BACKGROUND SLIDESHOW ===== */
         .hero {
-            margin-top: 70px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            padding: 5rem 2rem;
-            background: linear-gradient(135deg, #fdf8ff 0%, #fef4fb 40%, #fff5f0 70%, #fffbf8 100%);
-            min-height: 600px;
             position: relative;
+            width: 100%;
+            height: 100vh;
+            margin-top: 0;
             overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
+        /* Slideshow Background */
+        .slideshow-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        /* Dark Overlay */
         .hero::before {
             content: '';
             position: absolute;
-            top: -30%;
-            right: -10%;
-            width: 700px;
-            height: 700px;
-            background: radial-gradient(circle, rgba(212, 30, 135, 0.15) 0%, transparent 70%);
-            border-radius: 50%;
-            z-index: 0;
-            pointer-events: none;
-            animation: float-animation 6s ease-in-out infinite;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: -20%;
-            left: -15%;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(249, 115, 22, 0.08) 0%, transparent 70%);
-            border-radius: 50%;
-            z-index: 0;
-            pointer-events: none;
-            animation: float-animation 8s ease-in-out infinite reverse;
-        }
-
-        .hero-content {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
             z-index: 2;
+        }
+
+        /* Hero Content */
+        .hero-content {
+            position: relative;
+            z-index: 3;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            align-items: flex-start;
+            padding: 4rem 2rem;
+            max-width: 700px;
             animation: slide-in-left 0.8s ease-out;
         }
 
         .breadcrumb {
             font-size: 0.75rem;
-            color: var(--primary);
+            color: white;
             margin-bottom: 1.5rem;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -208,13 +224,13 @@
             display: inline-flex;
             width: fit-content;
             padding: 0.5rem 1.2rem;
-            background: rgba(212, 30, 135, 0.08);
+            background: rgba(212, 30, 135, 0.8);
             border-radius: 50px;
-            border: 1px solid rgba(212, 30, 135, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
         .breadcrumb a {
-            color: var(--primary);
+            color: white;
             text-decoration: none;
             font-weight: 700;
         }
@@ -224,27 +240,25 @@
             font-size: 4rem;
             font-weight: 800;
             margin-bottom: 1.5rem;
-            color: var(--dark);
+            color: white;
             line-height: 1.05;
             letter-spacing: -1.5px;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
 
         .hero h1 span {
-            background: linear-gradient(135deg, #d41e87 0%, #f97316 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            position: relative;
-            display: inline-block;
+            color: rgba(226, 10, 172, 0.952);
+            text-shadow: 0 4px 15px rgba(249, 115, 22, 0.4);
         }
 
         .hero p {
             font-size: 1.15rem;
-            color: #555;
+            color: #f0f0f0;
             margin-bottom: 2.5rem;
             line-height: 1.8;
             max-width: 520px;
             font-weight: 400;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
         }
 
         .hero-cta {
@@ -296,60 +310,20 @@
         }
 
         .btn-secondary {
-            background: white;
+            background: rgba(255, 255, 255, 0.95);
             color: var(--primary);
-            border: 2.5px solid var(--primary);
-            box-shadow: 0 4px 15px rgba(212, 30, 135, 0.15);
+            border: 2.5px solid white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
         .btn-secondary:hover {
-            background: var(--primary);
-            color: white;
+            background: white;
+            color: var(--primary);
             transform: translateY(-3px);
-            box-shadow: 0 15px 45px rgba(212, 30, 135, 0.3);
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.3);
         }
 
-        /* ===== SLIDESHOW ===== */
-        .hero-slideshow {
-            position: relative;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 30px 80px rgba(212, 30, 135, 0.25), 0 10px 40px rgba(0, 0, 0, 0.1);
-            min-height: 500px;
-            background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
-            z-index: 2;
-            border: 2px solid rgba(212, 30, 135, 0.1);
-            animation: slide-in-right 0.8s ease-out, glow-pulse 3s ease-in-out infinite;
-        }
-
-        .slideshow-container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-        }
-
-        .slide {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 0.8s ease-in-out;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .slide.active {
-            opacity: 1;
-        }
-
-        .slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-        }
-
+        /* Slideshow Controls */
         .slideshow-nav {
             position: absolute;
             top: 50%;
@@ -589,8 +563,8 @@
 
         .members-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-            gap: 2.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 2rem;
         }
 
         .member-card {
@@ -625,6 +599,8 @@
             object-position: center;
             display: block;
             transition: transform 0.5s ease;
+            max-width: 100%;
+            height: auto;
         }
 
         .member-card:hover .member-image img {
@@ -654,7 +630,7 @@
 
         .member-name {
             font-family: 'Inter', sans-serif;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 700;
             color: var(--dark);
             line-height: 1.3;
@@ -662,7 +638,7 @@
 
         .member-position {
             font-family: 'IBM Plex Serif', serif;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--primary);
             text-transform: uppercase;
             letter-spacing: 0.8px;
@@ -723,19 +699,12 @@
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 1024px) {
-            .hero {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-                padding: 3rem 2rem;
-                min-height: auto;
-            }
-
-            .hero-slideshow {
-                min-height: 400px;
-            }
-
             .hero h1 {
                 font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
             }
 
             nav {
@@ -765,8 +734,12 @@
             }
 
             .hero {
-                margin-top: 60px;
+                height: 70vh;
+            }
+
+            .hero-content {
                 padding: 2rem 1rem;
+                max-width: 100%;
             }
 
             .hero h1 {
@@ -774,11 +747,7 @@
             }
 
             .hero p {
-                font-size: 1rem;
-            }
-
-            .hero-slideshow {
-                min-height: 300px;
+                font-size: 0.95rem;
             }
 
             .slideshow-nav {
@@ -808,7 +777,7 @@
             }
 
             .members-grid {
-                grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
                 gap: 1.5rem;
             }
 
@@ -821,13 +790,17 @@
             }
 
             .member-name {
-                font-size: 0.95rem;
+                font-size: 0.9rem;
             }
         }
 
         @media (max-width: 480px) {
             .logo {
                 font-size: 1rem;
+            }
+
+            .hero {
+                height: 60vh;
             }
 
             .hero h1 {
@@ -839,7 +812,7 @@
             }
 
             .hero p {
-                font-size: 0.9rem;
+                font-size: 0.85rem;
                 margin-bottom: 1.5rem;
             }
 
@@ -862,18 +835,39 @@
     <!-- ===== HEADER ===== -->
     <header>
         <div class="header-container">
-            <a href="#" class="logo">⛪ Church of God</a>
+            <a href="#" class="logo">COG Kerala State</a>
             <nav>
-                <a href="#home">Home</a>
+                
                 <a href="#boards">Boards</a>
                 <a href="#members">Members</a>
                 <a href="#contact">Contact</a>
+                <a href="home.html">Back to Home</a>
             </nav>
         </div>
     </header>
 
-    <!-- ===== HERO SECTION ===== -->
+    <!-- ===== HERO SECTION - FULL BACKGROUND SLIDESHOW ===== -->
     <section class="hero" id="home">
+        <!-- Slideshow Background -->
+        <div class="slideshow-background">
+            <div class="slide active">
+                <img src="choir (2).png" alt="Church Leadership 1" onerror="this.style.display='none'">
+            </div>
+            <div class="slide">
+                <img src="conven.png" alt="Church Leadership 2" onerror="this.style.display='none'">
+            </div>
+            <div class="slide">
+                <img src="con (3).png" alt="Church Leadership 3" onerror="this.style.display='none'">
+            </div>
+            <div class="slide">
+                <img src="choir.png" alt="Church Leadership 4" onerror="this.style.display='none'">
+            </div>
+            <div class="slide">
+                <img src="con (4).png" alt="Church Leadership 5" onerror="this.style.display='none'">
+            </div>
+        </div>
+
+        <!-- Hero Content -->
         <div class="hero-content">
             <div class="breadcrumb">Welcome to Church Leadership</div>
             <h1>Church <span>Boards</span></h1>
@@ -888,35 +882,17 @@
             </div>
         </div>
 
-        <div class="hero-slideshow">
-            <div class="slideshow-container">
-                <div class="slide active">
-                    <img src="audidclr.jpeg" alt="Church Leadership 1" onerror="this.style.display='none'">
-                </div>
-                <div class="slide">
-                    <img src="path/to/member2.jpg" alt="Church Leadership 2" onerror="this.style.display='none'">
-                </div>
-                <div class="slide">
-                    <img src="path/to/member3.jpg" alt="Church Leadership 3" onerror="this.style.display='none'">
-                </div>
-                <div class="slide">
-                    <img src="path/to/member4.jpg" alt="Church Leadership 4" onerror="this.style.display='none'">
-                </div>
-                <div class="slide">
-                    <img src="path/to/member5.jpg" alt="Church Leadership 5" onerror="this.style.display='none'">
-                </div>
+        <!-- Slideshow Controls -->
+        <button class="slideshow-nav prev" onclick="changeSlide(-1)">❮</button>
+        <button class="slideshow-nav next" onclick="changeSlide(1)">❯</button>
 
-                <button class="slideshow-nav prev" onclick="changeSlide(-1)">❮</button>
-                <button class="slideshow-nav next" onclick="changeSlide(1)">❯</button>
-
-                <div class="slideshow-dots">
-                    <span class="slideshow-dot active" onclick="currentSlide(0)"></span>
-                    <span class="slideshow-dot" onclick="currentSlide(1)"></span>
-                    <span class="slideshow-dot" onclick="currentSlide(2)"></span>
-                    <span class="slideshow-dot" onclick="currentSlide(3)"></span>
-                    <span class="slideshow-dot" onclick="currentSlide(4)"></span>
-                </div>
-            </div>
+        <!-- Slideshow Dots -->
+        <div class="slideshow-dots">
+            <span class="slideshow-dot active" onclick="currentSlide(0)"></span>
+            <span class="slideshow-dot" onclick="currentSlide(1)"></span>
+            <span class="slideshow-dot" onclick="currentSlide(2)"></span>
+            <span class="slideshow-dot" onclick="currentSlide(3)"></span>
+            <span class="slideshow-dot" onclick="currentSlide(4)"></span>
         </div>
     </section>
 
@@ -1034,7 +1010,6 @@
 
     <!-- MEMBERS SECTION -->
     <section class="members-section" id="members">
-
 
         <!-- MUSIC BOARD MEMBERS -->
         <div class="board-members" id="music-members">
@@ -1602,7 +1577,7 @@
 
                 <div class="member-card">
                     <div class="member-image">
-                        <img src="board/cm (11).png" alt="Pr. Shijo T.T">
+                        <img src="board/chi (11).png" alt="Pr. Shijo T.T">
                     </div>
                     <div class="member-info">
                         <div class="member-name">Pr. Shijo T.T</div>
