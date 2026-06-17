@@ -3,1124 +3,508 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Church of God (Full Gospel) – Kerala State</title>
+<title>History & Heritage – Church of God Kerala</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Outfit:wght@300;400;500;600;700&family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --magenta: #CC0066;
-    --magenta2: #E6007A;
-    --gold: #C9A84C;
-    --gold2: #E8C46A;
-    --gold3: #F5E0A0;
-    --ivory: #FDF8F0;
-    --ivory2: #F5EDE0;
-    --ivory3: #EBD9C5;
-    --dark: #1a0a0f;
-    --dark2: #2d1520;
-  }
+/* ═══════════════════════════════
+   ROOT DESIGN TOKENS
+═══════════════════════════════ */
+:root {
+  --mg: #C0186A;
+  --mg2: #D4237A;
+  --mg3: #E8479C;
+  --mg4: #F9D6EA;
+  --mg5: #FDF0F7;
+  --mgd: #8E0F4F;
+  --mgdd: #5C0833;
+  --blk: #0D0D0D;
+  --blk2: #1A1A1A;
+  --blk3: #2E2E2E;
+  --blk4: #555555;
+  --blk5: #888888;
+  --white: #FFFFFF;
+  --off: #FAF9FC;
+  --off2: #F3EFF5;
+  --off3: #E8E2ED;
+  --shadow: 0 4px 28px rgba(192,24,106,.12);
+  --shadow2: 0 16px 56px rgba(192,24,106,.18);
+  --nav: 72px;
+  --ease: cubic-bezier(.16,1,.3,1);
+  --ff: 'Outfit', sans-serif;
+  --fg: 'Cormorant Garamond', serif;
+  --fc: 'Cinzel', serif;
+}
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--ff);background:var(--white);color:var(--blk);overflow-x:hidden;}
+img{max-width:100%;display:block;}
+a{text-decoration:none;color:inherit;}
+button{cursor:pointer;font-family:var(--ff);}
+input,textarea,select{font-family:var(--ff);}
 
-  html { scroll-behavior: smooth; }
+/* ═══════════════════════════════
+   NAV
+═══════════════════════════════ */
+#nav {
+  position:fixed;top:0;left:0;right:0;z-index:9000;
+  background:rgba(255,255,255,.97);
+  border-bottom:1px solid rgba(192,24,106,.1);
+  backdrop-filter:blur(14px);
+  box-shadow:0 2px 20px rgba(192,24,106,.07);
+}
+.nb{max-width:1400px;margin:0 auto;padding:0 2rem;height:var(--nav);display:flex;align-items:center;justify-content:space-between;}
+.nl{display:flex;align-items:center;gap:.85rem;}
+.nl-cross{font-size:1.5rem;color:var(--mg);line-height:1;font-family:var(--fc);}
+.nl-info .t1{font-family:var(--fc);font-size:.85rem;font-weight:600;color:var(--blk);letter-spacing:.05em;}
+.nl-info .t2{font-size:.6rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--blk4);margin-top:2px;}
+.nav-links{display:flex;align-items:center;gap:.2rem;}
+.nav-link{font-size:.78rem;font-weight:500;letter-spacing:.07em;padding:.45rem 1rem;border-radius:4px;color:var(--blk3);transition:all .2s;}
+.nav-link:hover,.nav-link.active{background:var(--mg5);color:var(--mg);}
+.nav-cta{font-size:.78rem;font-weight:600;letter-spacing:.09em;padding:.5rem 1.4rem;background:var(--mg);color:white;border-radius:4px;border:none;transition:all .22s;}
+.nav-cta:hover{background:var(--mgd);}
 
-  body {
-    font-family: 'Jost', sans-serif;
-    background: var(--dark);
-    color: var(--ivory);
-    overflow-x: hidden;
-  }
+/* ═══════════════════════════════
+   HERO — SLIDESHOW + RIGHT IMAGE
+═══════════════════════════════ */
+.hero {
+  padding-top:var(--nav);
+  min-height:100vh;
+  position:relative;overflow:hidden;
+  display:flex;flex-direction:column;
+}
 
-  /* ─── NAV ─── */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 3rem;
-    height: 72px;
-    background: rgba(26,10,15,0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(201,168,76,0.2);
-  }
+.slides{position:absolute;inset:0;z-index:0;}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease;display:flex;align-items:center;justify-content:center;}
+.slide.active{opacity:1;}
+.slide-bg{position:absolute;inset:0;object-fit:cover;width:100%;height:100%;filter:brightness(.32) saturate(.75);}
+.slide-color{position:absolute;inset:0;}
 
-  .nav-logo {
-    font-family: 'Cinzel', serif;
-    font-size: 13px;
-    letter-spacing: 3px;
-    color: var(--gold2);
-    text-transform: uppercase;
-    line-height: 1.3;
-  }
-  .nav-logo span { display: block; font-size: 10px; letter-spacing: 4px; color: var(--ivory3); opacity: 0.7; }
+.hero-content{position:relative;z-index:2;flex:1;display:flex;align-items:center;padding:4rem 2rem 3rem;}
+.hero-inner{max-width:1300px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 460px;gap:2.5rem;align-items:stretch;}
 
-  .nav-links {
-    display: flex;
-    gap: 2.5rem;
-    list-style: none;
-  }
-  .nav-links a {
-    font-size: 11px;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    color: var(--ivory3);
-    text-decoration: none;
-    position: relative;
-    transition: color 0.3s;
-  }
-  .nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: -4px; left: 0; right: 0;
-    height: 1px;
-    background: var(--gold2);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.3s;
-  }
-  .nav-links a:hover { color: var(--gold2); }
-  .nav-links a:hover::after { transform: scaleX(1); }
+/* LEFT */
+.hero-left{}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--fc);font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--mg3);margin-bottom:1.6rem;}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';width:28px;height:1px;background:linear-gradient(90deg,transparent,var(--mg3));}
+.hero-eyebrow::after{background:linear-gradient(90deg,var(--mg3),transparent);}
+.hero-title{font-family:var(--fg);font-size:clamp(3rem,6vw,6.5rem);font-weight:300;line-height:.9;color:white;margin-bottom:1rem;letter-spacing:-.01em;}
+.hero-title strong{font-weight:600;font-style:italic;color:var(--mg3);display:block;}
+.hero-divider{width:52px;height:2px;background:linear-gradient(90deg,var(--mg3),var(--mg));margin:1.4rem 0;}
+.hero-sub{font-size:1rem;line-height:1.95;color:rgba(255,255,255,.68);max-width:520px;margin-bottom:2.5rem;font-weight:300;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-mg{font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.85rem 2rem;background:var(--mg);color:white;border:none;border-radius:3px;transition:all .25s;box-shadow:0 4px 18px rgba(192,24,106,.4);}
+.btn-mg:hover{background:var(--mgd);transform:translateY(-2px);}
+.btn-ghost{font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.85rem 2rem;background:transparent;color:white;border:1px solid rgba(255,255,255,.38);border-radius:3px;transition:all .25s;}
+.btn-ghost:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.7);}
 
-  /* ─── HERO ─── */
-  .hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-    background: var(--dark);
-  }
+/* RIGHT — IMAGE & NAME BOX */
+.hero-right {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-self: stretch;
+  justify-content: flex-start;
+}
 
-  /* Animated cross background */
-  .hero-bg {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-  }
+.hero-image-container {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(192, 24, 106, 0.25);
+  height: 420px;
+  background: white;
+}
 
-  .cross-beam {
-    position: absolute;
-    background: linear-gradient(to bottom, transparent, rgba(201,168,76,0.08), transparent);
-    width: 2px;
-    top: 0; bottom: 0;
-    left: 50%;
-    animation: beamPulse 4s ease-in-out infinite;
-  }
-  .cross-beam.h {
-    width: auto; height: 2px;
-    top: 50%; left: 0; right: 0; bottom: auto;
-    background: linear-gradient(to right, transparent, rgba(201,168,76,0.08), transparent);
-    animation: beamPulseH 4s ease-in-out infinite;
-  }
+.hero-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
 
-  @keyframes beamPulse {
-    0%,100% { opacity: 0.3; }
-    50% { opacity: 1; }
-  }
-  @keyframes beamPulseH {
-    0%,100% { opacity: 0.3; }
-    50% { opacity: 1; }
-  }
+/* Animated Name Box */
+.hero-name-box {
+  background: white;
+  border-radius: 8px;
+  padding: 1.8rem;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(192, 24, 106, 0.15);
+  animation: slideUpFade 1.2s var(--ease) 0.3s both;
+}
 
-  /* Rotating ring */
-  .hero-ring {
-    position: absolute;
-    width: 600px; height: 600px;
-    border-radius: 50%;
-    border: 1px solid rgba(201,168,76,0.1);
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    animation: ringRotate 30s linear infinite;
-  }
-  .hero-ring::before {
-    content: '';
-    position: absolute;
-    inset: 20px;
-    border-radius: 50%;
-    border: 1px solid rgba(204,0,102,0.08);
-    animation: ringRotate 20s linear infinite reverse;
-  }
-  .hero-ring::after {
-    content: '';
-    position: absolute;
-    inset: -30px;
-    border-radius: 50%;
-    border: 1px solid rgba(201,168,76,0.06);
-    animation: ringRotate 50s linear infinite;
-  }
-
-  /* Floating particles */
-  .particle {
-    position: absolute;
-    border-radius: 50%;
-    background: var(--gold2);
+@keyframes slideUpFade {
+  from {
     opacity: 0;
-    animation: particleFloat var(--dur, 6s) var(--delay, 0s) ease-in-out infinite;
-  }
-
-  @keyframes particleFloat {
-    0% { opacity: 0; transform: translateY(0) scale(0); }
-    20% { opacity: 0.6; transform: translateY(-20px) scale(1); }
-    80% { opacity: 0.3; transform: translateY(-80px) scale(0.5); }
-    100% { opacity: 0; transform: translateY(-120px) scale(0); }
-  }
-
-  @keyframes ringRotate {
-    to { transform: translate(-50%, -50%) rotate(360deg); }
-  }
-
-  .hero-content {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    padding: 0 2rem;
-    max-width: 900px;
-  }
-
-  .hero-eyebrow {
-    font-size: 11px;
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    color: var(--gold2);
-    margin-bottom: 2rem;
-    opacity: 0;
-    animation: fadeUp 1s 0.3s forwards;
-  }
-
-  .hero-title {
-    font-family: 'Cinzel', serif;
-    font-size: clamp(2.5rem, 6vw, 5.5rem);
-    font-weight: 400;
-    line-height: 1.1;
-    color: var(--ivory);
-    margin-bottom: 0.5rem;
-    opacity: 0;
-    animation: fadeUp 1s 0.5s forwards;
-  }
-
-  .hero-title em {
-    font-style: italic;
-    color: var(--gold2);
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.15em;
-    font-weight: 300;
-  }
-
-  .hero-subtitle {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.1rem, 2vw, 1.5rem);
-    font-weight: 300;
-    font-style: italic;
-    color: var(--ivory3);
-    margin: 1.5rem 0 3rem;
-    opacity: 0;
-    animation: fadeUp 1s 0.7s forwards;
-  }
-
-  .hero-divider {
-    width: 120px;
-    height: 1px;
-    background: linear-gradient(to right, transparent, var(--gold), transparent);
-    margin: 0 auto 3rem;
-    opacity: 0;
-    animation: fadeIn 1s 0.9s forwards;
-  }
-
-  .hero-nav {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
-    opacity: 0;
-    animation: fadeUp 1s 1.1s forwards;
-  }
-
-  .hero-btn {
-    font-family: 'Jost', sans-serif;
-    font-size: 11px;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    padding: 14px 32px;
-    border: 1px solid var(--gold);
-    background: transparent;
-    color: var(--gold2);
-    cursor: pointer;
-    text-decoration: none;
-    transition: all 0.3s;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero-btn::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: var(--gold);
-    transform: translateY(100%);
-    transition: transform 0.3s;
-  }
-  .hero-btn:hover { color: var(--dark); }
-  .hero-btn:hover::before { transform: translateY(0); }
-  .hero-btn span { position: relative; }
-
-  .hero-btn.primary {
-    background: var(--magenta);
-    border-color: var(--magenta);
-    color: var(--ivory);
-  }
-  .hero-btn.primary::before { background: var(--magenta2); }
-  .hero-btn.primary:hover { color: var(--ivory); }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes fadeIn {
-    to { opacity: 1; }
-  }
-
-  /* ─── SECTION BASE ─── */
-  section {
-    padding: 120px 0;
-    position: relative;
-  }
-
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 3rem;
-  }
-
-  .section-tag {
-    font-size: 10px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: var(--magenta2);
-    margin-bottom: 1rem;
-    display: block;
-  }
-
-  .section-title {
-    font-family: 'Cinzel', serif;
-    font-size: clamp(2rem, 4vw, 3.5rem);
-    font-weight: 400;
-    color: var(--ivory);
-    line-height: 1.15;
-    margin-bottom: 1.5rem;
-  }
-
-  .section-title em {
-    font-style: italic;
-    color: var(--gold2);
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 300;
-    font-size: 1.1em;
-  }
-
-  .gold-line {
-    width: 60px;
-    height: 2px;
-    background: linear-gradient(to right, var(--magenta), var(--gold));
-    margin-bottom: 2.5rem;
-  }
-
-  .body-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.2rem;
-    font-weight: 300;
-    line-height: 1.9;
-    color: var(--ivory3);
-  }
-
-  /* ─── FOUNDER ─── */
-  #founder {
-    background: var(--dark2);
-  }
-
-  .founder-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6rem;
-    align-items: center;
-  }
-
-  .founder-visual {
-    position: relative;
-  }
-
-  .founder-frame {
-    width: 100%;
-    aspect-ratio: 3/4;
-    background: rgba(201,168,76,0.05);
-    border: 1px solid rgba(201,168,76,0.2);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .founder-frame::before {
-    content: '';
-    position: absolute;
-    inset: 20px;
-    border: 1px solid rgba(204,0,102,0.15);
-  }
-
-  .founder-frame-inner {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-  }
-
-  .cross-icon {
-    width: 60px;
-    height: 80px;
-    position: relative;
-  }
-  .cross-icon::before {
-    content: '';
-    position: absolute;
-    width: 8px;
-    height: 100%;
-    background: linear-gradient(to bottom, var(--gold), var(--magenta));
-    left: 50%; transform: translateX(-50%);
-    border-radius: 2px;
-  }
-  .cross-icon::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 8px;
-    background: linear-gradient(to right, var(--gold), var(--magenta));
-    top: 25%; 
-    border-radius: 2px;
-  }
-
-  .founder-name-plate {
-    text-align: center;
-    padding: 1rem 2rem;
-    border-top: 1px solid rgba(201,168,76,0.2);
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    background: rgba(26,10,15,0.8);
-  }
-
-  .founder-name {
-    font-family: 'Cinzel', serif;
-    font-size: 1rem;
-    color: var(--gold2);
-    letter-spacing: 2px;
-  }
-
-  .founder-dates {
-    font-size: 12px;
-    letter-spacing: 2px;
-    color: var(--ivory3);
-    opacity: 0.6;
-    margin-top: 0.25rem;
-  }
-
-  .founder-corner {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    border-color: var(--gold);
-    border-style: solid;
-  }
-  .founder-corner.tl { top: -10px; left: -10px; border-width: 2px 0 0 2px; }
-  .founder-corner.tr { top: -10px; right: -10px; border-width: 2px 2px 0 0; }
-  .founder-corner.bl { bottom: -10px; left: -10px; border-width: 0 0 2px 2px; }
-  .founder-corner.br { bottom: -10px; right: -10px; border-width: 0 2px 2px 0; }
-
-  .timeline {
-    margin-top: 2.5rem;
-    position: relative;
-    padding-left: 2rem;
-  }
-  .timeline::before {
-    content: '';
-    position: absolute;
-    left: 0; top: 0; bottom: 0;
-    width: 1px;
-    background: linear-gradient(to bottom, var(--magenta), var(--gold), transparent);
-  }
-
-  .timeline-item {
-    margin-bottom: 2rem;
-    position: relative;
-    opacity: 0;
-    transform: translateX(20px);
-    transition: all 0.6s;
-  }
-  .timeline-item.visible { opacity: 1; transform: none; }
-
-  .timeline-item::before {
-    content: '';
-    position: absolute;
-    left: -2.4rem;
-    top: 6px;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--gold2);
-    box-shadow: 0 0 12px var(--gold);
-  }
-
-  .timeline-year {
-    font-size: 11px;
-    letter-spacing: 2px;
-    color: var(--magenta2);
-    margin-bottom: 0.3rem;
-  }
-
-  .timeline-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.05rem;
-    font-weight: 300;
-    color: var(--ivory2);
-    line-height: 1.7;
-  }
-
-  /* ─── INTERNATIONAL OFFICE ─── */
-  #international {
-    background: var(--dark);
-    position: relative;
-    overflow: hidden;
-  }
-
-  #international::before {
-    content: '';
-    position: absolute;
-    top: -200px; right: -200px;
-    width: 600px; height: 600px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(204,0,102,0.06) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .intl-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-    align-items: start;
-  }
-
-  .stat-cluster {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-    margin-top: 3rem;
-  }
-
-  .stat-card {
-    padding: 2rem;
-    border: 1px solid rgba(201,168,76,0.15);
-    background: rgba(201,168,76,0.03);
-    position: relative;
-    overflow: hidden;
-    transition: all 0.4s;
-  }
-
-  .stat-card::before {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(to right, var(--magenta), var(--gold));
-    transform: scaleX(0);
-    transition: transform 0.4s;
-  }
-  .stat-card:hover::before { transform: scaleX(1); }
-  .stat-card:hover { background: rgba(201,168,76,0.06); }
-
-  .stat-number {
-    font-family: 'Cinzel', serif;
-    font-size: 2.5rem;
-    color: var(--gold2);
-    line-height: 1;
-    margin-bottom: 0.5rem;
-  }
-
-  .stat-label {
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--ivory3);
-    opacity: 0.7;
-  }
-
-  .intl-history {
-    position: relative;
-  }
-
-  .history-cards {
-    margin-top: 2.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .history-card {
-    padding: 1.5rem 2rem;
-    border-left: 2px solid var(--magenta);
-    background: rgba(204,0,102,0.04);
-    transition: all 0.3s;
-    opacity: 0;
-    transform: translateY(15px);
-    cursor: default;
-  }
-  .history-card.visible { opacity: 1; transform: none; }
-  .history-card:hover { background: rgba(204,0,102,0.08); border-left-color: var(--gold); }
-
-  .history-card-year {
-    font-family: 'Cinzel', serif;
-    font-size: 1.4rem;
-    color: var(--gold2);
-  }
-
-  .history-card-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1rem;
-    color: var(--ivory3);
-    margin-top: 0.3rem;
-    line-height: 1.6;
-  }
-
-  /* ─── STATE HQ ─── */
-  #headquarters {
-    background: var(--dark2);
-    position: relative;
-  }
-
-  .hq-layout {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 5rem;
-  }
-
-  .hq-aside {
-    position: sticky;
-    top: 100px;
-    height: fit-content;
-  }
-
-  .hq-label {
-    writing-mode: vertical-rl;
-    font-family: 'Cinzel', serif;
-    font-size: 0.75rem;
-    letter-spacing: 4px;
-    color: rgba(201,168,76,0.3);
-    text-transform: uppercase;
-    transform: rotate(180deg);
-    margin-bottom: 2rem;
-  }
-
-  .hq-emblem {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    border: 1px solid rgba(201,168,76,0.3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    margin-bottom: 1.5rem;
-  }
-  .hq-emblem::before {
-    content: '';
-    position: absolute;
-    inset: 8px;
-    border-radius: 50%;
-    border: 1px solid rgba(204,0,102,0.2);
-    animation: emblemSpin 10s linear infinite;
-  }
-  @keyframes emblemSpin {
-    to { transform: rotate(360deg); }
-  }
-
-  .hq-main p + p {
-    margin-top: 1.5rem;
-  }
-
-  .milestone-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    margin-top: 3rem;
-  }
-
-  .milestone {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.5s;
-  }
-  .milestone.visible { opacity: 1; transform: none; }
-
-  .milestone-title {
-    font-family: 'Cinzel', serif;
-    font-size: 0.85rem;
-    letter-spacing: 1.5px;
-    color: var(--gold2);
-    margin-bottom: 0.5rem;
-    text-transform: uppercase;
-  }
-
-  .milestone-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1rem;
-    color: var(--ivory3);
-    line-height: 1.7;
-  }
-
-  /* ─── TEACHINGS ─── */
-  #teachings {
-    background: var(--dark);
-    position: relative;
-    overflow: hidden;
-  }
-
-  #teachings::after {
-    content: '';
-    position: absolute;
-    bottom: -300px; left: -200px;
-    width: 700px; height: 700px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(201,168,76,0.04) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .teachings-intro {
-    max-width: 700px;
-    margin: 0 auto 5rem;
-    text-align: center;
-  }
-  .teachings-intro .gold-line { margin: 0 auto 2.5rem; }
-
-  .doctrines-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
-    background: rgba(201,168,76,0.1);
-    border: 1px solid rgba(201,168,76,0.1);
-  }
-
-  .doctrine-card {
-    background: var(--dark);
-    padding: 2.5rem 2rem;
-    position: relative;
-    overflow: hidden;
-    transition: all 0.4s;
-    cursor: default;
-    opacity: 0;
-    transform: scale(0.97);
-  }
-  .doctrine-card.visible { opacity: 1; transform: scale(1); }
-
-  .doctrine-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(to right, var(--magenta), var(--gold2));
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.4s;
-  }
-  .doctrine-card:hover::before { transform: scaleX(1); }
-  .doctrine-card:hover { background: rgba(201,168,76,0.03); }
-
-  .doctrine-num {
-    font-family: 'Cinzel', serif;
-    font-size: 3rem;
-    color: rgba(201,168,76,0.08);
-    line-height: 1;
-    margin-bottom: 1rem;
-    position: absolute;
-    top: 1.5rem; right: 1.5rem;
-  }
-
-  .doctrine-icon {
-    width: 40px;
-    height: 40px;
-    margin-bottom: 1.2rem;
-    position: relative;
-  }
-
-  .doctrine-title {
-    font-family: 'Cinzel', serif;
-    font-size: 0.9rem;
-    letter-spacing: 1.5px;
-    color: var(--gold2);
-    text-transform: uppercase;
-    margin-bottom: 0.8rem;
-  }
-
-  .doctrine-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1rem;
-    color: var(--ivory3);
-    line-height: 1.75;
-    font-weight: 300;
-  }
-
-  /* ─── FOOTER ─── */
-  footer {
-    background: rgba(26,10,15,0.98);
-    border-top: 1px solid rgba(201,168,76,0.15);
-    padding: 4rem 0 2rem;
-  }
-
-  .footer-inner {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 4rem;
-    margin-bottom: 3rem;
-  }
-
-  .footer-brand {
-    font-family: 'Cinzel', serif;
-    font-size: 1.1rem;
-    color: var(--gold2);
-    margin-bottom: 1rem;
-  }
-
-  .footer-desc {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1rem;
-    color: var(--ivory3);
-    opacity: 0.6;
-    line-height: 1.8;
-  }
-
-  .footer-heading {
-    font-size: 10px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--magenta2);
-    margin-bottom: 1.2rem;
-  }
-
-  .footer-links {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-  }
-  .footer-links a {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1rem;
-    color: var(--ivory3);
-    opacity: 0.6;
-    text-decoration: none;
-    transition: all 0.2s;
-  }
-  .footer-links a:hover { opacity: 1; color: var(--gold2); }
-
-  .footer-bottom {
-    border-top: 1px solid rgba(201,168,76,0.1);
-    padding-top: 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .footer-copy {
-    font-size: 11px;
-    letter-spacing: 1px;
-    color: var(--ivory3);
-    opacity: 0.4;
-  }
-
-  /* ─── SCROLL ANIMATIONS ─── */
-  .fade-in {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.7s, transform 0.7s;
-  }
-  .fade-in.visible { opacity: 1; transform: none; }
-
-  /* ─── MAGENTA ACCENT BAR ─── */
-  .accent-marquee {
-    background: var(--magenta);
-    padding: 14px 0;
-    overflow: hidden;
-    white-space: nowrap;
-    position: relative;
-  }
-  .accent-marquee::before, .accent-marquee::after {
-    content: '';
-    position: absolute;
-    top: 0; bottom: 0;
-    width: 60px;
-    z-index: 2;
-  }
-  .accent-marquee::before { left: 0; background: linear-gradient(to right, var(--magenta), transparent); }
-  .accent-marquee::after { right: 0; background: linear-gradient(to left, var(--magenta), transparent); }
-
-  .marquee-track {
-    display: inline-flex;
-    animation: marqueeScroll 20s linear infinite;
-  }
-
-  .marquee-item {
-    font-size: 11px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.85);
-    padding: 0 3rem;
-  }
-  .marquee-item span { color: var(--gold3); margin: 0 0.5rem; }
-
-  @keyframes marqueeScroll {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-  }
-
-  /* Responsive */
-  @media (max-width: 900px) {
-    nav { padding: 0 1.5rem; }
-    .nav-links { display: none; }
-    .container { padding: 0 1.5rem; }
-    section { padding: 80px 0; }
-    .founder-grid, .intl-grid, .hq-layout { grid-template-columns: 1fr; gap: 3rem; }
-    .hq-aside { position: static; display: flex; gap: 2rem; align-items: center; }
-    .hq-label { writing-mode: horizontal-tb; transform: none; }
-    .doctrines-grid { grid-template-columns: 1fr 1fr; }
-    .stat-cluster { grid-template-columns: 1fr 1fr; }
-    .footer-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-    .milestone-grid { grid-template-columns: 1fr; }
-  }
-
-  @media (max-width: 600px) {
-    .doctrines-grid { grid-template-columns: 1fr; }
-  }
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hnb-title {
+  font-family: var(--fg);
+  font-size: 1.95rem;
+  font-weight: 600;
+  color: var(--blk);
+  margin-bottom: 0.6rem;
+  line-height: 1.2;
+}
+
+.hnb-title strong {
+  color: var(--mg);
+  font-style: italic;
+}
+
+.hnb-subtitle {
+  font-family: var(--fc);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mg);
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+
+.hnb-meta {
+  font-family: var(--fg);
+  font-size: 0.9rem;
+  color: var(--blk4);
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+/* Slide indicators */
+.slide-indicators{position:relative;z-index:2;display:flex;align-items:center;gap:.5rem;padding:1.2rem 2rem 2rem;max-width:1300px;margin:0 auto;width:100%;}
+.si-dot{width:22px;height:2px;background:rgba(255,255,255,.22);border-radius:2px;cursor:pointer;transition:all .4s;}
+.si-dot.active{width:44px;background:var(--mg3);}
+
+/* Slide caption */
+.slide-caption{position:absolute;bottom:80px;right:2rem;z-index:2;text-align:right;}
+.sc-verse{font-family:var(--fg);font-size:.95rem;font-style:italic;color:rgba(255,255,255,.55);line-height:1.6;max-width:280px;}
+.sc-ref{font-family:var(--fc);font-size:.58rem;letter-spacing:.2em;color:var(--mg3);margin-top:.35rem;}
+
+/* Stats row */
+.hero-stats-row{position:relative;z-index:2;background:rgba(0,0,0,.7);border-top:1px solid rgba(255,255,255,.06);backdrop-filter:blur(8px);}
+.hero-stats-inner{max-width:1300px;margin:0 auto;padding:1.2rem 2rem;display:flex;gap:0;}
+.hs{flex:1;text-align:center;border-right:1px solid rgba(255,255,255,.08);padding:.4rem 1rem;}
+.hs:last-child{border-right:none;}
+.hs-num{font-family:var(--fg);font-size:2.1rem;font-weight:600;color:var(--mg3);line-height:1;}
+.hs-lbl{font-size:.58rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:.3rem;}
+
+/* ═══════════════════════════════
+   SECTION BASE
+═══════════════════════════════ */
+.sec{padding:5.5rem 0;position:relative;}
+.cont{max-width:1300px;margin:0 auto;padding:0 2rem;}
+.sec-label{font-family:var(--fc);font-size:.63rem;letter-spacing:.3em;text-transform:uppercase;color:var(--mg);display:flex;align-items:center;gap:1rem;margin-bottom:.9rem;}
+.sec-label::after{content:'';flex:1;max-width:56px;height:1px;background:linear-gradient(90deg,var(--mg),transparent);}
+.sec-h{font-family:var(--fg);font-size:clamp(2.3rem,4.5vw,4.8rem);font-weight:300;line-height:.92;color:var(--blk);margin-bottom:.4rem;letter-spacing:-.015em;}
+.sec-h em{font-style:italic;font-weight:500;color:var(--mg);}
+.sec-sub{font-size:.93rem;color:var(--blk4);line-height:1.85;max-width:540px;margin-bottom:3rem;font-weight:300;}
+
+.rv{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease);}
+.rv.on{opacity:1;transform:none;}
+.rv2{opacity:0;transform:translateY(28px);transition:opacity .9s .12s var(--ease),transform .9s .12s var(--ease);}
+.rv2.on{opacity:1;transform:none;}
+
+/* ═══════════════════════════════
+   FOUNDER SECTION WITH TIMELINE
+═══════════════════════════════ */
+.founder-section{background:var(--white);}
+.founder-intro{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-bottom:4rem;}
+.founder-text p{font-family:var(--fg);font-size:1.05rem;line-height:1.9;color:var(--blk4);margin-bottom:1.2rem;font-weight:300;}
+
+.timeline{position:relative;padding-left:3rem;}
+.timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--mg),var(--mg3),transparent);}
+
+.timeline-event{position:relative;margin-bottom:2.8rem;opacity:0;transform:translateX(-20px);}
+.timeline-event.on{opacity:1;transform:none;transition:all 1s var(--ease);}
+
+.timeline-event::before{content:'';position:absolute;left:-3.4rem;top:8px;width:12px;height:12px;border-radius:50%;background:var(--mg);box-shadow:0 0 16px rgba(192,24,106,.4);}
+
+.te-year{font-family:var(--fc);font-size:.95rem;letter-spacing:.15em;text-transform:uppercase;color:var(--mg);font-weight:700;margin-bottom:.3rem;}
+.te-title{font-family:var(--fg);font-size:1.15rem;font-weight:600;color:var(--blk);margin-bottom:.4rem;line-height:1.3;}
+.te-text{font-family:var(--fg);font-size:.95rem;color:var(--blk4);line-height:1.75;font-weight:300;}
+
+/* ═══════════════════════════════
+   INTERNATIONAL SECTION
+═══════════════════════════════ */
+.intl-section{background:var(--off);}
+.intl-layout{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
+.intl-text p{font-family:var(--fg);font-size:1.05rem;line-height:1.9;color:var(--blk4);margin-bottom:1.2rem;font-weight:300;}
+
+.stat-cluster{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2.5rem;}
+.stat-card{padding:1.8rem;border-radius:8px;background:white;border:1px solid rgba(192,24,106,.12);transition:all .4s var(--ease);opacity:0;transform:translateY(20px);}
+.stat-card.on{opacity:1;transform:none;}
+.stat-card:hover{background:white;border-color:rgba(192,24,106,.25);box-shadow:var(--shadow);}
+.sc-num{font-family:var(--fg);font-size:2.6rem;font-weight:700;color:var(--mg3);line-height:1;margin-bottom:.4rem;}
+.sc-lbl{font-family:var(--fc);font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--mg);font-weight:700;}
+
+.milestone-cards{display:flex;flex-direction:column;gap:1.2rem;margin-top:2rem;}
+.mc{padding:1.6rem;border-radius:8px;background:white;border-left:4px solid var(--mg);transition:all .3s;opacity:0;transform:translateY(15px);}
+.mc.on{opacity:1;transform:none;}
+.mc:hover{border-left-color:var(--mgd);background:var(--mg5);}
+.mc-year{font-family:var(--fc);font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;color:var(--mg3);font-weight:700;margin-bottom:.3rem;}
+.mc-text{font-family:var(--fg);font-size:.95rem;color:var(--blk4);line-height:1.7;font-weight:300;}
+
+/* ═══════════════════════════════
+   QUOTE BAND
+═══════════════════════════════ */
+.quote-band{background:var(--blk);padding:5rem 0;text-align:center;position:relative;overflow:hidden;}
+.quote-band::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(192,24,106,.15),transparent 70%);pointer-events:none;}
+.quote-band blockquote{font-family:var(--fg);font-size:clamp(1.3rem,2.5vw,2rem);font-style:italic;color:white;max-width:800px;margin:0 auto;padding:0 3rem;line-height:1.65;position:relative;z-index:1;}
+.quote-band cite{display:block;margin-top:1.5rem;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--mg3);font-style:normal;opacity:0.8;}
+
+/* ═══════════════════════════════
+   FOOTER
+═══════════════════════════════ */
+footer{background:var(--blk);padding:3rem 0 2rem;border-top:1px solid rgba(255,255,255,.08);}
+.footer-inner{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;max-width:1300px;margin:0 auto;padding:0 2rem;margin-bottom:2rem;}
+.footer-brand{font-family:var(--fc);font-size:.95rem;color:var(--mg3);letter-spacing:.1em;margin-bottom:.8rem;}
+.footer-desc{font-family:var(--fg);font-size:.9rem;color:rgba(255,255,255,.4);line-height:1.8;}
+.footer-heading{font-family:var(--fc);font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mg);margin-bottom:1rem;}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:.6rem;}
+.footer-links a{font-family:var(--fg);font-size:.9rem;color:rgba(255,255,255,.4);transition:all .2s;}
+.footer-links a:hover{color:var(--mg3);}
+.footer-copy{font-size:.75rem;color:rgba(255,255,255,.2);letter-spacing:.05em;text-align:center;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.07);max-width:1300px;margin:0 auto;padding:1.5rem 2rem 0;}
+
+/* ═══════════════════════════════
+   RESPONSIVE
+═══════════════════════════════ */
+@media(max-width:1024px){
+  .hero-inner{grid-template-columns:1fr;gap:2rem;}
+  .hero-right{display:flex;flex-direction:column;gap:1.5rem;}
+  .hero-image-container{height:340px;}
+  .founder-intro,.intl-layout{grid-template-columns:1fr;}
+  .stat-cluster{grid-template-columns:1fr 1fr;}
+  .footer-inner{grid-template-columns:1fr;}
+}
+@media(max-width:640px){
+  .nav-links{display:none;}
+  .hero-image-container{height:280px;}
+  .stat-cluster{grid-template-columns:1fr;}
+  .hero-stats-inner{flex-wrap:wrap;}
+  .hs{flex:1 0 40%;}
+  .hnb-title{font-size:1.6rem;}
+}
 </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav>
-  <div class="nav-logo">
-    Church of God
-    <span>Full Gospel · Kerala State</span>
+<nav id="nav">
+  <div class="nb">
+    <a href="home.html" class="nl">
+      <div class="nl-cross">✝</div>
+      <div class="nl-info">
+        <div class="t1">Church of God (Full Gospel) · Kerala State</div>
+        <div class="t2">Our Founder & Global Heritage</div>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="#founder" class="nav-link">Our Founder</a>
+      <a href="#intl" class="nav-link">International</a>
+      <a href="home.html" class="nav-link">Home</a>
+    </div>
+    <a href="teaching.html" class="nav-cta">Our Teachings</a>
   </div>
-  <ul class="nav-links">
-    <li><a href="#founder">Our Founder</a></li>
-    <li><a href="#international">International</a></li>
-    <li><a href="#headquarters">State HQ</a></li>
-    <li><a href="#teachings">Teachings</a></li>
-  </ul>
 </nav>
 
 <!-- HERO -->
-<section class="hero">
-  <div class="hero-bg">
-    <div class="cross-beam"></div>
-    <div class="cross-beam h"></div>
-    <div class="hero-ring"></div>
-    <!-- Particles -->
-    <div class="particle" style="width:3px;height:3px;left:20%;bottom:20%;--dur:7s;--delay:0s"></div>
-    <div class="particle" style="width:2px;height:2px;left:35%;bottom:15%;--dur:5s;--delay:1.5s"></div>
-    <div class="particle" style="width:4px;height:4px;left:55%;bottom:25%;--dur:8s;--delay:0.5s"></div>
-    <div class="particle" style="width:2px;height:2px;left:70%;bottom:10%;--dur:6s;--delay:2s"></div>
-    <div class="particle" style="width:3px;height:3px;left:80%;bottom:30%;--dur:7.5s;--delay:1s"></div>
-    <div class="particle" style="width:2px;height:2px;left:45%;bottom:18%;--dur:9s;--delay:3s"></div>
+<section class="hero" id="top">
+  <div class="slides" id="slides">
+    <div class="slide active">
+      <img class="slide-bg" src="suphome (1).jpg" alt="Church history" onerror="this.style.display='none'">
+      <div class="slide-color"></div>
+    </div>
+    <div class="slide">
+      <img class="slide-bg" src="WhatsApp Image 2026-04-04 at 11.08.53 (1).jpeg" alt="Rev. Cook" onerror="this.style.display='none'">
+      <div class="slide-color"></div>
+    </div>
+    <div class="slide">
+      <img class="slide-bg" src="church3.jpg" alt="First baptism" onerror="this.style.display='none'">
+      <div class="slide-color"></div>
+    </div>
+    <div class="slide">
+      <img class="slide-bg" src="church4.jpg" alt="Global ministry" onerror="this.style.display='none'">
+      <div class="slide-color"></div>
+    </div>
+  </div>
+
+  <div class="slide-caption" id="slideCaption">
+    <div class="sc-verse">"A man of great missionary zeal…"</div>
+    <div class="sc-ref">Rev. Robert Felix Cook · 1908–1936</div>
   </div>
 
   <div class="hero-content">
-    <p class="hero-eyebrow">Since 1886 · Present in 173 Nations</p>
-    <h1 class="hero-title">
-      Church of God<br>
-      <em>Full Gospel in India</em>
-    </h1>
-    <div class="hero-divider"></div>
-    <p class="hero-subtitle">"The whole Bible rightly divided — the New Testament as our rule of faith and practice"</p>
-    <div class="hero-nav">
-      <a href="#founder" class="hero-btn primary"><span>Our Founder</span></a>
-      <a href="#international" class="hero-btn"><span>International Office</span></a>
-      <a href="#headquarters" class="hero-btn"><span>State Headquarters</span></a>
-      <a href="#teachings" class="hero-btn"><span>Teachings</span></a>
-    </div>
-  </div>
-</section>
-
-<!-- MARQUEE -->
-<div class="accent-marquee">
-  <div class="marquee-track">
-    <span class="marquee-item">Holiness Pentecostal Movement <span>✦</span></span>
-    <span class="marquee-item">Kerala State <span>✦</span></span>
-    <span class="marquee-item">1200+ Local Churches <span>✦</span></span>
-    <span class="marquee-item">1500+ Ministers <span>✦</span></span>
-    <span class="marquee-item">173 Countries <span>✦</span></span>
-    <span class="marquee-item">Founded 1886 <span>✦</span></span>
-    <span class="marquee-item">Mt. Zion Bible College <span>✦</span></span>
-    <span class="marquee-item">Great Commission <span>✦</span></span>
-    <!-- Duplicate for seamless loop -->
-    <span class="marquee-item">Holiness Pentecostal Movement <span>✦</span></span>
-    <span class="marquee-item">Kerala State <span>✦</span></span>
-    <span class="marquee-item">1200+ Local Churches <span>✦</span></span>
-    <span class="marquee-item">1500+ Ministers <span>✦</span></span>
-    <span class="marquee-item">173 Countries <span>✦</span></span>
-    <span class="marquee-item">Founded 1886 <span>✦</span></span>
-    <span class="marquee-item">Mt. Zion Bible College <span>✦</span></span>
-    <span class="marquee-item">Great Commission <span>✦</span></span>
-  </div>
-</div>
-
-<!-- FOUNDER -->
-<section id="founder">
-  <div class="container">
-    <div class="founder-grid">
-      <div class="founder-visual fade-in">
-        <div class="founder-frame">
-          <div class="founder-frame-inner">
-            <div class="cross-icon"></div>
-          </div>
-          <div class="founder-name-plate">
-            <div class="founder-name">Rev. Robert Felix Cook</div>
-            <div class="founder-dates">Missionary · Trailblazer · Visionary</div>
-          </div>
+    <div class="hero-inner">
+      <div class="hero-left">
+        <div class="hero-eyebrow">Heritage · Missionary Zeal · Global Impact</div>
+        <h1 class="hero-title">
+          <span>A <strong>Mission Trailblazer</strong></span>
+          <strong>for the World</strong>
+        </h1>
+        <div class="hero-divider"></div>
+        <p class="hero-sub">
+          From the Upper Room in Los Angeles in 1908 to the shores of Kerala and across 173 nations, the Pentecostal fire kindled in Rev. Robert Felix Cook continues to burn brightly today — proclaiming holiness, healing, and the power of the Holy Ghost to every unreached corner of the earth.
+        </p>
+        <div class="hero-btns">
+          <button class="btn-mg" onclick="scrollTo('#founder')">Rev. Cook's Legacy</button>
+          <button class="btn-ghost" onclick="scrollTo('#intl')">Global Movement</button>
         </div>
-        <div class="founder-corner tl"></div>
-        <div class="founder-corner tr"></div>
-        <div class="founder-corner bl"></div>
-        <div class="founder-corner br"></div>
       </div>
 
-      <div class="founder-content">
-        <span class="section-tag">Our Founder</span>
-        <h2 class="section-title">A <em>Mission Trailblazer</em><br>for Kerala</h2>
-        <div class="gold-line"></div>
-        <p class="body-text">The foundation stone of Pentecostalism in India was laid by Rev. R.F. Cook — a man of great missionary zeal. He and his wife Anna received the Pentecostal experience and the anointing of the Holy Spirit at the Upper Room missions in Los Angeles in 1908, igniting a fire that would reach the shores of Kerala.</p>
+      <div class="hero-right">
+        <!-- Image Container -->
+        <div class="hero-image-container">
+          <img src="robert.jpeg" alt="Rev. Robert Felix Cook" onerror="this.style.display='none'">
+        </div>
 
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-year">1908</div>
-            <div class="timeline-text">Rev. Cook and his wife Anna receive the Pentecostal experience and anointing at the Upper Room missions in Los Angeles, California.</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-year">1913</div>
-            <div class="timeline-text">Cook moves to Kottarakkara, Kerala, taking over the mission works and establishing the foundation for Pentecostal ministry in South India.</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-year">January 1914</div>
-            <div class="timeline-text">After a four-day revival, Cook baptizes sixty-three converts at Thuvayoor — establishing the first Pentecostal church in India, now a Church of God local church.</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-year">1921</div>
-            <div class="timeline-text">Cook establishes his headquarters at Thrikkannamangal and registers his churches under the name <em>Malankara Full Gospel Church of God</em>. The work spreads rapidly throughout Kerala.</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-year">1922</div>
-            <div class="timeline-text">Establishing the first Home Bible Training School at his residence — the first Pentecostal Bible Study centre in all of South India, later becoming Mt. Zion Bible College.</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-year">1936</div>
-            <div class="timeline-text">Cook's organization officially merges with the Church of God International during their Golden Jubilee World Tour, uniting Kerala's Pentecostal movement with a global family.</div>
-          </div>
+        <!-- Animated Name Box -->
+        <div class="hero-name-box">
+          <div class="hnb-subtitle">Founder & Visionary</div>
+          <h3 class="hnb-title">Rev. <strong>Robert Felix Cook</strong></h3>
+          <p class="hnb-meta">1886–1936 · Pioneer of Pentecostalism in India</p>
         </div>
       </div>
     </div>
   </div>
+
+  <div class="slide-indicators" id="slideIndicators">
+    <div class="si-dot active" onclick="goSlide(0)"></div>
+    <div class="si-dot" onclick="goSlide(1)"></div>
+    <div class="si-dot" onclick="goSlide(2)"></div>
+    <div class="si-dot" onclick="goSlide(3)"></div>
+  </div>
+
+  <div class="hero-stats-row">
+    <div class="hero-stats-inner">
+      <div class="hs"><div class="hs-num">1886</div><div class="hs-lbl">Church Founded</div></div>
+      <div class="hs"><div class="hs-num">1908</div><div class="hs-lbl">Pentecostal Outpouring</div></div>
+      <div class="hs"><div class="hs-num">1914</div><div class="hs-lbl">First India Church</div></div>
+      <div class="hs"><div class="hs-num">173</div><div class="hs-lbl">Nations Today</div></div>
+      <div class="hs"><div class="hs-num">138</div><div class="hs-lbl">Years of Ministry</div></div>
+    </div>
+  </div>
 </section>
 
-<!-- INTERNATIONAL OFFICE -->
-<section id="international">
-  <div class="container">
-    <div class="intl-grid">
-      <div>
-        <span class="section-tag fade-in">International Office</span>
-        <h2 class="section-title fade-in">A <em>Global Movement</em><br>Rooted in Scripture</h2>
-        <div class="gold-line fade-in"></div>
-        <p class="body-text fade-in">The Church of God began on August 19, 1886, in Monroe County, Tennessee, near the North Carolina border, when Richard Green Spurling preached in a millhouse along Barney Creek. Eight persons formed a Christian Union to follow the New Testament as their rule of faith and practice — giving each other equal rights to interpret Scripture and sit together as the church of God.</p>
-        <p class="body-text fade-in" style="margin-top:1.5rem">Twenty-one years later, the growing movement formally adopted the name Church of God. Today, its international headquarters stands at Cleveland, Tennessee, USA — overseeing a Holiness Pentecostal movement present in 173 countries around the world, making it the leading Pentecostal Holiness organization on earth.</p>
+<!-- FOUNDER SECTION -->
+<section class="sec founder-section" id="founder">
+  <div class="cont">
+    <div class="sec-label rv">Our Founder</div>
+    <h2 class="sec-h rv">Rev. <em>Robert Felix Cook</em><br>Pioneer of Pentecostalism</h2>
+    <div class="sec-sub rv">The foundation stone of Pentecostalism in India was laid by Rev. R.F. Cook — a man of great missionary zeal whose legacy continues to transform lives across Kerala and the world.</div>
+
+    <div class="founder-intro">
+      <div class="founder-text rv">
+        <p>The foundation stone of Pentecostalism in India was laid by Rev. R.F. Cook — a man of great missionary zeal. He and his wife Anna received the Pentecostal experience and the anointing of the Holy Spirit at the Upper Room missions in Los Angeles in 1908, igniting a fire that would reach the shores of Kerala.</p>
+        <p>From his initial arrival in Kottarakkara in 1913, through the establishment of the first Pentecostal church at Thuvayoor in January 1914 with sixty-three baptized converts, to the founding of Mt. Zion Bible College in 1922 — the first Bible training center in all of South India — Cook's ministry set the foundation for what would become the largest Pentecostal Holiness movement in the nation.</p>
+        <p>In 1936, Cook's Malankara Full Gospel Church of God formally united with the Church of God International, bringing Kerala into a global fellowship of more than 173 nations. His legacy remains alive in over 1,200 churches and 1,500 ministers who carry forward the same zeal, the same anointing, and the same message of Biblical holiness and the full Gospel that he proclaimed.</p>
+      </div>
+
+      <div class="timeline rv2">
+        <div class="timeline-event">
+          <div class="te-year">1908</div>
+          <div class="te-title">Pentecostal Anointing</div>
+          <div class="te-text">Rev. Cook and his wife Anna receive the Pentecostal experience and anointing of the Holy Spirit at the Upper Room missions in Los Angeles, California.</div>
+        </div>
+
+        <div class="timeline-event">
+          <div class="te-year">1913</div>
+          <div class="te-title">Arrival in Kerala</div>
+          <div class="te-text">Cook moves to Kottarakkara, Kerala, taking over the mission works and establishing the foundation for Pentecostal ministry in South India.</div>
+        </div>
+
+        <div class="timeline-event">
+          <div class="te-year">January 1914</div>
+          <div class="te-title">First Pentecostal Church in India</div>
+          <div class="te-text">After a four-day revival, Cook baptizes sixty-three converts at Thuvayoor — establishing the first Pentecostal church in India, now a Church of God local church.</div>
+        </div>
+
+        <div class="timeline-event">
+          <div class="te-year">1921</div>
+          <div class="te-title">Foundation & Organization</div>
+          <div class="te-text">Cook establishes his headquarters at Thrikkannamangal and registers his churches under the name <em>Malankara Full Gospel Church of God</em>. The work spreads rapidly throughout Kerala.</div>
+        </div>
+
+        <div class="timeline-event">
+          <div class="te-year">1922</div>
+          <div class="te-title">First Bible Training School</div>
+          <div class="te-text">Establishing the first Home Bible Training School at his residence — the first Pentecostal Bible Study centre in all of South India, later becoming Mt. Zion Bible College.</div>
+        </div>
+
+        <div class="timeline-event">
+          <div class="te-year">1936</div>
+          <div class="te-title">Global Union</div>
+          <div class="te-text">Cook's organization officially merges with the Church of God International during their Golden Jubilee World Tour, uniting Kerala's Pentecostal movement with a global family.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTERNATIONAL SECTION -->
+<section class="sec intl-section" id="intl">
+  <div class="cont">
+    <div class="sec-label rv">International Office</div>
+    <h2 class="sec-h rv">A <em>Global Movement</em><br>Rooted in Scripture</h2>
+    <div class="sec-sub rv">From a humble millhouse in Tennessee to 173 nations — the Church of God International stands as the leading Pentecostal Holiness organization on earth, with Kerala as a shining beacon.</div>
+
+    <div class="intl-layout">
+      <div class="intl-text rv">
+        <p>The Church of God began on August 19, 1886, in Monroe County, Tennessee, near the North Carolina border, when Richard Green Spurling preached in a millhouse along Barney Creek. Eight persons formed a Christian Union to follow the New Testament as their rule of faith and practice — giving each other equal rights to interpret Scripture and sit together as the church of God.</p>
+        <p>Twenty-one years later, the growing movement formally adopted the name Church of God. Today, its international headquarters stands at Cleveland, Tennessee, USA — overseeing a Holiness Pentecostal movement present in 173 countries around the world, making it the leading Pentecostal Holiness organization on earth.</p>
+        <p>The merger of Rev. Cook's Kerala work with the Church of God International in 1936 brought this Indian Pentecostal flame into communion with a global family. Today, Kerala State boasts over 1,200 local churches and 1,500+ ministers, spanning all 14 revenue districts and 63 taluks of the state, proclaiming the Gospel to over 337 lakh people.</p>
 
         <div class="stat-cluster">
-          <div class="stat-card fade-in">
-            <div class="stat-number">1886</div>
-            <div class="stat-label">Year Founded</div>
+          <div class="stat-card">
+            <div class="sc-num">1886</div>
+            <div class="sc-lbl">Year Founded</div>
           </div>
-          <div class="stat-card fade-in">
-            <div class="stat-number">173</div>
-            <div class="stat-label">Nations</div>
+          <div class="stat-card">
+            <div class="sc-num">173</div>
+            <div class="sc-lbl">Nations</div>
           </div>
-          <div class="stat-card fade-in">
-            <div class="stat-number">187</div>
-            <div class="stat-label">Countries (Kerala)</div>
+          <div class="stat-card">
+            <div class="sc-num">1936</div>
+            <div class="sc-lbl">Kerala Union</div>
           </div>
-          <div class="stat-card fade-in">
-            <div class="stat-number">138</div>
-            <div class="stat-label">Years of Ministry</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="intl-history">
-        <span class="section-tag fade-in" style="margin-bottom:2rem;display:block">Historical Milestones</span>
-        <div class="history-cards">
-          <div class="history-card">
-            <div class="history-card-year">1886</div>
-            <div class="history-card-text">Richard Green Spurling preaches at Barney Creek millhouse. Eight persons form the Christian Union — the seed of the Church of God movement.</div>
-          </div>
-          <div class="history-card">
-            <div class="history-card-year">1896</div>
-            <div class="history-card-text">A revival at the Shearer Schoolhouse in Camp Creek, North Carolina introduces the doctrine of sanctification, sparking intense revival and Holy Spirit outpouring.</div>
-          </div>
-          <div class="history-card">
-            <div class="history-card-year">1907</div>
-            <div class="history-card-text">The growing movement formally adopts the name "Church of God" at its first General Assembly in Cleveland, Tennessee.</div>
-          </div>
-          <div class="history-card">
-            <div class="history-card-year">1936</div>
-            <div class="history-card-text">Golden Jubilee World Tour connects India's Pentecostal movement with the Church of God International — uniting Kerala's faithful with a global mission.</div>
-          </div>
-          <div class="history-card">
-            <div class="history-card-year">Present</div>
-            <div class="history-card-text">From a humble millhouse to 187 countries — the Church of God remains the leading Pentecostal Holiness organization in the world, with Kerala as a shining beacon.</div>
+          <div class="stat-card">
+            <div class="sc-num">138</div>
+            <div class="sc-lbl">Years of Service</div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
 
-<!-- STATE HEADQUARTERS -->
-<section id="headquarters">
-  <div class="container">
-    <div class="hq-layout">
-      <div class="hq-aside fade-in">
-        <div class="hq-emblem">
-          <div class="cross-icon" style="width:40px;height:55px"></div>
-        </div>
-        <div class="hq-label">State Headquarters · Kerala</div>
-      </div>
-
-      <div class="hq-main">
-        <span class="section-tag">State Headquarters</span>
-        <h2 class="section-title">Mount Zion, <em>Mulakuzha</em><br>Chengannur</h2>
-        <div class="gold-line"></div>
-        <p class="body-text">The history of the Church of God in India traces back to Rev. Robert Felix Cook and his pioneering Pentecostal organization. The first General Convention of Pentecostal Churches in India was held in December 1923 on the banks of the river Pampa at Arattupuzha — a gathering that united all Pentecostal missionaries and native ministers.</p>
-        <p class="body-text" style="margin-top:1.5rem">Today, from the State Headquarters at Mount Zion, Mulakuzha, Chengannur, Kerala State Church of God oversees a thriving network that ministers to the people of God across 14 revenue districts and 63 Taluks — proclaiming the love of Christ to all 337 lakh people of Kerala.</p>
-
-        <div class="milestone-grid">
-          <div class="milestone">
-            <div class="milestone-title">First Bible College</div>
-            <div class="milestone-text">In 1922, Rev. Cook began a Home Bible School — the first Pentecostal Bible Study centre in South India. Today it is the internationally accredited Mt. Zion Bible College.</div>
+      <div class="rv2">
+        <div class="milestone-cards">
+          <div class="mc">
+            <div class="mc-year">1886</div>
+            <div class="mc-text">Richard Green Spurling preaches at Barney Creek millhouse. Eight persons form the Christian Union — the seed of the Church of God movement.</div>
           </div>
-          <div class="milestone">
-            <div class="milestone-title">First Convention</div>
-            <div class="milestone-text">December 1923, the first General Convention of all Pentecostal Churches in India convened on the banks of river Pampa at Arattupuzha — a historic gathering.</div>
+          <div class="mc">
+            <div class="mc-year">1896</div>
+            <div class="mc-text">A revival at the Shearer Schoolhouse in Camp Creek, North Carolina introduces the doctrine of sanctification, sparking intense revival and Holy Spirit outpouring.</div>
           </div>
-          <div class="milestone">
-            <div class="milestone-title">1,200+ Churches</div>
-            <div class="milestone-text">Kerala State boasts over 1,200 local churches and 1,500+ ministers, spanning all 14 revenue districts and 63 taluks of the state.</div>
+          <div class="mc">
+            <div class="mc-year">1907</div>
+            <div class="mc-text">The growing movement formally adopts the name "Church of God" at its first General Assembly in Cleveland, Tennessee.</div>
           </div>
-          <div class="milestone">
-            <div class="milestone-title">First Church · Thuvayoor</div>
-            <div class="milestone-text">The congregation established in January 1914 at Thuvayoor — the very first Pentecostal church in India — continues to thrive as a Church of God local church today.</div>
+          <div class="mc">
+            <div class="mc-year">1923</div>
+            <div class="mc-text">The first General Convention of Pentecostal Churches in India convenes on the banks of river Pampa at Arattupuzha — a historic gathering uniting all Pentecostal missionaries and native ministers.</div>
+          </div>
+          <div class="mc">
+            <div class="mc-year">1936</div>
+            <div class="mc-text">Golden Jubilee World Tour connects India's Pentecostal movement with the Church of God International — uniting Kerala's faithful with a global mission.</div>
+          </div>
+          <div class="mc">
+            <div class="mc-year">Present</div>
+            <div class="mc-text">From a humble millhouse to 187 countries — the Church of God remains the leading Pentecostal Holiness organization in the world, with Kerala as a shining beacon of faith and mission.</div>
           </div>
         </div>
       </div>
@@ -1128,112 +512,64 @@
   </div>
 </section>
 
-<!-- TEACHINGS -->
-<section id="teachings">
-  <div class="container">
-    <div class="teachings-intro fade-in">
-      <span class="section-tag">Core Doctrines</span>
-      <h2 class="section-title">What <em>We Believe</em></h2>
-      <div class="gold-line"></div>
-      <p class="body-text">The Church of God stands for the whole Bible rightly divided. The New Testament is our only rule for government and discipline. We hold to the following Declaration of Faith as our standard and official expression of doctrine.</p>
-    </div>
-
-    <div class="doctrines-grid">
-      <div class="doctrine-card">
-        <div class="doctrine-num">01</div>
-        <div class="doctrine-title">The Holy Scriptures</div>
-        <p class="doctrine-text">The Church of God believes the whole Bible to be completely and equally inspired — the written Word of God, our supreme guide for faith, practice, and all matters of life.</p>
-      </div>
-      <div class="doctrine-card">
-        <div class="doctrine-num">02</div>
-        <div class="doctrine-title">The Holy Trinity</div>
-        <p class="doctrine-text">In one God eternally existing in three persons: the Father, the Son, and the Holy Ghost — co-equal, co-eternal, and of one divine nature.</p>
-      </div>
-      <div class="doctrine-card">
-        <div class="doctrine-num">03</div>
-        <div class="doctrine-title">Jesus Christ</div>
-        <p class="doctrine-text">That Jesus Christ is the only begotten Son of the Father, conceived of the Holy Ghost, born of the Virgin Mary — crucified, buried, and raised from the dead.</p>
-      </div>
-      <div class="doctrine-card">
-        <div class="doctrine-num">04</div>
-        <div class="doctrine-title">Salvation & New Birth</div>
-        <p class="doctrine-text">That all have sinned and that repentance is commanded by God for all people. Justification, regeneration, and the new birth are wrought by faith in the blood of Jesus Christ.</p>
-      </div>
-      <div class="doctrine-card">
-        <div class="doctrine-num">05</div>
-        <div class="doctrine-title">Water Baptism</div>
-        <p class="doctrine-text">Baptism by immersion — to plunge, dip, or bury beneath the surface of the water and lift out again — as commanded by our Lord Jesus Christ for all believers.</p>
-      </div>
-      <div class="doctrine-card">
-        <div class="doctrine-num">06</div>
-        <div class="doctrine-title">Holiness & Spirit</div>
-        <p class="doctrine-text">The foundation of our church is built upon the principles of Biblical holiness. We believe in the sanctifying power of the Holy Spirit, with speaking in tongues as the initial sign.</p>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- QUOTE BAND -->
+<div class="quote-band">
+  <blockquote>
+    "The harvest truly is plenteous, but the labourers are few. Pray ye therefore the Lord of the harvest, that he will send forth labourers into his harvest."
+    <cite>Matthew 9:37 (KJV)</cite>
+  </blockquote>
+</div>
 
 <!-- FOOTER -->
 <footer>
-  <div class="container">
-    <div class="footer-inner">
-      <div>
-        <div class="footer-brand">Church of God (Full Gospel) in India</div>
-        <p class="footer-desc">Kerala State · Mount Zion, Mulakuzha PO<br>Chengannur, Kerala, India<br><br>Part of the Church of God International<br>Headquarters: Cleveland, Tennessee, USA</p>
-      </div>
-      <div>
-        <div class="footer-heading">Quick Links</div>
-        <ul class="footer-links">
-<a href="fo.html" class="active">Our Founder</a>
-    <a href="inter.html">International</a>
-    <a href="head.html">State HQ</a>
-    <a href="teaching.html">Teachings</a>
-        </ul>
-      </div>
-      <div>
-        <div class="footer-heading">Contact</div>
-        <ul class="footer-links">
-          <li><a href="mailto:cogkeralastate@gmail.com">cogkeralastate@gmail.com</a></li>
-          <li><a href="https://www.cogkerala.org">cogkerala.org</a></li>
-        </ul>
-      </div>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">Church of God (Full Gospel) in India</div>
+      <p class="footer-desc">Kerala State · Mount Zion, Mulakuzha<br>Chengannur, Kerala, India</p>
     </div>
-    <div class="footer-bottom">
-      <span class="footer-copy">© 2025 Church of God (Full Gospel) in India, Kerala State. All rights reserved.</span>
-      <span class="footer-copy" style="color:rgba(201,168,76,0.4)">Established 1886</span>
+    <div>
+      <div class="footer-heading">Quick Links</div>
+      <ul class="footer-links">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="teaching.html">Teachings</a></li>
+        <li><a href="history.html">History</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-heading">Connect</div>
+      <ul class="footer-links">
+        <li><a href="mailto:cogkeralastate@gmail.com">cogkeralastate@gmail.com</a></li>
+        <li><a href="https://www.cogkerala.org">cogkerala.org</a></li>
+      </ul>
     </div>
   </div>
+  <div class="footer-copy">© 2025 Church of God (Full Gospel) in India, Kerala State · Mount Zion, Mulakuzha, Chengannur</div>
 </footer>
 
 <script>
-  // Intersection Observer for scroll animations
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+/* SLIDESHOW */
+var CAPTIONS = [
+  { verse:'"A man of great missionary zeal…"', ref:'Rev. Robert Felix Cook · 1908–1936' },
+  { verse:'"The Pentecostal fire began in Los Angeles…"', ref:'Upper Room Missions · 1908' },
+  { verse:'"Sixty-three converts at Thuvayoor…"', ref:'First Indian Pentecostal Church · 1914' },
+  { verse:'"United with the Church of God International…"', ref:'Golden Jubilee · 1936' }
+];
+var slides=document.querySelectorAll('.slide'),dots=document.querySelectorAll('.si-dot'),cap=document.getElementById('slideCaption'),cur=0,timer;
+function goSlide(n){slides[cur].classList.remove('active');dots[cur].classList.remove('active');cur=(n+slides.length)%slides.length;slides[cur].classList.add('active');dots[cur].classList.add('active');var c=CAPTIONS[cur];cap.querySelector('.sc-verse').textContent=c.verse;cap.querySelector('.sc-ref').textContent=c.ref;}
+function startSlideshow(){timer=setInterval(function(){goSlide(cur+1);},5500);}
+startSlideshow();
+dots.forEach(function(d,i){d.addEventListener('click',function(){clearInterval(timer);goSlide(i);startSlideshow();});});
 
-  document.querySelectorAll('.fade-in, .timeline-item, .history-card, .milestone, .doctrine-card').forEach((el, i) => {
-    el.style.transitionDelay = (i % 4) * 0.1 + 's';
-    io.observe(el);
-  });
+/* SCROLL REVEAL */
+var rvObs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');rvObs.unobserve(e.target);}});},{threshold:0.06,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.rv,.rv2,.stat-card,.mc,.timeline-event').forEach(function(el){rvObs.observe(el);});
 
-  // Smooth nav highlight
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-links a');
-  window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(s => {
-      if (window.scrollY >= s.offsetTop - 100) current = s.id;
-    });
-    navLinks.forEach(a => {
-      a.style.color = a.getAttribute('href') === '#' + current 
-        ? 'var(--gold2)' : '';
-    });
-  }, { passive: true });
+/* SCROLL UTIL */
+function scrollTo(sel){var el=document.querySelector(sel);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});}
+
+/* NAV ACTIVE */
+var sections=document.querySelectorAll('section[id]'),navLinks=document.querySelectorAll('.nav-link');
+window.addEventListener('scroll',function(){var scrollY=window.scrollY;sections.forEach(function(sec){var top=sec.offsetTop-100,bot=top+sec.offsetHeight;if(scrollY>=top&&scrollY<bot){navLinks.forEach(function(l){l.classList.remove('active');});var active=document.querySelector('.nav-link[href="#'+sec.id+'"]');if(active)active.classList.add('active');}});});
 </script>
-
 </body>
 </html>
