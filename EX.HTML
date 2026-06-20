@@ -54,7 +54,44 @@ button{cursor:pointer;font-family:var(--ff);}
   box-shadow:0 2px 20px rgba(192,24,106,.07);
 }
 .nb{max-width:1400px;margin:0 auto;padding:0 2rem;height:var(--nav);display:flex;align-items:center;justify-content:space-between;}
-.nl{display:flex;align-items:center;gap:.85rem;}
+.nl {
+  display: flex;
+  align-items: center; 
+  gap: 0.35rem;         /* Decreased to pull text tighter to the graphic */
+  text-decoration: none;
+}
+
+.nl-logo-wrap {
+  width: 46px;          /* Slightly larger to scale nicely with two text rows */
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.nl-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.nl-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Ensure clean line heights so the browser doesn't push the text down */
+.nl-info .t1 {
+  line-height: 1.2;
+  margin: 0;
+}
+
+.nl-info .t2 {
+  line-height: 1.2;
+  margin: 2px 0 0 0;   /* Small 2px gap between the two text lines */
+}
 .nl-cross{font-size:1.5rem;color:var(--mg);line-height:1;font-family:var(--fc);}
 .nl-info .t1{font-family:var(--fc);font-size:.85rem;font-weight:600;color:var(--blk);letter-spacing:.05em;}
 .nl-info .t2{font-size:.6rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--blk4);margin-top:2px;}
@@ -563,7 +600,13 @@ footer a:hover {
 <nav id="nav">
   <div class="nb">
     <a href="home.html" class="nl">
-      <div class="nl-cross">✝</div>
+      <a href="home.html" class="nl">
+  <div class="nl-logo-wrap">
+    <img src="download.png" alt="COG KERALA LOGO" class="nl-logo-img">
+  </div>
+  
+ 
+</a>
       <div class="nl-info">
         <div class="t1">Church of God (Full Gospel) · Kerala State</div>
         <div class="t2">Ministerial Ranks</div>

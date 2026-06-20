@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mount Carmel Children's Home Board — COG Kerala</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Outfit:wght@300;400;500;600;700&family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #7a044d;
+  --primary-dark: #c40995;
+  --accent: #ad124d;
+  --light: #a10c81;
+  --blk: #0D0D0D;
+  --blk2: #1A1A1A;
+  --blk3: #2E2E2E;
+  --blk4: #555555;
+  --blk5: #888888;
+  --white: #FFFFFF;
+  --off: #fafaf9;
+  --off2: #f5f5f4;
+  --off3: #ede9fe;
+  --shadow: 0 4px 28px rgba(180, 83, 9, 0.12);
+  --shadow2: 0 16px 56px rgba(180, 83, 9, 0.18);
+  --nav: 72px;
+  --ease: cubic-bezier(.16,1,.3,1);
+  --ff: 'Outfit', sans-serif;
+  --fg: 'Cormorant Garamond', serif;
+  --fc: 'Cinzel', serif;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--ff);background:var(--white);color:var(--blk);overflow-x:hidden;}
+img{max-width:100%;display:block;}
+a{text-decoration:none;color:inherit;}
+button{cursor:pointer;font-family:var(--ff);}
+textarea,input,select{font-family:var(--ff);}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-thumb{background:var(--light);border-radius:4px;}
+
+#nav {
+  position:fixed;top:0;left:0;right:0;z-index:9000;
+  background:rgba(255,255,255,.97);
+  border-bottom:1px solid rgba(180,83,9,.1);
+  backdrop-filter:blur(14px);
+  box-shadow:0 2px 20px rgba(180,83,9,.07);
+}
+.nb{max-width:1400px;margin:0 auto;padding:0 2rem;height:var(--nav);display:flex;align-items:center;justify-content:space-between;}
+.nl{display:flex;align-items:center;gap:.85rem;}
+.nl-cross{font-size:1.5rem;color:var(--primary);line-height:1;font-family:var(--fc);}
+.nl-info .t1{font-family:var(--fc);font-size:.85rem;font-weight:600;color:var(--blk);letter-spacing:.05em;}
+.nl-info .t2{font-size:.6rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--blk4);margin-top:2px;}
+.nav-links{display:flex;align-items:center;gap:.2rem;}
+.nav-link{font-size:.78rem;font-weight:500;letter-spacing:.07em;padding:.45rem 1rem;border-radius:4px;color:var(--blk3);transition:all .2s;}
+.nav-link:hover,.nav-link.active{background:rgba(180,83,9,.12);color:var(--primary);}
+.nav-cta{font-size:.78rem;font-weight:600;letter-spacing:.09em;padding:.5rem 1.4rem;background:var(--primary);color:white;border-radius:4px;border:none;transition:all .22s;}
+.nav-cta:hover{background:var(--primary-dark);}
+.nl {
+  display: flex;
+  align-items: center; 
+  gap: 0.35rem;         /* Decreased to pull text tighter to the graphic */
+  text-decoration: none;
+}
+
+.nl-logo-wrap {
+  width: 46px;          /* Slightly larger to scale nicely with two text rows */
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.nl-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.nl-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Ensure clean line heights so the browser doesn't push the text down */
+.nl-info .t1 {
+  line-height: 1.2;
+  margin: 0;
+}
+
+.nl-info .t2 {
+  line-height: 1.2;
+  margin: 2px 0 0 0;   /* Small 2px gap between the two text lines */
+}
+
+.hero {
+  padding-top:var(--nav);
+  min-height:100vh;
+  position:relative;overflow:hidden;
+  display:flex;flex-direction:column;
+  background: linear-gradient(135deg, rgba(180,83,9,0.15) 0%, rgba(217,119,6,0.1) 100%);
+}
+.slides{position:absolute;inset:0;z-index:0;}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease;display:flex;align-items:center;justify-content:center;}
+.slide.active{opacity:1;}
+.slide-bg{position:absolute;inset:0;object-fit:cover;width:100%;height:100%;filter:brightness(.3) saturate(.8);}
+
+.hero-content{position:relative;z-index:2;flex:1;display:flex;align-items:center;padding:4rem 2rem 3rem;}
+.hero-inner{max-width:1300px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 480px;gap:2.5rem;align-items:stretch;}
+.hero-left{}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--fc);font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--accent);margin-bottom:1.6rem;}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';width:28px;height:1px;background:linear-gradient(90deg,transparent,var(--accent));}
+.hero-eyebrow::after{background:linear-gradient(90deg,var(--accent),transparent);}
+.hero-title{font-family:var(--fg);font-size:clamp(3rem,6vw,6.5rem);font-weight:300;line-height:.9;color:white;margin-bottom:1rem;letter-spacing:-.01em;}
+.hero-title strong{font-weight:600;font-style:italic;color:var(--accent);display:block;}
+.hero-divider{width:52px;height:2px;background:linear-gradient(90deg,var(--accent),var(--primary));margin:1.4rem 0;}
+.hero-sub{font-size:1rem;line-height:1.95;color:rgba(255,255,255,.68);max-width:520px;margin-bottom:2.5rem;font-weight:300;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-primary{font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.85rem 2rem;background:var(--primary);color:white;border:none;border-radius:3px;transition:all .25s;box-shadow:0 4px 18px rgba(180,83,9,.4);}
+.btn-primary:hover{background:var(--primary-dark);transform:translateY(-2px);}
+.btn-ghost{font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.85rem 2rem;background:transparent;color:white;border:1px solid rgba(255,255,255,.38);border-radius:3px;transition:all .25s;}
+.btn-ghost:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.7);}
+
+.hero-right {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.2rem;
+  align-self: stretch;
+}
+.hero-leader-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(180,83,9, 0.08);
+  display: flex;
+  flex-direction: column;
+  height: max-content;
+  transition: all .4s var(--ease);
+  box-shadow: 0 2px 12px rgba(0,0,0,.06);
+}
+.hero-leader-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(180,83,9,.15);
+}
+.hlc-photo {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: #f9f9f9;
+}
+.hlc-photo img {
+  width: 100%;
+  aspect-ratio: 4 / 4.5;
+  object-fit: cover;
+  object-position: top;
+}
+.hlc-badge {
+  position: static;
+  background: transparent;
+  padding: 16px 14px 4px 14px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.hlc-name {
+  font-family: serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 4px;
+}
+.hlc-role {
+  font-family: sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.slide-indicators{position:relative;z-index:2;display:flex;align-items:center;gap:.5rem;padding:1.2rem 2rem 2rem;max-width:1300px;margin:0 auto;width:100%;}
+.si-dot{width:22px;height:2px;background:rgba(255,255,255,.22);border-radius:2px;cursor:pointer;transition:all .4s;}
+.si-dot.active{width:44px;background:var(--accent);}
+
+.slide-caption{position:absolute;bottom:80px;right:2rem;z-index:2;text-align:right;}
+.sc-verse{font-family:var(--fg);font-size:.95rem;font-style:italic;color:rgba(255,255,255,.55);line-height:1.6;max-width:280px;}
+.sc-ref{font-family:var(--fc);font-size:.58rem;letter-spacing:.2em;color:var(--accent);margin-top:.35rem;}
+
+.hero-stats-row{position:relative;z-index:2;background:rgba(0,0,0,.7);border-top:1px solid rgba(255,255,255,.06);backdrop-filter:blur(8px);}
+.hero-stats-inner{max-width:1300px;margin:0 auto;padding:1.2rem 2rem;display:flex;gap:0;flex-wrap:wrap;}
+.hs{flex:1;text-align:center;border-right:1px solid rgba(255,255,255,.08);padding:.4rem 1rem;min-width:150px;}
+.hs:last-child{border-right:none;}
+.hs-num{font-family:var(--fg);font-size:2.1rem;font-weight:600;color:var(--accent);line-height:1;}
+.hs-lbl{font-size:.58rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:.3rem;}
+
+.sec{padding:5.5rem 0;position:relative;}
+.cont{max-width:1300px;margin:0 auto;padding:0 2rem;}
+.sec-label{font-family:var(--fc);font-size:.63rem;letter-spacing:.3em;text-transform:uppercase;color:var(--primary);display:flex;align-items:center;gap:1rem;margin-bottom:.9rem;}
+.sec-label::after{content:'';flex:1;max-width:56px;height:1px;background:linear-gradient(90deg,var(--primary),transparent);}
+.sec-h{font-family:var(--fg);font-size:clamp(2.3rem,4.5vw,4.8rem);font-weight:300;line-height:.92;color:var(--blk);margin-bottom:.4rem;letter-spacing:-.015em;}
+.sec-h em{font-style:italic;font-weight:500;color:var(--primary);}
+.sec-sub{font-size:.93rem;color:var(--blk4);line-height:1.85;max-width:540px;margin-bottom:3rem;font-weight:300;}
+
+.rv{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease);}
+.rv.on{opacity:1;transform:none;}
+.rv2{opacity:0;transform:translateY(28px);transition:opacity .9s .12s var(--ease),transform .9s .12s var(--ease);}
+.rv2.on{opacity:1;transform:none;}
+
+/* ===== MISSION CARDS SECTION ===== */
+.mission-sec{background:var(--white);}
+.mission-layout{display:grid;grid-template-columns:1fr;gap:3rem;}
+.mission-intro{max-width:700px;}
+.mission-intro .lead{font-family:var(--fg);font-size:1.4rem;font-weight:400;color:var(--blk);line-height:1.6;margin-bottom:1.5rem;border-left:3px solid var(--primary);padding-left:1.4rem;}
+.mission-intro p{font-size:.93rem;color:var(--blk4);line-height:1.95;margin-bottom:1.1rem;font-weight:300;}
+
+.mission-cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;margin-top:2.5rem;}
+.mission-card{background:linear-gradient(135deg,rgba(180,83,9,0.05),rgba(217,119,6,0.03));border:1px solid rgba(180,83,9,0.15);border-radius:8px;padding:2rem;transition:all .35s var(--ease);position:relative;overflow:hidden;}
+.mission-card::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(135deg,transparent,rgba(180,83,9,0.08));opacity:0;transition:opacity .35s var(--ease);}
+.mission-card:hover{transform:translateY(-6px);border-color:rgba(180,83,9,0.3);box-shadow:0 12px 32px rgba(180,83,9,0.1);}
+.mission-card:hover::before{opacity:1;}
+.mission-card-content{position:relative;z-index:1;}
+.mission-icon{font-size:2.2rem;margin-bottom:1rem;display:inline-block;}
+.mission-card h3{font-family:var(--fg);font-size:1.4rem;font-weight:500;color:var(--blk);margin-bottom:.8rem;letter-spacing:-.5px;}
+.mission-card p{font-size:.9rem;color:var(--blk4);line-height:1.8;margin-bottom:1.2rem;}
+.mission-card ul{list-style:none;margin-top:1.2rem;}
+.mission-card li{font-size:.85rem;color:var(--blk5);line-height:1.7;margin-bottom:.6rem;padding-left:1.2rem;position:relative;}
+.mission-card li::before{content:'▸';position:absolute;left:0;color:var(--primary);font-weight:700;}
+
+.impact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;margin-top:3rem;background:rgba(180,83,9,0.06);padding:2.5rem;border-radius:8px;}
+.impact-stat{text-align:center;}
+.impact-num{font-family:var(--fg);font-size:2.4rem;font-weight:600;color:var(--primary);margin-bottom:.5rem;}
+.impact-lbl{font-size:.85rem;color:var(--blk4);font-weight:500;letter-spacing:.05em;text-transform:uppercase;}
+
+/* ===== MEMBERS SECTION ===== */
+.members-sec{background:var(--white);}
+.members-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.mem-card {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(180,83,9, 0.12);
+  transition: all .35s var(--ease);
+  cursor: default;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+.mem-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 24px rgba(180,83,9, 0.2);
+  border-color: rgba(180,83,9, 0.25);
+}
+.mem-img-wrap {
+  width: 100%;
+  aspect-ratio: 3/3.5;
+  background: linear-gradient(135deg, rgba(180,83,9,.12), rgba(217,119,6,.08));
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mem-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform .5s var(--ease);
+}
+.mem-card:hover .mem-img {
+  transform: scale(1.05);
+}
+.mem-img-fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--fc);
+  font-size: 2.2rem;
+  color: rgba(180,83,9, 0.15);
+  z-index: 0;
+}
+.mem-info {
+  padding: .95rem 1rem;
+  background: white;
+  text-align: center;
+}
+.mem-name {
+  font-family: var(--fg);
+  font-size: .85rem;
+  font-weight: 500;
+  color: var(--blk);
+  line-height: 1.25;
+  margin-bottom: .35rem;
+}
+.mem-pos {
+  font-family: var(--fc);
+  font-size: .5rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.cta-banner{background:var(--blk);padding:5rem 0;text-align:center;position:relative;overflow:hidden;}
+.cta-banner::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(180,83,9,.15),transparent 70%);pointer-events:none;}
+.cta-inner{position:relative;z-index:1;}
+.cta-banner h3{font-family:var(--fg);font-size:clamp(2rem,5vw,4rem);font-weight:300;color:white;margin-bottom:.5rem;}
+.cta-banner h3 em{font-style:italic;font-weight:500;color:var(--accent);}
+.cta-banner p{font-size:.93rem;color:rgba(255,255,255,.45);margin-bottom:2.5rem;font-weight:300;}
+.cta-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+.cta-btn-t{font-family:var(--fc);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;padding:.88rem 2.2rem;background:var(--primary);color:white;border:none;border-radius:3px;cursor:pointer;transition:all .25s;}
+.cta-btn-t:hover{background:var(--primary-dark);}
+.cta-btn-o{font-family:var(--fc);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;padding:.88rem 2.2rem;background:transparent;color:white;border:1px solid rgba(255,255,255,.28);border-radius:3px;cursor:pointer;transition:all .25s;}
+.cta-btn-o:hover{border-color:white;}
+
+.contact-sec{background:rgba(180,83,9,.06);padding:5rem 0;}
+.contact-inner{max-width:800px;margin:0 auto;text-align:center;}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:3rem;}
+.contact-card{background:white;padding:2rem;border-radius:8px;border-left:4px solid var(--primary);}
+.contact-card h4{font-family:var(--fg);font-size:1.2rem;color:var(--primary);margin-bottom:.5rem;}
+.contact-card p{font-size:.95rem;color:var(--blk4);line-height:1.7;}
+.contact-card a{color:var(--primary);font-weight:600;}
+
+footer{background:#050505;padding:2rem 0;text-align:center;}
+footer p{font-size:.76rem;color:rgba(255,255,255,.2);letter-spacing:.05em;}
+footer a{color:var(--accent);}
+
+@media(max-width:1024px){
+  .hero-inner{grid-template-columns:1fr;gap:2rem;}
+  .mission-layout{gap:2rem;}
+  .hero-right{grid-template-columns:repeat(2,1fr);}
+  .contact-grid{grid-template-columns:1fr;}
+}
+@media(max-width:900px){
+  .mission-layout{grid-template-columns:1fr;}
+  .hero-right{display:none;}
+}
+@media(max-width:640px){
+  .members-grid{grid-template-columns:repeat(auto-fit, minmax(100px, 1fr));}
+  .nav-links{display:none;}
+  .mission-cards-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nb">
+<a href="home.html" class="nl">
+  <div class="nl-logo-wrap">
+    <img src="download.png" alt="COG KERALA LOGO" class="nl-logo-img">
+  </div>
+  
+  <div class="nl-info">
+    <div class="t1">Church of God (Full Gospel) · Kerala State</div>
+    <div class="t2">YPE</div>
+  </div>
+</a>
+    <div class="nav-links">
+      <a href="#about" class="nav-link">Our Mission</a>
+      <a href="#members" class="nav-link">Board Members</a>
+      <a href="#contact" class="nav-link">Contact</a>
+      <a href="home.html" class="nav-link">← Home</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero" id="top">
+  <div class="slides" id="slides">
+    <div class="slide active">
+      <img class="slide-bg" src="Orphanage-Childrens-Home-1024x683.webp" alt="Children's Care Ministry" onerror="this.style.display='none'">
+    </div>
+    <div class="slide">
+      <img class="slide-bg" src="constage.jpg" alt="Holistic Development" onerror="this.style.display='none'">
+    </div>
+    <div class="slide">
+      <img class="slide-bg" src="82d360a0-c321-4eb9-8596-e2e5b0aac611.jpg" onerror="this.style.display='none'">
+    </div>
+  </div>
+
+  <div class="slide-caption" id="slideCaption">
+    <div class="sc-verse">"Let the children come to me, and do not hinder them…"</div>
+    <div class="sc-ref">Matthew 19:14 (KJV)</div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-inner">
+      <div class="hero-left">
+        <div class="hero-eyebrow">Child Welfare · Spiritual Care · Holistic Development</div>
+        <h1 class="hero-title">
+          <span>Mount Carmel</span>
+          <strong>Children's Home</strong>
+        </h1>
+        <div class="hero-divider"></div>
+        <p class="hero-sub">
+          Providing compassionate care, spiritual guidance, and holistic development for vulnerable children through faith-centered ministry and dedicated stewardship.
+        </p>
+        <div class="hero-btns">
+          <button class="btn-primary" onclick="scrollTo('#about')">Our Mission</button>
+          <button class="btn-ghost" onclick="scrollTo('#members')">Meet the Board</button>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="hero-leader-card">
+          <div class="hlc-photo">
+            <img src="ps.jpg" alt="Board Director" onerror="this.style.display='none'">
+            <div class="hlc-badge">
+              <div class="hlc-role">State Overseer</div>
+              <div class="hlc-name">Rev. Y. Reji</div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-leader-card">
+          <div class="hlc-photo">
+            <img src="board/chi (1).png" alt="Board Director" onerror="this.style.display='none'">
+            <div class="hlc-badge">
+              <div class="hlc-role">Director</div>
+              <div class="hlc-name">Pr. Johnson Thomas</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-indicators" id="slideIndicators">
+    <div class="si-dot active" onclick="goSlide(0)"></div>
+    <div class="si-dot" onclick="goSlide(1)"></div>
+    <div class="si-dot" onclick="goSlide(2)"></div>
+  </div>
+
+  <div class="hero-stats-row">
+    <div class="hero-stats-inner">
+      <div class="hs"><div class="hs-num">12</div><div class="hs-lbl">Board Members</div></div>
+      <div class="hs"><div class="hs-num">80+</div><div class="hs-lbl">Children Cared For</div></div>
+      <div class="hs"><div class="hs-num">24/7</div><div class="hs-lbl">Spiritual Care</div></div>
+      <div class="hs"><div class="hs-num">Annual</div><div class="hs-lbl">Outreach Programs</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec mission-sec" id="about">
+  <div class="cont">
+    <div class="mission-layout">
+      <div class="mission-intro rv">
+        <div class="sec-label">Our Foundation</div>
+        <h2 class="sec-h">Caring <em>for the Vulnerable</em></h2>
+        <p class="lead">Mount Carmel Children's Home stands as a beacon of hope and spiritual light, dedicated to transforming the lives of vulnerable children through Christ-centered care, education, and holistic development.</p>
+        <p>Established with the conviction that every child deserves dignity, love, and opportunity to flourish spiritually and personally, the Mount Carmel board oversees comprehensive programs ensuring that each child experiences the warmth of family, quality education, medical care, and spiritual formation rooted in Christian values.</p>
+      </div>
+
+      <div class="mission-cards-grid rv2">
+        <div class="mission-card">
+          <div class="mission-card-content">
+            <div class="mission-icon">❤️</div>
+            <h3>Compassionate Care</h3>
+            <p>Providing safe, loving environments where children feel valued and protected, with trained caregivers committed to their emotional wellbeing.</p>
+            <ul>
+              <li>24/7 residential care</li>
+              <li>Emotional support</li>
+              <li>Family-style living</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mission-card">
+          <div class="mission-card-content">
+            <div class="mission-icon">📚</div>
+            <h3>Quality Education</h3>
+            <p>Ensuring every child receives excellent academic instruction combined with skills training for future independence and success.</p>
+            <ul>
+              <li>Structured academics</li>
+              <li>Vocational training</li>
+              <li>Scholarship support</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mission-card">
+          <div class="mission-card-content">
+            <div class="mission-icon">✨</div>
+            <h3>Spiritual Formation</h3>
+            <p>Guiding children in Christian faith through worship, Bible study, and mentorship that shapes their spiritual character and values.</p>
+            <ul>
+              <li>Daily worship</li>
+              <li>Faith education</li>
+              <li>Spiritual mentoring</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mission-card">
+          <div class="mission-card-content">
+            <div class="mission-icon">⚕️</div>
+            <h3>Healthcare & Wellness</h3>
+            <p>Maintaining comprehensive health programs ensuring physical wellbeing, preventive care, and medical support for all children.</p>
+            <ul>
+              <li>Regular health checkups</li>
+              <li>Nutrition programs</li>
+              <li>Mental health support</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="impact-grid">
+        <div class="impact-stat">
+          <div class="impact-num">80+</div>
+          <div class="impact-lbl">Children Served</div>
+        </div>
+        <div class="impact-stat">
+          <div class="impact-num">35+</div>
+          <div class="impact-lbl">Years of Ministry</div>
+        </div>
+        <div class="impact-stat">
+          <div class="impact-num">95%</div>
+          <div class="impact-lbl">Educational Success</div>
+        </div>
+        <div class="impact-stat">
+          <div class="impact-num">100%</div>
+          <div class="impact-lbl">Gospel Centered</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec members-sec" id="members">
+  <div class="cont">
+    <div class="sec-label rv">Board Composition</div>
+    <h2 class="sec-h rv">Board <em>Members</em></h2>
+    <div class="sec-sub rv">Twelve dedicated servants committed to excellence in child care ministry across Kerala State.</div>
+
+    <div class="members-grid">
+      <div class="mem-card">
+        <div class="mem-img-wrap"><img class="mem-img" src="ps.jpg" alt="Rev. Y. Reji" onerror="this.style.display='none'"><div class="mem-img-fallback">🏛️</div></div>
+        <div class="mem-info"><div class="mem-name">Rev. Y. Reji</div><div class="mem-pos">State Overseer</div></div>
+      </div>
+      <div class="mem-card">
+        <div class="mem-img-wrap"><img class="mem-img" src="board/chi (1).png" alt="Pr. Johnson Thomas" onerror="this.style.display='none'"><div class="mem-img-fallback">🏛️</div></div>
+        <div class="mem-info"><div class="mem-name">Pr. Johnson Thomas</div><div class="mem-pos">Director</div></div>
+      </div>
+      <div class="mem-card">
+        <div class="mem-img-wrap"><img class="mem-img" src="board/chi (2).png" alt="Pr. T. Georgekutty" onerror="this.style.display='none'"><div class="mem-img-fallback">🏛️</div></div>
+        <div class="mem-info"><div class="mem-name">Pr. T. Georgekutty</div><div class="mem-pos">Jt. Director</div></div>
+      </div>
+      <div class="mem-card">
+        <div class="mem-img-wrap"><img class="mem-img" src="board/chi (3).png" alt="Pr. Benny Samuel" onerror="this.style.display='none'"><div class="mem-img-fallback">🏛️</div></div>
+        <div class="mem-info"><div class="mem-name">Pr. Benny Samuel</div><div class="mem-pos">Co-ordinator</div></div>
+      </div>
+      <div class="mem-card">
+        <div class="mem-img-wrap"><img class="mem-img" src="board/chi (4).png" alt="Stephen George" onerror="this.style.display='none'"><div class="mem-img-fallback">🏛️</div></div>
+        <div class="mem-info"><div class="mem-name">Stephen George</div><div class="mem-pos">Secretary</div></div>
+      </div>
+      <div class="mem-card">
+        <div class="mem-img-wrap"><img class="mem-img" src="board/chi (5).png" alt="Joseph John Gabriel" onerror="this.style.display='none'"><div class="mem-img-fallback">🏛️</div></div>
+        <div class="mem-info"><div class="mem-name">Joseph John Gabriel</div><div class="mem-pos">Jt. Secretary</div></div>
+      </div>
+      <div class="mem-card">
+        <div class="mem-img-wrap"><img class="mem-img" src="board/chi (6).png" alt="Pr. Regi Mammen" onerror="this.style.display='none'"><div class="mem-img-fallback">🏛️</div></div>
+        <div class="mem-info"><div class="mem-name">Pr. Regi Mammen</div><div class="mem-pos">Treasurer</div></div>
+      </div>
+      <div class="mem-card">
+        <div class="mem-img-wrap"><img class="mem-img" src="board/chi (7).png" alt="Pr. Lijo Thomas" onerror="this.style.display='none'"><div class="mem-img-fallback">🏛️</div></div>
+        <div class="mem-info"><div class="mem-name">Pr. Lijo Thomas</div><div class="mem-pos">Media Convenor</div></div>
+      </div>
+      <div class="mem-card">
+        <div class="mem-img-wrap"><img class="mem-img" src="board/chi (8).png" alt="Pr. T.S. Mathew" onerror="this.style.display='none'"><div class="mem-img-fallback">🏛️</div></div>
+        <div class="mem-info"><div class="mem-name">Pr. T.S. Mathew</div><div class="mem-pos">Member</div></div>
+      </div>
+      <div class="mem-card">
+        <div class="mem-img-wrap"><img class="mem-img" src="board/chi (9).png" alt="Pr. Jinu Mathew" onerror="this.style.display='none'"><div class="mem-img-fallback">🏛️</div></div>
+        <div class="mem-info"><div class="mem-name">Pr. Jinu Mathew</div><div class="mem-pos">Member</div></div>
+      </div>
+      <div class="mem-card">
+        <div class="mem-img-wrap"><img class="mem-img" src="board/chi (10).png" alt="Chackochan Joseph" onerror="this.style.display='none'"><div class="mem-img-fallback">🏛️</div></div>
+        <div class="mem-info"><div class="mem-name">Chackochan Joseph</div><div class="mem-pos">Member</div></div>
+      </div>
+      <div class="mem-card">
+        <div class="mem-img-wrap"><img class="mem-img" src="board/chi (11).png" alt="Pr. Shijo T.T" onerror="this.style.display='none'"><div class="mem-img-fallback">🏛️</div></div>
+        <div class="mem-info"><div class="mem-name">Pr. Shijo T.T</div><div class="mem-pos">Member</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-banner">
+  <div class="cta-inner">
+    <h3>Supporting <em>Vulnerable Children</em></h3>
+    <p>"Pure and undefiled religion in the sight of our God and Father is this: to visit orphans and widows in their distress" — James 1:27</p>
+    <div class="cta-actions">
+      <button class="cta-btn-t" onclick="scrollTo('#members')">Meet the Team</button>
+      <a href="home.html" class="cta-btn-o">← Back to Home</a>
+    </div>
+  </div>
+</section>
+
+<section class="contact-sec" id="contact">
+  <div class="cont">
+    <div class="contact-inner">
+      <div class="sec-label" style="justify-content:center;">Get in Touch</div>
+      <h2 class="sec-h">Contact <em>Mount Carmel</em></h2>
+      <p class="sec-sub" style="max-width:600px;margin-left:auto;margin-right:auto;">Reach out for child welfare inquiries, support partnerships, or visit scheduling.</p>
+      
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h4>📧 Email</h4>
+          <p><a href="mailto:mountcarmel@cogkeralastate.org">mountcarmel@cogkeralastate.org</a></p>
+          <p style="font-size:.85rem;margin-top:.5rem;color:var(--blk5);">For welfare and partnership inquiries</p>
+        </div>
+        <div class="contact-card">
+          <h4>📱 Phone</h4>
+          <p><a href="tel:+914812345679">+91 (0) 481-2345679</a></p>
+          <p style="font-size:.85rem;margin-top:.5rem;color:var(--blk5);">Office hours: Mon-Fri, 9AM-5PM IST</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Church of God (Full Gospel) in India, Kerala State · Mount Carmel Children's Home Board · <a href="mailto:cogkeralastate@gmail.com">cogkeralastate@gmail.com</a></p>
+</footer>
+
+<script>
+var CAPTIONS = [
+  { verse:'"Let the children come to me, and do not hinder them…"', ref:'Matthew 19:14 (KJV)' },
+  { verse:'"Train up a child in the way they should go: and when they are old, they will not depart from it."', ref:'Proverbs 22:6 (KJV)' },
+  { verse:'"Pure religion and undefiled before God and the Father is this, To visit the fatherless and widows in their affliction"', ref:'James 1:27 (KJV)' }
+];
+var slides=document.querySelectorAll('.slide'),dots=document.querySelectorAll('.si-dot'),cap=document.getElementById('slideCaption'),cur=0,timer;
+function goSlide(n){slides[cur].classList.remove('active');dots[cur].classList.remove('active');cur=(n+slides.length)%slides.length;slides[cur].classList.add('active');dots[cur].classList.add('active');var c=CAPTIONS[cur];cap.querySelector('.sc-verse').textContent=c.verse;cap.querySelector('.sc-ref').textContent=c.ref;}
+function startSlideshow(){timer=setInterval(function(){goSlide(cur+1);},5500);}
+startSlideshow();
+function scrollTo(sel){var el=document.querySelector(sel);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});}
+var rvObs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');rvObs.unobserve(e.target);}});},{threshold:0.06,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.rv,.rv2').forEach(function(el){rvObs.observe(el);});
+</script>
+
+</body>
+</html>

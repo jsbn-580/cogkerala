@@ -2,10 +2,82 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Education Department — COG Kerala</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>COG Kerala Education Department | Theological Training & Bible Colleges</title>
+<meta name="description" content="Experience theological education across 3 Bible Colleges in Kerala. Accredited programs from Certificate to Master's degrees with Christ-centered training and practical ministry formation.">
+<meta name="keywords" content="Bible College Kerala, Theological Education, Mount Zion Bible Seminary, Kumbanad Bible College, Kannur Bible College, M.A Theology, M.Div, B.Th, Diploma in Theology, Pastor Training, Christian Education">
+<meta name="author" content="Church of God (Full Gospel) in India, Kerala State">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="canonical" href="https://cogkeredu.org/">
+<meta name="language" content="English">
+<meta name="revisit-after" content="7 days">
+
+<!-- Open Graph / Social Media -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://cogkeredu.org/">
+<meta property="og:title" content="COG Kerala Education Department | Theological Training">
+<meta property="og:description" content="Theological education across 3 Bible Colleges in Kerala with accredited programs and Christ-centered training.">
+<meta property="og:image" content="https://cogkeredu.org/og-image.jpg">
+<meta property="og:locale" content="en_IN">
+
+<!-- Twitter Card -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://cogkeredu.org/">
+<meta property="twitter:title" content="COG Kerala Education Department | Theological Training">
+<meta property="twitter:description" content="Theological education across 3 Bible Colleges in Kerala with accredited programs.">
+<meta property="twitter:image" content="https://cogkeredu.org/twitter-image.jpg">
+
+<!-- Additional Meta Tags -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="COG Education">
+<meta name="theme-color" content="#C0186A">
+
+<!-- Favicon -->
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<!-- Preconnect & DNS Prefetch -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Outfit:wght@300;400;500;600;700&family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Structured Data (JSON-LD) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  "name": "Church of God (Full Gospel) in India, Kerala State - Education Department",
+  "url": "https://cogkeredu.org",
+  "logo": "https://cogkeredu.org/logo.png",
+  "description": "Theological education and training across 3 Bible Colleges in Kerala",
+  "address": {
+    "@type": "PostalAddress",
+    "addressRegion": "Kerala",
+    "addressCountry": "IN"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+91-9074808741",
+    "contactType": "Admissions"
+  },
+  "sameAs": [
+    "https://www.mountzionbibleseminary.org"
+  ],
+  "educationalLevel": "University/College",
+  "hasCredential": [
+    {
+      "@type": "EducationalOccupationalCredential",
+      "credentialCategory": "ATA Accredited"
+    }
+  ]
+}
+</script>
+
 <style>
 /* ═══════════════════════════════
    ROOT DESIGN TOKENS
@@ -39,7 +111,7 @@
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{font-family:var(--ff);background:var(--white);color:var(--blk);overflow-x:hidden;}
-img{max-width:100%;display:block;}
+img{max-width:100%;display:block;height:auto;}
 a{text-decoration:none;color:inherit;}
 button{cursor:pointer;font-family:var(--ff);}
 input,textarea,select{font-family:var(--ff);}
@@ -56,14 +128,46 @@ input,textarea,select{font-family:var(--ff);}
 }
 .nb{max-width:1400px;margin:0 auto;padding:0 2rem;height:var(--nav);display:flex;align-items:center;justify-content:space-between;}
 .nl{display:flex;align-items:center;gap:.85rem;}
-.nl-cross{font-size:1.5rem;color:var(--mg);line-height:1;font-family:var(--fc);}
+/* The main brand container holding both logo and text */
+.nl {
+  display: flex;
+  align-items: center; /* Centers the logo vertically with the text block */
+  gap: 0.75rem;        /* Adjusts the space between logo and text */
+  text-decoration: none;
+}
+
+/* Wrapper to maintain a crisp size for the logo */
+.nl-logo-wrap {
+  width: 42px;         /* Match this roughly to the font height */
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;      /* Keeps the logo circular/intact on small viewports */
+}
+
+/* The actual PNG logo image */
+.nl-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Prevents image distortion */
+}
+
+/* Optional: Clean structural alignment for the text block */
+.nl-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 .nl-info .t1{font-family:var(--fc);font-size:.85rem;font-weight:600;color:var(--blk);letter-spacing:.05em;}
 .nl-info .t2{font-size:.6rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--blk4);margin-top:2px;}
 .nav-links{display:flex;align-items:center;gap:.2rem;}
-.nav-link{font-size:.78rem;font-weight:500;letter-spacing:.07em;padding:.45rem 1rem;border-radius:4px;color:var(--blk3);transition:all .2s;}
+.nav-link{font-size:.78rem;font-weight:500;letter-spacing:.07em;padding:.45rem 1rem;border-radius:4px;color:var(--blk3);transition:all .2s;cursor:pointer;}
 .nav-link:hover,.nav-link.active{background:var(--mg5);color:var(--mg);}
-.nav-cta{font-size:.78rem;font-weight:600;letter-spacing:.09em;padding:.5rem 1.4rem;background:var(--mg);color:white;border-radius:4px;border:none;transition:all .22s;}
+.nav-link:focus{outline:2px solid var(--mg);outline-offset:2px;}
+.nav-cta{font-size:.78rem;font-weight:600;letter-spacing:.09em;padding:.5rem 1.4rem;background:var(--mg);color:white;border:none;border-radius:4px;transition:all .22s;cursor:pointer;}
 .nav-cta:hover{background:var(--mgd);}
+.nav-cta:focus{outline:2px solid var(--mgd);outline-offset:2px;}
 
 /* ═══════════════════════════════
    HERO — SLIDESHOW + RIGHT CARDS
@@ -88,16 +192,18 @@ input,textarea,select{font-family:var(--ff);}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--fc);font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--mg3);margin-bottom:1.6rem;}
 .hero-eyebrow::before,.hero-eyebrow::after{content:'';width:28px;height:1px;background:linear-gradient(90deg,transparent,var(--mg3));}
 .hero-eyebrow::after{background:linear-gradient(90deg,var(--mg3),transparent);}
-.hero-title{font-family:var(--fg);font-size:clamp(3rem,6vw,6.5rem);font-weight:300;line-height:.9;color:white;margin-bottom:1rem;letter-spacing:-.01em;}
+.hero-title{font-family:var(--fg);font-size:clamp(2.4rem,6vw,6.5rem);font-weight:300;line-height:.9;color:white;margin-bottom:1rem;letter-spacing:-.01em;}
 .hero-title strong{font-weight:600;font-style:italic;color:var(--mg3);display:block;}
 .hero-title span{display:block;}
 .hero-divider{width:52px;height:2px;background:linear-gradient(90deg,var(--mg3),var(--mg));margin:1.4rem 0;}
 .hero-sub{font-size:1rem;line-height:1.95;color:rgba(255,255,255,.68);max-width:520px;margin-bottom:2.5rem;font-weight:300;}
 .hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
-.btn-mg{font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.85rem 2rem;background:var(--mg);color:white;border:none;border-radius:3px;transition:all .25s;box-shadow:0 4px 18px rgba(192,24,106,.4);}
+.btn-mg{font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.85rem 2rem;background:var(--mg);color:white;border:none;border-radius:3px;transition:all .25s;box-shadow:0 4px 18px rgba(192,24,106,.4);cursor:pointer;}
 .btn-mg:hover{background:var(--mgd);transform:translateY(-2px);}
-.btn-ghost{font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.85rem 2rem;background:transparent;color:white;border:1px solid rgba(255,255,255,.38);border-radius:3px;transition:all .25s;}
+.btn-mg:focus{outline:2px solid white;outline-offset:2px;}
+.btn-ghost{font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.85rem 2rem;background:transparent;color:white;border:1px solid rgba(255,255,255,.38);border-radius:3px;transition:all .25s;cursor:pointer;}
 .btn-ghost:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.7);}
+.btn-ghost:focus{outline:2px solid white;outline-offset:2px;}
 
 /* RIGHT — 3 LEADERSHIP CARDS */
 .hero-right {
@@ -160,9 +266,10 @@ input,textarea,select{font-family:var(--ff);}
 }
 
 /* Slide indicators */
-.slide-indicators{position:relative;z-index:2;display:flex;align-items:center;gap:.5rem;padding:1.2rem 2rem 2rem;max-width:1300px;margin:0 auto;width:100%;}
-.si-dot{width:22px;height:2px;background:rgba(255,255,255,.22);border-radius:2px;cursor:pointer;transition:all .4s;}
+.slide-indicators{position:relative;z-index:2;display:flex;align-items:center;gap:.5rem;padding:1.2rem 2rem 2rem;max-width:1300px;margin:0 auto;width:100%;justify-content:center;}
+.si-dot{width:22px;height:2px;background:rgba(255,255,255,.22);border-radius:2px;cursor:pointer;transition:all .4s;border:none;padding:0;}
 .si-dot.active{width:44px;background:var(--mg3);}
+.si-dot:focus{outline:2px solid white;outline-offset:2px;}
 
 /* Slide caption */
 .slide-caption{position:absolute;bottom:80px;right:2rem;z-index:2;text-align:right;}
@@ -171,8 +278,8 @@ input,textarea,select{font-family:var(--ff);}
 
 /* Stats row */
 .hero-stats-row{position:relative;z-index:2;background:rgba(0,0,0,.7);border-top:1px solid rgba(255,255,255,.06);backdrop-filter:blur(8px);}
-.hero-stats-inner{max-width:1300px;margin:0 auto;padding:1.2rem 2rem;display:flex;gap:0;}
-.hs{flex:1;text-align:center;border-right:1px solid rgba(255,255,255,.08);padding:.4rem 1rem;}
+.hero-stats-inner{max-width:1300px;margin:0 auto;padding:1.2rem 2rem;display:flex;gap:0;flex-wrap:wrap;}
+.hs{flex:1;min-width:calc(20% - .8rem);text-align:center;border-right:1px solid rgba(255,255,255,.08);padding:.4rem 1rem;}
 .hs:last-child{border-right:none;}
 .hs-num{font-family:var(--fg);font-size:2.1rem;font-weight:600;color:var(--mg3);line-height:1;}
 .hs-lbl{font-size:.58rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:.3rem;}
@@ -184,7 +291,7 @@ input,textarea,select{font-family:var(--ff);}
 .cont{max-width:1300px;margin:0 auto;padding:0 2rem;}
 .sec-label{font-family:var(--fc);font-size:.63rem;letter-spacing:.3em;text-transform:uppercase;color:var(--mg);display:flex;align-items:center;gap:1rem;margin-bottom:.9rem;}
 .sec-label::after{content:'';flex:1;max-width:56px;height:1px;background:linear-gradient(90deg,var(--mg),transparent);}
-.sec-h{font-family:var(--fg);font-size:clamp(2.3rem,4.5vw,4.8rem);font-weight:300;line-height:.92;color:var(--blk);margin-bottom:.4rem;letter-spacing:-.015em;}
+.sec-h{font-family:var(--fg);font-size:clamp(2.2rem,4.5vw,4.8rem);font-weight:300;line-height:.92;color:var(--blk);margin-bottom:.4rem;letter-spacing:-.015em;}
 .sec-h em{font-style:italic;font-weight:500;color:var(--mg);}
 .sec-sub{font-size:.93rem;color:var(--blk4);line-height:1.85;max-width:540px;margin-bottom:3rem;font-weight:300;}
 
@@ -236,9 +343,13 @@ input,textarea,select{font-family:var(--ff);}
 
 .cc-btn:hover{background:var(--mgd);}
 
+.cc-btn:focus{outline:2px solid var(--mg);outline-offset:2px;}
+
 .cc-btn-o{font-size:.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:.65rem 1.2rem;border:1px solid var(--off3);background:white;color:var(--blk);border-radius:3px;transition:all .22s;cursor:pointer;}
 
 .cc-btn-o:hover{border-color:var(--mg);color:var(--mg);}
+
+.cc-btn-o:focus{outline:2px solid var(--mg);outline-offset:2px;}
 
 /* ═══════════════════════════════
    BOARD SECTION - ELEGANT
@@ -515,13 +626,15 @@ input,textarea,select{font-family:var(--ff);}
 
 .fg input,.fg select,.fg textarea{padding:.75rem 1rem;border:1.5px solid var(--off3);border-radius:4px;font-family:var(--ff);font-size:.88rem;color:var(--blk);background:white;outline:none;transition:border-color .2s;}
 
-.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--mg);background:var(--mg5);}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--mg);background:var(--mg5);outline:none;}
 
 .fg textarea{resize:vertical;min-height:100px;}
 
 .form-submit{width:100%;padding:.8rem 1.5rem;background:var(--mg);color:white;border:none;border-radius:3px;font-family:var(--ff);font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:all .25s;margin-top:.5rem;}
 
 .form-submit:hover{background:var(--mgd);transform:translateY(-2px);}
+
+.form-submit:focus{outline:2px solid var(--mgd);outline-offset:2px;}
 
 .form-success{display:none;text-align:center;padding:2rem;background:rgba(192,24,106,.05);border-radius:8px;border:1px solid rgba(192,24,106,.2);}
 
@@ -544,54 +657,250 @@ footer a{color:var(--mg3);transition:color .2s;}
 
 footer a:hover{color:white;}
 
+footer a:focus{outline:2px solid white;outline-offset:2px;}
+
 /* ═══════════════════════════════
    RESPONSIVE
 ═══════════════════════════════ */
-@media(max-width:1024px){
+@media(max-width:1200px){
   .hero-inner{grid-template-columns:1fr;gap:2rem;}
   .hero-right{display:grid;grid-template-columns:repeat(3,1fr);}
   .colleges-grid{grid-template-columns:1fr;}
   .lead-grid{grid-template-columns:repeat(auto-fit,minmax(120px,1fr));}
   .services-grid{grid-template-columns:1fr 1fr;}
   .form-grid{grid-template-columns:1fr;}
-  .board-grid{grid-template-columns:repeat(4, 1fr);}
+  .board-grid{grid-template-columns:repeat(4,1fr);}
   .faculty-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));}
 }
 
+@media(max-width:1024px){
+  :root{--nav:68px;}
+  .hero-content{padding:3rem 1.5rem 2rem;}
+  .cont{padding:0 1.5rem;}
+  .hero-right{grid-template-columns:repeat(3,1fr);gap:1rem;}
+  .cc-body{padding:1.8rem;}
+  .board-grid{grid-template-columns:repeat(3,1fr);gap:1.2rem;}
+  .faculty-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:1.5rem;}
+  .form-wrap{padding:2rem;}
+  .sec{padding:4rem 0;}
+}
+
+@media(max-width:900px){
+  .nl-info .t1{font-size:.8rem;}
+  .nl-info .t2{font-size:.55rem;}
+  .nav-link{font-size:.72rem;padding:.35rem .8rem;}
+  .nav-cta{font-size:.72rem;padding:.4rem 1rem;}
+}
+
 @media(max-width:768px){
+  :root{--nav:64px;}
+  .nb{padding:0 1.2rem;height:64px;}
   .nav-links{display:none;}
-  .hero-right{grid-template-columns:1fr;}
-  .services-grid{grid-template-columns:1fr;}
-  .frow{grid-template-columns:1fr;}
-  .lead-grid{grid-template-columns:repeat(3,1fr);}
-  .board-grid{grid-template-columns:repeat(3,1fr);}
-  .faculty-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));}
+  .hero-content{padding:2.5rem 1.2rem 2rem;}
+  .hero-eyebrow{font-size:.63rem;margin-bottom:1.2rem;}
+  .hero-right{grid-template-columns:1fr;gap:.8rem;}
+  .hero-doctrine-card{padding:1.2rem 1.1rem;}
+  .hdc-num{font-size:1.6rem;}
+  .hdc-title{font-size:.75rem;}
+  .hdc-text{font-size:.8rem;}
+  .hero-title{font-size:clamp(2rem,5.5vw,5rem);}
+  .slide-indicators{padding:1rem 1.5rem 1.5rem;}
+  .si-dot{width:16px;}
+  .si-dot.active{width:32px;}
+  .hero-stats-row{padding:1rem 0;}
+  .hero-stats-inner{padding:1rem 1.2rem;}
+  .hs{padding:.3rem .6rem;border-right:none;min-width:20%;}
+  .hs-num{font-size:1.6rem;}
+  .hs-lbl{font-size:.5rem;}
+  .slide-caption{display:none;}
+  .sec{padding:3.5rem 0;}
+  .cont{padding:0 1.2rem;}
+  .sec-h{font-size:clamp(1.8rem,3.5vw,3.2rem);}
+  .colleges-grid{gap:2rem;}
+  .cc-img{height:220px;}
+  .cc-body{padding:1.6rem;}
+  .cc-name{font-size:1.4rem;}
+  .cc-badge{font-size:.5rem;padding:.25rem .6rem;}
+  .cc-location{font-size:.7rem;}
+  .cc-desc{font-size:.8rem;}
+  .cc-stats{gap:.8rem;}
+  .cc-stat-num{font-size:1.5rem;}
+  .cc-stat-label{font-size:.55rem;}
+  .cc-programs-title{font-size:.68rem;}
+  .cc-prog-item{font-size:.75rem;}
+  .cc-cta{gap:.5rem;}
+  .cc-btn,.cc-btn-o{font-size:.68rem;padding:.55rem 1rem;}
+  .board-grid{grid-template-columns:repeat(3,1fr);gap:1rem;}
+  .board-photo{aspect-ratio:1/1.2;}
+  .board-name{font-size:.95rem;}
+  .board-position{font-size:.6rem;}
+  .board-info{padding:1.2rem 1rem;}
+  .faculty-title{font-size:1.6rem;margin-bottom:2rem;padding-bottom:.8rem;}
+  .faculty-category{margin-bottom:2.5rem;}
+  .faculty-category-title{font-size:.68rem;margin-bottom:1.5rem;}
+  .faculty-grid{grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:1.2rem;}
+  .faculty-card{border-radius:8px;}
+  .faculty-photo{aspect-ratio:1/1.2;}
+  .faculty-name{font-size:.85rem;}
+  .faculty-position{font-size:.55rem;}
+  .faculty-info{padding:1rem .8rem;}
+  .services-grid{grid-template-columns:1fr 1fr;gap:1.2rem;}
+  .service-icon{font-size:1.6rem;}
+  .service-title{font-size:1rem;}
+  .service-desc{font-size:.8rem;}
+  .form-grid{grid-template-columns:1fr;gap:2rem;}
+  .form-info{gap:.8rem;}
+  .form-info-icon{font-size:1.2rem;}
+  .form-info-text{font-size:.8rem;}
+  .form-wrap{padding:1.8rem;border-radius:10px;}
+  .form-title{font-size:1.3rem;}
+  .form-sub{font-size:.75rem;}
+  .frow{gap:.8rem;margin-bottom:.8rem;}
+  .fg label{font-size:.65rem;}
+  .fg input,.fg select,.fg textarea{padding:.6rem .8rem;font-size:.8rem;}
+  .form-submit{padding:.7rem 1.2rem;font-size:.75rem;}
+  .form-success-icon{font-size:2rem;}
+  .form-success h3{font-size:1.2rem;}
+  footer p{font-size:.7rem;}
 }
 
 @media(max-width:640px){
-  .slide-caption{display:none;}
-  .hero-stats-inner{flex-wrap:wrap;}
-  .hs{flex:1 0 40%;}
+  :root{--nav:60px;}
+  .nb{padding:0 1rem;height:60px;gap:.5rem;}
+  .nl{gap:.5rem;}
+  .nl-cross{font-size:1.2rem;}
+  .nl-info .t1{font-size:.7rem;}
+  .nl-info .t2{font-size:.5rem;}
+  .nav-cta{padding:.35rem .8rem;font-size:.65rem;letter-spacing:.05em;}
+  .hero-content{padding:2rem 1rem 1.5rem;}
+  .hero-eyebrow{margin-bottom:1rem;gap:.4rem;font-size:.58rem;}
+  .hero-eyebrow::before,.hero-eyebrow::after{width:20px;}
+  .hero-title{font-size:clamp(1.8rem,5vw,3.5rem);margin-bottom:.8rem;}
+  .hero-divider{width:40px;margin:1rem 0;}
+  .hero-sub{font-size:.9rem;line-height:1.7;margin-bottom:1.5rem;}
+  .hero-btns{gap:.8rem;}
+  .btn-mg,.btn-ghost{font-size:.72rem;padding:.7rem 1.5rem;}
   .hero-right{display:none;}
-  .lead-grid{grid-template-columns:repeat(2,1fr);}
-  .cc-stats{grid-template-columns:1fr;}
-  .board-grid{grid-template-columns:repeat(2,1fr);}
-  .faculty-grid{grid-template-columns:repeat(2,1fr);}
+  .slide-indicators{padding:.8rem 1rem 1rem;gap:.3rem;}
+  .si-dot{width:12px;height:1px;}
+  .si-dot.active{width:24px;}
+  .hero-stats-inner{padding:.8rem 1rem;flex-direction:column;gap:.6rem;}
+  .hs{flex:1 0 100%;border-right:none;border-bottom:1px solid rgba(255,255,255,.08);padding:.3rem 0;min-width:unset;}
+  .hs:last-child{border-bottom:none;}
+  .hs-num{font-size:1.4rem;}
+  .hs-lbl{font-size:.48rem;}
+  .sec{padding:3rem 0;}
+  .cont{padding:0 1rem;}
+  .sec-label{font-size:.58rem;margin-bottom:.8rem;gap:.8rem;}
+  .sec-label::after{max-width:40px;}
+  .sec-h{font-size:clamp(1.6rem,3vw,2.4rem);line-height:.95;}
+  .sec-sub{font-size:.85rem;margin-bottom:2rem;}
+  .colleges-grid{gap:1.5rem;margin-top:1rem;}
+  .college-card{border-radius:10px;}
+  .cc-img{height:180px;}
+  .cc-body{padding:1.4rem;}
+  .cc-badge{font-size:.48rem;margin-bottom:.6rem;}
+  .cc-name{font-size:1.2rem;margin-bottom:.5rem;}
+  .cc-location{font-size:.65rem;margin-bottom:1rem;}
+  .cc-desc{font-size:.78rem;margin-bottom:1.2rem;}
+  .cc-stats{grid-template-columns:1fr 1fr 1fr;gap:.6rem;padding-top:1rem;margin-top:1rem;}
+  .cc-stat-num{font-size:1.3rem;}
+  .cc-stat-label{font-size:.5rem;}
+  .cc-programs{margin-top:1.2rem;padding-top:1.2rem;}
+  .cc-programs-title{font-size:.63rem;margin-bottom:.6rem;}
+  .cc-prog-item{font-size:.7rem;}
+  .cc-cta{gap:.4rem;margin-top:1rem;}
+  .cc-btn,.cc-btn-o{font-size:.63rem;padding:.5rem .9rem;}
+  .board-grid{grid-template-columns:repeat(2,1fr);gap:.8rem;margin-top:2rem;}
+  .board-photo{aspect-ratio:3/4;}
+  .board-card{border-radius:8px;}
+  .board-info{padding:1rem .9rem;}
+  .board-name{font-size:.85rem;margin-bottom:.3rem;}
+  .board-position{font-size:.55rem;}
+  .faculty-title{font-size:1.4rem;margin-bottom:1.8rem;padding-bottom:.6rem;border-bottom-width:1.5px;}
+  .faculty-category{margin-bottom:2rem;}
+  .faculty-category-title{font-size:.6rem;margin-bottom:1.2rem;gap:.8rem;}
+  .faculty-category-title::after{max-width:40px;}
+  .faculty-grid{grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:1rem;}
+  .faculty-card{border-radius:8px;}
+  .faculty-photo{aspect-ratio:3/4;}
+  .faculty-name{font-size:.8rem;margin-bottom:.25rem;}
+  .faculty-position{font-size:.52rem;}
+  .faculty-info{padding:.8rem .6rem;}
+  .services-grid{grid-template-columns:1fr;gap:1rem;margin-top:1.5rem;}
+  .service-icon{font-size:1.4rem;margin-bottom:.8rem;}
+  .service-title{font-size:.95rem;margin-bottom:.5rem;}
+  .service-desc{font-size:.77rem;line-height:1.6;}
+  .form-grid{gap:1.5rem;margin-top:1.5rem;}
+  .form-info{gap:1rem;}
+  .form-info-icon{font-size:1.1rem;}
+  .form-info-text{font-size:.77rem;}
+  .form-wrap{padding:1.5rem;border-radius:8px;}
+  .form-title{font-size:1.2rem;margin-bottom:.4rem;}
+  .form-sub{font-size:.7rem;margin-bottom:1.5rem;}
+  .frow{gap:.6rem;margin-bottom:.7rem;}
+  .fg label{font-size:.6rem;}
+  .fg input,.fg select,.fg textarea{padding:.5rem .7rem;font-size:.77rem;border-width:1px;}
+  .fg textarea{min-height:80px;}
+  .form-submit{padding:.6rem 1rem;font-size:.7rem;margin-top:.4rem;}
+  .form-success-icon{font-size:1.8rem;margin-bottom:.6rem;}
+  .form-success h3{font-size:1.1rem;margin-bottom:.25rem;}
+  .form-success p{font-size:.77rem;}
+  .lead-grid{grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:1.5rem;}
+  footer p{font-size:.65rem;}
+}
+
+@media(max-width:480px){
+  .nl-cross{font-size:1rem;}
+  .nl-info .t1{font-size:.65rem;}
+  .nl-info .t2{font-size:.48rem;letter-spacing:.15em;}
+  .nav-cta{padding:.3rem .6rem;font-size:.6rem;}
+  .hero-title{font-size:clamp(1.6rem,4.5vw,3rem);}
+  .hero-sub{font-size:.85rem;}
+  .btn-mg,.btn-ghost{font-size:.65rem;padding:.6rem 1.2rem;}
+  .sec-h{font-size:clamp(1.5rem,2.8vw,2.2rem);}
+  .sec-label{font-size:.55rem;gap:.6rem;margin-bottom:.7rem;}
+  .sec-label::after{max-width:30px;}
+  .colleges-grid{gap:1.2rem;}
+  .cc-body{padding:1.2rem;}
+  .cc-name{font-size:1.1rem;}
+  .cc-desc{font-size:.75rem;}
+  .board-grid{grid-template-columns:1fr;gap:.8rem;}
+  .faculty-grid{grid-template-columns:repeat(2,1fr);gap:.8rem;}
+  .services-grid{gap:.8rem;margin-top:1.2rem;}
+  .service-icon{font-size:1.2rem;}
+  .service-title{font-size:.9rem;}
+  .service-desc{font-size:.73rem;}
+  .form-wrap{padding:1.2rem;}
+  .form-title{font-size:1.1rem;}
+  .form-info-text{font-size:.73rem;}
+  footer p{font-size:.6rem;line-height:1.5;}
+}
+
+@media(max-width:375px){
+  .hero-title{font-size:clamp(1.5rem,4vw,2.6rem);}
+  .btn-mg,.btn-ghost{padding:.55rem 1rem;font-size:.6rem;}
+  .cc-stats{grid-template-columns:1fr;gap:.5rem;}
+  .form-wrap{padding:1rem;}
+  .form-title{font-size:1rem;}
+  .frow{gap:.5rem;}
 }
 </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav id="nav">
+<nav id="nav" role="navigation" aria-label="Main navigation">
   <div class="nb">
-    <a href="home.html" class="nl">
-      <div class="nl-cross">✝</div>
-      <div class="nl-info">
-        <div class="t1">Church of God (Full Gospel) · Kerala State</div>
-        <div class="t2">Education Department</div>
-      </div>
-    </a>
+<a href="home.html" class="nl">
+  <div class="nl-logo-wrap">
+    <img src="download.png" alt="Church of God Logo" class="nl-logo-img">
+  </div>
+  <div class="nl-info">
+    <div class="t1">Church of God (Full Gospel) · Kerala State</div>
+    <div class="t2">Education Department</div>
+  </div>
+</a>
     <div class="nav-links">
       <a href="#colleges" class="nav-link">Colleges</a>
       <a href="#board" class="nav-link">Board</a>
@@ -604,27 +913,27 @@ footer a:hover{color:white;}
 </nav>
 
 <!-- HERO -->
-<section class="hero" id="top">
-  <div class="slides" id="slides">
+<section class="hero" id="top" role="region" aria-label="Hero section with slideshow">
+  <div class="slides" id="slides" role="region" aria-label="Background slideshow">
     
-    <div class="slide active">
-      <img class="slide-bg" src="edu/mc (1).png" alt="Education" onerror="this.style.display='none'">
+    <div class="slide active" role="img" aria-label="Education background">
+      <img class="slide-bg" src="edu/mc (1).png" alt="" onerror="this.style.display='none'">
     </div>
-    <div class="slide">
-      <img class="slide-bg" src="edu/mc (2).png" alt="Theological Training" onerror="this.style.display='none'">
+    <div class="slide" role="img" aria-label="Theological Training background">
+      <img class="slide-bg" src="edu/mc (2).png" alt="" onerror="this.style.display='none'">
     </div>
-    <div class="slide">
-      <img class="slide-bg" src="edu/mc (3).png" alt="Campus" onerror="this.style.display='none'">
+    <div class="slide" role="img" aria-label="Campus background">
+      <img class="slide-bg" src="edu/mc (3).png" alt="" onerror="this.style.display='none'">
     </div>
-    <div class="slide">
-      <img class="slide-bg" src="edu/mc (4).png" alt="Ministry" onerror="this.style.display='none'">
+    <div class="slide" role="img" aria-label="Ministry background">
+      <img class="slide-bg" src="edu/mc (4).png" alt="" onerror="this.style.display='none'">
     </div>
-    <div class="slide">
-      <img class="slide-bg" src="edu/mc1.jpeg" alt="Ministry" onerror="this.style.display='none'">
+    <div class="slide" role="img" aria-label="Ministry background">
+      <img class="slide-bg" src="edu/mc1.jpeg" alt="" onerror="this.style.display='none'">
     </div>
   </div>
 
-  <div class="slide-caption" id="slideCaption">
+  <div class="slide-caption" id="slideCaption" aria-live="polite" aria-atomic="true">
     <div class="sc-verse">"Equipping the called for God's Kingdom ministry…"</div>
     <div class="sc-ref">Education Department</div>
   </div>
@@ -632,16 +941,16 @@ footer a:hover{color:white;}
   <div class="hero-content">
     <div class="hero-inner">
       <div class="hero-left">
-        <div class="hero-eyebrow">Education · Training · Ministry</div>
+        <div class="hero-eyebrow" aria-hidden="true">Education · Training · Ministry</div>
         <h1 class="hero-title">
           <span>Theological</span>
           <strong>Education</strong>
         </h1>
-        <div class="hero-divider"></div>
+        <div class="hero-divider" aria-hidden="true"></div>
         <p class="hero-sub">Forming Spirit-filled leaders, pastors, and missionaries through rigorous academic training and deep spiritual formation across three Bible Colleges in Kerala.</p>
         <div class="hero-btns">
-          <button class="btn-mg" onclick="scrollTo('#colleges')">Explore Colleges</button>
-          <button class="btn-ghost" onclick="scrollTo('#enquiry')">Enquire Now</button>
+          <button class="btn-mg" onclick="scrollTo('#colleges')" aria-label="Scroll to colleges section">Explore Colleges</button>
+          <button class="btn-ghost" onclick="scrollTo('#enquiry')" aria-label="Scroll to enquiry form">Enquire Now</button>
         </div>
       </div>
 
@@ -649,7 +958,7 @@ footer a:hover{color:white;}
         <!-- Card 1 -->
         <div class="hero-doctrine-card">
           <div class="hdc-top">
-            <div class="hdc-num">01</div>
+            <div class="hdc-num" aria-hidden="true">01</div>
             <div>
               <div class="hdc-title">Mount Zion Bible Seminary</div>
             </div>
@@ -660,7 +969,7 @@ footer a:hover{color:white;}
         <!-- Card 2 -->
         <div class="hero-doctrine-card">
           <div class="hdc-top">
-            <div class="hdc-num">02</div>
+            <div class="hdc-num" aria-hidden="true">02</div>
             <div>
               <div class="hdc-title">Kumbanad Bible College</div>
             </div>
@@ -671,7 +980,7 @@ footer a:hover{color:white;}
         <!-- Card 3 -->
         <div class="hero-doctrine-card">
           <div class="hdc-top">
-            <div class="hdc-num">03</div>
+            <div class="hdc-num" aria-hidden="true">03</div>
             <div>
               <div class="hdc-title">Kannur Bible College</div>
             </div>
@@ -682,11 +991,11 @@ footer a:hover{color:white;}
     </div>
   </div>
 
-  <div class="slide-indicators" id="slideIndicators">
-    <div class="si-dot active" onclick="goSlide(0)"></div>
-    <div class="si-dot" onclick="goSlide(1)"></div>
-    <div class="si-dot" onclick="goSlide(2)"></div>
-    <div class="si-dot" onclick="goSlide(3)"></div>
+  <div class="slide-indicators" id="slideIndicators" role="region" aria-label="Slide navigation">
+    <button class="si-dot active" onclick="goSlide(0)" aria-label="Go to slide 1" aria-current="true"></button>
+    <button class="si-dot" onclick="goSlide(1)" aria-label="Go to slide 2"></button>
+    <button class="si-dot" onclick="goSlide(2)" aria-label="Go to slide 3"></button>
+    <button class="si-dot" onclick="goSlide(3)" aria-label="Go to slide 4"></button>
   </div>
 
   <div class="hero-stats-row">
@@ -701,7 +1010,7 @@ footer a:hover{color:white;}
 </section>
 
 <!-- COLLEGES -->
-<section class="sec" id="colleges">
+<section class="sec" id="colleges" role="region" aria-label="Our colleges">
   <div class="cont">
     <div class="rv">
       <div class="sec-label">Our Institutions</div>
@@ -712,7 +1021,7 @@ footer a:hover{color:white;}
 
       <!-- MZBS -->
       <div class="college-card rv">
-        <img class="cc-img" src="https://static.wixstatic.com/media/667b04_3bed8756d60c4221b586b8a478e9d650~mv2.jpg" alt="Mount Zion Bible Seminary" onerror="this.style.display='none'">
+        <img class="cc-img" src="https://static.wixstatic.com/media/667b04_3bed8756d60c4221b586b8a478e9d650~mv2.jpg" alt="Mount Zion Bible Seminary campus" onerror="this.style.display='none'">
         <div class="cc-body">
           <span class="cc-badge">Flagship</span>
           <h3 class="cc-name">Mount Zion Bible Seminary</h3>
@@ -746,14 +1055,14 @@ footer a:hover{color:white;}
 
           <div class="cc-cta">
             <button class="cc-btn" onclick="scrollTo('#enquiry')">Enquire</button>
-            <a href="https://www.mountzionbibleseminary.org" target="_blank" class="cc-btn-o">Website</a>
+            <a href="https://www.mountzionbibleseminary.org" target="_blank" rel="noopener noreferrer" class="cc-btn-o">Website</a>
           </div>
         </div>
       </div>
 
       <!-- Kumbanad -->
       <div class="college-card rv">
-        <img class="cc-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Kumbanad_Bible_College.jpg/1200px-Kumbanad_Bible_College.jpg" alt="Kumbanad Bible College" onerror="this.style.display='none'">
+        <img class="cc-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Kumbanad_Bible_College.jpg/1200px-Kumbanad_Bible_College.jpg" alt="Kumbanad Bible College campus" onerror="this.style.display='none'">
         <div class="cc-body">
           <span class="cc-badge">Central Kerala</span>
           <h3 class="cc-name">Kumbanad Bible College</h3>
@@ -793,7 +1102,7 @@ footer a:hover{color:white;}
 
       <!-- Kannur -->
       <div class="college-card rv">
-        <div class="cc-img" style="background:linear-gradient(145deg,#C0186A,#D4237A);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.15);font-size:3rem;">📚</div>
+        <div class="cc-img" style="background:linear-gradient(145deg,#C0186A,#D4237A);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.15);font-size:3rem;" aria-label="Kannur Bible College">📚</div>
         <div class="cc-body">
           <span class="cc-badge">North Kerala</span>
           <h3 class="cc-name">Kannur Bible College</h3>
@@ -836,7 +1145,7 @@ footer a:hover{color:white;}
 </section>
 
 <!-- BOARD OF EDUCATION DEPARTMENT -->
-<section class="board-section" id="board">
+<section class="board-section" id="board" role="region" aria-label="Board of Education Department">
   <div class="cont">
     <div class="rv" style="text-align: center; margin-bottom: 2rem;">
       <div class="sec-label" style="justify-content: center;">Board Members</div>
@@ -931,7 +1240,7 @@ footer a:hover{color:white;}
 </section>
 
 <!-- FACULTY SECTION -->
-<section class="faculty-section" id="faculty">
+<section class="faculty-section" id="faculty" role="region" aria-label="Faculty members">
   <div class="cont">
 
     <!-- MOUNT ZION BIBLE SEMINARY FACULTY -->
@@ -1223,7 +1532,7 @@ footer a:hover{color:white;}
 </section>
 
 <!-- WHY STUDY -->
-<section class="sec">
+<section class="sec" role="region" aria-label="Why study with us">
   <div class="cont">
     <div class="rv">
       <div class="sec-label">Why Study With Us</div>
@@ -1232,37 +1541,37 @@ footer a:hover{color:white;}
 
     <div class="services-grid">
       <div class="service-card rv">
-        <div class="service-icon">🎓</div>
+        <div class="service-icon" aria-hidden="true">🎓</div>
         <div class="service-title">Accredited Programs</div>
         <p class="service-desc">ATA accreditation and academic collaboration with Martin Luther Christian University — globally recognized qualifications.</p>
       </div>
 
       <div class="service-card rv">
-        <div class="service-icon">📖</div>
+        <div class="service-icon" aria-hidden="true">📖</div>
         <div class="service-title">Christ-Centric Training</div>
         <p class="service-desc">Every course is built around a thorough, Christ-centred approach to Scripture — developing strong defenders of the faith.</p>
       </div>
 
       <div class="service-card rv">
-        <div class="service-icon">🤲</div>
+        <div class="service-icon" aria-hidden="true">🤲</div>
         <div class="service-title">Practical Ministry Formation</div>
         <p class="service-desc">Real ministry experience through internships, church placements, and outreach — preparing effective servants for God's Kingdom.</p>
       </div>
 
       <div class="service-card rv">
-        <div class="service-icon">🌱</div>
+        <div class="service-icon" aria-hidden="true">🌱</div>
         <div class="service-title">Character Development</div>
         <p class="service-desc">We shape godly men and women — holy, humble, and wholehearted — who reflect Christ in every area of life.</p>
       </div>
 
       <div class="service-card rv">
-        <div class="service-icon">🌍</div>
+        <div class="service-icon" aria-hidden="true">🌍</div>
         <div class="service-title">Mission-Minded</div>
         <p class="service-desc">A burden for the unreached woven into every program. Students graduate with zeal to carry the Gospel to every frontier.</p>
       </div>
 
       <div class="service-card rv">
-        <div class="service-icon">👥</div>
+        <div class="service-icon" aria-hidden="true">👥</div>
         <div class="service-title">Community & Belonging</div>
         <p class="service-desc">Vibrant spiritual communities where lifelong friendships, mentorship relationships, and deep calling are nurtured together.</p>
       </div>
@@ -1271,7 +1580,7 @@ footer a:hover{color:white;}
 </section>
 
 <!-- ENQUIRY FORM -->
-<section class="sec" id="enquiry">
+<section class="sec" id="enquiry" role="region" aria-label="Admissions enquiry form">
   <div class="cont">
     <div class="rv">
       <div class="sec-label">Admissions</div>
@@ -1283,7 +1592,7 @@ footer a:hover{color:white;}
         <h3 style="font-family:var(--fg);font-size:1.4rem;font-weight:400;color:var(--blk);margin-bottom:1.2rem;">Get Started</h3>
         
         <div class="form-info-item">
-          <div class="form-info-icon">🎓</div>
+          <div class="form-info-icon" aria-hidden="true">🎓</div>
           <div class="form-info-text">
             <strong>6+ Programs Available</strong>
             Certificate through Master's degrees across all three campuses.
@@ -1291,7 +1600,7 @@ footer a:hover{color:white;}
         </div>
 
         <div class="form-info-item">
-          <div class="form-info-icon">📞</div>
+          <div class="form-info-icon" aria-hidden="true">📞</div>
           <div class="form-info-text">
             <strong>MZBS Contact</strong>
             +91 90748 08741
@@ -1299,7 +1608,7 @@ footer a:hover{color:white;}
         </div>
 
         <div class="form-info-item">
-          <div class="form-info-icon">🏫</div>
+          <div class="form-info-icon" aria-hidden="true">🏫</div>
           <div class="form-info-text">
             <strong>Three Campuses</strong>
             Tiruvalla, Kumbanad, Kannur
@@ -1307,7 +1616,7 @@ footer a:hover{color:white;}
         </div>
 
         <div class="form-info-item">
-          <div class="form-info-icon">⏰</div>
+          <div class="form-info-icon" aria-hidden="true">⏰</div>
           <div class="form-info-text">
             <strong>Admissions 2026</strong>
             April 21 & May 19 interview dates for MZBS
@@ -1321,26 +1630,26 @@ footer a:hover{color:white;}
 
         <div class="frow">
           <div class="fg">
-            <label>Full Name *</label>
-            <input type="text" id="f_name" placeholder="Your full name" required>
+            <label for="f_name">Full Name *</label>
+            <input type="text" id="f_name" placeholder="Your full name" required aria-required="true">
           </div>
           <div class="fg">
-            <label>Phone *</label>
-            <input type="tel" id="f_phone" placeholder="+91 XXXXX XXXXX" required>
+            <label for="f_phone">Phone *</label>
+            <input type="tel" id="f_phone" placeholder="+91 XXXXX XXXXX" required aria-required="true">
           </div>
         </div>
 
         <div class="frow full">
           <div class="fg">
-            <label>Email Address *</label>
-            <input type="email" id="f_email" placeholder="your@email.com" required>
+            <label for="f_email">Email Address *</label>
+            <input type="email" id="f_email" placeholder="your@email.com" required aria-required="true">
           </div>
         </div>
 
         <div class="frow">
           <div class="fg">
-            <label>College of Interest *</label>
-            <select id="f_college">
+            <label for="f_college">College of Interest *</label>
+            <select id="f_college" required aria-required="true">
               <option value="">Select a College</option>
               <option>Mount Zion Bible Seminary</option>
               <option>Kumbanad Bible College</option>
@@ -1348,7 +1657,7 @@ footer a:hover{color:white;}
             </select>
           </div>
           <div class="fg">
-            <label>Program of Interest</label>
+            <label for="f_program">Program of Interest</label>
             <select id="f_program">
               <option value="">Select a Program</option>
               <option>M.A in Theology</option>
@@ -1361,15 +1670,15 @@ footer a:hover{color:white;}
 
         <div class="frow full">
           <div class="fg">
-            <label>Message / Questions</label>
+            <label for="f_message">Message / Questions</label>
             <textarea id="f_message" placeholder="Any questions or information you'd like to share..."></textarea>
           </div>
         </div>
 
-        <button class="form-submit" onclick="submitForm()">Submit Enquiry →</button>
+        <button class="form-submit" onclick="submitForm()" aria-label="Submit admissions enquiry">Submit Enquiry →</button>
 
-        <div class="form-success" id="form-success">
-          <div class="form-success-icon">✅</div>
+        <div class="form-success" id="form-success" role="status" aria-live="polite">
+          <div class="form-success-icon" aria-hidden="true">✅</div>
           <h3>Thank You!</h3>
           <p>Your enquiry has been received. Our admissions team will contact you within 2–3 working days.</p>
         </div>
@@ -1379,7 +1688,7 @@ footer a:hover{color:white;}
 </section>
 
 <!-- FOOTER -->
-<footer>
+<footer role="contentinfo">
   <div class="footer-inner">
     <p>© 2025 Church of God (Full Gospel) in India, Kerala State · Education Department · <a href="mailto:cogkeralastate@gmail.com">cogkeralastate@gmail.com</a></p>
   </div>
@@ -1399,9 +1708,11 @@ var slides=document.querySelectorAll('.slide'),dots=document.querySelectorAll('.
 function goSlide(n){
   slides[cur].classList.remove('active');
   dots[cur].classList.remove('active');
+  dots[cur].setAttribute('aria-current','false');
   cur=(n+slides.length)%slides.length;
   slides[cur].classList.add('active');
   dots[cur].classList.add('active');
+  dots[cur].setAttribute('aria-current','true');
   var c=CAPTIONS[cur];
   cap.querySelector('.sc-verse').textContent=c.verse;
   cap.querySelector('.sc-ref').textContent=c.ref;
@@ -1453,8 +1764,10 @@ function submitForm() {
     return;
   }
   
-  document.querySelector('.form-wrap > div:not(.form-success)').style.display='none';
+  var formContent=document.querySelector('.form-wrap > div:not(.form-success)');
+  if(formContent)formContent.style.display='none';
   document.getElementById('form-success').style.display='block';
+  document.getElementById('form-success').focus();
 }
 
 /* NAV ACTIVE */

@@ -90,7 +90,38 @@ textarea,input,select{font-family:var(--ff);}
 /* Hero content — two-column layout */
 .hero-content{position:relative;z-index:2;flex:1;display:flex;align-items:center;padding:4rem 2rem 3rem;}
 .hero-inner{max-width:1300px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 480px;gap:2.5rem;align-items:stretch;}
+.nl {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  /* Make the text white to stand out over the dark hero mask */
+  color: #ffffff; 
+}
 
+.nl-logo-img {
+  height: 48px; /* Adjust based on your nav height */
+  width: auto;
+  margin-right: 12px;
+}
+
+.nl-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.t1 {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.t2 {
+  font-size: 0.85rem;
+  font-weight: 500;
+  /* Slight transparency for the subtitle to create visual hierarchy */
+  color: rgba(255, 255, 255, 0.8); 
+  text-transform: uppercase;
+}
 /* Left */
 .hero-left{}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--fc);font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--mg3);margin-bottom:1.6rem;}
@@ -578,16 +609,27 @@ footer a{color:var(--mg3);}
 <!-- NAV -->
 <nav id="nav">
   <div class="nb">
-    <a href="home.html" class="nl">
-      <div class="nl-cross">✝</div>
-      <div class="nl-info">
-        <div class="t1">Church of God (Full Gospel) · Kerala State</div>
-        <div class="t2">Church Growth &amp; Mission Board</div>
-      </div>
-    </a>
+<a href="home.html" class="nl">
+
+  <div class="nl-logo-wrap">
+
+    <img src="download.png" alt="COG KERALA LOGO" class="nl-logo-img">
+
+  </div>
+
+ 
+
+  <div class="nl-info">
+
+    <div class="t1">Church of God (Full Gospel) · Kerala State</div>
+
+    <div class="t2">Church Growth Mission Board</div>
+
+  </div>
+
+</a>
     <div class="nav-links">
       <a href="#about" class="nav-link">About</a>
-      <a href="#leadership" class="nav-link">Leadership</a>
       <a href="#members" class="nav-link">Board Members</a>
       <a href="#contact" class="nav-link">Contact</a>
       <a href="home.html" class="nav-link">Home</a>

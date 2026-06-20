@@ -45,6 +45,44 @@ img{max-width:100%;display:block;}
 a{text-decoration:none;color:inherit;}
 button{cursor:pointer;font-family:var(--ff);}
 textarea,input,select{font-family:var(--ff);}
+.nl {
+  display: flex;
+  align-items: center; 
+  gap: 0.35rem;         /* Decreased to pull text tighter to the graphic */
+  text-decoration: none;
+}
+
+.nl-logo-wrap {
+  width: 46px;          /* Slightly larger to scale nicely with two text rows */
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.nl-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.nl-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Ensure clean line heights so the browser doesn't push the text down */
+.nl-info .t1 {
+  line-height: 1.2;
+  margin: 0;
+}
+
+.nl-info .t2 {
+  line-height: 1.2;
+  margin: 2px 0 0 0;   /* Small 2px gap between the two text lines */
+}
 ::-webkit-scrollbar{width:4px;}
 ::-webkit-scrollbar-thumb{background:var(--mg4);border-radius:4px;}
 
@@ -106,94 +144,71 @@ textarea,input,select{font-family:var(--ff);}
 .btn-ghost{font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.85rem 2rem;background:transparent;color:white;border:1px solid rgba(255,255,255,.38);border-radius:3px;transition:all .25s;}
 .btn-ghost:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.7);}
 
-/* RIGHT — 3 portrait leadership cards */
+/* Right - Leadership Cards */
 .hero-right {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.2rem;
-  align-self: stretch;
+  gap: 1rem;
+  align-self: center;
+  width: 100%;
 }
 
 .hero-leader-card {
   background: white;
-  border-radius: 12px;
+  border-radius: 10px;
   overflow: hidden;
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0,0,0,0.08);
   display: flex;
   flex-direction: column;
-  height: 100%;
-  transition: all .4s var(--ease);
-  cursor: default;
-  box-shadow: 0 2px 12px rgba(0,0,0,.06);
+  height: auto;
+  transition: all 0.35s var(--ease);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
 }
 
 .hero-leader-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(192,24,106,.15);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(192,24,106,0.15);
 }
 
 .hlc-photo {
   width: 100%;
-  height: 240px;
-  background: linear-gradient(160deg, var(--mg5), #e8e2ed);
   position: relative;
+  background: #f5f5f5;
   overflow: hidden;
-  display: flex;
-  align-items: flex-end;
 }
 
 .hlc-photo img {
   width: 100%;
-  height: 100%;
+  aspect-ratio: 3 / 3.5;
   object-fit: cover;
   object-position: center top;
-  transition: transform .5s var(--ease);
-}
-
-.hero-leader-card:hover .hlc-photo img {
-  transform: scale(1.04);
+  display: block;
 }
 
 .hlc-badge {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(to top, rgba(13,13,13,.8), transparent);
-  padding: 1rem 1rem .75rem;
-  z-index: 2;
-}
-
-.hlc-role {
-  font-family: var(--fc);
-  font-size: .5rem;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  color: var(--mg3);
-  margin-bottom: .25rem;
+  background: white;
+  padding: 0.8rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 0.25rem;
 }
 
 .hlc-name {
   font-family: var(--fg);
-  font-size: 1rem;
-  font-weight: 500;
-  color: white;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--blk);
   line-height: 1.2;
 }
 
-.hlc-details-bottom {
-  padding: 1rem 1.1rem 1.1rem;
-  background: white;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.hlc-note {
-  font-size: .73rem;
-  color: var(--blk4);
-  line-height: 1.6;
-  font-weight: 300;
+.hlc-role {
+  font-family: var(--fc);
+  font-size: 0.52rem;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+  color: var(--mg);
+  font-weight: 700;
 }
 
 /* Slide indicators */
@@ -523,13 +538,16 @@ footer a{color:var(--mg3);}
 <!-- NAV -->
 <nav id="nav">
   <div class="nb">
-    <a href="home.html" class="nl">
-      <div class="nl-cross">✝</div>
-      <div class="nl-info">
-        <div class="t1">Church of God (Full Gospel) · Kerala State</div>
-        <div class="t2">Prayer Board</div>
-      </div>
-    </a>
+<a href="home.html" class="nl">
+  <div class="nl-logo-wrap">
+    <img src="download.png" alt="COG KERALA LOGO" class="nl-logo-img">
+  </div>
+  
+  <div class="nl-info">
+    <div class="t1">Church of God (Full Gospel) · Kerala State</div>
+    <div class="t2">Prayer Board</div>
+  </div>
+</a>
     <div class="nav-links">
       <a href="#board" class="nav-link">Board</a>
       <a href="#prayer-wall" class="nav-link">Prayer Wall</a>
@@ -555,7 +573,7 @@ footer a{color:var(--mg3);}
       <img class="slide-bg" src="conven.png" alt="Faith" onerror="this.style.display='none'">
     </div>
     <div class="slide">
-      <img class="slide-bg" src="home.png" alt="Hope" onerror="this.style.display='none'">
+      <img class="slide-bg" src="ss/am20245.jpg" alt="Hope" onerror="this.style.display='none'">
     </div>
   </div>
 
@@ -581,55 +599,29 @@ footer a{color:var(--mg3);}
         </div>
       </div>
 
-      <!-- RIGHT — 3 portrait leadership cards -->
-      <div class="hero-right">
-        <!-- Director -->
-        <div class="hero-leader-card">
-          <div class="hlc-photo">
-            <img src="prayer/1.png" alt="Director" onerror="this.style.display='none'">
-            <div class="hlc-badge">
-              
-              <div class="hlc-name">Pr. Anishmon Paulose</div>
-            </div>
-          </div>
-          <div class="hlc-details-bottom">
-            <div class="hlc-role">Director</div>
-            <div class="hlc-note">Leading intercessory ministry across all fourteen districts of Kerala.</div>
-          </div>
-        </div>
+<div class="hero-right">
 
-        <!-- Joint Director -->
-        <div class="hero-leader-card">
-          <div class="hlc-photo">
-            <img src="prayer/2.png" alt="Joint Director" onerror="this.style.display='none'">
-            <div class="hlc-badge">
-              
-              <div class="hlc-name">Pr. P.T. Mathew</div>
-            </div>
-          </div>
-          <div class="hlc-details-bottom">
-            <div class="hlc-role">Joint Director</div>
-            <div class="hlc-note">Coordinating prayer coverage and ministry communications across the State.</div>
-          </div>
-        </div>
-
-        <!-- Secretary -->
-        <div class="hero-leader-card">
-          <div class="hlc-photo">
-            <img src="prayer/3.png" alt="Secretary" onerror="this.style.display='none'">
-            <div class="hlc-badge">
-              
-              <div class="hlc-name">Pr. Thomas Joseph</div>
-            </div>
-          </div>
-          <div class="hlc-details-bottom">
-            <div class="hlc-role">Secretary</div>
-            <div class="hlc-note">Managing all prayer board administration and member coordination faithfully.</div>
-          </div>
-        </div>
-      </div>
+  <div class="hero-leader-card">
+    <div class="hlc-photo">
+      <img src="prayer/1.png" alt="State Director" onerror="this.style.display='none'">
+    </div>
+    <div class="hlc-badge">
+      <div class="hlc-role">State Director</div>
+      <div class="hlc-name">Pr. Anishmon Paulose</div>
     </div>
   </div>
+
+  <div class="hero-leader-card">
+    <div class="hlc-photo">
+      <img src="prayer/3.png" alt="Secretary" onerror="this.style.display='none'">
+    </div>
+    <div class="hlc-badge">
+      <div class="hlc-role">Secretary</div>
+      <div class="hlc-name">Pr. Thomas Joseph</div>
+    </div>
+  </div>
+
+</div>
 
   <div class="slide-indicators" id="slideIndicators">
     <div class="si-dot active" onclick="goSlide(0)"></div>

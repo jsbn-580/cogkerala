@@ -41,6 +41,44 @@ html{scroll-behavior:smooth;}
 body{font-family:var(--ff);background:var(--white);color:var(--blk);overflow-x:hidden;}
 img{max-width:100%;display:block;}
 a{text-decoration:none;color:inherit;}
+.nl {
+  display: flex;
+  align-items: center; 
+  gap: 0.35rem;         /* Decreased to pull text tighter to the graphic */
+  text-decoration: none;
+}
+
+.nl-logo-wrap {
+  width: 46px;          /* Slightly larger to scale nicely with two text rows */
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.nl-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.nl-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Ensure clean line heights so the browser doesn't push the text down */
+.nl-info .t1 {
+  line-height: 1.2;
+  margin: 0;
+}
+
+.nl-info .t2 {
+  line-height: 1.2;
+  margin: 2px 0 0 0;   /* Small 2px gap between the two text lines */
+}
 button{cursor:pointer;font-family:var(--ff);}
 input,textarea,select{font-family:var(--ff);}
 
@@ -299,7 +337,16 @@ footer{background:var(--blk);padding:3rem 0 2rem;border-top:1px solid rgba(255,2
 <nav id="nav">
   <div class="nb">
     <a href="home.html" class="nl">
-      <div class="nl-cross">✝</div>
+      <a href="home.html" class="nl">
+  <div class="nl-logo-wrap">
+    <img src="download.png" alt="COG KERALA LOGO" class="nl-logo-img">
+  </div>
+  
+  <div class="nl-info">
+    <div class="t1">Church of God (Full Gospel) · Kerala State</div>
+    <div class="t2">Counselling Department</div>
+  </div>
+</a>
       <div class="nl-info">
         <div class="t1">Church of God (Full Gospel) · Kerala State</div>
         <div class="t2">Our Founder & Global Heritage</div>

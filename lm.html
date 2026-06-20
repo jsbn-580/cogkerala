@@ -45,6 +45,44 @@ img{max-width:100%;display:block;}
 a{text-decoration:none;color:inherit;}
 button{cursor:pointer;font-family:var(--ff);}
 textarea,input,select{font-family:var(--ff);}
+.nl {
+  display: flex;
+  align-items: center; 
+  gap: 0.35rem;         /* Decreased to pull text tighter to the graphic */
+  text-decoration: none;
+}
+
+.nl-logo-wrap {
+  width: 46px;          /* Slightly larger to scale nicely with two text rows */
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.nl-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.nl-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Ensure clean line heights so the browser doesn't push the text down */
+.nl-info .t1 {
+  line-height: 1.2;
+  margin: 0;
+}
+
+.nl-info .t2 {
+  line-height: 1.2;
+  margin: 2px 0 0 0;   /* Small 2px gap between the two text lines */
+}
 ::-webkit-scrollbar{width:4px;}
 ::-webkit-scrollbar-thumb{background:var(--mg4);border-radius:4px;}
 
@@ -110,90 +148,67 @@ textarea,input,select{font-family:var(--ff);}
 .hero-right {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.2rem;
-  align-self: stretch;
+  gap: 0.5rem;
+  align-self: start; /* CHANGED: Keeps the grid layout from forcing unnecessary height */
 }
 
 .hero-leader-card {
   background: white;
-  border-radius: 12px;
+  border-radius: 10px;
   overflow: hidden;
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0,0,0,0.08);
   display: flex;
   flex-direction: column;
-  height: 100%;
-  transition: all .4s var(--ease);
-  cursor: default;
-  box-shadow: 0 2px 12px rgba(0,0,0,.06);
+  height: max-content; /* CHANGED: Collapses the card to only fit its true content */
+  transition: all 0.35s var(--ease);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
 }
 
 .hero-leader-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(192,24,106,.15);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(192,24,106,0.15);
 }
 
 .hlc-photo {
   width: 100%;
-  height: 240px;
-  background: linear-gradient(160deg, var(--mg5), #e8e2ed);
-  position: relative;
-  overflow: hidden;
   display: flex;
-  align-items: flex-end;
+  flex-direction: column;
+  position: relative;
+  background: #f5f5f5;
+  /* REMOVED flex: 1; -> This was pulling and stretching the container down */
 }
 
 .hlc-photo img {
-  width: 100%;
-  height: 100%;
+  width: 200px;
+  height: 200px; /* Increase as needed */
   object-fit: cover;
-  object-position: center top;
-  transition: transform .5s var(--ease);
 }
-
-.hero-leader-card:hover .hlc-photo img {
-  transform: scale(1.04);
-}
-
 .hlc-badge {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(to top, rgba(13,13,13,.8), transparent);
-  padding: 1rem 1rem .75rem;
-  z-index: 2;
-}
-
-.hlc-role {
-  font-family: var(--fc);
-  font-size: .5rem;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  color: var(--mg3);
-  margin-bottom: .25rem;
+  background: white;
+  padding: 0.9rem 0.8rem; /* Slightly balanced padding */
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 0.2rem;
 }
 
 .hlc-name {
   font-family: var(--fg);
-  font-size: 1rem;
-  font-weight: 500;
-  color: white;
-  line-height: 1.2;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--blk);
+  line-height: 1.1;
 }
 
-.hlc-details-bottom {
-  padding: 1rem 1.1rem 1.1rem;
-  background: white;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.hlc-note {
-  font-size: .73rem;
-  color: var(--blk4);
-  line-height: 1.6;
-  font-weight: 300;
+.hlc-role {
+  font-family: var(--fc);
+  font-size: 0.7rem;
+  letter-spacing: 0.1px;
+  text-transform: uppercase;
+  color: var(--mg);
+  font-weight: 700;
+  gap: 0.1rem;
+  text-align: center; /* Center horizontally */
 }
 
 /* Slide indicators */
@@ -422,13 +437,16 @@ footer a{color:var(--mg3);}
 <!-- NAV -->
 <nav id="nav">
   <div class="nb">
-    <a href="home.html" class="nl">
-      <div class="nl-cross">✝</div>
-      <div class="nl-info">
-        <div class="t1">Church of God (Full Gospel) · Kerala State</div>
-        <div class="t2">Ladies Ministry</div>
-      </div>
-    </a>
+  <a href="home.html" class="nl">
+  <div class="nl-logo-wrap">
+    <img src="download.png" alt="COG KERALA LOGO" class="nl-logo-img">
+  </div>
+  
+  <div class="nl-info">
+    <div class="t1">Church of God (Full Gospel) · Kerala State</div>
+    <div class="t2">Ladies Ministry</div>
+  </div>
+</a>
     <div class="nav-links">
       <a href="#about" class="nav-link">About</a>
       <a href="#committee" class="nav-link">Committee</a>
@@ -483,44 +501,38 @@ footer a{color:var(--mg3);}
           <button class="btn-ghost" onclick="scrollTo('#activities')">Our Work</button>
         </div>
       </div>
-
       <!-- RIGHT — 3 portrait leadership cards -->
       <div class="hero-right">
         <!-- State President -->
         <div class="hero-leader-card">
           <div class="hlc-photo">
-            <img src="lmimage/Helna.png" alt="Mrs. Helna Reji" onerror="this.style.display='none'">
+            <img src="lmimage/helna.png" alt="State President" onerror="this.style.display='none'">
             <div class="hlc-badge">
-              <div class="hlc-role">State President</div>
-              <div class="hlc-name">Mrs. Helna Reji</div>
+              
+              <div class="hlc-name">Sis.Helna  Reji</div>
             </div>
           </div>
-          <div class="hlc-details-bottom"></div>
+          <div class="hlc-details-bottom">
+            <div class="hlc-role">State President</div>
+          </div>
         </div>
 
         <!-- State Secretary -->
         <div class="hero-leader-card">
           <div class="hlc-photo">
-            <img src="lmimage/cisy.png" alt="Mrs. Cisy Babu" onerror="this.style.display='none'">
+            <img src="lmimage/cisy.png" alt="State Secretary" onerror="this.style.display='none'">
             <div class="hlc-badge">
-              <div class="hlc-role">State Secretary</div>
-              <div class="hlc-name">Mrs. Cisy Babu</div>
+              
+              <div class="hlc-name">Mrs.Cissy Babu Jhon</div>
             </div>
           </div>
-          <div class="hlc-details-bottom"></div>
+          <div class="hlc-details-bottom">
+            <div class="hlc-role">State Secretary</div>
+          </div>
         </div>
 
-        <!-- Treasurer -->
-        <div class="hero-leader-card">
-          <div class="hlc-photo">
-            <img src="lmimage/accama.png" alt="Mrs. Accamma George" onerror="this.style.display='none'">
-            <div class="hlc-badge">
-              <div class="hlc-role">Treasurer</div>
-              <div class="hlc-name">Mrs. Accamma George</div>
-            </div>
-          </div>
-          <div class="hlc-details-bottom"></div>
-        </div>
+        <!-- State Treasurer -->
+        
       </div>
     </div>
   </div>

@@ -3,8 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
     <title>Church Boards - Church of God (Full Gospel) Kerala State</title>
+    <meta name="description" content="Explore the leadership boards of Church of God (Full Gospel) Kerala State. Meet the dedicated team overseeing ministry, missions, music, media, and child welfare across Kerala.">
+    <meta name="keywords" content="Church of God, Kerala, Leadership, Boards, Ministry, Missions, Music Ministry, Media Board, Child Welfare">
+    <meta name="author" content="Church of God (Full Gospel) Kerala State">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://cogkeralastate.org/boards">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cogkeralastate.org/boards">
+    <meta property="og:title" content="Church Boards - Church of God (Full Gospel) Kerala State">
+    <meta property="og:description" content="Leadership boards serving the Church of God (Full Gospel) in Kerala State.">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Church Boards - Church of God (Full Gospel) Kerala State">
+    <meta name="twitter:description" content="Leadership boards serving the Church of God (Full Gospel) in Kerala State.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' font-weight='bold' fill='%23d41e87'>✝</text></svg>">
+    
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Serif:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Church of God (Full Gospel) Kerala State",
+        "url": "https://cogkeralastate.org",
+        "description": "Church of God (Full Gospel) in India serving Kerala State since 1886"
+    }
+    </script>
+
     <style>
         * {
             margin: 0;
@@ -84,9 +118,9 @@
             z-index: 1000;
             background: rgba(255, 255, 255, 0.97);
             backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(212, 30, 135, 0.1);
+            border-bottom: 1px solid rgba(233, 5, 138, 0.1);
             padding: 1rem 0;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 4px 20px rgba(221, 6, 138, 0.08);
         }
 
         .header-container {
@@ -98,56 +132,68 @@
             align-items: center;
         }
 
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.6rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #d41e87, #f97316);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            letter-spacing: -0.8px;
-        }
+/* The main brand container holding both logo and text */
+.nl {
+  display: flex;
+  align-items: center; /* Centers the logo vertically with the text block */
+  gap: 0.75rem;        /* Adjusts the space between logo and text */
+  text-decoration: none;
+}
 
-        nav {
-            display: flex;
-            gap: 3rem;
-        }
+/* Wrapper to maintain a crisp size for the logo */
+.nl-logo-wrap {
+  width: 42px;         /* Match this roughly to the font height */
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;      /* Keeps the logo circular/intact on small viewports */
+}
 
-        nav a {
-            font-size: 0.95rem;
-            color: var(--text);
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition);
-            position: relative;
-            padding: 0.5rem 0;
-        }
+/* The actual PNG logo image */
+.nl-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Prevents image distortion */
+}
 
-        nav a:hover {
-            color: var(--primary);
-        }
+/* Optional: Clean structural alignment for the text block */
+/* Base structural alignment for the text block container */
+.nl-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+}
 
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background: linear-gradient(135deg, #d41e87, #f97316);
-            transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-            border-radius: 2px;
-        }
+/* --- BRANDING TEXT STYLES --- */
 
-        nav a:hover::after {
-            width: 100%;
-        }
+/* Top Line: "Church of God (Full Gospel)..." */
+.nl-info .t1 {
+  font-family: 'Cinzel', 'Playfair Display', 'Times New Roman', serif; /* Elegant serif font variant */
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #c50970; /* Rich Deep Church Purple (Adjust hex value as needed) */
+  letter-spacing: 0.3px;
+  line-height: 1.2;
+}
 
+/* Bottom Line: "Evangelism & Outreach Department" */
+.nl-info .t2 {
+  font-family: 'Inter', 'Montserrat', sans-serif; /* Clean modern sans-serif */
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #c50970; /* Slightly lighter purple shade for contrast */
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+}
+
+/* --- FIX OVERRIDE --- */
+/* Disables the sliding underline animation from showing under your logo block */
+.nl::after {
+  display: none !important;
+}
         /* ===== HERO SECTION - FULL BACKGROUND SLIDESHOW ===== */
         .hero {
             position: relative;
@@ -187,6 +233,7 @@
             height: 100%;
             object-fit: cover;
             object-position: center;
+            display: block;
         }
 
         /* Dark Overlay */
@@ -300,13 +347,16 @@
             transition: left 0.4s ease;
         }
 
-        .btn-primary:hover::before {
+        .btn-primary:hover::before,
+        .btn-primary:focus::before {
             left: 100%;
         }
 
-        .btn-primary:hover {
+        .btn-primary:hover,
+        .btn-primary:focus {
             transform: translateY(-3px);
             box-shadow: 0 15px 45px rgba(212, 30, 135, 0.45);
+            outline: none;
         }
 
         .btn-secondary {
@@ -316,11 +366,13 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
-        .btn-secondary:hover {
+        .btn-secondary:hover,
+        .btn-secondary:focus {
             background: white;
             color: var(--primary);
             transform: translateY(-3px);
             box-shadow: 0 15px 45px rgba(0, 0, 0, 0.3);
+            outline: none;
         }
 
         /* Slideshow Controls */
@@ -343,11 +395,13 @@
             justify-content: center;
         }
 
-        .slideshow-nav:hover {
+        .slideshow-nav:hover,
+        .slideshow-nav:focus {
             background: white;
             box-shadow: 0 8px 25px rgba(212, 30, 135, 0.3);
             transform: translateY(-50%) scale(1.15);
             border-color: var(--primary);
+            outline: none;
         }
 
         .slideshow-nav.prev {
@@ -378,9 +432,11 @@
             border: 2px solid rgba(255, 255, 255, 0.7);
         }
 
-        .slideshow-dot:hover {
+        .slideshow-dot:hover,
+        .slideshow-dot:focus {
             background: rgba(255, 255, 255, 0.85);
             transform: scale(1.2);
+            outline: none;
         }
 
         .slideshow-dot.active {
@@ -451,13 +507,16 @@
             transition: transform 0.4s ease;
         }
 
-        .board-card:hover {
+        .board-card:hover,
+        .board-card:focus {
             border-color: var(--primary);
             box-shadow: 0 12px 30px rgba(212, 30, 135, 0.1);
             transform: translateY(-4px);
+            outline: none;
         }
 
-        .board-card:hover::before {
+        .board-card:hover::before,
+        .board-card:focus::before {
             transform: scaleX(1);
         }
 
@@ -578,10 +637,12 @@
             flex-direction: column;
         }
 
-        .member-card:hover {
+        .member-card:hover,
+        .member-card:focus {
             transform: translateY(-8px);
             box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
             border-color: var(--primary);
+            outline: none;
         }
 
         .member-image {
@@ -603,7 +664,8 @@
             height: auto;
         }
 
-        .member-card:hover .member-image img {
+        .member-card:hover .member-image img,
+        .member-card:focus .member-image img {
             transform: scale(1.05);
         }
 
@@ -683,8 +745,10 @@
             transition: opacity 0.3s ease;
         }
 
-        .footer-section a:hover {
+        .footer-section a:hover,
+        .footer-section a:focus {
             opacity: 0.7;
+            outline: none;
         }
 
         .footer-bottom {
@@ -730,24 +794,45 @@
             }
 
             nav {
-                display: none;
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: flex-end;
+            }
+
+            nav a {
+                font-size: 0.75rem;
+                padding: 0.3rem 0.2rem;
             }
 
             .hero {
                 height: 70vh;
+                min-height: 400px;
             }
 
             .hero-content {
-                padding: 2rem 1rem;
-                max-width: 100%;
+                padding: 2rem 1.5rem;
+                max-width: 95%;
             }
 
             .hero h1 {
                 font-size: 2rem;
+                margin-bottom: 1rem;
             }
 
             .hero p {
                 font-size: 0.95rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                gap: 0.75rem;
+                width: fit-content;
+            }
+
+            .btn {
+                padding: 0.75rem 1.5rem;
+                font-size: 0.85rem;
             }
 
             .slideshow-nav {
@@ -763,8 +848,23 @@
                 right: 0.75rem;
             }
 
+            .slideshow-dots {
+                bottom: 1.5rem;
+                gap: 0.75rem;
+            }
+
+            .slideshow-dot {
+                width: 10px;
+                height: 10px;
+            }
+
+            .boards-overview {
+                padding: 3rem 1.5rem;
+            }
+
             .section-header h2 {
                 font-size: 1.75rem;
+                margin-bottom: 0.75rem;
             }
 
             .section-header p {
@@ -772,8 +872,12 @@
             }
 
             .boards-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
                 gap: 1.5rem;
+            }
+
+            .board-card {
+                padding: 1.5rem;
             }
 
             .members-grid {
@@ -783,6 +887,7 @@
 
             .board-members-header h3 {
                 font-size: 1.5rem;
+                margin-bottom: 0.5rem;
             }
 
             .member-info {
@@ -792,40 +897,273 @@
             .member-name {
                 font-size: 0.9rem;
             }
+
+            .member-position {
+                font-size: 0.65rem;
+            }
+
+            .members-section {
+                padding: 3rem 1.5rem;
+            }
+
+            .board-members {
+                margin-bottom: 3rem;
+            }
+
+            footer {
+                padding: 3rem 1.5rem 1.5rem;
+            }
+
+            .footer-container {
+                gap: 2rem;
+            }
         }
 
-        @media (max-width: 480px) {
+        @media (max-width: 600px) {
+            .header-container {
+                padding: 0 0.75rem;
+                gap: 0.5rem;
+            }
+
             .logo {
                 font-size: 1rem;
             }
 
+            nav {
+                gap: 0.5rem;
+            }
+
+            nav a {
+                font-size: 0.65rem;
+                padding: 0.2rem;
+            }
+
             .hero {
                 height: 60vh;
+                min-height: 350px;
+            }
+
+            .hero-content {
+                padding: 1.5rem 1rem;
+                max-width: 95%;
+            }
+
+            .breadcrumb {
+                font-size: 0.6rem;
+                padding: 0.4rem 0.8rem;
+                margin-bottom: 0.8rem;
             }
 
             .hero h1 {
                 font-size: 1.5rem;
+                margin-bottom: 0.75rem;
             }
 
             .hero h1 span {
-                display: block;
+                display: inline;
             }
 
             .hero p {
                 font-size: 0.85rem;
-                margin-bottom: 1.5rem;
+                margin-bottom: 1rem;
+                max-width: 95%;
             }
 
-            .members-grid {
-                grid-template-columns: 1fr;
+            .hero-cta {
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+                padding: 0.75rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            .btn-secondary {
+                width: 100%;
+            }
+
+            .slideshow-nav {
+                padding: 0.4rem 0.6rem;
+                font-size: 1rem;
+            }
+
+            .slideshow-nav.prev {
+                left: 0.5rem;
+            }
+
+            .slideshow-nav.next {
+                right: 0.5rem;
+            }
+
+            .slideshow-dots {
+                bottom: 1rem;
+                gap: 0.5rem;
+            }
+
+            .slideshow-dot {
+                width: 8px;
+                height: 8px;
+            }
+
+            .boards-overview {
+                padding: 2rem 1rem;
+            }
+
+            .section-header {
+                margin-bottom: 2rem;
             }
 
             .section-header h2 {
                 font-size: 1.4rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .section-header p {
+                font-size: 0.9rem;
+            }
+
+            .boards-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
             }
 
             .board-card {
-                padding: 1.5rem;
+                padding: 1.25rem;
+            }
+
+            .board-icon {
+                font-size: 2rem;
+            }
+
+            .board-card h3 {
+                font-size: 1.1rem;
+            }
+
+            .board-card > p {
+                font-size: 0.75rem;
+            }
+
+            .board-description {
+                font-size: 0.85rem;
+                margin-bottom: 1rem;
+            }
+
+            .board-features {
+                margin-bottom: 1rem;
+            }
+
+            .board-features li {
+                font-size: 0.8rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .board-footer {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+                padding-top: 1rem;
+            }
+
+            .member-count {
+                font-size: 0.75rem;
+            }
+
+            .members-section {
+                padding: 2rem 1rem;
+            }
+
+            .board-members {
+                margin-bottom: 2.5rem;
+            }
+
+            .board-members-header {
+                margin-bottom: 1.5rem;
+                padding-bottom: 1rem;
+            }
+
+            .board-members-header h3 {
+                font-size: 1.25rem;
+            }
+
+            .board-members-header p {
+                font-size: 0.85rem;
+            }
+
+            .members-grid {
+                grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+                gap: 1rem;
+            }
+
+            .member-info {
+                padding: 0.75rem;
+            }
+
+            .member-name {
+                font-size: 0.8rem;
+            }
+
+            .member-position {
+                font-size: 0.6rem;
+            }
+
+            footer {
+                padding: 2rem 1rem 1rem;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .footer-section h4 {
+                font-size: 1rem;
+                margin-bottom: 0.75rem;
+            }
+
+            .footer-section p {
+                font-size: 0.85rem;
+            }
+
+            .footer-bottom {
+                font-size: 0.75rem;
+                padding-top: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 0.9rem;
+            }
+
+            nav a {
+                font-size: 0.6rem;
+            }
+
+            .hero h1 {
+                font-size: 1.25rem;
+            }
+
+            .hero p {
+                font-size: 0.75rem;
+            }
+
+            .members-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.75rem;
+            }
+
+            .section-header h2 {
+                font-size: 1.2rem;
+            }
+
+            .board-card {
+                padding: 1rem;
+            }
+
+            .breadcrumb {
+                font-size: 0.55rem;
             }
         }
     </style>
@@ -833,11 +1171,18 @@
 <body>
 
     <!-- ===== HEADER ===== -->
-    <header>
+    <header role="banner">
         <div class="header-container">
-            <a href="#" class="logo">COG Kerala State</a>
-            <nav>
-                
+            <a href="home.html" class="nl">
+  <div class="nl-logo-wrap">
+    <img src="download.png" alt="Church of God Logo" class="nl-logo-img">
+  </div>
+  <div class="nl-info">
+    <div class="t1">Church of God (Full Gospel) · Kerala State</div>
+    <div class="t2">Evangelism &amp; Outreach Department</div>
+  </div>
+</a>
+            <nav role="navigation" aria-label="Main navigation">
                 <a href="#boards">Boards</a>
                 <a href="#members">Members</a>
                 <a href="#contact">Contact</a>
@@ -847,9 +1192,9 @@
     </header>
 
     <!-- ===== HERO SECTION - FULL BACKGROUND SLIDESHOW ===== -->
-    <section class="hero" id="home">
+    <section class="hero" id="home" role="main" aria-label="Hero section with slideshow">
         <!-- Slideshow Background -->
-        <div class="slideshow-background">
+        <div class="slideshow-background" aria-hidden="true">
             <div class="slide active">
                 <img src="choir (2).png" alt="Church Leadership 1" onerror="this.style.display='none'">
             </div>
@@ -897,9 +1242,9 @@
     </section>
 
     <!-- ===== BOARDS OVERVIEW ===== -->
-    <section class="boards-overview" id="boards">
+    <section class="boards-overview" id="boards" aria-labelledby="boards-heading">
         <div class="section-header">
-            <h2>Our Leadership Boards</h2>
+            <h2 id="boards-heading">Our Leadership Boards</h2>
             <p>Six specialized boards working together to advance the gospel and strengthen the body of Christ across Kerala State.</p>
         </div>
 
@@ -1077,7 +1422,7 @@
         </div>
 
         <!-- CREDENTIAL BOARD MEMBERS DETAILED -->
-        <div class="board-members" id="credential-board">
+        <div class="board-members" id="credential-members">
             <div class="board-members-header">
                 <h3 style="color: #d81b60;">Credential Board Members</h3>
                 <p>Serving with wisdom and spiritual accountability in all matters of ministerial credentials.</p>
@@ -1589,7 +1934,7 @@
     </section>
 
     <!-- ===== FOOTER ===== -->
-    <footer id="contact">
+    <footer id="contact" role="contentinfo">
         <div class="footer-container">
             <div class="footer-section">
                 <h4>About COG Kerala</h4>
