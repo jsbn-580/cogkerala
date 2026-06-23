@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Church Growth & Mission Board — COG Kerala</title>
+<title>Pastor Welfare &amp; Charity Board — COG Kerala</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Outfit:wght@300;400;500;600;700&family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -11,13 +11,13 @@
    ROOT DESIGN TOKENS — White · Magenta · Black
 ═══════════════════════════════ */
 :root {
-  --mg:    #C0186A;   /* magenta primary */
-  --mg2:   #D4237A;   /* magenta mid */
-  --mg3:   #E8479C;   /* magenta light */
-  --mg4:   #F9D6EA;   /* magenta tint */
-  --mg5:   #FDF0F7;   /* magenta blush */
-  --mgd:   #8E0F4F;   /* magenta dark */
-  --mgdd:  #5C0833;   /* magenta deep */
+  --mg:    #C0186A;
+  --mg2:   #D4237A;
+  --mg3:   #E8479C;
+  --mg4:   #F9D6EA;
+  --mg5:   #FDF0F7;
+  --mgd:   #8E0F4F;
+  --mgdd:  #5C0833;
 
   --blk:   #0D0D0D;
   --blk2:  #1A1A1A;
@@ -59,10 +59,11 @@ textarea,input,select{font-family:var(--ff);}
   box-shadow:0 2px 20px rgba(192,24,106,.07);
 }
 .nb{max-width:1400px;margin:0 auto;padding:0 2rem;height:var(--nav);display:flex;align-items:center;justify-content:space-between;}
-.nl{display:flex;align-items:center;gap:.85rem;}
-.nl-cross{font-size:1.5rem;color:var(--mg);line-height:1;font-family:var(--fc);}
-.nl-info .t1{font-family:var(--fc);font-size:.85rem;font-weight:600;color:var(--blk);letter-spacing:.05em;}
-.nl-info .t2{font-size:.6rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--blk4);margin-top:2px;}
+.nl{display:flex;align-items:center;gap:.85rem;text-decoration:none;color:#ffffff;}
+.nl-logo-img{height:48px;width:auto;margin-right:12px;}
+.nl-info{display:flex;flex-direction:column;}
+.t1{font-size:1rem;font-weight:700;letter-spacing:0.5px;font-family:var(--fc);color:var(--blk);}
+.t2{font-size:0.85rem;font-weight:500;color:var(--blk4);text-transform:uppercase;}
 .nav-links{display:flex;align-items:center;gap:.2rem;}
 .nav-link{font-size:.78rem;font-weight:500;letter-spacing:.07em;padding:.45rem 1rem;border-radius:4px;color:var(--blk3);transition:all .2s;}
 .nav-link:hover,.nav-link.active{background:var(--mg5);color:var(--mg);}
@@ -72,58 +73,19 @@ textarea,input,select{font-family:var(--ff);}
 .hamburger span{width:22px;height:1.5px;background:var(--mg);border-radius:2px;}
 
 /* ═══════════════════════════════
-   HERO — SLIDESHOW + RIGHT CARDS (REFINED)
+   HERO — SLIDESHOW + RIGHT CARDS
 ═══════════════════════════════ */
-.hero {
-  padding-top:var(--nav);
-  min-height:100vh;
-  position:relative;overflow:hidden;
-  display:flex;flex-direction:column;
-}
-
+.hero{padding-top:var(--nav);min-height:100vh;position:relative;overflow:hidden;display:flex;flex-direction:column;}
 .slides{position:absolute;inset:0;z-index:0;}
 .slide{position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease;display:flex;align-items:center;justify-content:center;}
 .slide.active{opacity:1;}
 .slide-bg{position:absolute;inset:0;object-fit:cover;width:100%;height:100%;filter:brightness(.28) saturate(.7);}
 .slide-color{position:absolute;inset:0;}
 
-/* Hero content — two-column layout */
 .hero-content{position:relative;z-index:2;flex:1;display:flex;align-items:center;padding:4rem 2rem 3rem;}
 .hero-inner{max-width:1300px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 480px;gap:2.5rem;align-items:stretch;}
-.nl {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  /* Make the text white to stand out over the dark hero mask */
-  color: #ffffff; 
-}
 
-.nl-logo-img {
-  height: 48px; /* Adjust based on your nav height */
-  width: auto;
-  margin-right: 12px;
-}
-
-.nl-info {
-  display: flex;
-  flex-direction: column;
-}
-
-.t1 {
-  font-size: 1rem;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-}
-
-.t2 {
-  font-size: 0.85rem;
-  font-weight: 500;
-  /* Slight transparency for the subtitle to create visual hierarchy */
-  color: rgba(255, 255, 255, 0.8); 
-  text-transform: uppercase;
-}
 /* Left */
-.hero-left{}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--fc);font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--mg3);margin-bottom:1.6rem;}
 .hero-eyebrow::before,.hero-eyebrow::after{content:'';width:28px;height:1px;background:linear-gradient(90deg,transparent,var(--mg3));}
 .hero-eyebrow::after{background:linear-gradient(90deg,var(--mg3),transparent);}
@@ -138,98 +100,21 @@ textarea,input,select{font-family:var(--ff);}
 .btn-ghost{font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.85rem 2rem;background:transparent;color:white;border:1px solid rgba(255,255,255,.38);border-radius:3px;transition:all .25s;}
 .btn-ghost:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.7);}
 
-/* RIGHT — 3 portrait leadership cards (REFINED) */
-.hero-right {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.2rem;
-  align-self: stretch;
-}
+/* RIGHT — 3 portrait leadership cards */
+.hero-right{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;align-self:stretch;}
 
-.hero-leader-card {
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  transition: all .4s var(--ease);
-  cursor: default;
-  box-shadow: 0 2px 12px rgba(0,0,0,.06);
-}
+.hero-leader-card{background:#ffffff;border-radius:12px;overflow:hidden;border:1px solid #eaeaea;box-shadow:0 4px 12px rgba(0,0,0,.04);display:flex;flex-direction:column;height:max-content;transition:all .4s var(--ease);cursor:default;}
+.hero-leader-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(192,24,106,.15);}
 
-.hero-leader-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(192,24,106,.15);
-}
+.hlc-photo{width:100%;display:flex;flex-direction:column;position:relative;background:#f9f9f9;}
+.hlc-photo img{width:100%;aspect-ratio:4/4.5;object-fit:cover;object-position:top;transition:transform .5s var(--ease);}
+.hero-leader-card:hover .hlc-photo img{transform:scale(1.04);}
 
-/* Portrait image area */
-.hlc-photo {
-  width: 100%;
-  height: 240px;
-  background: linear-gradient(160deg, var(--mg5), #e8e2ed);
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  align-items: flex-end;
-}
-
-.hlc-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
-  transition: transform .5s var(--ease);
-}
-
-.hero-leader-card:hover .hlc-photo img {
-  transform: scale(1.04);
-}
-
-/* Role + name badge overlaid on image */
-.hlc-badge {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(to top, rgba(13,13,13,.8), transparent);
-  padding: 1rem 1rem .75rem;
-  z-index: 2;
-}
-
-.hlc-role {
-  font-family: var(--fc);
-  font-size: .5rem;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  color: var(--mg3);
-  margin-bottom: .25rem;
-}
-
-.hlc-name {
-  font-family: var(--fg);
-  font-size: 1rem;
-  font-weight: 500;
-  color: white;
-  line-height: 1.2;
-}
-
-/* Description below image */
-.hlc-details-bottom {
-  padding: 1rem 1.1rem 1.1rem;
-  background: white;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.hlc-note {
-  font-size: .73rem;
-  color: var(--blk4);
-  line-height: 1.6;
-  font-weight: 300;
-}
+.hlc-badge{position:static;background:transparent;border:none;padding:16px 14px 4px 14px;display:flex;flex-direction:column;text-align:center;}
+.hlc-name{font-family:serif;font-size:1.1rem;font-weight:700;color:#1a1a1a;margin-bottom:4px;order:1;}
+.hlc-role{font-family:sans-serif;font-size:0.72rem;letter-spacing:0.8px;text-transform:uppercase;color:#b38428;font-weight:700;order:2;}
+.hlc-details-bottom{padding:0 14px 18px 14px;background:#ffffff;}
+.hlc-note{font-size:.78rem;color:#666666;line-height:1.5;font-weight:400;margin:0;text-align:center;}
 
 /* Slide indicators */
 .slide-indicators{position:relative;z-index:2;display:flex;align-items:center;gap:.5rem;padding:1.2rem 2rem 2rem;max-width:1300px;margin:0 auto;width:100%;}
@@ -287,190 +172,37 @@ textarea,input,select{font-family:var(--ff);}
 .pillar-text{font-size:.77rem;color:var(--blk4);margin-top:.25rem;line-height:1.6;}
 
 /* ═══════════════════════════════
-   LEADERSHIP — 3 FULL-PAGE CARDS
-═══════════════════════════════ */
-/* 1. Card Container (Enforces exact height wrapper to kill the "long tail") */
-.hero-leader-card {
-  background: #ffffff;
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid #eaeaea;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
-  display: flex;
-  flex-direction: column;
-  height: max-content; /* Forces the white card to perfectly hug the text length */
-}
-
-/* 2. Photo Area Layout Change */
-.hlc-photo {
-  width: 100%;
-  display: flex;
-  flex-direction: column; /* Allows content underneath the image to flow sequentially */
-  position: relative;
-  background: #f9f9f9;
-}
-
-.hlc-photo img {
-  width: 100%;
-  aspect-ratio: 4 / 4.5; /* Keeps the portrait frames uniformly shaped */
-  object-fit: cover;
-  object-position: top;
-}
-
-/* 3. The Text Box (Black background deleted, pushed to the white area) */
-.hlc-badge {
-  position: static; /* Removes absolute floating placement */
-  background: transparent; /* Completely deletes the black box */
-  border: none; /* Deletes old container borders */
-  padding: 16px 14px 4px 14px; /* Generous spacing inside the white background */
-  display: flex;
-  flex-direction: column;
-  text-align: center; /* Centers text beautifully */
-}
-
-/* 4. Elegant Name Typography on White */
-.hlc-name {
-  font-family: serif;
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #1a1a1a; /* Rich dark text for high readability on white */
-  margin-bottom: 4px;
-  order: 1; /* Keeps the name cleanly stacked on top */
-}
-
-/* 5. Elegant Designation Typography on White */
-.hlc-role {
-  font-family: sans-serif;
-  font-size: 0.72rem;
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
-  color: #b38428; /* A slightly deeper gold tone optimized for white backgrounds */
-  font-weight: 700;
-  order: 2; /* Keeps designation directly below the name */
-}
-
-/* 6. Description Note Area */
-.hlc-details-bottom {
-  padding: 0 14px 18px 14px; /* Tighter padding to prevent vertical stretching */
-  background: #ffffff;
-}
-
-.hlc-note {
-  font-size: 0.78rem;
-  color: #666666; /* Muted description gray */
-  line-height: 1.5;
-  font-weight: 400;
-  margin: 0;
-  text-align: center;
-}
-/* ═══════════════════════════════
-   BOARD MEMBERS — CLEAN GRID CARDS (REFINED)
+   BOARD MEMBERS
 ═══════════════════════════════ */
 .members-sec{background:var(--white);}
-.members-sec .sec-label{color:var(--mg);}
-.members-sec .sec-label::after{background:linear-gradient(90deg,var(--mg),transparent);}
-.members-sec .sec-h{color:var(--blk);}
-.members-sec .sec-h em{color:var(--mg);}
-.members-sec .sec-sub{color:var(--blk4);}
-
-.members-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-
-.mem-card {
-  background: white;
-  border-radius: 8px;
-  overflow: hidden;
-  border: 1px solid rgba(192, 24, 106, 0.12);
-  transition: all .35s var(--ease);
-  cursor: default;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-}
-
-.mem-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 24px rgba(192, 24, 106, 0.2);
-  border-color: rgba(192, 24, 106, 0.25);
-}
-
-/* Image container */
-.mem-img-wrap {
-  width: 100%;
-  aspect-ratio: 3/3.5;
-  background: linear-gradient(135deg, var(--mg5), var(--off3));
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.mem-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
-  transition: transform .5s var(--ease);
-}
-
-.mem-card:hover .mem-img {
-  transform: scale(1.05);
-}
-
-/* Fallback silhouette */
-.mem-img-fallback {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--fc);
-  font-size: 2.2rem;
-  color: rgba(192, 24, 106, 0.15);
-  z-index: 0;
-}
-
-/* Info section */
-.mem-info {
-  padding: .95rem 1rem;
-  background: white;
-  text-align: center;
-}
-
-.mem-name {
-  font-family: var(--fg);
-  font-size: .85rem;
-  font-weight: 500;
-  color: var(--blk);
-  line-height: 1.25;
-  margin-bottom: .35rem;
-}
-
-.mem-pos {
-  font-family: var(--fc);
-  font-size: .5rem;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: var(--mg);
-  font-weight: 600;
-}
-
-/* Responsive grid */
-@media(max-width:1200px){
-  .members-grid{grid-template-columns:repeat(auto-fit, minmax(130px, 1fr));}
-}
-@media(max-width:900px){
-  .members-grid{grid-template-columns:repeat(auto-fit, minmax(120px, 1fr));}
-}
-@media(max-width:640px){
-  .members-grid{grid-template-columns:repeat(auto-fit, minmax(100px, 1fr));}
-}
+.members-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1.5rem;margin-top:2rem;}
+.mem-card{background:white;border-radius:8px;overflow:hidden;border:1px solid rgba(192,24,106,.12);transition:all .35s var(--ease);cursor:default;box-shadow:0 2px 10px rgba(0,0,0,.05);}
+.mem-card:hover{transform:translateY(-6px);box-shadow:0 8px 24px rgba(192,24,106,.2);border-color:rgba(192,24,106,.25);}
+.mem-img-wrap{width:100%;aspect-ratio:3/3.5;background:linear-gradient(135deg,var(--mg5),var(--off3));position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+.mem-img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .5s var(--ease);}
+.mem-card:hover .mem-img{transform:scale(1.05);}
+.mem-img-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--fc);font-size:2.2rem;color:rgba(192,24,106,.15);z-index:0;}
+.mem-info{padding:.95rem 1rem;background:white;text-align:center;}
+.mem-name{font-family:var(--fg);font-size:.85rem;font-weight:500;color:var(--blk);line-height:1.25;margin-bottom:.35rem;}
+.mem-pos{font-family:var(--fc);font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mg);font-weight:600;}
 
 /* ═══════════════════════════════
-   WORKS
+   PHOTO GALLERY
+═══════════════════════════════ */
+.gallery-sec{background:var(--off);}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:2rem;}
+.gallery-item{border-radius:8px;overflow:hidden;position:relative;background:linear-gradient(135deg,var(--mg5),var(--off3));aspect-ratio:4/3;border:1px solid rgba(192,24,106,.1);transition:all .4s var(--ease);}
+.gallery-item:hover{transform:translateY(-4px);box-shadow:var(--shadow2);}
+.gallery-item.tall{aspect-ratio:4/5;grid-row:span 2;}
+.gallery-item.wide{grid-column:span 2;}
+.gallery-img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease);}
+.gallery-item:hover .gallery-img{transform:scale(1.06);}
+.gallery-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(13,13,13,.65),transparent 55%);opacity:0;transition:opacity .35s;display:flex;align-items:flex-end;padding:1.2rem;}
+.gallery-item:hover .gallery-overlay{opacity:1;}
+.gallery-caption{font-family:var(--fc);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.85);}
+
+/* ═══════════════════════════════
+   WELFARE WORKS
 ═══════════════════════════════ */
 .works-sec{background:white;}
 .works-intro{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:end;margin-bottom:4rem;}
@@ -486,10 +218,10 @@ textarea,input,select{font-family:var(--ff);}
 .wc-footer{padding:.9rem 1.8rem;border-top:1px solid var(--off3);display:flex;align-items:center;justify-content:space-between;}
 .wc-status{display:inline-flex;align-items:center;gap:.4rem;font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mg);background:var(--mg5);padding:.22rem .65rem;border-radius:50px;}
 .wc-status::before{content:'';width:5px;height:5px;background:var(--mg3);border-radius:50%;}
-.wc-status.planned{color:var(--blk3);background:var(--off2);}
-.wc-status.planned::before{background:var(--blk4);}
-.wc-status.completed{color:#1A6B35;background:rgba(26,107,53,.1);}
-.wc-status.completed::before{background:#2E9B50;}
+.wc-status.ongoing{color:var(--mg);background:var(--mg5);}
+.wc-status.ongoing::before{background:var(--mg3);}
+.wc-status.annual{color:#1A6B35;background:rgba(26,107,53,.1);}
+.wc-status.annual::before{background:#2E9B50;}
 .wc-year{font-size:.73rem;color:var(--blk5);}
 
 .work-card.featured{grid-column:1/-1;background:var(--blk);border-color:transparent;}
@@ -582,16 +314,17 @@ footer a{color:var(--mg3);}
   .about-layout,.contact-layout{gap:3rem;}
   .works-grid{grid-template-columns:1fr 1fr;}
   .work-card.featured .wc-body{grid-template-columns:1fr;}
+  .gallery-grid{grid-template-columns:repeat(2,1fr);}
+  .gallery-item.wide{grid-column:span 1;}
+  .gallery-item.tall{aspect-ratio:4/3;grid-row:span 1;}
 }
 @media(max-width:900px){
   .about-layout,.contact-layout{grid-template-columns:1fr;}
-  .leaders-row{grid-template-columns:1fr 1fr;}
   .vs-inner{flex-direction:column;gap:2rem;}
   .vs-bar{display:none;}
   .works-intro{grid-template-columns:1fr;}
 }
 @media(max-width:640px){
-  .leaders-row{grid-template-columns:1fr;}
   .works-grid{grid-template-columns:1fr;}
   .hero-stats-inner{flex-wrap:wrap;}
   .hs{flex:1 0 40%;}
@@ -600,7 +333,9 @@ footer a{color:var(--mg3);}
   .hamburger{display:flex;}
   .frow-2{grid-template-columns:1fr;}
   .hero-right{display:none;}
-  .members-grid{grid-template-columns:repeat(auto-fit, minmax(90px, 1fr));}
+  .members-grid{grid-template-columns:repeat(auto-fit,minmax(90px,1fr));}
+  .gallery-grid{grid-template-columns:1fr 1fr;}
+  .gallery-item.tall,.gallery-item.wide{grid-column:span 1;grid-row:span 1;aspect-ratio:4/3;}
 }
 </style>
 </head>
@@ -609,32 +344,23 @@ footer a{color:var(--mg3);}
 <!-- NAV -->
 <nav id="nav">
   <div class="nb">
-<a href="home.html" class="nl">
-
-  <div class="nl-logo-wrap">
-
-    <img src="download.png" alt="COG KERALA LOGO" class="nl-logo-img">
-
-  </div>
-
- 
-
-  <div class="nl-info">
-
-    <div class="t1">Church of God (Full Gospel) · Kerala State</div>
-
-    <div class="t2">Church Growth Mission Board</div>
-
-  </div>
-
-</a>
+    <a href="home.html" class="nl">
+      <div class="nl-logo-wrap">
+        <img src="download.png" alt="COG KERALA LOGO" class="nl-logo-img">
+      </div>
+      <div class="nl-info">
+        <div class="t1">Church of God (Full Gospel) · Kerala State</div>
+        <div class="t2">Pastor Welfare &amp; Charity Board</div>
+      </div>
+    </a>
     <div class="nav-links">
       <a href="#about" class="nav-link">About</a>
       <a href="#members" class="nav-link">Board Members</a>
+      <a href="#gallery" class="nav-link">Gallery</a>
       <a href="#contact" class="nav-link">Contact</a>
       <a href="home.html" class="nav-link">Home</a>
     </div>
-    <a href="#contact" class="nav-cta">Get Involved</a>
+    <a href="#contact" class="nav-cta">Support Us</a>
     <button class="hamburger" id="ham" aria-label="Open menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
@@ -643,15 +369,15 @@ footer a{color:var(--mg3);}
 <section class="hero" id="top">
   <div class="slides" id="slides">
     <div class="slide active">
-      <img class="slide-bg" src="con (3).png" alt="Mission" onerror="this.style.display='none'">
+      <img class="slide-bg" src="con (3).png" alt="Welfare Ministry" onerror="this.style.display='none'">
       <div class="slide-color"></div>
     </div>
     <div class="slide">
-      <img class="slide-bg" src="conven.png" alt="Church Growth" onerror="this.style.display='none'">
+      <img class="slide-bg" src="conven.png" alt="Charity Work" onerror="this.style.display='none'">
       <div class="slide-color"></div>
     </div>
     <div class="slide">
-      <img class="slide-bg" src="con (4).png" alt="Outreach" onerror="this.style.display='none'">
+      <img class="slide-bg" src="con (4).png" alt="Pastor Care" onerror="this.style.display='none'">
       <div class="slide-color"></div>
     </div>
     <div class="slide">
@@ -660,69 +386,62 @@ footer a{color:var(--mg3);}
     </div>
   </div>
 
-  <div class="hero-pattern"></div>
-
   <div class="slide-caption" id="slideCaption">
-    <div class="sc-verse">"Go ye therefore, and teach all nations…"</div>
-    <div class="sc-ref">Matthew 28:19 (KJV)</div>
+    <div class="sc-verse">"Bear ye one another's burdens, and so fulfil the law of Christ."</div>
+    <div class="sc-ref">Galatians 6:2 (KJV)</div>
   </div>
 
   <div class="hero-content">
     <div class="hero-inner">
 
-      <!-- LEFT — headline -->
+      <!-- LEFT -->
       <div class="hero-left">
         <div class="hero-eyebrow">Church of God · Kerala State · India</div>
         <h1 class="hero-title">
-          <span>Church Growth</span>
-          <strong>&amp; Mission Board</strong>
+          <span>Pastor Welfare</span>
+          <strong>&amp; Charity Board</strong>
         </h1>
         <div class="hero-divider"></div>
         <p class="hero-sub">
-          Advancing the Kingdom of God across Kerala and beyond — planting churches,
-          equipping believers, and carrying the Gospel to every unreached corner of the nation
-          and the ends of the earth.
+          Caring for God's servants and the vulnerable — providing support, relief, and dignity
+          to pastors, their families, and the underprivileged communities across the
+          Kerala State of the Church of God (Full Gospel) in India.
         </p>
         <div class="hero-btns">
-          <button class="btn-mg" onclick="scrollTo('#about')">Discover Our Mission</button>
+          <button class="btn-mg" onclick="scrollTo('#about')">Our Ministry</button>
           <button class="btn-ghost" onclick="scrollTo('#works')">Our Works</button>
         </div>
       </div>
 
-      <!-- RIGHT — 3 portrait leadership cards (REFINED) -->
+      <!-- RIGHT — 3 portrait leadership cards -->
       <div class="hero-right">
 
-        <!-- State Overseer -->
 
+        <!-- Director -->
+        <div class="hero-leader-card">
+          <div class="hlc-photo">
+            <img src="pastor/1 (1).png" alt="Director" onerror="this.style.display='none'">
+            <div class="hlc-badge">
+              <div class="hlc-role">Director</div>
+              <div class="hlc-name">Ps. Saji Abraham</div>
+            </div>
+          </div>
+          <div class="hlc-details-bottom"></div>
+        </div>
 
         <!-- Secretary -->
         <div class="hero-leader-card">
           <div class="hlc-photo">
-            <img src="cgm/cgm4.png" alt="Secretary" onerror="this.style.display='none'">
-            <div class="hlc-badge">
-              <div class="hlc-role">Co-ordinator</div>
-              <div class="hlc-name">Br.Sabu T A</div>
-            </div>
-          </div>
-          <div class="hlc-details-bottom">
-          </div>
-        </div>
-
-        <!-- Treasurer -->
-        <div class="hero-leader-card">
-          <div class="hlc-photo">
-            <img src="cgm/cgm3.png" alt="Treasurer" onerror="this.style.display='none'">
+            <img src="pastor/1 (2).png" alt="Secretary" onerror="this.style.display='none'">
             <div class="hlc-badge">
               <div class="hlc-role">Secretary</div>
-              <div class="hlc-name">Ps..P M Mathew</div>
+              <div class="hlc-name">Ps. John Mathew C.M.</div>
             </div>
           </div>
-          <div class="hlc-details-bottom">
-          </div>
+          <div class="hlc-details-bottom"></div>
         </div>
 
       </div>
-
     </div>
   </div>
 
@@ -735,59 +454,28 @@ footer a{color:var(--mg3);}
 
   <div class="hero-stats-row">
     <div class="hero-stats-inner">
-      <div class="hs"><div class="hs-num">500+</div><div class="hs-lbl">Local Churches</div></div>
-      <div class="hs"><div class="hs-num">14</div><div class="hs-lbl">Districts</div></div>
-      <div class="hs"><div class="hs-num">80+</div><div class="hs-lbl">Mission Outposts</div></div>
-      <div class="hs"><div class="hs-num">1,200+</div><div class="hs-lbl">Ordained Ministers</div></div>
-      <div class="hs"><div class="hs-num">Since 1914</div><div class="hs-lbl">Established</div></div>
+      <div class="hs"><div class="hs-num">1,200+</div><div class="hs-lbl">Pastors Served</div></div>
+      <div class="hs"><div class="hs-num">14</div><div class="hs-lbl">Districts Covered</div></div>
+      <div class="hs"><div class="hs-num">500+</div><div class="hs-lbl">Families Supported</div></div>
+      <div class="hs"><div class="hs-num">Annual</div><div class="hs-lbl">Relief Programmes</div></div>
+      <div class="hs"><div class="hs-num">Since 1964</div><div class="hs-lbl">Established</div></div>
     </div>
   </div>
 </section>
 
 <!-- ABOUT -->
-<section class="sec about-sec" id="about">
-  <div class="cont">
-    <div class="about-layout">
-      <div class="about-visual rv" style="position:relative;">
-        <div class="about-img-quote">
-          <div class="aiq-text">"The harvest truly is plenteous, but the labourers are few."</div>
-          <div class="aiq-ref">Matthew 9:37</div>
-        </div>
-        <div class="about-img-frame">
-          <img src="audi (1).jpg" alt="Church Growth Board" onerror="this.style.display='none'">
-        </div>
-        <div class="about-img-accent">
-          <div class="aia-num">75+</div>
-          <div class="aia-lbl">Years of Mission</div>
-        </div>
-      </div>
-      <div class="about-text rv2">
-        <div class="sec-label">About the Board</div>
-        <h2 class="sec-h">Rooted in <em>Faith,</em><br>Driven by Purpose</h2>
-        <p class="lead">The Church Growth and Mission Board of the Church of God (Full Gospel) in India, Kerala State, exists to fulfil the Great Commission — establishing, strengthening, and multiplying the local church across every community.</p>
-        <p>Constituted under the Kerala State leadership of the Church of God (Full Gospel) in India, the Growth and Mission Board coordinates all evangelistic endeavours, church-planting initiatives, and missionary deployment across the fourteen districts of Kerala. It serves as the strategic arm of the State, channelling resources, training, and vision into the field.</p>
-        <p>From pioneer missions in tribal and coastal belts to urban church-planting projects in growing cities, the Board partners with local congregations, district leaders, and international mission agencies to ensure that no community is left unreached with the transforming message of the Gospel of Jesus Christ.</p>
-        <div class="about-pillars">
-          <div class="pillar"><div class="pillar-icon">⛪</div><div class="pillar-title">Church Planting</div><div class="pillar-text">Establishing new congregations in unreached localities across Kerala.</div></div>
-          <div class="pillar"><div class="pillar-icon">🌏</div><div class="pillar-title">Cross-Cultural Mission</div><div class="pillar-text">Sending missionaries to unreached people groups beyond Kerala.</div></div>
-          <div class="pillar"><div class="pillar-icon">📚</div><div class="pillar-title">Leadership Training</div><div class="pillar-text">Equipping pastors, evangelists, and lay leaders for effective ministry.</div></div>
-          <div class="pillar"><div class="pillar-icon">🤝</div><div class="pillar-title">Community Outreach</div><div class="pillar-text">Serving communities through compassion, education, and social action.</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- BOARD MEMBERS (REFINED) -->
+
+<!-- BOARD MEMBERS -->
 <section class="sec members-sec" id="members">
   <div class="cont">
     <div class="sec-label rv">Representation</div>
     <h2 class="sec-h rv">Board <em>Members</em></h2>
-    <div class="sec-sub rv">Twenty-one representatives standing together in mission — each a voice for their people, each a servant of the Kingdom.</div>
+    <div class="sec-sub rv">Faithful servants appointed to steward the welfare of God's workers — united in compassion, committed to care.</div>
 
     <div class="members-grid">
 
-      <!-- Member 1 -->
+      <!-- State Overseer -->
       <div class="mem-card">
         <div class="mem-img-wrap">
           <img class="mem-img" src="ps.jpg" alt="Rev. Y. Reji" onerror="this.style.display='none'">
@@ -799,244 +487,182 @@ footer a{color:var(--mg3);}
         </div>
       </div>
 
-      <!-- Member 2 -->
+      <!-- Director -->
       <div class="mem-card">
         <div class="mem-img-wrap">
-          <img class="mem-img" src="cgm/cgm2.png" alt="Pr. Y. Jose" onerror="this.style.display='none'">
+          <img class="mem-img" src="pastor/1 (1).png" alt="Pr. Saji Abraham" onerror="this.style.display='none'">
           <div class="mem-img-fallback">✝</div>
         </div>
         <div class="mem-info">
-          <div class="mem-name">Pr. Y. Jose</div>
+          <div class="mem-name">Pr. Saji Abraham</div>
           <div class="mem-pos">Director</div>
         </div>
       </div>
 
-      <!-- Member 3 -->
+      <!-- Secretary -->
       <div class="mem-card">
         <div class="mem-img-wrap">
-          <img class="mem-img" src="cgm/cgm3.png" alt="Pr. P.M. Mathew" onerror="this.style.display='none'">
+          <img class="mem-img" src="pastor/1 (2).png" alt="Pr. John Mathew C.M." onerror="this.style.display='none'">
           <div class="mem-img-fallback">✝</div>
         </div>
         <div class="mem-info">
-          <div class="mem-name">Pr. P.M. Mathew</div>
+          <div class="mem-name">Pr. John Mathew C.M.</div>
           <div class="mem-pos">Secretary</div>
         </div>
       </div>
 
-      <!-- Member 4 -->
+      <!-- Joint Secretary -->
       <div class="mem-card">
         <div class="mem-img-wrap">
-          <img class="mem-img" src="cgm/cgm4.png" alt="Bro. Sabu T.A." onerror="this.style.display='none'">
+          <img class="mem-img" src="pastor/1 (3).png" alt="Br. Reji C. Abraham" onerror="this.style.display='none'">
           <div class="mem-img-fallback">✝</div>
         </div>
         <div class="mem-info">
-          <div class="mem-name">Bro. Sabu T.A.</div>
-          <div class="mem-pos">Co-ordinator</div>
+          <div class="mem-name">Br. Reji C. Abraham</div>
+          <div class="mem-pos">Joint Secretary</div>
         </div>
       </div>
 
-      <!-- Member 5 -->
+      <!-- Treasurer -->
       <div class="mem-card">
         <div class="mem-img-wrap">
-          <img class="mem-img" src="cgm/cgm5.png" alt="Pr. Binu V. John" onerror="this.style.display='none'">
+          <img class="mem-img" src="pastor/1 (4).png" alt="Br. Ashik Mathew" onerror="this.style.display='none'">
           <div class="mem-img-fallback">✝</div>
         </div>
         <div class="mem-info">
-          <div class="mem-name">Pr. Binu V. John</div>
-          <div class="mem-pos">Media Co-ordinator</div>
+          <div class="mem-name">Br. Ashik Mathew</div>
+          <div class="mem-pos">Treasurer</div>
         </div>
       </div>
 
-      <!-- Member 6 -->
+      <!-- Board Member 1 -->
       <div class="mem-card">
         <div class="mem-img-wrap">
-          <img class="mem-img" src="cgm/cgm6.png" alt="Pr. K.V. Mathew" onerror="this.style.display='none'">
+          <img class="mem-img" src="pastor/1 (5).png" alt="Pr. Reji George" onerror="this.style.display='none'">
           <div class="mem-img-fallback">✝</div>
         </div>
         <div class="mem-info">
-          <div class="mem-name">Pr. K.V. Mathew</div>
+          <div class="mem-name">Pr. Reji George</div>
           <div class="mem-pos">Board Member</div>
         </div>
       </div>
 
-      <!-- Member 7 -->
+      <!-- Board Member 2 -->
       <div class="mem-card">
         <div class="mem-img-wrap">
-          <img class="mem-img" src="cgm/cgm7.png" alt="Pr. C.T. Mathew" onerror="this.style.display='none'">
+          <img class="mem-img" src="pastor/1 (6).png" alt="Pr. Binu Thomas" onerror="this.style.display='none'">
           <div class="mem-img-fallback">✝</div>
         </div>
         <div class="mem-info">
-          <div class="mem-name">Pr. C.T. Mathew</div>
+          <div class="mem-name">Pr. Binu Thomas</div>
           <div class="mem-pos">Board Member</div>
         </div>
       </div>
 
-      <!-- Member 8 -->
+      <!-- Board Member 3 -->
       <div class="mem-card">
         <div class="mem-img-wrap">
-          <img class="mem-img" src="cgm/cgm8.png" alt="Pr. Shaji Kumar" onerror="this.style.display='none'">
+          <img class="mem-img" src="pastor/1 (7).png" alt="Pr. Prajeesh Chandy" onerror="this.style.display='none'">
           <div class="mem-img-fallback">✝</div>
         </div>
         <div class="mem-info">
-          <div class="mem-name">Pr. Shaji Kumar</div>
+          <div class="mem-name">Pr. Prajeesh Chandy</div>
           <div class="mem-pos">Board Member</div>
         </div>
       </div>
 
-      <!-- Member 9 -->
+      <!-- Board Member 4 -->
       <div class="mem-card">
         <div class="mem-img-wrap">
-          <img class="mem-img" src="cgm/cgm9.png" alt="Pr. P.T. Biju" onerror="this.style.display='none'">
+          <img class="mem-img" src="pastor/1 (8).png" alt="Pr. Vineesh V." onerror="this.style.display='none'">
           <div class="mem-img-fallback">✝</div>
         </div>
         <div class="mem-info">
-          <div class="mem-name">Pr. P.T. Biju</div>
+          <div class="mem-name">Pr. Vineesh V.</div>
           <div class="mem-pos">Board Member</div>
         </div>
       </div>
 
-      <!-- Member 10 -->
+      <!-- Board Member 5 -->
       <div class="mem-card">
         <div class="mem-img-wrap">
-          <img class="mem-img" src="cgm/cgm10.png" alt="Pr. Blesson Sam" onerror="this.style.display='none'">
+          <img class="mem-img" src="pastor/1 (9).png" alt="Pr. Mammen P. Chandy" onerror="this.style.display='none'">
           <div class="mem-img-fallback">✝</div>
         </div>
         <div class="mem-info">
-          <div class="mem-name">Pr. Blesson Sam</div>
+          <div class="mem-name">Pr. Mammen P. Chandy</div>
           <div class="mem-pos">Board Member</div>
         </div>
       </div>
 
-      <!-- Member 11 -->
-      <div class="mem-card">
-        <div class="mem-img-wrap">
-          <img class="mem-img" src="cgm/cgm11.png" alt="Pr. Biju John" onerror="this.style.display='none'">
-          <div class="mem-img-fallback">✝</div>
-        </div>
-        <div class="mem-info">
-          <div class="mem-name">Pr. Biju John</div>
-          <div class="mem-pos">Board Member</div>
-        </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISION STRIP -->
+<div class="vision-strip">
+  <div class="vs-inner">
+    <div class="vs-quote">
+      <div class="vs-q-text">"The elders which are among you I exhort… Feed the flock of God… not for filthy lucre, but of a ready mind."</div>
+      <div class="vs-q-ref">1 Peter 5:1–2 (KJV)</div>
+    </div>
+    <div class="vs-bar"></div>
+    <div class="vs-cta">
+      <p>Partner with us in caring for God's servants</p>
+      <button class="btn-mg-lg" onclick="scrollTo('#contact')">Give Towards Welfare</button>
+    </div>
+  </div>
+</div>
+
+<!-- WELFARE WORKS -->
+
+<!-- PHOTO GALLERY -->
+<section class="sec gallery-sec" id="gallery">
+  <div class="cont">
+    <div class="sec-label rv">Moments of Ministry</div>
+    <h2 class="sec-h rv">Photo <em>Gallery</em></h2>
+    <div class="sec-sub rv">Glimpses of God's grace at work — welfare programmes, charitable outreach, and pastoral care across Kerala.</div>
+
+    <div class="gallery-grid">
+
+      <div class="gallery-item tall rv">
+        <img class="gallery-img" src="pw/gallery1.jpg" alt="Welfare Programme" onerror="this.src='';this.style.background='linear-gradient(135deg,#FDF0F7,#E8E2ED)'">
+        <div class="gallery-overlay"><span class="gallery-caption">Welfare Programme</span></div>
       </div>
 
-      <!-- Member 12 -->
-      <div class="mem-card">
-        <div class="mem-img-wrap">
-          <img class="mem-img" src="cgm/cgm12.png" alt="Bro. Yohannan Samuel" onerror="this.style.display='none'">
-          <div class="mem-img-fallback">✝</div>
-        </div>
-        <div class="mem-info">
-          <div class="mem-name">Bro. Yohannan Samuel</div>
-          <div class="mem-pos">Board Member</div>
-        </div>
+      <div class="gallery-item rv">
+        <img class="gallery-img" src="pw/gallery2.jpg" alt="Relief Distribution" onerror="this.src='';this.style.background='linear-gradient(135deg,#F9D6EA,#FDF0F7)'">
+        <div class="gallery-overlay"><span class="gallery-caption">Relief Distribution</span></div>
       </div>
 
-      <!-- Member 13 -->
-      <div class="mem-card">
-        <div class="mem-img-wrap">
-          <img class="mem-img" src="cgm/cgm13.png" alt="Bro. Abraham M. Thomas" onerror="this.style.display='none'">
-          <div class="mem-img-fallback">✝</div>
-        </div>
-        <div class="mem-info">
-          <div class="mem-name">Bro. Abraham M. Thomas</div>
-          <div class="mem-pos">Board Member</div>
-        </div>
+      <div class="gallery-item rv">
+        <img class="gallery-img" src="pw/gallery3.jpg" alt="Medical Aid" onerror="this.src='';this.style.background='linear-gradient(135deg,#E8E2ED,#FDF0F7)'">
+        <div class="gallery-overlay"><span class="gallery-caption">Medical Aid Programme</span></div>
       </div>
 
-      <!-- Member 14 -->
-      <div class="mem-card">
-        <div class="mem-img-wrap">
-          <img class="mem-img" src="cgm/cgm14.png" alt="Pr. Joy Kunjachen" onerror="this.style.display='none'">
-          <div class="mem-img-fallback">✝</div>
-        </div>
-        <div class="mem-info">
-          <div class="mem-name">Pr. Joy Kunjachen</div>
-          <div class="mem-pos">Board Member</div>
-        </div>
+      <div class="gallery-item wide rv2">
+        <img class="gallery-img" src="pw/gallery4.jpg" alt="Charity Distribution" onerror="this.src='';this.style.background='linear-gradient(135deg,#FDF0F7,#F9D6EA)'">
+        <div class="gallery-overlay"><span class="gallery-caption">Annual Charity Distribution</span></div>
       </div>
 
-      <!-- Member 15 -->
-      <div class="mem-card">
-        <div class="mem-img-wrap">
-          <img class="mem-img" src="cgm/cgm15.png" alt="Pr. Biju B. Joseph" onerror="this.style.display='none'">
-          <div class="mem-img-fallback">✝</div>
-        </div>
-        <div class="mem-info">
-          <div class="mem-name">Pr. Biju B. Joseph</div>
-          <div class="mem-pos">Board Member</div>
-        </div>
+      <div class="gallery-item rv2">
+        <img class="gallery-img" src="pw/gallery5.jpg" alt="Pastors Meet" onerror="this.src='';this.style.background='linear-gradient(135deg,#F9D6EA,#E8E2ED)'">
+        <div class="gallery-overlay"><span class="gallery-caption">Pastoral Care Meet</span></div>
       </div>
 
-      <!-- Member 16 -->
-      <div class="mem-card">
-        <div class="mem-img-wrap">
-          <img class="mem-img" src="cgm/cgm16.png" alt="Pr. Sabu Uthuppan" onerror="this.style.display='none'">
-          <div class="mem-img-fallback">✝</div>
-        </div>
-        <div class="mem-info">
-          <div class="mem-name">Pr. Sabu Uthuppan</div>
-          <div class="mem-pos">Board Member</div>
-        </div>
+      <div class="gallery-item rv2">
+        <img class="gallery-img" src="pw/gallery6.jpg" alt="Education Scholarship" onerror="this.src='';this.style.background='linear-gradient(135deg,#FDF0F7,#E8E2ED)'">
+        <div class="gallery-overlay"><span class="gallery-caption">Scholarship Award</span></div>
       </div>
 
-      <!-- Member 17 -->
-      <div class="mem-card">
-        <div class="mem-img-wrap">
-          <img class="mem-img" src="cgm/cgm17.png" alt="Pr. A.D. Johnson" onerror="this.style.display='none'">
-          <div class="mem-img-fallback">✝</div>
-        </div>
-        <div class="mem-info">
-          <div class="mem-name">Pr. A.D. Johnson</div>
-          <div class="mem-pos">Board Member</div>
-        </div>
+      <div class="gallery-item rv2">
+        <img class="gallery-img" src="pw/gallery7.jpg" alt="Community Service" onerror="this.src='';this.style.background='linear-gradient(135deg,#E8E2ED,#F9D6EA)'">
+        <div class="gallery-overlay"><span class="gallery-caption">Community Service</span></div>
       </div>
 
-      <!-- Member 18 -->
-      <div class="mem-card">
-        <div class="mem-img-wrap">
-          <img class="mem-img" src="cgm/cgm18.png" alt="Pr. T.V. Mathew" onerror="this.style.display='none'">
-          <div class="mem-img-fallback">✝</div>
-        </div>
-        <div class="mem-info">
-          <div class="mem-name">Pr. T.V. Mathew</div>
-          <div class="mem-pos">Board Member</div>
-        </div>
-      </div>
-
-      <!-- Member 19 -->
-      <div class="mem-card">
-        <div class="mem-img-wrap">
-          <img class="mem-img" src="cgm/cgm19.png" alt="Thomas Koshy" onerror="this.style.display='none'">
-          <div class="mem-img-fallback">✝</div>
-        </div>
-        <div class="mem-info">
-          <div class="mem-name">Thomas Koshy</div>
-          <div class="mem-pos">Board Member</div>
-        </div>
-      </div>
-
-      <!-- Member 20 -->
-      <div class="mem-card">
-        <div class="mem-img-wrap">
-          <img class="mem-img" src="cgm/cgm20.png" alt="Pr. Vinod Kumar C" onerror="this.style.display='none'">
-          <div class="mem-img-fallback">✝</div>
-        </div>
-        <div class="mem-info">
-          <div class="mem-name">Pr. Vinod Kumar C</div>
-          <div class="mem-pos">Board Member</div>
-        </div>
-      </div>
-
-      <!-- Member 21 -->
-      <div class="mem-card">
-        <div class="mem-img-wrap">
-          <img class="mem-img" src="cgm/cgm21.png" alt="Bro. Jobin Varghese" onerror="this.style.display='none'">
-          <div class="mem-img-fallback">✝</div>
-        </div>
-        <div class="mem-info">
-          <div class="mem-name">Bro. Jobin Varghese</div>
-          <div class="mem-pos">Board Member</div>
-        </div>
+      <div class="gallery-item wide rv2">
+        <img class="gallery-img" src="pw/gallery8.jpg" alt="State Convention" onerror="this.src='';this.style.background='linear-gradient(135deg,#FDF0F7,#E8E2ED)'">
+        <div class="gallery-overlay"><span class="gallery-caption">State Convention</span></div>
       </div>
 
     </div>
@@ -1050,16 +676,16 @@ footer a{color:var(--mg3);}
       <div class="contact-info rv">
         <div class="sec-label">Connect</div>
         <h2 class="sec-h">Reach the<br><em>Board</em></h2>
-        <p>Whether you wish to support a mission initiative, enquire about church planting in your locality, partner with the Board, or simply receive our newsletter — we would love to hear from you.</p>
-        <div class="contact-detail"><div class="cd-icon">✝</div><div class="cd-text"><div class="lbl">Organisation</div><div class="val">Church Growth &amp; Mission Board · COG Kerala State</div></div></div>
+        <p>Whether you wish to contribute to the welfare fund, request assistance, partner in charitable work, or simply learn more about our programmes — we welcome your fellowship in this ministry of care.</p>
+        <div class="contact-detail"><div class="cd-icon">✝</div><div class="cd-text"><div class="lbl">Organisation</div><div class="val">Pastor Welfare &amp; Charity Board · COG Kerala State</div></div></div>
         <div class="contact-detail"><div class="cd-icon">📧</div><div class="cd-text"><div class="lbl">Email</div><div class="val"><a href="mailto:cogkeralastate@gmail.com" style="color:var(--mg)">cogkeralastate@gmail.com</a></div></div></div>
         <div class="contact-detail"><div class="cd-icon">📍</div><div class="cd-text"><div class="lbl">State Office</div><div class="val">Church of God State Office, Kerala, India</div></div></div>
-        <div class="contact-detail"><div class="cd-icon">🕊️</div><div class="cd-text"><div class="lbl">Mission Vision</div><div class="val">Every district. Every community. Every soul.</div></div></div>
+        <div class="contact-detail"><div class="cd-icon">💛</div><div class="cd-text"><div class="lbl">Our Calling</div><div class="val">Honour the shepherd. Serve the needy. Love in action.</div></div></div>
       </div>
       <div class="rv2">
         <div class="contact-form-wrap">
           <div class="form-title">Get in Touch</div>
-          <div class="form-sub">Interested in partnering, volunteering, or learning more? Fill in the form and our team will respond within 2–3 working days.</div>
+          <div class="form-sub">To request assistance, make a donation, or partner with our welfare ministry — fill in the form and our team will respond within 2–3 working days.</div>
           <div id="contactFormEl">
             <div class="frow-2">
               <div class="frow"><label>Your Name</label><input type="text" id="cf-name" placeholder="e.g. Thomas George"></div>
@@ -1070,22 +696,22 @@ footer a{color:var(--mg3);}
             <div class="frow"><label>Area of Interest</label>
               <select id="cf-interest">
                 <option value="">— Select your interest —</option>
-                <option>⛪ Church Planting Support</option>
-                <option>🌏 Cross-Cultural Mission</option>
-                <option>🎓 Leadership Training</option>
-                <option>🤝 Financial Partnership</option>
-                <option>📡 Digital Outreach</option>
-                <option>🙏 Prayer Partnership</option>
+                <option>🙏 Request Pastoral Welfare Assistance</option>
+                <option>💛 Widows &amp; Orphans Support</option>
+                <option>🏥 Medical Relief Application</option>
+                <option>🎓 Education Scholarship Enquiry</option>
+                <option>🤝 Financial Partnership / Donation</option>
+                <option>🍱 Community Charity Volunteering</option>
                 <option>📋 General Enquiry</option>
               </select>
             </div>
-            <div class="frow"><label>Your Message</label><textarea id="cf-msg" placeholder="Tell us how you feel called to be part of what God is doing in Kerala…"></textarea></div>
+            <div class="frow"><label>Your Message</label><textarea id="cf-msg" placeholder="Tell us how we can serve you, or how you wish to be part of this ministry of care…"></textarea></div>
             <button class="submit-btn" onclick="submitContact()">Send Message</button>
           </div>
           <div class="form-success" id="contactSuccess">
             <div class="icon">✉️</div>
             <h4>Message received — thank you!</h4>
-            <p>We will get back to you within 2–3 working days. May God bless the steps of obedience you are taking.</p>
+            <p>We will get back to you within 2–3 working days. May God's grace surround you and yours.</p>
             <button style="margin-top:1rem;font-size:.73rem;font-weight:600;padding:.5rem 1.2rem;border-radius:3px;border:1px solid var(--mg);color:var(--mg);background:white;cursor:pointer;letter-spacing:.08em;font-family:var(--fc);text-transform:uppercase;" onclick="resetContact()">Send Another</button>
           </div>
         </div>
@@ -1097,26 +723,26 @@ footer a{color:var(--mg3);}
 <!-- CTA BANNER -->
 <section class="cta-banner">
   <div class="cta-inner">
-    <h3>Join the <em>Mission</em></h3>
-    <p>"The harvest truly is plenteous, but the labourers are few." — Matthew 9:37</p>
+    <h3>Stand with the <em>Shepherds</em></h3>
+    <p>"Bear ye one another's burdens, and so fulfil the law of Christ." — Galatians 6:2</p>
     <div class="cta-actions">
-      <button class="cta-btn-t" onclick="scrollTo('#contact')">Partner with the Board</button>
+      <button class="cta-btn-t" onclick="scrollTo('#contact')">Support the Welfare Fund</button>
       <a href="home.html" class="cta-btn-o">← Back to Home</a>
     </div>
   </div>
 </section>
 
 <footer>
-  <p>© 2025 Church of God (Full Gospel) in India, Kerala State · Church Growth &amp; Mission Board · <a href="mailto:cogkeralastate@gmail.com">cogkeralastate@gmail.com</a></p>
+  <p>© 2025 Church of God (Full Gospel) in India, Kerala State · Pastor Welfare &amp; Charity Board · <a href="mailto:cogkeralastate@gmail.com">cogkeralastate@gmail.com</a></p>
 </footer>
 
 <script>
 /* SLIDESHOW */
 var CAPTIONS = [
-  { verse:'"Go ye therefore, and teach all nations…"', ref:'Matthew 28:19 (KJV)' },
-  { verse:'"The harvest truly is plenteous, but the labourers are few."', ref:'Matthew 9:37 (KJV)' },
-  { verse:'"And this gospel of the kingdom shall be preached in all the world."', ref:'Matthew 24:14 (KJV)' },
-  { verse:'"Not by might, nor by power, but by my spirit, saith the LORD."', ref:'Zechariah 4:6 (KJV)' }
+  { verse:'"Bear ye one another\'s burdens, and so fulfil the law of Christ."', ref:'Galatians 6:2 (KJV)' },
+  { verse:'"Pure religion and undefiled before God… is this, To visit the fatherless and widows in their affliction."', ref:'James 1:27 (KJV)' },
+  { verse:'"He that hath pity upon the poor lendeth unto the LORD; and that which he hath given will he pay him again."', ref:'Proverbs 19:17 (KJV)' },
+  { verse:'"The elders which are among you I exhort… Feed the flock of God… of a ready mind."', ref:'1 Peter 5:1–2 (KJV)' }
 ];
 var slides=document.querySelectorAll('.slide'),dots=document.querySelectorAll('.si-dot'),cap=document.getElementById('slideCaption'),cur=0,timer;
 function goSlide(n){slides[cur].classList.remove('active');dots[cur].classList.remove('active');cur=(n+slides.length)%slides.length;slides[cur].classList.add('active');dots[cur].classList.add('active');var c=CAPTIONS[cur];cap.querySelector('.sc-verse').textContent=c.verse;cap.querySelector('.sc-ref').textContent=c.ref;}

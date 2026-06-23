@@ -144,71 +144,65 @@ textarea,input,select{font-family:var(--ff);}
 .btn-ghost{font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.85rem 2rem;background:transparent;color:white;border:1px solid rgba(255,255,255,.38);border-radius:3px;transition:all .25s;}
 .btn-ghost:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.7);}
 
-/* RIGHT — 3 portrait leadership cards */
 .hero-right {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.5rem;
-  align-self: start; /* CHANGED: Keeps the grid layout from forcing unnecessary height */
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.2rem;
+  align-self: stretch;
 }
-
 .hero-leader-card {
   background: white;
-  border-radius: 10px;
+  border-radius: 12px;
   overflow: hidden;
-  border: 1px solid rgba(0,0,0,0.08);
+  border: 1px solid rgba(13,148,136, 0.08);
   display: flex;
   flex-direction: column;
-  height: max-content; /* CHANGED: Collapses the card to only fit its true content */
-  transition: all 0.35s var(--ease);
-  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  height: max-content;
+  transition: all .4s var(--ease);
+  box-shadow: 0 2px 12px rgba(0,0,0,.06);
 }
-
 .hero-leader-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 28px rgba(192,24,106,0.15);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(13,148,136,.15);
 }
-
 .hlc-photo {
   width: 100%;
   display: flex;
   flex-direction: column;
   position: relative;
-  background: #f5f5f5;
-  /* REMOVED flex: 1; -> This was pulling and stretching the container down */
+  background: #f9f9f9;
 }
-
 .hlc-photo img {
-  width: 200px;
-  height: 200px; /* Increase as needed */
+  width: 100%;
+  aspect-ratio: 4 / 4.5;
   object-fit: cover;
+  object-position: top;
 }
 .hlc-badge {
-  background: white;
-  padding: 0.9rem 0.8rem; /* Slightly balanced padding */
+  position: static;
+  background: transparent;
+  padding: 16px 14px 4px 14px;
   display: flex;
   flex-direction: column;
   text-align: center;
-  gap: 0.2rem;
 }
-
 .hlc-name {
-  font-family: var(--fg);
-  font-size: 0.9rem;
+  font-family: serif;
+  font-size: 1.1rem;
   font-weight: 700;
-  color: var(--blk);
-  line-height: 1.1;
+  color: #1a1a1a;
+  margin-bottom: 4px;
 }
-
 .hlc-role {
-  font-family: var(--fc);
-  font-size: 0.7rem;
-  letter-spacing: 0.1px;
+  font-family: sans-serif;
+  /* Balanced sizing and line-height ensures letters like 'P', 'J', 'Y' don't clip */
+  font-size: 0.75rem; 
+  line-height: 1.3;
+  letter-spacing: 0.8px;
   text-transform: uppercase;
-  color: var(--mg);
+  color: var(--primary);
   font-weight: 700;
-  gap: 0.1rem;
-  text-align: center; /* Center horizontally */
+  margin-top: 2px;
 }
 /* Slide indicators */
 .slide-indicators{position:relative;z-index:2;display:flex;align-items:center;gap:.5rem;padding:1.2rem 2rem 2rem;max-width:1300px;margin:0 auto;width:100%;}
@@ -465,52 +459,34 @@ footer a{color:var(--mg3);}
         </div>
       </div>
 
-      <!-- RIGHT — 3 portrait leadership cards -->
-      <div class="hero-right">
-        <!-- State President -->
-        <div class="hero-leader-card">
-          <div class="hlc-photo">
-            <img src="ype/ype(1).png" alt="State President" onerror="this.style.display='none'">
-            <div class="hlc-badge">
-              
-              <div class="hlc-name">Pr. Mathew Baby</div>
-            </div>
-          </div>
-          <div class="hlc-details-bottom">
-            <div class="hlc-role">State President</div>
-          </div>
-        </div>
-
-        <!-- State Secretary -->
-        <div class="hero-leader-card">
-          <div class="hlc-photo">
-            <img src="ype/ype(2).png" alt="State Secretary" onerror="this.style.display='none'">
-            <div class="hlc-badge">
-              
-              <div class="hlc-name">Br. Saju Sunny</div>
-            </div>
-          </div>
-          <div class="hlc-details-bottom">
-            <div class="hlc-role">State Secretary</div>
-          </div>
-        </div>
-
-        <!-- State Treasurer -->
-        <div class="hero-leader-card">
-          <div class="hlc-photo">
-            <img src="ype/ype(3).png" alt="State Treasurer" onerror="this.style.display='none'">
-            <div class="hlc-badge">
-              
-              <div class="hlc-name">Pr. V.S. Vaijumon</div>
-            </div>
-          </div>
-          <div class="hlc-details-bottom">
-            <div class="hlc-role">State Treasurer</div>
-          </div>
-        </div>
-      </div>
+<!-- RIGHT — 3 portrait leadership cards -->
+<div class="hero-right">
+  <!-- State President -->
+  <div class="hero-leader-card">
+    <div class="hlc-photo">
+      <img src="ype/roy.png" alt="State President" onerror="this.style.display='none'">
+    </div>
+    <!-- Grouped together cleanly below the photo -->
+    <div class="hlc-badge">
+      <div class="hlc-name">Pr. Roy P Joy</div>
+      <div class="hlc-role">State President</div>
     </div>
   </div>
+
+  <!-- State Secretary -->
+  <div class="hero-leader-card">
+    <div class="hlc-photo">
+      <img src="ype/ype(2).png" alt="State Secretary" onerror="this.style.display='none'">
+    </div>
+    <!-- Grouped together cleanly below the photo -->
+    <div class="hlc-badge">
+      <div class="hlc-name">Br. Saju Sunny</div>
+      <div class="hlc-role">State Secretary</div>
+    </div>
+  </div>
+</div>
+
+ 
 
   <div class="slide-indicators" id="slideIndicators">
     <div class="si-dot active" onclick="goSlide(0)"></div>
@@ -519,15 +495,6 @@ footer a{color:var(--mg3);}
     <div class="si-dot" onclick="goSlide(3)"></div>
   </div>
 
-  <div class="hero-stats-row">
-    <div class="hero-stats-inner">
-      <div class="hs"><div class="hs-num">10,000+</div><div class="hs-lbl">Youth Members</div></div>
-      <div class="hs"><div class="hs-num">14</div><div class="hs-lbl">Districts</div></div>
-      <div class="hs"><div class="hs-num">4</div><div class="hs-lbl">Zones</div></div>
-      <div class="hs"><div class="hs-num">24</div><div class="hs-lbl">Board Members</div></div>
-      <div class="hs"><div class="hs-num">Est. 1914</div><div class="hs-lbl">Established</div></div>
-    </div>
-  </div>
 </section>
 
 <!-- MISSION SECTION -->
@@ -557,55 +524,65 @@ footer a{color:var(--mg3);}
     <h2 class="sec-h rv">State Board <em>Members</em></h2>
     <div class="members-grid">
       
+      <!-- Row 1 -->
       <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="Ps.jpg" onerror="this.style.display='none'"><div class="mem-img-fallback">✝</div></div><div class="mem-info"><div class="mem-name">Rev. Y. Reji</div><div class="mem-pos">State Overseer</div></div></div>
       
-      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(1).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Pr. Mathew Baby</div><div class="mem-pos">State President</div></div></div>
+      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/roy.png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Pr. Roy. P. George</div><div class="mem-pos">President</div></div></div>
 
-      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(2).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Br. Saju Sunny</div><div class="mem-pos">State Secretary</div></div></div>
+      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(2).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Br Saju sunny</div><div class="mem-pos">Secretary</div></div></div>
 
-      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(3).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Pr. V.S. Vaijumon</div><div class="mem-pos">State Treasurer</div></div></div>
+      <!-- Row 2 -->
+      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(3).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Pr Vaijumon V.S</div><div class="mem-pos">Treasurer</div></div></div>
 
-      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(4).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Pr. Dennis Varghese</div><div class="mem-pos">Jn. Secretary</div></div></div>
+      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(4).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Pr. Baiju Thankachan</div><div class="mem-pos">Joint Secretary</div></div></div>
 
-      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(5).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Pr. James P. J.</div><div class="mem-pos">Co-ordinator</div></div></div>
+      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(5).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Pr James P.J</div><div class="mem-pos">State co-ordinator</div></div></div>
 
-      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(6).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Pr. Baiju Thankachen</div><div class="mem-pos">Office Secretary</div></div></div>
+      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(8).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Pr. Bibin Thomas P T</div><div class="mem-pos">Joint Treasurer</div></div></div>
 
-      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(7).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Br. Jabez P. Samuel</div><div class="mem-pos">Talent Test Convenor</div></div></div>
+      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(13).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Br Sam K Benny</div><div class="mem-pos">Program co ordinator</div></div></div>
 
-      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(8).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Pr. Bibin Thomas</div><div class="mem-pos">Media</div></div></div>
+      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(9).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Evg. Smith Sam</div><div class="mem-pos">Evangelism Convenor</div></div></div>
 
-      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(9).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Evg. Smith Sam</div><div class="mem-pos">Evangelism</div></div></div>
+      <!-- Row 3 -->
+      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(16).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Br Aby Eapen</div><div class="mem-pos">Charity Convenor</div></div></div>
 
-      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(10).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Br. Bovas Raju</div><div class="mem-pos">Music Convenor</div></div></div>
+      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(7).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Br Jabez P Samuel</div><div class="mem-pos">Music Convenor</div></div></div>
 
-      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(11).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Pr. Binu K.</div><div class="mem-pos">Prayer Convenor</div></div></div>
+      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(11).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Pr. Binu Kunjumon</div><div class="mem-pos">Prayer Convenor</div></div></div>
 
-      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(12).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Pr. Jom Zachariah</div><div class="mem-pos">Publicity Convenor</div></div></div>
+      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(19).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Pr Sam Easow</div><div class="mem-pos">Office Secretary</div></div></div>
 
-      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(13).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Br. Sam K. Benny</div><div class="mem-pos">Sports</div></div></div>
+      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(15).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Br Jestin V Samuel</div><div class="mem-pos">Office Secretary / Talent Test Convenor</div></div></div>
 
-      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(14).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Pr. Aby T. Joseph</div><div class="mem-pos">Choir</div></div></div>
+      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(10).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Br Bovas Raju</div><div class="mem-pos">Music convenor</div></div></div>
 
-      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(15).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Br. Jestin V. Samuel</div><div class="mem-pos">Magazine Editor</div></div></div>
+      <!-- Row 4 -->
+      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(14).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Pr Aby T Joseph</div><div class="mem-pos">Music convenor</div></div></div>
 
-      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(16).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Br. Aby Eapen</div><div class="mem-pos">Charity</div></div></div>
+      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(23).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Br Joel Lal</div><div class="mem-pos">Media Convenor</div></div></div>
 
-      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(17).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Pr. John Daniel</div><div class="mem-pos">Member</div></div></div>
+      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(20).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Pr Ajil Rajarajan</div><div class="mem-pos">Publicity Convenor</div></div></div>
 
-      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(18).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Br. Libin C. Mathew</div><div class="mem-pos">Member</div></div></div>
+      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(18).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Br Libin C Mathew</div><div class="mem-pos">Sports Convenor</div></div></div>
 
-      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(19).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Pr. Sam Easo</div><div class="mem-pos">Member</div></div></div>
+      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(24).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Br Lordson Jacob</div><div class="mem-pos">Magazine Chief Editor</div></div></div>
 
-      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(20).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Pr. Ajil Rajarajan</div><div class="mem-pos">Member</div></div></div>
+      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(12).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Pr Jom Zachariaha</div><div class="mem-pos">Blood Donation Convenor</div></div></div>
 
-      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(21).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Br. George Jacob</div><div class="mem-pos">Member</div></div></div>
+      <!-- Row 5 (Newly Added Members from Poster) -->
+      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(22).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Pr Y Jobi</div><div class="mem-pos">Counciling convenor</div></div></div>
 
-      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(22).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Pr. Y. Jobi</div><div class="mem-pos">Member</div></div></div>
+      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(21).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Br George Jacob</div><div class="mem-pos">Charity Convenor</div></div></div>
 
-      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(23).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Br. Joel Lal J.</div><div class="mem-pos">Member</div></div></div>
+      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/bennet.jpeg" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Pr. Bennet Philip</div><div class="mem-pos">Magazine Sub Editor</div></div></div>
 
-      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/ype(24).png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Br. Lordson Jacob</div><div class="mem-pos">Member</div></div></div>
+      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/jibin.png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Pr. Jibin Johnson</div><div class="mem-pos">Charity Convenor</div></div></div>
+
+      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/stelin.png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Br Stelin Shaji</div><div class="mem-pos">Magazine Sub Editor</div></div></div>
+
+      <div class="mem-card rv"><div class="mem-img-wrap"><img class="mem-img" src="ype/bijin.png" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div><div class="mem-info"><div class="mem-name">Pr. Bijin Cherian</div><div class="mem-pos">Counciling convenor</div></div></div>
+
     </div>
   </div>
 </section>
