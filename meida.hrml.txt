@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Music Board — COG Kerala</title>
+<title>Media Board — COG Kerala</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Outfit:wght@300;400;500;600;700&family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --primary: #df1d78;
-  --primary-dark: #c51467;
-  --accent: #ce156b;
-  --light: #f3e8ff;
+  --primary: #0891b2;
+  --primary-dark: #0e7490;
+  --accent: #06b6d4;
+  --light: #cffafe;
   --blk: #0D0D0D;
   --blk2: #1A1A1A;
   --blk3: #2E2E2E;
@@ -21,8 +21,8 @@
   --off: #FAF9FC;
   --off2: #F3EFF5;
   --off3: #E8E2ED;
-  --shadow: 0 4px 28px rgba(194, 12, 118, 0.12);
-  --shadow2: 0 16px 56px rgba(194, 26, 129, 0.18);
+  --shadow: 0 4px 28px rgba(8, 145, 178, .12);
+  --shadow2: 0 16px 56px rgba(8, 145, 178, .18);
   --nav: 72px;
   --ease: cubic-bezier(.16,1,.3,1);
   --ff: 'Outfit', sans-serif;
@@ -42,9 +42,9 @@ textarea,input,select{font-family:var(--ff);}
 #nav {
   position:fixed;top:0;left:0;right:0;z-index:9000;
   background:rgba(255,255,255,.97);
-  border-bottom:1px solid rgba(168,85,247,.1);
+  border-bottom:1px solid rgba(8,145,178,.1);
   backdrop-filter:blur(14px);
-  box-shadow:0 2px 20px rgba(168,85,247,.07);
+  box-shadow:0 2px 20px rgba(8,145,178,.07);
 }
 .nb{max-width:1400px;margin:0 auto;padding:0 2rem;height:var(--nav);display:flex;align-items:center;justify-content:space-between;}
 .nl{display:flex;align-items:center;gap:.85rem;}
@@ -53,46 +53,16 @@ textarea,input,select{font-family:var(--ff);}
 .nl-info .t2{font-size:.6rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--blk4);margin-top:2px;}
 .nav-links{display:flex;align-items:center;gap:.2rem;}
 .nav-link{font-size:.78rem;font-weight:500;letter-spacing:.07em;padding:.45rem 1rem;border-radius:4px;color:var(--blk3);transition:all .2s;}
-.nav-link:hover,.nav-link.active{background:rgba(168,85,247,.12);color:var(--primary);}
+.nav-link:hover,.nav-link.active{background:rgba(8,145,178,.12);color:var(--primary);}
 .nav-cta{font-size:.78rem;font-weight:600;letter-spacing:.09em;padding:.5rem 1.4rem;background:var(--primary);color:white;border-radius:4px;border:none;transition:all .22s;}
 .nav-cta:hover{background:var(--primary-dark);}
-/* The main brand container holding both logo and text */
-.nl {
-  display: flex;
-  align-items: center; /* Centers the logo vertically with the text block */
-  gap: 0.75rem;        /* Adjusts the space between logo and text */
-  text-decoration: none;
-}
 
-/* Wrapper to maintain a crisp size for the logo */
-.nl-logo-wrap {
-  width: 42px;         /* Match this roughly to the font height */
-  height: 42px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;      /* Keeps the logo circular/intact on small viewports */
-}
-
-/* The actual PNG logo image */
-.nl-logo-img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain; /* Prevents image distortion */
-}
-
-/* Optional: Clean structural alignment for the text block */
-.nl-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
 .hero {
   padding-top:var(--nav);
   min-height:100vh;
   position:relative;overflow:hidden;
   display:flex;flex-direction:column;
-  background: linear-gradient(135deg, rgba(168,85,247,0.15) 0%, rgba(217,70,239,0.1) 100%);
+  background: linear-gradient(135deg, rgba(8,145,178,0.15) 0%, rgba(6,182,212,0.1) 100%);
 }
 .slides{position:absolute;inset:0;z-index:0;}
 .slide{position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease;display:flex;align-items:center;justify-content:center;}
@@ -110,7 +80,7 @@ textarea,input,select{font-family:var(--ff);}
 .hero-divider{width:52px;height:2px;background:linear-gradient(90deg,var(--accent),var(--primary));margin:1.4rem 0;}
 .hero-sub{font-size:1rem;line-height:1.95;color:rgba(255,255,255,.68);max-width:520px;margin-bottom:2.5rem;font-weight:300;}
 .hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
-.btn-primary{font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.85rem 2rem;background:var(--primary);color:white;border:none;border-radius:3px;transition:all .25s;box-shadow:0 4px 18px rgba(168,85,247,.4);}
+.btn-primary{font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.85rem 2rem;background:var(--primary);color:white;border:none;border-radius:3px;transition:all .25s;box-shadow:0 4px 18px rgba(8,145,178,.4);}
 .btn-primary:hover{background:var(--primary-dark);transform:translateY(-2px);}
 .btn-ghost{font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.85rem 2rem;background:transparent;color:white;border:1px solid rgba(255,255,255,.38);border-radius:3px;transition:all .25s;}
 .btn-ghost:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.7);}
@@ -125,7 +95,7 @@ textarea,input,select{font-family:var(--ff);}
   background: white;
   border-radius: 12px;
   overflow: hidden;
-  border: 1px solid rgba(168,85,247, 0.08);
+  border: 1px solid rgba(8,145,178, 0.08);
   display: flex;
   flex-direction: column;
   height: max-content;
@@ -134,7 +104,7 @@ textarea,input,select{font-family:var(--ff);}
 }
 .hero-leader-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(168,85,247,.15);
+  box-shadow: 0 12px 32px rgba(8,145,178,.15);
 }
 .hlc-photo {
   width: 100%;
@@ -206,7 +176,7 @@ textarea,input,select{font-family:var(--ff);}
 .about-text .lead{font-family:var(--fg);font-size:1.4rem;font-weight:400;color:var(--blk);line-height:1.6;margin-bottom:1.5rem;border-left:3px solid var(--primary);padding-left:1.4rem;}
 .about-text p{font-size:.93rem;color:var(--blk4);line-height:1.95;margin-bottom:1.1rem;font-weight:300;}
 .about-pillars{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-top:2rem;}
-.pillar{background:rgba(168,85,247,.08);border-radius:3px;padding:1rem 1.2rem;border-left:3px solid var(--primary);}
+.pillar{background:rgba(8,145,178,.08);border-radius:3px;padding:1rem 1.2rem;border-left:3px solid var(--primary);}
 .pillar-icon{font-size:1.2rem;margin-bottom:.3rem;}
 .pillar-title{font-family:var(--fc);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--primary);font-weight:600;}
 .pillar-text{font-size:.77rem;color:var(--blk4);margin-top:.25rem;line-height:1.6;}
@@ -222,20 +192,20 @@ textarea,input,select{font-family:var(--ff);}
   background: white;
   border-radius: 8px;
   overflow: hidden;
-  border: 1px solid rgba(168,85,247, 0.12);
+  border: 1px solid rgba(8,145,178, 0.12);
   transition: all .35s var(--ease);
   cursor: default;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 .mem-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 8px 24px rgba(168,85,247, 0.2);
-  border-color: rgba(168,85,247, 0.25);
+  box-shadow: 0 8px 24px rgba(8,145,178, 0.2);
+  border-color: rgba(8,145,178, 0.25);
 }
 .mem-img-wrap {
   width: 100%;
   aspect-ratio: 3/3.5;
-  background: linear-gradient(135deg, rgba(168,85,247,.12), rgba(217,70,239,.08));
+  background: linear-gradient(135deg, rgba(8,145,178,.12), rgba(6,182,212,.08));
   position: relative;
   overflow: hidden;
   display: flex;
@@ -260,7 +230,7 @@ textarea,input,select{font-family:var(--ff);}
   justify-content: center;
   font-family: var(--fc);
   font-size: 2.2rem;
-  color: rgba(168,85,247, 0.15);
+  color: rgba(8,145,178, 0.15);
   z-index: 0;
 }
 .mem-info {
@@ -286,7 +256,7 @@ textarea,input,select{font-family:var(--ff);}
 }
 
 .cta-banner{background:var(--blk);padding:5rem 0;text-align:center;position:relative;overflow:hidden;}
-.cta-banner::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(168,85,247,.15),transparent 70%);pointer-events:none;}
+.cta-banner::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(8,145,178,.15),transparent 70%);pointer-events:none;}
 .cta-inner{position:relative;z-index:1;}
 .cta-banner h3{font-family:var(--fg);font-size:clamp(2rem,5vw,4rem);font-weight:300;color:white;margin-bottom:.5rem;}
 .cta-banner h3 em{font-style:italic;font-weight:500;color:var(--accent);}
@@ -297,7 +267,7 @@ textarea,input,select{font-family:var(--ff);}
 .cta-btn-o{font-family:var(--fc);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;padding:.88rem 2.2rem;background:transparent;color:white;border:1px solid rgba(255,255,255,.28);border-radius:3px;cursor:pointer;transition:all .25s;}
 .cta-btn-o:hover{border-color:white;}
 
-.contact-sec{background:rgba(168,85,247,.06);padding:5rem 0;}
+.contact-sec{background:rgba(8,145,178,.06);padding:5rem 0;}
 .contact-inner{max-width:800px;margin:0 auto;text-align:center;}
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:3rem;}
 .contact-card{background:white;padding:2rem;border-radius:8px;border-left:4px solid var(--primary);}
@@ -329,21 +299,18 @@ footer a{color:var(--accent);}
 
 <nav id="nav">
   <div class="nb">
-<a href="home.html" class="nl">
-  <div class="nl-logo-wrap">
-    <img src="download.png" alt="COG KERALA LOGO" class="nl-logo-img">
-  </div>
-  
-  <div class="nl-info">
-    <div class="t1">Church of God (Full Gospel) · Kerala State</div>
-    <div class="t2">Music Department</div>
-  </div>
-</a>
+    <a href="boards.html" class="nl">
+      <div class="nl-cross">📱</div>
+      <div class="nl-info">
+        <div class="t1">Church of God (Full Gospel) · Kerala State</div>
+        <div class="t2">Media Board</div>
+      </div>
+    </a>
     <div class="nav-links">
       <a href="#about" class="nav-link">About</a>
       <a href="#members" class="nav-link">Board Members</a>
       <a href="#contact" class="nav-link">Contact</a>
-      <a href="home.html" class="nav-link">← Home</a>
+      <a href="boards.html" class="nav-link">← All Boards</a>
     </div>
   </div>
 </nav>
@@ -351,41 +318,60 @@ footer a{color:var(--accent);}
 <section class="hero" id="top">
   <div class="slides" id="slides">
     <div class="slide active">
-      <img class="slide-bg" src="choir.png" alt="Worship Ministry" onerror="this.style.display='none'">
+      <img class="slide-bg" src="board/m1.png" alt="Media Ministry" onerror="this.style.display='none'">
     </div>
     <div class="slide">
-      <img class="slide-bg" src="choir (2).png" alt="Musical Excellence" onerror="this.style.display='none'">
+      <img class="slide-bg" src="board/m2.png" alt="Digital Outreach" onerror="this.style.display='none'">
     </div>
     <div class="slide">
-      <img class="slide-bg" src="con (5).png" alt="Worship Experience" onerror="this.style.display='none'">
+      <img class="slide-bg" src="board/m3.png" alt="Communication Strategy" onerror="this.style.display='none'">
     </div>
   </div>
 
   <div class="slide-caption" id="slideCaption">
-    <div class="sc-verse">"Sing unto the Lord a new song: sing praise upon the earth…"</div>
-    <div class="sc-ref">Psalm 149:1 (KJV)</div>
+    <div class="sc-verse">"Let the word of Christ dwell in you richly in all wisdom; teaching and admonishing one another…"</div>
+    <div class="sc-ref">Colossians 3:16 (KJV)</div>
   </div>
 
   <div class="hero-content">
     <div class="hero-inner">
       <div class="hero-left">
-        <div class="hero-eyebrow">Worship · Musical Excellence · Spiritual Expression</div>
+        <div class="hero-eyebrow">Publications · Digital Ministry · Communications</div>
         <h1 class="hero-title">
-          <span>Music &amp;</span>
-          <strong>Worship Leadership</strong>
+          <span>Media &amp;</span>
+          <strong>Communications</strong>
         </h1>
         <div class="hero-divider"></div>
         <p class="hero-sub">
-          Cultivating musical excellence and authentic worship experiences that draw hearts closer to God through strategic worship leadership and spiritual artistry.
+          Advancing the Gospel through strategic communications, digital media distribution, and innovative content creation that reaches across Kerala State and beyond.
         </p>
         <div class="hero-btns">
-          <button class="btn-primary" onclick="scrollTo('#about')">Our Vision</button>
+          <button class="btn-primary" onclick="scrollTo('#about')">Our Mission</button>
           <button class="btn-ghost" onclick="scrollTo('#members')">Meet the Board</button>
         </div>
       </div>
 
       <div class="hero-right">
-       
+        <div class="hero-leader-card">
+          <div class="hlc-photo">
+            <img src="ps.jpg" alt="Board Director" onerror="this.style.display='none'">
+            <div class="hlc-badge">
+              <div class="hlc-role">State Overseer</div>
+              <div class="hlc-name">Rev. Y. Reji</div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-leader-card">
+          <div class="hlc-photo">
+            <img src="board/m1.png" alt="Board Director" onerror="this.style.display='none'">
+            <div class="hlc-badge">
+              <div class="hlc-role">Director</div>
+              <div class="hlc-name">Pr. Samkutty Mathew</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="slide-indicators" id="slideIndicators">
@@ -396,10 +382,10 @@ footer a{color:var(--accent);}
 
   <div class="hero-stats-row">
     <div class="hero-stats-inner">
-      <div class="hs"><div class="hs-num">7</div><div class="hs-lbl">Board Members</div></div>
-      <div class="hs"><div class="hs-num">100+</div><div class="hs-lbl">Musicians</div></div>
-      <div class="hs"><div class="hs-num">14</div><div class="hs-lbl">Districts</div></div>
-      <div class="hs"><div class="hs-num">Annual</div><div class="hs-lbl">Music Conferences</div></div>
+      <div class="hs"><div class="hs-num">6</div><div class="hs-lbl">Board Members</div></div>
+      <div class="hs"><div class="hs-num">14</div><div class="hs-lbl">Media Outlets</div></div>
+      <div class="hs"><div class="hs-num">100K+</div><div class="hs-lbl">Monthly Reach</div></div>
+      <div class="hs"><div class="hs-num">Active</div><div class="hs-lbl">Digital Strategy</div></div>
     </div>
   </div>
 </section>
@@ -409,18 +395,18 @@ footer a{color:var(--accent);}
     <div class="about-layout">
       <div class="about-text rv">
         <div class="sec-label">About the Board</div>
-        <h2 class="sec-h">Creating <em>Authentic</em> Worship Experiences</h2>
-        <p class="lead">The Music Board of the Church of God (Full Gospel) in Kerala State is dedicated to fostering musical excellence and meaningful worship experiences that glorify God and edify the body of Christ.</p>
-        <p>Our seven-member board oversees all aspects of music ministry, from worship direction to training musicians and establishing musical standards across all churches. We believe that worship music is a powerful expression of faith and devotion that strengthens spiritual life.</p>
-        <p>With a commitment to both traditional and contemporary forms of worship, the Music Board works to develop worship leaders, coordinate special musical events, and ensure that every church service reflects excellence and heartfelt devotion to the Lord.</p>
+        <h2 class="sec-h">Spreading the Gospel <em>Through Digital</em> Innovation</h2>
+        <p class="lead">The Media Board of the Church of God (Full Gospel) in Kerala State is committed to amplifying God's Word through strategic communication, quality publications, and cutting-edge digital platforms.</p>
+        <p>Our board oversees all aspects of media distribution and communication strategy, ensuring that the Gospel message reaches every corner of Kerala State and beyond. From publishing church materials to managing digital content, we serve as bridges between the church and the community.</p>
+        <p>With a vision to leverage technology and traditional media for spiritual impact, the Media Board coordinates publication projects, manages digital infrastructure, and develops engaging content that strengthens the body of Christ and draws seekers closer to Jesus Christ.</p>
         <div class="about-pillars">
-          <div class="pillar"><div class="pillar-icon">🎼</div><div class="pillar-title">Worship Direction</div><div class="pillar-text">Strategic leadership of worship services.</div></div>
-          <div class="pillar"><div class="pillar-icon">🎓</div><div class="pillar-title">Training & Development</div><div class="pillar-text">Musician formation and skill development.</div></div>
-          <div class="pillar"><div class="pillar-icon">🎺</div><div class="pillar-title">Musical Excellence</div><div class="pillar-text">Professional standards and quality assurance.</div></div>
-          <div class="pillar"><div class="pillar-icon">🎤</div><div class="pillar-title">Worship Events</div><div class="pillar-text">Coordinating concerts and celebrations.</div></div>
+          <div class="pillar"><div class="pillar-icon">📰</div><div class="pillar-title">Publications</div><div class="pillar-text">Quality church materials and gospel literature.</div></div>
+          <div class="pillar"><div class="pillar-icon">📡</div><div class="pillar-title">Digital Distribution</div><div class="pillar-text">Multi-channel content delivery systems.</div></div>
+          <div class="pillar"><div class="pillar-icon">💻</div><div class="pillar-title">Technology</div><div class="pillar-text">Infrastructure and technical development.</div></div>
+          <div class="pillar"><div class="pillar-icon">🎬</div><div class="pillar-title">Content Creation</div><div class="pillar-text">Engaging multimedia ministry resources.</div></div>
         </div>
       </div>
-      <div class="about-visual rv2" style="position:relative;"><img src="choir.png" alt="Music Ministry" style="border-radius:4px;width:100%;"></div>
+      <div class="about-visual rv2" style="position:relative;"><img src="board/m5.png" alt="Media Ministry" style="border-radius:4px;width:100%;"></div>
     </div>
   </div>
 </section>
@@ -429,36 +415,32 @@ footer a{color:var(--accent);}
   <div class="cont">
     <div class="sec-label rv">Board Composition</div>
     <h2 class="sec-h rv">Board <em>Members</em></h2>
-    <div class="sec-sub rv">Seven dedicated musicians and worship leaders committed to excellence in musical ministry across Kerala State.</div>
+    <div class="sec-sub rv">Six dedicated professionals committed to advancing God's Kingdom through strategic media ministry and digital outreach.</div>
 
     <div class="members-grid">
       <div class="mem-card">
-        <div class="mem-img-wrap"><img class="mem-img" src="ps.jpg" alt="Rev. Y. Reji" onerror="this.style.display='none'"><div class="mem-img-fallback">🎵</div></div>
+        <div class="mem-img-wrap"><img class="mem-img" src="ps.jpg" alt="Rev. Y. Reji" onerror="this.style.display='none'"><div class="mem-img-fallback">📱</div></div>
         <div class="mem-info"><div class="mem-name">Rev. Y. Reji</div><div class="mem-pos">State Overseer</div></div>
       </div>
       <div class="mem-card">
-        <div class="mem-img-wrap"><img class="mem-img" src="board/music (7).png" alt="Bro. Bovus Raju" onerror="this.style.display='none'"><div class="mem-img-fallback">🎵</div></div>
-        <div class="mem-info"><div class="mem-name">Bro. Bovus Raju</div><div class="mem-pos">Director</div></div>
+        <div class="mem-img-wrap"><img class="mem-img" src="board/m1.png" alt="Pr. Samkutty Mathew" onerror="this.style.display='none'"><div class="mem-img-fallback">📱</div></div>
+        <div class="mem-info"><div class="mem-name">Pr. Samkutty Mathew</div><div class="mem-pos">Director</div></div>
       </div>
       <div class="mem-card">
-        <div class="mem-img-wrap"><img class="mem-img" src="board/music (1).png" alt="Pr. Robin Thomas Mathew" onerror="this.style.display='none'"><div class="mem-img-fallback">🎵</div></div>
-        <div class="mem-info"><div class="mem-name">Pr. Robin Thomas Mathew</div><div class="mem-pos">Member</div></div>
+        <div class="mem-img-wrap"><img class="mem-img" src="board/m2.png" alt="Pr. Bibin Thomas" onerror="this.style.display='none'"><div class="mem-img-fallback">📱</div></div>
+        <div class="mem-info"><div class="mem-name">Pr. Bibin Thomas</div><div class="mem-pos">Joint Director</div></div>
       </div>
       <div class="mem-card">
-        <div class="mem-img-wrap"><img class="mem-img" src="board/music (2).png" alt="Pr. Sajan Yohannan" onerror="this.style.display='none'"><div class="mem-img-fallback">🎵</div></div>
-        <div class="mem-info"><div class="mem-name">Pr. Sajan Yohannan</div><div class="mem-pos">Member</div></div>
+        <div class="mem-img-wrap"><img class="mem-img" src="board/m3.png" alt="Pr. Rajeev Xavier" onerror="this.style.display='none'"><div class="mem-img-fallback">📱</div></div>
+        <div class="mem-info"><div class="mem-name">Pr. Rajeev Xavier</div><div class="mem-pos">Secretary</div></div>
       </div>
       <div class="mem-card">
-        <div class="mem-img-wrap"><img class="mem-img" src="board/music (3).png" alt="Br. Moses Titus" onerror="this.style.display='none'"><div class="mem-img-fallback">🎵</div></div>
-        <div class="mem-info"><div class="mem-name">Br. Moses Titus</div><div class="mem-pos">Member</div></div>
+        <div class="mem-img-wrap"><img class="mem-img" src="board/m4.png" alt="P. S. Cherian" onerror="this.style.display='none'"><div class="mem-img-fallback">📱</div></div>
+        <div class="mem-info"><div class="mem-name">P. S. Cherian</div><div class="mem-pos">Member</div></div>
       </div>
       <div class="mem-card">
-        <div class="mem-img-wrap"><img class="mem-img" src="board/music (4).png" alt="Pr. Bennet Philip" onerror="this.style.display='none'"><div class="mem-img-fallback">🎵</div></div>
-        <div class="mem-info"><div class="mem-name">Pr. Bennet Philip</div><div class="mem-pos">Member</div></div>
-      </div>
-      <div class="mem-card">
-        <div class="mem-img-wrap"><img class="mem-img" src="board/music (5).png" alt="Br. Shawn Biju" onerror="this.style.display='none'"><div class="mem-img-fallback">🎵</div></div>
-        <div class="mem-info"><div class="mem-name">Br. Shawn Biju</div><div class="mem-pos">Member</div></div>
+        <div class="mem-img-wrap"><img class="mem-img" src="board/m5.png" alt="Pr. Lijo Thomas" onerror="this.style.display='none'"><div class="mem-img-fallback">📱</div></div>
+        <div class="mem-info"><div class="mem-name">Pr. Lijo Thomas</div><div class="mem-pos">Member</div></div>
       </div>
     </div>
   </div>
@@ -468,18 +450,18 @@ footer a{color:var(--accent);}
   <div class="cont">
     <div class="contact-inner">
       <div class="sec-label" style="justify-content:center;">Get in Touch</div>
-      <h2 class="sec-h">Contact the <em>Music Board</em></h2>
-      <p class="sec-sub" style="max-width:600px;margin-left:auto;margin-right:auto;">Reach out for worship training, special musical events, or collaboration opportunities.</p>
+      <h2 class="sec-h">Contact the <em>Media Board</em></h2>
+      <p class="sec-sub" style="max-width:600px;margin-left:auto;margin-right:auto;">Reach out to us for publication requests, media inquiries, or digital partnership opportunities.</p>
       
       <div class="contact-grid">
         <div class="contact-card">
           <h4>📧 Email</h4>
-          <p><a href="mailto:music@cogkeralastate.org">music@cogkeralastate.org</a></p>
-          <p style="font-size:.85rem;margin-top:.5rem;color:var(--blk5);">For worship and training inquiries</p>
+          <p><a href="mailto:media@cogkeralastate.org">media@cogkeralastate.org</a></p>
+          <p style="font-size:.85rem;margin-top:.5rem;color:var(--blk5);">For publication and content inquiries</p>
         </div>
         <div class="contact-card">
           <h4>📱 Phone</h4>
-          <p><a href="tel:+914812345679">+91 (0) 481-2345679</a></p>
+          <p><a href="tel:+914812345678">+91 (0) 481-2345678</a></p>
           <p style="font-size:.85rem;margin-top:.5rem;color:var(--blk5);">Office hours: Mon-Fri, 9AM-5PM IST</p>
         </div>
       </div>
@@ -489,24 +471,24 @@ footer a{color:var(--accent);}
 
 <section class="cta-banner">
   <div class="cta-inner">
-    <h3>Join the <em>Worship Movement</em></h3>
-    <p>"Make a joyful noise unto God, all ye earth" — Psalm 100:1</p>
+    <h3>Partner With <em>Our Ministry</em></h3>
+    <p>"Let your light so shine before men, that they may see your good works…" — Matthew 5:16</p>
     <div class="cta-actions">
       <button class="cta-btn-t" onclick="scrollTo('#members')">Meet the Team</button>
-      <a href="home.html" class="cta-btn-o">← Back to Home</a>
+      <a href="boards.html" class="cta-btn-o">← Back to All Boards</a>
     </div>
   </div>
 </section>
 
 <footer>
-  <p>© 2025 Church of God (Full Gospel) in India, Kerala State · Music Board · <a href="mailto:cogkeralastate@gmail.com">cogkeralastate@gmail.com</a></p>
+  <p>© 2025 Church of God (Full Gospel) in India, Kerala State · Media Board · <a href="mailto:cogkeralastate@gmail.com">cogkeralastate@gmail.com</a></p>
 </footer>
 
 <script>
 var CAPTIONS = [
-  { verse:'"Sing unto the Lord a new song: sing praise upon the earth…"', ref:'Psalm 149:1 (KJV)' },
-  { verse:'"Let the word of Christ dwell in you richly in all wisdom; teaching and admonishing one another in psalms and hymns…"', ref:'Colossians 3:16 (KJV)' },
-  { verse:'"O come, let us sing unto the Lord: let us make a joyful noise…"', ref:'Psalm 95:1 (KJV)' }
+  { verse:'"Let the word of Christ dwell in you richly in all wisdom; teaching and admonishing one another…"', ref:'Colossians 3:16 (KJV)' },
+  { verse:'"Go ye therefore, and teach all nations…"', ref:'Matthew 28:19 (KJV)' },
+  { verse:'"For God hath not given us the spirit of fear; but of power…"', ref:'2 Timothy 1:7 (KJV)' }
 ];
 var slides=document.querySelectorAll('.slide'),dots=document.querySelectorAll('.si-dot'),cap=document.getElementById('slideCaption'),cur=0,timer;
 function goSlide(n){slides[cur].classList.remove('active');dots[cur].classList.remove('active');cur=(n+slides.length)%slides.length;slides[cur].classList.add('active');dots[cur].classList.add('active');var c=CAPTIONS[cur];cap.querySelector('.sc-verse').textContent=c.verse;cap.querySelector('.sc-ref').textContent=c.ref;}
