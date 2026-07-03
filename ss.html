@@ -372,7 +372,22 @@ a{text-decoration:none;color:inherit;}
 }
 
 /* ── COMMITTEE ── */
-.committee-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;margin-top:2rem;}
+.committee-grid{
+  display:grid;
+  grid-template-columns:repeat(7,1fr);   /* was repeat(5,1fr) */
+  gap:.8rem;                              /* was 1rem */
+  margin-top:2rem;
+}
+.cm-photo{
+  width:100%;                             /* was 125% — this was the main bug */
+  aspect-ratio:1;
+  background:linear-gradient(145deg,#f5e8f0,#f0e0ea);
+  display:flex;
+  position:relative;
+}
+.cm-info{padding:.6rem .7rem .7rem;}      /* was .8rem .9rem .9rem */
+.cm-name{font-size:.8rem;}                /* was .9rem */
+.cm-pos{font-size:.58rem;}                /* was .6rem */
 .cm-card{background:white;border-radius:16px;overflow:hidden;border:1.5px solid var(--ivory3);transition:all .35s;position:relative;}
 .cm-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(204,0,102,.14);border-color:rgba(204,0,102,.3);}
 .cm-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--mg),var(--gold));transform:scaleX(0);transform-origin:left;transition:transform .4s;z-index:2;}
@@ -498,6 +513,12 @@ footer a{color:var(--gold2);}
 @media(max-width:420px){
   .stories-grid{grid-template-columns:1fr;}
   .committee-grid{grid-template-columns:1fr 1fr;}
+  @media(max-width:1100px){
+  .committee-grid{grid-template-columns:repeat(5,1fr);}  /* was 4 */
+}
+@media(max-width:900px){
+  .committee-grid{grid-template-columns:repeat(4,1fr);}  /* was 3 */
+}
 }
 </style>
 </head>
@@ -1360,57 +1381,7 @@ footer a{color:var(--gold2);}
 </section>
 
 <!-- ── LEADERSHIP ── -->
-<section class="sec" style="background:var(--ivory);">
-  <div class="cont">
-    <div class="sl rv">Leadership</div>
-    <h2 class="sh rv">Director &amp; <em>Secretary</em></h2>
-    <div class="sr rv"></div>
-    <div class="lead-grid">
-      <div class="lead-card rv">
-        <div class="lc-photo">
-          <img src="ss/s (1).png" alt="State Director" onerror="this.style.display='none'">
-          <div class="lc-ph"></div>
-          <div class="lc-badge">
-            <div class="lc-badge-name">V P Thomas</div>
-            <div class="lc-badge-title">President</div>
-          </div>
-        </div>
-        <div class="lc-body">
-          <div class="lc-role">State President · Sunday School</div>
-          <div class="lc-desc">Leading the Sunday School department with vision and passion for equipping children in the Word of God across all of Kerala.</div>
-        </div>
-      </div>
-      <div class="lead-card rv2">
-        <div class="lc-photo">
-          <img src="ss/s (2).png" alt="State Secretary" onerror="this.style.display='none'">
-          <div class="lc-ph"></div>
-          <div class="lc-badge">
-            <div class="lc-badge-name">Ps.Shaji Chacko</div>
-            <div class="lc-badge-title">Vice-President</div>
-          </div>
-        </div>
-        <div class="lc-body">
-          <div class="lc-role">Vice Precident · Sunday School</div>
-          <div class="lc-desc">Coordinating all administrative and organisational functions of the Sunday School department statewide.</div>
-        </div>
-      </div>
-      <div class="lead-card rv3">
-        <div class="lc-photo">
-          <img src="ss/s (3).png" alt="State Treasurer" onerror="this.style.display='none'">
-          <div class="lc-ph"></div>
-          <div class="lc-badge">
-            <div class="lc-badge-name">Ps.Salu Varghese</div>
-            <div class="lc-badge-title">State Secretary</div>
-          </div>
-        </div>
-        <div class="lc-body">
-          <div class="lc-role">State secreatry· Sunday School</div>
-          <div class="lc-desc">Managing financial stewardship and resource allocation for the Sunday School ministry across all of Kerala.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+
 
 <!-- ── COMMITTEE ── -->
 <section class="sec" style="background:var(--ivory2);">
@@ -1432,10 +1403,10 @@ footer a{color:var(--gold2);}
       <!-- 2 -->
       <div class="cm-card rv">
         <div class="cm-photo">
-          <img src="ss/s (1).png" alt="Pr. V.P. Thomas" class="member-img">
+          <img src="c13.jpeg" alt="Pr. V.P. Thomas" class="member-img">
         </div>
         <div class="cm-info">
-          <div class="cm-name">Pr. V.P. Thomas</div>
+          <div class="cm-name">Pr. Saji Abraham</div>
           <div class="cm-pos">President</div>
         </div>
       </div>
