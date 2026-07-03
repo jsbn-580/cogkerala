@@ -561,6 +561,17 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
 #backTop{position:fixed;bottom:6rem;right:1.5rem;z-index:7000;width:42px;height:42px;border-radius:50%;background:var(--magenta);color:white;border:none;cursor:pointer;font-size:1rem;opacity:0;transform:translateY(12px);transition:all .35s;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(204,0,102,.38);}
 #backTop.show{opacity:1;transform:none;}
 #backTop:hover{background:var(--dark);transform:translateY(-2px);}
+.mob-lbl{
+  padding:1.1rem 1.5rem .4rem;
+  font-size:.68rem;
+  font-weight:700;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--primary,#df1d78);
+  border-top:1px solid rgba(0,0,0,.06);
+  margin-top:.3rem;
+}
+.mob-lbl:first-of-type{border-top:none;margin-top:0;}
 
 /* RESPONSIVE BREAKPOINTS */
 @media(max-width:1200px){
@@ -716,7 +727,7 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
           <a href="pastorcharity.html">Pastor Welfare & Charity Board</a>
           <a href="upg.html">UPG Board</a>
           <a href="mountcarmel.html">Mount Carmel Childrens Home Board</a>
-          <a href="suvishesha nadham.html">Suvishesha Nadam Board</a>
+          <a href="suvishesha nadham.html">Suvishesha Nadam</a>
         </div>
       </li>
        <li class="nli"><button>More ▾</button>
@@ -737,25 +748,54 @@ footer{background:var(--dark);padding:4rem 0 2rem;}
 </nav>
 
 <div class="mob" id="mob">
-  <a href="#hero"> Home</a>
-  <a href="#hero"> Director's Message</a>
-  <a href="#vision"> Vision &amp; Mission</a>
-  <a href="#about"> History</a>
-  <a href="#beliefs"> Declaration of Faith</a>
+  <a href="#hero">Home</a>
+
+  <div class="mob-lbl">History</div>
+  <a href="fo.html">Our Founder</a>
+  <a href="inter.html">International Office</a>
+  <a href="head.html">State HQ</a>
+  <a href="teaching.html">Teachings</a>
+
+  <div class="mob-lbl">Director</div>
+  <a href="#hero">Director's Note</a>
+
+  <div class="mob-lbl">Vision</div>
+  <a href="#vision">Vision &amp; Mission</a>
+  <a href="#beliefs">Declaration of Faith</a>
+
   <div class="mob-lbl">Departments</div>
   <a href="co.html">Counselling</a>
-  <a href="edu.html"> Biblical Education</a>
-  <a href="lm.html"> Ladies Ministry</a>
-  <a href="ype.html"> Youth Ministry (YPE)</a>
-  <a href="ss.html"> Sunday School</a>
-  <a href="eva.html"> Evangelism</a>
-  <a href="mission.html"> Mission Board</a>
-  <a href="#leaders"> International Leaders</a>
-  <a href="#council"> State Council</a>
-  <a href="#former-overseers"> Former Overseers</a>
-  <a href="#stateboard"> State Board</a>
-  <a href="#ministry">🎓Ministry &amp; Ordination</a>
-  <a href="#contact"> Contact Us</a>
+  <a href="ype.html">YPE</a>
+  <a href="lm.html">Ladies Ministry</a>
+  <a href="ss.html">Sunday School</a>
+  <a href="chgro.html">Church Growth &amp; Mission Board</a>
+  <a href="edu.html">Education</a>
+  <a href="eva.html">Evangelism</a>
+
+  <div class="mob-lbl">Ministry</div>
+  <a href="OR.HTML">Ordained Ministers</a>
+  <a href="LI.HTML">Licensed Ministers</a>
+  <a href="EX.HTML">Exhorter Ministers</a>
+
+  <div class="mob-lbl">Boards</div>
+  <a href="belivers.html">Beliver's Board</a>
+  <a href="prayaer.html">Prayer Board</a>
+  <a href="music.html">Music Board</a>
+  <a href="cre.html">Credential Board</a>
+  <a href="meida.html">Media Board</a>
+  <a href="homemission.html">Home Mission Board</a>
+  <a href="pastorcharity.html">Pastor Welfare &amp; Charity Board</a>
+  <a href="upg.html">UPG Board</a>
+  <a href="mountcarmel.html">Mount Carmel Childrens Home Board</a>
+  <a href="suvishesha nadham.html">Suvishesha Nadam Board</a>
+
+  <div class="mob-lbl">More</div>
+  <a href="#leaders">Leaders</a>
+  <a href="#council">Council</a>
+  <a href="#former-overseers">Former Overseers</a>
+  <a href="#stateboard">State Office</a>
+  <a href="#contact">Contact</a>
+
   <a href="#contact" class="mob-cta">Contact the State Office →</a>
 </div>
 
