@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Literature Ministry — COG Kerala</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Outfit:wght@300;400;500;600;700&family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #75075a;
+  --primary-dark: #af1280;
+  --accent: #cf0c84;
+  --light: #940a5f;
+  --blk: #0D0D0D;
+  --blk2: #1A1A1A;
+  --blk3: #2E2E2E;
+  --blk4: #555555;
+  --blk5: #888888;
+  --white: #FFFFFF;
+  --off: #FAF9FC;
+  --off2: #F3EFF5;
+  --off3: #E8E2ED;
+  --shadow: 0 4px 28px rgba(13,148,136,.12);
+  --shadow2: 0 16px 56px rgba(13,148,136,.18);
+  --nav: 72px;
+  --ease: cubic-bezier(.16,1,.3,1);
+  --ff: 'Outfit', sans-serif;
+  --fg: 'Cormorant Garamond', serif;
+  --fc: 'Cinzel', serif;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--ff);background:var(--white);color:var(--blk);overflow-x:hidden;}
+img{max-width:100%;display:block;}
+a{text-decoration:none;color:inherit;}
+button{cursor:pointer;font-family:var(--ff);}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-thumb{background:var(--light);border-radius:4px;}
+
+#nav {
+  position:fixed;top:0;left:0;right:0;z-index:9000;
+  background:rgba(255,255,255,.97);
+  border-bottom:1px solid rgba(13,148,136,.1);
+  backdrop-filter:blur(14px);
+  box-shadow:0 2px 20px rgba(13,148,136,.07);
+}
+.nb{max-width:1400px;margin:0 auto;padding:0 2rem;height:var(--nav);display:flex;align-items:center;justify-content:space-between;}
+.nl{display:flex;align-items:center;text-decoration:none;color:#333;}
+.nl-logo-img{height:50px;width:auto;margin-right:15px;}
+.nl-info .t1{font-size:16px;font-weight:600;font-family:var(--fc);}
+.nl-info .t2{font-size:.6rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--blk4);margin-top:2px;}
+.nav-links{display:flex;align-items:center;gap:.2rem;}
+.nav-link{font-size:.78rem;font-weight:500;letter-spacing:.07em;padding:.45rem 1rem;border-radius:4px;color:var(--blk3);transition:all .2s;}
+.nav-link:hover,.nav-link.active{background:rgba(13,148,136,.12);color:var(--primary);}
+
+.hero {
+  padding-top:var(--nav);
+  min-height:100vh;
+  position:relative;overflow:hidden;
+  display:flex;flex-direction:column;
+  background: linear-gradient(135deg, rgba(13,148,136,0.15) 0%, rgba(20,184,166,0.1) 100%);
+}
+.slides{position:absolute;inset:0;z-index:0;}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease;display:flex;align-items:center;justify-content:center;}
+.slide.active{opacity:1;}
+.slide-bg{position:absolute;inset:0;object-fit:cover;width:100%;height:100%;filter:brightness(.2) saturate(.9);}
+
+.hero-content{position:relative;z-index:2;flex:1;display:flex;align-items:center;padding:4rem 2rem 3rem;}
+.hero-inner{max-width:1300px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 480px;gap:2.5rem;align-items:stretch;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--fc);font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--accent);margin-bottom:1.6rem;}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';width:28px;height:1px;background:linear-gradient(90deg,transparent,var(--accent));}
+.hero-eyebrow::after{background:linear-gradient(90deg,var(--accent),transparent);}
+.hero-title{font-family:var(--fg);font-size:clamp(3rem,6vw,6.5rem);font-weight:300;line-height:.9;color:white;margin-bottom:1rem;letter-spacing:-.01em;}
+.hero-title strong{font-weight:600;font-style:italic;color:var(--accent);display:block;}
+.hero-divider{width:52px;height:2px;background:linear-gradient(90deg,var(--accent),var(--primary));margin:1.4rem 0;}
+.hero-sub{font-size:1rem;line-height:1.95;color:rgba(255,255,255,.68);max-width:520px;margin-bottom:2.5rem;font-weight:300;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-primary{font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.85rem 2rem;background:var(--primary);color:white;border:none;border-radius:3px;transition:all .25s;box-shadow:0 4px 18px rgba(13,148,136,.4);}
+.btn-primary:hover{background:var(--primary-dark);transform:translateY(-2px);}
+.btn-ghost{font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.85rem 2rem;background:transparent;color:white;border:1px solid rgba(255,255,255,.38);border-radius:3px;transition:all .25s;}
+.btn-ghost:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.7);}
+
+.slide-indicators{position:relative;z-index:2;display:flex;align-items:center;gap:.5rem;padding:1.2rem 2rem 2rem;max-width:1300px;margin:0 auto;width:100%;}
+.si-dot{width:22px;height:2px;background:rgba(255,255,255,.22);border-radius:2px;cursor:pointer;transition:all .4s;}
+.si-dot.active{width:44px;background:var(--accent);}
+
+.slide-caption{position:absolute;bottom:80px;right:2rem;z-index:2;text-align:right;}
+.sc-verse{font-family:var(--fg);font-size:.95rem;font-style:italic;color:rgba(255,255,255,.55);line-height:1.6;max-width:280px;}
+.sc-ref{font-family:var(--fc);font-size:.58rem;letter-spacing:.2em;color:var(--accent);margin-top:.35rem;}
+
+.hero-stats-row{position:relative;z-index:2;background:rgba(0,0,0,.7);border-top:1px solid rgba(255,255,255,.06);backdrop-filter:blur(8px);}
+.hero-stats-inner{max-width:1300px;margin:0 auto;padding:1.2rem 2rem;display:flex;gap:0;flex-wrap:wrap;}
+.hs{flex:1;text-align:center;border-right:1px solid rgba(255,255,255,.08);padding:.4rem 1rem;min-width:150px;}
+.hs:last-child{border-right:none;}
+.hs-num{font-family:var(--fg);font-size:2.1rem;font-weight:600;color:var(--accent);line-height:1;}
+.hs-lbl{font-size:.58rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:.3rem;}
+
+.sec{padding:5.5rem 0;position:relative;}
+.cont{max-width:1300px;margin:0 auto;padding:0 2rem;}
+.sec-label{font-family:var(--fc);font-size:.63rem;letter-spacing:.3em;text-transform:uppercase;color:var(--primary);display:flex;align-items:center;gap:1rem;margin-bottom:.9rem;}
+.sec-label::after{content:'';flex:1;max-width:56px;height:1px;background:linear-gradient(90deg,var(--primary),transparent);}
+.sec-h{font-family:var(--fg);font-size:clamp(2.3rem,4.5vw,4.8rem);font-weight:300;line-height:.92;color:var(--blk);margin-bottom:.4rem;letter-spacing:-.015em;}
+.sec-h em{font-style:italic;font-weight:500;color:var(--primary);}
+.sec-sub{font-size:.93rem;color:var(--blk4);line-height:1.85;max-width:540px;margin-bottom:3rem;font-weight:300;}
+
+.rv{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease);}
+.rv.on{opacity:1;transform:none;}
+.rv2{opacity:0;transform:translateY(28px);transition:opacity .9s .12s var(--ease),transform .9s .12s var(--ease);}
+.rv2.on{opacity:1;transform:none;}
+
+.about-sec{background:var(--white);}
+.about-layout{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+.about-text .lead{font-family:var(--fg);font-size:1.4rem;font-weight:400;color:var(--blk);line-height:1.6;margin-bottom:1.5rem;border-left:3px solid var(--primary);padding-left:1.4rem;}
+.about-text p{font-size:.93rem;color:var(--blk4);line-height:1.95;margin-bottom:1.1rem;font-weight:300;}
+.about-pillars{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-top:2rem;}
+.pillar{background:rgba(13,148,136,.08);border-radius:3px;padding:1rem 1.2rem;border-left:3px solid var(--primary);}
+.pillar-icon{font-size:1.2rem;margin-bottom:.3rem;}
+.pillar-title{font-family:var(--fc);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--primary);font-weight:600;}
+.pillar-text{font-size:.77rem;color:var(--blk4);margin-top:.25rem;line-height:1.6;}
+
+/* Publications grid (repurposed members grid) */
+.pubs-sec{background:var(--off);}
+.pubs-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:1.6rem;margin-top:2rem;}
+.pub-card{background:white;border-radius:8px;overflow:hidden;border:1px solid rgba(13,148,136,.12);transition:all .35s var(--ease);box-shadow:0 2px 10px rgba(0,0,0,.05);}
+.pub-card:hover{transform:translateY(-6px);box-shadow:0 8px 24px rgba(13,148,136,.2);border-color:rgba(13,148,136,.25);}
+.pub-cover{width:100%;aspect-ratio:3/4;background:linear-gradient(135deg, rgba(13,148,136,.14), rgba(20,184,166,.08));display:flex;align-items:center;justify-content:center;position:relative;}
+.pub-cover-icon{font-size:2.4rem;color:rgba(117,7,90,.35);}
+.pub-body{padding:1.1rem 1.2rem 1.3rem;}
+.pub-cat{font-family:var(--fc);font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:var(--primary);font-weight:600;margin-bottom:.4rem;}
+.pub-title{font-family:var(--fg);font-size:1.15rem;font-weight:600;color:var(--blk);line-height:1.3;margin-bottom:.4rem;}
+.pub-desc{font-size:.8rem;color:var(--blk4);line-height:1.65;font-weight:300;}
+.pub-meta{margin-top:.7rem;font-size:.68rem;letter-spacing:.05em;color:var(--blk5);text-transform:uppercase;}
+
+.members-sec{background:var(--white);}
+.members-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(140px, 1fr));gap:1.5rem;margin-top:2rem;}
+.mem-card{background:white;border-radius:8px;overflow:hidden;border:1px solid rgba(13,148,136,.12);transition:all .35s var(--ease);cursor:default;box-shadow:0 2px 10px rgba(0,0,0,.05);}
+.mem-card:hover{transform:translateY(-6px);box-shadow:0 8px 24px rgba(13,148,136,.2);border-color:rgba(13,148,136,.25);}
+.mem-img-wrap{width:100%;aspect-ratio:3/3.5;background:linear-gradient(135deg, rgba(13,148,136,.12), rgba(20,184,166,.08));position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+.mem-img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .5s var(--ease);}
+.mem-card:hover .mem-img{transform:scale(1.05);}
+.mem-img-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--fc);font-size:2.2rem;color:rgba(13,148,136,.15);z-index:0;}
+.mem-info{padding:.95rem 1rem;background:white;text-align:center;}
+.mem-name{font-family:var(--fg);font-size:.85rem;font-weight:500;color:var(--blk);line-height:1.25;margin-bottom:.35rem;}
+.mem-pos{font-family:var(--fc);font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:var(--primary);font-weight:600;}
+
+/* distribution network strip */
+.dist-sec{background:var(--white);}
+.dist-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1.2rem;margin-top:2rem;}
+.dist-card{padding:1.4rem 1.2rem;border-radius:6px;background:rgba(13,148,136,.06);border-left:3px solid var(--accent);text-align:left;}
+.dist-num{font-family:var(--fg);font-size:1.9rem;color:var(--primary);font-weight:600;line-height:1;}
+.dist-lbl{font-size:.72rem;color:var(--blk4);margin-top:.4rem;letter-spacing:.03em;}
+
+.cta-banner{background:var(--blk);padding:5rem 0;text-align:center;position:relative;overflow:hidden;}
+.cta-banner::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(13,148,136,.15),transparent 70%);pointer-events:none;}
+.cta-inner{position:relative;z-index:1;}
+.cta-banner h3{font-family:var(--fg);font-size:clamp(2rem,5vw,4rem);font-weight:300;color:white;margin-bottom:.5rem;}
+.cta-banner h3 em{font-style:italic;font-weight:500;color:var(--accent);}
+.cta-banner p{font-size:.93rem;color:rgba(255,255,255,.45);margin-bottom:2.5rem;font-weight:300;}
+.cta-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+.cta-btn-t{font-family:var(--fc);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;padding:.88rem 2.2rem;background:var(--primary);color:white;border:none;border-radius:3px;cursor:pointer;transition:all .25s;}
+.cta-btn-t:hover{background:var(--primary-dark);}
+.cta-btn-o{font-family:var(--fc);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;padding:.88rem 2.2rem;background:transparent;color:white;border:1px solid rgba(255,255,255,.28);border-radius:3px;cursor:pointer;transition:all .25s;}
+.cta-btn-o:hover{border-color:white;}
+
+.contact-sec{background:rgba(13,148,136,.06);padding:5rem 0;}
+.contact-inner{max-width:800px;margin:0 auto;text-align:center;}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:3rem;}
+.contact-card{background:white;padding:2rem;border-radius:8px;border-left:4px solid var(--primary);}
+.contact-card h4{font-family:var(--fg);font-size:1.2rem;color:var(--primary);margin-bottom:.5rem;}
+.contact-card p{font-size:.95rem;color:var(--blk4);line-height:1.7;}
+.contact-card a{color:var(--primary);font-weight:600;}
+
+footer{background:#050505;padding:2rem 0;text-align:center;}
+footer p{font-size:.76rem;color:rgba(255,255,255,.2);letter-spacing:.05em;}
+footer a{color:var(--accent);}
+
+@media(max-width:1024px){
+  .hero-inner{grid-template-columns:1fr;gap:2rem;}
+  .about-layout{gap:3rem;}
+  .contact-grid{grid-template-columns:1fr;}
+}
+@media(max-width:900px){
+  .about-layout{grid-template-columns:1fr;}
+}
+@media(max-width:640px){
+  .pubs-grid{grid-template-columns:repeat(auto-fit, minmax(140px, 1fr));}
+  .nav-links{display:none;}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nb">
+    <a href="home.html" class="nl">
+      <div class="nl-logo-wrap">
+        <img src="download.png" alt="COG KERALA LOGO" class="nl-logo-img">
+      </div>
+      <div class="nl-info">
+        <div class="t1">Church of God (Full Gospel) · Kerala State</div>
+        <div class="t2">Literature Ministry</div>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="#about" class="nav-link">About</a>
+      <a href="#board" class="nav-link">Board</a>
+      <a href="#publications" class="nav-link">Publications</a>
+      <a href="#distribution" class="nav-link">Distribution</a>
+      <a href="#contact" class="nav-link">Contact</a>
+      <a href="home.html" class="nav-link">← Back to Home</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero" id="top">
+  <div class="slides" id="slides">
+    <div class="slide active">
+      <img class="slide-bg" src="conven.png" alt="Literature Ministry" onerror="this.style.display='none'">
+    </div>
+    <div class="slide">
+      <img class="slide-bg" src="audi.png" alt="Print & Publishing" onerror="this.style.display='none'">
+    </div>
+    <div class="slide">
+      <img class="slide-bg" src="con (2).png" alt="Gospel Literature" onerror="this.style.display='none'">
+    </div>
+  </div>
+
+  <div class="slide-caption" id="slideCaption">
+    <div class="sc-verse">"All scripture is given by inspiration of God, and is profitable for doctrine, for reproof, for correction, for instruction in righteousness."</div>
+    <div class="sc-ref">2 Timothy 3:16 (KJV)</div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-inner">
+      <div class="hero-left">
+        <div class="hero-eyebrow">Gospel Literature · Publishing · Print Ministry</div>
+        <h1 class="hero-title">
+          <span>The Written</span>
+          <strong>Word</strong>
+        </h1>
+        <div class="hero-divider"></div>
+        <p class="hero-sub">
+          Producing and distributing Bible-based literature — magazines, tracts, devotionals, and study materials — to nurture believers and carry the Gospel into every home across Kerala.
+        </p>
+        <div class="hero-btns">
+          <button class="btn-primary" onclick="scrollTo('#about')">Our Mission</button>
+          <button class="btn-ghost" onclick="scrollTo('#publications')">View Publications</button>
+        </div>
+      </div>
+      <div class="hero-right"></div>
+    </div>
+  </div>
+
+  <div class="slide-indicators" id="slideIndicators">
+    <div class="si-dot active" onclick="goSlide(0)"></div>
+    <div class="si-dot" onclick="goSlide(1)"></div>
+    <div class="si-dot" onclick="goSlide(2)"></div>
+  </div>
+
+  <div class="hero-stats-row">
+    <div class="hero-stats-inner">
+      <div class="hs"><div class="hs-num">12+</div><div class="hs-lbl">Active Publications</div></div>
+      <div class="hs"><div class="hs-num">14</div><div class="hs-lbl">Districts Served</div></div>
+      <div class="hs"><div class="hs-num">1,000s</div><div class="hs-lbl">Copies Circulated</div></div>
+      <div class="hs"><div class="hs-num">Monthly</div><div class="hs-lbl">Print Cycle</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec about-sec" id="about">
+  <div class="cont">
+    <div class="about-layout">
+      <div class="about-text rv">
+        <div class="sec-label">About the Ministry</div>
+        <h2 class="sec-h">Ink that carries <em>Light</em></h2>
+        <p class="lead">The Literature Ministry of the Church of God (Full Gospel) in Kerala State exists to spread the Gospel and deepen believers' faith through the printed and digital word.</p>
+        <p>We produce Bible-centered magazines, devotional booklets, gospel tracts, and Sunday School materials that are distributed through local churches, outreach programs, and subscription across Kerala.</p>
+        <p>Our editorial team works to ensure sound doctrine, cultural relevance, and readability, so that every piece of literature — whether for a new believer or a lifelong member — builds up the body of Christ.</p>
+        <div class="about-pillars">
+          <div class="pillar"><div class="pillar-icon">✍️</div><div class="pillar-title">Editorial & Writing</div><div class="pillar-text">Doctrinally sound, well-written content.</div></div>
+          <div class="pillar"><div class="pillar-icon">🖨️</div><div class="pillar-title">Print Production</div><div class="pillar-text">Magazines, tracts, and booklets.</div></div>
+          <div class="pillar"><div class="pillar-icon">📦</div><div class="pillar-title">Distribution Network</div><div class="pillar-text">Church-based circulation statewide.</div></div>
+          <div class="pillar"><div class="pillar-icon">💻</div><div class="pillar-title">Digital Publishing</div><div class="pillar-text">Reaching readers online.</div></div>
+        </div>
+      </div>
+      <div class="about-visual rv2" style="position:relative;"><img src="con (2).png" alt="Literature Ministry" style="border-radius:4px;width:100%;"></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec members-sec" id="board">
+  <div class="cont">
+    <div class="sec-label rv">Board Composition</div>
+    <h2 class="sec-h rv">Literature <em>Board</em></h2>
+    <div class="sec-sub rv">The team overseeing editorial direction, production, and distribution of the ministry's literature.</div>
+
+    <div class="members-grid">
+      <div class="mem-card">
+        <div class="mem-img-wrap"><img class="mem-img" src="board/reji.png" alt="Rev.Y Reji" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div>
+        <div class="mem-info"><div class="mem-name">Rev. Y Reji</div><div class="mem-pos">State Overseer</div></div>
+      </div>
+      <div class="mem-card">
+        <div class="mem-img-wrap"><img class="mem-img" src="board/mathew.jpg" alt="Pr. Mathew Baby" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div>
+        <div class="mem-info"><div class="mem-name">Pr. Mathew Baby</div><div class="mem-pos">Director</div></div>
+      </div>
+      <div class="mem-card">
+        <div class="mem-img-wrap"><img class="mem-img" src="board/lit3.jpeg" alt="Bro. Name" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div>
+        <div class="mem-info"><div class="mem-name">Bro. Name Here</div><div class="mem-pos">Editor-in-Chief</div></div>
+      </div>
+      <div class="mem-card">
+        <div class="mem-img-wrap"><img class="mem-img" src="board/lit4.jpeg" alt="Pr. Name" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div>
+        <div class="mem-info"><div class="mem-name">Pr. Name Here</div><div class="mem-pos">Secretary</div></div>
+      </div>
+      <div class="mem-card">
+        <div class="mem-img-wrap"><img class="mem-img" src="board/lit5.jpeg" alt="Bro. Name" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div>
+        <div class="mem-info"><div class="mem-name">Bro. Name Here</div><div class="mem-pos">Treasurer</div></div>
+      </div>
+      <div class="mem-card">
+        <div class="mem-img-wrap"><img class="mem-img" src="board/lit6.jpeg" alt="Bro. Name" onerror="this.style.display='none'"><div class="mem-img-fallback"></div></div>
+        <div class="mem-info"><div class="mem-name">Bro. Name Here</div><div class="mem-pos">Distribution Convenor</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="sec dist-sec" id="distribution">
+  <div class="cont">
+    <div class="sec-label rv">How We Reach Readers</div>
+    <h2 class="sec-h rv">Distribution <em>Network</em></h2>
+    <div class="sec-sub rv">Literature reaches homes and churches across Kerala through several coordinated channels.</div>
+    <div class="dist-grid">
+      <div class="dist-card"><div class="dist-num">01</div><div class="dist-lbl">Local church subscriptions and pulpit distribution</div></div>
+      <div class="dist-card"><div class="dist-num">02</div><div class="dist-lbl">District-level literature coordinators</div></div>
+      <div class="dist-card"><div class="dist-num">03</div><div class="dist-lbl">Outreach and street evangelism tracts</div></div>
+      <div class="dist-card"><div class="dist-num">04</div><div class="dist-lbl">Postal subscriptions for individual readers</div></div>
+      <div class="dist-card"><div class="dist-num">05</div><div class="dist-lbl">Digital & PDF editions online</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec contact-sec" id="contact">
+  <div class="cont">
+    <div class="contact-inner">
+      <div class="sec-label" style="justify-content:center;">Get in Touch</div>
+      <h2 class="sec-h">Contact the <em>Literature Ministry</em></h2>
+      <p class="sec-sub" style="max-width:600px;margin-left:auto;margin-right:auto;">Reach out to subscribe, contribute writing, or partner in distribution.</p>
+
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h4>📧 Email</h4>
+          <p><a href="mailto:"></a></p>
+          <p style="font-size:.85rem;margin-top:.5rem;color:var(--blk5);">For subscriptions and submissions</p>
+        </div>
+        <div class="contact-card">
+          <h4>📱 Phone</h4>
+          <p><a href="tel:+914812345681">+91 /a></p>
+          <p style="font-size:.85rem;margin-top:.5rem;color:var(--blk5);">Office hours: Mon-Fri, 9AM-5PM IST</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-banner">
+  <div class="cta-inner">
+    <h3>Carry the <em>Word</em> Forward</h3>
+    <p>"So then faith cometh by hearing, and hearing by the word of God." — Romans 10:17</p>
+    <div class="cta-actions">
+      <button class="cta-btn-t" onclick="scrollTo('#publications')">Browse Publications</button>
+      <a href="home.html" class="cta-btn-o">← Back to Home</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Church of God (Full Gospel) in India, Kerala State · Literature Ministry · <a href="mailto:cogkeralastate@gmail.com">cogkeralastate@gmail.com</a></p>
+</footer>
+
+<script>
+var CAPTIONS = [
+  { verse:'"All scripture is given by inspiration of God, and is profitable for doctrine, for reproof, for correction, for instruction in righteousness."', ref:'2 Timothy 3:16 (KJV)' },
+  { verse:'"Thy word is a lamp unto my feet, and a light unto my path."', ref:'Psalm 119:105 (KJV)' },
+  { verse:'"So then faith cometh by hearing, and hearing by the word of God."', ref:'Romans 10:17 (KJV)' }
+];
+var slides=document.querySelectorAll('.slide'),dots=document.querySelectorAll('.si-dot'),cap=document.getElementById('slideCaption'),cur=0,timer;
+function goSlide(n){slides[cur].classList.remove('active');dots[cur].classList.remove('active');cur=(n+slides.length)%slides.length;slides[cur].classList.add('active');dots[cur].classList.add('active');var c=CAPTIONS[cur];cap.querySelector('.sc-verse').textContent=c.verse;cap.querySelector('.sc-ref').textContent=c.ref;}
+function startSlideshow(){timer=setInterval(function(){goSlide(cur+1);},5500);}
+startSlideshow();
+function scrollTo(sel){var el=document.querySelector(sel);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});}
+var rvObs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');rvObs.unobserve(e.target);}});},{threshold:0.06,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.rv,.rv2').forEach(function(el){rvObs.observe(el);});
+</script>
+
+</body>
+</html>
